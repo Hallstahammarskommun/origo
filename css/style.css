@@ -637,6 +637,7 @@ button.ol-zoom-out {
 }
 #map {
 	height:100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 #bottom-tools {
   bottom: 1.7em;
