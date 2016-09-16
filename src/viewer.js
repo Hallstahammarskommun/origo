@@ -155,10 +155,6 @@ function init (el, mapOptions){
       }
       loadMap();
 
-      //Check size for attribution mode
-      $(window).on('resize', checkSize);
-      checkSize();
-
       if(urlParams.pin) {
           settings.featureinfoOptions.savedPin = urlParams.pin;
       }
@@ -979,11 +975,6 @@ function init (el, mapOptions){
           e.preventDefault();
         });
     }
-    function checkSize() {
-        var small = map.getSize()[0] < 768;
-        attribution.setCollapsible(small);
-        attribution.setCollapsed(small);
-    }
 
 module.exports.init = init;
 module.exports.createLayers = createLayers;
@@ -1019,7 +1010,6 @@ module.exports.getScale = getScale;
 module.exports.scaleToResolution = scaleToResolution;
 module.exports.autoPan = autoPan;
 module.exports.removeOverlays = removeOverlays;
-module.exports.checkSize = checkSize;
 module.exports.setMapOptions = setMapOptions;
 module.exports.getMapName = getMapName;
 module.exports.getUrl = getUrl;

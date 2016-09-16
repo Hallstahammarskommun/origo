@@ -1631,13 +1631,6 @@ li .legend-item-img {
 	height: 1em;
 	width: 1em;
 }
-.mdk-icon-fa-angle-double-right,
-.ol-collapsed .mdk-icon-fa-info {
-	fill: #fff;
-	height: .9em;
-	padding: .3em;
-	width: .9em;
-}
 .owl-prev .mdk-icon-fa-chevron-left,
 .owl-next .mdk-icon-fa-chevron-right {
 	fill: #424242;
@@ -1645,8 +1638,6 @@ li .legend-item-img {
 	padding: .3em;
 	width: 1em;
 }
-.ol-collapsed .mdk-icon-fa-angle-double-right,
-.ol-attribution:not(.ol-collapsed) .mdk-icon-fa-info,
 .toggle-button-max .mdk-icon-fa-angle-double-up,
 .toggle-button-min .mdk-icon-fa-angle-double-down,
 .checkbox-true .mdk-icon-fa-square-o,
@@ -1661,34 +1652,8 @@ li .legend-item-img {
 .ol-scale-line, .ol-scale-line-inner {
   display: none;
 }
-.ol-attribution {
-  max-width: calc(100% - 3.5em);
-  padding: 0;
-}
 .ol-attribution ul {
   color: #000;
-}
-.ol-control.ol-attribution:not(.ol-collapsed) {
-  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.45);
-  box-shadow: 0 0 5px rgba(0,0,0,0.45);
-}
-.ol-control.ol-attribution.ol-collapsed {
-  background-color: transparent;
-  box-shadow: none;
-}
-.ol-attribution:not(.ol-collapsed) {
-  background: rgba(255,255,255,0.9);
-}
-.ol-attribution:not(.ol-collapsed) button {
-  background: transparent;
-  color: #000;
-}
-.ol-attribution.ol-collapsed button {
-  background: rgba(0,0,0,0.8);
-  border-radius: 15px;
-  color: #fff;
-  height: 1.5em;
-  width: 1.5em;
 }
 #map-legend {
   bottom: .5em;
