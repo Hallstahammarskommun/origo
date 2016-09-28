@@ -40,5 +40,15 @@ module.exports = {
                         // '</div>' +
                     '</div>'
         return el;
+    },
+    createElement: function(el, val, attributes) {
+        var prefix = '<' + el;
+        var suffix = '</' + el  + '>';
+        var attributeNames = attributes ? attributes.getOwnProperties() : [];
+        var attributeList = attributeNames.map(function(name) {
+            return name + '=' + attributes[name];
+        });
+        var element = prefix.concat(attributeList.join(' '), '>', val, suffix);
+        return element;
     }
 }

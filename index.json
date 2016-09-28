@@ -6,10 +6,12 @@
     }, {
         "name": "search",
         "options": {
-            "geometryAttribute": "st_astext",
             "urlAds": "http://karta.hallstahammar.se/sAds",
             "urlFat": "http://karta.hallstahammar.se/sFat",
-            "searchAttribute": "title"
+            "geometryAttribute": "st_astext",
+            "searchAttribute": "title",
+            "titleAttribute": "title",
+            "contentAttribute": "content"
         }
     }, {
         "name": "sharemap"

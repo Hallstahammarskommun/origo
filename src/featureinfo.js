@@ -74,9 +74,6 @@ function getPin() {
     return savedPin;
 }
 function identify(items, target, coordinate) {
-    var layers = items.map(function(i){
-        return i.layer;
-    });
     var content = items.map(function(i){
         return i.content;
     }).join('');
@@ -91,12 +88,12 @@ function identify(items, target, coordinate) {
             var coord;
             geometry.getType() == 'Point' ? coord = geometry.getCoordinates() : coord = coordinate;
             overlay.setPosition(coord);
-            Popup.setContent({content: content, title: items[0].layer.get('title')});
+            Popup.setContent({content: content, title: items[0].title});
             Popup.setVisibility(true);
             var owl = initCarousel('#mdk-identify-carousel', undefined, function(){
                 var currentItem = this.owl.currentItem;
                 selectionLayer.clearAndAdd(items[currentItem].feature.clone(), selectionStyles[items[currentItem].feature.getGeometry().getType()]);
-                Popup.setTitle(items[currentItem].layer.get('title'));
+                Popup.setTitle(items[currentItem].title);
             });
             owl.on("mousewheel", function(e) {
             if(e.deltaY>0) {
@@ -109,12 +106,12 @@ function identify(items, target, coordinate) {
             Viewer.autoPan();
             break;
         case 'sidebar':
-            sidebar.setContent({content: content, title: items[0].layer.get('title')});
+            sidebar.setContent({content: content, title: items[0].title});
             sidebar.setVisibility(true);
             var owl = initCarousel('#mdk-identify-carousel', undefined, function(){
                 var currentItem = this.owl.currentItem;
                 selectionLayer.clearAndAdd(items[currentItem].feature.clone(), selectionStyles[items[currentItem].feature.getGeometry().getType()]);
-                sidebar.setTitle(items[currentItem].layer.get('title'));
+                sidebar.setTitle(items[currentItem].title);
             });
             break;
     }
