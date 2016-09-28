@@ -22,7 +22,7 @@ function init() {
         id: 'print',
         iconCls: 'mdk-icon-fa-print',
         src: 'css/svg/fa-icons.svg#fa-print',
-        text: 'Skriv ut'
+        text: ''
     });
     $('#menutools').append(el);
     printButton = $('#print-button');

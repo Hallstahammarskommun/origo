@@ -23,7 +23,6 @@ function init(opt_options) {
     styleSettings = viewer.getStyleSettings();
 
     mapMenu = $('#mapmenu');
-    $('#menutools').append('<li class="menu-item"><div class="menu-item-divider"></div><li>');
     addLegend(viewer.getGroups());
 
     mapMenu.on("touchmove", function() {
@@ -179,10 +178,7 @@ function addLegend(groups) {
 
       //Add map legend unless set to false
       if(hasMapLegend) {
-          var mapLegend = '<div id="map-legend"><ul id="legend-overlay"><li class="legend hidden"><div class ="toggle-button toggle-button-max">' +
-                              '<svg class="mdk-icon-fa-angle-double-down"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-down"></use></svg>' +
-                              '<svg class="mdk-icon-fa-angle-double-up"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-up"></use></svg>' +
-                          '</div></li><li><ul id="overlay-list"></li></ul></ul><ul id="map-legend-background"></ul></div>';
+          var mapLegend = '<div id="map-legend"><ul id="map-legend-background"></ul></div>';
           $('#map').append(mapLegend);
       }
 
@@ -196,7 +192,7 @@ function addLegend(groups) {
         //Append layer to group in legend. Add to default group if not defined.
         if(layers[i].get('group') == 'background') {
           //Append background layers to menu
-          item = '<li class="legend ' + name + '" id="' + name + '"><div class ="legend-item"><div class="checkbox"><svg class="mdk-icon-fa-check"><use xlink:href="css/svg/fa-icons.svg#fa-check"></use></svg></div>';
+          item = '<li class="legend ' + name + '" id="' + name + '"><div class ="legend-item"><div class="checkbox"><svg class="mdk-icon-fa-check"><use xlink:href="css/svg/fa-icons.svg#fa-circle"></use></svg></div>';
           item += title;
           $('#group-' + layers[i].get('group')).append(item);
           //Append background layers to map legend
@@ -208,8 +204,7 @@ function addLegend(groups) {
         }
         else if(layers[i].get('group') && ((layers[i].get('group') != 'none'))) {
           item = '<li class="legend ' + name + '" id="' + name + '"><div class ="legend-item"><div class="checkbox">' +
-                  '<svg class="mdk-icon-fa-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-square-o"></use></svg>' +
-                  '<svg class="mdk-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check-square-o"></use></svg>' +
+                  '<svg class="mdk-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check"></use></svg>' +
                 '</div>';
           item +=  layers[i].get('styleName') ? getSymbol(styleSettings[layers[i].get('styleName')]) : '';
           item += title;
@@ -253,11 +248,6 @@ function addLegend(groups) {
           evt.preventDefault();
         });
       }
-      //Toggle map legend
-      $('#legend-overlay .toggle-button').on('touchend click', function(evt) {
-        toggleOverlay();
-        evt.preventDefault();
-      });
 }
 function onToggleCheck(layername) {
     //Event listener for tick layer

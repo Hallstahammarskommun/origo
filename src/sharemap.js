@@ -19,8 +19,8 @@ function init(){
     var el = utils.createListButton({
         id: 'share',
         iconCls: 'mdk-icon-fa-share-square-o',
-        src: 'css/svg/fa-icons.svg#fa-share-square-o',
-        text: 'Dela karta'
+        src: 'css/svg/fa-icons.svg#fa-share',
+        text: ''
     });
     $('#menutools').append(el);
     shareButton = $('#share-button');

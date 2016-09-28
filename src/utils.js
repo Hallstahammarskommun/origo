@@ -30,17 +30,15 @@ module.exports = {
         return el;
     },
     createListButton: function(options) {
-        var el = '<li>' +
-                    '<div id="' + options.id + '-button" class="menu-button"' + '>' +
-                        '<div class="button-icon">' +
+        var el =    '<div id="' + options.id + '-button" class="menu-button"' + '>' +
+                        '<button class="mdk-button no-boxshadow">' +
                           '<svg class="' + options.iconCls + '">' +
                               '<use xlink:href="' + options.src + '"></use>' +
                           '</svg>' +
-                        '</div>' +
+                        '</button>' +
                             options.text +
                         // '</div>' +
-                    '</div>' +
-                  '</li>';
+                    '</div>'
         return el;
     }
 }

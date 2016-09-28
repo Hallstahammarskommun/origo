@@ -16,7 +16,7 @@ var styleSettings;
 function init() {
     styleSettings = viewer.getStyleSettings();
     var el = utils.createButton({
-        text: 'Meny',
+        text: '',
         id: 'mapmenu-button',
         cls: 'mapmenu-button-true',
         iconCls: 'mdk-icon-fa-bars',
@@ -30,7 +30,6 @@ function init() {
     var menuEl = '<div id="mapmenu">' +
                     '<div class="block">' +
                       '<ul id="menutools">' +
-                        '<li></li>' +
                       '</ul>'
                     '</div>' +
                   '</div>';
@@ -42,7 +41,7 @@ function init() {
         cls: 'no-boxshadow',
         iconCls: 'mdk-icon-menu-fa-times',
         src: 'css/svg/fa-icons.svg#fa-times',
-        tooltipText: 'Stäng meny',
+        tooltipText: '',
         tooltipPlacement: 'west'
     });
     $('#menutools').append(closeButton);

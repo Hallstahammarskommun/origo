@@ -21,7 +21,7 @@ var enabled = false;
 function init() {
     map = viewer.getMap();
 
-    var tooltipText = "Visa nuvarande position i kartan";
+    var tooltipText = "Visa din plats";
     //Element for control
     var el = utils.createButton({
         id: 'geolocation-button',
