@@ -21,12 +21,7 @@ var utils = require('./utils');
 var adress, fastighet;
 var map,
     name,
-    northing,
-    easting,
     geometryAttribute,
-    idAttribute,
-    layerNameAttribute,
-    layerName,
     titleAttribute,
     contentAttribute,
     maxZoomLevel,
@@ -41,12 +36,7 @@ var map,
 function init(options){
 
     name = options.searchAttribute;
-    northing = options.northing || undefined;
-    easting = options.easting || undefined;
     geometryAttribute = options.geometryAttribute;
-    idAttribute = options.idAttribute; //idAttribute in combination with layerNameAttribute must be defined if search result should be selected
-    layerNameAttribute = options.layerNameAttribute || undefined;
-    layerName = options.layerName || undefined;
     urlAds = options.urlAds;
     urlFat = options.urlFat;
     title = options.title || '';
@@ -192,36 +182,11 @@ function showFeatureInfo(features, title, content) {
  */
 function selectHandler(evt, data) {
 
-    if (layerNameAttribute && idAttribute) {
-        var layer = Viewer.getLayer(data[layerNameAttribute]);
-        var id = data[idAttribute];
-        var promise = getFeature(id, layer)
-            .done(function(res) {
-                if (res.length > 0) {
-                    showFeatureInfo(res, layer.get('title'), getAttributes(res[0], layer));
-                }
-                //Fallback if no geometry in response
-                else if (geometryAttribute) {
-                    var feature = wktToFeature(data[geometryAttribute], projectionCode);
-                    var coord = feature.getGeometry().getCoordinates();
-                    showOverlay(data, coord);
-                }
-            });
-    } else if (geometryAttribute && layerName) {
-        var feature = wktToFeature(data[geometryAttribute], projectionCode);
-        var layer = Viewer.getLayer(data[layerName]);
-        showFeatureInfo([feature], layer.get('title'), getAttributes(feature, layer));
-    } else if (titleAttribute && contentAttribute && geometryAttribute) {
+ if (titleAttribute && contentAttribute && geometryAttribute) {
         var feature = wktToFeature(data[geometryAttribute], projectionCode);
         //Make sure the response is wrapped in a html element
         var content = utils.createElement('div', data[contentAttribute])
         showFeatureInfo([feature], data[titleAttribute], content);
-    } else if (geometryAttribute && title) {
-        var feature = wktToFeature(data[geometryAttribute], projectionCode);
-        showFeatureInfo([feature], title, data);
-    } else if (easting && northing && title) {
-        var coord = [data[easting], data[northing]];
-        showOverlay(data, coord);
     } else {
         console.log('Search options are missing');
     }
