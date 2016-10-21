@@ -14,13 +14,13 @@ module.exports = {
         var iconCls = options.iconCls || '';
         var placement = options.tooltipPlacement || 'east';
         if(options.text) {
-            text = '<span class="mdk-button-text">' + options.text + '</span>';
+            text = '<span class="o-button-text">' + options.text + '</span>';
         }
         if(options.tooltipText) {
             tooltip = '<span data-tooltip="' + options.tooltipText + '" data-placement="' + placement + '"></span>';
         }
-        var el = '<div id="' + options.id + '" class="mdk-button-container mdk-tooltip">' +
-                 '<button class="mdk-button ' + cls + '">' + text +
+        var el = '<div id="' + options.id + '" class="o-button-container o-tooltip">' +
+                 '<button class="o-button ' + cls + '">' + text +
                     '<svg class="' + iconCls + '">' +
                         '<use xlink:href="' + options.src + '"></use>' +
                     '</svg>' +
@@ -30,8 +30,9 @@ module.exports = {
         return el;
     },
     createListButton: function(options) {
-        var el =    '<div id="' + options.id + '-button" class="menu-button"' + '>' +
-                        '<button class="mdk-button no-boxshadow">' +
+        var el =    '<div id="' + options.id + '-button" class="o-menu-button"' + '>' +
+                        '<button class="o-button o-no-boxshadow">' +
+                        //'<div class="o-button-icon">' +
                           '<svg class="' + options.iconCls + '">' +
                               '<use xlink:href="' + options.src + '"></use>' +
                           '</svg>' +

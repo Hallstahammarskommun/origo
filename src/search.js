@@ -50,17 +50,17 @@ function init(options){
 
     map = Viewer.getMap();
 
-    var el = '<div id="search-wrapper">' +
-                '<div id="search" class="search search-false">' +
-                    '<input class="search-field typeahead form-control" type="text" placeholder="' + hintText + '">' +
-                    '<button id="search-button-close">' +
-                        '<svg class="mdk-icon-search-fa-times">' +
+    var el = '<div id="o-search-wrapper">' +
+                '<div id="o-search" class="o-search o-search-false">' +
+                    '<input class="o-search-field typeahead form-control" type="text" placeholder="' + hintText + '">' +
+                    '<button id="o-search-button-close">' +
+                        '<svg class="o-icon-search-fa-times">' +
                             '<use xlink:href="css/svg/fa-icons.svg#fa-times"></use>' +
                         '</svg>' +
                     '</button>' +
                 '</div>' +
               '</div>';
-    $('#map').append(el);
+    $('#o-map').append(el);
     // constructs the suggestion engine
     // fix for internet explorer
         // constructs the suggestion engine
@@ -111,35 +111,43 @@ function init(options){
 function bindUIActions() {
         $('.typeahead').on('typeahead:selected', selectHandler);
 
-        $('#search .search-field').on('input', function() {
-          if($('#search .search-field.tt-input').val() &&  $('#search').hasClass('search-false')) {
-            $('#search').removeClass('search-false');
-            $('#search').addClass('search-true');
+        $('#o-search .o-search-field').on('input', function() {
+          if($('#o-search .o-search-field.tt-input').val() &&  $('#o-search').hasClass('o-search-false')) {
+            $('#o-search').removeClass('o-search-false');
+            $('#o-search').addClass('o-search-true');
             onClearSearch();
           }
-          else if(!($('#search .search-field.tt-input').val()) &&  $('#search').hasClass('search-true')) {
-            $('#search').removeClass('search-true');
-            $('#search').addClass('search-false');
+          else if(!($('#o-search .o-search-field.tt-input').val()) &&  $('#o-search').hasClass('o-search-true')) {
+            $('#o-search').removeClass('o-search-true');
+            $('#o-search').addClass('o-search-false');
+            offClearSearch();
           }
         });
 }
 function onClearSearch() {
-    $('#search-button-close').on('touchend click', function(e) {
+    $('#o-search-button-close').on('click', function(e) {
       $('.typeahead').typeahead('val', '');
       featureInfo.clear();
       Viewer.removeOverlays();
-      $('#search').removeClass('search-true');
-      $('#search').addClass('search-false');
-      $('#search .search-field.tt-input').val('');
-      $('#search-button').blur();
+      $('#o-search').removeClass('o-search-true');
+      $('#o-search').addClass('o-search-false');
+      $('#o-search .o-search-field.tt-input').val('');
+      $('#o-search-button').blur();
       e.preventDefault();
     });
 }
 
+function offClearSearch() {
+    console.log('offClearSearch');
+    // $('#search-button').off('click', function(e) {
+    //   e.preventDefault();
+    // });
+}
 function showOverlay(data, coord) {
     Viewer.removeOverlays();
+    var popup = Popup('#o-map');
     var overlay = new ol.Overlay({
-        element: $('#popup').get(0)
+        element: popup.getEl()
     });
 
     map.addOverlay(overlay);
@@ -147,11 +155,11 @@ function showOverlay(data, coord) {
     overlay.setPosition(coord);
     var content = data[name];
     // content += '<br>' + data.postnr + '&nbsp;' + data.postort;
-    Popup.setContent({
+    popup.setContent({
         content: content,
         title: title
     });
-    Popup.setVisibility(true);
+    popup.setVisibility(true);
 
     mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
 }

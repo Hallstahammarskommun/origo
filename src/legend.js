@@ -10,7 +10,6 @@ var utils = require('./utils');
 
 var symbolSize = 20;
 var styleSettings;
-var dragging = false;
 
 var mapMenu;
 var hasMapLegend;
@@ -22,15 +21,9 @@ function init(opt_options) {
 
     styleSettings = viewer.getStyleSettings();
 
-    mapMenu = $('#mapmenu');
+    mapMenu = $('#o-mapmenu');
     addLegend(viewer.getGroups());
 
-    mapMenu.on("touchmove", function() {
-       dragging = true;
-     });
-     mapMenu.on("touchstart", function() {
-       dragging = false;
-     });
 }
 function getSymbol(style) {
     var symbol='';
@@ -40,12 +33,12 @@ function getSymbol(style) {
         // var scale = style.icon.scale || undefined;
         var format = s[0].format || 'png';
         if (format == 'png') {
-            symbol = '<div class="legend-item-img"><img style="width: auto; height: 20px;" src="' + src + '"></div>'
+            symbol = '<div class="o-legend-item-img"><img style="width: auto; height: 20px;" src="' + src + '"></div>'
         }
         else if (format == 'svg') {
             var o = '<object type="image/svg+xml" data="' + src + '" style="width: 20px;"></object>';
             var inlineStyle = 'background: url(' + src + ') no-repeat;width: 20px; height: 20px;background-size: 20px;';
-            symbol = '<div class="legend-item-img">' + o + '</div>';
+            symbol = '<div class="o-legend-item-img">' + o + '</div>';
         }
     }
     else if (s[0].hasOwnProperty('fill')) {
@@ -53,7 +46,7 @@ function getSymbol(style) {
         for(var i=0; i<s.length; i++) {
           fill += createFill(s[i]);
         }
-        symbol += '<div class="legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
+        symbol += '<div class="o-legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
         symbol += fill;
         symbol += '</svg></div>';
     }
@@ -62,7 +55,7 @@ function getSymbol(style) {
         for(var i=0; i<s.length; i++) {
           stroke += createStroke(s[i]);
         }
-        symbol += '<div class="legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
+        symbol += '<div class="o-legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
         symbol += stroke;
         symbol += '</svg></div>';
     }
@@ -71,14 +64,14 @@ function getSymbol(style) {
         for(var i=0; i<s.length; i++) {
           circle += createCircle(s[i]);
         }
-        symbol += '<div class="legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
+        symbol += '<div class="o-legend-item-img"><svg height="' + symbolSize + '" width="' + symbolSize + '">';
         symbol += circle;
         symbol += '</svg></div>';
     }
     else if (s[0].hasOwnProperty('image')) {
         var src = s[0].image.src;
         var inlineStyle = 'background: url(' + src + ') no-repeat;width: 30px; height: 30px;background-size: 30px;';
-        symbol = '<div class="legend-item-img" style="' + inlineStyle +'"></div>';
+        symbol = '<div class="o-legend-item-img" style="' + inlineStyle +'"></div>';
     }
     return symbol;
 }
@@ -126,14 +119,14 @@ function createStroke(strokeProperties) {
     return stroke;
 }
 function createLegendItem(layerid) {
-    var layername = layerid.split('legend-').pop();
+    var layername = layerid.split('o-legend-').pop();
     var layer = viewer.getLayer(layername);
-    var legendItem = '<li class="legend ' + layername + '" id="' + layerid + '"><div class ="legend-item"><div class="checkbox">' +
-                        '<svg class="mdk-icon-fa-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-square-o"></use></svg>' +
-                        '<svg class="mdk-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check-square-o"></use></svg>' +
+    var legendItem = '<li class="o-legend ' + layername + '" id="' + layerid + '"><div class ="o-legend-item"><div class="o-checkbox">' +
+                        '<svg class="o-icon-fa-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-square-o"></use></svg>' +
+                        '<svg class="o-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check-square-o"></use></svg>' +
                     '</div>';
     legendItem +=  layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
-    var title = '<div class="legend-item-title">' + layer.get('title') + '</div></div></li>';
+    var title = '<div class="o-legend-item-title">' + layer.get('title') + '</div></div></li>';
     legendItem += title;
     return legendItem;
 }
@@ -143,34 +136,33 @@ function addLegend(groups) {
       var item = '';
 
       //Add legend groups
-      var legend = '<div id="legendlist"><ul class="legendlist"></ul></div>';
-      $('#mapmenu').append(legend);
+      var legend = '<div id="o-legendlist"><ul class="o-legendlist"></ul></div>';
+      $('#o-mapmenu').append(legend);
       for (var i=0; i < groups.length; i++) {
           legendGroup ='<li>' +
-                         '<ul id="group-' + groups[i].name + '" class="legend-group">' +
-                            '<li class="legend-header"><div class="legend-item">' + groups[i].title +
-                                    '<div class="icon-expand">' +
-                                        '<svg class="mdk-icon-fa-chevron-right">' +
+                         '<ul id="o-group-' + groups[i].name + '" class="o-legend-group">' +
+                            '<li class="o-legend-header"><div class="o-legend-item">' + groups[i].title +
+                                    '<div class="o-icon-expand">' +
+                                        '<svg class="o-icon-fa-chevron-right">' +
                                             '<use xlink:href="css/svg/fa-icons.svg#fa-chevron-right"></use>' +
                                         '</svg>' +
-                                        '<svg class="mdk-icon-fa-chevron-down">' +
+                                        '<svg class="o-icon-fa-chevron-down">' +
                                             '<use xlink:href="css/svg/fa-icons.svg#fa-chevron-down"></use>' +
                                         '</svg>' +
                                     '</div>' +
                                 '</div></li>' +
                          '</ul>' +
                        '</li>';
-          $('#legendlist .legendlist').append(legendGroup);
+          $('#o-legendlist .o-legendlist').append(legendGroup);
           if(groups[i].expanded == true) {
-              $('#group-' + groups[i].name +' .icon-expand').addClass('icon-expand-true');
+              $('#o-group-' + groups[i].name +' .o-icon-expand').addClass('o-icon-expand-true');
           }
           else{
-              $('#group-' + groups[i].name +' .icon-expand').addClass('icon-expand-false');
-              $('#group-' + groups[i].name).addClass('ul-expand-false');
+              $('#o-group-' + groups[i].name +' .o-icon-expand').addClass('o-icon-expand-false');
+              $('#o-group-' + groups[i].name).addClass('o-ul-expand-false');
           }
           //Event listener for tick layer
-          $('#group-' + groups[i].name + ' .legend-header').on('touchend click', function(evt) {
-              if (dragging){return;}
+          $('#o-group-' + groups[i].name + ' .o-legend-header').on('click', function(evt) {
               toggleGroup($(this));
               evt.preventDefault();
           });
@@ -178,69 +170,67 @@ function addLegend(groups) {
 
       //Add map legend unless set to false
       if(hasMapLegend) {
-          var mapLegend = '<div id="map-legend"><ul id="map-legend-background"></ul></div>';
+          var mapLegend = '<div id="o-map-legend"><ul id="o-map-legend-background"></ul></div>';
           $('#map').append(mapLegend);
       }
-
 
       //Add layers to legend
       for (var i=layers.length-1; i>=0; i--) {
 
         var name = (layers[i].get('name'));
-        var title = '<div class="legend-item-title">' + layers[i].get('title') + '</div></div></li>';
+        var title = '<div class="o-legend-item-title">' + layers[i].get('title') + '</div></div></li>';
 
         //Append layer to group in legend. Add to default group if not defined.
         if(layers[i].get('group') == 'background') {
           //Append background layers to menu
-          item = '<li class="legend ' + name + '" id="' + name + '"><div class ="legend-item"><div class="checkbox"><svg class="mdk-icon-fa-check"><use xlink:href="css/svg/fa-icons.svg#fa-circle"></use></svg></div>';
+          item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="css/svg/fa-icons.svg#fa-circle"></use></svg></div>';
           item += title;
-          $('#group-' + layers[i].get('group')).append(item);
+          $('#o-group-' + layers[i].get('group')).append(item);
           //Append background layers to map legend
-          item = '<li class="legend ' + name + '" id="legend-' + name + '"><div class ="legend-item">'
+          item = '<li class="o-legend ' + name + '" id="o-legend-' + name + '"><div class ="o-legend-item">'
           item += layers[i].get('styleName') ? getSymbol(styleSettings[layers[i].get('styleName')]) : '';
           item += '</div>';
-          $('#map-legend-background').append(item);
+          $('#o-map-legend-background').append(item);
 
         }
         else if(layers[i].get('group') && ((layers[i].get('group') != 'none'))) {
-          item = '<li class="legend ' + name + '" id="' + name + '"><div class ="legend-item"><div class="checkbox">' +
-                  '<svg class="mdk-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check"></use></svg>' +
+          item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox">' +
+                  '<svg class="o-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check"></use></svg>' +
                 '</div>';
           item +=  layers[i].get('styleName') ? getSymbol(styleSettings[layers[i].get('styleName')]) : '';
           item += title;
-          $('#group-' + layers[i].get('group')).append(item);
+          $('#o-group-' + layers[i].get('group')).append(item);
         }
 
         //Append class according to visiblity and if group is background
         if(layers[i].get('group') == 'background') {
           if(layers[i].getVisible()==true) {
-            $('#' + name + ' .checkbox').addClass('check-true');
-            $('#legend-' + name).addClass('check-true-img');
+            $('#' + name + ' .o-checkbox').addClass('o-check-true');
+            $('#o-legend-' + name).addClass('o-check-true-img');
           }
           else {
-            $('#' + name + ' .checkbox').addClass('check-false');
-            $('#legend-' + name).addClass('check-false-img');
+            $('#' + name + ' .o-checkbox').addClass('o-check-false');
+            $('#o-legend-' + name).addClass('o-check-false-img');
           }
         }
         else {
           if(layers[i].getVisible()==true) {
-            $('.' + name + ' .checkbox').addClass('checkbox-true');
+            $('.' + name + ' .o-checkbox').addClass('o-checkbox-true');
           }
           else {
-            $('.' + name + ' .checkbox').addClass('checkbox-false');
+            $('.' + name + ' .o-checkbox').addClass('o-checkbox-false');
           }
         }
 
         //Event listener for tick layer
-        $('#' + name).on('touchend click', function(evt) {
-          if (dragging){return;}
+        $('#' + name).on('click', function(evt) {
           $(this).each(function() {
             var that = this;
             toggleCheck($(that).attr("id"));
           });
           evt.preventDefault();
         });
-        $('#legend-' + name).on('touchend click', function(evt) {
+        $('#o-legend-' + name).on('click', function(evt) {
           $(this).each(function() {
             var that = this;
             toggleCheck($(that).attr("id"));
@@ -251,7 +241,7 @@ function addLegend(groups) {
 }
 function onToggleCheck(layername) {
     //Event listener for tick layer
-    $('#' + layername).on('touchend click', function(evt) {
+    $('#' + layername).on('click', function(evt) {
       $(this).each(function() {
         var that = this;
         toggleCheck($(that).attr("id"));
@@ -261,7 +251,7 @@ function onToggleCheck(layername) {
 }
 function offToggleCheck(layername) {
     //Event listener for tick layer
-    $('#' + layername).off('touchend click', function(evt) {
+    $('#' + layername).off('click', function(evt) {
       $(this).each(function() {
         var that = this;
         toggleCheck($(that).attr("id"));
@@ -271,53 +261,52 @@ function offToggleCheck(layername) {
 }
     //Expand and minimize group
 function toggleGroup(groupheader) {
-    var group = groupheader.parent('.legend-group');
-    var groupicon = $('#' + group.attr('id') + ' .icon-expand');
-    if (groupicon.hasClass('icon-expand-false')) {
-      groupicon.removeClass('icon-expand-false');
-      groupicon.addClass('icon-expand-true');
-      group.removeClass('ul-expand-false');
+    var group = groupheader.parent('.o-legend-group');
+    var groupicon = $('#' + group.attr('id') + ' .o-icon-expand');
+    if (groupicon.hasClass('o-icon-expand-false')) {
+      groupicon.removeClass('o-icon-expand-false');
+      groupicon.addClass('o-icon-expand-true');
+      group.removeClass('o-ul-expand-false');
     }
     else {
-      groupicon.removeClass('icon-expand-true');
-      groupicon.addClass('icon-expand-false');
-      group.addClass('ul-expand-false');
+      groupicon.removeClass('o-icon-expand-true');
+      groupicon.addClass('o-icon-expand-false');
+      group.addClass('o-ul-expand-false');
     }
 }
 //Toggle layers
 function toggleCheck(layerid) {
-    var layername = layerid.split('legend-').pop();
+    var layername = layerid.split('o-legend-').pop();
     var layer = viewer.getLayer(layername);
     //Radio toggle for background
     if(layer.get('group') == 'background') {
         var group = viewer.getGroup('background');
         for(var i=0; i<group.length; i++) {
             group[i].setVisible(false);
-            $('#' + group[i].get('name') + ' .checkbox').removeClass('check-true');
-            $('#' + group[i].get('name') + ' .checkbox').addClass('check-false');
+            $('#o-' + group[i].get('name') + ' .o-checkbox').removeClass('o-check-true');
+            $('#o-' + group[i].get('name') + ' .o-checkbox').addClass('o-check-false');
             //map legend
-            $('#legend-' + group[i].get('name')).removeClass('check-true-img');
-            $('#legend-' + group[i].get('name')).addClass('check-false-img');
+            $('#o-legend-' + group[i].get('name')).removeClass('o-check-true-img');
+            $('#o-legend-' + group[i].get('name')).addClass('o-check-false-img');
         }
         layer.setVisible(true);
-        $('#' + layername + ' .checkbox').removeClass('check-false');
-        $('#' + layername + ' .checkbox').addClass('check-true');
+        $('#' + layername + ' .o-checkbox').removeClass('o-check-false');
+        $('#' + layername + ' .o-checkbox').addClass('o-check-true');
         //map legend
-        $('#legend-' + layername).removeClass('check-false-img');
-        $('#legend-' + layername).addClass('check-true-img');
+        $('#o-legend-' + layername).removeClass('o-check-false-img');
+        $('#o-legend-' + layername).addClass('o-check-true-img');
     }
     //Toggle check for all groups except background
     else {
-        if($('.' + layername + ' .checkbox').hasClass('checkbox-true')) {
-            $('.' + layername + ' .checkbox').removeClass('checkbox-true');
-            $('.' + layername + ' .checkbox').addClass('checkbox-false');
+        if($('.' + layername + ' .o-checkbox').hasClass('o-checkbox-true')) {
+            $('.' + layername + ' .o-checkbox').removeClass('o-checkbox-true');
+            $('.' + layername + ' .o-checkbox').addClass('o-checkbox-false');
           layer.setVisible(false);
         }
         else {
-            $('.' + layername + ' .checkbox').removeClass('checkbox-false');
-            $('.' + layername + ' .checkbox').addClass('checkbox-true');
+            $('.' + layername + ' .o-checkbox').removeClass('o-checkbox-false');
+            $('.' + layername + ' .o-checkbox').addClass('o-checkbox-true');
             layer.setVisible(true);
-            layer.set('legend', true);
         }
     }
 }
