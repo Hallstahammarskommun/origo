@@ -15,7 +15,7 @@
     {
       "name": "editor",
       "options": {
-        "editableLayers": ["test_byggnadsytor", "test_punkt"],
+        "editableLayers": ["TK_w_are_p", "BU_w_fos_p", "BU_w_grs_p", "BU_w_gss_p",  "TK_w_let_y", "TK_w_lim_y", "KS_w_opo_p", "TK_w_pak_y", "TK_w_pap_y", "TK_w_snr_l", "TK_w_mat_p", "KS_w_wif_p"],
         "isActive": true
       }
     },
@@ -27,12 +27,7 @@
     }
   ],
   "projectionCode": "EPSG:3010",
-  "projectionExtent": [
-    -1678505.1838360203,
-    4665380,
-    2431912.7361639794,
-    8775797.92
-  ],
+  "projectionExtent": [-166640, 6305699, 433362, 6905701],
   "proj4Defs": [
       {
           "code": "EPSG:3010",
@@ -40,52 +35,55 @@
           "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
       }
   ],
-  "extent": [
-    -1678505.1838360203,
-    4665380,
-    2431912.7361639794,
-    8775797.92
-  ],
-  "center": [
-    162429,
-    6599905
-  ],
-  "home": [
-    105085,
-    6571627,
-    219773,
-    6628182
-  ],
-  "zoom": 3,
+  "extent": [-16640, 6455699, 283362, 6755701],
+  "center": [133361, 6605700],
+  "zoom": 2,
   "resolutions": [
-    1146.8799999999999,
-    573.4399999999999,
-    286.71999999999997,
-    143.35999999999999,
-    71.67999999999999,
-    35.839999999999996,
-    17.919999999999998,
-    8.959999999999999,
-    4.4799999999999995,
-    2.2399999999999998,
-    1.1199999999999999,
-    0.5599999999999999,
-    0.27999999999999997,
-    0.13999999999999999
+    91.9577,
+    61.3051,
+    40.8701,
+    27.2467,
+    18.1645,
+    12.1097,
+    8.0731,
+    5.382,
+    3.588,
+    2.392,
+    1.5947,
+    1.0631,
+    0.7088,
+    0.4725,
+    0.315,
+    0.21,
+    0.14
   ],
   "source": {
-    "local": {
-      "url": "http://localhost:9090/geoserver/sqlserver/wfs",
-      "workspace": "sqlserver"
-    },
-    "basemap": {
-      "url": "http://www.malardalskartan.se/geowebcache/service/wmts"
-    }
+      "wms": {
+          "url": "http://karta.hallstahammar.se/geoserver/wms",
+          "version": "1.1.1"
+      },
+      "local": {
+          "url": "http://karta.hallstahammar.se/geoserver/ows",
+          "workspace": "Hallstahammar"
+      },
+      "basemap": {
+          "url": "http://karta.hallstahammar.se/geoserver/gwc/service/wmts"
+      }
   },
   "groups": [
     {
-      "name": "test",
-      "title": "Test",
+      "name": "bu",
+      "title": "Barn och utbildning",
+      "expanded": true
+    },
+    {
+      "name": "ks",
+      "title": "Kommunstyrelsen",
+      "expanded": true
+    },
+    {
+      "name": "tk",
+      "title": "Tekniska",
       "expanded": true
     },
     {
@@ -96,128 +94,356 @@
   ],
   "layers": [
     {
-      "name": "test_byggnadsytor",
-      "title": "Byggnadsytor",
-      "group": "test",
-      "extent": [105085,6571627,219773,6628182],
-      "geometryName": "ogr_geometry",
+      "name": "TK_w_are_p",
+      "title": "Arrende",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_are_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Arrendator: ",
+        "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Ändamål: ",
+        "type": "text"
+      }, {
+        "name": "url",
+        "title": "Sökväg: ",
+        "type": "text"
+      }]
+    },
+    {
+      "name": "BU_w_fos_p",
+      "title": "Förskola",
+      "group": "bu",
       "queryable": true,
       "source": "local",
-      "style": "mask",
+      "style": "BU_w_fos_p",
       "type": "WFS",
-      "visible": true,
+      "visible": false,
       "attributes": [
           {
-            "name": "typ",
-            "title": "Typ:",
-            "type": "dropdown",
-            "maxLength": 20,
-            "options": [
-                "Villa",
-                "Radhus",
-                "Lägenhet"
-            ]
+            "name": "obj",
+            "title": "Namn: ",
+            "type": "text"
           },
           {
-            "name": "stomme1",
-            "title": "Stomme:",
-            "type": "dropdown",
-            "maxLength": 20,
-            "constraint": "change:typ:Villa",
-            "options": [
-                "mexitegel",
-                "träpanel",
-                "eternit"
-            ]
+            "name": "egn",
+            "title": "Telefon: ",
+            "type": "text"
           },
           {
-            "name": "stomme1",
-            "title": "Stomme:",
-            "type": "dropdown",
-            "maxLength": 20,
-            "constraint": "change:typ:Lägenhet",
-            "options": [
-                "betong",
-                "cement",
-                "puts"
-            ]
-          },
-          {
-            "name": "fastighet",
-            "title": "Fastighet: ",
-            "type": "text",
-            "maxLength": 15
-          },
-          {
-            "name": "byggtyp",
-            "title": "Typ:",
-            "type": "checkbox"
+            "name": "url",
+            "title": "Länk: ",
+            "type": "text"
           }
       ]
     },
     {
-      "name": "test_punkt",
-      "title": "Byggnadspunkter",
-      "group": "test",
-      "geometryName": "ogr_geometry",
+      "name": "BU_w_grs_p",
+      "title": "Grundskola",
+      "source": "local",
+      "group": "bu",
+      "style": "BU_w_grs_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Namn: ",
+        "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Årskurs: ",
+        "type": "text"
+      }, {
+        "name": "egn",
+        "title": "Telefon: ",
+        "type": "text"
+      }, {
+        "name": "url",
+        "title": "Länk: ",
+        "type": "text"
+      }]
+    },
+    {
+      "name": "BU_w_gss_p",
+      "title": "Grundsärskola",
+      "source": "local",
+      "group": "bu",
+      "style": "BU_w_gss_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Namn: ",
+        "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Årskurs: ",
+        "type": "text"
+      }, {
+        "name": "egn",
+        "title": "Telefon: ",
+        "type": "text"
+      }, {
+        "name": "url",
+        "title": "Länk: ",
+        "type": "text"
+      }]
+    },
+    {
+      "name": "TK_w_let_y",
+      "title": "Lediga tomter",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_let_y",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Fastighetsbeteckning: ",
+        "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Pris: ",
+        "type": "text"
+      }, {
+        "name": "egn",
+        "title": "Area: ",
+        "type": "text"
+      }, {
+        "name": "status",
+        "title": "Status: ",
+        "type": "dropdown",
+        "options": ["Ledig", "Bokad", "Såld"]
+      }, {
+        "name": "datum",
+        "title": "Bokad till: ",
+        "type": "text"
+      }, {
+        "name": "kont_pers",
+        "title": "Kontaktperson: ",
+        "type": "text"
+      }, {
+        "name": "kont_tele",
+        "title": "Telefon: ",
+        "type": "text"
+      }, {
+        "name": "kont_mejl",
+        "title": "Mejl: ",
+        "type": "text"
+      }, {
+        "name": "bygglov",
+        "title": "Bygglov: ",
+        "type": "dropdown",
+        "options": ["ingår", "ingår ej"]
+      }, {
+        "name": "va",
+        "title": "VA: ",
+        "type": "dropdown",
+        "options": ["ingår", "ingår ej"]
+      }, {
+        "name": "fjarr",
+        "title": "Fjärrvärme: ",
+        "type": "dropdown",
+        "options": ["ingår", "ingår ej"]
+      }, {
+        "name": "opto",
+        "title": "Fiber: ",
+        "type": "dropdown",
+        "options": ["ingår", "ingår ej"]
+      }]
+    },
+    {
+      "name": "TK_w_lim_y",
+      "title": "Ledig industrimark",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_lim_y",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Storlek: ",
+        "type": "textarea"
+      },{
+        "name": "typ",
+        "title": "Pris: ",
+        "type": "text"
+      }]
+    },
+    {
+      "name": "KS_w_opo_p",
+      "title": "Opto ansluten",
+      "source": "local",
+      "group": "ks",
+      "style": "KS_w_opo_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Status: ",
+        "type": "dropdown",
+        "options": ["Ansluten", "Avtal", "Intresse", "Kampanj", "Pumpstation"]
+      }]
+    },
+    {
+      "name": "TK_w_pak_y",
+      "title": "Park",
+      "group": "tk",
       "queryable": true,
       "source": "local",
-      "style": "cirkel",
+      "style": "TK_w_pak_y",
       "type": "WFS",
-      "extent": [
-          105085,
-          6571627,
-          219773,
-          6628182
-        ],
-      "visible": true,
+      "visible": false,
       "attributes": [
           {
             "name": "typ",
-            "title": "Typ",
+            "title": "Nummer",
+            "type": "text"
+          },
+          {
+            "name": "egn",
+            "title": "Intervall",
             "type": "dropdown",
-            "options": [
-                "Villa",
-                "Radhus",
-                "Lägenhet"
-            ]
+            "options": ["Kontinuerlig", "1-3 gånger/säsong"]
           }
       ]
+      },
+    {
+      "name": "TK_w_pap_y",
+      "title": "Pågående detaljplan",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_pap_y",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Plannamn: ",
+        "type": "text"
+      }, {
+        "name": "url",
+        "title": "Länk: ",
+        "type": "text"
+      }]
     },
     {
-      "name": "mdk",
-      "opacity": 0.15,
-      "title": "4k",
-      "group": "none",
-      "queryable": false,
-      "source": "data/mdk.geojson",
-      "style": "mask",
-      "type": "GEOJSON",
-      "visible": true
+      "name": "TK_w_snr_l",
+      "title": "Snöröjning",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_snr_l",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "typ",
+        "title": "Maskin: ",
+        "type": "dropdown",
+        "options": ["Entreprenör", "Hymas", "John Deere", "Lastbil",
+          "Lill-Willen", "Ljungby", "MF", "MF", "Trollebo", "Valmet", "Wille"
+        ]
+      }]
     },
     {
-      "attribution": "&copy Lantmäteriet Geodatasamverkan",
-      "format": "image/png",
-      "group": "background",
-      "name": "topowebbkartan_nedtonad",
-      "source": "basemap",
-      "title": "Karta, grå",
-      "type": "WMTS",
-      "style": "karta_gra",
-      "visible": true
+      "name": "TK_w_mat_p",
+      "title": "Stompunkter",
+      "source": "local",
+      "group": "tk",
+      "style": "TK_w_mat_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "pktnr",
+        "title": "Punktnummer: ",
+        "type": "text"
+      }, {
+        "name": "marktyp",
+        "title": "Markeringstyp: ",
+        "type": "text"
+      }, {
+        "name": "status",
+        "title": "Status: ",
+        "type": "dropdown",
+        "options": ["Befintlig", "Borta", "Osaker"]
+      }, {
+        "name": "anmarkning",
+        "title": "Anmärkning: ",
+        "type": "text"
+      }]
     },
     {
-      "attribution": "&copy Lantmäteriet Geodatasamverkan",
-      "format": "image/png",
-      "group": "background",
-      "name": "topowebbkartan",
-      "source": "basemap",
-      "title": "Karta, färg",
-      "type": "WMTS",
-      "style": "karta_farg",
-      "visible": false
-    }
-  ],
+      "name": "KS_w_wif_p",
+      "title": "Wifi",
+      "source": "local",
+      "group": "ks",
+      "style": "KS_w_wif_p",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [{
+        "name": "obj",
+        "title": "Våning: ",
+        "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Port: ",
+        "type": "text"
+      }, {
+        "name": "egn",
+        "title": "Device: ",
+        "type": "text"
+      }, {
+        "name": "status",
+        "title": "Status: ",
+        "type": "text"
+      }, {
+        "name": "not",
+        "title": "Notering: ",
+        "type": "text"
+      }]
+    },
+    {
+          "name": "TK_mak_y",
+          "source": "local",
+          "style": "TK_mak_y",
+          "title": "Mask",
+          "queryable": false,
+          "type": "WFS",
+          "visible": true
+    }, {
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "format": "image/jpeg",
+          "group": "background",
+          "name": "Hallstahammar:topowebbkartan_nedtonad",
+          "source": "basemap",
+          "title": "Karta, grå",
+          "type": "WMTS",
+          "style": "karta_gra",
+          "visible": true
+      }, {
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "format": "image/jpeg",
+          "group": "background",
+          "name": "Hallstahammar:topowebbkartan",
+          "source": "basemap",
+          "title": "Karta, färg",
+          "type": "WMTS",
+          "style": "karta_farg",
+          "visible": false
+      }, {
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "format": "image/jpeg",
+          "group": "background",
+          "name": "Hallstahammar:orto025",
+          "source": "basemap",
+          "title": "Flygfoto",
+          "type": "WMTS",
+          "style": "orto",
+          "visible": false
+      }],
   "styles": {
       "mask": [
         [
@@ -231,21 +457,277 @@
           }
         ]
       ],
-      "cirkel": [
-        [
-          {
-            "circle": {
-              "radius": 6,
-              "stroke": {
-                "color": "rgba(0,0,0,1)",
-                "width": 2
-              },
-              "fill": {
-                "color": "rgba(0,0,0,0.5)"
-              }
-            }
+      "TK_w_are_p": [
+        [{
+          "icon": {
+            "src": "img/png/TK_w_are_p.png"
           }
-        ]
+        }]
+      ],
+      "BU_w_fos_p": [
+        [{
+          "icon": {
+            "src": "img/png/BU_w_fos_p.png"
+          }
+        }]
+      ],
+      "BU_w_grs_p": [
+        [{
+          "icon": {
+            "src": "img/png/BU_w_grs_p.png"
+          }
+        }]
+      ],
+      "BU_w_gss_p": [
+        [{
+          "icon": {
+            "src": "img/png/BU_w_gss_p.png"
+          }
+        }]
+      ],
+      "TK_w_let_y": [
+          [{
+            "filter": "[status] == 'Ledig'",
+            "stroke": {
+              "color": "rgba(0,0,0,0.5)",
+              "width": 1
+            },
+            "fill": {
+              "color": "rgba(0,225,0,0.25)"
+            }
+          }],
+          [{
+            "filter": "[status] == 'Bokad'",
+            "stroke": {
+              "color": "rgba(0,0,0,0.5)",
+              "width": 1
+            },
+            "fill": {
+              "color": "rgba(255,255,0,0.25)"
+            }
+          }],
+          [{
+            "filter": "[status] == 'Såld'",
+            "stroke": {
+              "color": "rgba(0,0,0,0.5)",
+              "width": 1
+            },
+            "fill": {
+              "color": "rgba(255,0,0,0.25)"
+            }
+          }],
+          [{
+            "filter": "[status] == 'null'",
+            "stroke": {
+              "color": "rgba(0,0,0,0.5)",
+              "width": 1
+            }
+          }]
+        ],
+        "TK_w_lim_y": [
+        [{
+          "fill": {
+            "color": "rgba(103, 60, 31,0.3)"
+          },
+          "stroke": {
+            "color": "rgba(103, 60, 31, 0.6)",
+            "width": 2
+          }
+        }]
+      ],
+      "KS_w_opo_p": [
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p1.png"
+          },
+          "filter": "[obj] == 'Ansluten'"
+        }],
+        [{
+          "icon": {
+            "src": "'img/png/KS_w_opo_p2.png'"
+          },
+          "filter": "[obj] == 'Avtal'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p4.png"
+          },
+          "filter": "[obj] == 'Intresse'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p3.png"
+          },
+          "filter": "[obj] == 'Kampanj'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p0.png"
+          },
+          "filter": "[obj] == 'Pumpstation'"
+        }]
+      ],
+      "TK_w_pak_y": [
+        [{
+          "filter": "[egn] == 'Kontinuerlig'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,255,0,0.5)"
+          }
+        }],
+        [{
+          "filter": "[egn] == '1-3 gånger/säsong'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,0,0.5)"
+          }
+        }],
+        [{
+          "filter": "[egn] == 'null'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,255,0.5)"
+          }
+        }]
+      ],
+      "TK_w_pap_y": [
+          [{
+            "fill": {
+              "color": "rgba(255, 196, 105,0.6)"
+            },
+            "stroke": {
+              "color": "rgba(229,109,30,0.6)",
+              "lineDash": [15,10],
+              "width": 2
+            }
+          }]
+      ],
+      "TK_w_snr_l": [
+        [{
+          "stroke": {
+            "color": "rgb(0,0,0)",
+            "width": 6
+          },
+          "filter": "[typ] == 'null'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(128,44,67)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Entreprenör'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(80,171,73)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Hymas'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(237,28,36)",
+            "width": 6
+          },
+          "filter": "[typ] == 'John Deere'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(147,210,209)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Lastbil'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(27,88,167)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Lill-Willen'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(250,173,90)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Ljungby'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(218,139,187)",
+            "width": 6
+          },
+          "filter": "[typ] == 'MF'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(179,215,234)",
+            "width": 6
+          },
+          "filter": "[typ] == 'MF, Trollebo'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(194,129,74)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Valmet'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgb(131,197,87)",
+            "width": 6
+          },
+          "filter": "[typ] == 'Wille'"
+        }]
+      ],
+      "TK_w_mat_p": [
+        [{
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          },
+          "filter": "[status] == 'null'"
+        }], [{
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          },
+          "filter": "[status] == 'Osaker'"
+        }], [{
+          "icon": {
+            "src": "img/png/drop_blue.png"
+          },
+          "minScale": "10000",
+          "filter": "[status] == 'Befintlig'"
+        }], [{
+          "icon": {
+            "src": "img/png/droppe.png"
+          },
+          "minScale": "10000",
+          "filter": "[status] == 'Borta'"
+        }]
+      ],
+      "KS_w_wif_p": [
+        [{
+          "icon": {
+          "src": "img/png/KS_w_wif_p.png"
+          }
+        }]
+      ],
+      "TK_mak_y": [
+          [{
+              "fill": {
+                  "color": "rgba(0,0,0,0.15)"
+              }
+          }]
       ],
       "karta_gra": [
         [
