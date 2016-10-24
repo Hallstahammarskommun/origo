@@ -21,7 +21,7 @@ module.exports = function(){
   var editAttributes = {};
 
   function render(selectOptions) {
-      $("#map").append(editortemplate(selectOptions));
+      $("#o-map").append(editortemplate(selectOptions));
   }
   function onEnableInteraction(e) {
       if(e.interaction === 'editor') {
@@ -35,10 +35,10 @@ module.exports = function(){
   }
   function setActive(state) {
       if(state === true) {
-          $('#o-editor-toolbar').removeClass('hidden');
+          $('#o-editor-toolbar').removeClass('o-hidden');
       }
       else {
-          $('#o-editor-toolbar').addClass('hidden');
+          $('#o-editor-toolbar').addClass('o-hidden');
       }
   }
   function emitEnableInteraction() {
@@ -128,17 +128,17 @@ module.exports = function(){
     },
     bindUIActions: function() {
       var self = this;
-      $('#o-editor-draw').on('touchend click', function(e) {
+      $('#o-editor-draw').on('click', function(e) {
         self.drawFeature();
         $('#o-editor-draw').blur();
         e.preventDefault();
       });
-      $('#o-editor-attribute').on('touchend click', function(e) {
+      $('#o-editor-attribute').on('click', function(e) {
         self.attributeFeature();
         $('#o-editor-attribute').blur();
         e.preventDefault();
       });
-      $('#o-editor-delete').on('touchend click', function(e) {
+      $('#o-editor-delete').on('click', function(e) {
         self.deleteFeature();
         $('#o-editor-delete').blur();
         e.preventDefault();

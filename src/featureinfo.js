@@ -49,7 +49,6 @@ function init(opt_options) {
     showOverlay = options.hasOwnProperty('overlay') ? options.overlay : true;
 
     if(showOverlay) {
-        Popup.init('#map');
         identifyTarget = 'overlay';
     }
     else {
@@ -77,23 +76,24 @@ function identify(items, target, coordinate) {
     var content = items.map(function(i){
         return i.content;
     }).join('');
-    content = '<div id="identify"><div id="mdk-identify-carousel" class="owl-carousel owl-theme">' + content + '</div></div>';
+    content = '<div id="o-identify"><div id="o-identify-carousel" class="owl-carousel owl-theme">' + content + '</div></div>';
     switch (target) {
         case 'overlay':
+            var popup = Popup('#o-map');
             var overlay = new ol.Overlay({
-              element: $('#popup').get(0)
+              element: popup.getEl()
             });
             map.addOverlay(overlay);
             var geometry = items[0].feature.getGeometry();
             var coord;
             geometry.getType() == 'Point' ? coord = geometry.getCoordinates() : coord = coordinate;
             overlay.setPosition(coord);
-            Popup.setContent({content: content, title: items[0].title});
-            Popup.setVisibility(true);
-            var owl = initCarousel('#mdk-identify-carousel', undefined, function(){
+            popup.setContent({content: content, title: items[0].title});
+            popup.setVisibility(true);
+            var owl = initCarousel('#o-identify-carousel', undefined, function(){
                 var currentItem = this.owl.currentItem;
                 selectionLayer.clearAndAdd(items[currentItem].feature.clone(), selectionStyles[items[currentItem].feature.getGeometry().getType()]);
-                Popup.setTitle(items[currentItem].title);
+                popup.setTitle(items[currentItem].title);
             });
             owl.on("mousewheel", function(e) {
             if(e.deltaY>0) {
@@ -108,7 +108,7 @@ function identify(items, target, coordinate) {
         case 'sidebar':
             sidebar.setContent({content: content, title: items[0].title});
             sidebar.setVisibility(true);
-            var owl = initCarousel('#mdk-identify-carousel', undefined, function(){
+            var owl = initCarousel('#o-identify-carousel', undefined, function(){
                 var currentItem = this.owl.currentItem;
                 selectionLayer.clearAndAdd(items[currentItem].feature.clone(), selectionStyles[items[currentItem].feature.getGeometry().getType()]);
                 sidebar.setTitle(items[currentItem].title);
@@ -117,7 +117,6 @@ function identify(items, target, coordinate) {
     }
 }
 function onClick(evt) {
-    Popup.setVisibility(false);
     Viewer.removeOverlays();
     savedPin = undefined;
     //Featurinfo in two steps. Concat serverside and clientside when serverside is finished
@@ -157,14 +156,14 @@ function setActive(state) {
     }
     else {
         selectionLayer.clear();
-        Popup.setVisibility(false);
+        Viewer.removeOverlays();
         map.un('click', onClick);
     }
 }
 function clear() {
     selectionLayer.clear();
     sidebar.setVisibility(false);
-    Popup.setVisibility(false);
+    Viewer.removeOverlays();
     //console.log("Clearing selection");
 }
 function onEnableInteraction(e) {
@@ -182,7 +181,7 @@ function initCarousel(id, options, cb) {
       paginationSpeed : 400,
       singleItem:true,
       rewindSpeed:200,
-      navigationText: ['<svg class="mdk-icon-fa-chevron-left"><use xlink:href="css/svg/fa-icons.svg#fa-chevron-left"></use></svg>', '<svg class="mdk-icon-fa-chevron-right"><use xlink:href="css/svg/fa-icons.svg#fa-chevron-right"></use></svg>'],
+      navigationText: ['<svg class="o-icon-fa-chevron-left"><use xlink:href="css/svg/fa-icons.svg#fa-chevron-left"></use></svg>', '<svg class="o-icon-fa-chevron-right"><use xlink:href="css/svg/fa-icons.svg#fa-chevron-right"></use></svg>'],
       afterAction: cb
     };
     return $(id).owlCarousel(carouselOptions);

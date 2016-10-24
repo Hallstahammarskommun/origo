@@ -19,19 +19,19 @@ function init() {
     map = viewer.getMap();
 
     var el = utils.createListButton({
-        id: 'print',
-        iconCls: 'mdk-icon-fa-print',
+        id: 'o-print',
+        iconCls: 'o-icon-fa-print',
         src: 'css/svg/fa-icons.svg#fa-print',
         text: ''
     });
-    $('#menutools').append(el);
-    printButton = $('#print-button');
+    $('#o-menutools').append(el);
+    printButton = $('#o-print-button');
 
     bindUIActions();
 }
 function bindUIActions() {
-    printButton.on('touchend click', function(e) {
-        $('#app-wrapper').append('<canvas id="print" style="display: none"></canvas>');
+    printButton.on('click', function(e) {
+        $('#app-wrapper').append('<canvas id="o-print" style="display: none"></canvas>');
         createImage();
         e.preventDefault();
     });
@@ -46,9 +46,9 @@ function imageToPrint(printCanvas) {
     }
     finally {
         var pw = '<html><head><link href="css/style.css" rel="stylesheet"></head><body>';
-        pw += '<div class="print-logo"><img src="img/logo_print.png" alt="Hallstahammars kommun"></div>';
-        pw += '<div class="map-canvas"><img src="' + imageCrop.src + '"/></div>';
-        pw += '<div class="print-attribution">Kartan&nbsp;saknar&nbsp;rättsverkan.&nbsp;&copy&nbsp;Lantmäteriet&nbsp;Geodatasamverkan,&nbsp;Hallstahammars&nbsp;kommun.</div>'
+        pw += '<div class="o-print-logo"><img src="img/logo_print.png" alt="Hallstahammars kommun"></div>';
+        pw += '<div class="o-map-canvas"><img src="' + imageCrop.src + '"/></div>';
+        pw += '<div class="o-print-attribution">Kartan&nbsp;saknar&nbsp;rättsverkan.&nbsp;&copy&nbsp;Lantmäteriet&nbsp;Geodatasamverkan,&nbsp;Hallstahammars&nbsp;kommun.</div>'
         pw += '<div class="grafiskt_element"><img src="img/grafiskt_element.png" alt="Grafiskt element"></div>';
         pw += '</body></html>';
         var logoUrl = '&quot;img/logo_print.png&quot;';
@@ -59,7 +59,7 @@ function imageToPrint(printCanvas) {
             printWindow.print();
             setTimeout(function(){
                 printWindow.close();
-                $('#print').remove();
+                $('#o-print').remove();
             }, 10);
         },200);
     }
@@ -77,7 +77,7 @@ function createImage() {
     }
     finally {
       // printCanvas = copy of original map canvas
-      var printCanvas = $('#print');
+      var printCanvas = $('#o-print');
       image.onload = function() {
           var ctxCanvas = printCanvas[0].getContext('2d');
           var sourceWidth = canvas[0].width; //width of map canvas

@@ -7,7 +7,6 @@
 var ol = require('openlayers');
 var $ = require('jquery');
 var template = require("./templates/viewer.handlebars");
-var Popup = require('./popup');
 var Modal = require('./modal');
 var utils = require('./utils');
 var featureinfo = require('./featureinfo');
@@ -66,7 +65,6 @@ function init(el, mapOptions) {
     settings.center = urlParams.center || mapOptions.center;
     settings.zoom = urlParams.zoom || mapOptions.zoom;
     settings.source = mapOptions.source;
-    settings.home = mapOptions.home;
     settings.groups = mapOptions.groups;
     settings.editLayer = mapOptions.editLayer;
     settings.styles = mapOptions.styles;
@@ -203,7 +201,7 @@ function init(el, mapOptions) {
     function loadMap(){
 
 	    map = new ol.Map({
-	      target: 'map',
+	      target: 'o-map',
 	      controls: mapControls,
 	      layers: settings.layers,
 	      view: new ol.View({
@@ -323,9 +321,6 @@ function init(el, mapOptions) {
             }
         });
         return queryableLayers;
-    }
-    function getEditLayer() {
-      return settings.editLayer;
     }
     function getGroup(group) {
         var group = $.grep(settings.layers, function(obj) {
@@ -617,12 +612,12 @@ function init(el, mapOptions) {
     function modalMoreInfo() {
       var content = $('#identify').html();
       var title = $('.popup-title').html();
-      Popup.setVisibility(false);
+      removeOverlays();
 
       var queryList = '<ul id="querylist">';
       queryList += '</ul>';
 
-      var modal = Modal('#map', {title: title, content: content + queryList});
+      var modal = Modal('#o-map', {title: title, content: content + queryList});
       modal.showModal();
       $('.modal li').removeClass('hidden');
 
@@ -856,7 +851,7 @@ function init(el, mapOptions) {
     }
     function autoPan() {
     /*Workaround to remove when autopan implemented for overlays */
-      var el=$('.popup');
+      var el=$('.o-popup');
       var center = map.getView().getCenter();
       var popupOffset = $(el).offset();
       var mapOffset = $('#' + map.getTarget()).offset();
@@ -889,13 +884,18 @@ function init(el, mapOptions) {
       }
     /*End workaround*/
     }
-    function removeOverlays() {
-        var overlays = map.getOverlays();
-        if (overlays.length > 0) {
-            for (var i=0; i < overlays.length; i++) {
-              map.removeOverlay(overlays[i]);
-            }
+    function removeOverlays(overlays) {
+      if (overlays) {
+        if (overlays.constructor === Array || overlays instanceof ol.Collection) {
+          overlays.forEach(function(overlay) {
+            map.removeOverlay(overlay);
+          })
+        } else {
+            map.removeOverlay(overlays);
         }
+      } else {
+        map.getOverlays().clear();
+      }
     }
 
 module.exports.init = init;
@@ -911,7 +911,6 @@ module.exports.getLayers = getLayers;
 module.exports.getLayer = getLayer;
 module.exports.getControlNames = getControlNames;
 module.exports.getQueryableLayers = getQueryableLayers;
-module.exports.getEditLayer = getEditLayer;
 module.exports.getGroup = getGroup;
 module.exports.getGroups = getGroups;
 module.exports.getProjectionCode = getProjectionCode;
