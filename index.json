@@ -18,6 +18,8 @@
     }, {
         "name": "print"
     }, {
+        "name": "measure"
+    }, {
         "name": "legend"
     }],
     "projectionCode": "EPSG:3010",

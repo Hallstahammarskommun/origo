@@ -119,7 +119,7 @@ b, strong{
   top: 7.5em;
 }*/
 .ol-rotate {
-  top: 3em;
+  top: 12.5em;
   left: .5em;
   transition: opacity .25s;
 }
@@ -1527,6 +1527,42 @@ li .o-legend-item-img {
 .o-search-false #o-search-button-close {
 	display: none
 }
+/* measure module */
+#o-measure-button {
+  left: .5em;
+  top: 3em;
+}
+#o-measure-line-button {
+  left: 3em;
+  top: 3em;
+}
+#o-measure-polygon-button {
+  left: 5.5em;
+  top: 3em;
+}
+.o-icon-minicons-square-vector {
+  height: 1.4em;
+}
+.o-icon-minicons-line-vector {
+  height: 1.4em;
+}
+.o-measure-button-true .o-icon-fa-pencil,
+.o-measure-button-true .o-icon-steady-measure,
+.o-measure-button-true .o-icon-minicons-square-vector,
+.o-measure-button-true .o-icon-minicons-line-vector {
+  fill: #007AFF;
+}
+.o-tooltip-measure {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+  white-space: nowrap;
+  opacity: 0.8;
+  font: 80% normal, sans-serif;
+  pointer-events: none;
+}
 @media screen and (max-width: 768px) {
 .ol-scale-line, .ol-scale-line-inner {
   display: none;
@@ -1592,6 +1628,21 @@ button.o-button:focus {
   bottom: 3.5em;
 	top: auto;
 }
+#o-measure-button {
+  left: .5em;
+	top: auto;
+  bottom: 3.5em;
+}
+#o-measure-line-button {
+  left: 3.5em;
+  top: auto;
+	bottom: 3.5em;
+}
+#o-measure-polygon-button {
+  left: 6.5em;
+  top: auto;
+	bottom: 3.5em
+}
 #o-geolocation-button {
 	bottom: 0.5em;
 	top: auto;
@@ -1613,14 +1664,14 @@ button.o-button:focus {
 }
 .ol-zoom {
   top: auto;
-	bottom: 5.5em;
+	bottom: 8em;
 }
 #o-home-button {
-	bottom: 3em;
+	bottom: 5.5em;
 	top: auto;
 }
 #o-window-button {
-	bottom: 10em;
+	bottom: 12.5em;
 	top: auto;
 }
 }
