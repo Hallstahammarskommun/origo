@@ -1,6 +1,6 @@
 /* ========================================================================
- * Copyright 2016 Mälardalskartan
- * Licensed under BSD 2-Clause (https://github.com/malardalskartan/mdk/blob/master/LICENSE.txt)
+ * Copyright 2016 Origo
+ * Licensed under BSD 2-Clause (https://github.com/origo-map/origo/blob/master/LICENSE.txt)
  * ======================================================================== */
 "use strict";
 
@@ -22,8 +22,8 @@ function init(opt_options) {
     styleSettings = viewer.getStyleSettings();
 
     mapMenu = $('#o-mapmenu');
+    $('#o-menutools').append('<li class="o-menu-item"><div class="o-menu-item-divider"></div><li>');
     addLegend(viewer.getGroups());
-
 }
 function getSymbol(style) {
     var symbol='';
@@ -170,41 +170,44 @@ function addLegend(groups) {
 
       //Add map legend unless set to false
       if(hasMapLegend) {
-          var mapLegend = '<div id="o-map-legend"><ul id="o-map-legend-background"></ul></div>';
-          $('#map').append(mapLegend);
+          var mapLegend = '<div id="o-map-legend"><ul id="o-legend-overlay"><li class="o-legend o-hidden"><div class ="o-toggle-button o-toggle-button-max">' +
+                              '<svg class="o-icon-fa-angle-double-down"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-down"></use></svg>' +
+                              '<svg class="o-icon-fa-angle-double-up"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-up"></use></svg>' +
+                          '</div></li><li><ul id="o-overlay-list"></li></ul></ul><ul id="o-map-legend-background"></ul></div>';
+          $('#o-map').append(mapLegend);
       }
 
       //Add layers to legend
-      for (var i=layers.length-1; i>=0; i--) {
+      layers.forEach(function(layer) {
 
-        var name = (layers[i].get('name'));
-        var title = '<div class="o-legend-item-title">' + layers[i].get('title') + '</div></div></li>';
+        var name = (layer.get('name'));
+        var title = '<div class="o-legend-item-title">' + layer.get('title') + '</div></div></li>';
 
         //Append layer to group in legend. Add to default group if not defined.
-        if(layers[i].get('group') == 'background') {
+        if(layer.get('group') == 'background') {
           //Append background layers to menu
           item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="css/svg/fa-icons.svg#fa-circle"></use></svg></div>';
           item += title;
-          $('#o-group-' + layers[i].get('group')).append(item);
+          $('#o-group-background .o-legend-header').after(item);
           //Append background layers to map legend
           item = '<li class="o-legend ' + name + '" id="o-legend-' + name + '"><div class ="o-legend-item">'
-          item += layers[i].get('styleName') ? getSymbol(styleSettings[layers[i].get('styleName')]) : '';
+          item += layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
           item += '</div>';
-          $('#o-map-legend-background').append(item);
+          $('#o-map-legend-background').prepend(item);
 
         }
-        else if(layers[i].get('group') && ((layers[i].get('group') != 'none'))) {
+        else if(layer.get('group') && ((layer.get('group') != 'none'))) {
           item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox">' +
                   '<svg class="o-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check"></use></svg>' +
                 '</div>';
-          item +=  layers[i].get('styleName') ? getSymbol(styleSettings[layers[i].get('styleName')]) : '';
+          item +=  layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
           item += title;
-          $('#o-group-' + layers[i].get('group')).append(item);
+          $('#o-group-' + layer.get('group') + ' .o-legend-header').after(item);
         }
 
         //Append class according to visiblity and if group is background
-        if(layers[i].get('group') == 'background') {
-          if(layers[i].getVisible()==true) {
+        if(layer.get('group') == 'background') {
+          if(layer.getVisible()==true) {
             $('#' + name + ' .o-checkbox').addClass('o-check-true');
             $('#o-legend-' + name).addClass('o-check-true-img');
           }
@@ -214,7 +217,7 @@ function addLegend(groups) {
           }
         }
         else {
-          if(layers[i].getVisible()==true) {
+          if(layer.getVisible()==true) {
             $('.' + name + ' .o-checkbox').addClass('o-checkbox-true');
           }
           else {
@@ -237,7 +240,7 @@ function addLegend(groups) {
           });
           evt.preventDefault();
         });
-      }
+      });
 }
 function onToggleCheck(layername) {
     //Event listener for tick layer
@@ -296,7 +299,7 @@ function toggleCheck(layerid) {
         $('#o-legend-' + layername).removeClass('o-check-false-img');
         $('#o-legend-' + layername).addClass('o-check-true-img');
     }
-    //Toggle check for all groups except background
+    //Toggle check for alla groups except background
     else {
         if($('.' + layername + ' .o-checkbox').hasClass('o-checkbox-true')) {
             $('.' + layername + ' .o-checkbox').removeClass('o-checkbox-true');
@@ -307,7 +310,9 @@ function toggleCheck(layerid) {
             $('.' + layername + ' .o-checkbox').removeClass('o-checkbox-false');
             $('.' + layername + ' .o-checkbox').addClass('o-checkbox-true');
             layer.setVisible(true);
+            layer.set('legend', true);
         }
     }
 }
+
 module.exports.init = init;
