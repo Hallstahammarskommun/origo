@@ -1,6 +1,6 @@
 /* ========================================================================
- * Copyright 2016 Mälardalskartan
- * Licensed under BSD 2-Clause (https://github.com/malardalskartan/mdk/blob/master/LICENSE.txt)
+ * Copyright 2016 Origo
+ * Licensed under BSD 2-Clause (https://github.com/origo-map/origo/blob/master/LICENSE.txt)
  * ======================================================================== */
  "use strict";
 
@@ -12,16 +12,25 @@
 
 module.exports = function(){
 
-
   var options = {};
 
   var defaultLayer;
+  var fullEditableLayers;
   var editableLayers = {};
   var editableLayer = undefined;
   var editAttributes = {};
 
   function render(selectOptions) {
       $("#o-map").append(editortemplate(selectOptions));
+  }
+  function layerNameArray(layers) {
+    var layerArray = [];
+
+    for(var i = 0; i < layers.length; i++) {
+        layerArray.push(layers[i].get('name'));
+    }
+
+    return layerArray;
   }
   function onEnableInteraction(e) {
       if(e.interaction === 'editor') {
@@ -84,29 +93,26 @@ module.exports = function(){
   return {
     init: function(opt_options){
 
-        $.extend(options, opt_options)
-        defaultLayer = options.defaultLayer || options.editableLayers[0];
+        $.extend(options, opt_options);
+        fullEditableLayers = viewer.getEditableLayers();
+
+        var editLayersName = layerNameArray(fullEditableLayers);
+
+        defaultLayer = options.defaultLayer || editLayersName[editLayersName.length-1];
 
         var map = viewer.getMap();
         var srsName = viewer.getProjectionCode();
 
-        render(selectionModel(options.editableLayers));
+        render(selectionModel(editLayersName.reverse()));
 
         $('.o-map').on('enableInteraction', onEnableInteraction);
 
         //set edit properties for editable layers
-        editableLayers = setEditProps(options.editableLayers, map, srsName);
-        //
-        options.editableLayers.forEach(function(layerName) {
-            var layer = viewer.getLayer(layerName);
-            layer.getSource().once('addfeature', function(e) {
-                editableLayers[layerName].geometryType = layer.getSource().getFeatures()[0].getGeometry().getType();
-                editableLayers[layerName].geometryName = layer.getSource().getFeatures()[0].getGeometryName();
-                if(layerName === defaultLayer && options.isActive) {
-                    emitEnableInteraction();
-                }
-            });
-        });
+        editableLayers = setEditProps(editLayersName, map, srsName);
+
+        emitEnableInteraction();
+
+        viewer.getLayer(editLayersName[0]).setVisible(true);
 
         this.bindUIActions();
 
@@ -122,9 +128,6 @@ module.exports = function(){
     },
     drawFeature: function() {
       transactionhandler.activateInsert();
-      //turnOnCursor();
-
-      //transactionhandler.draw.on('drawend', turnOffCursor, this);
     },
     bindUIActions: function() {
       var self = this;
@@ -153,7 +156,16 @@ module.exports = function(){
       });
       $('select[name="layer-dropdown"]').change(function() {
           transactionhandler.removeInteractions();
-          transactionhandler.onSetEditLayer(editableLayers[$(this).val()]);
+
+          fullEditableLayers.filter(function(layer) {
+              if(layer.getVisible()) {
+                  layer.setVisible(false)
+              }
+          });
+
+          transactionhandler.onSetEditLayer(editableLayers[$(this).val()]);          
+
+          editableLayers[$(this).val()].editableLayer.setVisible(true);
       });
     }
   };

@@ -15,7 +15,6 @@
     {
       "name": "editor",
       "options": {
-        "editableLayers": ["TK_w_are_p", "BU_w_fos_p", "BU_w_grs_p", "BU_w_gss_p",  "TK_w_let_y", "TK_w_lim_y", "KS_w_opo_p", "TK_w_pak_y", "TK_w_pap_y", "TK_w_snr_l", "TK_w_mat_p", "KS_w_wif_p"],
         "isActive": true
       }
     },
@@ -72,21 +71,6 @@
   },
   "groups": [
     {
-      "name": "bu",
-      "title": "Barn och utbildning",
-      "expanded": true
-    },
-    {
-      "name": "ks",
-      "title": "Kommunstyrelsen",
-      "expanded": true
-    },
-    {
-      "name": "tk",
-      "title": "Tekniska",
-      "expanded": true
-    },
-    {
       "name": "background",
       "title": "Bakgrundskartor",
       "expanded": true
@@ -97,10 +81,11 @@
       "name": "TK_w_are_p",
       "title": "Arrende",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_are_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Arrendator: ",
@@ -118,12 +103,13 @@
     {
       "name": "BU_w_fos_p",
       "title": "Förskola",
-      "group": "bu",
       "queryable": true,
       "source": "local",
       "style": "BU_w_fos_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [
           {
             "name": "obj",
@@ -146,10 +132,11 @@
       "name": "BU_w_grs_p",
       "title": "Grundskola",
       "source": "local",
-      "group": "bu",
       "style": "BU_w_grs_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -172,10 +159,11 @@
       "name": "BU_w_gss_p",
       "title": "Grundsärskola",
       "source": "local",
-      "group": "bu",
       "style": "BU_w_gss_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -198,10 +186,11 @@
       "name": "TK_w_let_y",
       "title": "Lediga tomter",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_let_y",
       "type": "WFS",
+      "geometryType": "Polygon",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Fastighetsbeteckning: ",
@@ -261,10 +250,11 @@
       "name": "TK_w_lim_y",
       "title": "Ledig industrimark",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_lim_y",
       "type": "WFS",
+      "geometryType": "Polygon",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Storlek: ",
@@ -279,10 +269,11 @@
       "name": "KS_w_opo_p",
       "title": "Opto ansluten",
       "source": "local",
-      "group": "ks",
       "style": "KS_w_opo_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Status: ",
@@ -293,12 +284,13 @@
     {
       "name": "TK_w_pak_y",
       "title": "Park",
-      "group": "tk",
       "queryable": true,
       "source": "local",
       "style": "TK_w_pak_y",
       "type": "WFS",
+      "geometryType": "Polygon",
       "visible": false,
+      "editable": true,
       "attributes": [
           {
             "name": "typ",
@@ -317,10 +309,11 @@
       "name": "TK_w_pap_y",
       "title": "Pågående detaljplan",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_pap_y",
       "type": "WFS",
+      "geometryType": "Polygon",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Plannamn: ",
@@ -335,10 +328,11 @@
       "name": "TK_w_snr_l",
       "title": "Snöröjning",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_snr_l",
       "type": "WFS",
+      "geometryType": "LineString",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "typ",
         "title": "Maskin: ",
@@ -352,10 +346,11 @@
       "name": "TK_w_mat_p",
       "title": "Stompunkter",
       "source": "local",
-      "group": "tk",
       "style": "TK_w_mat_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "pktnr",
         "title": "Punktnummer: ",
@@ -379,10 +374,11 @@
       "name": "KS_w_wif_p",
       "title": "Wifi",
       "source": "local",
-      "group": "ks",
       "style": "KS_w_wif_p",
       "type": "WFS",
+      "geometryType": "Point",
       "visible": false,
+      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Våning: ",
@@ -544,7 +540,7 @@
         }],
         [{
           "icon": {
-            "src": "'img/png/KS_w_opo_p2.png'"
+            "src": "img/png/KS_w_opo_p2.png"
           },
           "filter": "[obj] == 'Avtal'"
         }],

@@ -163,6 +163,7 @@ function init(el, mapOptions) {
             group: options.group || 'none',
             opacity: options.opacity || 1,
             geometryName: geometryName,
+            geometryType: options.geometryType,
             filter: options.filter || undefined,
             relations: options.relations || undefined,
             layerType: options.layerType || 'vector',
@@ -176,6 +177,7 @@ function init(el, mapOptions) {
             minResolution: options.hasOwnProperty('minScale') ? scaleToResolution(options.minScale): undefined,
             maxResolution: options.hasOwnProperty('maxScale') ? scaleToResolution(options.maxScale): undefined,
             visible: options.visible,
+            editable:  options.hasOwnProperty('editable') ? options.editable : false,
             type: options.type || undefined,
             extent: options.extent || undefined,
             attributes: options.attributes
@@ -321,6 +323,14 @@ function init(el, mapOptions) {
             }
         });
         return queryableLayers;
+    }
+    function getEditableLayers() {
+        var editableLayers = settings.layers.filter(function(layer) {
+            if(layer.get('editable')) {
+                return layer;
+            }
+        });
+        return editableLayers;
     }
     function getGroup(group) {
         var group = $.grep(settings.layers, function(obj) {
@@ -910,6 +920,7 @@ module.exports.getMap = getMap;
 module.exports.getLayers = getLayers;
 module.exports.getLayer = getLayer;
 module.exports.getControlNames = getControlNames;
+module.exports.getEditableLayers = getEditableLayers;
 module.exports.getQueryableLayers = getQueryableLayers;
 module.exports.getGroup = getGroup;
 module.exports.getGroups = getGroups;

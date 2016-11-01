@@ -5,6 +5,7 @@
 "use strict";
 
 var $ = require('jquery');
+var editor = require('./editor')
 var viewer = require('./viewer');
 var utils = require('./utils');
 
@@ -131,7 +132,11 @@ function createLegendItem(layerid) {
     return legendItem;
 }
 function addLegend(groups) {
-      var layers = viewer.getLayers();
+      var layers = viewer.getLayers().filter(function(layer) {
+            if(!layer.get('editable')) {
+                return layer;
+            }
+        });
       var legendGroup;
       var item = '';
 
