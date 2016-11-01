@@ -5,7 +5,6 @@
 "use strict";
 
 var $ = require('jquery');
-var editor = require('./editor')
 var viewer = require('./viewer');
 var utils = require('./utils');
 
