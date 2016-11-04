@@ -1216,6 +1216,11 @@ button.o-home-button:after {
   width: 100%;
 }
 /*generic close button*/
+.o-close-button {
+	height: 2.429em;
+	float: right;
+  width: 2.429em;
+}
 .o-close-button:hover .o-icon-fa-times{
 	fill: #0097cf;
 }

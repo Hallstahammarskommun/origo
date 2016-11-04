@@ -132,7 +132,16 @@ module.exports = function(){
     bindUIActions: function() {
       var self = this;
       $('#o-editor-draw').on('click', function(e) {
-        self.drawFeature();
+        if($(this).hasClass('o-editor-draw-true')){
+            $(this).removeClass('o-editor-draw-true');
+            transactionhandler.setHasDraw(false);
+            transactionhandler.getDraw().setActive(false);
+        } else {
+            $(this).addClass('o-editor-draw-true')
+            transactionhandler.getDraw().setActive(true);
+            self.drawFeature();
+        }
+
         $('#o-editor-draw').blur();
         e.preventDefault();
       });
@@ -163,7 +172,7 @@ module.exports = function(){
               }
           });
 
-          transactionhandler.onSetEditLayer(editableLayers[$(this).val()]);          
+          transactionhandler.onSetEditLayer(editableLayers[$(this).val()]);
 
           editableLayers[$(this).val()].editableLayer.setVisible(true);
       });
