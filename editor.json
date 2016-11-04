@@ -343,10 +343,10 @@
       }]
     },
     {
-      "name": "TK_w_mat_p",
+      "name": "TK_w_stp_p",
       "title": "Stompunkter",
       "source": "local",
-      "style": "TK_w_mat_p",
+      "style": "TK_w_stp_p",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -686,7 +686,7 @@
           "filter": "[typ] == 'Wille'"
         }]
       ],
-      "TK_w_mat_p": [
+      "TK_w_stp_p": [
         [{
           "icon": {
             "src": "img/png/droppe_orange.png"
