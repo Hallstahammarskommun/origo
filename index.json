@@ -164,6 +164,27 @@
             "url": "url"
         }]
     }, {
+        "name": "TK_w_stp_p",
+        "source": "local",
+        "style": "TK_w_stp_p",
+        "title": "Stompunkter",
+        "group": "bygga",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+          "name": "pktnr",
+          "title": "Punktnummer: "
+        }, {
+          "name": "anmarkning",
+          "title": "Anmärkning: "
+        }, {
+          "name": "marktyp",
+          "title": "Markering: "
+        }, {
+          "name": "rh2000",
+          "title": "Z: "
+        }]
+        }, {
         "name": "BM_elf_y",
         "source": "local",
         "style": "BM_elf_y",
@@ -395,6 +416,24 @@
                 },
                 "filter": "[PLAN_TYP] != '4041'"
             }]
+        ],
+        "TK_w_stp_p": [
+          [{
+            "icon": {
+              "src": "img/png/droppe_black.png"
+            },
+            "filter": "[matning_obj] == '200'"
+          }], [{
+            "icon": {
+              "src": "img/png/drop_blue.png"
+            },
+            "filter": "[matning_obj] == '100'"
+          }], [{
+            "icon": {
+              "src": "img/png/droppe_orange.png"
+            },
+            "filter": "[matning_obj] == 'null'"
+          }]
         ],
         "TK_w_lim_y": [
             [{
