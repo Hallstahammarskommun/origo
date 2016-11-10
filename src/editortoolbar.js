@@ -14,6 +14,7 @@ var activeClass = 'o-control-active';
 var map = undefined;
 var srsName = undefined;
 var currentLayer;
+var fullEditableLayers;
 var editableLayers = {};
 var editableLayer = undefined;
 var $editAttribute = undefined;
@@ -32,30 +33,28 @@ module.exports = function() {
 function Init(opt_options) {
 
   $.extend(options, opt_options)
-  currentLayer = options.defaultLayer || options.editableLayers[0];
+
+  fullEditableLayers = viewer.getEditableLayers();
+
+  var editLayersName = layerNameArray(fullEditableLayers);
+
+  currentLayer = options.defaultLayer || editLayersName[editLayersName.length-1];
 
   map = viewer.getMap();
   srsName = viewer.getProjectionCode();
 
-  render(selectionModel(options.editableLayers));
+  render(selectionModel(editLayersName.reverse()));
 
   $('.o-map').on('enableInteraction', onEnableInteraction);
 
   $(document).on('changeEdit', toggleState);
 
   //set edit properties for editable console
-  editableLayers = setEditProps(options.editableLayers, map, srsName);
-  //
-  options.editableLayers.forEach(function(layerName) {
-    var layer = viewer.getLayer(layerName);
-    layer.getSource().once('addfeature', function(e) {
-      editableLayers[layerName].geometryType = layer.getSource().getFeatures()[0].getGeometry().getType();
-      editableLayers[layerName].geometryName = layer.getSource().getFeatures()[0].getGeometryName();
-      if (layerName === currentLayer && options.isActive) {
-        emitEnableInteraction();
-      }
-    });
-  });
+  editableLayers = setEditProps(editLayersName, map, srsName);
+
+  emitEnableInteraction();
+
+  viewer.getLayer(editLayersName[0]).setVisible(true);
 
   bindUIActions();
 
@@ -70,6 +69,16 @@ function render(selectOptions) {
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
   $editClose = $('#o-editor-close');
+}
+
+function layerNameArray(layers) {
+  var layerArray = [];
+
+  for(var i = 0; i < layers.length; i++) {
+      layerArray.push(layers[i].get('name'));
+  }
+
+  return layerArray;
 }
 
 function bindUIActions() {
@@ -100,10 +109,19 @@ function bindUIActions() {
     e.preventDefault();
   });
   $('select[name="layer-dropdown"]').change(function() {
-    currentLayer = $(this).val();
-    emitToggleEdit('edit', {
-      options: editableLayers[currentLayer]
+
+    fullEditableLayers.filter(function(layer) {
+        if(layer.getVisible()) {
+            layer.setVisible(false)
+        }
     });
+
+    currentLayer = editableLayers[$(this).val()]
+    emitToggleEdit('edit', {
+      options: currentLayer
+    });
+
+    currentLayer.editableLayer.setVisible(true);
   });
 }
 

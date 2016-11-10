@@ -30,7 +30,7 @@ var serializer = undefined;
 
 module.exports = function() {
   $(document).on('toggleEdit', toggleEdit);
-}
+};
 
 function setEditLayer(options) {
   removeInteractions();
@@ -154,10 +154,19 @@ function deleteSelected() {
   }
 }
 
-function editAttributes() {
+function editAttributes(newFeature) {
 
-  //Get attributes from selected feature and fill DOM elements with the values
-  var features = select.getFeatures();
+  var features = new ol.Collection();
+  //Get attributes from the newly drawn feature, else from the
+// selected feature and fill DOM elements with the values
+
+  if (newFeature){
+    features.push(newFeature);
+  }
+  else {
+    features = select.getFeatures();
+  }
+
   if (features.getLength() === 1) {
     emitChangeEdit('attribute', true);
     var feature = features.item(0);
@@ -205,7 +214,7 @@ function editAttributes() {
       }
     });
 
-    onAttributesSave(feature, attributeObjects);
+    onAttributesSave(feature, attributeObjects, newFeature);
   }
 }
 
@@ -258,41 +267,7 @@ function onSelectRemove(evt) {
 
 function onDrawEnd(evt) {
   var feature = evt.feature;
-  var node = format.writeTransaction([feature], null, null, {
-    gmlOptions: {
-      srsName: srsName
-    },
-    featureNS: featureNS,
-    featureType: featureType
-  });
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: serializer.serializeToString(node),
-    contentType: 'text/xml',
-    success: function(data) {
-      var result = readResponse(data);
-      if (result) {
-        var insertId = result.insertIds[0];
-        if (insertId == 'new0') {
-          // reload data if we're dealing with a shapefile store
-          source.clear();
-        } else {
-          feature.setId(insertId);
-        }
-      }
-      map.removeInteraction(draw);
-      hasDraw = false;
-    },
-    error: function(e) {
-      map.removeInteraction(draw);
-      hasDraw = false;
-      var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
-      alert('Error saving this feature to the server...<br><br>' +
-        errorMsg);
-    },
-    context: this
-  });
+  editAttributes(feature);
   emitChangeEdit('draw', false);
 }
 
@@ -307,7 +282,17 @@ function cancelAttribute() {
   emitChangeEdit('attribute', false);
 }
 
-function onAttributesSave(feature, attributes) {
+function onAttributesSave(feature, attributes, newFeature) {
+  if (newFeature){
+    $('.o-close-button').on('click', function(e) {
+      cancelDraw();
+      hasDraw = false;
+      source.removeFeature(newFeature);
+      modal.closeModal();
+      e.preventDefault();
+    });
+  }
+
   $('#o-save-button').on('click', function(e) {
     var editEl = {};
     //Read values from form
@@ -327,13 +312,26 @@ function onAttributesSave(feature, attributes) {
       }
     }
     modal.closeModal();
-    attributesSaveHandler(feature, editEl);
+
+
+    var transactionOptions = {
+            gmlOptions: {srsName: srsName},
+            featureNS: featureNS,
+            featureType: featureType
+    };
+
+    if (newFeature){
+      saveNewFeature(newFeature, editEl, transactionOptions);
+    } else {
+      attributesSaveHandler(feature, editEl, transactionOptions);
+    }
+
     $('#o-save-button').blur();
     e.preventDefault();
   });
 }
 
-function attributesSaveHandler(f, el) {
+function attributesSaveHandler(f, el, transactionOptions) {
   var formEl = el;
   var feature = f;
   var fid = feature.getId();
@@ -347,13 +345,11 @@ function attributesSaveHandler(f, el) {
     }
   }
 
-  var node = format.writeTransaction(null, [clone], null, {
-    gmlOptions: {
-      srsName: srsName
-    },
-    featureNS: featureNS,
-    featureType: featureType
-  });
+  var node = format.writeTransaction(null, [clone], null, transactionOptions);
+  saveAttributes(node);
+}
+
+function saveAttributes(node){
   $.ajax({
     type: "POST",
     url: url,
@@ -363,6 +359,40 @@ function attributesSaveHandler(f, el) {
       //alert('success');
     },
     error: function(e) {
+      var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
+      alert('Error saving this feature to the server...<br><br>' +
+        errorMsg);
+    },
+    context: this
+  });
+}
+
+function saveNewFeature (feature, editEl, transactionOptions) {
+  var node = format.writeTransaction([feature], null, null, transactionOptions);
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: serializer.serializeToString(node),
+    contentType: 'text/xml',
+    success: function(data) {
+      var result = readResponse(data);
+      if (result) {
+        var insertId = result.insertIds[0];
+        if (insertId == 'new0') {
+          // reload data if we're dealing with a shapefile store
+          source.clear();
+        } else {
+          feature.setId(insertId);
+        }
+      attributesSaveHandler(feature, editEl, transactionOptions)
+
+      }
+      map.removeInteraction(draw);
+      hasDraw = false;
+    },
+    error: function(e) {
+      map.removeInteraction(draw);
+      hasDraw = false;
       var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
       alert('Error saving this feature to the server...<br><br>' +
         errorMsg);
