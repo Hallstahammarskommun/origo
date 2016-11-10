@@ -20,7 +20,6 @@ var editableLayer = undefined;
 var $editAttribute = undefined;
 var $editDraw = undefined;
 var $editDelete = undefined;
-var $editClose = undefined;
 var options = {};
 
 module.exports = function() {
@@ -68,7 +67,6 @@ function render(selectOptions) {
   $editAttribute = $('#o-editor-attribute');
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
-  $editClose = $('#o-editor-close');
 }
 
 function layerNameArray(layers) {
@@ -97,15 +95,6 @@ function bindUIActions() {
   $editDelete.on('click', function(e) {
     emitToggleEdit('delete');
     $editDelete.blur();
-    e.preventDefault();
-  });
-  $editClose.on('click', function(e) {
-    $('.o-map').first().trigger({
-      type: 'enableInteraction',
-      interaction: 'featureInfo'
-    });
-    $editClose.blur();
-    e.stopPropagation();
     e.preventDefault();
   });
   $('select[name="layer-dropdown"]').change(function() {
