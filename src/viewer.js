@@ -163,7 +163,7 @@ function init(el, mapOptions) {
             group: options.group || 'none',
             opacity: options.opacity || 1,
             geometryName: geometryName,
-            geometryType: options.geometryType,
+            geometryType: options.geometryType || undefined,
             filter: options.filter || undefined,
             relations: options.relations || undefined,
             layerType: options.layerType || 'vector',
