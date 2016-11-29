@@ -335,6 +335,16 @@
         "type": "WMTS",
         "style": "orto",
         "visible": false
+    }, {
+        "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
+        "format": "image/jpeg",
+        "group": "background",
+        "name": "Hallstahammar:PK",
+        "source": "wms",
+        "title": "Primärkarta, grå",
+        "type": "WMS",
+        "style": "pk_gra",
+        "visible": false
     }],
 
     "styles": {
@@ -639,6 +649,15 @@
                     "src": "img/png/orto.png"
                 }
             }]
+        ],
+        "pk_gra": [
+          [
+            {
+              "image": {
+                "src": "img/png/PK2.png"
+              }
+            }
+          ]
         ]
     }
 }

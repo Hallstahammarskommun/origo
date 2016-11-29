@@ -416,7 +416,7 @@ function init(el, mapOptions) {
             gutter: layersConfig.gutter || 0,
             crossOrigin: 'anonymous',
             projection: settings.projection,
-            params: {'LAYERS': layersConfig.name, 'TILED': true, VERSION: version}
+            params: {'LAYERS': layersConfig.name, 'format': layersConfig.format, 'TILED': true, VERSION: version}
           }))
         })
     }
