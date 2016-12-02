@@ -112,6 +112,15 @@
             "urlSuffix": ".pdf"
         }]
     }, {
+        "name": "TK_kof_y",
+        "source": "local",
+        "style": "TK_kof_y",
+        "title": "Kommunala fastigheter",
+        "group": "bygga",
+        "queryable": false,
+        "type": "WFS",
+        "visible": false
+    }, {
         "name": "TK_w_lim_y",
         "source": "local",
         "style": "TK_w_lim_y",
@@ -222,6 +231,15 @@
             "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
             "fixedUrlName": "Lämna synpunkter och klagomål"
         }]
+    }, {
+        "name": "Vaghallare",
+        "source": "wms",
+        "style": "line",
+        "title": "Väghållare",
+        "format": "image/png",
+        "group": "trafik",
+        "type": "WMS",
+        "visible": false
     }, {
         "name": "BM_nar_y",
         "source": "local",
@@ -428,23 +446,13 @@
                 "filter": "[PLAN_TYP] != '4041'"
             }]
         ],
-        "TK_w_stp_p": [
-          [{
-            "icon": {
-              "src": "img/png/droppe_black.png"
-            },
-            "filter": "[matning_obj] == '200'"
-          }], [{
-            "icon": {
-              "src": "img/png/drop_blue.png"
-            },
-            "filter": "[matning_obj] == '100'"
-          }], [{
-            "icon": {
-              "src": "img/png/droppe_orange.png"
-            },
-            "filter": "[matning_obj] == 'null'"
-          }]
+        "TK_kof_y": [
+            [{
+                "fill": {
+                    "color": "rgba(165,0,165,0.25)"
+                },
+                "filter": "[typ] == 'Nej'"
+            }]
         ],
         "TK_w_lim_y": [
             [{
@@ -497,6 +505,25 @@
                 }
             }]
         ],
+        "TK_w_stp_p": [
+          [{
+            "icon": {
+              "src": "img/png/droppe_black.png"
+            },
+            "filter": "[matning_obj] == '200'"
+          }], [{
+            "icon": {
+              "src": "img/png/drop_blue.png"
+            },
+            "filter": "[matning_obj] == '100'"
+          }], [{
+            "icon": {
+              "src": "img/png/droppe_orange.png"
+            },
+            "filter": "[matning_obj] == 'null'"
+          }]
+        ],
+
         "BM_elf_y": [
             [{
                 "stroke": {

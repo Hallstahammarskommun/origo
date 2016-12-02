@@ -370,37 +370,7 @@
         "type": "text"
       }]
     },
-    {
-      "name": "KS_w_wif_p",
-      "title": "Wifi",
-      "source": "local",
-      "style": "KS_w_wif_p",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Våning: ",
-        "type": "text"
-      }, {
-        "name": "typ",
-        "title": "Port: ",
-        "type": "text"
-      }, {
-        "name": "egn",
-        "title": "Device: ",
-        "type": "text"
-      }, {
-        "name": "status",
-        "title": "Status: ",
-        "type": "text"
-      }, {
-        "name": "not",
-        "title": "Notering: ",
-        "type": "text"
-      }]
-    },
+
     {
           "name": "TK_mak_y",
           "source": "local",
@@ -719,13 +689,6 @@
           },
           "minScale": "10000",
           "filter": "[status] == 'Borta'"
-        }]
-      ],
-      "KS_w_wif_p": [
-        [{
-          "icon": {
-          "src": "img/png/KS_w_wif_p.png"
-          }
         }]
       ],
       "TK_mak_y": [
