@@ -557,6 +557,7 @@ function init(el, mapOptions) {
         var tileSource = new ol.source.TileArcGISRest({
             attributions: options.attribution,
             projection: settings.projection,
+            crossOrigin: 'anonymous',
             params: params,
             url: url
         });
