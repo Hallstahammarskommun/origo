@@ -6,8 +6,8 @@
     }, {
         "name": "search",
         "options": {
-            "urlAds": "http://karta.hallstahammar.se/sAds",
-            "urlFat": "http://karta.hallstahammar.se/sFat",
+            "urlAds": "https://karta.hallstahammar.se/sAds",
+            "urlFat": "https://karta.hallstahammar.se/sFat",
             "geometryAttribute": "st_astext",
             "searchAttribute": "title",
             "titleAttribute": "title",
@@ -53,14 +53,14 @@
     ],
     "source": {
         "wms": {
-            "url": "http://karta.hallstahammar.se/geoserver/wms",
+            "url": "https://karta.hallstahammar.se/geoserver/wms",
             "version": "1.1.1"
         },
         "local": {
-            "url": "http://karta.hallstahammar.se/geoserver/ows"
+            "url": "https://karta.hallstahammar.se/geoserver/ows"
         },
         "basemap": {
-            "url": "http://karta.hallstahammar.se/geoserver/gwc/service/wmts"
+            "url": "https://karta.hallstahammar.se/geoserver/gwc/service/wmts"
         }
     },
     "groups": [{
