@@ -8,6 +8,7 @@
         "options": {
             "urlAds": "https://karta.hallstahammar.se/sAds",
             "urlFat": "https://karta.hallstahammar.se/sFat",
+            "urlGan": "https://karta.hallstahammar.se/sGan",
             "geometryAttribute": "st_astext",
             "searchAttribute": "title",
             "titleAttribute": "title",

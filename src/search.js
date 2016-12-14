@@ -18,7 +18,7 @@ var featureInfo = require('./featureinfo');
 var mapUtils = require('./maputils');
 var utils = require('./utils');
 
-var adress, fastighet;
+var adress, fastighet, gatunamn;
 var map,
     name,
     geometryAttribute,
@@ -27,6 +27,7 @@ var map,
     maxZoomLevel,
     urlAds,
     urlFat,
+    urlGan,
     title,
     hintText,
     hint,
@@ -39,6 +40,7 @@ function init(options){
     geometryAttribute = options.geometryAttribute;
     urlAds = options.urlAds;
     urlFat = options.urlFat;
+    urlGan = options.urlGan;
     title = options.title || '';
     titleAttribute = options.titleAttribute || undefined;
     contentAttribute = options.contentAttribute || undefined;
@@ -82,9 +84,18 @@ function init(options){
         wildcard: '%QUERY'
       }
     });
+    gatunamn = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: {
+        url: urlGan + '?q=%QUERY',
+        wildcard: '%QUERY'
+      }
+    });
 
     adress.initialize();
     fastighet.initialize();
+    gatunamn.initialize();
 
     $('.typeahead').typeahead({
       autoSelect: true,
@@ -99,6 +110,14 @@ function init(options){
       templates: {
           footer: '<h3 class="multiple-datasets"></h3>'
         }
+      }, {
+        name: 'gatunamn',
+        limit: 5,
+        displayKey: name,
+        source: gatunamn,
+        templates: {
+            footer: '<h3 class="multiple-datasets"></h3>'
+          }
       }, {
         name: 'adress',
         limit: 5,
@@ -143,7 +162,7 @@ function offClearSearch() {
     //   e.preventDefault();
     // });
 }
-function showOverlay(data, coord) {
+/*function showOverlay(data, coord) {
     Viewer.removeOverlays();
     var popup = Popup('#o-map');
     var overlay = new ol.Overlay({
@@ -162,8 +181,9 @@ function showOverlay(data, coord) {
     popup.setVisibility(true);
 
     mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
-}
+}*/
 function showFeatureInfo(features, title, content) {
+    Viewer.removeOverlays();
     var obj = {};
     obj.feature = features[0];
     obj.title = title;
