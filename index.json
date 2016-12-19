@@ -116,7 +116,7 @@
         "name": "TK_kof_y",
         "source": "local",
         "style": "TK_kof_y",
-        "title": "Kommunala fastigheter",
+        "title": "Kommunal mark",
         "group": "bygga",
         "queryable": false,
         "type": "WFS",
@@ -217,17 +217,13 @@
         "layerType": "cluster",
         "visible": false,
         "attributes": [{
-            "name": "obj",
-            "title": ""
+            "name": "obj"
         }, {
-            "name": "typ",
-            "title": ""
+            "name": "typ"
         }, {
-            "name": "egn",
-            "title": ""
+            "name": "egn"
         }, {
-            "name": "status",
-            "title": ""
+            "name": "status"
         }, {
             "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
             "fixedUrlName": "Lämna synpunkter och klagomål"
@@ -557,20 +553,20 @@
         ]
       ],
         "BM_lim_p": [
-            [{  "filter": "[egn] == 'Utan avvikelse'",
+            [{
                 "icon": {
                     "src": "img/png/BM_lim_p0.png"
-                }
+                },  "filter": "[egn] == 'Utan avvikelse'"
             }],
-            [{  "filter": "[egn] == 'Med avvikelse'",
+            [{
                 "icon": {
                     "src": "img/png/BM_lim_p1.png"
-                }
+                },  "filter": "[egn] == 'Med avvikelse'"
             }],
-            [{  "filter": "[egn] == 'null'",
+            [{
                 "icon": {
                     "src": "img/png/BM_lim_p2.png"
-                }
+                },  "filter": "[egn] == 'null'"
             }]
         ],
         "BM_nar_y": [

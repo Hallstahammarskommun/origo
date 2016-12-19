@@ -129,14 +129,14 @@ function init(el, mapOptions) {
                 var wfsSource = wfs(layerOptions);
                 layers.push(createVectorLayer(layerOptions, wfsSource));
             }
-            else if(layer.type == 'AGS_FEATURE') {
+            /*else if(layer.type == 'AGS_FEATURE') {
                 var agsFeatureSource = agsFeature(layerOptions);
                 layers.push(createVectorLayer(layerOptions, agsFeatureSource));
             }
             else if(layer.type == 'AGS_TILE') {
                 var agsTileSource = agsTile(layerOptions);
                 layers.push(createTileLayer(layerOptions, agsTileSource));
-            }
+            }*/
             else if(layer.type == 'GEOJSON') {
                 var geojsonSource = geojson(layerOptions);
                 layers.push(createVectorLayer(layerOptions, geojsonSource));
@@ -502,7 +502,7 @@ function init(el, mapOptions) {
         });
         return vectorSource;
     }
-    function agsFeature(options) {
+    /*function agsFeature(options) {
         var vectorSource = null;
         var esriSrs = settings.projectionCode.split(':').pop();
         var serverUrl = settings.source[options.sourceName].url;
@@ -562,7 +562,7 @@ function init(el, mapOptions) {
             url: url
         });
         return tileSource;
-    }
+    }*/
     function xyz(options) {
         var format = options.sourceName.split('.')[1],
         url = options.sourceName.split('.')[0] + '/{z}/{x}/{y}.';

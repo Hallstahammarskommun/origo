@@ -57,6 +57,9 @@ function init() {
     }));
 
     bindUIActions();
+    if (/Mobi/.test(navigator.userAgent)) {
+        toggle();
+      }
 }
 function bindUIActions() {
   settings.geolocateButtonId.on('click', function(e) {
@@ -69,11 +72,11 @@ function bindUIActions() {
 function toggle() {
   if(settings.geolocateButton.hasClass('o-geolocation-button-true')){
     settings.geolocateButton.removeClass('o-geolocation-button-true');
-    geolocation.setTracking(false);
+    //geolocation.setTracking(false);
 
-    geolocation.un('change', getPositionVal);
-    map.un('postcompose',render);
-    map.removeOverlay(marker);
+    //geolocation.un('change', getPositionVal);
+    //map.un('postcompose',render);
+    //map.removeOverlay(marker);
   }
   else {
     settings.geolocateButton.addClass('o-geolocation-button-true');
@@ -84,6 +87,10 @@ function toggle() {
     geolocation.setTracking(true); // Start position tracking
     map.on('postcompose', render);
     map.render();
+
+    map.once("pointerdrag", function() {
+          toggle();
+    });
   }
 }
 function getPositionVal() {

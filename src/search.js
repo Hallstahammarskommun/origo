@@ -183,7 +183,6 @@ function offClearSearch() {
     mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
 }*/
 function showFeatureInfo(features, title, content) {
-    Viewer.removeOverlays();
     var obj = {};
     obj.feature = features[0];
     obj.title = title;
