@@ -136,7 +136,7 @@ function init(el, mapOptions) {
             else if(layer.type == 'AGS_TILE') {
                 var agsTileSource = agsTile(layerOptions);
                 layers.push(createTileLayer(layerOptions, agsTileSource));
-            }*/
+            }
             else if(layer.type == 'GEOJSON') {
                 var geojsonSource = geojson(layerOptions);
                 layers.push(createVectorLayer(layerOptions, geojsonSource));
@@ -144,7 +144,7 @@ function init(el, mapOptions) {
             else if(layer.type == 'XYZ') {
                 var xyzSource = xyz(layerOptions);
                 layers.push(createTileLayer(layerOptions, xyzSource));
-            }
+            }*/
             else if(layer.type == 'GROUP') {
                 layers.push(createLayerGroup(layer.layers, layer));
             }
@@ -463,13 +463,13 @@ function init(el, mapOptions) {
            })
         })
     }
-    function geojson(options) {
+    /*function geojson(options) {
         return new ol.source.Vector({
             attributions: options.attribution,
             url: options.sourceName,
             format: new ol.format.GeoJSON()
         })
-    }
+    }*/
     function wfs(options) {
         var vectorSource = null;
         var serverUrl = settings.source[options.sourceName].url;
@@ -562,7 +562,7 @@ function init(el, mapOptions) {
             url: url
         });
         return tileSource;
-    }*/
+    }
     function xyz(options) {
         var format = options.sourceName.split('.')[1],
         url = options.sourceName.split('.')[0] + '/{z}/{x}/{y}.';
@@ -574,7 +574,7 @@ function init(el, mapOptions) {
             url: url
         });
         return tileSource;
-    }
+    }*/
     function wfsCql(relations, coordinates) {
             var url, finishedQueries = 0;
             cqlQuery = [];
@@ -910,9 +910,15 @@ function init(el, mapOptions) {
             map.removeOverlay(overlays);
         }
       } else {
-        map.getOverlays().clear();
-      }
-    }
+           overlays = map.getOverlays();
+           overlays.forEach(function(overlay) {
+             if (!(overlay.getId() == "geolocation_marker")){
+               map.removeOverlay(overlay);
+             }
+           });
+       //  map.getOverlays().clear();
+       }
+     }
 
 module.exports.init = init;
 module.exports.createLayers = createLayers;
@@ -936,7 +942,7 @@ module.exports.getMapSource = getMapSource;
 module.exports.getResolutions = getResolutions;
 module.exports.addWMS = addWMS;
 module.exports.addWMTS = addWMTS;
-module.exports.geojson = geojson;
+//module.exports.geojson = geojson;
 module.exports.wfs = wfs;
 module.exports.wfsCql = wfsCql;
 module.exports.getCqlQuery = getCqlQuery;

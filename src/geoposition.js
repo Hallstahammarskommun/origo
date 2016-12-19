@@ -40,6 +40,7 @@ function init() {
     $('#o-map').prepend(markerImg);
     markerEl = $('#o-geolocation_marker').get(0);
     marker = new ol.Overlay({
+      id: 'geolocation_marker',
       positioning: 'center-center',
       element: markerEl,
       stopEvent: false
@@ -105,10 +106,10 @@ function getPositionVal() {
 function addPosition(position, heading, m, speed) {
   var x = position[0];
   var y = position[1];
-  var fCoords = positions.getCoordinates();
-  var previous = fCoords[fCoords.length - 1];
-  var prevHeading = previous && previous[2];
-  if (prevHeading) {
+  //var fCoords = positions.getCoordinates();
+  //var previous = fCoords[fCoords.length - 1];
+  //var prevHeading = previous && previous[2];
+  /*if (prevHeading) {
     var headingDiff = heading - this.mod(prevHeading);
 
     // force the rotation change to be less than 180°
@@ -117,18 +118,18 @@ function addPosition(position, heading, m, speed) {
       headingDiff = - sign * (2 * Math.PI - Math.abs(headingDiff));
     }
     heading = prevHeading + headingDiff;
-  }
+  }*/
   positions.appendCoordinate([x, y, heading, m]);
 
   // only keep the 20 last coordinates
   positions.setCoordinates(positions.getCoordinates().slice(-20));
 
   // FIXME use speed instead
-  if (heading && speed) {
+  /*if (heading && speed) {
     markerEl.src = 'img/geolocation_marker_heading.png';
-  } else {
+  } else {*/
     markerEl.src = 'img/geolocation_marker.png';
-  }
+  //}
 
   var previousM = 0;
   // change center and rotation before render
@@ -155,7 +156,7 @@ function addPosition(position, heading, m, speed) {
   });
 
 }
-function mod(n) {
+/*function mod(n) {
   return ((n % (2 * Math.PI)) + (2 * Math.PI)) % (2 * Math.PI);
 }
 function getCenterWithHeading(position, rotation, resolution) {
@@ -166,7 +167,7 @@ function getCenterWithHeading(position, rotation, resolution) {
     position[0] - Math.sin(rotation) * height * resolution * 1 / 4,
     position[1] + Math.cos(rotation) * height * resolution * 1 / 4
   ];
-}
+}*/
 function render() {
   map.render;
 }
@@ -176,6 +177,6 @@ module.exports.bindUIActions = bindUIActions;
 module.exports.toggle = toggle;
 module.exports.getPositionVal = getPositionVal;
 module.exports.addPosition = addPosition;
-module.exports.mod = mod;
-module.exports.getCenterWithHeading = getCenterWithHeading;
+//module.exports.mod = mod;
+//module.exports.getCenterWithHeading = getCenterWithHeading;
 module.exports.render = render;
