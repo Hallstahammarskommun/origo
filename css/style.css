@@ -127,6 +127,9 @@ b, strong{
 .ol-rotate {
   top: 12.5em;
   left: .5em;
+  -webkit-transition: opacity .25s;
+  -moz-transition: opacity .25s;
+  -o-transition: opacity .25s;
   transition: opacity .25s;
 }
 .ol-rotate.ol-hidden {
@@ -303,6 +306,7 @@ button.ol-zoom-out {
   display: none;
 }
 .ol-box {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 2px;
   border: 2px solid blue;
@@ -340,6 +344,8 @@ button.ol-zoom-out {
 	display: none;
 	position: relative;
 	-webkit-transform: translate3d(0px, 0px, 0px);
+	-ms-transform: translate3d(0px, 0px, 0px);
+	transform: translate3d(0px, 0px, 0px);
 }
 .owl-carousel .owl-wrapper-outer{
 	height: calc(100% - 130px);
@@ -388,6 +394,7 @@ button.ol-zoom-out {
   -webkit-transform: translate3d(0,0,0);
   -moz-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 /*
 * 	Owl Carousel Owl Demo Theme
@@ -781,6 +788,7 @@ button.o-button:focus {
   position: absolute;
   -webkit-transition: opacity 0.2s 1s ease;
   -moz-transition: opacity 0.2s 1s ease;
+  -o-transition: opacity 0.2s 1s ease;
   -ms-transition: opacity 0.2s 1s ease;
   transition: opacity 0.2s 1s ease;
   visibility: hidden;  /*display:non can't be used with transition*/
@@ -933,6 +941,8 @@ button.o-home-button:after {
 	transform: translateX(0);
 	-ms-transition: .3s ease all;
 	-webkit-transition: .3s ease all;
+	-moz-transition: .3s ease all;
+	-o-transition: .3s ease all;
 	transition: .3s ease all;
 }
 .o-touch #o-mapmenu{
@@ -992,6 +1002,8 @@ button.o-home-button:after {
   transform: translateX(0);
   -ms-transition: .1s ease all;
   -webkit-transition: .1s ease all;
+  -moz-transition: .1s ease all;
+  -o-transition: .1s ease all;
   transition: .1s ease all;
 }
 /*end sidebar*/
@@ -1206,6 +1218,7 @@ button.o-home-button:after {
 .o-sidebar .o-image-attribution,
 .o-popup .o-image-attribution{
   background-color: rgba(0,0,0,0.5);
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: rgb(220,220,220);
   text-align: right;
@@ -1351,6 +1364,8 @@ li .o-legend-item-img {
   outline: none;
   padding: 8px 12px;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 324px
 }
 .multiple-datasets {
