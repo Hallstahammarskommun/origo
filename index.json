@@ -109,7 +109,7 @@
         "attributes": [{
             "name": "TEXT",
             "url": "PLAN_ID",
-            "urlPrefix": "http://hallstahammar.se/globalassets/4-bo-och-bygga/detaljplaner/arken/",
+            "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken/",
             "urlSuffix": ".pdf"
         }]
     }, {
@@ -190,9 +190,6 @@
         }, {
           "name": "marktyp",
           "title": "Markering: "
-        }, {
-          "name": "rh2000",
-          "title": "Z: "
         }]
         }, {
         "name": "BM_elf_y",
@@ -209,12 +206,10 @@
     }, {
         "name": "BM_lim_p",
         "source": "local",
-        "style": "point",
-        "clusterStyle": "BM_lim_p_cluster",
+        "style": "BM_lim_p",
         "title": "Livsmedelsinspektion",
         "group": "energi",
         "type": "WFS",
-        "layerType": "cluster",
         "visible": false,
         "attributes": [{
             "name": "obj"
@@ -556,17 +551,19 @@
             [{
                 "icon": {
                     "src": "img/png/BM_lim_p0.png"
-                },  "filter": "[egn] == 'Utan avvikelse'"
+                },
+                "filter": "[egn] == 'Utan avvikelse'"
             }],
             [{
                 "icon": {
                     "src": "img/png/BM_lim_p1.png"
-                },  "filter": "[egn] == 'Med avvikelse'"
+                },
+                "filter": "[egn] == 'Med avvikelse'"
             }],
             [{
                 "icon": {
                     "src": "img/png/BM_lim_p2.png"
-                },  "filter": "[egn] == 'null'"
+                }
             }]
         ],
         "BM_nar_y": [
