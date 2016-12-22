@@ -12,12 +12,9 @@ var symbolSize = 20;
 var styleSettings;
 
 var mapMenu;
-var hasMapLegend;
 
 function init(opt_options) {
     var options = opt_options || {};
-
-    hasMapLegend = options.hasOwnProperty('hasMapLegend') ? options.hasMapLegend : true;
 
     styleSettings = viewer.getStyleSettings();
 
@@ -118,18 +115,6 @@ function createStroke(strokeProperties) {
     stroke += '"/>';
     return stroke;
 }
-function createLegendItem(layerid) {
-    var layername = layerid.split('o-legend-').pop();
-    var layer = viewer.getLayer(layername);
-    var legendItem = '<li class="o-legend ' + layername + '" id="' + layerid + '"><div class ="o-legend-item"><div class="o-checkbox">' +
-                        '<svg class="o-icon-fa-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-square-o"></use></svg>' +
-                        '<svg class="o-icon-fa-check-square-o"><use xlink:href="css/svg/fa-icons.svg#fa-check-square-o"></use></svg>' +
-                    '</div>';
-    legendItem +=  layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
-    var title = '<div class="o-legend-item-title">' + layer.get('title') + '</div></div></li>';
-    legendItem += title;
-    return legendItem;
-}
 function addLegend(groups) {
       var layers = viewer.getLayers().filter(function(layer) {
             if(!layer.get('editable')) {
@@ -170,15 +155,6 @@ function addLegend(groups) {
               toggleGroup($(this));
               evt.preventDefault();
           });
-      }
-
-      //Add map legend unless set to false
-      if(hasMapLegend) {
-          var mapLegend = '<div id="o-map-legend"><ul id="o-legend-overlay"><li class="o-legend o-hidden"><div class ="o-toggle-button o-toggle-button-max">' +
-                              '<svg class="o-icon-fa-angle-double-down"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-down"></use></svg>' +
-                              '<svg class="o-icon-fa-angle-double-up"><use xlink:href="css/svg/fa-icons.svg#fa-angle-double-up"></use></svg>' +
-                          '</div></li><li><ul id="o-overlay-list"></li></ul></ul><ul id="o-map-legend-background"></ul></div>';
-          $('#o-map').append(mapLegend);
       }
 
       //Add layers to legend

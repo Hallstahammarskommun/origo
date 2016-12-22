@@ -1251,17 +1251,6 @@ button.o-home-button:after {
   padding: 5px;
   width: 100%;
 }
-#o-map-legend {
-  background-color: #fff;
-  border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
-  box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
-  left: .5em;
-  bottom: 2.2em;
-  padding: 4px;
-  position: absolute;
-  z-index: 1;
-}
 li .o-legend-header {
 	background-color: #f7f7f7;
 }
@@ -1304,26 +1293,6 @@ li .o-legend-item-img {
   float: left;
   padding-top: 5px;
   width: 1.5em;
-}
-#o-map-legend .o-legend-item {
-  padding-left: 0;
-}
-#o-map-legend-background li {
-  display: inline;
-}
-#o-map-legend-background .o-legend-item {
-  display: inline;
-  float: left;
-  padding: 3px;
-}
-#o-map-legend-background .o-check-true-img .o-legend-item-img{
-  border: 1px solid #0097cf;
-}
-#o-map-legend-background li .o-legend-item.check-true-img {
-  background-color: #C5C5C5;
-}
-#o-map-legend-background .o-check-false-img .o-legend-item-img{
-  border: 1px solid #A6A6A6;
 }
 /*print module*/
 .print-logo img {
@@ -1601,9 +1570,6 @@ li .o-legend-item-img {
 .ol-attribution ul {
   color: #000;
 }
-#o-map-legend {
-  display: none;
-}
 #o-search-button-close {
 	display: none
 }
@@ -1690,9 +1656,6 @@ button.o-button:focus {
 }
 }
 @media screen and (max-width: 500px) {
-#o-map-legend {
-  display: none;
-}
 .ol-zoom {
   top: auto;
 	bottom: 8em;
