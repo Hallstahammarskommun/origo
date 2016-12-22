@@ -157,7 +157,7 @@
     "ol.geom.LineString#getCoordinateAtM",
     "ol.geom.MultiLineString#getCoordinates",
     "ol.geom.MultiLineString#getFirstCoordinate",
-	"ol.geom.MultiLineString#getLineStrings",
+    "ol.geom.MultiLineString#getLineStrings",
     "ol.geom.MultiLineString#getType",
     "ol.geom.MultiLineString#setCoordinates",
     "ol.geom.MultiPoint",
