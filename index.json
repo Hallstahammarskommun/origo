@@ -96,6 +96,7 @@
         "expanded": true
     }],
     "layers": [{
+        "attribution": "Kartan saknar rättsverkan.",
         "name": "granser",
         "source": "wms",
         "style": "granser",
@@ -322,7 +323,7 @@
         "type": "WFS",
         "visible": true
     }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "attribution": "&copy Lantmäteriet Geodatasamverkan.",
         "format": "image/jpeg",
         "group": "background",
         "name": "Hallstahammar:topowebbkartan_nedtonad",
@@ -332,7 +333,7 @@
         "style": "karta_gra",
         "visible": true
     }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "attribution": "&copy Lantmäteriet Geodatasamverkan.",
         "format": "image/jpeg",
         "group": "background",
         "name": "Hallstahammar:topowebbkartan",
@@ -342,7 +343,7 @@
         "style": "karta_farg",
         "visible": false
     }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "attribution": "&copy Lantmäteriet Geodatasamverkan.",
         "format": "image/jpeg",
         "group": "background",
         "name": "Hallstahammar:orto025",
@@ -498,10 +499,15 @@
             "icon": {
               "src": "img/png/droppe_black.png"
             },
-            "filter": "[matning_obj] == '200'"
+            "filter": "[matning_typ] == '1000'"
           }], [{
             "icon": {
               "src": "img/png/drop_blue.png"
+            },
+            "filter": "[matning_obj] == '200'"
+          }], [{
+            "icon": {
+              "src": "img/png/droppe_orange.png"
             },
             "filter": "[matning_obj] == '100'"
           }], [{
