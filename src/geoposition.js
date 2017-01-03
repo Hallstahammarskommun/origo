@@ -150,6 +150,9 @@ function addPosition(position, heading, m, speed) {
       }
       else if (c && geolocation.getTracking()) {
         marker.setPosition(c);
+        if (settings.geolocateButton.hasClass('geolocation-button-true')) {
+          map.getView().setCenter(c);
+        }
       }
     }
     return true; // Force animation to continue
