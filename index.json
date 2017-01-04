@@ -21,8 +21,8 @@
     }, {
       "name": "about",
       "options": {
-        "title": "Om Origo",
-        "content": "<p>Origo är ett ramverk för webbkartor. Ramverket bygger på JavaScript-biblioteket OpenLayers 3. Du kan använda Origo för att skapa egna webbaserade kartapplikationer.</p><br><p>Projektet drivs och underhålls av ett antal svenska kommuner. Besök gärna <a href='https://github.com/origo-map/origo' target='_blank'>Origo på GitHub</a> för mer information.</p>"
+        "title": "Om kartan",
+        "content": "<p>Hallstakartan är en karttjänst framtagen av tekniska förvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><br><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><br><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
       }
     }, {
         "name": "measure"
