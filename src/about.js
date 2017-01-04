@@ -26,8 +26,8 @@ function init(opt_options) {
 function render() {
   var el = Utils.createListButton({
     id: 'o-about',
-    iconCls: 'o-icon-fa-info-circle',
-    src: 'css/svg/fa-icons.svg#fa-info-circle',
+    iconCls: 'o-icon-fa-info',
+    src: 'css/svg/fa-icons.svg#fa-info',
     text: buttonText
   });
   $('#o-menutools').append(el);
