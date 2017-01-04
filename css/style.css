@@ -1593,7 +1593,8 @@ li .o-legend-item-img {
 }
 .o-icon-menu-fa-times,
 .o-icon-fa-share-square-o,
-.o-icon-fa-print {
+.o-icon-fa-print,
+.o-icon-fa-info-circle {
 	padding: 0.75em;
 }
 .o-close-button:hover .o-icon-fa-times{
