@@ -141,6 +141,7 @@
     "ol.geom.Geometry",
     "ol.geom.Geometry#getExtent",
     "ol.geom.GeometryCollection",
+    "ol.geom.GeometryCollection#getType",
     "ol.geom.LineString",
     "ol.geom.LineString#appendCoordinate",
     "ol.geom.LineString#clone",
