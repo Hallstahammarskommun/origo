@@ -908,8 +908,9 @@ button.o-button:focus {
 }
 /**/
 #o-window-button {
-  left: .5em;
-  top: 10em;
+	bottom: 6.5em;
+	left: .5em;
+  top: auto;
   z-index: 5;
 }
 button.o-window-button:after {
