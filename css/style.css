@@ -1337,6 +1337,9 @@ li .o-legend-item-img {
   appearance: none;
   width: 324px
 }
+.o-search-field::-ms-clear {
+	display: none;
+}
 .multiple-datasets {
   border-bottom: 1px solid #e6e6e6;
   margin: 0 20px 5px 20px;
