@@ -125,7 +125,7 @@ b, strong{
   top: 7.5em;
 }*/
 .ol-rotate {
-  top: 12.5em;
+  top: 5.5em;
   left: .5em;
   -webkit-transition: opacity .25s;
   -moz-transition: opacity .25s;
@@ -1628,7 +1628,7 @@ button.o-button:focus {
 	border-radius: 2em;
 }
 .ol-rotate {
-  bottom: 3.5em;
+  bottom: 9.5em;
 	top: auto;
 }
 #o-measure-button {
