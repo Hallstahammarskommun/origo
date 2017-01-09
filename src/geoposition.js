@@ -150,7 +150,7 @@ function addPosition(position, heading, m, speed) {
       }
       else if (c && geolocation.getTracking()) {
         marker.setPosition(c);
-        if (settings.geolocateButton.hasClass('geolocation-button-true')) {
+        if (settings.geolocateButton.hasClass('o-geolocation-button-true')) {
           map.getView().setCenter(c);
         }
       }
