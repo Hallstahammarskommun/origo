@@ -184,7 +184,6 @@
         "source": "local",
         "style": "TK_w_stp_p",
         "title": "Stompunkter",
-        "group": "bygga",
         "type": "WFS",
         "visible": false,
         "attributes": [{
