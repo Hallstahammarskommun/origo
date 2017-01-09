@@ -1568,7 +1568,7 @@ li .o-legend-item-img {
   font: 80% normal, sans-serif;
   pointer-events: none;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1280px) {
 .ol-scale-line, .ol-scale-line-inner {
   display: none;
 }
