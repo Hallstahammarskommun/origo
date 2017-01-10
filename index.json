@@ -103,7 +103,10 @@
         "format": "image/png",
         "group": "bygga",
         "type": "WMS",
-        "visible": false
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }]
     }, {
         "name": "PL_POLYGON",
         "source": "local",
