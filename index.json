@@ -96,7 +96,7 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "granser",
+        "name": "Hallstahammar:Fastighet",
         "source": "wms",
         "style": "granser",
         "title": "Fastighetsgränser",
