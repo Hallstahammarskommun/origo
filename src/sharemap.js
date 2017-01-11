@@ -19,7 +19,7 @@ function init(){
     var el = utils.createListButton({
         id: 'o-share',
         iconCls: 'o-icon-fa-share-square-o',
-        src: 'css/svg/fa-icons.svg#fa-share',
+        src: '#fa-share',
         text: ''
     });
     $('#o-menutools').append(el);
