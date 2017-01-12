@@ -506,8 +506,6 @@ function init(el, mapOptions) {
 
         //If cql filter then bbox must be used in the filter.
         var geometryName = options.geometryName;
-        var queryFilter = options.filter ? '&CQL_FILTER=' + options.filter + ' AND BBOX(' + geometryName + ',' : '&BBOX=';
-        var bboxProjectionCode = options.filter ? "'" + settings.projectionCode + "')" : settings.projectionCode;
         vectorSource = new ol.source.Vector({
           attributions: options.attribution,
           format: new ol.format.GeoJSON({geometryName: options.geometryName}),
@@ -516,8 +514,7 @@ function init(el, mapOptions) {
                   '?service=WFS&' +
                   'version=1.1.0&request=GetFeature&typeName=' + options.featureType +
                   '&outputFormat=application/json' +
-                  '&srsname=' + settings.projectionCode +
-                  queryFilter + extent.join(',') + ',' + bboxProjectionCode;
+                  '&srsname=' + settings.projectionCode
               $.ajax({
                 url: url,
                 cache: false
@@ -526,9 +523,7 @@ function init(el, mapOptions) {
                   vectorSource.addFeatures(vectorSource.getFormat().readFeatures(response));
               });
           },
-          strategy: ol.loadingstrategy.tile(ol.tilegrid.createXYZ({
-              maxZoom: settings.resolutions.length
-          }))
+          strategy: ol.loadingstrategy.all
         });
         return vectorSource;
     }
