@@ -2,15 +2,16 @@
  * Copyright 2016 Origo
  * Licensed under BSD 2-Clause (https://github.com/origo-map/origo/blob/master/LICENSE.txt)
  * ======================================================================== */
- "use strict";
+"use strict";
 
 var ol = require('openlayers');
 var $ = require('jquery');
 var viewer = require('./viewer');
 var modal = require('./modal');
+var featureInfo = require('./featureinfo');
 
 var srsName = undefined;
-var source = undefined;
+var editSource = undefined;
 var geometryType = undefined;
 var geometryName = undefined;
 var url = undefined;
@@ -22,20 +23,22 @@ var title = undefined;
 var draw = undefined;
 var hasDraw = undefined;
 var hasAttribute = undefined;
+var hasSnap = undefined;
 var select = undefined;
 var modify = undefined;
+var snap = undefined;
 var dirty = undefined;
 var format = undefined;
 var serializer = undefined;
 
 module.exports = function() {
   $(document).on('toggleEdit', toggleEdit);
-};
+}
 
 function setEditLayer(options) {
   removeInteractions();
   srsName = options.srsName;
-  source = options.source;
+  editSource = options.source;
   geometryType = options.geometryType;
   geometryName = options.geometryName;
   url = options.url;
@@ -45,7 +48,7 @@ function setEditLayer(options) {
   attributes = options.attributes;
   title = options.title;
   draw = new ol.interaction.Draw({
-    source: source,
+    source: editSource,
     'type': geometryType,
     geometryName: geometryName
   });
@@ -62,9 +65,20 @@ function setEditLayer(options) {
   dirty = {};
   map.addInteraction(select);
   map.addInteraction(modify);
+  map.addInteraction(draw);
   format = new ol.format.WFS();
   serializer = new XMLSerializer();
   draw.on('drawend', onDrawEnd, this);
+  setActive();
+
+  //If snap should be active then add snap internactions for all snap layers
+  hasSnap = options.hasOwnProperty('snap') ? options.snap : true;
+  if (hasSnap) {
+    var selectionSource = featureInfo.getSelectionLayer().getSource();
+    var snapSources = options.snapLayers ? getSnapSources(options.snapLayers) : [editSource];
+    snapSources.push(selectionSource);
+    snap = addSnapInteraction(snapSources);
+  }
 }
 
 function isActive() {
@@ -102,7 +116,7 @@ function createForm(obj) {
       el = '<div><label>' + label + '</label><br><textarea id="' + id + '"' + maxLength + 'rows="3">' + val + '</textarea></div>';
       break;
     case 'checkbox':
-      var checked = val == true ? ' checked' : '';
+      var checked = val === true ? ' checked' : '';
       el = '<div class="o-form-checkbox"><label>' + label + '</label><input type="checkbox" id="' + id + '" value="' + val + '"' + checked + '></div>';
       break;
     case 'dropdown':
@@ -142,7 +156,7 @@ function deleteSelected() {
           if (result) {
             if (result.transactionSummary.totalDeleted === 1) {
               select.getFeatures().clear();
-              source.removeFeature(feature);
+              editSource.removeFeature(feature);
             } else {
               alert("There was an issue deleting the feature.");
             }
@@ -154,23 +168,15 @@ function deleteSelected() {
   }
 }
 
-function editAttributes(newFeature) {
+function editAttributes() {
 
-  var features = new ol.Collection();
-  //Get attributes from the newly drawn feature, else from the
-// selected feature and fill DOM elements with the values
-
-  if (newFeature){
-    features.push(newFeature);
-  }
-  else {
-    features = select.getFeatures();
-  }
-
+  //Get attributes from selected feature and fill DOM elements with the values
+  var features = select.getFeatures();
   if (features.getLength() === 1) {
     emitChangeEdit('attribute', true);
     var feature = features.item(0);
     if (attributes.length > 0) {
+
       //Create an array of defined attributes and corresponding values from selected feature
       var attributeObjects = attributes.map(function(attributeObject) {
         var obj = {};
@@ -214,7 +220,7 @@ function editAttributes(newFeature) {
       }
     });
 
-    onAttributesSave(feature, attributeObjects, newFeature);
+    onAttributesSave(feature, attributeObjects);
   }
 }
 
@@ -267,108 +273,13 @@ function onSelectRemove(evt) {
 
 function onDrawEnd(evt) {
   var feature = evt.feature;
-  editAttributes(feature);
-  emitChangeEdit('draw', false);
-}
-
-function cancelDraw() {
-  map.removeInteraction(draw);
-  hasDraw = false;
-  emitChangeEdit('draw', false);
-}
-
-function cancelAttribute() {
-  modal.closeModal();
-  emitChangeEdit('attribute', false);
-}
-
-function onAttributesSave(feature, attributes, newFeature) {
-  if (newFeature){
-    $('.o-close-button').on('click', function(e) {
-      cancelDraw();
-      hasDraw = false;
-      source.removeFeature(newFeature);
-      modal.closeModal();
-      e.preventDefault();
-    });
-  }
-
-  $('#o-save-button').on('click', function(e) {
-    var editEl = {};
-    //Read values from form
-    for (var i = 0; i < attributes.length; i++) {
-      //Get the input container class
-      var containerClass = '.' + attributes[i].elId.slice(1);
-      // If hidden element it should be excluded
-      if ($(containerClass).hasClass('hidden') === false) {
-        //Check if checkbox. If checkbox read state.
-        if ($(attributes[i].elId).attr('type') == 'checkbox') {
-          editEl[attributes[i].name] = $(attributes[i].elId).is(':checked') ? 1 : 0;
-        }
-        //Read value from input text, textarea or select
-        else {
-          editEl[attributes[i].name] = $(attributes[i].elId).val();
-        }
-      }
-    }
-    modal.closeModal();
-
-
-    var transactionOptions = {
-            gmlOptions: {srsName: srsName},
-            featureNS: featureNS,
-            featureType: featureType
-    };
-
-    if (newFeature){
-      saveNewFeature(newFeature, editEl, transactionOptions);
-    } else {
-      attributesSaveHandler(feature, editEl, transactionOptions);
-    }
-
-    $('#o-save-button').blur();
-    e.preventDefault();
-  });
-}
-
-function attributesSaveHandler(f, el, transactionOptions) {
-  var formEl = el;
-  var feature = f;
-  var fid = feature.getId();
-  var clone = new ol.Feature();
-  clone.setId(fid);
-  //get DOM values and set attribute values to cloned feature
-  for (var i = 0; i < attributes.length; i++) {
-    if (formEl.hasOwnProperty(attributes[i].name)) {
-      feature.set(attributes[i].name, formEl[attributes[i].name]);
-      clone.set(attributes[i].name, formEl[attributes[i].name]);
-    }
-  }
-
-  var node = format.writeTransaction(null, [clone], null, transactionOptions);
-  saveAttributes(node);
-}
-
-function saveAttributes(node){
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: serializer.serializeToString(node),
-    contentType: 'text/xml',
-    success: function(data) {
-      //alert('success');
+  var node = format.writeTransaction([feature], null, null, {
+    gmlOptions: {
+      srsName: srsName
     },
-    error: function(e) {
-      var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
-      alert('Error saving this feature to the server...<br><br>' +
-        errorMsg);
-    },
-    context: this
+    featureNS: featureNS,
+    featureType: featureType
   });
-}
-
-function saveNewFeature (feature, editEl, transactionOptions) {
-  var node = format.writeTransaction([feature], null, null, transactionOptions);
   $.ajax({
     type: "POST",
     url: url,
@@ -378,21 +289,101 @@ function saveNewFeature (feature, editEl, transactionOptions) {
       var result = readResponse(data);
       if (result) {
         var insertId = result.insertIds[0];
-        if (insertId == 'new0') {
+        if (insertId === 'new0') {
+
           // reload data if we're dealing with a shapefile store
-          source.clear();
+          editSource.clear();
         } else {
           feature.setId(insertId);
         }
-      attributesSaveHandler(feature, editEl, transactionOptions)
-
       }
-      map.removeInteraction(draw);
+      setActive();
       hasDraw = false;
     },
     error: function(e) {
-      map.removeInteraction(draw);
+      setActive();
       hasDraw = false;
+      var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
+      alert('Error saving this feature to the server...<br><br>' +
+        errorMsg);
+    },
+    context: this
+  });
+  emitChangeEdit('draw', false);
+}
+
+function cancelDraw() {
+  setActive();
+  hasDraw = false;
+  emitChangeEdit('draw', false);
+}
+
+function cancelAttribute() {
+  modal.closeModal();
+  emitChangeEdit('attribute', false);
+}
+
+function onAttributesSave(feature, attributes) {
+  $('#o-save-button').on('click', function(e) {
+    var editEl = {};
+
+    //Read values from form
+    for (var i = 0; i < attributes.length; i++) {
+
+      //Get the input container class
+      var containerClass = '.' + attributes[i].elId.slice(1);
+
+      // If hidden element it should be excluded
+      if ($(containerClass).hasClass('hidden') === false) {
+
+        //Check if checkbox. If checkbox read state.
+        if ($(attributes[i].elId).attr('type') === 'checkbox') {
+          editEl[attributes[i].name] = $(attributes[i].elId).is(':checked') ? 1 : 0;
+        }
+
+        //Read value from input text, textarea or select
+        else {
+          editEl[attributes[i].name] = $(attributes[i].elId).val();
+        }
+      }
+    }
+    modal.closeModal();
+    attributesSaveHandler(feature, editEl);
+    $('#o-save-button').blur();
+    e.preventDefault();
+  });
+}
+
+function attributesSaveHandler(f, el) {
+  var formEl = el;
+  var feature = f;
+  var fid = feature.getId();
+  var clone = new ol.Feature();
+  clone.setId(fid);
+
+  //get DOM values and set attribute values to cloned feature
+  for (var i = 0; i < attributes.length; i++) {
+    if (formEl.hasOwnProperty(attributes[i].name)) {
+      feature.set(attributes[i].name, formEl[attributes[i].name]);
+      clone.set(attributes[i].name, formEl[attributes[i].name]);
+    }
+  }
+
+  var node = format.writeTransaction(null, [clone], null, {
+    gmlOptions: {
+      srsName: srsName
+    },
+    featureNS: featureNS,
+    featureType: featureType
+  });
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: serializer.serializeToString(node),
+    contentType: 'text/xml',
+    success: function(data) {
+    },
+    error: function(e) {
       var errorMsg = e ? (e.status + ' ' + e.statusText) : "";
       alert('Error saving this feature to the server...<br><br>' +
         errorMsg);
@@ -405,12 +396,20 @@ function removeInteractions() {
   if (isActive()) {
     map.removeInteraction(modify);
     map.removeInteraction(select);
+    map.removeInteraction(draw);
+    snap.forEach(function(snapInteraction) {
+      map.removeInteraction(snapInteraction);
+    });
+    modify = undefined;
+    select = undefined;
+    draw = undefined;
+    snap = undefined;
   }
 }
 
 function startDraw() {
   if (hasDraw !== true && isActive()) {
-    map.addInteraction(draw);
+    setActive('draw');
     hasDraw = true;
     emitChangeEdit('draw', true);
   }
@@ -433,7 +432,7 @@ function addListener() {
 function readResponse(data) {
   var result;
   if (window.Document && data instanceof Document && data.documentElement &&
-    data.documentElement.localName == 'ExceptionReport') {
+    data.documentElement.localName === 'ExceptionReport') {
     alert(data.getElementsByTagNameNS(
       'http://www.opengis.net/ows', 'ExceptionText').item(0).textContent);
   } else {
@@ -462,5 +461,44 @@ function toggleEdit(e) {
       setEditLayer(e.options);
   } else if (e.tool === 'cancel') {
       removeInteractions();
+  }
+}
+
+function getSnapSources(layers) {
+  var sources = layers.map(function(layer) {
+    return viewer.getLayer(layer).getSource();
+  });
+  return sources;
+}
+
+function addSnapInteraction(sources) {
+  var snapInteractions = [];
+  sources.forEach(function(source) {
+    var interaction = new ol.interaction.Snap({
+      source: source
+    });
+    snapInteractions.push(interaction);
+    map.addInteraction(interaction);
+  });
+  return snapInteractions;
+}
+
+function setActive(editType) {
+  switch (editType) {
+    case 'modify':
+      draw.setActive(false);
+      modify.setActive(true);
+      select.setActive(true);
+      break;
+    case 'draw':
+      draw.setActive(true);
+      modify.setActive(true);
+      select.setActive(false);
+      break;
+    default:
+      draw.setActive(false);
+      modify.setActive(true);
+      select.setActive(true);
+      break;
   }
 }
