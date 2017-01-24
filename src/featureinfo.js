@@ -64,6 +64,10 @@ function init(opt_options) {
 
 }
 
+function getSelectionLayer() {
+  return selectionLayer.getFeatureLayer();
+}
+
 function getSelection() {
     var selection = {};
     selection.geometryType = selectionLayer.getFeatures()[0].getGeometry().getType();
@@ -197,6 +201,7 @@ function initCarousel(id, options, cb) {
 
 module.exports.init = init;
 module.exports.clear = clear;
+module.exports.getSelectionLayer = getSelectionLayer;
 module.exports.getSelection = getSelection;
 module.exports.getPin = getPin;
 module.exports.identify = identify;

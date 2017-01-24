@@ -14,12 +14,12 @@ var activeClass = 'o-control-active';
 var map = undefined;
 var srsName = undefined;
 var currentLayer;
-var fullEditableLayers;
 var editableLayers = {};
 var editableLayer = undefined;
 var $editAttribute = undefined;
 var $editDraw = undefined;
 var $editDelete = undefined;
+//var $editClose = undefined;
 var options = {};
 
 module.exports = function() {
@@ -33,27 +33,35 @@ function Init(opt_options) {
 
   $.extend(options, opt_options)
 
-  fullEditableLayers = viewer.getEditableLayers();
-
-  var editLayersName = layerNameArray(fullEditableLayers);
-
-  currentLayer = options.defaultLayer || editLayersName[editLayersName.length-1];
+  currentLayer = options.defaultLayer || options.editableLayers[0];
 
   map = viewer.getMap();
   srsName = viewer.getProjectionCode();
 
-  render(selectionModel(editLayersName.reverse()));
+  render(selectionModel(options.editableLayers));
 
   $('.o-map').on('enableInteraction', onEnableInteraction);
 
   $(document).on('changeEdit', toggleState);
 
   //set edit properties for editable console
-  editableLayers = setEditProps(editLayersName, map, srsName);
+  /*editableLayers = setEditProps(options, map, srsName);
+  //
+  options.editableLayers.forEach(function(layerName) {
+    var layer = viewer.getLayer(layerName);
+    layer.getSource().once('addfeature', function(e) {
+      editableLayers[layerName].geometryType = layer.getSource().getFeatures()[0].getGeometry().getType();
+      editableLayers[layerName].geometryName = layer.getSource().getFeatures()[0].getGeometryName();
+      if (layerName === currentLayer && options.isActive) {
+        emitEnableInteraction();
+      }
+    });
+  });*/
+  editableLayers = setEditProps(options, map, srsName);
 
   emitEnableInteraction();
 
-  viewer.getLayer(editLayersName[0]).setVisible(true);
+  viewer.getLayer(options.editableLayers[0]).setVisible(true);
 
   bindUIActions();
 
@@ -67,16 +75,7 @@ function render(selectOptions) {
   $editAttribute = $('#o-editor-attribute');
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
-}
-
-function layerNameArray(layers) {
-  var layerArray = [];
-
-  for(var i = 0; i < layers.length; i++) {
-      layerArray.push(layers[i].get('name'));
-  }
-
-  return layerArray;
+  //$editClose = $('#o-editor-close');
 }
 
 function bindUIActions() {
@@ -97,19 +96,27 @@ function bindUIActions() {
     $editDelete.blur();
     e.preventDefault();
   });
-  $('select[name="layer-dropdown"]').change(function() {
-
-    fullEditableLayers.filter(function(layer) {
-        if(layer.getVisible()) {
-            layer.setVisible(false)
-        }
+  /*$editClose.on('click', function(e) {
+    $('.o-map').first().trigger({
+      type: 'enableInteraction',
+      interaction: 'featureInfo'
     });
+    $editClose.blur();
+    e.stopPropagation();
+    e.preventDefault();
+  });*/
+  $('select[name="layer-dropdown"]').change(function() {
+    if(currentLayer.featureType){
+      viewer.getLayer(currentLayer.featureType).setVisible(false);
+    } else {
+      viewer.getLayer(currentLayer).setVisible(false);
+    }
 
     currentLayer = editableLayers[$(this).val()]
     emitToggleEdit('edit', {
+      //options: editableLayers[currentLayer]
       options: currentLayer
     });
-
     currentLayer.editableLayer.setVisible(true);
   });
 }
@@ -162,10 +169,12 @@ function selectionModel(layerNames) {
   return selectOptions;
 }
 
-function setEditProps(layerNames, map, srsName) {
+function setEditProps(options, map, srsName) {
+  var layerNames = options.editableLayers;
   var initialValue = {};
   var result = layerNames.reduce(function(layerProps, layerName) {
     var layer = viewer.getLayer(layerName);
+
     //get the layers source options
     var source = viewer.getMapSource()[layer.get('sourceName')];
 
@@ -182,6 +191,8 @@ function setEditProps(layerNames, map, srsName) {
       url: source.url,
       map: map
     };
+    layerProps[layerName].snap = options.hasOwnProperty('snap') ? options.snap : true;
+    layerProps[layerName].snapLayers = options.snapLayers || options.editableLayers;
     return layerProps;
   }, initialValue);
   return result;

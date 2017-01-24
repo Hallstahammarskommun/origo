@@ -15,6 +15,7 @@
     {
       "name": "editor",
       "options": {
+        "editableLayers": ["TK_w_are_p", "BU_w_fos_p", "BU_w_grs_p", "BU_w_gss_p", "TK_w_let_y", "TK_w_lim_y", "KS_w_opo_p", "TK_w_pak_y", "TK_w_pap_y", "TK_w_snr_l", "TK_w_stp_p"],
         "isActive": true
       }
     },
