@@ -9,6 +9,7 @@ var $ = require('jquery');
 var Viewer = require('./viewer');
 var Popup = require('./popup');
 var sidebar = require('./sidebar');
+var mapmenu = require('./mapmenu');
 var maputils = require('./maputils');
 var featurelayer = require('./featurelayer');
 var style = require('./style')();
@@ -122,6 +123,12 @@ function identify(items, target, coordinate) {
     }
 }
 function onClick(evt) {
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (width < 1280 && mapmenu.getTarget().hasClass('o-mapmenu-show')){
+        mapmenu.getTarget().removeClass('o-mapmenu-show');
+        $('#o-mapmenu-button button').removeClass('o-mapmenu-button-false');
+        $('#o-mapmenu-button button').addClass('o-mapmenu-button-true');
+    } else {
     savedPin = undefined;
     //Featurinfo in two steps. Concat serverside and clientside when serverside is finished
     var clientResult = getFeatureInfo.getFeaturesAtPixel(evt, clusterFeatureinfoLevel);
@@ -153,6 +160,7 @@ function onClick(evt) {
                 }
             });
     }
+  }
 }
 function setActive(state) {
     if(state === true) {
