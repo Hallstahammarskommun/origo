@@ -60,14 +60,14 @@
     ],
     "source": {
         "wms": {
-            "url": "https://karta.hallstahammar.se/geoserver/wms",
+            "url": "https://karta.hallstahammar.se/geoserver/Hallstahammar/wms",
             "version": "1.1.1"
         },
         "local": {
             "url": "https://karta.hallstahammar.se/geoserver/ows"
         },
         "basemap": {
-            "url": "https://karta.hallstahammar.se/geoserver/gwc/service/wmts"
+            "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
         }
     },
     "groups": [{
@@ -96,7 +96,7 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "Hallstahammar:Fastighet",
+        "name": "Fastighet",
         "source": "wms",
         "style": "granser",
         "title": "Fastighetsgränser",
@@ -327,7 +327,7 @@
         "attribution": "&copy Lantmäteriet Geodatasamverkan",
         "format": "image/jpeg",
         "group": "background",
-        "name": "Hallstahammar:topowebbkartan_nedtonad",
+        "name": "topowebbkartan_nedtonad",
         "source": "basemap",
         "title": "Karta, grå",
         "type": "WMTS",
@@ -337,7 +337,7 @@
         "attribution": "&copy Lantmäteriet Geodatasamverkan",
         "format": "image/jpeg",
         "group": "background",
-        "name": "Hallstahammar:topowebbkartan",
+        "name": "topowebbkartan",
         "source": "basemap",
         "title": "Karta, färg",
         "type": "WMTS",
@@ -347,7 +347,7 @@
         "attribution": "&copy Lantmäteriet Geodatasamverkan",
         "format": "image/jpeg",
         "group": "background",
-        "name": "Hallstahammar:orto025",
+        "name": "orto",
         "source": "basemap",
         "title": "Flygfoto",
         "type": "WMTS",

@@ -31,6 +31,7 @@ function init() {
 
   markerEl = $('#o-geolocation_marker').get(0);
   marker = new ol.Overlay({
+    id: 'geolocation-marker',
     positioning: 'center-center',
     element: markerEl,
     stopEvent: false
