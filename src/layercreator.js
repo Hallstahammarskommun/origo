@@ -11,12 +11,13 @@ var group = require('./layer/group');
 var type = {};
 type.WFS = require('./layer/wfs');
 //type.AGS_FEATURE = require('./layer/agsfeature');
-type.TOPOJSON = require('./layer/topojson');
+//type.TOPOJSON = require('./layer/topojson');
 //type.GEOJSON = require('./layer/geojson');
 type.WMS = require('./layer/wms');
 type.WMTS = require('./layer/wmts');
 //type.AGS_TILE = require('./layer/agstile');
 //type.XYZ = require('./layer/xyz');
+//type.OSM = require('./layer/osm');
 //type.GROUP = groupLayer;
 
 var layerCreator = function layerCreator(opt_options) {
