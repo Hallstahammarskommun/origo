@@ -25,6 +25,7 @@ var wms = function wms(layerOptions) {
   sourceOptions.attribution = wmsOptions.attribution;
   sourceOptions.projectionCode = viewer.getProjectionCode();
   sourceOptions.name = wmsOptions.name;
+  sourceOptions.format = wmsOptions.format;
 
   var wmsSource = createSource(sourceOptions);
   return tile(wmsOptions, wmsSource);
@@ -38,6 +39,7 @@ var wms = function wms(layerOptions) {
       projection: options.projectionCode,
       params: {
         'LAYERS': options.name,
+        'format': options.format, 
         'TILED': true,
         VERSION: options.version
       }
