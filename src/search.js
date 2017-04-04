@@ -35,6 +35,7 @@ var highlight;
 var projectionCode;
 var adress, fastighet, gatunamn;
 var urlAds, urlFat, urlGan;
+var overlay;
 
 typeahead.loadjQueryPlugin();
 
@@ -143,7 +144,6 @@ function onClearSearch() {
   $('#o-search-button-close').on('click', function (e) {
       $('.typeahead').typeahead('val', '');
       featureInfo.clear();
-      Viewer.removeOverlays();
       $('#o-search').removeClass('o-search-true');
       $('#o-search').addClass('o-search-false');
       $('#o-search .o-search-field.tt-input').val('');
@@ -154,9 +154,9 @@ function onClearSearch() {
 
 function showOverlay(data, coord) {
   var popup;
-  var overlay;
   var content;
-  Viewer.removeOverlays();
+  featureInfo.clear();
+  clear();
   popup = Popup('#o-map');
   overlay = new ol.Overlay({
       element: popup.getEl()
@@ -181,6 +181,10 @@ function showFeatureInfo(features, title, content) {
   obj.content = content;
   featureInfo.identify([obj], 'overlay', getCenter(features[0].getGeometry()));
   mapUtils.zoomToExent(features[0].getGeometry(), maxZoomLevel);
+}
+
+function clear() {
+  Viewer.removeOverlays(overlay);
 }
 
 /** There are several different ways to handle selected search result.

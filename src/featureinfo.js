@@ -19,17 +19,17 @@ var owlCarousel = require('../externs/owlcarousel-browserify');
 require('jquery-mousewheel')($);
 owlCarousel.loadjQueryPlugin();
 
-var selectionLayer = undefined,
-    savedPin = undefined,
-    options,
-    map,
-    pinning,
-    pinStyle,
-    selectionStyles,
-    showOverlay,
-    identifyTarget,
-    clusterFeatureinfoLevel;
-
+var selectionLayer = undefined;
+var savedPin = undefined;
+var options;
+var map;
+var pinning;
+var pinStyle;
+var selectionStyles;
+var showOverlay;
+var identifyTarget;
+var clusterFeatureinfoLevel;
+var overlay;
 
 function init(opt_options) {
     map = Viewer.getMap();
@@ -78,7 +78,7 @@ function getPin() {
     return savedPin;
 }
 function identify(items, target, coordinate) {
-    Viewer.removeOverlays();
+    clear();
     var content = items.map(function(i){
         return i.content;
     }).join('');
@@ -86,7 +86,7 @@ function identify(items, target, coordinate) {
     switch (target) {
         case 'overlay':
             var popup = Popup('#o-map');
-            var overlay = new ol.Overlay({
+            overlay = new ol.Overlay({
               element: popup.getEl()
             });
             map.addOverlay(overlay);
@@ -167,15 +167,14 @@ function setActive(state) {
         map.on('click', onClick);
     }
     else {
-        selectionLayer.clear();
-        Viewer.removeOverlays();
+        clear();
         map.un('click', onClick);
     }
 }
 function clear() {
     selectionLayer.clear();
     sidebar.setVisibility(false);
-    Viewer.removeOverlays();
+    Viewer.removeOverlays(overlay);
     //console.log("Clearing selection");
 }
 function onEnableInteraction(e) {
