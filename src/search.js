@@ -7,53 +7,65 @@
 var ol = require('openlayers');
 var $ = require('jquery');
 var Viewer = require('./viewer');
-var wktToFeature = require('./maputils')['wktToFeature'];
+var wktToFeature = require('./maputils').wktToFeature;
 var Popup = require('./popup');
-var typeahead = require('../externs/typeahead.bloodhound.browserify.js');
-typeahead.loadjQueryPlugin();
-var Bloodhound = require('../externs/typeahead.bloodhound.browserify.js').Bloodhound;
+var typeahead = require('../externs/typeahead.browserify.js'); typeahead.loadjQueryPlugin();
 var getFeature = require('./getfeature');
 var getAttributes = require('./getattributes');
 var featureInfo = require('./featureinfo');
 var mapUtils = require('./maputils');
 var getCenter = require('./geometry/getcenter');
 var utils = require('./utils');
-
+var map;
+var name;
+//var northing;
+//var easting;
+var geometryAttribute;
+//var idAttribute;
+//var layerNameAttribute;
+//var layerName;
+var titleAttribute;
+var contentAttribute;
+var maxZoomLevel;
+//var url;
+var title;
+var hintText;
+var hint;
+var highlight;
+var projectionCode;
 var adress, fastighet, gatunamn;
-var map,
-    name,
-    geometryAttribute,
-    titleAttribute,
-    contentAttribute,
-    maxZoomLevel,
-    urlAds,
-    urlFat,
-    urlGan,
-    title,
-    hintText,
-    hint,
-    highlight,
-    projectionCode;
+var urlAds, urlFat, urlGan;
 
-function init(options){
+typeahead.loadjQueryPlugin();
 
-    name = options.searchAttribute;
-    geometryAttribute = options.geometryAttribute;
-    urlAds = options.urlAds;
-    urlFat = options.urlFat;
-    urlGan = options.urlGan;
-    title = options.title || '';
-    titleAttribute = options.titleAttribute || undefined;
-    contentAttribute = options.contentAttribute || undefined;
-    maxZoomLevel: options.maxZoomLevel || 2;
-    hintText = options.hintText || "Sök i Hallstakartan";
-    hint = options.hasOwnProperty('hint') ? options.hint : true;
-    highlight = options.hasOwnProperty('highlight') ? options.highlight : true;
-    projectionCode = Viewer.getProjectionCode();
+function init(options) {
+  var el;
+  name = options.searchAttribute;
+  //northing = options.northing || undefined;
+  //easting = options.easting || undefined;
+  geometryAttribute = options.geometryAttribute;
+  urlAds = options.urlAds;
+  urlFat = options.urlFat;
+  urlGan = options.urlGan;
 
-    map = Viewer.getMap();
+  /** idAttribute in combination with layerNameAttribute
+  must be defined if search result should be selected */
+  //idAttribute = options.idAttribute;
+  //layerNameAttribute = options.layerNameAttribute || undefined;
+  //layerName = options.layerName || undefined;
+  //url = options.url;
+  title = options.title || '';
+  titleAttribute = options.titleAttribute || undefined;
+  contentAttribute = options.contentAttribute || undefined;
+  maxZoomLevel: options.maxZoomLevel || 2;
+  hintText = options.hintText || 'Sök i Hallstakartan';
+  hint = options.hasOwnProperty('hint') ? options.hint : true;
+  highlight = options.hasOwnProperty('highlight') ? options.highlight : true;
+  projectionCode = Viewer.getProjectionCode();
 
-    var el = '<div id="o-search-wrapper">' +
+  map = Viewer.getMap();
+
+  el = '<div id="o-search-wrapper">' +
                 '<div id="o-search" class="o-search o-search-false">' +
                     '<input class="o-search-field typeahead form-control" type="text" placeholder="' + hintText + '">' +
                     '<button id="o-search-button-close">' +
@@ -63,89 +75,72 @@ function init(options){
                     '</button>' +
                 '</div>' +
               '</div>';
-    $('#o-map').append(el);
-    // constructs the suggestion engine
-    // fix for internet explorer
-        // constructs the suggestion engine
-        // fix for internet explorer
-    $.support.cors = true;
-    fastighet = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: {
-        url: urlFat + '?q=&QUERY',
-        wildcard: '&QUERY',
+  $('#o-map').append(el);
+
+  // fix for internet explorer
+  $.support.cors = true;
+
+  $('.typeahead').typeahead({
+    autoSelect: true,
+    hint: hint,
+    highlight: highlight,
+    minLength: 1
+  },
+  {
+    name: 'fastighet',
+    limit: 5,
+    displayKey: name,
+    source: function (query, syncResults, asyncResults) {
+      $.get(urlFat + '?q=' + query, function (data) {
+        asyncResults(data);
+      });
+    },
+    templates: {
+      footer: '<h3 class="multiple-datasets"></h3>'
     }
-    });
-    adress = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: {
-        url: urlAds + '?q=%QUERY',
-        wildcard: '%QUERY'
-      }
-    });
-    gatunamn = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: {
-        url: urlGan + '?q=%QUERY',
-        wildcard: '%QUERY'
-      }
-    });
-
-    adress.initialize();
-    fastighet.initialize();
-    gatunamn.initialize();
-
-    $('.typeahead').typeahead({
-      autoSelect: true,
-      hint: hint,
-      highlight: highlight,
-      minLength: 2
-    }, {
-      name: 'fastighet',
+  }, {
+    name: 'gatunamn',
+    limit: 5,
+    displayKey: name,
+    source: function (query, syncResults, asyncResults) {
+      $.get(urlGan + '?q=' + query, function (data) {
+        asyncResults(data);
+      });
+    },
+    templates: {
+      footer: '<h3 class="multiple-datasets"></h3>'
+    }
+  }, {
+      name: 'adress',
       limit: 5,
       displayKey: name,
-      source: fastighet,
-      templates: {
-          footer: '<h3 class="multiple-datasets"></h3>'
-        }
-      }, {
-        name: 'gatunamn',
-        limit: 5,
-        displayKey: name,
-        source: gatunamn,
-        templates: {
-            footer: '<h3 class="multiple-datasets"></h3>'
-          }
-      }, {
-        name: 'adress',
-        limit: 5,
-        displayKey: name,
-        source: adress
-      });
+      source: function (query, syncResults, asyncResults) {
+        $.get(urlAds + '?q=' + query, function (data) {
+          asyncResults(data);
+        });
+      }
+    });
 
-    bindUIActions();
+  bindUIActions();
 }
-function bindUIActions() {
-        $('.typeahead').on('typeahead:selected', selectHandler);
 
-        $('#o-search .o-search-field').on('input', function() {
-          if($('#o-search .o-search-field.tt-input').val() &&  $('#o-search').hasClass('o-search-false')) {
+function bindUIActions() {
+  $('.typeahead').on('typeahead:selected', selectHandler);
+
+  $('#o-search .o-search-field').on('input', function() {
+          if ($('#o-search .o-search-field.tt-input').val() && $('#o-search').hasClass('o-search-false')) {
             $('#o-search').removeClass('o-search-false');
             $('#o-search').addClass('o-search-true');
             onClearSearch();
-          }
-          else if(!($('#o-search .o-search-field.tt-input').val()) &&  $('#o-search').hasClass('o-search-true')) {
+          } else if (!($('#o-search .o-search-field.tt-input').val()) && $('#o-search').hasClass('o-search-true')) {
             $('#o-search').removeClass('o-search-true');
             $('#o-search').addClass('o-search-false');
-            offClearSearch();
           }
         });
 }
+
 function onClearSearch() {
-    $('#o-search-button-close').on('click', function(e) {
+  $('#o-search-button-close').on('click', function (e) {
       $('.typeahead').typeahead('val', '');
       featureInfo.clear();
       Viewer.removeOverlays();
@@ -157,42 +152,38 @@ function onClearSearch() {
     });
 }
 
-function offClearSearch() {
-    console.log('offClearSearch');
-    // $('#search-button').off('click', function(e) {
-    //   e.preventDefault();
-    // });
+function showOverlay(data, coord) {
+  var popup;
+  var overlay;
+  var content;
+  Viewer.removeOverlays();
+  popup = Popup('#o-map');
+  overlay = new ol.Overlay({
+      element: popup.getEl()
+    });
+
+  map.addOverlay(overlay);
+
+  overlay.setPosition(coord);
+  content = data[name];
+  popup.setContent({
+      content: content,
+      title: title
+    });
+  popup.setVisibility(true);
+  mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
 }
-/*function showOverlay(data, coord) {
-    Viewer.removeOverlays();
-    var popup = Popup('#o-map');
-    var overlay = new ol.Overlay({
-        element: popup.getEl()
-    });
 
-    map.addOverlay(overlay);
-
-    overlay.setPosition(coord);
-    var content = data[name];
-    // content += '<br>' + data.postnr + '&nbsp;' + data.postort;
-    popup.setContent({
-        content: content,
-        title: title
-    });
-    popup.setVisibility(true);
-
-    mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
-}*/
 function showFeatureInfo(features, title, content) {
-    var obj = {};
-    obj.feature = features[0];
-    obj.title = title;
-    obj.content = content;
-    featureInfo.identify([obj], 'overlay', getCenter(features[0].getGeometry()));
-    mapUtils.zoomToExent(features[0].getGeometry(), maxZoomLevel);
+  var obj = {};
+  obj.feature = features[0];
+  obj.title = title;
+  obj.content = content;
+  featureInfo.identify([obj], 'overlay', getCenter(features[0].getGeometry()));
+  mapUtils.zoomToExent(features[0].getGeometry(), maxZoomLevel);
 }
 
-/**There are several different ways to handle selected search result.
+/** There are several different ways to handle selected search result.
  * Option 1. Feature info is requested from a map service.
  * In this case idAttribute and layerNameAttribute must be provided.
  * A map service is used to get the geometry and attributes. The layer is defined
@@ -206,18 +197,52 @@ function showFeatureInfo(features, title, content) {
  * In this case geometryAttribute and title must be defined.
  * Option 5. Feature info is shown without selection in the map.
  * This is a simple single table search. In this case title, northing and easting
- * must be defined.
- */
-function selectHandler(evt, data) {
+ * must be defined. */
 
- if (titleAttribute && contentAttribute && geometryAttribute) {
-        var feature = wktToFeature(data[geometryAttribute], projectionCode);
-        //Make sure the response is wrapped in a html element
-        var content = utils.createElement('div', data[contentAttribute])
-        showFeatureInfo([feature], data[titleAttribute], content);
-    } else {
-        console.log('Search options are missing');
-    }
+function selectHandler(evt, data) {
+  var layer;
+  var id;
+  var feature;
+  var content;
+  var coord;
+  /*if (layerNameAttribute && idAttribute) {
+    layer = Viewer.getLayer(data[layerNameAttribute]);
+    id = data[idAttribute];
+    getFeature(id, layer)
+      .done(function (res) {
+              var featureWkt;
+              var coordWkt;
+              if (res.length > 0) {
+                showFeatureInfo(res, layer.get('title'), getAttributes(res[0], layer));
+              }
+
+              // Fallback if no geometry in response
+              else if (geometryAttribute) {
+                featureWkt = wktToFeature(data[geometryAttribute], projectionCode);
+                coordWkt = featureWkt.getGeometry().getCoordinates();
+                showOverlay(data, coordWkt);
+              }
+            });
+  } else if (geometryAttribute && layerName) {
+    feature = wktToFeature(data[geometryAttribute], projectionCode);
+    layer = Viewer.getLayer(data[layerName]);
+    showFeatureInfo([feature], layer.get('title'), getAttributes(feature, layer));
+  }*/ if (titleAttribute && contentAttribute && geometryAttribute) {
+    feature = wktToFeature(data[geometryAttribute], projectionCode);
+
+    // Make sure the response is wrapped in a html element
+    content = utils.createElement('div', data[contentAttribute]);
+    showFeatureInfo([feature], data[titleAttribute], content);
+  }/* else if (geometryAttribute && title) {
+    feature = wktToFeature(data[geometryAttribute], projectionCode);
+    content = utils.createElement('div', data[name]);
+    showFeatureInfo([feature], title, content);
+  } else if (easting && northing && title) {
+    coord = [data[easting], data[northing]];
+    showOverlay(data, coord);
+  }*/ else {
+    console.log('Search options are missing');
+  }
 }
 
 module.exports.init = init;

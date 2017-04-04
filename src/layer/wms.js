@@ -24,7 +24,7 @@ var wms = function wms(layerOptions) {
   var sourceOptions = $.extend(sourceDefault, viewer.getMapSource()[layerOptions.source]);
   sourceOptions.attribution = wmsOptions.attribution;
   sourceOptions.projectionCode = viewer.getProjectionCode();
-  sourceOptions.name = wmsOptions.name;
+  sourceOptions.id = wmsOptions.id;
   sourceOptions.format = wmsOptions.format;
 
   var wmsSource = createSource(sourceOptions);
@@ -38,8 +38,8 @@ var wms = function wms(layerOptions) {
       crossOrigin: 'anonymous',
       projection: options.projectionCode,
       params: {
-        'LAYERS': options.name,
-        'format': options.format, 
+        'LAYERS': options.id,
+        'FORMAT': options.format, 
         'TILED': true,
         VERSION: options.version
       }

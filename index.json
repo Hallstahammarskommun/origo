@@ -27,7 +27,10 @@
     }, {
         "name": "measure"
     }, {
-        "name": "legend"
+        "name": "legend",
+        "options": {
+          "hasMapLegend": false
+        }
     }],
     "projectionCode": "EPSG:3010",
     "projectionExtent": [-166640, 6305699, 433362, 6905701],

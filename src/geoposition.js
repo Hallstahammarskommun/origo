@@ -20,11 +20,13 @@ var markerEl = undefined;
 var positions = undefined;
 var baseUrl = undefined;
 
-function init() {
+function init(opt_options) {
+  var options = opt_options || {};
+  var target = options.target || '#o-toolbar-navigation';
   map = viewer.getMap();
   baseUrl = viewer.getBaseUrl();
 
-  render();
+  render(target);
 
   $geolocateButtonId = $('#o-geolocation-button');
   $geolocateButton = $('#o-geolocation-button button');
@@ -54,7 +56,7 @@ function init() {
       }
 }
 
-function render() {
+function render(target) {
   var tooltipText = 'Visa nuvarande position i kartan';
   var src = baseUrl + 'img/geolocation_marker.png';
   var markerImg = '<img id="o-geolocation_marker" src="' + src + '"/>';
@@ -68,7 +70,7 @@ function render() {
     tooltipText: tooltipText,
     tooltipPlacement: 'east'
   });
-  $('#o-map').append(el);
+  $(target).append(el);
   $('#o-map').prepend(markerImg);
 }
 

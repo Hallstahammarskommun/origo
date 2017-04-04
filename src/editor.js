@@ -6,7 +6,7 @@
 
 var $ = require('jquery');
 var utils = require('./utils');
-var editortoolbar = require('./editortoolbar');
+var editorToolbar = require('./editor/editortoolbar');
 
 var $editorButton;
 
@@ -17,14 +17,17 @@ module.exports = function() {
   };
 }();
 
-function Init(options) {
-//  render();
-//  $editorButton = $('#o-editor-button');
-//  bindUIActions();
-  editortoolbar.init(options);
+function Init(opt_options) {
+  var options = opt_options || {};
+  options.autoSave = options.hasOwnProperty('autoSave') ? options.autoSave : true;
+  options.currentLayer = options.defaultLayer || options.editableLayers[0];
+  editorToolbar.init(options);
+  //render();
+  $editorButton = $('#o-editor-button');
+  bindUIActions();
 }
 
-/*function bindUIActions() {
+function bindUIActions() {
   $editorButton.on('click', function(e) {
     $('.o-map').first().trigger({
       type: 'enableInteraction',
@@ -36,7 +39,7 @@ function Init(options) {
   });
 }
 
-function render() {
+/*function render() {
   var el = utils.createListButton({
     id: 'o-editor',
     iconCls: 'o-icon-fa-pencil',
