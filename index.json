@@ -19,6 +19,23 @@
     }, {
         "name": "print"
     }, {
+      "name": "fmeserver",
+      "options": {
+        "title": "Hämta data",
+        "text":"Nedan ser du vilka lager som kommer att hämtas från den aktuella vyn ",
+        "currentExtent": true,
+        "useVisibleLayers": true,
+        "url": "https://karta.hallstahammar.se/fmeserver/fmedatadownload/Dashboards/wfs2generic.fmw?",
+        "params": [
+            {
+              "name": "format",
+              "title": "Format: ",
+              "type": "dropdown",
+              "options": ["ACAD", "ESRISHAPE", "GEOJSON"]
+            }
+        ]
+      }
+    }, {
       "name": "about",
       "options": {
         "title": "Om kartan",
@@ -323,6 +340,7 @@
         "source": "local",
         "style": "TK_mak_y",
         "title": "Mask",
+        "group": "tom",
         "queryable": false,
         "type": "WFS",
         "visible": true
