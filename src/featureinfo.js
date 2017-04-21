@@ -174,7 +174,10 @@ function setActive(state) {
 function clear() {
     selectionLayer.clear();
     sidebar.setVisibility(false);
-    Viewer.removeOverlays(overlay);
+
+    if (overlay) {
+      Viewer.removeOverlays(overlay);
+    }
     //console.log("Clearing selection");
 }
 function onEnableInteraction(e) {
