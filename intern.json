@@ -1,0 +1,409 @@
+{
+    "controls": [{
+        "name": "geoposition"
+    }, {
+        "name": "mapmenu"
+    }, {
+        "name": "search",
+        "options": {
+            "urlAds": "https://karta.hallstahammar.se/sAds",
+            "urlFat": "https://karta.hallstahammar.se/sFat",
+            "urlGan": "https://karta.hallstahammar.se/sGan",
+            "geometryAttribute": "st_astext",
+            "searchAttribute": "title",
+            "titleAttribute": "title",
+            "contentAttribute": "content"
+        }
+    }, {
+        "name": "sharemap"
+    }, {
+        "name": "print"
+    }, {
+      "name": "fmeserver",
+      "options": {
+        "title": "Hämta data",
+        "text":"Nedan ser du vilka lager som kommer att hämtas från den aktuella vyn ",
+        "currentExtent": true,
+        "useVisibleLayers": true,
+        "url": "https://karta.hallstahammar.se/fmeserver/fmedatadownload/Dashboards/wfs2generic.fmw?",
+        "params": [
+            {
+              "name": "format",
+              "title": "Format: ",
+              "type": "dropdown",
+              "options": ["ACAD", "ESRISHAPE", "GEOJSON"]
+            }
+        ]
+      }
+    }, {
+        "name": "measure"
+    }, {
+        "name": "legend",
+        "options": {
+          "hasMapLegend": false
+        }
+    }],
+    "projectionCode": "EPSG:3010",
+    "projectionExtent": [-166640, 6305699, 433362, 6905701],
+    "proj4Defs": [{
+        "code": "EPSG:3010",
+        "alias": "urn:ogc:def:crs:EPSG::3010",
+        "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    }],
+    "extent": [-16640, 6455699, 283362, 6755701],
+    "center": [133361, 6605700],
+    "zoom": 2,
+    "resolutions": [
+      91.9577,
+      61.3051,
+      40.8701,
+      27.2467,
+      18.1645,
+      12.1097,
+      8.0731,
+      5.382,
+      3.588,
+      2.392,
+      1.5947,
+      1.0631,
+      0.7088,
+      0.4725,
+      0.315,
+      0.21,
+      0.14
+    ],
+    "source": {
+        "wms": {
+            "url": "https://karta.hallstahammar.se/geoserver/Hallstahammar/wms",
+            "version": "1.1.1"
+        },
+        "local": {
+            "url": "https://karta.hallstahammar.se/geoserver/ows"
+        },
+        "basemap": {
+            "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
+        }
+    },
+    "groups": [{
+        "name": "TK",
+        "title": "Tekniska",
+        "expanded": true
+    }, {
+        "name": "BM",
+        "title": "Bygg & miljö",
+        "expanded": true
+    }, {
+        "name": "LM",
+        "title": "Lantmäteriet",
+        "expanded": true
+    }, {
+        "name": "background",
+        "title": "Bakgrundskartor",
+        "expanded": true
+    }],
+    "layers": [{
+        "name": "Fastighet",
+        "source": "wms",
+        "style": "granser",
+        "title": "Fastighetsgränser",
+        "format": "image/png",
+        "group": "LM",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }]
+    }, {
+        "name": "PL_POLYGON",
+        "source": "local",
+        "style": "PL_POLYGON",
+        "title": "Gällande detaljplan",
+        "group": "TK",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+            "name": "TEXT",
+            "url": "PLAN_ID",
+            "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken/",
+            "urlSuffix": ".pdf"
+        }]
+    }, {
+        "name": "TK_kof_y",
+        "source": "local",
+        "style": "TK_kof_y",
+        "title": "Kommunal mark",
+        "group": "TK",
+        "queryable": false,
+        "type": "WFS",
+        "visible": false
+    }, {
+        "name": "PK_farg",
+        "source": "wms",
+        "style": "PK_farg",
+        "title": "Primärkarta, färg",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
+        "visible": false
+    }, {
+        "name": "PK",
+        "source": "wms",
+        "style": "PK_gra",
+        "title": "Primärkarta, grå",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
+        "visible": false
+    }, {
+        "name": "BM_lim_p",
+        "source": "local",
+        "style": "BM_lim_p",
+        "title": "Livsmedelsinspektion",
+        "group": "BM",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }, {
+            "name": "typ"
+        }, {
+            "name": "egn"
+        }, {
+            "name": "status"
+        }, {
+            "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
+            "fixedUrlName": "Lämna synpunkter och klagomål"
+        }]
+    }, {
+        "name": "TK_w_stp_p",
+        "source": "local",
+        "style": "TK_w_stp_p",
+        "title": "Stompunkter",
+        "group": "TK",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+          "name": "pktnr",
+          "title": "Punktnummer: "
+        }, {
+          "name": "anmarkning",
+          "title": "Anmärkning: "
+        }, {
+          "name": "marktyp",
+          "title": "Markering: "
+        }]
+    }, {
+        "name": "TK_mak_y",
+        "source": "local",
+        "style": "TK_mak_y",
+        "title": "Mask",
+        "group": "tom",
+        "queryable": false,
+        "type": "WFS",
+        "visible": true
+    }, {
+        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "format": "image/jpeg",
+        "group": "background",
+        "name": "topowebbkartan_nedtonad",
+        "source": "basemap",
+        "title": "Karta, grå",
+        "type": "WMTS",
+        "style": "karta_gra",
+        "visible": true
+    }, {
+        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "format": "image/jpeg",
+        "group": "background",
+        "name": "topowebbkartan",
+        "source": "basemap",
+        "title": "Karta, färg",
+        "type": "WMTS",
+        "style": "karta_farg",
+        "visible": false
+    }, {
+        "attribution": "&copy Lantmäteriet Geodatasamverkan",
+        "format": "image/jpeg",
+        "group": "background",
+        "name": "orto",
+        "source": "basemap",
+        "title": "Flygfoto",
+        "type": "WMTS",
+        "style": "orto",
+        "visible": false
+    }],
+
+    "styles": {
+        "point": [
+            [{
+                "icon": {
+                    "size": [24, 36],
+                    "src": "img/png/drop_blue.png"
+                }
+            }]
+        ],
+        "line": [
+            [{
+                "stroke": {
+                    "color": "rgb(0,0,255)",
+                    "width": 1
+                }
+            }]
+        ],
+        "cirkel": [
+            [{
+                "circle": {
+                    "radius": 6,
+                    "stroke": {
+                        "color": "rgba(0,0,0,1)",
+                        "width": 2
+                    },
+                    "fill": {
+                        "color": "rgba(0,0,0,0.5)"
+                    }
+                }
+            }]
+        ],
+        "cluster": [
+        [
+          {
+            "circle": {
+              "radius": 16,
+              "fill": {
+                "color": "rgba(255,153,51,0.5)"
+              },
+              "stroke": {
+                "color": "rgba(255,153,51,0.9)",
+                "width": 4
+              }
+            }
+          },
+          {
+            "text": {
+              "font": "Bold 12px Arial",
+              "textAlign": "center",
+              "text": "size",
+              "fill": {
+                "color": "rgba(0,0,0,1.0)"
+              },
+              "stroke": {
+                "color": "rgba(255,153,51,0.5)",
+                "width": 2
+              }
+            }
+          }
+        ]
+      ],
+        "granser": [
+            [{
+                "stroke": {
+                    "color": "rgb(150,61,20)",
+                    "width": 1
+                }
+            }]
+        ],
+        "PL_POLYGON": [
+            [{
+                "stroke": {
+                    "color": "rgba(229,109,30,0.6)",
+                    "width": 1
+                },
+                "fill": {
+                    "color": "rgba(66,89,179,0.3)"
+                },
+                "filter": "[PLAN_TYP] != '4041'"
+            }]
+        ],
+        "TK_kof_y": [
+            [{
+                "fill": {
+                    "color": "rgba(165,0,165,0.25)"
+                },
+                "filter": "[typ] == 'Nej'"
+            }]
+        ],
+        "TK_w_stp_p": [
+          [{
+            "icon": {
+              "src": "img/png/droppe_black.png"
+            },
+            "filter": "[matning_typ] == '1000'"
+          }], [{
+            "icon": {
+              "src": "img/png/drop_blue.png"
+            },
+            "filter": "[matning_obj] == '200'"
+          }], [{
+            "icon": {
+              "src": "img/png/droppe_orange.png"
+            },
+            "filter": "[matning_obj] == '100'"
+          }], [{
+            "icon": {
+              "src": "img/png/droppe_orange.png"
+            },
+            "filter": "[matning_obj] == 'null'"
+          }]
+        ],
+        "BM_lim_p": [
+            [{
+                "icon": {
+                    "src": "img/png/BM_lim_p0.png"
+                },
+                "filter": "[egn] == 'Utan avvikelse'"
+            }],
+            [{
+                "icon": {
+                    "src": "img/png/BM_lim_p1.png"
+                },
+                "filter": "[egn] == 'Med avvikelse'"
+            }],
+            [{
+                "icon": {
+                    "src": "img/png/BM_lim_p2.png"
+                }
+            }]
+        ],
+        "PK_farg": [
+            [{
+                "image": {
+                    "src": "img/png/PK_farg.png"
+                }
+            }]
+        ],"PK_gra": [
+            [{
+                "image": {
+                    "src": "img/png/PK_gra.png"
+                }
+            }]
+        ],
+        "TK_mak_y": [
+            [{
+                "fill": {
+                    "color": "rgba(0,0,0,0.15)"
+                }
+            }]
+        ],
+        "karta_gra": [
+            [{
+                "image": {
+                    "src": "img/png/gra.png"
+                }
+            }]
+        ],
+        "karta_farg": [
+            [{
+                "image": {
+                    "src": "img/png/farg.png"
+                }
+            }]
+        ],
+        "orto": [
+            [{
+                "image": {
+                    "src": "img/png/orto.png"
+                }
+            }]
+        ]
+    }
+}
