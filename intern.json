@@ -43,6 +43,11 @@
           "hasMapLegend": false
         }
     }],
+    "footer": [{
+    "img": "css/png/kommunvapen.png",
+    "url" : "http://karta.hallstahammar.se/",
+    "urlText": "Hallstakartan"
+    }],
     "projectionCode": "EPSG:3010",
     "projectionExtent": [-166640, 6305699, 433362, 6905701],
     "proj4Defs": [{

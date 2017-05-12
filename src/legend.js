@@ -158,8 +158,8 @@ function createLegendItem(layerid, layerStyle, inSubgroup) {
     }
 
     legendItem += '<div class ="o-legend-item' + subClass + '"><div class="o-checkbox">' +
-                    '<svg class="o-icon-fa-square-o"><use xlink:href="#fa-square-o"></use></svg>' +
-                    '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check-square-o"></use></svg>' +
+                    '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
+                    '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>' +
                   '</div>';
     legendItem += '<div class="o-legend-item-title o-truncate">' + layer.get('title') + '</div>';
 
@@ -189,8 +189,8 @@ function createLegendItem(layerid, layerStyle, inSubgroup) {
     }
   } else {
     legendItem += '<li class="o-legend ' + layername + '" id="' + layerid + '"><div class ="o-legend-item' + subClass + '"><div class="o-checkbox">' +
-                    '<svg class="o-icon-fa-square-o"><use xlink:href="#fa-square-o"></use></svg>' +
-                    '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check-square-o"></use></svg>' +
+                    '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
+                    '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>' +
                   '</div>';
     legendItem +=  layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
     legendItem += '<div class="o-legend-item-title o-truncate">' + layer.get('title') + '</div>';
@@ -225,8 +225,8 @@ function createGroup(group, parentGroup) {
                     '<ul id="o-group-' + group.name + '" class="o-legend-group o-legend-subgroup ' + indent +'">' +
                       '<li class="o-legend-header o-legend-subheader ' + group.name + '" id="' + group.name + '"><div class="o-legend-item">' +
                         '<div class="o-checkbox">' +
-                          '<svg class="o-icon-fa-square-o"><use xlink:href="#fa-square-o"></use></svg>' +
-                          '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check-square-o"></use></svg>' +
+                          '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
+                          '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>' +
                         '</div>' +
                         '<div class="o-legend-subgroup-title o-truncate">' +
                           group.title +
@@ -328,7 +328,7 @@ function addLegend(groups) {
     if(layer.get('group') == 'background') {
 
       //Append background layers to menu
-      item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="#fa-check"></use></svg></div>';
+      item = '<li class="o-legend ' + name + '" id="' + name + '"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="#fa-circle"></use></svg></div>';
       item += title;
       $('#o-group-background .o-legend-header').after(item);
 
@@ -351,8 +351,8 @@ function addLegend(groups) {
       if(layer.get('legend') == true || layer.getVisible(true)) {
         //Append to map legend
         item = '<li class="o-legend ' + name + '" id="o-legend-' + name + '"><div class ="o-legend-item"><div class="o-checkbox">' +
-                  '<svg class="o-icon-fa-square-o"><use xlink:href="#fa-square-o"></use></svg>' +
-                  '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check-square-o"></use></svg>' +
+                  '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
+                  '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>' +
                 '</div>';
         item += layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
         item += title;

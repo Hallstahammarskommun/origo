@@ -11,14 +11,13 @@
   -webkit-border-radius: 2px;
   box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
   font-size: 16px;
-  height: 30px;
   line-height: 30px;
   outline: none;
   padding: 8px 12px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 324px
+  width: 348px
 }
 .o-icon-search-fa-times {
 	padding: .5em;
@@ -53,7 +52,7 @@ input.o-search-field::-ms-clear {
   color: black;
 }*/
 
-@media screen and (max-width: 1280px) {
+&[class*=#{$media-l}] {
   #o-search-wrapper {
   	right: .5em;
   	left: auto;

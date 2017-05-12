@@ -32,10 +32,7 @@
   color: #fff;
   cursor: pointer
 }
-@media screen and (max-width: 1280px) {
-  .typeahead, .o-search-field.tt-hint {
-  	max-width: calc(100% - 1.5em);
-  }
+&[class*=#{$media-l}] {
   .twitter-typeahead, .tt-menu{
   	max-width: 100%;
   }

@@ -79,7 +79,7 @@ li .o-legend-subheader {
 .o-legend-item-title,
 .o-legend-subgroup-title {
   display: block;
-  padding-bottom: 1px;
+  //padding-bottom: 1px;
   padding-right: 15px;
 }
 /*ul.o-legendlist:first-child {
@@ -137,9 +137,7 @@ li .o-legend-item:hover {
 li .o-legend-item-title {
   cursor: pointer;
   display: block;
-  padding-bottom: 3px;
-  padding-top: 3px;
-  padding-left: 1px;
+  padding-left: 4px;
   padding-right: 15px;
   vertical-align: top;
 }
@@ -234,8 +232,7 @@ li .o-legend-subitem-title {
 .o-menu-item-empty {
   margin: 0.8em 0;
 }
-
-@media screen and (max-width: 1280px) {
+&[class*=#{$media-l}] {
 #o-map-legend {
   bottom: .5em;
 }

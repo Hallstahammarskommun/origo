@@ -92,7 +92,7 @@ function init(options) {
     limit: 5,
     displayKey: name,
     source: function (query, syncResults, asyncResults) {
-      $.get(urlFat + '?q=' + query, function (data) {
+      $.get(urlFat + '?q=' + encodeURI(query), function (data) {
         asyncResults(data);
       });
     },
@@ -104,7 +104,7 @@ function init(options) {
     limit: 5,
     displayKey: name,
     source: function (query, syncResults, asyncResults) {
-      $.get(urlGan + '?q=' + query, function (data) {
+      $.get(urlGan + '?q=' + encodeURI(query), function (data) {
         asyncResults(data);
       });
     },
@@ -116,7 +116,7 @@ function init(options) {
       limit: 5,
       displayKey: name,
       source: function (query, syncResults, asyncResults) {
-        $.get(urlAds + '?q=' + query, function (data) {
+        $.get(urlAds + '?q=' + encodeURI(query), function (data) {
           asyncResults(data);
         });
       }
