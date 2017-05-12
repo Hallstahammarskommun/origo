@@ -107,18 +107,6 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "Fastighet",
-        "source": "wms",
-        "style": "granser",
-        "title": "Fastighetsgränser",
-        "format": "image/png",
-        "group": "LM",
-        "type": "WMS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }]
-    }, {
         "name": "PL_POLYGON",
         "source": "local",
         "style": "PL_POLYGON",
@@ -198,6 +186,42 @@
           "title": "Markering: "
         }]
     }, {
+        "name": "pbr_bestammelser",
+        "source": "wms",
+        "style": "bestammelser",
+        "title": "Bestämmelse",
+        "format": "image/png",
+        "group": "LM",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }]
+    }, {
+        "name": "Fastighet_kvalitet",
+        "source": "wms",
+        "style": "granser",
+        "title": "Fastighet",
+        "format": "image/png",
+        "group": "LM",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }]
+    }, {
+        "name": "pbr_rattigheter",
+        "source": "wms",
+        "style": "rattigheter",
+        "title": "Rättighet",
+        "format": "image/png",
+        "group": "LM",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }]
+    }, {
         "name": "TK_mak_y",
         "source": "local",
         "style": "TK_mak_y",
@@ -206,6 +230,15 @@
         "queryable": false,
         "type": "WFS",
         "visible": true
+    }, {
+        "name": "Ingen",
+        "source": "local",
+        "style": "TK_mak_y",
+        "title": "Ingen",
+        "group": "background",
+        "queryable": false,
+        "type": "WFS",
+        "visible": false
     }, {
         "attribution": "&copy Lantmäteriet Geodatasamverkan",
         "format": "image/jpeg",
@@ -299,10 +332,26 @@
           }
         ]
       ],
+        "bestammelser": [
+            [{
+                "stroke": {
+                    "color": "rgb(144,169,61)",
+                    "width": 1
+                }
+            }]
+        ],
         "granser": [
             [{
                 "stroke": {
                     "color": "rgb(150,61,20)",
+                    "width": 1
+                }
+            }]
+        ],
+        "rattigheter": [
+            [{
+                "stroke": {
+                    "color": "rgb(0,120,193)",
                     "width": 1
                 }
             }]
