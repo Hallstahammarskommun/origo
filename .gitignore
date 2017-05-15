@@ -1,4 +1,5 @@
+css/style.css
+dist/css/style.css
 dist/origo.js
 dist/origo.min.js
-css/style.css
 node_modules

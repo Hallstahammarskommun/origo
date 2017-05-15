@@ -191,23 +191,6 @@
             "url": "url"
         }]
     }, {
-        "name": "TK_w_stp_p",
-        "source": "local",
-        "style": "TK_w_stp_p",
-        "title": "Stompunkter",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-          "name": "pktnr",
-          "title": "Punktnummer: "
-        }, {
-          "name": "anmarkning",
-          "title": "Anmärkning: "
-        }, {
-          "name": "marktyp",
-          "title": "Markering: "
-        }]
-        }, {
         "name": "BM_elf_y",
         "source": "local",
         "style": "BM_elf_y",
@@ -504,30 +487,6 @@
                 }
             }]
         ],
-        "TK_w_stp_p": [
-          [{
-            "icon": {
-              "src": "img/png/droppe_black.png"
-            },
-            "filter": "[matning_typ] == '1000'"
-          }], [{
-            "icon": {
-              "src": "img/png/drop_blue.png"
-            },
-            "filter": "[matning_obj] == '200'"
-          }], [{
-            "icon": {
-              "src": "img/png/droppe_orange.png"
-            },
-            "filter": "[matning_obj] == '100'"
-          }], [{
-            "icon": {
-              "src": "img/png/droppe_orange.png"
-            },
-            "filter": "[matning_obj] == 'null'"
-          }]
-        ],
-
         "BM_elf_y": [
             [{
                 "stroke": {

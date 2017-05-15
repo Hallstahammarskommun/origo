@@ -90,16 +90,20 @@
         }
     },
     "groups": [{
-        "name": "TK",
-        "title": "Tekniska",
-        "expanded": true
-    }, {
         "name": "BM",
         "title": "Bygg & miljö",
         "expanded": true
     }, {
+        "name": "TK",
+        "title": "Tekniska",
+        "expanded": true
+    }, {
         "name": "LM",
         "title": "Lantmäteriet",
+        "expanded": true
+    }, {
+        "name": "RAA",
+        "title": "Riksantikvarieämbetet",
         "expanded": true
     }, {
         "name": "background",
@@ -107,12 +111,26 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "PL_POLYGON",
+        "name": "BM_avl_p",
         "source": "local",
-        "style": "PL_POLYGON",
-        "title": "Gällande detaljplan",
-        "group": "TK",
+        "style": "BM_avl_p",
+        "title": "Enskilda avlopp",
+        "group": "BM",
         "type": "WFS",
+        "visible": false,
+        "attributes": [{
+            "name": "obj"
+        }, {
+            "name": "egn"
+        }]
+    }, {
+        "name": "Plan",
+        "source": "wms",
+        "style": "Plan",
+        "title": "Gällande detaljplan",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
         "visible": false,
         "attributes": [{
             "name": "TEXT",
@@ -148,26 +166,6 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "BM_lim_p",
-        "source": "local",
-        "style": "BM_lim_p",
-        "title": "Livsmedelsinspektion",
-        "group": "BM",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }, {
-            "name": "typ"
-        }, {
-            "name": "egn"
-        }, {
-            "name": "status"
-        }, {
-            "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
-            "fixedUrlName": "Lämna synpunkter och klagomål"
-        }]
-    }, {
         "name": "TK_w_stp_p",
         "source": "local",
         "style": "TK_w_stp_p",
@@ -186,6 +184,16 @@
           "title": "Markering: "
         }]
     }, {
+        "name": "VA",
+        "source": "wms",
+        "style": "VA",
+        "title": "VA nät",
+        "format": "image/png",
+        "group": "TK",
+        "queryable": false,
+        "type": "WMS",
+        "visible": false
+    }, {
         "name": "pbr_bestammelser",
         "source": "wms",
         "style": "bestammelser",
@@ -193,10 +201,7 @@
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }]
+        "visible": false
     }, {
         "name": "Fastighet_kvalitet",
         "source": "wms",
@@ -217,10 +222,17 @@
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
+        "visible": false
+    }, {
+        "name": "FMI_WMS",
+        "source": "wms",
+        "style": "FMI_WMS",
+        "title": "Fornminne",
+        "format": "image/png",
+        "group": "RAA",
+        "type": "WMS",
         "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }]
+        "queryable": false
     }, {
         "name": "TK_mak_y",
         "source": "local",
@@ -332,6 +344,84 @@
           }
         ]
       ],
+      "BM_avl_p": [
+          [{
+              "icon": {
+                  "src": "img/png/BM_avl_p1.png"
+              },
+              "filter": "[status] == '1'"
+          }],
+          [{
+              "icon": {
+                  "src": "img/png/BM_avl_p0.png"
+              },
+              "filter": "[status] == '0'"
+          }]
+      ],
+      "Plan": [
+          [{
+              "stroke": {
+                  "color": "rgba(229,109,30,0.6)",
+                  "width": 1
+              },
+              "fill": {
+                  "color": "rgba(66,89,179,0.3)"
+              }
+          }]
+      ],
+      "TK_kof_y": [
+          [{
+              "fill": {
+                  "color": "rgba(165,0,165,0.25)"
+              },
+              "filter": "[typ] == 'Nej'"
+          }]
+      ],
+      "PK_farg": [
+          [{
+              "image": {
+                  "src": "img/png/PK_farg.png"
+              }
+          }]
+      ],"PK_gra": [
+          [{
+              "image": {
+                  "src": "img/png/PK_gra.png"
+              }
+          }]
+      ],
+      "TK_w_stp_p": [
+        [{
+          "icon": {
+            "src": "img/png/droppe_black.png"
+          },
+          "filter": "[matning_typ] == '1000'"
+        }], [{
+          "icon": {
+            "src": "img/png/drop_blue.png"
+          },
+          "filter": "[matning_obj] == '200'"
+        }], [{
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          },
+          "filter": "[matning_obj] == '100'"
+        }], [{
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          },
+          "filter": "[matning_obj] == 'null'"
+        }]
+      ],
+      "VA": [
+          [{
+              "stroke": {
+                  "color": "rgb(0,0,255)",
+                  "width": 1,
+                  "lineDash": [3, 2]
+              }
+          }]
+      ],
         "bestammelser": [
             [{
                 "stroke": {
@@ -356,78 +446,10 @@
                 }
             }]
         ],
-        "PL_POLYGON": [
-            [{
-                "stroke": {
-                    "color": "rgba(229,109,30,0.6)",
-                    "width": 1
-                },
-                "fill": {
-                    "color": "rgba(66,89,179,0.3)"
-                },
-                "filter": "[PLAN_TYP] != '4041'"
-            }]
-        ],
-        "TK_kof_y": [
-            [{
-                "fill": {
-                    "color": "rgba(165,0,165,0.25)"
-                },
-                "filter": "[typ] == 'Nej'"
-            }]
-        ],
-        "TK_w_stp_p": [
-          [{
-            "icon": {
-              "src": "img/png/droppe_black.png"
-            },
-            "filter": "[matning_typ] == '1000'"
-          }], [{
-            "icon": {
-              "src": "img/png/drop_blue.png"
-            },
-            "filter": "[matning_obj] == '200'"
-          }], [{
-            "icon": {
-              "src": "img/png/droppe_orange.png"
-            },
-            "filter": "[matning_obj] == '100'"
-          }], [{
-            "icon": {
-              "src": "img/png/droppe_orange.png"
-            },
-            "filter": "[matning_obj] == 'null'"
-          }]
-        ],
-        "BM_lim_p": [
-            [{
-                "icon": {
-                    "src": "img/png/BM_lim_p0.png"
-                },
-                "filter": "[egn] == 'Utan avvikelse'"
-            }],
-            [{
-                "icon": {
-                    "src": "img/png/BM_lim_p1.png"
-                },
-                "filter": "[egn] == 'Med avvikelse'"
-            }],
-            [{
-                "icon": {
-                    "src": "img/png/BM_lim_p2.png"
-                }
-            }]
-        ],
-        "PK_farg": [
+        "FMI_WMS": [
             [{
                 "image": {
-                    "src": "img/png/PK_farg.png"
-                }
-            }]
-        ],"PK_gra": [
-            [{
-                "image": {
-                    "src": "img/png/PK_gra.png"
+                    "src": "img/png/FMI_WMS.png"
                 }
             }]
         ],

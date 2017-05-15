@@ -71,7 +71,7 @@ function getSymbol(style) {
   }
   else if (s[0].hasOwnProperty('image')) {
     var src = validateUrl(s[0].image.src, baseUrl);
-    var inlineStyle = 'background: url(' + src + ') no-repeat;width: 30px; height: 30px;background-size: 30px;';
+    var inlineStyle = 'background: url(' + src + ') no-repeat;width: 24px; height: 24px;background-size: 24px;';
     symbol = '<div class="o-legend-item-img" style="' + inlineStyle +'"></div>';
   }
 
