@@ -255,6 +255,9 @@
             "name": "obj",
             "url": "url"
         }, {
+            "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910",
+            "fixedUrlName": "Ansök om plats"
+        }, {
             "name": "egn",
             "title": "Telefon: "
         }]
