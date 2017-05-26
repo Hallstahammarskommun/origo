@@ -141,10 +141,15 @@ function addAbstractButton(item) {
 function createLegendItem(layerid, layerStyle, inSubgroup) {
   var layername = layerid.split('o-legend-').pop();
   var layer = viewer.getLayer(layername);
+  var secure = layer.get('secure');
   var subClass = inSubgroup ? ' o-legend-subitem' : '';
   var legendItem = '';
 
-  if (layerStyle && layerStyle[0][0].hasOwnProperty('filter')) {
+  if (secure) {
+    legendItem += '<li class="o-legend-secure ' + layername + '" id="' + layerid + '"><div class ="o-legend-secure-item">';
+    legendItem += '<div class="o-legend-secure-item-title o-truncate">' + layer.get('title') + '</div>';
+
+  } else if (layerStyle && layerStyle[0][0].hasOwnProperty('filter')) {
 
     if (layerStyle[0][0].hasOwnProperty('legend')) {
       legendItem += '<li class="o-legend ' + layername + '">';
@@ -292,7 +297,7 @@ function addLegend(groups) {
   });
 
   //Add map legend unless set to false
-  if(hasMapLegend) {
+  /*if(hasMapLegend) {
     var mapLegend = '<div id="o-map-legend"><ul id="o-legend-overlay"><li class="o-legend o-hidden"><div class ="o-toggle-button o-toggle-button-max">' +
                         '<svg class="o-icon-fa-angle-double-down"><use xlink:href="#fa-angle-double-down"></use></svg>' +
                         '<svg class="o-icon-fa-angle-double-up"><use xlink:href="#fa-angle-double-up"></use></svg>' +
@@ -303,7 +308,7 @@ function addLegend(groups) {
     if(overlayGroup) {
       $('#o-map-legend-background').prepend('<div class="o-legend-item-divider"></div>');
     };
-  }
+  }*/
 
   //Add layers to legend
   layers.forEach(function(layer) {
@@ -313,6 +318,7 @@ function addLegend(groups) {
     //Check if layer belongs to subgroup
     var inSubgroup = $('#o-group-' + layer.get('group')).closest('ul').parent().closest('ul').hasClass('o-legend-group');
     var title = '<div class="o-legend-item-title o-truncate">' + layer.get('title') + '</div>';
+    var secure = layer.get('secure');
 
     //Add abstract button
     if(layer.get('abstract')){
@@ -344,7 +350,7 @@ function addLegend(groups) {
         $('#o-group-' + layer.get('group') + ' .o-legend-header').after(item);
       }
 
-      if(layer.get('legend') == true || layer.getVisible(true)) {
+      /*if(layer.get('legend') == true || layer.getVisible(true)) {
         //Append to map legend
         item = '<li class="o-legend ' + name + '" id="o-legend-' + name + '"><div class ="o-legend-item"><div class="o-checkbox">' +
                   '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
@@ -353,7 +359,7 @@ function addLegend(groups) {
         item += layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
         item += title;
         $('#o-overlay-list').append(item);
-      }
+      }*/
     }
 
     //Check map legend to make sure minimize button appears
@@ -394,7 +400,7 @@ function addLegend(groups) {
     $('#' + name).on('click', function(evt) {
       if ($(evt.target).closest('div').hasClass('o-icon-expand')) {
         toggleGroup($(this));
-      } else {
+      } else if (secure === false) {
         $(this).each(function() {
           var that = this;
           toggleCheck($(that).attr("id"));
@@ -404,14 +410,14 @@ function addLegend(groups) {
       }
     });
 
-    $('#o-legend-' + name).on('click', function(evt) {
+    /*$('#o-legend-' + name).on('click', function(evt) {
       $(this).each(function() {
         var that = this;
         toggleCheck($(that).attr("id"));
       });
 
       evt.preventDefault();
-    });
+    });*/
   });
 
   $('.o-abstract').on('click', function(evt) {
@@ -424,10 +430,10 @@ function addLegend(groups) {
   });
 
   //Toggle map legend
-  $('#o-legend-overlay .o-toggle-button').on('click', function(evt) {
+  /*$('#o-legend-overlay .o-toggle-button').on('click', function(evt) {
     toggleOverlay();
     evt.preventDefault();
-  });
+  });*/
 }
 
 function onToggleCheck(layername) {

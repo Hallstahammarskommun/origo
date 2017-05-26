@@ -24,6 +24,7 @@ var settings = {
   resolutions: null,
   source: {},
   group: [],
+  capabilitiesURL: undefined,
   layers: [],
   styles: {},
   controls: [],
@@ -72,6 +73,7 @@ function init(el, mapOptions) {
   settings.groups = mapOptions.groups;
   settings.editLayer = mapOptions.editLayer;
   settings.styles = mapOptions.styles;
+  settings.capabilitiesURL = mapOptions.capabilitiesURL;
   style.init();
   settings.layers = createLayers(mapOptions.layers, urlParams.layers);
   settings.controls = mapOptions.controls;
@@ -105,6 +107,10 @@ function init(el, mapOptions) {
 }
 
 function createLayers(layerlist, savedLayers) {
+  if (settings.capabilitiesURL != undefined) {
+    layerCreator.getCapabilities(settings.capabilitiesURL);
+  }
+
   var layers = [];
   for (var i = layerlist.length - 1; i >= 0; i--) {
     var savedLayer = {};
@@ -116,7 +122,7 @@ function createLayers(layerlist, savedLayers) {
       savedLayer.name = layerlist[i].name;
     }
     var layer = $.extend(layerlist[i], savedLayer);
-    layers.push(layerCreator(layer));
+    layers.push(layerCreator.layerCreator(layer));
   }
   return layers;
 }

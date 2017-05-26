@@ -82,6 +82,26 @@ li .o-legend-subheader {
   //padding-bottom: 1px;
   padding-right: 15px;
 }
+.o-legend-secure {
+    font-style: italic;
+    color: #636363;
+}
+.o-legend-secure-item {
+  cursor: default;
+  display: block;
+  font-family: Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 3px 1em;
+  position: relative;
+  white-space: nowrap;
+}
+li .o-legend-secure-item-title {
+  display: block;
+  padding-left: 52px;
+  padding-right: 15px;
+  vertical-align: top;
+}
 /*ul.o-legendlist:first-child {
   border-top: 1px solid #C5C5C5;
 }*/
@@ -135,35 +155,30 @@ li .o-legend-item:hover {
   color: #fff;
 }
 li .o-legend-item-title {
-  cursor: pointer;
   display: block;
   padding-left: 4px;
   padding-right: 15px;
   vertical-align: top;
 }
 li .o-legend-item-img {
-  cursor: pointer;
   display: inline-block;
   float: left;
   height: 20px;
   width: 20px;
 }
 li .o-legend-subitem {
-  cursor: pointer;
   font-family: Arial,sans-serif;
   font-size: 14px;
   line-height: 14px;
   padding: 5px 5px 5px 24px;
 }
 li .o-legend-subitem-title {
-  cursor: pointer;
   display: inline-block;
   padding-top: 3px;
   padding-left: 1px;
   vertical-align: top;
 }
 .o-legendlist li .o-legend-item-info {
-  cursor: pointer;
   display: inline-block;
   position: absolute;
   right: 0;

@@ -15,8 +15,37 @@ type.WMTS = require('./layer/wmts');
 //type.XYZ = require('./layer/xyz');
 //type.OSM = require('./layer/osm');
 //type.GROUP = groupLayer;
+var getCapabilitiesLayers;
 
-var layerCreator = function layerCreator(opt_options) {
+function responseParser(response) {
+  var parser = new DOMParser();
+  var xmlDoc = parser.parseFromString(response,"text/xml");
+  xmlToArray(xmlDoc);
+}
+
+function xmlToArray(xmlDoc) {
+  getCapabilitiesLayers = $(xmlDoc).find("Layer > Name").map(function() {
+    return $(this).text();
+  }).get();
+
+  getCapabilitiesLayers.forEach(function(getCapabilitiesLayer, i) {
+  var data = getCapabilitiesLayer.split(':');
+  getCapabilitiesLayers[i] = data.pop();
+  })
+}
+
+module.exports = {
+getCapabilities: function getCapabilities(getCapabilitiesURL) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+       responseParser(xmlHttp.responseText);
+    };
+    xmlHttp.open("GET", getCapabilitiesURL, false); // true for asynchronous
+    xmlHttp.send(null);
+},
+
+layerCreator: function layerCreator(opt_options) {
   var defaultOptions = {
     name: undefined,
     id: undefined,
@@ -36,6 +65,7 @@ var layerCreator = function layerCreator(opt_options) {
     minResolution: undefined,
     maxResolution: undefined,
     visible: false,
+    secure: undefined,
     type: undefined,
     extent: undefined,
     attributes: undefined
@@ -48,6 +78,12 @@ var layerCreator = function layerCreator(opt_options) {
   layerOptions.maxResolution = layerOptions.hasOwnProperty('maxScale') ? mapUtils.scaleToResolution(layerOptions.maxScale, projection): undefined;
   layerOptions.sourceName = layerOptions.source;
   layerOptions.styleName = layerOptions.style;
+  layerOptions.secure = false;
+  if (getCapabilitiesLayers != undefined) {
+    if (getCapabilitiesLayers.indexOf(name) > -1) { } else {
+      layerOptions.secure = true;
+    }
+  }
   if (layerOptions.id === undefined) {
     layerOptions.id = name.split('__').shift();
   }
@@ -60,8 +96,9 @@ var layerCreator = function layerCreator(opt_options) {
     console.log(layerOptions);
   }
 }
+}
 
-function groupLayer(options) {
+ /*function groupLayer(options) {
   if (options.hasOwnProperty('layers')) {
     var layers = options.layers.map(function(layer) {
       return layerCreator(layer);
@@ -72,6 +109,4 @@ function groupLayer(options) {
   } else {
     console.log('Group layer has no layers');
   }
-}
-
-module.exports = layerCreator;
+}*/
