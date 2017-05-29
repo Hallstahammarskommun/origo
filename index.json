@@ -240,8 +240,8 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-            "name": "obj",
-            "url": "typ"
+          "fixedUrl": "http://hallstahammar.se/Bo-bygga/naturomraden/",
+          "fixedUrlName": "Mer information"
         }]
     }, {
         "name": "BU_w_fos_p",
