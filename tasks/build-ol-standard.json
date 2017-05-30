@@ -119,6 +119,7 @@
     "ol.Feature#getProperties",
     "ol.Feature#getStyle",
     "ol.Feature#setId",
+    "ol.Feature#setProperties",
     "ol.Feature#setStyle",
     "ol.Feature#on",
     "ol.Collection",
