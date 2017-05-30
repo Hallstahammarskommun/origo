@@ -149,7 +149,7 @@ function createLegendItem(layerid, layerStyle, inSubgroup) {
     legendItem += '<li class="o-legend-secure ' + layername + '" id="' + layerid + '"><div class ="o-legend-secure-item">';
     legendItem += '<div class="o-legend-secure-item-title o-truncate">' + layer.get('title') + '</div>';
 
-  } else if (layerStyle && layerStyle[0][0].hasOwnProperty('filter')) {
+  } /*else if (layerStyle && layerStyle[0][0].hasOwnProperty('filter')) {
 
     if (layerStyle[0][0].hasOwnProperty('legend')) {
       legendItem += '<li class="o-legend ' + layername + '">';
@@ -188,7 +188,7 @@ function createLegendItem(layerid, layerStyle, inSubgroup) {
 
       legendItem += '</ul></li>'
     }
-  } else {
+  }*/ else {
     legendItem += '<li class="o-legend ' + layername + '" id="' + layerid + '"><div class ="o-legend-item' + subClass + '"><div class="o-checkbox">' +
                     '<svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>' +
                     '<svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>' +
