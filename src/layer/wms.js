@@ -31,11 +31,11 @@ var wms = function wms(layerOptions) {
       attributions: options.attribution,
       url: options.url,
       gutter: options.gutter,
-      crossOrigin: 'anonymous',
+      //crossOrigin: 'anonymous',
       projection: options.projectionCode,
       params: {
         'LAYERS': options.id,
-        'FORMAT': options.format, 
+        'FORMAT': options.format,
         'TILED': true,
         VERSION: options.version
       }
