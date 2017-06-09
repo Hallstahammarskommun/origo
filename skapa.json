@@ -18,8 +18,8 @@
     }, {
       "name": "about",
       "options": {
-        "title": "Om kartan",
-        "content": "<p>Kartskaparen är ett redigeringsverktyg för data som publiceras i Hallsta- och kommunkartan.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att verktyget ska fungera som bäst.</p>"
+        "title": "Om Kartskaparen",
+        "content": "<p>Kartskaparen är ett redigeringsverktyg för lager som är publicerade i våra karttjänster.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att verktyget ska fungera som bäst.</p>"
       }
     }, {
       "name": "editor",
@@ -81,12 +81,37 @@
   },
   "groups": [
     {
+      "name": "hjälplager",
+      "title": "Hjälplager",
+      "expanded": true
+    },
+    {
       "name": "background",
       "title": "Bakgrundskartor",
       "expanded": true
     }
   ],
-  "layers": [
+  "layers": [{
+      "name": "granser",
+      "source": "wms",
+      "style": "granser",
+      "title": "Fastighetsgränser",
+      "format": "image/png",
+      "group": "hjälplager",
+      "type": "WMS",
+      "visible": false
+    },
+    {
+      "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
+      "format": "image/png",
+      "group": "hjälplager",
+      "name": "PK",
+      "source": "wms",
+      "title": "Primärkarta, grå",
+      "type": "WMS",
+      "style": "pk_gra",
+      "visible": false
+    },
     {
       "name": "TK_w_are_p",
       "title": "Arrende",
@@ -95,7 +120,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Arrendator: ",
@@ -119,7 +143,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [
           {
             "name": "obj",
@@ -146,7 +169,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -173,7 +195,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -200,7 +221,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "typ",
         "title": "Pris: ",
@@ -211,29 +231,13 @@
         "type": "dropdown",
         "options": ["Ledig", "Bokad", "Såld"]
       }, {
+        "name": "url",
+        "title": "Länk: ",
+        "type": "text"
+      }, {
         "name": "datum",
         "title": "Bokad till: ",
         "type": "text"
-      }, {
-        "name": "bygglov",
-        "title": "Bygglov: ",
-        "type": "dropdown",
-        "options": ["ingår", "ingår ej"]
-      }, {
-        "name": "va",
-        "title": "VA: ",
-        "type": "dropdown",
-        "options": ["ingår", "ingår ej"]
-      }, {
-        "name": "fjarr",
-        "title": "Fjärrvärme: ",
-        "type": "dropdown",
-        "options": ["ingår", "ingår ej"]
-      }, {
-        "name": "opto",
-        "title": "Fiber: ",
-        "type": "dropdown",
-        "options": ["ingår", "ingår ej"]
       }]
     },
     {
@@ -244,7 +248,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Storlek: ",
@@ -263,7 +266,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Status: ",
@@ -280,7 +282,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "editable": true,
       "attributes": [
           {
             "name": "typ",
@@ -303,7 +304,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "obj",
         "title": "Plannamn: ",
@@ -322,7 +322,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "editable": true,
       "attributes": [{
         "name": "pktnr",
         "title": "Punktnummer: ",
@@ -381,16 +380,6 @@
           "type": "WMTS",
           "style": "orto",
           "visible": false
-      }, {
-          "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
-          "format": "image/jpeg",
-          "group": "background",
-          "name": "PK",
-          "source": "wms",
-          "title": "Primärkarta, grå",
-          "type": "WMS",
-          "style": "pk_gra",
-          "visible": false
       }],
   "styles": {
       "mask": [
@@ -404,6 +393,14 @@
             }
           }
         ]
+      ],
+      "granser": [
+        [{
+            "stroke": {
+                "color": "rgb(150,61,20)",
+                "width": 1
+            }
+        }]
       ],
       "TK_w_are_p": [
         [{
@@ -701,7 +698,7 @@
         [
           {
             "image": {
-              "src": "img/png/PK2.png"
+              "src": "img/png/pk_gra.png"
             }
           }
         ]

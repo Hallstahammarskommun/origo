@@ -18,7 +18,7 @@ function Init(opt_options) {
   options.autoSave = options.hasOwnProperty('autoSave') ? options.autoSave : true;
   options.currentLayer = options.defaultLayer || options.editableLayers[0];
   editorToolbar.init(options);
-  //render();
+  render();
   $editorButton = $('#o-editor-button');
   bindUIActions();
 }
@@ -35,12 +35,12 @@ function bindUIActions() {
   });
 }
 
-/*function render() {
+function render() {
   var el = utils.createListButton({
     id: 'o-editor',
     iconCls: 'o-icon-fa-pencil',
     src: 'css/svg/fa-icons.svg#fa-pencil',
-    text: 'Redigera'
+    text: ''
   });
   $('#o-menutools').append(el);
-}*/
+}

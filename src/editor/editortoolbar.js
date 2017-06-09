@@ -10,6 +10,7 @@ var editHandler = require('./edithandler');
 var activeClass = 'o-control-active';
 var disableClass = 'o-disabled';
 var currentLayer = undefined;
+var previousSelection = undefined;
 var editableLayers = undefined;
 var $editAttribute = undefined;
 var $editDraw = undefined;
@@ -43,7 +44,9 @@ function Init(options) {
 }
 
 function render(selectOptions) {
+  selectOptions.unshift({name:"Välj ditt lager"});
   $("#o-map").append(editortemplate(selectOptions));
+
   $editAttribute = $('#o-editor-attribute');
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
@@ -83,12 +86,25 @@ function bindUIActions() {
     e.stopPropagation();
     e.preventDefault();
   });
-  $('select[name="layer-dropdown"]').change(function() {
-    currentLayer = $(this).val();
-    dispatcher.emitToggleEdit('edit', {
-      currentLayer: currentLayer
-    });
+
+  $('select[name="layer-dropdown"]').on('focus', function() {
+      previousSelection = $(this).val();
+  }).change(function() {
+      currentLayer = $(this).val();
+
+      if (previousSelection) {
+          viewer.getLayer(previousSelection).setVisible(false);
+      }
+
+      viewer.getLayer(currentLayer).setVisible(true);
+      previousSelection = $(this).val();
+
+      dispatcher.emitToggleEdit('edit', {
+          currentLayer: currentLayer
+      });
   });
+
+
 }
 
 function onEnableInteraction(e) {
