@@ -86,6 +86,10 @@
         "local": {
             "url": "https://karta.hallstahammar.se/intern/kartserver/ows"
         },
+        "historiska": {
+            "url": "https://karta.hallstahammar.se/intern/kartserver/bakgrund/wms",
+            "version": "1.1.1"
+        },
         "basemap": {
             "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
         }
@@ -105,6 +109,10 @@
     }, {
         "name": "RAA",
         "title": "Riksantikvarieämbetet",
+        "expanded": true
+    }, {
+        "name": "historiska",
+        "title": "Historiska kartor",
         "expanded": true
     }, {
         "name": "background",
@@ -231,6 +239,96 @@
         "title": "Fornminne",
         "format": "image/png",
         "group": "RAA",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "HE1907",
+        "source": "historiska",
+        "style": "karta_farg",
+        "title": "1907",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "OF1959",
+        "source": "historiska",
+        "style": "orto",
+        "title": "1959",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "EK1962",
+        "source": "historiska",
+        "style": "karta_farg",
+        "title": "1962",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "OF1997",
+        "source": "historiska",
+        "style": "orto",
+        "title": "1997",
+        "format": "image/png",
+        "group": "orto",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "OF2001",
+        "source": "historiska",
+        "style": "orto",
+        "title": "2001",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "orto_2007",
+        "source": "historiska",
+        "style": "orto",
+        "title": "2007",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "orto_2010",
+        "source": "historiska",
+        "style": "orto",
+        "title": "2010",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "orto_2012",
+        "source": "historiska",
+        "style": "orto",
+        "title": "2012",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "orto_2014",
+        "source": "historiska",
+        "style": "orto",
+        "title": "2014",
+        "format": "image/png",
+        "group": "historiska",
         "type": "WMS",
         "visible": false,
         "queryable": false
