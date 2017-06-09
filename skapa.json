@@ -492,6 +492,12 @@
       "KS_w_opo_p": [
         [{
           "icon": {
+            "src": "img/png/droppe.png"
+          },
+          "filter": "[obj] == 'null'"
+        }],
+        [{
+          "icon": {
             "src": "img/png/KS_w_opo_p1.png"
           },
           "filter": "[obj] == 'Ansluten'"
