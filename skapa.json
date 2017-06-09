@@ -222,6 +222,15 @@
       "geometryType": "Polygon",
       "visible": false,
       "attributes": [{
+        "name": "obj",
+        "title": "Fastighet: ",
+        "type": "text"
+      }, {
+        "name": "egn",
+        "title": "Område: ",
+        "type": "text"
+      },
+      {
         "name": "typ",
         "title": "Pris: ",
         "type": "text"

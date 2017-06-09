@@ -168,15 +168,15 @@
             "name": "typ",
             "title": "Pris: "
         }, {
-            "name": "egn",
-            "title": "Area: "
-        }, {
             "name": "status",
             "title": "Status: "
         }, {
             "name": "datum",
-            "title": "Bokad till: ",
-            "cls": "hidden"
+            "title": "Bokad till: "
+        }, {
+            "name": "egn",
+            "url": "url",
+            "title": "Läs mer här: "
         }]
     }, {
         "name": "TK_w_pap_y",
