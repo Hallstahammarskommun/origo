@@ -11,6 +11,7 @@ var featureinfo = require('./featureinfo');
 var maputils = require('./maputils');
 var style = require('./style')();
 var layerCreator = require('./layercreator');
+var getCapabilities = require('./getCapabilities');
 
 var map;
 var template;
@@ -108,11 +109,25 @@ function init(el, mapOptions) {
 }
 
 function createLayers(layerlist, savedLayers) {
+  var layers = [];
+  var getCapabilitiesLayers = [];
+
   if (settings.capabilitiesURL != undefined) {
-    layerCreator.getCapabilities(settings.capabilitiesURL);
+      getCapabilitiesLayers = getCapabilities(settings.capabilitiesURL);
+
+      layerlist.forEach(function(layer) {
+      if(getCapabilitiesLayers.includes(layer.name)){
+        layer.secure = false;
+      } else {
+        if (layer['secure'] === undefined) {layer.secure = true};
+      }
+      })
+  } else {
+    layerlist.forEach(function(layer) {
+      if (layer['secure'] === undefined) {layer.secure = false};
+    })
   }
 
-  var layers = [];
   for (var i = layerlist.length - 1; i >= 0; i--) {
     var savedLayer = {};
     if (savedLayers) {
@@ -123,7 +138,7 @@ function createLayers(layerlist, savedLayers) {
       savedLayer.name = layerlist[i].name;
     }
     var layer = $.extend(layerlist[i], savedLayer);
-    layers.push(layerCreator.layerCreator(layer));
+    layers.push(layerCreator(layer));
   }
   return layers;
 }
@@ -189,6 +204,10 @@ function parseArg() {
 
 function getSettings() {
   return settings;
+}
+
+function getExtent() {
+  return settings.extent;
 }
 
 function getBaseUrl() {
@@ -465,6 +484,7 @@ function render(el, mapOptions) {
 module.exports.init = init;
 module.exports.createLayers = createLayers;
 module.exports.getBaseUrl = getBaseUrl;
+module.exports.getExtent = getExtent;
 module.exports.getSettings = getSettings;
 module.exports.getStyleSettings = getStyleSettings;
 module.exports.getMapUrl = getMapUrl;
