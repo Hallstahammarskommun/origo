@@ -342,15 +342,6 @@
         "type": "WFS",
         "visible": true
     }, {
-        "name": "Ingen",
-        "source": "local",
-        "style": "TK_mak_y",
-        "title": "Ingen",
-        "group": "background",
-        "queryable": false,
-        "type": "WFS",
-        "visible": false
-    }, {
         "attribution": "&copy Lantmäteriet Geodatasamverkan",
         "format": "image/jpeg",
         "group": "background",
@@ -379,6 +370,15 @@
         "title": "Flygfoto",
         "type": "WMTS",
         "style": "orto",
+        "visible": false
+    }, {
+        "group": "background",
+        "name": "blank",
+        "source": "",
+        "title": "Ingen bakgrundskarta",
+        "type": "WMTS",
+        "style": "",
+        "secure": false,
         "visible": false
     }],
 
