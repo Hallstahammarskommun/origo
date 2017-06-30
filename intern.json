@@ -113,7 +113,7 @@
     }, {
         "name": "historiska",
         "title": "Historiska kartor",
-        "expanded": true
+        "expanded": false
     }, {
         "name": "background",
         "title": "Bakgrundskartor",
