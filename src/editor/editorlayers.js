@@ -27,8 +27,7 @@ module.exports = function editorLayers(editableLayers, opt_options) {
     });
     $('#' + 'o-editor-layers').after(popover);
     dropDown(options.target, options.selectOptions, {
-      dataAttribute: 'layer',
-      active: options.activeLayer
+      dataAttribute: 'layer'
     });
   }
 
@@ -39,6 +38,10 @@ module.exports = function editorLayers(editableLayers, opt_options) {
       dispatcher.emitToggleEdit('edit', {
         currentLayer: e.dataAttribute
       });
+      if (e.prevSelected){
+      viewer.getLayer(e.prevSelected).setVisible(false);
+      }
+      viewer.getLayer(e.dataAttribute).setVisible(true);
     });
     $(document).on('toggleEdit', onToggleEdit);
     $(document).on('changeEdit', onChangeEdit);
@@ -86,6 +89,7 @@ module.exports = function editorLayers(editableLayers, opt_options) {
       obj.value = layerName;
       return obj;
     });
+    
     return selectOptions;
   }
 }

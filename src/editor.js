@@ -16,7 +16,7 @@ module.exports = function() {
 function Init(opt_options) {
   var options = opt_options || {};
   options.autoSave = options.hasOwnProperty('autoSave') ? options.autoSave : true;
-  options.currentLayer = options.defaultLayer || options.editableLayers[0];
+  options.currentLayer = options.defaultLayer;
   editorToolbar.init(options);
   render();
   $editorButton = $('#o-editor-button');

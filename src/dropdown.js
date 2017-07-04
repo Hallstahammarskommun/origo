@@ -41,8 +41,12 @@ module.exports = function(target, items, options) {
   function addListener() {
     $target.on('click', 'ul', function(e) {
       var $active = $(e.target);
+      var $prevAct = $active.parent().find('.o-active');
+
+
       $target.trigger({
         type: 'changeDropdown',
+        prevSelected: $prevAct.data(options.dataAttribute),
         dataAttribute: $(e.target).data(options.dataAttribute)
       });
       toggleActive($active);

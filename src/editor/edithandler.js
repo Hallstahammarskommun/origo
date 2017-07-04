@@ -44,7 +44,6 @@ module.exports = function(options) {
     verifyLayer(layerName);
     if (layerName === currentLayer && options.isActive) {
       dispatcher.emitEnableInteraction();
-      setEditLayer(layerName);
     }
   });
 

@@ -8,6 +8,7 @@ var dispatcher = require('./editdispatcher');
 var editHandler = require('./edithandler');
 var editorLayers = require('./editorlayers');
 var drawTools = require('./drawtools');
+var modal = require('../modal');
 
 var activeClass = 'o-control-active';
 var disableClass = 'o-disabled';
@@ -62,10 +63,19 @@ function render() {
 function bindUIActions() {
   var self = this;
   $editDraw.on('click', function(e) {
-    dispatcher.emitToggleEdit('draw');
-    $editDraw.blur();
-    e.preventDefault();
-    return false;
+    if ($('#editor-toolbar-layers-dropdown').find('.o-active').length) {
+      dispatcher.emitToggleEdit('draw');
+      $editDraw.blur();
+      e.preventDefault();
+      return false;
+    } else {
+      modal.createModal('#o-map', {
+        title: 'Inget lager valt',
+        content: "Börja med att välja ett lager innan du ritar."
+      });
+
+      modal.showModal();
+    }
   });
   $editAttribute.on('click', function(e) {
     dispatcher.emitToggleEdit('attribute');
