@@ -43,7 +43,6 @@ module.exports = function(target, items, options) {
       var $active = $(e.target);
       var $prevAct = $active.parent().find('.o-active');
 
-
       $target.trigger({
         type: 'changeDropdown',
         prevSelected: $prevAct.data(options.dataAttribute),
