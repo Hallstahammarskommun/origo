@@ -10,6 +10,7 @@ var generateUUID = require('../utils/generateuuid');
 var transactionHandler = require('./transactionhandler');
 var dispatcher = require('./editdispatcher');
 var editForm = require('./editform');
+var shapes = require('./shapes');
 
 var editLayers = {};
 var autoSave = undefined;
@@ -28,47 +29,56 @@ var hasSnap = undefined;
 var select = undefined;
 var modify = undefined;
 var snap = undefined;
+var tools = undefined;
 
 module.exports = function(options) {
   map = viewer.getMap();
-
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
+  tools = options.drawTools || [];
 
   //set edit properties for editable layers
   editLayers = setEditProps(options);
   editableLayers.forEach(function(layerName) {
     var layer = viewer.getLayer(layerName);
-    layer.getSource().once('addfeature', function(e) {
-      editLayers[layerName].geometryType = layer.getSource().getFeatures()[0].getGeometry().getType();
-      editLayers[layerName].geometryName = layer.getSource().getFeatures()[0].getGeometryName();
-      if (layerName === currentLayer && options.isActive) {
-        dispatcher.emitEnableInteraction();
-      }
-    });
+    verifyLayer(layerName);
+    if (layerName === currentLayer && options.isActive) {
+      dispatcher.emitEnableInteraction();
+      setEditLayer(layerName);
+    }
   });
 
   autoSave = options.autoSave;
-  $(document).on('toggleEdit', toggleEdit);
+  $(document).on('toggleEdit', onToggleEdit);
+  $(document).on('changeEdit', onChangeEdit);
+  $(document).on('editorShapes', onChangeShape);
 }
 
 function setEditLayer(layerName) {
-  var editLayer = editLayers[layerName];
-  var layer = viewer.getLayer(layerName);
   currentLayer = layerName;
-  editSource = layer.getSource();
-  attributes = layer.get('attributes');
-  title = layer.get('title') || 'Information';
-  removeInteractions();
-  draw = new ol.interaction.Draw({
+  setInteractions();
+}
+
+function setInteractions(drawType) {
+  var editLayer = editLayers[currentLayer];
+  var drawOptions;
+  editSource = editLayer.getSource();
+  attributes = editLayer.get('attributes');
+  title = editLayer.get('title') || 'Information';
+  drawOptions = {
     source: editSource,
-    'type': editLayer.geometryType,
-    geometryName: editLayer.geometryName
-  });
+    type: editLayer.get('geometryType'),
+    geometryName: editLayer.get('geometryName')
+  };
+  if (drawType) {
+    $.extend(drawOptions, shapes(drawType));
+  }
+  removeInteractions();
+  draw = new ol.interaction.Draw(drawOptions);
   hasDraw = false;
   hasAttribute = false;
   select = new ol.interaction.Select({
-    layers: [layer]
+    layers: [editLayer]
   });
   modify = new ol.interaction.Modify({
     features: select.getFeatures()
@@ -81,26 +91,45 @@ function setEditLayer(layerName) {
   setActive();
 
   //If snap should be active then add snap internactions for all snap layers
-  hasSnap = editLayer.snap;
+  hasSnap = editLayer.get('snap');
   if (hasSnap) {
     var selectionSource = featureInfo.getSelectionLayer().getSource();
-    var snapSources = editLayer.snapLayers ? getSnapSources(editLayer.snapLayers) : [editLayer.source];
+    var snapSources = editLayer.get('snapLayers') ? getSnapSources(editLayer.get('snapLayers')) : [editLayer.get('source')];
     snapSources.push(selectionSource);
     snap = addSnapInteraction(snapSources);
   }
+}
+
+function verifyLayer(layerName) {
+  if (!(editLayers[layerName].get('geometryType'))) {
+    addFeatureAddListener(layerName);
+  }
+}
+
+function setGeometryProps(layer) {
+  var layerName = layer.get('name');
+  editLayers[layerName].set('geometryType', layer.getSource().getFeatures()[0].getGeometry().getType());
+  if (layerName === currentLayer) {
+    setEditLayer(layerName);
+  }
+}
+
+function addFeatureAddListener(layerName) {
+  var layer = viewer.getLayer(layerName);
+  layer.getSource().once('addfeature', function(e) {
+    setGeometryProps(layer);
+  });
 }
 
 function setEditProps(options) {
   var initialValue = {};
   var result = editableLayers.reduce(function(layerProps, layerName) {
     var layer = viewer.getLayer(layerName);
-
-    layerProps[layerName] = {
-      geometryType: layer.get('geometryType') || undefined,
-      geometryName: layer.get('geometryName') || undefined,
-    };
-    layerProps[layerName].snap = options.hasOwnProperty('snap') ? options.snap : true;
-    layerProps[layerName].snapLayers = options.snapLayers || editableLayers;
+    var snap = options.hasOwnProperty('snap') ? options.snap : true;
+    var snapLayers = options.snapLayers || editableLayers;
+    layer.set('snap', snap);
+    layer.set('snapLayers', snapLayers);
+    layerProps[layerName] = layer;
     return layerProps;
   }, initialValue);
   return result;
@@ -116,6 +145,9 @@ function isActive() {
 
 function onDeleteSelected() {
   var features = select.getFeatures();
+
+  // Make sure all features are loaded in the source
+  editSource = editLayers[currentLayer].getSource();
   if (features.getLength() === 1) {
     var feature = features.item(0);
     var r = confirm('Är du säker på att du vill ta bort det här objektet?');
@@ -144,7 +176,7 @@ function onDrawEnd(evt) {
   var feature = evt.feature;
   var layer = viewer.getLayer(currentLayer);
   var attributes = getDefaultValues(layer.get('attributes'));
-  feature.setProperties(attributes);  
+  feature.setProperties(attributes);
   feature.setId(generateUUID());
   editSource.addFeature(feature);
   setActive();
@@ -161,6 +193,11 @@ function cancelDraw() {
   setActive();
   hasDraw = false;
   dispatcher.emitChangeEdit('draw', false);
+}
+
+function onChangeShape(e) {
+  setInteractions(e.shape);
+  startDraw();
 }
 
 function cancelAttribute() {
@@ -225,6 +262,7 @@ function removeInteractions() {
         map.removeInteraction(snapInteraction);
       });
     }
+
     modify = undefined;
     select = undefined;
     draw = undefined;
@@ -254,10 +292,11 @@ function addListener() {
   return fn;
 }
 
-function toggleEdit(e) {
+function onToggleEdit(e) {
   e.stopPropagation();
   if (e.tool === 'draw') {
     if (hasDraw === false) {
+      setInteractions();
       startDraw();
     } else {
       cancelDraw();
@@ -279,10 +318,17 @@ function toggleEdit(e) {
   }
 }
 
+function onChangeEdit(e) {
+  if (e.tool!== 'draw' && e.active) {
+    cancelDraw();
+  }
+}
+
 function getSnapSources(layers) {
   var sources = layers.map(function(layer) {
     return viewer.getLayer(layer).getSource();
   });
+
   return sources;
 }
 
@@ -351,6 +397,7 @@ function editAttributes() {
           obj.isVisible = true;
           obj.elId = '#input-' + obj.name;
         }
+
         obj.formElement = editForm(obj);
         return obj;
       });
@@ -398,11 +445,12 @@ function saveFeatures() {
       var layer = viewer.getLayer(layerName);
       var ids = edits[layerName][editType];
       var features;
-      features = getFeaturesByIds(editType,layer,ids);
+      features = getFeaturesByIds(editType, layer, ids);
       if (features.length) {
         transaction[editType] = features;
       }
     });
+
     transactionHandler(transaction, layerName);
   });
 }
@@ -423,6 +471,7 @@ function getFeaturesByIds(type, layer, ids) {
       }
     });
   }
+
   return features;
 }
 

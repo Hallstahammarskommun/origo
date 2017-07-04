@@ -7,16 +7,16 @@ var group = require('./layer/group');
 var type = {};
 var layerCreator;
 type.WFS = require('./layer/wfs');
-type.AGS_FEATURE = require('./layer/agsfeature');
-type.TOPOJSON = require('./layer/topojson');
-type.GEOJSON = require('./layer/geojson');
+//type.AGS_FEATURE = require('./layer/agsfeature');
+//type.TOPOJSON = require('./layer/topojson');
+//type.GEOJSON = require('./layer/geojson');
 type.WMS = require('./layer/wms');
 type.WMTS = require('./layer/wmts');
-type.AGS_TILE = require('./layer/agstile');
-type.XYZ = require('./layer/xyz');
-type.OSM = require('./layer/osm');
+//type.AGS_TILE = require('./layer/agstile');
+//type.XYZ = require('./layer/xyz');
+//type.OSM = require('./layer/osm');
 //type.FEATURE = require('./layer/featurelayer');
-type.GROUP = groupLayer;
+//type.GROUP = groupLayer;
 
 layerCreator = function layerCreator(opt_options) {
   var defaultOptions = {
