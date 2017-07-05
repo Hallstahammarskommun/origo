@@ -83,9 +83,11 @@ function bindUIActions() {
     e.preventDefault();
   });
   $editDelete.on('click', function(e) {
-    dispatcher.emitToggleEdit('delete');
-    $editDelete.blur();
-    e.preventDefault();
+    if ($('#editor-toolbar-layers-dropdown').find('.o-active').length) {
+      dispatcher.emitToggleEdit('delete');
+      $editDelete.blur();
+      e.preventDefault();
+    }
   });
   $editLayers.on('click', function(e) {
     dispatcher.emitToggleEdit('layers');
