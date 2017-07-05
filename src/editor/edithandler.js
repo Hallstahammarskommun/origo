@@ -318,7 +318,7 @@ function onToggleEdit(e) {
 }
 
 function onChangeEdit(e) {
-  if (e.tool!== 'draw' && e.active) {
+  if (e.tool!== 'draw' && draw && e.active) {
     cancelDraw();
   }
 }
