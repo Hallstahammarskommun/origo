@@ -126,6 +126,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Arrendator: ",
@@ -143,13 +144,13 @@
     {
       "name": "BU_w_fos_p",
       "title": "Förskola",
-      "queryable": true,
       "source": "local",
       "style": "BU_w_fos_p",
       "group": "ritlager",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [
           {
             "name": "obj",
@@ -177,6 +178,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -204,6 +206,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -231,6 +234,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Fastighet: ",
@@ -268,6 +272,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Storlek: ",
@@ -287,6 +292,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Status: ",
@@ -297,13 +303,13 @@
     {
       "name": "TK_w_pak_y",
       "title": "Park",
-      "queryable": true,
       "source": "local",
       "style": "TK_w_pak_y",
       "group": "ritlager",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
+      "queryable": false,
       "attributes": [
           {
             "name": "typ",
@@ -327,6 +333,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "obj",
         "title": "Plannamn: ",
@@ -346,6 +353,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "queryable": false,
       "attributes": [{
         "name": "pktnr",
         "title": "Punktnummer: ",
