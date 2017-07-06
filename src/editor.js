@@ -16,6 +16,7 @@ module.exports = function() {
 function Init(opt_options) {
   var options = opt_options || {};
   options.autoSave = options.hasOwnProperty('autoSave') ? options.autoSave : true;
+  options.autoForm = options.hasOwnProperty('autoForm') ? options.autoForm : false;
   options.currentLayer = options.defaultLayer;
   editorToolbar.init(options);
   render();

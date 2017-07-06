@@ -26,7 +26,8 @@
       "options": {
         "editableLayers": ["TK_w_are_p", "BU_w_fos_p", "BU_w_grs_p", "BU_w_gss_p", "TK_w_let_y", "TK_w_lim_y", "KS_w_opo_p", "TK_w_pak_y", "TK_w_pap_y", "TK_w_stp_p"],
         "isActive": true,
-        "autoSave": true
+        "autoSave": true,
+        "autoForm": true
       }
     }, {
         "name": "legend",
@@ -86,11 +87,6 @@
       "expanded": true
     },
     {
-      "name": "ritlager",
-      "title": "Ritlager",
-      "expanded": true
-    },
-    {
       "name": "background",
       "title": "Bakgrundskartor",
       "expanded": true
@@ -122,7 +118,7 @@
       "title": "Arrende",
       "source": "local",
       "style": "TK_w_are_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -146,7 +142,7 @@
       "title": "Förskola",
       "source": "local",
       "style": "BU_w_fos_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -174,7 +170,7 @@
       "title": "Grundskola",
       "source": "local",
       "style": "BU_w_grs_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -202,7 +198,7 @@
       "title": "Grundsärskola",
       "source": "local",
       "style": "BU_w_gss_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -230,7 +226,7 @@
       "title": "Lediga tomter",
       "source": "local",
       "style": "TK_w_let_y",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -268,7 +264,7 @@
       "title": "Ledig industrimark",
       "source": "local",
       "style": "TK_w_lim_y",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -288,7 +284,7 @@
       "title": "Opto ansluten",
       "source": "local",
       "style": "KS_w_opo_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -305,7 +301,7 @@
       "title": "Park",
       "source": "local",
       "style": "TK_w_pak_y",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -329,7 +325,7 @@
       "title": "Pågående detaljplan",
       "source": "local",
       "style": "TK_w_pap_y",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -349,7 +345,7 @@
       "title": "Stompunkter",
       "source": "local",
       "style": "TK_w_stp_p",
-      "group": "ritlager",
+      "group": "",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
