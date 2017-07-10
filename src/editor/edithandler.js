@@ -34,7 +34,6 @@ var tools = undefined;
 
 module.exports = function(options) {
   map = viewer.getMap();
-  currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
   tools = options.drawTools || [];
 
@@ -43,10 +42,12 @@ module.exports = function(options) {
   editableLayers.forEach(function(layerName) {
     var layer = viewer.getLayer(layerName);
     verifyLayer(layerName);
-    if (layerName === currentLayer && options.isActive) {
-      dispatcher.emitEnableInteraction();
-    }
   });
+
+
+  if (options.isActive) {
+    dispatcher.emitEnableInteraction();
+  }
 
   autoSave = options.autoSave;
   autoForm = options.autoForm;
