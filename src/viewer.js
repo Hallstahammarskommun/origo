@@ -116,7 +116,7 @@ function createLayers(layerlist, savedLayers) {
       getCapabilitiesLayers = getCapabilities(settings.capabilitiesURL);
 
       layerlist.forEach(function(layer) {
-      if(getCapabilitiesLayers.includes(layer.name)){
+        if (getCapabilitiesLayers.indexOf(layer.name) >= 0) {
         layer.secure = false;
       } else {
         if (layer['secure'] === undefined) {layer.secure = true};
