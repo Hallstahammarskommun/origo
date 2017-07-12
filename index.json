@@ -68,7 +68,7 @@
     ],
     "source": {
         "wms": {
-            "url": "https://karta.hallstahammar.se/geoserver/Hallstahammar/wms",
+            "url": "https://karta.hallstahammar.se/geoserver/extern/wms",
             "version": "1.1.1"
         },
         "local": {
