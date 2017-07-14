@@ -78,7 +78,7 @@
       },
       "ows": {
           "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
-          "workspace": "Hallstahammar"
+          "workspace": "intern"
       },
       "basemap": {
           "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
