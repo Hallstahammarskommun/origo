@@ -19,6 +19,12 @@
   appearance: none;
   width: 348px
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   /* IE10+ specific styles go here */
+   .o-search-field {
+     height: 46px;
+ }
+}
 .o-icon-search-fa-times {
 	padding: .5em;
 	height: 1em;
