@@ -69,11 +69,15 @@
   ],
   "source": {
       "wms": {
-          "url": "https://karta.hallstahammar.se/geoserver/Hallstahammar/wms",
+          "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
           "version": "1.1.1"
       },
-      "local": {
-          "url": "https://karta.hallstahammar.se/geoserver/ows",
+      "intern": {
+          "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
+          "version": "1.1.1"
+      },
+      "ows": {
+          "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
           "workspace": "Hallstahammar"
       },
       "basemap": {
@@ -107,7 +111,7 @@
       "format": "image/png",
       "group": "hjälplager",
       "name": "PK",
-      "source": "wms",
+      "source": "intern",
       "title": "Primärkarta, grå",
       "type": "WMS",
       "style": "pk_gra",
@@ -116,7 +120,7 @@
     {
       "name": "TK_w_are_p",
       "title": "Arrende",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_are_p",
       "group": "",
       "type": "WFS",
@@ -140,7 +144,7 @@
     {
       "name": "BU_w_fos_p",
       "title": "Förskola",
-      "source": "local",
+      "source": "ows",
       "style": "BU_w_fos_p",
       "group": "",
       "type": "WFS",
@@ -168,7 +172,7 @@
     {
       "name": "BU_w_grs_p",
       "title": "Grundskola",
-      "source": "local",
+      "source": "ows",
       "style": "BU_w_grs_p",
       "group": "",
       "type": "WFS",
@@ -196,7 +200,7 @@
     {
       "name": "BU_w_gss_p",
       "title": "Grundsärskola",
-      "source": "local",
+      "source": "ows",
       "style": "BU_w_gss_p",
       "group": "",
       "type": "WFS",
@@ -224,7 +228,7 @@
     {
       "name": "TK_w_let_y",
       "title": "Lediga tomter",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_let_y",
       "group": "",
       "type": "WFS",
@@ -262,7 +266,7 @@
     {
       "name": "TK_w_lim_y",
       "title": "Ledig industrimark",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_lim_y",
       "group": "",
       "type": "WFS",
@@ -282,7 +286,7 @@
     {
       "name": "KS_w_opo_p",
       "title": "Opto ansluten",
-      "source": "local",
+      "source": "ows",
       "style": "KS_w_opo_p",
       "group": "",
       "type": "WFS",
@@ -299,7 +303,7 @@
     {
       "name": "TK_w_pak_y",
       "title": "Park",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_pak_y",
       "group": "",
       "type": "WFS",
@@ -323,7 +327,7 @@
     {
       "name": "TK_w_pap_y",
       "title": "Pågående detaljplan",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_pap_y",
       "group": "",
       "type": "WFS",
@@ -343,7 +347,7 @@
     {
       "name": "TK_w_stp_p",
       "title": "Stompunkter",
-      "source": "local",
+      "source": "ows",
       "style": "TK_w_stp_p",
       "group": "",
       "type": "WFS",
@@ -372,7 +376,7 @@
 
     {
           "name": "TK_mak_y",
-          "source": "local",
+          "source": "ows",
           "style": "TK_mak_y",
           "title": "Mask",
           "queryable": false,

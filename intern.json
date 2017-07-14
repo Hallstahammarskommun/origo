@@ -80,14 +80,18 @@
     "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
     "source": {
         "wms": {
-            "url": "https://karta.hallstahammar.se/intern/kartserver/Hallstahammar/wms",
+            "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
             "version": "1.1.1"
         },
-        "local": {
+        "intern": {
+            "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
+            "version": "1.1.1"
+        },
+        "ows": {
             "url": "https://karta.hallstahammar.se/intern/kartserver/ows"
         },
         "historiska": {
-            "url": "https://karta.hallstahammar.se/intern/kartserver/bakgrund/wms",
+            "url": "https://karta.hallstahammar.se/geoserver/bakgrund/wms",
             "version": "1.1.1"
         },
         "basemap": {
@@ -121,7 +125,7 @@
     }],
     "layers": [{
         "name": "BM_avl_p",
-        "source": "local",
+        "source": "ows",
         "style": "BM_avl_p",
         "title": "Enskilda avlopp",
         "group": "BM",
@@ -134,7 +138,7 @@
         }]
     }, {
         "name": "Plan",
-        "source": "wms",
+        "source": "intern",
         "style": "Plan",
         "title": "Gällande detaljplan",
         "format": "image/png",
@@ -149,7 +153,7 @@
         }]
     }, {
         "name": "TK_kof_y",
-        "source": "local",
+        "source": "ows",
         "style": "TK_kof_y",
         "title": "Kommunal mark",
         "group": "TK",
@@ -157,8 +161,17 @@
         "type": "WFS",
         "visible": false
     }, {
+        "name": "opto",
+        "source": "intern",
+        "style": "opto",
+        "title": "Opto",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
+        "visible": false
+    }, {
         "name": "PK_farg",
-        "source": "wms",
+        "source": "intern",
         "style": "PK_farg",
         "title": "Primärkarta, färg",
         "format": "image/png",
@@ -167,7 +180,7 @@
         "visible": false
     }, {
         "name": "PK",
-        "source": "wms",
+        "source": "intern",
         "style": "PK_gra",
         "title": "Primärkarta, grå",
         "format": "image/png",
@@ -176,7 +189,7 @@
         "visible": false
     }, {
         "name": "TK_w_stp_p",
-        "source": "local",
+        "source": "ows",
         "style": "TK_w_stp_p",
         "title": "Stompunkter",
         "group": "TK",
@@ -194,7 +207,7 @@
         }]
     }, {
         "name": "VA",
-        "source": "wms",
+        "source": "intern",
         "style": "VA",
         "title": "VA nät",
         "format": "image/png",
@@ -334,7 +347,7 @@
         "queryable": false
     }, {
         "name": "TK_mak_y",
-        "source": "local",
+        "source": "ows",
         "style": "TK_mak_y",
         "title": "Mask",
         "group": "tom",
@@ -474,6 +487,14 @@
                   "color": "rgba(165,0,165,0.25)"
               },
               "filter": "[typ] == 'Nej'"
+          }]
+      ],
+      "opto": [
+          [{
+              "stroke": {
+                  "color": "rgb(240,163,0)",
+                  "width": 1
+              }
           }]
       ],
       "PK_farg": [
