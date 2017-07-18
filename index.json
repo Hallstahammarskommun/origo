@@ -199,8 +199,7 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-            "fixedUrl": "http://www.hallstahammar.se/Bo-bygga/Miljo-halsa--hallbar-utveckling/eldningsforbud/",
-            "fixedUrlName": "Mer information"
+            "html": "<a href='http://www.hallstahammar.se/Bo-bygga/Miljo-halsa--hallbar-utveckling/eldningsforbud' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "BM_lim_p",
@@ -219,8 +218,7 @@
         }, {
             "name": "status"
         }, {
-            "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
-            "fixedUrlName": "Lämna synpunkter och klagomål"
+            "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1' target='_blank'>Lämna synpunkter och klagomål</a>"
         }]
     }, {
         "name": "Vaghallare",
@@ -240,8 +238,7 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-          "fixedUrl": "http://hallstahammar.se/Bo-bygga/naturomraden/",
-          "fixedUrlName": "Mer information"
+          "html": "<a href='http://hallstahammar.se/Bo-bygga/naturomraden' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "BU_w_fos_p",
@@ -255,8 +252,7 @@
             "name": "obj",
             "url": "url"
         }, {
-            "fixedUrl": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910",
-            "fixedUrlName": "Ansök om plats"
+            "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats</a>"
         }, {
             "name": "egn",
             "title": "Telefon: "

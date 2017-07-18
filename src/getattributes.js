@@ -52,9 +52,6 @@ module.exports = function(feature, layer) {
                               '</div>';
                     }
                 }
-                else if (attribute['fixedUrl']) {
-                    val = '<a href="' + attribute['fixedUrl'] + '" target="_blank">' + attribute['fixedUrlName']+ '</a>';
-                }
                 else if (attribute['html']) {
                   val = replacer.replace(attribute['html'], feature.getProperties(), {
                     helper: geom,
