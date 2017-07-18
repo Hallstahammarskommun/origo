@@ -126,7 +126,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Arrendator: ",
@@ -150,7 +150,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [
           {
             "name": "obj",
@@ -178,7 +178,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -206,7 +206,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Namn: ",
@@ -234,7 +234,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Fastighet: ",
@@ -272,7 +272,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Storlek: ",
@@ -292,7 +292,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Status: ",
@@ -309,16 +309,16 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [
           {
             "name": "typ",
-            "title": "Nummer",
+            "title": "Nummer: ",
             "type": "text"
           },
           {
             "name": "egn",
-            "title": "Intervall",
+            "title": "Intervall: ",
             "type": "dropdown",
             "options": ["Kontinuerlig", "1-3 gånger/säsong"]
           }
@@ -333,7 +333,7 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "obj",
         "title": "Plannamn: ",
@@ -353,7 +353,7 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": false,
+      "queryable": true,
       "attributes": [{
         "name": "pktnr",
         "title": "Punktnummer: ",

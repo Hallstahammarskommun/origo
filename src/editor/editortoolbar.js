@@ -111,11 +111,15 @@ function bindUIActions() {
 }
 
 function onEnableInteraction(e) {
+  var activeItem;
+  var layer;
   e.stopPropagation();
   if (e.interaction === 'editor') {
     setActive(true);
+    activeItem = $('#editor-toolbar-layers-dropdown').find('.o-active')[0];
+    layer = activeItem.dataset.layer;
     dispatcher.emitToggleEdit('edit', {
-      currentLayer: currentLayer
+      currentLayer:  layer
     });
   } else {
     setActive(false);
