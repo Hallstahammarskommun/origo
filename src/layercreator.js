@@ -16,7 +16,7 @@ type.WMTS = require('./layer/wmts');
 //type.XYZ = require('./layer/xyz');
 //type.OSM = require('./layer/osm');
 //type.FEATURE = require('./layer/featurelayer');
-//type.GROUP = groupLayer;
+type.GROUP = groupLayer;
 
 layerCreator = function layerCreator(opt_options) {
   var defaultOptions = {

@@ -104,17 +104,34 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "Fastighet",
-        "source": "wms",
-        "style": "granser",
-        "title": "Fastighetsgränser",
-        "format": "image/png",
-        "group": "bygga",
-        "type": "WMS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }]
+      	"name": "fastigheter",
+      	"title": "Fastighetsgränser",
+      	"style": "granser",
+      	"group": "bygga",
+      	"type": "GROUP",
+      	"visible": false,
+      	"layers": [
+      		{
+              "name": "granser",
+              "source": "wms",
+              "style": "granser",
+              "format": "image/png",
+              "group": "bygga",
+              "type": "WMS",
+              "visible": true
+          }, {
+              "name": "TK_s_fat_y",
+              "source": "local",
+              "style": "TK_s_fat_y",
+              "title": "Fastighet",
+              "format": "image/png",
+              "group": "bygga",
+              "type": "WFS",
+              "visible": true,
+      		    "attributes": [{
+                  "name": "obj"
+              }]
+          }]
     }, {
         "name": "PL_POLYGON",
         "source": "local",
@@ -483,6 +500,13 @@
                 },
                 "fill": {
                     "color": "rgba(255,198,105,0.3)"
+                }
+            }]
+        ],
+        "TK_s_fat_y": [
+            [{
+                "fill": {
+                    "color": "rgba(0,0,0,0)"
                 }
             }]
         ],
