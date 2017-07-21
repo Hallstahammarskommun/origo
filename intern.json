@@ -225,17 +225,34 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "Fastighet_kvalitet",
-        "source": "wms",
-        "style": "granser",
-        "title": "Fastighet",
-        "format": "image/png",
-        "group": "LM",
-        "type": "WMS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }]
+      	"name": "fastigheter",
+      	"title": "Fastighetsgränser",
+      	"style": "granser",
+      	"group": "bygga",
+      	"type": "GROUP",
+      	"visible": false,
+      	"layers": [
+      		{
+              "name": "granser",
+              "source": "wms",
+              "style": "granser",
+              "format": "image/png",
+              "group": "bygga",
+              "type": "WMS",
+              "visible": true
+          }, {
+              "name": "TK_s_fat_y",
+              "source": "local",
+              "style": "TK_s_fat_y",
+              "title": "Fastighet",
+              "format": "image/png",
+              "group": "bygga",
+              "type": "WFS",
+              "visible": true,
+              "attributes": [{
+                  "name": "obj"
+              }]
+          }]
     }, {
         "name": "pbr_rattigheter",
         "source": "wms",
