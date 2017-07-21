@@ -225,28 +225,28 @@
         "type": "WMS",
         "visible": false
     }, {
-      	"name": "fastigheter",
-      	"title": "Fastighetsgränser",
-      	"style": "granser",
-      	"group": "bygga",
-      	"type": "GROUP",
-      	"visible": false,
-      	"layers": [
-      		{
-              "name": "granser",
+        "name": "Fastighet",
+        "title": "Fastighetsgränser",
+        "style": "granser",
+        "group": "LM",
+        "type": "GROUP",
+        "visible": false,
+        "layers": [
+          {
+              "name": "Fastighet_kvalitet",
               "source": "wms",
               "style": "granser",
               "format": "image/png",
-              "group": "bygga",
+              "group": "LM",
               "type": "WMS",
               "visible": true
           }, {
               "name": "TK_s_fat_y",
-              "source": "local",
+              "source": "ows",
               "style": "TK_s_fat_y",
               "title": "Fastighet",
               "format": "image/png",
-              "group": "bygga",
+              "group": "LM",
               "type": "WFS",
               "visible": true,
               "attributes": [{
@@ -587,6 +587,13 @@
             [{
                 "image": {
                     "src": "img/png/FMI_WMS.png"
+                }
+            }]
+        ],
+        "TK_s_fat_y": [
+            [{
+                "fill": {
+                    "color": "rgba(0,0,0,0)"
                 }
             }]
         ],
