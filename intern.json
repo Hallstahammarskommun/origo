@@ -226,7 +226,7 @@
         "visible": false
     }, {
         "name": "Fastighet",
-        "title": "Fastighetsgränser",
+        "title": "Fastighet",
         "style": "granser",
         "group": "LM",
         "type": "GROUP",
@@ -250,7 +250,9 @@
               "type": "WFS",
               "visible": true,
               "attributes": [{
-                  "name": "obj"
+                  "name": "obj",
+                  "url": "egn",
+                  "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
               }]
           }]
     }, {
