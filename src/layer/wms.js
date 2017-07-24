@@ -31,7 +31,7 @@ var wms = function wms(layerOptions) {
       attributions: options.attribution,
       url: options.url,
       gutter: options.gutter,
-      crossOrigin: 'anonymous',
+      //crossOrigin: 'anonymous',
       projection: options.projectionCode,
       params: {
         'LAYERS': options.id,
