@@ -109,11 +109,15 @@
     }, {
         "name": "LM",
         "title": "Lantmäteriet",
-        "expanded": true
+        "expanded": false
     }, {
         "name": "RAA",
         "title": "Riksantikvarieämbetet",
-        "expanded": true
+        "expanded": false
+    }, {
+        "name": "SV",
+        "title": "Skatteverket",
+        "expanded": false
     }, {
         "name": "historiska",
         "title": "Historiska kartor",
@@ -274,6 +278,23 @@
         "type": "WMS",
         "visible": false,
         "queryable": false
+    }, {
+        "name": "TK_kir_p",
+        "source": "ows",
+        "style": "point",
+        "clusterStyle": "cluster",
+        "title": "Navet",
+        "layerType":"cluster",
+        "group": "SV",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+          "title": "Personnummer: ",
+          "name": "obj"
+        }, {
+          "title": "Namn: ",
+          "name": "typ"
+        }]
     }, {
         "name": "HE1907",
         "source": "historiska",
