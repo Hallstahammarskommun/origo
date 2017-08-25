@@ -111,6 +111,10 @@
         "title": "Lantmäteriet",
         "expanded": false
     }, {
+        "name": "PTS",
+        "title": "Post- och telestyrelsen",
+        "expanded": false
+    }, {
         "name": "RAA",
         "title": "Riksantikvarieämbetet",
         "expanded": false
@@ -254,9 +258,16 @@
               "type": "WFS",
               "visible": true,
               "attributes": [{
-                  "name": "obj",
-                  "url": "egn",
-                  "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
+                "title": "Ägare: ",
+                "name": "obj",
+                "url": "egn",
+                "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
+              }, {
+                "title": "Fastighetsrapport: ",
+                "name": "obj",
+                "urlPrefix": "http://10.7.2.48/FBWebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
+                "url": "egn",
+                "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
               }]
           }]
     }, {
@@ -268,6 +279,24 @@
         "group": "LM",
         "type": "WMS",
         "visible": false
+    }, {
+        "name": "PTS_lek_y",
+        "source": "ows",
+        "style": "PTS_lek_y",
+        "title": "Pågende grävarbeten",
+        "group": "PTS",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [{
+            "title": "Ärende: ",
+            "name": "typ"
+          }, {
+            "title": "Startdatum: ",
+            "name": "startdate"
+        }, {
+          "title": "Slutdatum: ",
+          "name": "enddate"
+      }]
     }, {
         "name": "FMI_WMS",
         "source": "wms",
@@ -603,6 +632,17 @@
                 "stroke": {
                     "color": "rgb(0,120,193)",
                     "width": 1
+                }
+            }]
+        ],
+		"PTS_lek_y": [
+            [{
+                "stroke": {
+                    "color": "rgba(86,66,244,0.6)",
+                    "width": 2
+                },
+                "fill": {
+                    "color": "rgba(86,66,244,0.3)"
                 }
             }]
         ],
