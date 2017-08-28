@@ -45,8 +45,8 @@
     }],
     "footer": [{
     "img": "css/png/kommunvapen.png",
-    "url" : "http://karta.hallstahammar.se/",
-    "urlText": "Hallstakartan"
+    "url" : "https://karta.hallstahammar.se/old",
+    "urlText": "Tidigare versionen av Kommunkartan"
     }],
     "projectionCode": "EPSG:3010",
     "projectionExtent": [-166640, 6305699, 433362, 6905701],
