@@ -68,7 +68,7 @@
     ],
     "source": {
         "wms": {
-            "url": "https://karta.hallstahammar.se/geoserver/extern/wms",
+            "url": "https://karta.hallstahammar.se/geoserver/wms",
             "version": "1.1.1"
         },
         "local": {
@@ -133,12 +133,13 @@
               }]
           }]
     }, {
-        "name": "PL_POLYGON",
-        "source": "local",
-        "style": "PL_POLYGON",
+        "name": "Detaljplan",
+        "source": "wms",
+        "style": "detaljplan",
         "title": "Gällande detaljplan",
+        "format": "image/png",
         "group": "bygga",
-        "type": "WFS",
+        "type": "WMS",
         "visible": false,
         "attributes": [{
             "name": "TEXT",
@@ -432,7 +433,7 @@
                 }
             }]
         ],
-        "PL_POLYGON": [
+        "detaljplan": [
             [{
                 "stroke": {
                     "color": "rgba(229,109,30,0.6)",

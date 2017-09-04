@@ -103,6 +103,10 @@
         "title": "Bygg & miljö",
         "expanded": true
     }, {
+        "name": "KS",
+        "title": "Kommunstyrele",
+        "expanded": true
+    }, {
         "name": "TK",
         "title": "Tekniska",
         "expanded": true
@@ -145,19 +149,47 @@
             "name": "egn"
         }]
     }, {
-        "name": "Plan",
+        "name": "opto",
         "source": "intern",
-        "style": "Plan",
-        "title": "Gällande detaljplan",
+        "style": "opto",
+        "title": "Opto",
         "format": "image/png",
-        "group": "TK",
+        "group": "KS",
         "type": "WMS",
+        "visible": false
+    }, {
+        "name": "KS_w_opo_p",
+        "title": "Opto ansluten",
+        "source": "ows",
+        "style": "KS_w_opo_p",
+        "group": "KS",
+        "type": "WFS",
+        "geometryType": "Point",
         "visible": false,
+        "queryable": true,
         "attributes": [{
-            "name": "TEXT",
-            "url": "PLAN_ID",
-            "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken/",
-            "urlSuffix": ".pdf"
+          "name": "obj",
+          "title": "Status: "
+      }]
+    }, {
+        "name": "TK_w_are_p",
+        "title": "Arrende",
+        "source": "ows",
+        "style": "TK_w_are_p",
+        "group": "TK",
+        "type": "WFS",
+        "geometryType": "Point",
+        "visible": false,
+        "queryable": true,
+        "attributes": [{
+          "name": "obj",
+          "title": "Arrendator: "
+        }, {
+          "name": "typ",
+          "title": "Ändamål: "
+        }, {
+          "name": "url",
+          "title": "Sökväg: "
         }]
     }, {
         "name": "TK_kof_y",
@@ -167,15 +199,6 @@
         "group": "TK",
         "queryable": false,
         "type": "WFS",
-        "visible": false
-    }, {
-        "name": "opto",
-        "source": "intern",
-        "style": "opto",
-        "title": "Opto",
-        "format": "image/png",
-        "group": "TK",
-        "type": "WMS",
         "visible": false
     }, {
         "name": "PK_farg",
@@ -539,16 +562,52 @@
               "filter": "[status] == '0'"
           }]
       ],
-      "Plan": [
+      "opto": [
           [{
               "stroke": {
-                  "color": "rgba(229,109,30,0.6)",
+                  "color": "rgb(240,163,0)",
                   "width": 1
-              },
-              "fill": {
-                  "color": "rgba(66,89,179,0.3)"
               }
           }]
+      ],
+      "KS_w_opo_p": [
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p1.png"
+          },
+          "filter": "[obj] == 'Ansluten'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p2.png"
+          },
+          "filter": "[obj] == 'Avtal'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p4.png"
+          },
+          "filter": "[obj] == 'Intresse'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p3.png"
+          },
+          "filter": "[obj] == 'Kampanj'"
+        }],
+        [{
+          "icon": {
+            "src": "img/png/KS_w_opo_p0.png"
+          },
+          "filter": "[obj] == 'Pumpstation'"
+        }]
+      ],
+      "TK_w_are_p": [
+        [{
+          "icon": {
+            "src": "img/png/TK_w_are_p.png"
+          }
+        }]
       ],
       "TK_kof_y": [
           [{
@@ -556,14 +615,6 @@
                   "color": "rgba(165,0,165,0.25)"
               },
               "filter": "[typ] == 'Nej'"
-          }]
-      ],
-      "opto": [
-          [{
-              "stroke": {
-                  "color": "rgb(240,163,0)",
-                  "width": 1
-              }
           }]
       ],
       "PK_farg": [
