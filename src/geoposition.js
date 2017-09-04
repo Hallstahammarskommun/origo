@@ -29,6 +29,7 @@ function init(opt_options) {
 
   markerEl = $('#o-geolocation_marker').get(0);
   marker = new ol.Overlay({
+    id: 'geolocation-marker',
     positioning: 'center-center',
     element: markerEl,
     stopEvent: false
@@ -44,9 +45,6 @@ function init(opt_options) {
   }));
 
   bindUIActions();
-  if (/Mobi/.test(navigator.userAgent)) {
-        toggle();
-      }
 }
 
 function render(target) {
@@ -69,7 +67,11 @@ function render(target) {
 
 function bindUIActions() {
   $geolocateButtonId.on('click', function(e) {
-    enabled = false;
+    if (enabled === true) {
+      enabled = false;
+    } else {
+      enabled = true;
+    }
     toggle();
     $geolocateButton.blur();
     e.preventDefault();
@@ -77,19 +79,34 @@ function bindUIActions() {
 }
 
 function toggle() {
+  map.once("pointerdrag", function() {
+    enabled = false;
+    //geolocation.on('change', updatePosition);
+  });
+
   if ($geolocateButton.hasClass('o-geolocation-button-true')) {
     $geolocateButton.removeClass('o-geolocation-button-true');
     //geolocation.setTracking(false);
-
-    geolocation.un('change', updatePosition);
+    centerView();
+    geolocation.on('change', updatePosition);
     //map.removeOverlay(marker);
   } else {
     $geolocateButton.addClass('o-geolocation-button-true');
-    map.addOverlay(marker);
+    if (!map.getOverlayById('geolocation-marker')) {
+      map.addOverlay(marker);
+    }
 
-    // Listen to position changes
+    centerView();
     geolocation.on('change', updatePosition);
     geolocation.setTracking(true); // Start position tracking
+  }
+}
+
+function centerView() {
+  var markerPosition = marker.getPosition();
+  if (markerPosition) {
+    map.getView().setCenter(markerPosition);
+    map.getView().setZoom(10);
   }
 }
 
@@ -110,15 +127,16 @@ function getPositionVal() {
 function addPosition(current) {
   var position = current.position;
 
-  if (enabled === false && geolocation.getTracking()) {
+  if (enabled === true) {
     marker.setPosition(position);
     map.getView().animate({
       center: position,
       zoom: zoomLevel
     });
-    enabled = true;
-  } else if (geolocation.getTracking()) {
+
+  } else {
     marker.setPosition(position);
+
   }
 }
 
