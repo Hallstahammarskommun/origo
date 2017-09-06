@@ -239,6 +239,16 @@
             "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1' target='_blank'>Lämna synpunkter och klagomål</a>"
         }]
     }, {
+        "name": "TK_sop_r",
+        "source": "wms",
+        "format": "image/png",
+        "style": "TK_sop_r",
+        "title": "Solpotential",
+        "group": "energi",
+        "type": "WMS",
+        "visible": false,
+        "abstract": "För mer information besök kommunens <a href='http://hallstahammar.se/Boende-miljo-trafik/Energi-och-klimatradgivning' target='_blank'>hemsida om solel.</a>"
+    }, {
         "name": "Vaghallare",
         "source": "wms",
         "style": "line",
@@ -508,6 +518,20 @@
             [{
                 "fill": {
                     "color": "rgba(0,0,0,0)"
+                }
+            }]
+        ],
+        "TK_sop_r": [
+            [{
+                "circle": {
+                    "radius": 7,
+                    "stroke": {
+                        "color": "rgb(210,76,99)",
+                        "width": 2
+                    },
+                    "fill": {
+                        "color": "rgb(242,205,36)"
+                    }
                 }
             }]
         ],
