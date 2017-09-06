@@ -217,7 +217,7 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-            "html": "<a href='http://www.hallstahammar.se/Bo-bygga/Miljo-halsa--hallbar-utveckling/eldningsforbud' target='_blank'>Mer information</a>"
+            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Miljo-halsa--hallbar-utveckling/eldningsforbud' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "BM_lim_p",
