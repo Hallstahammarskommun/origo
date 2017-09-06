@@ -58,7 +58,7 @@ li .o-legend-item:hover, li .o-legend-item:hover [class^="o-icon-"] {
 	padding: .3em;
 	width: .9em;
 }
-.o-legend-header .o-icon-fa-info-circle {
+.o-legend-header .o-icon-fa-info {
 	padding: 0;
 	height: 1em;
 	width: 1em;
@@ -82,15 +82,13 @@ li .o-legend-subheader {
   //padding-bottom: 1px;
   padding-right: 15px;
 }
-.o-legend-secure {
-    font-style: italic;
-    color: #636363;
-}
 .o-legend-secure-item {
+  color: #636363;
   cursor: default;
   display: block;
   font-family: Arial,sans-serif;
   font-size: 14px;
+  font-style: italic;
   line-height: 24px;
   padding: 3px 1em;
   position: relative;
@@ -98,7 +96,7 @@ li .o-legend-subheader {
 }
 li .o-legend-secure-item-title {
   display: block;
-  padding-left: 52px;
+  padding-left: 47px;
   padding-right: 15px;
   vertical-align: top;
 }
@@ -181,9 +179,9 @@ li .o-legend-subitem-title {
 .o-legendlist li .o-legend-item-info {
   display: inline-block;
   position: absolute;
-  right: 0;
+  right: 1em;
   height: 20px;
-  top: 4px;
+  top: 8px;
   width:20px;
 }
 .o-checkbox {

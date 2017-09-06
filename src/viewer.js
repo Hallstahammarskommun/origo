@@ -119,7 +119,10 @@ function createLayers(layerlist, savedLayers) {
         if (getCapabilitiesLayers.indexOf(layer.name) >= 0) {
         layer.secure = false;
       } else {
-        if (layer['secure'] === undefined) {layer.secure = true};
+        if (layer['secure'] === undefined) {
+          layer.secure = true;
+          layer.abstract = "Du saknar behörighet att se detta lager";
+        };
       }
       })
   } else {

@@ -133,7 +133,14 @@ function createStroke(strokeProperties) {
 
 function addAbstractButton(item) {
   var infoTextButton =  '<div class="o-legend-item-info o-abstract" id="o-legend-item-info-' + item + '">' +
-                          '<svg class="o-icon-fa-info-circle"><use xlink:href="#fa-info-circle"></use></svg>' +
+                          '<svg class="o-icon-fa-info"><use xlink:href="#fa-info"></use></svg>' +
+                        '</div>';
+  return infoTextButton;
+}
+
+function addLockButton(item) {
+  var infoTextButton =  '<div class="o-legend-item-info o-abstract" id="o-legend-item-info-' + item + '">' +
+                          '<svg class="o-icon-fa-lock"><use xlink:href="#fa-lock"></use></svg>' +
                         '</div>';
   return infoTextButton;
 }
@@ -146,8 +153,12 @@ function createLegendItem(layerid, layerStyle, inSubgroup) {
   var legendItem = '';
 
   if (secure) {
-    legendItem += '<li class="o-legend-secure ' + layername + '" id="' + layerid + '"><div class ="o-legend-secure-item">';
+    legendItem += '<li class="o-legend ' + layername + '" id="' + layerid + '"><div class ="o-legend-secure-item">';
     legendItem += '<div class="o-legend-secure-item-title o-truncate">' + layer.get('title') + '</div>';
+
+    if(layer.get('abstract')){
+      legendItem += addLockButton(layername);
+    }
 
   } /*else if (layerStyle && layerStyle[0][0].hasOwnProperty('filter')) {
 
