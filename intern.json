@@ -376,7 +376,7 @@
         "style": "orto",
         "title": "1997",
         "format": "image/png",
-        "group": "orto",
+        "group": "historiska",
         "type": "WMS",
         "visible": false,
         "queryable": false
