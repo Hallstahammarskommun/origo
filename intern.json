@@ -42,7 +42,15 @@
         "options": {
           "hasMapLegend": false
         }
-    }],
+    },
+    {
+      "name": "about",
+      "options": {
+        "title": "Om Kommunkartan",
+        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Tekniska förvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+      }
+    }
+  ],
     "pageSettings": {
       "footer": {
         "img": "css/png/kommunvapen.png",
