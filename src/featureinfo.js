@@ -12,7 +12,6 @@ var style = require('./style')();
 var styleTypes = require('./style/styletypes');
 var getFeatureInfo = require('./getfeatureinfo');
 var owlCarousel = require('../externs/owlcarousel-browserify');
-require('jquery-mousewheel')($);
 owlCarousel.loadjQueryPlugin();
 
 var selectionLayer = undefined;
