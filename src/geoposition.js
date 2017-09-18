@@ -81,15 +81,13 @@ function bindUIActions() {
 function toggle() {
   map.once("pointerdrag", function() {
     enabled = false;
-    //geolocation.on('change', updatePosition);
+    $geolocateButton.removeClass('o-geolocation-button-true');
   });
 
   if ($geolocateButton.hasClass('o-geolocation-button-true')) {
     $geolocateButton.removeClass('o-geolocation-button-true');
-    //geolocation.setTracking(false);
     centerView();
     geolocation.on('change', updatePosition);
-    //map.removeOverlay(marker);
   } else {
     $geolocateButton.addClass('o-geolocation-button-true');
     if (!map.getOverlayById('geolocation-marker')) {

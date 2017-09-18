@@ -32,8 +32,7 @@ var projectionCode;
 var adress, fastighet, gatunamn;
 var urlAds, urlFat, urlGan;
 var overlay;
-
-typeahead.loadjQueryPlugin();
+var limit;
 
 function init(options) {
   var el;
@@ -63,15 +62,15 @@ function init(options) {
   map = Viewer.getMap();
 
   el = '<div id="o-search-wrapper">' +
-                '<div id="o-search" class="o-search o-search-false">' +
-                    '<input class="o-search-field typeahead form-control" type="text" placeholder="' + hintText + '">' +
-                    '<button id="o-search-button-close">' +
-                        '<svg class="o-icon-search-fa-times">' +
-                            '<use xlink:href="#fa-times"></use>' +
-                        '</svg>' +
-                    '</button>' +
-                '</div>' +
-              '</div>';
+    '<div id="o-search" class="o-search o-search-false">' +
+    '<input class="o-search-field typeahead form-control" type="text" placeholder="' + hintText + '">' +
+    '<button id="o-search-button-close">' +
+    '<svg class="o-icon-search-fa-times">' +
+    '<use xlink:href="#fa-times"></use>' +
+    '</svg>' +
+    '</button>' +
+    '</div>' +
+    '</div>';
   $('#o-map').append(el);
 
   // fix for internet explorer
@@ -125,27 +124,27 @@ function bindUIActions() {
   $('.typeahead').on('typeahead:selected', selectHandler);
 
   $('#o-search .o-search-field').on('input', function() {
-          if ($('#o-search .o-search-field.tt-input').val() && $('#o-search').hasClass('o-search-false')) {
-            $('#o-search').removeClass('o-search-false');
-            $('#o-search').addClass('o-search-true');
-            onClearSearch();
-          } else if (!($('#o-search .o-search-field.tt-input').val()) && $('#o-search').hasClass('o-search-true')) {
-            $('#o-search').removeClass('o-search-true');
-            $('#o-search').addClass('o-search-false');
-          }
-        });
+    if ($('#o-search .o-search-field.tt-input').val() && $('#o-search').hasClass('o-search-false')) {
+      $('#o-search').removeClass('o-search-false');
+      $('#o-search').addClass('o-search-true');
+      onClearSearch();
+    } else if (!($('#o-search .o-search-field.tt-input').val()) && $('#o-search').hasClass('o-search-true')) {
+      $('#o-search').removeClass('o-search-true');
+      $('#o-search').addClass('o-search-false');
+    }
+  });
 }
 
 function onClearSearch() {
-  $('#o-search-button-close').on('click', function (e) {
-      $('.typeahead').typeahead('val', '');
-      featureInfo.clear();
-      $('#o-search').removeClass('o-search-true');
-      $('#o-search').addClass('o-search-false');
-      $('#o-search .o-search-field.tt-input').val('');
-      $('#o-search-button').blur();
-      e.preventDefault();
-    });
+  $('#o-search-button-close').on('click', function(e) {
+    $('.typeahead').typeahead('val', '');
+    featureInfo.clear();
+    $('#o-search').removeClass('o-search-true');
+    $('#o-search').addClass('o-search-false');
+    $('#o-search .o-search-field.tt-input').val('');
+    $('#o-search-button').blur();
+    e.preventDefault();
+  });
 }
 
 function showOverlay(data, coord) {
@@ -155,17 +154,17 @@ function showOverlay(data, coord) {
   clear();
   popup = Popup('#o-map');
   overlay = new ol.Overlay({
-      element: popup.getEl()
-    });
+    element: popup.getEl()
+  });
 
   map.addOverlay(overlay);
 
   overlay.setPosition(coord);
   content = data[name];
   popup.setContent({
-      content: content,
-      title: title
-    });
+    content: content,
+    title: title
+  });
   popup.setVisibility(true);
   mapUtils.zoomToExent(new ol.geom.Point(coord), maxZoomLevel);
 }
@@ -209,20 +208,20 @@ function selectHandler(evt, data) {
     layer = Viewer.getLayer(data[layerNameAttribute]);
     id = data[idAttribute];
     getFeature(id, layer)
-      .done(function (res) {
-              var featureWkt;
-              var coordWkt;
-              if (res.length > 0) {
-                showFeatureInfo(res, layer.get('title'), getAttributes(res[0], layer));
-              }
+      .done(function(res) {
+        var featureWkt;
+        var coordWkt;
+        if (res.length > 0) {
+          showFeatureInfo(res, layer.get('title'), getAttributes(res[0], layer));
+        }
 
-              // Fallback if no geometry in response
-              else if (geometryAttribute) {
-                featureWkt = wktToFeature(data[geometryAttribute], projectionCode);
-                coordWkt = featureWkt.getGeometry().getCoordinates();
-                showOverlay(data, coordWkt);
-              }
-            });
+        // Fallback if no geometry in response
+        else if (geometryAttribute) {
+          featureWkt = wktToFeature(data[geometryAttribute], projectionCode);
+          coordWkt = featureWkt.getGeometry().getCoordinates();
+          showOverlay(data, coordWkt);
+        }
+      });
   } else if (geometryAttribute && layerName) {
     feature = wktToFeature(data[geometryAttribute], projectionCode);
     layer = Viewer.getLayer(data[layerName]);

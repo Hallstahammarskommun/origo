@@ -19,35 +19,28 @@
     }, {
         "name": "print"
     }, {
-      "name": "fmeserver",
-      "options": {
-        "title": "Hämta data",
-        "text":"Nedan ser du vilka lager som kommer att hämtas från den aktuella vyn ",
-        "currentExtent": true,
-        "useVisibleLayers": true,
-        "url": "https://karta.hallstahammar.se/fmeserver/fmedatadownload/Dashboards/wfs2generic.fmw?",
-        "params": [
-            {
-              "name": "format",
-              "title": "Format: ",
-              "type": "dropdown",
-              "options": ["ACAD", "ESRISHAPE", "GEOJSON"]
-            }
-        ]
-      }
-    }, {
         "name": "measure"
     }, {
         "name": "legend",
         "options": {
           "hasMapLegend": false
         }
-    }],
-    "footer": [{
-    "img": "css/png/kommunvapen.png",
-    "url" : "https://karta.hallstahammar.se/old",
-    "urlText": "Tidigare versionen av Kommunkartan"
-    }],
+    },
+    {
+      "name": "about",
+      "options": {
+        "title": "Om Kommunkartan",
+        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Tekniska förvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+      }
+    }
+  ],
+    "pageSettings": {
+      "footer": {
+        "img": "css/png/kommunvapen.png",
+        "url" : "https://karta.hallstahammar.se/old",
+        "urlText": "Tidigare versionen av Kommunkartan"
+      }
+    },
     "projectionCode": "EPSG:3010",
     "projectionExtent": [-166640, 6305699, 433362, 6905701],
     "proj4Defs": [{
@@ -383,7 +376,7 @@
         "style": "orto",
         "title": "1997",
         "format": "image/png",
-        "group": "orto",
+        "group": "historiska",
         "type": "WMS",
         "visible": false,
         "queryable": false
