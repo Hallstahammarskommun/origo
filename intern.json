@@ -25,8 +25,12 @@
         "options": {
           "hasMapLegend": false
         }
-    },
-    {
+    }, {
+      "name": "position",
+      "options": {
+        "title": "Sweref 99 16 30"
+      }
+    }, {
       "name": "about",
       "options": {
         "title": "Om Kommunkartan",
