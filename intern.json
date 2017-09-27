@@ -37,8 +37,8 @@
     "pageSettings": {
       "footer": {
         "img": "css/png/kommunvapen.png",
-        "url" : "https://karta.hallstahammar.se/old",
-        "urlText": "Tidigare versionen av Kommunkartan"
+        "url" : "mailto:gis@hallstahammar.se?subject=Kommunkartan",
+        "urlText": "Skicka feedback till GIS-enheten"
       }
     },
     "projectionCode": "EPSG:3010",
