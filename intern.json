@@ -112,6 +112,10 @@
         "title": "Lantmäteriet",
         "expanded": false
     }, {
+        "name": "LST",
+        "title": "Länsstyrelsen",
+        "expanded": false
+    }, {
         "name": "PTS",
         "title": "Post- och telestyrelsen",
         "expanded": false
@@ -297,6 +301,15 @@
         "title": "Rättighet",
         "format": "image/png",
         "group": "LM",
+        "type": "WMS",
+        "visible": false
+    }, {
+        "name": "5",
+        "source": "wms",
+        "style": "LST_pfo_p",
+        "title": "Förorenade områden",
+        "format": "image/png",
+        "group": "LST",
         "type": "WMS",
         "visible": false
     }, {
@@ -683,7 +696,21 @@
                 }
             }]
         ],
-		"PTS_lek_y": [
+        "LST_pfo_p": [
+            [{
+                "circle": {
+                    "radius": 7,
+                    "stroke": {
+                        "color": "rgb(0,0,0)",
+                        "width": 1
+                    },
+                    "fill": {
+                        "color": "rgb(255,170,0)"
+                    }
+                }
+            }]
+        ],
+        "PTS_lek_y": [
             [{
                 "stroke": {
                     "color": "rgba(86,66,244,0.6)",
