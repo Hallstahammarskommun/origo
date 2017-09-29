@@ -311,7 +311,8 @@
         "format": "image/png",
         "group": "LST",
         "type": "WMS",
-        "visible": false
+        "visible": false,
+        "queryable": false
     }, {
         "name": "PTS_lek_y",
         "source": "ows",
