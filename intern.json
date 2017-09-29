@@ -116,6 +116,10 @@
         "title": "Länsstyrelsen",
         "expanded": false
     }, {
+        "name": "MSB",
+        "title": "MSB",
+        "expanded": false
+    }, {
         "name": "PTS",
         "title": "Post- och telestyrelsen",
         "expanded": false
@@ -310,6 +314,36 @@
         "title": "Förorenade områden",
         "format": "image/png",
         "group": "LST",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_Q100",
+        "source": "wms",
+        "style": "MSB_Q100_y",
+        "title": "Kolbäcksån 100-årsflöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_Q200",
+        "source": "wms",
+        "style": "MSB_Q200_y",
+        "title": "Kolbäcksån 200-årsflöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_QBHF",
+        "source": "wms",
+        "style": "MSB_QBHF_y",
+        "title": "Kolbäcksån högsta beräknat flöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
         "type": "WMS",
         "visible": false,
         "queryable": false
@@ -709,6 +743,27 @@
                         "color": "rgb(255,170,0)"
                     }
                 }
+            }]
+        ],
+        "MSB_Q100_y": [
+            [{
+              "fill": {
+                  "color": "rgb(0,197,255)"
+              }
+            }]
+        ],
+        "MSB_Q200_y": [
+            [{
+              "fill": {
+                  "color": "rgb(116,224,255)"
+            }
+            }]
+        ],
+        "MSB_QBHF_y": [
+            [{
+              "fill": {
+                  "color": "rgb(0,111,255)"
+            }
             }]
         ],
         "PTS_lek_y": [
