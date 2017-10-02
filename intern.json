@@ -25,8 +25,12 @@
         "options": {
           "hasMapLegend": false
         }
-    },
-    {
+    }, {
+      "name": "position",
+      "options": {
+        "title": "Sweref 99 16 30"
+      }
+    }, {
       "name": "about",
       "options": {
         "title": "Om Kommunkartan",
@@ -37,8 +41,8 @@
     "pageSettings": {
       "footer": {
         "img": "css/png/kommunvapen.png",
-        "url" : "https://karta.hallstahammar.se/old",
-        "urlText": "Tidigare versionen av Kommunkartan"
+        "url" : "mailto:gis@hallstahammar.se?subject=Kommunkartan",
+        "urlText": "Skicka feedback till GIS-enheten"
       }
     },
     "projectionCode": "EPSG:3010",
@@ -106,6 +110,14 @@
     }, {
         "name": "LM",
         "title": "Lantmäteriet",
+        "expanded": false
+    }, {
+        "name": "LST",
+        "title": "Länsstyrelsen",
+        "expanded": false
+    }, {
+        "name": "MSB",
+        "title": "MSB",
         "expanded": false
     }, {
         "name": "PTS",
@@ -295,6 +307,46 @@
         "group": "LM",
         "type": "WMS",
         "visible": false
+    }, {
+        "name": "5",
+        "source": "wms",
+        "style": "LST_pfo_p",
+        "title": "Förorenade områden",
+        "format": "image/png",
+        "group": "LST",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_Q100",
+        "source": "wms",
+        "style": "MSB_Q100_y",
+        "title": "Kolbäcksån 100-årsflöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_Q200",
+        "source": "wms",
+        "style": "MSB_Q200_y",
+        "title": "Kolbäcksån 200-årsflöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Tema_QBHF",
+        "source": "wms",
+        "style": "MSB_QBHF_y",
+        "title": "Kolbäcksån högsta beräknat flöde (2014)",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
     }, {
         "name": "PTS_lek_y",
         "source": "ows",
@@ -679,7 +731,42 @@
                 }
             }]
         ],
-		"PTS_lek_y": [
+        "LST_pfo_p": [
+            [{
+                "circle": {
+                    "radius": 7,
+                    "stroke": {
+                        "color": "rgb(0,0,0)",
+                        "width": 1
+                    },
+                    "fill": {
+                        "color": "rgb(255,170,0)"
+                    }
+                }
+            }]
+        ],
+        "MSB_Q100_y": [
+            [{
+              "fill": {
+                  "color": "rgb(0,197,255)"
+              }
+            }]
+        ],
+        "MSB_Q200_y": [
+            [{
+              "fill": {
+                  "color": "rgb(116,224,255)"
+            }
+            }]
+        ],
+        "MSB_QBHF_y": [
+            [{
+              "fill": {
+                  "color": "rgb(0,111,255)"
+            }
+            }]
+        ],
+        "PTS_lek_y": [
             [{
                 "stroke": {
                     "color": "rgba(86,66,244,0.6)",
