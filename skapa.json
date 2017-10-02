@@ -13,7 +13,8 @@
             "geometryAttribute": "st_astext",
             "searchAttribute": "title",
             "titleAttribute": "title",
-            "contentAttribute": "content"
+            "contentAttribute": "content",
+            "hintText": "Sök i Kartskaparen"
         }
     }, {
       "name": "about",

@@ -54,7 +54,7 @@ function init(options) {
   titleAttribute = options.titleAttribute || undefined;
   contentAttribute = options.contentAttribute || undefined;
   maxZoomLevel: options.maxZoomLevel || 2;
-  hintText = options.hintText || 'Sök i Hallstakartan';
+  hintText = options.hintText || 'Sök...';
   hint = options.hasOwnProperty('hint') ? options.hint : true;
   highlight = options.hasOwnProperty('highlight') ? options.highlight : true;
   projectionCode = Viewer.getProjectionCode();
