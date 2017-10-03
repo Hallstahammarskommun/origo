@@ -319,6 +319,26 @@
         "visible": false,
         "queryable": false
     }, {
+        "name": "Riksintresse3kapMB",
+        "source": "wms",
+        "style": "LST_ri3_y",
+        "title": "Riksintresse 3 kap MB",
+        "format": "image/png",
+        "group": "LST",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Riksintresse4kapMB",
+        "source": "wms",
+        "style": "LST_ri4_y",
+        "title": "Riksintresse 4 kap MB",
+        "format": "image/png",
+        "group": "LST",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
         "name": "Tema_Q100",
         "source": "wms",
         "style": "MSB_Q100_y",
@@ -743,6 +763,28 @@
                     "fill": {
                         "color": "rgb(255,170,0)"
                     }
+                }
+            }]
+        ],
+        "LST_ri3_y": [
+            [{
+                "stroke": {
+                    "color": "rgba(255,122,122,0.6)",
+                    "width": 2
+                },
+                "fill": {
+                    "color": "rgba(255,122,122,0.3)"
+                }
+            }]
+        ],
+        "LST_ri4_y": [
+            [{
+                "stroke": {
+                    "color": "rgba(187,227,212,0.6)",
+                    "width": 2
+                },
+                "fill": {
+                    "color": "rgba(187,227,212,0.3)"
                 }
             }]
         ],
