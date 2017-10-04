@@ -436,7 +436,7 @@ function addLegend(groups) {
       var that = this;
       showAbstract($(that));
     });
-
+    evt.stopPropagation();
     evt.preventDefault();
   });
 

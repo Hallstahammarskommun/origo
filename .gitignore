@@ -5,3 +5,4 @@ dist/origo.js
 dist/origo.min.js
 examples
 node_modules
+npm-debug-log

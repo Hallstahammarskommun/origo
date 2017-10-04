@@ -175,6 +175,7 @@
       "api", "observable"
     ],
     "compilation_level": "ADVANCED",
-    "manage_closure_dependencies": true
+    "manage_closure_dependencies": true,
+    "rewrite_polyfills": false
   }
 }
