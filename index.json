@@ -75,7 +75,8 @@
             "version": "1.1.1"
         },
         "local": {
-            "url": "https://karta.hallstahammar.se/geoserver/ows"
+            "url": "https://karta.hallstahammar.se/geoserver/ows",
+            "strategy": "all"
         },
         "basemap": {
             "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
