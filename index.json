@@ -174,6 +174,9 @@
         }, {
             "name": "typ",
             "title": "Pris: "
+        }, {
+            "name": "status",
+            "title": "Status: "
         }]
     }, {
         "name": "TK_w_let_y",
@@ -470,13 +473,31 @@
         ],
         "TK_w_lim_y": [
             [{
-                "stroke": {
-                    "color": "rgba(103, 60, 31, 0.6)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(103, 60, 31,0.3)"
-                }
+              "filter": "[status] == 'Ledig'",
+              "stroke": {
+                "color": "rgba(103, 60, 31, 0.6)",
+                "width": 2
+              },
+              "fill": {
+                "color": "rgba(103, 60, 31,0.3)"
+              }
+            }],
+            [{
+              "filter": "[status] == 'Bokad'",
+              "stroke": {
+                "color": "rgba(0,0,0,0.5)",
+                "width": 2
+              },
+              "fill": {
+                "color": "rgba(255,255,0,0.25)"
+              }
+            }],
+            [{
+              "filter": "[status] == 'null'",
+              "stroke": {
+                "color": "rgba(0,0,0,0.5)",
+                "width": 1
+              }
             }]
         ],
         "TK_w_let_y": [
