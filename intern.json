@@ -322,6 +322,16 @@
         "visible": false,
         "queryable": false
     }, {
+        "name": "4",
+        "source": "wms",
+        "style": "LST_tmv_p",
+        "title": "Miljöfarlig verksamhet",
+        "format": "image/png",
+        "group": "LST",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
         "name": "Riksintresse3kapMB",
         "source": "wms",
         "style": "LST_ri3_y",
@@ -765,6 +775,20 @@
                     },
                     "fill": {
                         "color": "rgb(255,170,0)"
+                    }
+                }
+            }]
+        ],
+        "LST_tmv_p": [
+            [{
+                "circle": {
+                    "radius": 7,
+                    "stroke": {
+                        "color": "rgb(0,0,0)",
+                        "width": 1
+                    },
+                    "fill": {
+                        "color": "rgb(255,92,207)"
                     }
                 }
             }]
