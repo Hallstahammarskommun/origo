@@ -107,8 +107,16 @@
       "group": "hjälplager",
       "type": "WMS",
       "visible": false
-    },
-    {
+    }, {
+        "name": "TK_kof_y",
+        "source": "ows",
+        "style": "TK_kof_y",
+        "title": "Kommunal mark",
+        "group": "hjälplager",
+        "queryable": false,
+        "type": "WFS",
+        "visible": false
+    }, {
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
@@ -118,8 +126,7 @@
       "type": "WMS",
       "style": "pk_gra",
       "visible": false
-    },
-    {
+    }, {
       "name": "TK_w_are_p",
       "title": "Arrende",
       "source": "ows",
@@ -142,8 +149,7 @@
         "title": "Sökväg: ",
         "type": "text"
       }]
-    },
-    {
+    }, {
       "name": "BU_w_fos_p",
       "title": "Förskola",
       "source": "ows",
@@ -170,8 +176,7 @@
             "type": "text"
           }
       ]
-    },
-    {
+    }, {
       "name": "BU_w_grs_p",
       "title": "Grundskola",
       "source": "ows",
@@ -440,6 +445,14 @@
                 "width": 1
             }
         }]
+      ],
+      "TK_kof_y": [
+          [{
+              "fill": {
+                  "color": "rgba(165,0,165,0.25)"
+              },
+              "filter": "[typ] == 'Nej'"
+          }]
       ],
       "TK_w_are_p": [
         [{
