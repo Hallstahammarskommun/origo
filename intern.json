@@ -382,6 +382,36 @@
         "visible": false,
         "queryable": false
     }, {
+        "name": "MSB_Oversvamningskartering_Malaren_100arsniva",
+        "source": "wms",
+        "style": "MSB_Malaren_100_y",
+        "title": "Mälaren 100-årsnivå",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "MSB_Oversvamningskartering_Malaren_200arsniva",
+        "source": "wms",
+        "style": "MSB_Malaren_200_y",
+        "title": "Mälaren 200-årsnivå",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
+        "source": "wms",
+        "style": "MSB_Malaren_BHF_y",
+        "title": "Mälaren högsta beräknat flöde",
+        "format": "image/png",
+        "group": "MSB",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
         "name": "PTS_lek_y",
         "source": "ows",
         "style": "PTS_lek_y",
@@ -833,6 +863,27 @@
             [{
               "fill": {
                   "color": "rgb(0,111,255)"
+            }
+            }]
+        ],
+        "MSB_Malaren_100_y": [
+            [{
+              "fill": {
+                  "color": "rgb(122,182,245)"
+            }
+            }]
+        ],
+        "MSB_Malaren_200_y": [
+            [{
+              "fill": {
+                  "color": "rgb(170,102,205)"
+            }
+            }]
+        ],
+        "MSB_Malaren_BHF_y": [
+            [{
+              "fill": {
+                  "color": "rgb(0,92,230)"
             }
             }]
         ],
