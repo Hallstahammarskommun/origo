@@ -136,6 +136,10 @@
         "title": "Skatteverket",
         "expanded": false
     }, {
+        "name": "SGU",
+        "title": "SGU",
+        "expanded": false
+    }, {
         "name": "historiska",
         "title": "Historiska kartor",
         "expanded": false
@@ -456,6 +460,26 @@
           "title": "Namn: ",
           "name": "typ"
         }]
+    }, {
+        "name": "SKRED_FINKORNING_JORDART",
+        "source": "wms",
+        "style": "SGU_Skred_lutningsanalys",
+        "title": "Skred, lutningsanalys",
+        "format": "image/png",
+        "group": "SGU",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "SKRED_FINKORNING_JORDART_STRANDNARA",
+        "source": "wms",
+        "style": "SGU_Skred_strandnara",
+        "title": "Skred, strandnära",
+        "format": "image/png",
+        "group": "SGU",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
     }, {
         "name": "HE1907",
         "source": "historiska",
@@ -884,6 +908,20 @@
             [{
               "fill": {
                   "color": "rgb(0,92,230)"
+            }
+            }]
+        ],
+        "SGU_Skred_lutningsanalys": [
+            [{
+              "fill": {
+                  "color": "rgb(246,197,103)"
+            }
+            }]
+        ],
+        "SGU_Skred_strandnara": [
+            [{
+              "fill": {
+                  "color": "rgb(255,155,56)"
             }
             }]
         ],
