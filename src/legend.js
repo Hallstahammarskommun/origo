@@ -674,10 +674,11 @@ function showAbstract($abstractButton) {
       return (obj.name == layername);
     });
 
-    abstract.title = layer.get('abstractTitle') || group[0].title;
+    abstract.title =  group[0].title;
     abstract.content = group[0].abstract
   } else { // If info button is connected to layer
     layer = viewer.getLayer(layername);
+    abstract.title = layer.get('abstractTitle') || layer.get('title');
     abstract.content = layer.get('abstract');
   }
 
