@@ -274,7 +274,7 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-          "html": "<a href='http://hallstahammar.se/Bo-bygga/naturomraden' target='_blank'>Mer information</a>"
+          "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/naturomraden' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "BU_w_fos_p",
