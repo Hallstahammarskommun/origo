@@ -743,12 +743,18 @@
         }]
       ],
       "TK_kof_y": [
-          [{
-              "fill": {
-                  "color": "rgba(165,0,165,0.25)"
-              },
-              "filter": "[typ] == 'Nej'"
-          }]
+        [{
+            "fill": {
+                "color": "rgba(165,0,165,0.25)"
+            },
+            "filter": "[typ] == 'Nej'"
+        }],
+        [{
+            "fill": {
+                "color": "rgba(165,0,165,0.45)"
+            },
+            "filter": "[typ] == 'Ja'"
+        }]
       ],
       "PK_farg": [
           [{
