@@ -353,7 +353,15 @@
             "name": "egn",
             "title": "Skötselintervall: ",
             "type": "dropdown",
+            "constraint": "change:obj:Gräs",
             "options": ["Kontinuerlig", "1-3 gånger/säsong"]
+          },
+          {
+            "name": "egn",
+            "title": "Skötselintervall: ",
+            "type": "dropdown",
+            "constraint": "change:obj:Skog",
+            "options": ["2017", "2018", "2019"]
           }
       ]
     }, {
@@ -630,10 +638,9 @@
       ],
       "TK_w_pak_y": [
         [{
-          "filter": "[obj] == 'Gräs'",
           "filter": "[egn] == 'Kontinuerlig'",
           "stroke": {
-            "color": "rgba(0,0,0,0.25)",
+            "color": "rgba(0,0,0,0.1)",
             "width": 1
           },
           "fill": {
@@ -641,10 +648,9 @@
           }
         }],
         [{
-          "filter": "[obj] == 'Gräs'",
           "filter": "[egn] == '1-3 gånger/säsong'",
           "stroke": {
-            "color": "rgba(0,0,0,0.25)",
+            "color": "rgba(0,0,0,0.1)",
             "width": 1
           },
           "fill": {
@@ -652,13 +658,33 @@
           }
         }],
         [{
-          "filter": "[obj] == 'Skog'",
+          "filter": "[egn] == '2017'",
           "stroke": {
-            "color": "rgba(0,0,0,0.25)",
+            "color": "rgba(204,30,1,0.25)",
             "width": 1
           },
           "fill": {
-            "color": "rgba(75,150,75,0.5)"
+            "color": "rgba(204,30,1,0.5)"
+          }
+        }],
+        [{
+          "filter": "[egn] == '2018'",
+          "stroke": {
+            "color": "rgba(112,0,90,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(112,0,90,0.5)"
+          }
+        }],
+        [{
+          "filter": "[egn] == '2019'",
+          "stroke": {
+            "color": "rgba(1,0,72,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(1,0,72,0.5)"
           }
         }],
         [{
