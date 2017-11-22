@@ -442,7 +442,12 @@
         "group": "RAA",
         "type": "WMS",
         "visible": false,
-        "queryable": false
+        "queryable": true,
+        "attributes": [{
+            "title": "Mer information: ",
+            "name": "BENAMNING",
+            "url": "URL"
+          }]
     }, {
         "name": "TK_kir_p",
         "source": "ows",
