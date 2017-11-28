@@ -661,31 +661,31 @@
                 "fill": {
                     "color": "rgba(178, 223, 138,0.3)"
                 },
-                "filter": "[omrade] == 'Fredhem'"
+                "filter": "[obj] == 'Lindbo'"
             }],
             [{
                 "fill": {
                     "color": "rgba(31, 120, 180,0.3)"
                 },
-                "filter": "[omrade] == 'Näs'"
+                "filter": "[obj] == 'Näs'"
             }],
             [{
                 "fill": {
                     "color": "rgba(255, 127, 0,0.3)"
                 },
-                "filter": "[omrade] == 'Nibble'"
+                "filter": "[obj] == 'Nibble'"
             }],
             [{
                 "fill": {
                     "color": "rgba(202, 178, 214,0.3)"
                 },
-                "filter": "[omrade] == 'Strömsholm'"
+                "filter": "[obj] == 'Strömsholm'"
             }],
             [{
                 "fill": {
                     "color": "rgba(255, 255, 153,0.3)"
                 },
-                "filter": "[omrade] == 'Kolbäck'"
+                "filter": "[obj] == 'Kolbäck'"
             }]
         ],
         "TK_mak_y": [
