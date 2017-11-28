@@ -338,7 +338,7 @@
         "type": "WFS",
         "visible": false,
         "attributes": [{
-            "name": "omrade",
+            "name": "obj",
             "title": ""
         }]
     }, {
