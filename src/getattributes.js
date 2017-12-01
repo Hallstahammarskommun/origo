@@ -6,6 +6,21 @@ var geom = require('./geom');
 module.exports = function(feature, layer) {
     var content = '<div><ul>';
     var attribute, li = '', title, val;
+
+    function getNeastedAttr(attributePath) {
+      var attributePath = attributePath.split('.');
+      var val,featureProp;
+      featureProp = feature.getProperties()
+
+      attributePath.forEach(function(element, index) {
+        if(index == 0) {
+          val = featureProp[element]
+        } else{
+          val = val[element]
+        }
+      })
+      return val
+    }
     //If layer is configured with attributes
     if(layer.get('attributes')) {
           //If attributes is string then use template named with the string
@@ -19,16 +34,16 @@ module.exports = function(feature, layer) {
                 title = '';
                 val = '';
                 if (attribute['name']) {
-                  if(feature.get(attribute['name'])) {
-                      val = feature.get(attribute['name']);
+                  if(feature.get(attribute['name']) || attribute['name'].indexOf('.') > -1) {
+                    val = getNeastedAttr(attribute['name'])
                       if (attribute['title']) {
                         title = '<b>' + attribute['title'] + '</b>';
                       }
                       if (attribute['url']) {
-                        if(feature.get(attribute['url'])) {
-                        var url = createUrl(attribute['urlPrefix'], attribute['urlSuffix'], replacer.replace(feature.get(attribute['url']), feature.getProperties()));
+                        if(feature.get(attribute['url']) || attribute['url'].indexOf('.') > -1) {
+                        var url = createUrl(attribute['urlPrefix'], attribute['urlSuffix'], replacer.replace(getNeastedAttr(attribute['url']), feature.getProperties()));
                         val = '<a href="' + url + '" target="_blank">' +
-                              feature.get(attribute['name']) +
+                              getNeastedAttr(attribute['name']) +
                               '</a>';
                         }
                       }

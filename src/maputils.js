@@ -48,6 +48,13 @@ module.exports = {
       });
       return feature;
   },
+  jsonToPointFeature: function jsonToPointFeature(json, coordinate) {
+      var feature = new ol.Feature({
+        geometry: new ol.geom.Point(coordinate)
+      });
+      feature.setProperties(json)
+      return feature;
+  },
   zoomToExent: function zoomToExent(geometry, level) {
       var map = viewer.getMap();
       var view = map.getView();

@@ -196,9 +196,13 @@ function getFeaturesAtPixel(evt, clusterFeatureinfoLevel) {
     }
 }
 function getGetFeatureInfoUrl(layer, coordinate) {
+  if (layer.get('queryurl') != undefined) {
+    var url = layer.get('queryurl') + coordinate[1] + ',' + coordinate[0];
+  } else {
     var url = layer.getSource().getGetFeatureInfoUrl(
     coordinate, map.getView().getResolution(), Viewer.getProjection(),
     {'INFO_FORMAT': 'application/json'});
+  }
 
     return $.ajax(url, {
       type: 'post'
@@ -207,8 +211,12 @@ function getGetFeatureInfoUrl(layer, coordinate) {
         if(response.error) {
             return [];
         }
+        else if (layer.get('queryurl') != undefined) {
+          var feature = maputils.jsonToPointFeature(response, coordinate);
+          return feature;
+        }
         else {
-            return maputils.geojsonToFeature(response);
+          return maputils.geojsonToFeature(response);
         }
     }
     );
