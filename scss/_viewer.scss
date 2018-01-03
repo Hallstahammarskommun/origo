@@ -115,3 +115,9 @@
     margin-top: 0;
   }
 }
+&[class*=#{$media-l-m-s-xs}] {
+  .o-toolbar-maptools,
+  .o-toolbar-navigation {
+    display: none;
+  }
+}

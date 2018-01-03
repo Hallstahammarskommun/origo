@@ -6,13 +6,12 @@
     }, {
         "name": "search",
         "options": {
-            "urlAds": "https://karta.hallstahammar.se/sAds",
-            "urlFat": "https://karta.hallstahammar.se/sFat",
-            "urlGan": "https://karta.hallstahammar.se/sGan",
+            "url": "https://karta.hallstahammar.se/search",
             "geometryAttribute": "st_astext",
-            "searchAttribute": "title",
-            "titleAttribute": "title",
-            "contentAttribute": "content",
+            "layerNameAttribute": "layer",
+            "searchAttribute": "NAMN",
+            "titleAttribute": "layer",
+            "contentAttribute": "NAMN",
             "hintText": "Sök i Hallstakartan"
         }
     }, {

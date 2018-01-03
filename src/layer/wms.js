@@ -12,7 +12,8 @@ var wms = function wms(layerOptions) {
   };
   var sourceDefault = {
     version: '1.1.1',
-    gutter: 0
+    gutter: 0,
+    format: 'image/png'
   };
   var wmsOptions = $.extend(wmsDefault, layerOptions);
   wmsOptions.name.split(':').pop();
@@ -20,7 +21,8 @@ var wms = function wms(layerOptions) {
   sourceOptions.attribution = wmsOptions.attribution;
   sourceOptions.projectionCode = viewer.getProjectionCode();
   sourceOptions.id = wmsOptions.id;
-  sourceOptions.format = wmsOptions.format;
+  sourceOptions.tileGrid = viewer.getTileGrid();
+  sourceOptions.format = wmsOptions.format ? wmsOptions.format : sourceOptions.format;
 
   var wmsSource = createSource(sourceOptions);
   return tile(wmsOptions, wmsSource);
@@ -32,11 +34,13 @@ var wms = function wms(layerOptions) {
       gutter: options.gutter,
       //crossOrigin: 'anonymous',
       projection: options.projectionCode,
+      tileGrid: options.tileGrid,
       params: {
         'LAYERS': options.id,
         'FORMAT': options.format,
         'TILED': true,
-        VERSION: options.version
+        'VERSION': options.version,
+        'FORMAT': options.format
       }
     }))
   }

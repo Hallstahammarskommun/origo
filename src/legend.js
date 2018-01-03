@@ -391,6 +391,7 @@ function addLegend(groups) {
     var inSubgroup = $('#o-group-' + layer.get('group')).closest('ul').parent().closest('ul').hasClass('o-legend-group');
     var title = '<div class="o-legend-item-title o-truncate">' + layer.get('title') + '</div>';
     var secure = layer.get('secure');
+    var rootGroup;
 
     //Add abstract button
     if(layer.get('abstract')){
@@ -415,9 +416,9 @@ function addLegend(groups) {
     } else if(layer.get('group') && ((layer.get('group') != 'none'))) {
 
       //Append layer to group
-      item = createLegendItem(name, layerStyle, inSubgroup, true);
-      if ($('#o-group-' + layer.get('group')).find('li.o-top-item:last').length) {
-        $('#o-group-' + layer.get('group')).find('li.o-top-item:last').after(item);
+      item = createLegendItem(name, layerStyle, inSubgroup);
+      if ($('#o-group-' + layer.get('group')).children('li.o-top-item:last').length) {
+        $('#o-group-' + layer.get('group')).children('li.o-top-item:last').after(item);
       } else {
         $('#o-group-' + layer.get('group') + ' .o-legend-header').after(item);
       }
@@ -438,7 +439,39 @@ function addLegend(groups) {
     checkToggleOverlay();
 
     //Append class according to visiblity and if group is background
-    addCheckbox(layer, name, inSubgroup);
+    if (layer.get('group') == 'background') {
+      if (layer.getVisible()==true) {
+        $('#' + name + ' .o-checkbox').addClass('o-check-true');
+        $('#o-legend-' + name).addClass('o-check-true-img');
+      } else {
+        $('#' + name + ' .o-checkbox').addClass('o-check-false');
+        $('#o-legend-' + name).addClass('o-check-false-img');
+      }
+    } else {
+      if (layer.getVisible()==true) {
+        $('.' + name + ' .o-checkbox').addClass('o-checkbox-true');
+
+        if (inSubgroup) {
+          rootGroup = $('#' + name).parents('ul [id^=o-group-]:last');
+          if (!$(rootGroup).find('.o-icon-expand:first').hasClass('o-icon-expand-true')) {
+            toggleGroup($(rootGroup).find('li.o-legend-header:first'));
+          }
+
+          toggleSubGroupCheck($('#' + name).parents('ul').has('.o-legend-header').first(), false);
+        } else {
+          $('#o-group-' + layer.get('group') + ' .o-icon-expand:first').removeClass('o-icon-expand-false');
+          $('#o-group-' + layer.get('group') + ' .o-icon-expand:first').addClass('o-icon-expand-true');
+          $('#o-group-' + layer.get('group')).removeClass('o-ul-expand-false');
+        }
+
+      } else {
+        $('.' + name + ' .o-checkbox').addClass('o-checkbox-false');
+
+        if (inSubgroup) {
+          toggleSubGroupCheck($('#' + name).parents('ul').has('.o-legend-header').first(), false);
+        }
+      }
+    }
 
     //Event listener for tick layer
     addTickListener(layer);
@@ -466,7 +499,13 @@ function addLegend(groups) {
   /*$('#o-legend-overlay .o-toggle-button').on('click', function(evt) {
     toggleOverlay();
     evt.preventDefault();
-  });*/
+  });
+*/
+  $('#o-map-legend-background li').on("mouseover", function (evt) {
+    var legendId = $(evt.target).closest('li').attr('id');
+    var layer = viewer.getLayer(legendId.split("o-legend-")[1]);
+    $(this).attr('title', layer.get('title'));
+  });
 }
 
 function onToggleCheck(layername) {
@@ -512,7 +551,7 @@ function toggleGroup(groupheader) {
 function toggleSubGroupCheck(subgroup, toggleAll) {
   var subGroup = $(subgroup);
   var subLayers = subGroup.find('.o-legend-item.o-legend-subitem');
-  var groupList = $('.o-legend-group');
+  var groupList = $('.o-legend-subgroup');
 
   if (toggleAll) {
 

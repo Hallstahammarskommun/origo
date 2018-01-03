@@ -6,3 +6,4 @@ dist/origo.min.js
 examples
 node_modules
 npm-debug-log
+build
