@@ -37,7 +37,6 @@ var wms = function wms(layerOptions) {
       tileGrid: options.tileGrid,
       params: {
         'LAYERS': options.id,
-        'FORMAT': options.format,
         'TILED': true,
         'VERSION': options.version,
         'FORMAT': options.format
