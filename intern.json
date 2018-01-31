@@ -78,6 +78,10 @@
     ],
     "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
     "source": {
+        "geoserver": {
+            "url": "https://karta.hallstahammar.se/geoserver/wms",
+            "version": "1.1.1"
+        },
         "wms": {
             "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
             "version": "1.1.1"
@@ -268,14 +272,14 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "pbr_detaljplaner",
-        "source": "wms",
+        "name": "Detaljplan",
+        "source": "geoserver",
         "style": "detaljplan",
         "title": "Detaljplan",
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
-        "queryurl": "https://karta.hallstahammar.se/intern/origoserver/ground/markreglering?ne=",
+        "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
         "visible": false,
         "attributes": [{
           "title": "Namn: ",
@@ -283,8 +287,9 @@
         }, {
           "title": "Planakt: ",
           "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-          "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-          "urlPrefix": "https://karta.hallstahammar.se/intern/arken/simpleFetchDocument?county=19&document="
+          "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+          "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+          "urlSuffix": ".pdf"
         }]
     }, {
         "name": "Fastighet",
@@ -322,7 +327,10 @@
                 "urlPrefix": "https://karta.hallstahammar.se/intern/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
                 "url": "egn",
                 "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
-              }]
+              }, {
+				        "html": "<p><i>För att följa GDPR behöver vi se över tillgången till personuppgifter i kartan. Motivera i ett mejl till <a href=\"mailto:gis@hallstahammar.se\">GIS-enheten</a> om du behöver se ägarinformationen.</i></p>"
+			        }
+            ]
           }]
     }, {
         "name": "pbr_rattigheter",
