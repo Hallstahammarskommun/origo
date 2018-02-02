@@ -20,6 +20,6 @@ controls.attribution = require('../src/attribution');
 controls.position = require('../src/position');
 controls.fullscreen = require('../src/fullscreen');
 controls.draganddrop = require('../src/draganddrop')
-//controls.splash = require('../src/splash');
+controls.splash = require('../src/splash');
 
 module.exports = controls;
