@@ -697,16 +697,15 @@
         }]
       ],
       "TK_w_pap_y": [
-          [{
-            "fill": {
-              "color": "rgba(255, 196, 105,0.6)"
-            },
+        [{
             "stroke": {
-              "color": "rgba(229,109,30,0.6)",
-              "lineDash": [15,10],
-              "width": 2
+                "color": "rgba(229,109,30,0.6)",
+                "width": 1
+            },
+            "fill": {
+                "color": "rgba(66,89,179,0.3)"
             }
-          }]
+        }]
       ],
       "TK_w_snr_l": [
         [{

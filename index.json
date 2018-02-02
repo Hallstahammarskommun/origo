@@ -136,19 +136,24 @@
               }]
           }]
     }, {
-        "name": "Detaljplan",
+        "name": "pbr_detaljplaner",
         "source": "wms",
         "style": "detaljplan",
         "title": "Gällande detaljplan",
         "format": "image/png",
         "group": "bygga",
         "type": "WMS",
+        "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
         "visible": false,
         "attributes": [{
-            "name": "TEXT",
-            "url": "PLAN_ID",
-            "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken/",
-            "urlSuffix": ".pdf"
+          "title": "Namn: ",
+          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+        }, {
+          "title": "Planakt: ",
+          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+          "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+          "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+          "urlSuffix": ".pdf"
         }]
     }, {
         "name": "TK_kof_y",
@@ -451,16 +456,15 @@
             }]
         ],
         "detaljplan": [
-            [{
-                "stroke": {
-                    "color": "rgba(229,109,30,0.6)",
-                    "width": 1
-                },
-                "fill": {
-                    "color": "rgba(66,89,179,0.3)"
-                },
-                "filter": "[PLAN_TYP] != '4041'"
-            }]
+          [{
+            "stroke": {
+              "color": "rgba(229,109,30,0.6)",
+              "width": 2
+          },
+            "fill": {
+              "color": "rgba(255,198,105,0.3)"
+            }
+          }]
         ],
         "TK_kof_y": [
             [{
@@ -529,15 +533,15 @@
             }]
         ],
         "TK_w_pap_y": [
-            [{
-                "stroke": {
-                    "color": "rgba(229,109,30,0.6)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(255,198,105,0.3)"
-                }
-            }]
+          [{
+              "stroke": {
+                  "color": "rgba(229,109,30,0.6)",
+                  "width": 1
+              },
+              "fill": {
+                  "color": "rgba(66,89,179,0.3)"
+              }
+          }]
         ],
         "TK_s_fat_y": [
             [{
