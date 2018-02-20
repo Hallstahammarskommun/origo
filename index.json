@@ -346,6 +346,34 @@
             "title": ""
         }]
     }, {
+        "name": "KS_brl_g",
+        "source": "local",
+        "style": "KS_brl_g",
+        "title": "Brukslinjen",
+        "group": "trafik",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [ {
+            "name": "obj",
+            "title": "Hållplats: "
+        }, {
+            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Gator-och-vagar/Trafik/' target='_blank'>Mer information</a>"
+        }]
+    }, {
+        "name": "KS_sel_l",
+        "source": "local",
+        "style": "KS_sel_l",
+        "title": "Servicelinjen",
+        "group": "trafik",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [ {
+            "name": "obj",
+            "title": "Tur: "
+        }, {
+            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Gator-och-vagar/Trafik/Service--och-flexlinje/' target='_blank'>Mer information</a>"
+        }]
+    }, {
         "name": "TK_mak_y",
         "source": "local",
         "style": "TK_mak_y",
@@ -690,6 +718,50 @@
                 },
                 "filter": "[obj] == 'Kolbäck'"
             }]
+        ],
+        "KS_brl_g": [
+            [
+              { "filter": "[egn] == 'sträckning'",
+                "stroke": {
+                "color": "rgb(74, 125, 179)",
+                "width": 6
+              }
+              }
+            ], [{
+                "icon": {
+                    "src": "img/png/KS_brl_g.png"
+                }
+            }]
+        ],
+        "KS_sel_l": [
+          [{
+              "stroke": {
+              "color": "rgb(218, 114, 126)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Hallstahammar'"
+          }],
+          [{
+              "stroke": {
+              "color": "rgba(151, 104, 209, 0.6)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Svedvi'"
+          }],
+          [{
+              "stroke": {
+              "color": "rgba(243, 163, 42, 0.6)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Berg'"
+          }],
+          [{
+              "stroke": {
+              "color": "rgb(72, 217, 99)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Kolbäck'"
+          }]
         ],
         "TK_mak_y": [
             [{
