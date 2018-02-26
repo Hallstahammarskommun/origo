@@ -149,6 +149,10 @@
         "title": "SGU",
         "expanded": false
     }, {
+        "name": "TV",
+        "title": "Trafikverket",
+        "expanded": false
+    }, {
         "name": "historiska",
         "title": "Historiska kartor",
         "expanded": false
@@ -248,15 +252,18 @@
         "group": "TK",
         "type": "WFS",
         "visible": false,
+        "filter": "status <> 'förstörd'",
+        "strategy": "bbox",
         "attributes": [{
           "name": "pktnr",
           "title": "Punktnummer: "
         }, {
-          "name": "anmarkning",
-          "title": "Anmärkning: "
+            "xy": true
         }, {
-          "name": "marktyp",
-          "title": "Markering: "
+            "title": "Z: ",
+            "name": "z"
+        }, {
+          "img": "img"
         }]
     }, {
         "name": "VA",
@@ -517,6 +524,15 @@
         "type": "WMS",
         "visible": false,
         "queryable": false
+    }, {
+        "name": "Vaghallare",
+        "source": "wms",
+        "style": "line",
+        "title": "Väghållare",
+        "format": "image/png",
+        "group": "TV",
+        "type": "WMS",
+        "visible": false
     }, {
         "name": "HE1907",
         "source": "historiska",
@@ -811,22 +827,17 @@
           "icon": {
             "src": "img/png/droppe_black.png"
           },
-          "filter": "[matning_typ] == '1000'"
+          "filter": "[stompunkttyp] == 'planpunkt'"
         }], [{
           "icon": {
             "src": "img/png/drop_blue.png"
           },
-          "filter": "[matning_obj] == '200'"
+          "filter": "[stompunkttyp] == 'plan-höjdpunkt'"
         }], [{
           "icon": {
             "src": "img/png/droppe_orange.png"
           },
-          "filter": "[matning_obj] == '100'"
-        }], [{
-          "icon": {
-            "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[matning_obj] == 'null'"
+          "filter": "[stompunkttyp] == 'höjdpunkt'"
         }]
       ],
       "VA": [

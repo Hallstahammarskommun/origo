@@ -73,7 +73,10 @@ module.exports = function(feature, layer) {
                     helperArg: feature.getGeometry()
                   });
                 }
-
+                else if (attribute['xy']) {
+                  val = '<b>E: </b>' + feature.getGeometry().getCoordinates()[0] +
+                  ' <b>N: </b>' + feature.getGeometry().getCoordinates()[1]
+                }
                 var cls = ' class="' + attribute['cls'] + '" ' || '';
 
                 li += '<li' + cls +'>' + title + val + '</li>';

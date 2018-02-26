@@ -392,24 +392,14 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
+      "filter": "status <> 'förstörd'",
+      "strategy": "bbox",
       "queryable": true,
       "attributes": [{
-        "name": "pktnr",
-        "title": "Punktnummer: ",
-        "type": "text"
-      }, {
-        "name": "marktyp",
-        "title": "Markeringstyp: ",
-        "type": "text"
-      }, {
         "name": "status",
         "title": "Status: ",
         "type": "dropdown",
-        "options": ["Befintlig", "Borta", "Osaker"]
-      }, {
-        "name": "anmarkning",
-        "title": "Anmärkning: ",
-        "type": "text"
+        "options": ["förstörd", "återfunnen"]
       }]
     },
 
@@ -707,108 +697,17 @@
             }
         }]
       ],
-      "TK_w_snr_l": [
-        [{
-          "stroke": {
-            "color": "rgb(0,0,0)",
-            "width": 6
-          },
-          "filter": "[typ] == 'null'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(128,44,67)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Entreprenör'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(80,171,73)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Hymas'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(237,28,36)",
-            "width": 6
-          },
-          "filter": "[typ] == 'John Deere'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(147,210,209)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Lastbil'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(27,88,167)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Lill-Willen'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(250,173,90)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Ljungby'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(218,139,187)",
-            "width": 6
-          },
-          "filter": "[typ] == 'MF'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(179,215,234)",
-            "width": 6
-          },
-          "filter": "[typ] == 'MF, Trollebo'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(194,129,74)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Valmet'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgb(131,197,87)",
-            "width": 6
-          },
-          "filter": "[typ] == 'Wille'"
-        }]
-      ],
       "TK_w_stp_p": [
         [{
           "icon": {
-            "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[status] == 'null'"
-        }], [{
-          "icon": {
-            "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[status] == 'Osaker'"
-        }], [{
-          "icon": {
             "src": "img/png/drop_blue.png"
           },
-          "minScale": "10000",
-          "filter": "[status] == 'Befintlig'"
+          "minScale": "5000",
+          "filter": "[status] == 'återfunnen'"
         }], [{
           "icon": {
-            "src": "img/png/droppe.png"
-          },
-          "minScale": "10000",
-          "filter": "[status] == 'Borta'"
+            "src": "img/png/droppe_orange.png"
+          }
         }]
       ],
       "TK_mak_y": [
