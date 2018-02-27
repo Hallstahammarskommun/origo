@@ -48,6 +48,7 @@ var wfs = function wfs(layerOptions) {
       queryFilter = options.filter ? '&CQL_FILTER=' + options.filter + ' AND BBOX(' + options.geometryName + ',' : '&BBOX=';
     }
     queryFilter = encodeURI(queryFilter);
+
     var bboxProjectionCode = options.filter ? "'" + options.projectionCode + "')" : options.projectionCode;
     vectorSource = new ol.source.Vector({
       attributions: options.attribution,
