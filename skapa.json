@@ -702,7 +702,6 @@
           "icon": {
             "src": "img/png/drop_blue.png"
           },
-          "minScale": "5000",
           "filter": "[status] == 'återfunnen'"
         }], [{
           "icon": {
