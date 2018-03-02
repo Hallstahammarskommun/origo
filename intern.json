@@ -48,7 +48,6 @@
   ],
     "pageSettings": {
       "footer": {
-        "img": "css/png/kommunvapen.png",
         "url" : "mailto:gis@hallstahammar.se?subject=Kommunkartan",
         "urlText": "Skicka feedback till GIS-enheten"
       }

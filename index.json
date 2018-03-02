@@ -34,9 +34,7 @@
     }],
     "pageSettings": {
       "footer": {
-        "img": "css/png/kommunvapen.png",
-        "url" : "http://www.hallstahammar.se",
-        "urlText": "Hallstahammars kommun"
+        "img": "css/svg/kommunvapen.svg"
       }
     },
     "projectionCode": "EPSG:3010",
