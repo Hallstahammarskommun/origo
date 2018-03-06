@@ -107,9 +107,9 @@
       "type": "WMS",
       "visible": false
     }, {
-        "name": "TK_kof_y",
+        "name": "tk_kof_y",
         "source": "ows",
-        "style": "TK_kof_y",
+        "style": "tk_kof_y",
         "title": "Kommunal mark",
         "group": "hjälplager",
         "queryable": false,
@@ -119,17 +119,17 @@
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
-      "name": "PK",
+      "name": "pk",
       "source": "intern",
       "title": "Primärkarta, grå",
       "type": "WMS",
       "style": "pk_gra",
       "visible": false
     }, {
-      "name": "TK_w_are_p",
+      "name": "tk_w_are_p",
       "title": "Arrende",
       "source": "ows",
-      "style": "TK_w_are_p",
+      "style": "tk_w_are_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -149,10 +149,10 @@
         "type": "text"
       }]
     }, {
-      "name": "BU_w_fos_p",
+      "name": "bu_w_fos_p",
       "title": "Förskola",
       "source": "ows",
-      "style": "BU_w_fos_p",
+      "style": "bu_w_fos_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -176,10 +176,10 @@
           }
       ]
     }, {
-      "name": "BU_w_grs_p",
+      "name": "bu_w_grs_p",
       "title": "Grundskola",
       "source": "ows",
-      "style": "BU_w_grs_p",
+      "style": "bu_w_grs_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -204,10 +204,10 @@
       }]
     },
     {
-      "name": "BU_w_gss_p",
+      "name": "bu_w_gss_p",
       "title": "Grundsärskola",
       "source": "ows",
-      "style": "BU_w_gss_p",
+      "style": "bu_w_gss_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -232,10 +232,10 @@
       }]
     },
     {
-      "name": "TK_w_let_y",
+      "name": "tk_w_let_y",
       "title": "Lediga tomter",
       "source": "ows",
-      "style": "TK_w_let_y",
+      "style": "tk_w_let_y",
       "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -270,10 +270,10 @@
       }]
     },
     {
-      "name": "TK_w_lim_y",
+      "name": "tk_w_lim_y",
       "title": "Ledig industrimark",
       "source": "ows",
-      "style": "TK_w_lim_y",
+      "style": "tk_w_lim_y",
       "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -295,10 +295,10 @@
       }]
     },
     {
-      "name": "KS_w_opo_p",
+      "name": "ks_w_opo_p",
       "title": "Opto ansluten",
       "source": "ows",
-      "style": "KS_w_opo_p",
+      "style": "ks_w_opo_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -311,10 +311,10 @@
         "options": ["Ansluten", "Avtal", "Intresse", "Kampanj", "Pumpstation"]
       }]
     }, {
-      "name": "TK_w_pak_p",
+      "name": "tk_w_pak_p",
       "title": "Park punkt",
       "source": "ows",
-      "style": "TK_w_pak_p",
+      "style": "tk_w_pak_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -327,10 +327,10 @@
         "options": ["Papperskorg", "Parkbänk", "Papperskorg + parkbänk"]
       }]
     }, {
-      "name": "TK_w_pak_y",
+      "name": "tk_w_pak_y",
       "title": "Park yta",
       "source": "ows",
-      "style": "TK_w_pak_y",
+      "style": "tk_w_pak_y",
       "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -364,10 +364,10 @@
           }
       ]
     }, {
-      "name": "TK_w_pap_y",
+      "name": "tk_w_pap_y",
       "title": "Pågående detaljplan",
       "source": "ows",
-      "style": "TK_w_pap_y",
+      "style": "tk_w_pap_y",
       "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -384,10 +384,10 @@
       }]
     },
     {
-      "name": "TK_w_stp_p",
+      "name": "tk_w_stp_p",
       "title": "Stompunkter",
       "source": "ows",
-      "style": "TK_w_stp_p",
+      "style": "tk_w_stp_p",
       "group": "",
       "type": "WFS",
       "geometryType": "Point",
@@ -404,9 +404,9 @@
     },
 
     {
-          "name": "TK_mak_y",
+          "name": "tk_mak_y",
           "source": "ows",
-          "style": "TK_mak_y",
+          "style": "tk_mak_y",
           "title": "Mask",
           "queryable": false,
           "type": "WFS",
@@ -463,7 +463,7 @@
             }
         }]
       ],
-      "TK_kof_y": [
+      "tk_kof_y": [
           [{
               "fill": {
                   "color": "rgba(165,0,165,0.25)"
@@ -471,14 +471,14 @@
               "filter": "[typ] == 'Nej'"
           }]
       ],
-      "TK_w_are_p": [
+      "tk_w_are_p": [
         [{
           "icon": {
             "src": "img/png/TK_w_are_p.png"
           }
         }]
       ],
-      "TK_w_pak_p": [
+      "tk_w_pak_p": [
         [{
           "icon": {
             "src": "img/png/TK_w_pak_p0.png"
@@ -498,28 +498,28 @@
           "filter": "[obj] == 'Papperskorg + parkbänk'"
         }]
       ],
-      "BU_w_fos_p": [
+      "bu_w_fos_p": [
         [{
           "icon": {
             "src": "img/png/BU_w_fos_p.png"
           }
         }]
       ],
-      "BU_w_grs_p": [
+      "bu_w_grs_p": [
         [{
           "icon": {
             "src": "img/png/BU_w_grs_p.png"
           }
         }]
       ],
-      "BU_w_gss_p": [
+      "bu_w_gss_p": [
         [{
           "icon": {
             "src": "img/png/BU_w_gss_p.png"
           }
         }]
       ],
-      "TK_w_let_y": [
+      "tk_w_let_y": [
           [{
             "filter": "[status] == 'Ledig'",
             "stroke": {
@@ -558,7 +558,7 @@
             }
           }]
         ],
-        "TK_w_lim_y": [
+        "tk_w_lim_y": [
           [{
             "filter": "[status] == 'Ledig'",
             "stroke": {
@@ -587,7 +587,7 @@
             }
           }]
       ],
-      "KS_w_opo_p": [
+      "ks_w_opo_p": [
         [{
           "icon": {
             "src": "img/png/droppe.png"
@@ -625,7 +625,7 @@
           "filter": "[obj] == 'Pumpstation'"
         }]
       ],
-      "TK_w_pak_y": [
+      "tk_w_pak_y": [
         [{
           "filter": "[egn] == 'Kontinuerlig'",
           "stroke": {
@@ -686,7 +686,7 @@
           }
         }]
       ],
-      "TK_w_pap_y": [
+      "tk_w_pap_y": [
         [{
             "stroke": {
                 "color": "rgba(229,109,30,0.6)",
@@ -697,7 +697,7 @@
             }
         }]
       ],
-      "TK_w_stp_p": [
+      "tk_w_stp_p": [
         [{
           "icon": {
             "src": "img/png/drop_blue.png"
@@ -709,7 +709,7 @@
           }
         }]
       ],
-      "TK_mak_y": [
+      "tk_mak_y": [
           [{
               "fill": {
                   "color": "rgba(0,0,0,0.15)"

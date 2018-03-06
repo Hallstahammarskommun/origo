@@ -161,9 +161,9 @@
         "expanded": true
     }],
     "layers": [{
-        "name": "BM_avl_p",
+        "name": "bm_avl_p",
         "source": "ows",
-        "style": "BM_avl_p",
+        "style": "bm_avl_p",
         "title": "Enskilda avlopp",
         "group": "BM",
         "type": "WFS",
@@ -183,10 +183,10 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "KS_w_opo_p",
+        "name": "ks_w_opo_p",
         "title": "Opto ansluten",
         "source": "ows",
-        "style": "KS_w_opo_p",
+        "style": "ks_w_opo_p",
         "group": "KS",
         "type": "WFS",
         "geometryType": "Point",
@@ -197,10 +197,10 @@
           "title": "Status: "
       }]
     }, {
-        "name": "TK_w_are_p",
+        "name": "tk_w_are_p",
         "title": "Arrende",
         "source": "ows",
-        "style": "TK_w_are_p",
+        "style": "tk_w_are_p",
         "group": "TK",
         "type": "WFS",
         "geometryType": "Point",
@@ -217,36 +217,36 @@
           "title": "Sökväg: "
         }]
     }, {
-        "name": "TK_kof_y",
+        "name": "tk_kof_y",
         "source": "ows",
-        "style": "TK_kof_y",
+        "style": "tk_kof_y",
         "title": "Kommunal mark",
         "group": "TK",
         "queryable": false,
         "type": "WFS",
         "visible": false
     }, {
-        "name": "PK_farg",
+        "name": "pk_farg",
         "source": "intern",
-        "style": "PK_farg",
+        "style": "pk_farg",
         "title": "Primärkarta, färg",
         "format": "image/png",
         "group": "TK",
         "type": "WMS",
         "visible": false
     }, {
-        "name": "PK",
+        "name": "pk",
         "source": "intern",
-        "style": "PK_gra",
+        "style": "pk_gra",
         "title": "Primärkarta, grå",
         "format": "image/png",
         "group": "TK",
         "type": "WMS",
         "visible": false
     }, {
-        "name": "TK_w_stp_p",
+        "name": "tk_w_stp_p",
         "source": "ows",
-        "style": "TK_w_stp_p",
+        "style": "tk_w_stp_p",
         "title": "Stompunkter",
         "group": "TK",
         "type": "WFS",
@@ -265,9 +265,9 @@
           "img": "img"
         }]
     }, {
-        "name": "VA",
+        "name": "va",
         "source": "intern",
-        "style": "VA",
+        "style": "va",
         "title": "VA nät",
         "format": "image/png",
         "group": "TK",
@@ -284,7 +284,7 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "Detaljplan",
+        "name": "detaljplan",
         "source": "geoserver",
         "style": "detaljplan",
         "title": "Detaljplan",
@@ -304,7 +304,7 @@
           "urlSuffix": ".pdf"
         }]
     }, {
-        "name": "Fastighet",
+        "name": "fastighet",
         "title": "Fastighet",
         "style": "granser",
         "group": "LM",
@@ -312,7 +312,7 @@
         "visible": false,
         "layers": [
           {
-              "name": "Fastighet_kvalitet",
+              "name": "fastighet_kvalitet",
               "source": "wms",
               "style": "granser",
               "format": "image/png",
@@ -320,9 +320,9 @@
               "type": "WMS",
               "visible": true
           }, {
-              "name": "TK_s_fat_y",
+              "name": "tk_s_fat_y",
               "source": "ows",
-              "style": "TK_s_fat_y",
+              "style": "tk_s_fat_y",
               "title": "Fastighet",
               "format": "image/png",
               "group": "LM",
@@ -356,7 +356,7 @@
     }, {
         "name": "5",
         "source": "wms",
-        "style": "LST_pfo_p",
+        "style": "lst_pfo_p",
         "title": "Förorenade områden",
         "format": "image/png",
         "group": "LST",
@@ -366,7 +366,7 @@
     }, {
         "name": "4",
         "source": "wms",
-        "style": "LST_tmv_p",
+        "style": "lst_tmv_p",
         "title": "Miljöfarlig verksamhet",
         "format": "image/png",
         "group": "LST",
@@ -374,9 +374,9 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "Riksintresse3kapMB",
+        "name": "riksintresse3kapmb",
         "source": "wms",
-        "style": "LST_ri3_y",
+        "style": "lst_ri3_y",
         "title": "Riksintresse 3 kap MB",
         "format": "image/png",
         "group": "LST",
@@ -384,9 +384,9 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "Riksintresse4kapMB",
+        "name": "riksintresse4kapMB",
         "source": "wms",
-        "style": "LST_ri4_y",
+        "style": "lst_ri4_y",
         "title": "Riksintresse 4 kap MB",
         "format": "image/png",
         "group": "LST",
@@ -396,7 +396,7 @@
     }, {
         "name": "Tema_Q100",
         "source": "wms",
-        "style": "MSB_Q100_y",
+        "style": "msb_q100_y",
         "title": "Kolbäcksån 100-årsflöde (2014)",
         "format": "image/png",
         "group": "MSB",
@@ -406,7 +406,7 @@
     }, {
         "name": "Tema_Q200",
         "source": "wms",
-        "style": "MSB_Q200_y",
+        "style": "msb_q200_y",
         "title": "Kolbäcksån 200-årsflöde (2014)",
         "format": "image/png",
         "group": "MSB",
@@ -416,7 +416,7 @@
     }, {
         "name": "Tema_QBHF",
         "source": "wms",
-        "style": "MSB_QBHF_y",
+        "style": "msb_qbhf_y",
         "title": "Kolbäcksån högsta beräknat flöde (2014)",
         "format": "image/png",
         "group": "MSB",
@@ -426,7 +426,7 @@
     }, {
         "name": "MSB_Oversvamningskartering_Malaren_100arsniva",
         "source": "wms",
-        "style": "MSB_Malaren_100_y",
+        "style": "msb_malaren_100_y",
         "title": "Mälaren 100-årsnivå",
         "format": "image/png",
         "group": "MSB",
@@ -436,7 +436,7 @@
     }, {
         "name": "MSB_Oversvamningskartering_Malaren_200arsniva",
         "source": "wms",
-        "style": "MSB_Malaren_200_y",
+        "style": "msb_malaren_200_y",
         "title": "Mälaren 200-årsnivå",
         "format": "image/png",
         "group": "MSB",
@@ -446,7 +446,7 @@
     }, {
         "name": "MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
         "source": "wms",
-        "style": "MSB_Malaren_BHF_y",
+        "style": "msb_malaren_bhf_y",
         "title": "Mälaren högsta beräknat flöde",
         "format": "image/png",
         "group": "MSB",
@@ -454,9 +454,9 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "PTS_lek_y",
+        "name": "pts_lek_y",
         "source": "ows",
-        "style": "PTS_lek_y",
+        "style": "pts_lek_y",
         "title": "Pågende grävarbeten",
         "group": "PTS",
         "type": "WFS",
@@ -474,7 +474,7 @@
     }, {
         "name": "FMI_WMS",
         "source": "wms",
-        "style": "FMI_WMS",
+        "style": "fmi_wms",
         "title": "Fornminne",
         "format": "image/png",
         "group": "RAA",
@@ -487,7 +487,7 @@
             "url": "URL"
           }]
     }, {
-        "name": "TK_kir_p",
+        "name": "tk_kir_p",
         "source": "ows",
         "style": "point",
         "clusterStyle": "cluster",
@@ -506,7 +506,7 @@
     }, {
         "name": "SKRED_FINKORNING_JORDART",
         "source": "wms",
-        "style": "SGU_Skred_lutningsanalys",
+        "style": "sgu_skred_lutningsanalys",
         "title": "Skred, lutningsanalys",
         "format": "image/png",
         "group": "SGU",
@@ -516,7 +516,7 @@
     }, {
         "name": "SKRED_FINKORNING_JORDART_STRANDNARA",
         "source": "wms",
-        "style": "SGU_Skred_strandnara",
+        "style": "sgu_skred_strandnara",
         "title": "Skred, strandnära",
         "format": "image/png",
         "group": "SGU",
@@ -623,9 +623,9 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "TK_mak_y",
+        "name": "tk_mak_y",
         "source": "ows",
-        "style": "TK_mak_y",
+        "style": "tk_mak_y",
         "title": "Mask",
         "group": "tom",
         "queryable": false,
@@ -733,7 +733,7 @@
           }
         ]
       ],
-      "BM_avl_p": [
+      "bm_avl_p": [
           [{
               "icon": {
                   "src": "img/png/BM_avl_p1.png"
@@ -755,7 +755,7 @@
               }
           }]
       ],
-      "KS_w_opo_p": [
+      "ks_w_opo_p": [
         [{
           "icon": {
             "src": "img/png/KS_w_opo_p1.png"
@@ -787,14 +787,14 @@
           "filter": "[obj] == 'Pumpstation'"
         }]
       ],
-      "TK_w_are_p": [
+      "tk_w_are_p": [
         [{
           "icon": {
             "src": "img/png/TK_w_are_p.png"
           }
         }]
       ],
-      "TK_kof_y": [
+      "tk_kof_y": [
         [{
             "fill": {
                 "color": "rgba(165,0,165,0.25)"
@@ -808,20 +808,21 @@
             "filter": "[typ] == 'Ja'"
         }]
       ],
-      "PK_farg": [
+      "pk_farg": [
           [{
               "image": {
                   "src": "img/png/PK_farg.png"
               }
           }]
-      ],"PK_gra": [
+      ],
+      "pk_gra": [
           [{
               "image": {
                   "src": "img/png/PK_gra.png"
               }
           }]
       ],
-      "TK_w_stp_p": [
+      "tk_w_stp_p": [
         [{
           "icon": {
             "src": "img/png/droppe_black.png"
@@ -839,7 +840,7 @@
           "filter": "[stompunkttyp] == 'höjdpunkt'"
         }]
       ],
-      "VA": [
+      "va": [
           [{
               "stroke": {
                   "color": "rgb(0,0,255)",
@@ -848,7 +849,7 @@
               }
           }]
       ],
-        "bestammelser": [
+      "bestammelser": [
             [{
                 "stroke": {
                     "color": "rgb(144,169,61)",
@@ -856,7 +857,7 @@
                 }
             }]
         ],
-		"detaljplan": [
+        "detaljplan": [
             [{
                 "stroke": {
                     "color": "rgb(253,236,195)",
@@ -880,7 +881,7 @@
                 }
             }]
         ],
-        "LST_pfo_p": [
+        "lst_pfo_p": [
             [{
                 "circle": {
                     "radius": 7,
@@ -894,7 +895,7 @@
                 }
             }]
         ],
-        "LST_tmv_p": [
+        "lst_tmv_p": [
             [{
                 "circle": {
                     "radius": 7,
@@ -908,7 +909,7 @@
                 }
             }]
         ],
-        "LST_ri3_y": [
+        "lst_ri3_y": [
             [{
                 "stroke": {
                     "color": "rgba(255,122,122,0.6)",
@@ -919,7 +920,7 @@
                 }
             }]
         ],
-        "LST_ri4_y": [
+        "lst_ri4_y": [
             [{
                 "stroke": {
                     "color": "rgba(187,227,212,0.6)",
@@ -930,63 +931,63 @@
                 }
             }]
         ],
-        "MSB_Q100_y": [
+        "msb_q100_y": [
             [{
               "fill": {
                   "color": "rgb(0,197,255)"
               }
             }]
         ],
-        "MSB_Q200_y": [
+        "msb_q200_y": [
             [{
               "fill": {
                   "color": "rgb(116,224,255)"
             }
             }]
         ],
-        "MSB_QBHF_y": [
+        "msb_qbhf_y": [
             [{
               "fill": {
                   "color": "rgb(0,111,255)"
             }
             }]
         ],
-        "MSB_Malaren_100_y": [
+        "msb_malaren_100_y": [
             [{
               "fill": {
                   "color": "rgb(122,182,245)"
             }
             }]
         ],
-        "MSB_Malaren_200_y": [
+        "msb_malaren_200_y": [
             [{
               "fill": {
                   "color": "rgb(170,102,205)"
             }
             }]
         ],
-        "MSB_Malaren_BHF_y": [
+        "msb_malaren_bhf_y": [
             [{
               "fill": {
                   "color": "rgb(0,92,230)"
             }
             }]
         ],
-        "SGU_Skred_lutningsanalys": [
+        "sgu_skred_lutningsanalys": [
             [{
               "fill": {
                   "color": "rgb(246,197,103)"
             }
             }]
         ],
-        "SGU_Skred_strandnara": [
+        "sgu_skred_strandnara": [
             [{
               "fill": {
                   "color": "rgb(255,155,56)"
             }
             }]
         ],
-        "PTS_lek_y": [
+        "pts_lek_y": [
             [{
                 "stroke": {
                     "color": "rgba(86,66,244,0.6)",
@@ -997,21 +998,21 @@
                 }
             }]
         ],
-        "FMI_WMS": [
+        "fmi_wms": [
             [{
                 "image": {
                     "src": "img/png/FMI_WMS.png"
                 }
             }]
         ],
-        "TK_s_fat_y": [
+        "tk_s_fat_y": [
             [{
                 "fill": {
                     "color": "rgba(0,0,0,0)"
                 }
             }]
         ],
-        "TK_mak_y": [
+        "tk_mak_y": [
             [{
                 "fill": {
                     "color": "rgba(0,0,0,0.15)"
