@@ -384,7 +384,7 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "riksintresse4kapMB",
+        "name": "riksintresse4kapmb",
         "source": "wms",
         "style": "lst_ri4_y",
         "title": "Riksintresse 4 kap MB",
