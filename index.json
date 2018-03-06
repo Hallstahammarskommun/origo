@@ -248,7 +248,7 @@
             "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1' target='_blank'>Lämna synpunkter och klagomål</a>"
         }]
     }, {
-        "name": "tk_sop_r",
+        "name": "TK_sop_r",
         "source": "wms",
         "format": "image/png",
         "style": "tk_sop_r",
