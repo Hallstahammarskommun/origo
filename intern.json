@@ -352,7 +352,7 @@
         "type": "WMS",
         "visible": false
     }, {
-        "name": "5",
+        "name": "LST_Potentiellt_fororenade_omraden",
         "source": "wms",
         "style": "lst_pfo_p",
         "title": "Förorenade områden",
@@ -362,7 +362,7 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "4",
+        "name": "LST_Tillstandspliktig_miljofarlig_verksamhet_och_energitorvtakter_i_drift_Miljoreda",
         "source": "wms",
         "style": "lst_tmv_p",
         "title": "Miljöfarlig verksamhet",
