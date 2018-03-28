@@ -69,7 +69,7 @@
   ],
   "source": {
       "wms": {
-          "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
+          "url": "https://karta.hallstahammar.se/geoserver/wms",
           "version": "1.1.1"
       },
       "intern": {
@@ -98,6 +98,15 @@
     }
   ],
   "layers": [{
+      "name": "detaljplan",
+      "source": "wms",
+      "style": "detaljplan",
+      "title": "Detaljplan",
+      "format": "image/png",
+      "group": "hjälplager",
+      "type": "WMS",
+      "visible": false
+    }, {
       "name": "granser",
       "source": "wms",
       "style": "granser",
@@ -107,14 +116,14 @@
       "type": "WMS",
       "visible": false
     }, {
-        "name": "tk_kof_y",
-        "source": "ows",
-        "style": "tk_kof_y",
-        "title": "Kommunal mark",
-        "group": "hjälplager",
-        "queryable": false,
-        "type": "WFS",
-        "visible": false
+      "name": "tk_kof_y",
+      "source": "ows",
+      "style": "tk_kof_y",
+      "title": "Kommunal mark",
+      "group": "hjälplager",
+      "queryable": false,
+      "type": "WFS",
+      "visible": false
     }, {
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
@@ -454,6 +463,14 @@
             }
           }
         ]
+      ],
+      "detaljplan": [
+          [{
+              "stroke": {
+                  "color": "rgb(253,236,195)",
+                  "width": 1
+              }
+          }]
       ],
       "granser": [
         [{
