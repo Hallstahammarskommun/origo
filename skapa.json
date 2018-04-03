@@ -24,7 +24,7 @@
     }, {
       "name": "editor",
       "options": {
-        "editableLayers": ["tk_w_are_p", "bu_w_fos_p", "bu_w_grs_p", "bu_w_gss_p", "tk_w_let_y", "tk_w_lim_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "tk_w_stp_p"],
+        "editableLayers": ["tk_w_are_p", "tk_w_let_y", "tk_w_lim_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
         "isActive": true,
         "autoSave": true,
         "autoForm": true
@@ -158,89 +158,6 @@
         "type": "text"
       }]
     }, {
-      "name": "bu_w_fos_p",
-      "title": "Förskola",
-      "source": "ows",
-      "style": "bu_w_fos_p",
-      "group": "",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "queryable": true,
-      "attributes": [
-          {
-            "name": "obj",
-            "title": "Namn: ",
-            "type": "text"
-          },
-          {
-            "name": "egn",
-            "title": "Telefon: ",
-            "type": "text"
-          },
-          {
-            "name": "url",
-            "title": "Länk: ",
-            "type": "text"
-          }
-      ]
-    }, {
-      "name": "bu_w_grs_p",
-      "title": "Grundskola",
-      "source": "ows",
-      "style": "bu_w_grs_p",
-      "group": "",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Namn: ",
-        "type": "text"
-      }, {
-        "name": "typ",
-        "title": "Årskurs: ",
-        "type": "text"
-      }, {
-        "name": "egn",
-        "title": "Telefon: ",
-        "type": "text"
-      }, {
-        "name": "url",
-        "title": "Länk: ",
-        "type": "text"
-      }]
-    },
-    {
-      "name": "bu_w_gss_p",
-      "title": "Grundsärskola",
-      "source": "ows",
-      "style": "bu_w_gss_p",
-      "group": "",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Namn: ",
-        "type": "text"
-      }, {
-        "name": "typ",
-        "title": "Årskurs: ",
-        "type": "text"
-      }, {
-        "name": "egn",
-        "title": "Telefon: ",
-        "type": "text"
-      }, {
-        "name": "url",
-        "title": "Länk: ",
-        "type": "text"
-      }]
-    },
-    {
       "name": "tk_w_let_y",
       "title": "Lediga tomter",
       "source": "ows",
@@ -391,8 +308,41 @@
         "title": "Länk: ",
         "type": "text"
       }]
-    },
-    {
+    }, {
+      "name": "bu_w_ska_p",
+      "title": "Skola",
+      "source": "ows",
+      "style": "bu_w_grs_p",
+      "group": "",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "queryable": true,
+      "attributes": [
+          {
+            "name": "obj",
+            "title": "Namn: ",
+            "type": "text"
+          }, {
+            "name": "typ",
+            "title": "Årskurs: ",
+            "type": "text"
+          }, {
+            "name": "egn",
+            "title": "Typ: ",
+            "type": "dropdown",
+            "options": ["Förskola", "Grundskola", "Grundsärskola"]
+          }, {
+            "name": "tel",
+            "title": "Telefon: ",
+            "type": "text"
+          }, {
+            "name": "url",
+            "title": "Länk: ",
+            "type": "text"
+          }
+      ]
+    }, {
       "name": "tk_w_stp_p",
       "title": "Stompunkter",
       "source": "ows",
@@ -410,9 +360,7 @@
         "type": "dropdown",
         "options": ["förstörd", "återfunnen"]
       }]
-    },
-
-    {
+    }, {
           "name": "tk_mak_y",
           "source": "ows",
           "style": "tk_mak_y",
@@ -515,24 +463,10 @@
           "filter": "[obj] == 'Papperskorg + parkbänk'"
         }]
       ],
-      "bu_w_fos_p": [
-        [{
-          "icon": {
-            "src": "img/png/BU_w_fos_p.png"
-          }
-        }]
-      ],
       "bu_w_grs_p": [
         [{
           "icon": {
             "src": "img/png/BU_w_grs_p.png"
-          }
-        }]
-      ],
-      "bu_w_gss_p": [
-        [{
-          "icon": {
-            "src": "img/png/BU_w_gss_p.png"
           }
         }]
       ],
