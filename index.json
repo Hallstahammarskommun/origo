@@ -180,86 +180,51 @@
             "name": "status",
             "title": "Status: "
         }]
-    },
-
-
-
-
-
-
-    {
-           "name": "tk_w_let",
-           "title": "Lediga tomter",
-           "style": "tk_w_let_y",
-           "group": "bygga",
-           "type": "GROUP",
-           "visible": false,
-           "layers": [{
-               "name": "tk_w_let_y",
-               "source": "local",
-               "style": "tk_w_let_y",
-               "title": "Lediga tomter yta",
-               "group": "bygga",
-               "type": "WFS",
-               "visible": true,
-               "queryable": true,
-               "attributes": [{
-                 "name": "obj",
-                 "title": "Fastighet: "
-               }, {
-                 "name": "typ",
-                 "title": "Pris: "
-               }, {
-                 "name": "status",
-                 "title": "Status: "
-               }, {
-                 "name": "datum",
-                 "title": "Bokad till: "
-               }, {
-                 "name": "egn",
-                 "url": "url",
-                 "title": "Läs mer här: "
-               }],
-               "relations": [
-                 {
-                   "layer": "gallande_detaljplaner",
-                   "attribute": "AKT_BET",
-                   "url": "LANK"
-                 }
-               ]
-             }, {
-               "name": "tk_w_let_p",
-               "source": "local",
-               "style": "point",
-               "title": "Lediga tomter punkt",
-               "group": "bygga",
-               "type": "WFS",
-               "visible": true,
-               "queryable": "false",
-               "attributes":[]
-             }
-           ]
-         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {
+    }, {
+      "name": "tk_w_let",
+      "title": "Lediga tomter",
+      "style": "tk_w_let_y",
+      "group": "bygga",
+      "type": "GROUP",
+      "visible": false,
+      "layers": [{
+        "name": "tk_w_let_y",
+        "source": "local",
+        "style": "tk_w_let_y",
+        "title": "Lediga tomter yta",
+        "group": "bygga",
+        "type": "WFS",
+        "visible": true,
+        "queryable": true,
+        "attributes": [{
+          "name": "obj",
+          "title": "Fastighet: "
+        }, {
+          "name": "typ",
+          "title": "Pris: "
+        }, {
+          "name": "egn",
+          "title": "Area: "
+        }, {
+          "name": "status",
+          "title": "Status: "
+        }, {
+          "name": "datum",
+          "title": "Bokad till: "
+        }]
+      }, {
+        "name": "tk_w_let_p",
+        "source": "local",
+        "style": "point_black",
+        "clusterStyle": "tk_w_let_p_cluster",
+        "title": "Lediga tomter punkt",
+        "layerType": "cluster",
+        "group": "bygga",
+        "type": "WFS",
+        "visible": true,
+        "queryable": false
+      }]
+    }, {
         "name": "tk_w_pap_y",
         "source": "local",
         "style": "tk_w_pap_y",
@@ -477,6 +442,14 @@
                 }
             }]
         ],
+        "point_black": [
+            [{
+                "icon": {
+                    "size": [24, 36],
+                    "src": "img/png/droppe_black.png"
+                }
+            }]
+        ],
         "line": [
             [{
                 "stroke": {
@@ -529,6 +502,36 @@
           }
         ]
       ],
+      "tk_w_let_p_cluster": [
+    [
+      {
+        "circle": {
+          "radius": 16,
+          "fill": {
+            "color": "rgba(0,0,0,0.5)"
+          },
+          "stroke": {
+            "color": "rgba(0,0,0,0.9)",
+            "width": 4
+          }
+        }
+      },
+      {
+        "text": {
+          "font": "Bold 12px Arial",
+          "textAlign": "center",
+          "text": "size",
+          "fill": {
+            "color": "rgba(255,255,255,1.0)"
+          },
+          "stroke": {
+            "color": "rgba(103,60,31,0.9",
+            "width": 2
+          }
+        }
+      }
+    ]
+  ],
         "granser": [
             [{
                 "stroke": {
