@@ -173,7 +173,7 @@
         "type": "text"
       }, {
         "name": "egn",
-        "title": "Område: ",
+        "title": "Area: ",
         "type": "text"
       },
       {
@@ -185,10 +185,6 @@
         "title": "Status: ",
         "type": "dropdown",
         "options": ["Ledig", "Bokad", "Såld"]
-      }, {
-        "name": "url",
-        "title": "Länk: ",
-        "type": "text"
       }, {
         "name": "datum",
         "title": "Bokad till: ",

@@ -180,32 +180,86 @@
             "name": "status",
             "title": "Status: "
         }]
-    }, {
-        "name": "tk_w_let_y",
-        "source": "local",
-        "style": "tk_w_let_y",
-        "title": "Lediga tomter",
-        "group": "bygga",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj",
-            "title": "Fastighet: "
-        }, {
-            "name": "typ",
-            "title": "Pris: "
-        }, {
-            "name": "status",
-            "title": "Status: "
-        }, {
-            "name": "datum",
-            "title": "Bokad till: "
-        }, {
-            "name": "egn",
-            "url": "url",
-            "title": "Läs mer här: "
-        }]
-    }, {
+    },
+
+
+
+
+
+
+    {
+           "name": "tk_w_let",
+           "title": "Lediga tomter",
+           "style": "tk_w_let_y",
+           "group": "bygga",
+           "type": "GROUP",
+           "visible": false,
+           "layers": [{
+               "name": "tk_w_let_y",
+               "source": "local",
+               "style": "tk_w_let_y",
+               "title": "Lediga tomter yta",
+               "group": "bygga",
+               "type": "WFS",
+               "visible": true,
+               "queryable": true,
+               "attributes": [{
+                 "name": "obj",
+                 "title": "Fastighet: "
+               }, {
+                 "name": "typ",
+                 "title": "Pris: "
+               }, {
+                 "name": "status",
+                 "title": "Status: "
+               }, {
+                 "name": "datum",
+                 "title": "Bokad till: "
+               }, {
+                 "name": "egn",
+                 "url": "url",
+                 "title": "Läs mer här: "
+               }],
+               "relations": [
+                 {
+                   "layer": "gallande_detaljplaner",
+                   "attribute": "AKT_BET",
+                   "url": "LANK"
+                 }
+               ]
+             }, {
+               "name": "tk_w_let_p",
+               "source": "local",
+               "style": "point",
+               "title": "Lediga tomter punkt",
+               "group": "bygga",
+               "type": "WFS",
+               "visible": true,
+               "queryable": "false",
+               "attributes":[]
+             }
+           ]
+         },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
         "name": "tk_w_pap_y",
         "source": "local",
         "style": "tk_w_pap_y",

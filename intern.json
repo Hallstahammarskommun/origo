@@ -517,6 +517,16 @@
           "name": "typ"
         }]
     }, {
+        "name": "jordarter",
+        "source": "geoserver",
+        "style": "detaljplan",
+        "title": "Jordarter",
+        "format": "image/png",
+        "group": "SGU",
+        "type": "WMS",
+        "opacity": 0.5,
+        "visible": false
+    }, {
         "name": "SKRED_FINKORNING_JORDART",
         "source": "wms",
         "style": "sgu_skred_lutningsanalys",
