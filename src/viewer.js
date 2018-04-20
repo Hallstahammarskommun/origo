@@ -63,6 +63,7 @@ function init(el, mapOptions) {
   mapOptions.tileGrid = mapOptions.tileGrid || {};
   settings.tileSize = mapOptions.tileGrid.tileSize ? [mapOptions.tileGrid.tileSize,mapOptions.tileGrid.tileSize] : [256,256];
   settings.alignBottomLeft = mapOptions.tileGrid.alignBottomLeft;
+  settings.config = mapOptions.config;
 
   if (mapOptions.hasOwnProperty('proj4Defs') || mapOptions.projectionCode=="EPSG:3857" || mapOptions.projectionCode=="EPSG:4326") {
     // Projection to be used in map
@@ -249,6 +250,10 @@ function getTileSize() {
 
 function getUrl() {
   return settings.url;
+}
+
+function getConfig() {
+  return settings.config;
 }
 
 function getStyleSettings() {
@@ -602,3 +607,4 @@ module.exports.checkScale= checkScale;
 module.exports.getMapName = getMapName;
 module.exports.getConsoleId = getConsoleId;
 module.exports.getUrl = getUrl;
+module.exports.getConfig = getConfig;

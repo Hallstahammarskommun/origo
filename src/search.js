@@ -138,8 +138,10 @@ function initAutocomplete() {
     sort: false,
     maxItems: limit,
     item: renderList,
-    filter: function(suggestion, input) {
-      return suggestion.value;
+    filter: function (suggestion, input) {
+      if (suggestion.value.toLowerCase().includes(input.toLowerCase())) {
+        return suggestion.value;
+      }
     }
   });
 
