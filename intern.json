@@ -98,22 +98,22 @@
       0.21,
       0.14
     ],
-    "capabilitiesURL": "https://karta.hallstahammar.se/geoserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
+    "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
     "source": {
         "geoserver": {
             "url": "https://karta.hallstahammar.se/geoserver/wms",
             "version": "1.1.1"
         },
         "wms": {
-            "url": "https://karta.hallstahammar.se/geoserver/extern/wms",
+            "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
             "version": "1.1.1"
         },
         "intern": {
-            "url": "https://karta.hallstahammar.se/geoserver/intern/wms",
+            "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
             "version": "1.1.1"
         },
         "ows": {
-            "url": "https://karta.hallstahammar.se/geoserver/ows",
+            "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
             "strategy": "all"
         },
         "historiska": {
