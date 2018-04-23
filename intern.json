@@ -524,7 +524,7 @@
         "format": "image/png",
         "group": "SGU",
         "type": "WMS",
-        "opacity": 0.5,
+        "opacity": 0.75,
         "visible": false
     }, {
         "name": "SKRED_FINKORNING_JORDART",
@@ -566,10 +566,20 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "OF1959",
+        "name": "Histortho_60",
         "source": "historiska",
         "style": "orto",
-        "title": "1959",
+        "title": "1960",
+        "format": "image/png",
+        "group": "historiska",
+        "type": "WMS",
+        "visible": false,
+        "queryable": false
+    }, {
+        "name": "Histortho_75",
+        "source": "historiska",
+        "style": "orto",
+        "title": "1975",
         "format": "image/png",
         "group": "historiska",
         "type": "WMS",
