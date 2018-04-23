@@ -24,7 +24,7 @@
     }, {
       "name": "editor",
       "options": {
-        "editableLayers": ["tk_w_are_p", "tk_w_let_y", "tk_w_lim_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
+        "editableLayers": ["tk_w_are_p", "tk_w_let_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
         "isActive": true,
         "autoSave": true,
         "autoForm": true
@@ -159,7 +159,7 @@
       }]
     }, {
       "name": "tk_w_let_y",
-      "title": "Lediga tomter",
+      "title": "Ledig mark",
       "source": "ows",
       "style": "tk_w_let_y",
       "group": "",
@@ -169,54 +169,32 @@
       "queryable": true,
       "attributes": [{
         "name": "obj",
-        "title": "Fastighet: ",
+        "title": "Område / Fastighet: ",
         "type": "text"
+      }, {
+        "name": "typ",
+        "title": "Typ: ",
+        "type": "dropdown",
+        "options": ["Smahus", "Industri"]
       }, {
         "name": "egn",
+        "title": "Pris: ",
+        "type": "text"
+      }, {
+        "name": "area",
         "title": "Area: ",
         "type": "text"
-      },
-      {
-        "name": "typ",
-        "title": "Pris: ",
-        "type": "text"
       }, {
         "name": "status",
         "title": "Status: ",
         "type": "dropdown",
-        "options": ["Ledig", "Bokad", "Såld"]
+        "options": ["Ledig", "Bokad", "Kommande"]
       }, {
         "name": "datum",
-        "title": "Bokad till: ",
-        "type": "text"
-      }]
-    },
-    {
-      "name": "tk_w_lim_y",
-      "title": "Ledig industrimark",
-      "source": "ows",
-      "style": "tk_w_lim_y",
-      "group": "",
-      "type": "WFS",
-      "geometryType": "Polygon",
-      "visible": false,
-      "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Storlek: ",
+        "title": "Beskrivning av kommande område: ",
         "type": "textarea"
-      }, {
-        "name": "typ",
-        "title": "Pris: ",
-        "type": "text"
-      }, {
-        "name": "status",
-        "title": "Status: ",
-        "type": "dropdown",
-        "options": ["Ledig", "Bokad"]
       }]
-    },
-    {
+    }, {
       "name": "ks_w_opo_p",
       "title": "Opto ansluten",
       "source": "ows",
@@ -488,7 +466,7 @@
             }
           }],
           [{
-            "filter": "[status] == 'Såld'",
+            "filter": "[status] == 'Kommande'",
             "stroke": {
               "color": "rgba(0,0,0,0.5)",
               "width": 1

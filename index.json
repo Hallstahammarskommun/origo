@@ -163,19 +163,20 @@
         "type": "WFS",
         "visible": false
     }, {
-        "name": "tk_w_lim_y",
+        "name": "tk_w_let_y__industri",
         "source": "local",
         "style": "tk_w_lim_y",
         "title": "Ledig industrimark",
         "group": "bygga",
         "type": "WFS",
+        "filter": "typ = 'Industri'",
         "visible": false,
         "attributes": [{
-            "name": "obj",
-            "title": "Storlek: "
-        }, {
-            "name": "typ",
+            "name": "egn",
             "title": "Pris: "
+        }, {
+            "name": "area",
+            "title": "Area: "
         }, {
             "name": "status",
             "title": "Status: "
@@ -188,39 +189,36 @@
       "type": "GROUP",
       "visible": false,
       "layers": [{
-        "name": "tk_w_let_y",
+        "name": "tk_w_let_y__smahus",
         "source": "local",
         "style": "tk_w_let_y",
-        "title": "Lediga tomter yta",
+        "title": "Lediga tomter",
         "group": "bygga",
         "type": "WFS",
+        "filter": "typ = 'Smahus'",
         "visible": true,
         "queryable": true,
         "attributes": [{
-          "name": "obj",
-          "title": "Fastighet: "
+          "name": "obj"
         }, {
-          "name": "typ",
-          "title": "Pris: "
+          "name": "egn"
         }, {
-          "name": "egn",
-          "title": "Area: "
+          "name": "area"
         }, {
-          "name": "status",
-          "title": "Status: "
+          "name": "status"
         }, {
-          "name": "datum",
-          "title": "Bokad till: "
+          "name": "datum"
         }]
       }, {
         "name": "tk_w_let_p",
         "source": "local",
-        "style": "point_black",
+        "style": "tk_w_let_p",
         "clusterStyle": "tk_w_let_p_cluster",
         "title": "Lediga tomter punkt",
         "layerType": "cluster",
         "group": "bygga",
         "type": "WFS",
+        "filter": "typ = 'Smahus'",
         "visible": true,
         "queryable": false
       }]
@@ -442,13 +440,20 @@
                 }
             }]
         ],
-        "point_black": [
-            [{
-                "icon": {
-                    "size": [24, 36],
-                    "src": "img/png/droppe_black.png"
-                }
-            }]
+        "tk_w_let_p": [
+          [{
+            "filter": "[status] == 'Kommande'",
+            "icon": {
+              "size": [24, 36],
+              "src": "img/png/droppe_red.png"
+            }
+          }],
+          [{
+            "icon": {
+              "size": [24, 36],
+              "src": "img/png/droppe_black.png"
+            }
+          }]
         ],
         "line": [
             [{
@@ -503,35 +508,32 @@
         ]
       ],
       "tk_w_let_p_cluster": [
-    [
-      {
-        "circle": {
-          "radius": 16,
-          "fill": {
-            "color": "rgba(0,0,0,0.5)"
-          },
-          "stroke": {
-            "color": "rgba(0,0,0,0.9)",
-            "width": 4
+        [{
+          "circle": {
+            "radius": 16,
+            "fill": {
+              "color": "rgba(0,0,0,0.5)"
+            },
+            "stroke": {
+              "color": "rgba(0,0,0,0.9)",
+              "width": 4
+            }
           }
-        }
-      },
-      {
-        "text": {
-          "font": "Bold 12px Arial",
-          "textAlign": "center",
-          "text": "size",
-          "fill": {
-            "color": "rgba(255,255,255,1.0)"
-          },
-          "stroke": {
-            "color": "rgba(103,60,31,0.9",
-            "width": 2
+        }, {
+          "text": {
+            "font": "Bold 12px Arial",
+            "textAlign": "center",
+            "text": "size",
+            "fill": {
+              "color": "rgba(255,255,255,1.0)"
+            },
+            "stroke": {
+              "color": "rgba(103,60,31,0.9",
+              "width": 2
+            }
           }
-        }
-      }
-    ]
-  ],
+        }]
+        ],
         "granser": [
             [{
                 "stroke": {
@@ -607,10 +609,10 @@
                     "color": "rgba(255,255,0,0.3)"
                 }
             }],
-            [{  "filter": "[status] == 'Såld'",
+            [{  "filter": "[status] == 'Kommande'",
                 "stroke": {
-                    "color": "rgba(0,0,0,0.6)",
-                    "width": 1
+                    "color": "rgba(255,0,0,0.6)",
+                    "width": 2
                 },
                 "fill": {
                     "color": "rgba(255,0,0,0.3)"
