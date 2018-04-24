@@ -6,8 +6,7 @@ var getUrl = require('./utils/geturl');
 var isUrl = require('./utils/isurl');
 var trimUrl = require('./utils/trimurl');
 
-var mapLoader = function(mapOptions, config) {
-
+var mapLoader = function (mapOptions, config) {
   var map = {};
   var mapEl = config.target;
   var format = 'json';
@@ -53,6 +52,7 @@ var mapLoader = function(mapOptions, config) {
       map.options.map = undefined;
       map.options.params = urlParams;
       map.options.baseUrl = baseUrl;
+      map.options.config = mapOptions;
 
       return $.when.apply($, loadSvgSprites(baseUrl, config))
         .then(function(sprites) {
@@ -101,6 +101,7 @@ var mapLoader = function(mapOptions, config) {
               map.options.map = json;
               map.options.params = urlParams;
               map.options.baseUrl = baseUrl;
+              map.options.config = data;
               return map;
             });
         });

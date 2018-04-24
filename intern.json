@@ -54,6 +54,8 @@
     }, {
         "name": "draganddrop"
     }, {
+        "name": "saveconfig"
+    }, {
         "--name": "splash",
         "options": {
           "title": "Kartnytt",
