@@ -163,7 +163,7 @@
         "type": "WFS",
         "visible": false
     }, {
-        "name": "tk_w_let_y__industri",
+        "name": "tk_w_lem_y__industri",
         "source": "local",
         "style": "tk_w_lim_y",
         "title": "Ledig industrimark",
@@ -184,14 +184,14 @@
     }, {
       "name": "tk_w_let",
       "title": "Lediga tomter",
-      "style": "tk_w_let_y",
+      "style": "tk_w_lem_y",
       "group": "bygga",
       "type": "GROUP",
       "visible": false,
       "layers": [{
-        "name": "tk_w_let_y__smahus",
+        "name": "tk_w_lem_y__smahus",
         "source": "local",
-        "style": "tk_w_let_y",
+        "style": "tk_w_lem_y",
         "title": "Lediga tomter",
         "group": "bygga",
         "type": "WFS",
@@ -210,10 +210,10 @@
           "name": "datum"
         }]
       }, {
-        "name": "tk_w_let_p",
+        "name": "tk_w_lem_p",
         "source": "local",
-        "style": "tk_w_let_p",
-        "clusterStyle": "tk_w_let_p_cluster",
+        "style": "tk_w_lem_p",
+        "clusterStyle": "tk_w_lem_p_cluster",
         "title": "Lediga tomter punkt",
         "layerType": "cluster",
         "group": "bygga",
@@ -440,7 +440,7 @@
                 }
             }]
         ],
-        "tk_w_let_p": [
+        "tk_w_lem_p": [
           [{
             "filter": "[status] == 'Kommande'",
             "icon": {
@@ -507,7 +507,7 @@
           }
         ]
       ],
-      "tk_w_let_p_cluster": [
+      "tk_w_lem_p_cluster": [
         [{
           "circle": {
             "radius": 16,
@@ -590,7 +590,7 @@
               }
             }]
         ],
-        "tk_w_let_y": [
+        "tk_w_lem_y": [
             [{  "filter": "[status] == 'Ledig'",
                 "stroke": {
                     "color": "rgba(0,0,0,0.6)",

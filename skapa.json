@@ -24,7 +24,7 @@
     }, {
       "name": "editor",
       "options": {
-        "editableLayers": ["tk_w_are_p", "tk_w_let_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
+        "editableLayers": ["tk_w_are_p", "tk_w_lem_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
         "isActive": true,
         "autoSave": true,
         "autoForm": true
@@ -158,10 +158,10 @@
         "type": "text"
       }]
     }, {
-      "name": "tk_w_let_y",
+      "name": "tk_w_lem_y",
       "title": "Ledig mark",
       "source": "ows",
-      "style": "tk_w_let_y",
+      "style": "tk_w_lem_y",
       "group": "",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -444,7 +444,7 @@
           }
         }]
       ],
-      "tk_w_let_y": [
+      "tk_w_lem_y": [
           [{
             "filter": "[status] == 'Ledig'",
             "stroke": {

@@ -576,20 +576,20 @@
         "visible": false,
         "queryable": false
     }, {
-        "name": "Histortho_75",
+        "name": "EK1962",
         "source": "historiska",
-        "style": "orto",
-        "title": "1975",
+        "style": "karta_farg",
+        "title": "1962",
         "format": "image/png",
         "group": "historiska",
         "type": "WMS",
         "visible": false,
         "queryable": false
     }, {
-        "name": "EK1962",
+        "name": "Histortho_75",
         "source": "historiska",
-        "style": "karta_farg",
-        "title": "1962",
+        "style": "orto",
+        "title": "1975",
         "format": "image/png",
         "group": "historiska",
         "type": "WMS",
