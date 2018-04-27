@@ -299,6 +299,7 @@
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
+        "renderMode": "image",
         "visible": false
     }, {
         "name": "detaljplan",
@@ -308,6 +309,7 @@
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
+        "renderMode": "image",
         "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
         "visible": false,
         "attributes": [{
@@ -367,6 +369,7 @@
         "format": "image/png",
         "group": "LM",
         "type": "WMS",
+        "renderMode": "image",
         "visible": false
     }, {
         "name": "LST_Potentiellt_fororenade_omraden",
