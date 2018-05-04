@@ -235,16 +235,6 @@
             "url": "url"
         }]
     }, {
-        "name": "ks_nvt_p",
-        "source": "local",
-        "style": "ks_nvt_p",
-        "title": "Nödvattentank",
-        "group": "bygga",
-        "queryable": false,
-        "type": "WFS",
-        "filter": "typ = 'Kanalvägen/Slängarebacken'",
-        "visible": false
-    }, {
         "name": "bm_elf_y",
         "source": "local",
         "style": "bm_elf_y",
@@ -449,14 +439,6 @@
                     "src": "img/png/drop_blue.png"
                 }
             }]
-        ],
-        "ks_nvt_p": [
-        [{
-            "icon": {
-                "size": [32, 37],
-                "src": "img/png/KS_nvt_p.png"
-            }
-        }]
         ],
         "tk_w_lem_p": [
           [{
