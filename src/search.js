@@ -139,7 +139,7 @@ function initAutocomplete() {
     maxItems: limit,
     item: renderList,
     filter: function (suggestion, input) {
-      if (suggestion.value.toLowerCase().includes(input.toLowerCase())) {
+      if (suggestion.value.toLowerCase().indexOf(input.toLowerCase()) !== -1) {
         return suggestion.value;
       }
     }
