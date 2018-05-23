@@ -72,10 +72,6 @@
           "url": "https://karta.hallstahammar.se/geoserver/wms",
           "version": "1.1.1"
       },
-      "intern": {
-          "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
-          "version": "1.1.1"
-      },
       "ows": {
           "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
           "workspace": "intern",
@@ -128,8 +124,8 @@
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
-      "name": "pk",
-      "source": "intern",
+      "name": "extern:pk",
+      "source": "wms",
       "title": "Primärkarta, grå",
       "type": "WMS",
       "style": "pk_gra",

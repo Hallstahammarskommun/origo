@@ -244,7 +244,7 @@
         "visible": false
     }, {
         "name": "pk_farg",
-        "source": "intern",
+        "source": "wms",
         "style": "pk_farg",
         "title": "Primärkarta, färg",
         "format": "image/png",
@@ -253,7 +253,7 @@
         "visible": false
     }, {
         "name": "pk",
-        "source": "intern",
+        "source": "wms",
         "style": "pk_gra",
         "title": "Primärkarta, grå",
         "format": "image/png",
