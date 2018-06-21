@@ -234,6 +234,19 @@
           "title": "Sökväg: "
         }]
     }, {
+      "name": "tk_w_gtu_p",
+      "title": "Geoteknisk undersökning",
+      "source": "ows",
+      "style": "tk_w_gtu_p",
+      "group": "TK",
+      "type": "WFS",
+      "visible": false,
+      "queryable": true,
+      "attributes": [{
+        "name": "obj",
+        "title": "Nummer: "
+      }]
+    }, {
         "name": "tk_kof_y",
         "source": "ows",
         "style": "tk_kof_y",
@@ -829,6 +842,13 @@
         [{
           "icon": {
             "src": "img/png/TK_w_are_p.png"
+          }
+        }]
+      ],
+      "tk_w_gtu_p": [
+        [{
+          "icon": {
+            "src": "img/png/tk_w_gtu_p.png"
           }
         }]
       ],
