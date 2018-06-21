@@ -24,7 +24,7 @@
     }, {
       "name": "editor",
       "options": {
-        "editableLayers": ["tk_w_are_p", "tk_w_lem_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
+        "editableLayers": ["tk_w_are_p", "tk_w_gtu_p", "tk_w_lem_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_stp_p"],
         "isActive": true,
         "autoSave": true,
         "autoForm": true
@@ -68,22 +68,18 @@
     0.14
   ],
   "source": {
-      "wms": {
-          "url": "https://karta.hallstahammar.se/geoserver/wms",
-          "version": "1.1.1"
-      },
-      "intern": {
-          "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
-          "version": "1.1.1"
-      },
-      "ows": {
-          "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
-          "workspace": "intern",
-          "strategy": "all"
-      },
-      "basemap": {
-          "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
-      }
+    "wms": {
+        "url": "https://karta.hallstahammar.se/geoserver/wms",
+        "version": "1.1.1"
+    },
+    "ows": {
+        "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
+        "workspace": "intern",
+        "strategy": "all"
+    },
+    "basemap": {
+        "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
+    }
   },
   "groups": [
     {
@@ -128,8 +124,8 @@
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
-      "name": "pk",
-      "source": "intern",
+      "name": "extern:pk",
+      "source": "wms",
       "title": "Primärkarta, grå",
       "type": "WMS",
       "style": "pk_gra",
@@ -155,6 +151,21 @@
       }, {
         "name": "url",
         "title": "Sökväg: ",
+        "type": "text"
+      }]
+    }, {
+      "name": "tk_w_gtu_p",
+      "title": "Geoteknisk undersökning",
+      "source": "ows",
+      "style": "tk_w_gtu_p",
+      "group": "",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "queryable": true,
+      "attributes": [{
+        "name": "obj",
+        "title": "Nummer: ",
         "type": "text"
       }]
     }, {
@@ -414,6 +425,13 @@
         [{
           "icon": {
             "src": "img/png/TK_w_are_p.png"
+          }
+        }]
+      ],
+      "tk_w_gtu_p": [
+        [{
+          "icon": {
+            "src": "img/png/tk_w_gtu_p.png"
           }
         }]
       ],
