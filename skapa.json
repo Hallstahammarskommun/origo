@@ -184,7 +184,7 @@
         "name": "status",
         "title": "Status: ",
         "type": "dropdown",
-        "options": ["Ledig", "Bokad", "Kommande"]
+        "options": ["Bokad", "Kommande", "Ledig", "Såld"]
       }, {
         "name": "datum",
         "title": "Beskrivning av kommande område: ",
@@ -441,43 +441,44 @@
         }]
       ],
       "tk_w_lem_y": [
-          [{
-            "filter": "[status] == 'Ledig'",
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 1
-            },
-            "fill": {
-              "color": "rgba(0,225,0,0.25)"
-            }
-          }],
-          [{
-            "filter": "[status] == 'Bokad'",
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 1
-            },
-            "fill": {
-              "color": "rgba(255,255,0,0.25)"
-            }
-          }],
-          [{
-            "filter": "[status] == 'Kommande'",
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 1
-            },
-            "fill": {
-              "color": "rgba(255,0,0,0.25)"
-            }
-          }],
-          [{
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 1
-            }
-          }]
-        ],
+        [{
+          "filter": "[status] == 'Bokad'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,0,0.3)"
+          }
+        }],
+        [{
+          "filter": "[status] == 'Kommande'",
+          "stroke": {
+            "color": "rgba(255,0,0,0.6)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(255,0,0,0.3)"
+          }
+        }],
+        [{
+          "filter": "[status] == 'Ledig'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,225,0,0.3)"
+          }
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(255,0,0,0.5)",
+            "lineDash": [10,10],
+            "width": 3
+          }
+        }]
+      ],
         "tk_w_lim_y": [
           [{
             "filter": "[status] == 'Ledig'",
