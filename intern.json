@@ -234,6 +234,22 @@
           "title": "Sökväg: "
         }]
     }, {
+        "name": "UAV",
+        "source": "intern",
+        "style": "orto",
+        "title": "Drönarfoto",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+          "name": "obj",
+          "title": "Flygdatum: "
+        }, {
+          "name": "egn",
+          "title": "Upplösning: "
+        }]
+    }, {
         "name": "tk_kof_y",
         "source": "ows",
         "style": "tk_kof_y",
