@@ -71,7 +71,7 @@ function bindUIActions() {
       content = '';
       content = text + '<br><br>' + layerTitles + form;
     } else {
-      content = '<p>Du måste tända ett nedladningsbart lager för att kunna använda det här verktyget</p>';
+      content = '<p>Du måste tända ett nedladdningsbart lager för att kunna använda det här verktyget</p>';
     }
 
     Modal.createModal('#o-map', {
