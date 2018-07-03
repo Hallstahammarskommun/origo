@@ -32,7 +32,7 @@ function init(opt_options) {
 
     vectorLayer = new ol.layer.Vector({
       source: vectorSource,
-      name: event.file.name.split('.')[0].replace(/\s/g,''),
+      name: event.file.name.split('.')[0].replace(/\W/g,''),
       group: "draganddrop",
       title: event.file.name.split('.')[0],
       queryable: true,
