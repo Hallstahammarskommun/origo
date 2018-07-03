@@ -18,7 +18,7 @@ origo.map.init = function (options, OptConfig) {
   var config = OptConfig ? $.extend(origo.config, OptConfig) : origo.config;
   var url = 'https://karta.hallstahammar.se/intern/getconfig';
 
-  if (options === 'intern.json') {
+  if (options === 'temp.json') {
     $.ajax({
       type: 'GET',
       dataType: 'json',
