@@ -1,4 +1,4 @@
- /* ========================================================================
+/* ========================================================================
  * Copyright 2016 Origo
  * Licensed under BSD 2-Clause (https://github.com/origo-map/origo/blob/master/LICENSE.txt)
  * ======================================================================== */
@@ -22,24 +22,21 @@ var attributeObjects;
 var map;
 var options;
 var currentExtent;
-var useVisibleLayers;
 var layers;
 
-function init(opt_options) {
-
+function init(optOptions) {
   map = viewer.getMap();
   layers = map.getLayers();
-  options = opt_options || {};
+  options = optOptions || {};
   formOptions = options.params;
   buttonText = options.buttontext || '';
   url = options.url || '';
-  title = options.title || '';
+  title = options.title || 'Hämta data';
   currentExtent = options.currentExtent || false;
-  useVisibleLayers = options.useVisibleLayers || false;
   text = options.text || '<p></p>';
 
-  //Create an array of defined attributes and corresponding values from selected feature
-  attributeObjects = formOptions.map(function(attributeObject) {
+  // Create an array of defined attributes and corresponding values from selected feature
+  attributeObjects = formOptions.map(function (attributeObject) {
     var obj = {};
     $.extend(obj, attributeObject);
     obj.elId = '#input-' + obj.name;
@@ -47,7 +44,7 @@ function init(opt_options) {
     return obj;
   });
 
-  var formElement = attributeObjects.reduce(function(prev, next) {
+  formElement = attributeObjects.reduce(function (prev, next) {
     return prev + next.formElement;
   }, '');
 
@@ -67,25 +64,31 @@ function render() {
 }
 
 function bindUIActions() {
-  $('#o-download-button').on('click', function(e) {
+  $('#o-download-button').on('click', function (e) {
+    var layerTitles = getLayerTitles();
 
-    if (useVisibleLayers) {
+    if (layerTitles) {
       content = '';
-      content = text + '<br><br>' + getLayerTitles() + form;
+      content = text + '<br><br>' + layerTitles + form;
     } else {
-      content = '';
-      content = text + '<br>' +form;
+      content = '<p>Du måste tända ett nedladningsbart lager för att kunna använda det här verktyget</p>';
     }
 
     Modal.createModal('#o-map', {
       title: title,
-      content: content,
+      content: content
     });
 
     Modal.showModal();
-    $('#o-save-button').on('click', function(e) {
+    $('#o-save-button').prop('disabled', true);
+
+    $('#input-DestinationFormat').change(function () {
+      $('#o-save-button').removeAttr('disabled');
+    });
+
+    $('#o-save-button').on('click', function () {
       var params = {};
-      attributeObjects.forEach(function(obj) {
+      attributeObjects.forEach(function (obj) {
         params[obj.name.toString()] = $(obj.elId).val();
       });
 
@@ -107,7 +110,7 @@ function fme(params) {
 
   fmeUrl = url;
 
-  for(i = 0; i < paramsLength; i++) {
+  for (i = 0; i < paramsLength; i++) {
     if (i ===  (paramsLength - 1)) {
       fmeUrl += Object.keys(params)[i] + '=' + params[Object.keys(params)[i]];
     } else {
@@ -115,11 +118,9 @@ function fme(params) {
     }
   }
 
-  if (useVisibleLayers) {
-    visibleLayers = getVisibleLayers();
-    visibleLayers = visibleLayers.replace(/;/g, '%20');
-    fmeUrl += '&layer=' + visibleLayers;
-  }
+  visibleLayers = getVisibleLayers();
+  visibleLayers = visibleLayers.replace(/;/g, '%20');
+  fmeUrl += '&layer=' + visibleLayers;
 
   if (currentExtent) {
     size = map.getSize();
@@ -128,14 +129,14 @@ function fme(params) {
     fmeUrl += '&extent=' + extent;
   }
 
-    window.open(fmeUrl);
+  window.open(fmeUrl, '_self');
 }
 
 function getVisibleLayers() {
   var layerNames = '';
 
-  layers.forEach(function(el) {
-    if (el.getVisible() === true && el.get('group') != 'background' && el.get('group') != 'tom') {
+  layers.forEach(function (el) {
+    if (el.getVisible() === true && el.get('fme')) {
       layerNames += el.get('name') + ';';
     }
   });
@@ -146,8 +147,8 @@ function getVisibleLayers() {
 function getLayerTitles() {
   var layerTitles = '';
 
-  layers.forEach(function(el) {
-    if (el.getVisible() === true && el.get('group') != 'background' && el.get('group') != 'tom') {
+  layers.forEach(function (el) {
+    if (el.getVisible() === true && el.get('fme')) {
       layerTitles += '<li>' + el.get('title') + '</li>';
     }
   });

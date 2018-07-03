@@ -27,6 +27,19 @@
     }, {
         "name": "measure"
     }, {
+        "name": "fmeserver",
+        "options": {
+          "text":"Nedan ser du vilka lager som kommer att hämtas från den aktuella vyn ",
+          "currentExtent": true,
+          "url": "https://karta.hallstahammar.se/fmedatastreaming/Karttj%C3%A4nster/H%C3%A4mta%20data.fmw?",
+          "params": [{
+            "name": "DestinationFormat",
+            "title": "Välj format: ",
+            "type": "dropdown",
+            "options": ["ACAD", "ESRISHAPE", "GEOJSON"]
+          }]
+        }
+      }, {
         "name": "legend",
         "options": {
           "hasMapLegend": false
@@ -109,7 +122,8 @@
       	"title": "Fastighetsgränser",
       	"style": "granser",
       	"group": "bygga",
-      	"type": "GROUP",
+        "type": "GROUP",
+        "fme": true,
       	"visible": false,
       	"layers": [
       		{
@@ -142,6 +156,7 @@
         "group": "bygga",
         "type": "WMS",
         "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+        "fme": true,
         "visible": false,
         "attributes": [{
           "title": "Namn: ",
@@ -161,6 +176,7 @@
         "group": "bygga",
         "queryable": false,
         "type": "WFS",
+        "fme": true,
         "visible": false
     }, {
         "name": "tk_w_lem_y__industri",
@@ -169,6 +185,7 @@
         "title": "Ledig industrimark",
         "group": "bygga",
         "type": "WFS",
+        "fme": true,
         "filter": "typ = 'Industri'",
         "visible": false,
         "attributes": [{
@@ -182,10 +199,11 @@
             "title": "Status: "
         }]
     }, {
-      "name": "tk_w_let",
+      "name": "tk_w_lem_y",
       "title": "Lediga tomter",
       "style": "tk_w_lem_y",
       "group": "bygga",
+      "fme": true,
       "type": "GROUP",
       "visible": false,
       "layers": [{
@@ -223,12 +241,23 @@
         "queryable": false
       }]
     }, {
+        "name": "extern:pk_farg",
+        "source": "wms",
+        "style": "pk_farg",
+        "title": "Primärkarta",
+        "format": "image/png",
+        "group": "bygga",
+        "type": "WMS",
+        "fme": true,
+        "visible": false
+    }, {
         "name": "tk_w_pap_y",
         "source": "local",
         "style": "tk_w_pap_y",
         "title": "Pågående detaljplan",
         "group": "bygga",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
             "name": "obj",
@@ -241,6 +270,7 @@
         "title": "Eldningsförbud",
         "group": "energi",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
             "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Miljo-halsa--hallbar-utveckling/eldningsforbud' target='_blank'>Mer information</a>"
@@ -252,6 +282,7 @@
         "title": "Livsmedelsinspektion",
         "group": "energi",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
             "name": "obj"
@@ -282,6 +313,7 @@
         "title": "Naturreservat",
         "group": "uppleva",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
           "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/naturomraden' target='_blank'>Mer information</a>"
@@ -301,6 +333,7 @@
         "title": "Förskola",
         "group": "utbildning",
         "type": "WFS",
+        "fme": true,
         "filter": "egn = 'Förskola'",
         "visible": false,
         "attributes": [{
@@ -319,6 +352,7 @@
         "title": "Grundskola",
         "group": "utbildning",
         "type": "WFS",
+        "fme": true,
         "filter": "egn = 'Grundskola'",
         "visible": false,
         "attributes": [{
@@ -338,6 +372,7 @@
         "title": "Grundsärskola",
         "group": "utbildning",
         "type": "WFS",
+        "fme": true,
         "filter": "egn = 'Grundsärskola'",
         "visible": false,
         "attributes": [{
@@ -357,6 +392,7 @@
         "title": "Upptagningsområden",
         "group": "utbildning",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
             "name": "obj",
@@ -369,6 +405,7 @@
         "title": "Brukslinjen",
         "group": "trafik",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [ {
             "name": "obj",
@@ -383,6 +420,7 @@
         "title": "Servicelinjen",
         "group": "trafik",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [{
             "name": "obj",
@@ -832,6 +870,13 @@
             },
               "filter": "[obj] == 'Kolbäck'"
           }]
+        ],
+        "pk_farg": [
+            [{
+                "image": {
+                    "src": "img/png/PK_farg.png"
+                }
+            }]
         ],
         "tk_mak_y": [
             [{
