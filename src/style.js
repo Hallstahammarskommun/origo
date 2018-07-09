@@ -240,7 +240,7 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
       });
       if (s[j][0].hasOwnProperty('filter')) {
         //find attribute vale between [] defined in styles
-        var featAttr, expr, featMatch;
+        var featAttr, expr, regexExpr, regexFilter, featMatch;
         var matches = s[j][0].filter.match(/\[(.*?)\]/);
         if (matches) {
           if (feature.get('features')) {
@@ -249,11 +249,23 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
           featAttr = matches[1];
           expr = s[j][0].filter.split(']')[1];
           featMatch = feature.get(featAttr);
+          var regexFilter = s[j][0].filter.match(/\/(.*)\/([a-zA-Z]+)?/);
+
           expr = typeof featMatch == 'number' ? featMatch + expr : '"' + featMatch + '"' + expr;
         }
-        if (eval(expr)) {
-          styleL = styleList[j];
-          return styleL;
+
+        if (regexFilter) {
+          regexExpr = new RegExp(regexFilter[1], regexFilter[2]);
+
+          if (regexExpr.test(featMatch)) {
+            styleL = styleList[j];
+            return styleL;
+          }
+        } else {
+          if (eval(expr)) {
+            styleL = styleList[j];
+            return styleL;
+          }
         }
       } else {
         styleL = styleList[j];
