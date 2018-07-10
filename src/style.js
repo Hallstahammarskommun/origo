@@ -249,7 +249,7 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
           featAttr = matches[1];
           expr = s[j][0].filter.split(']')[1];
           featMatch = feature.get(featAttr);
-          var regexFilter = s[j][0].filter.match(/\/(.*)\/([a-zA-Z]+)?/);
+          regexFilter = s[j][0].filter.match(/\/(.*)\/([a-zA-Z]+)?/);
 
           expr = typeof featMatch == 'number' ? featMatch + expr : '"' + featMatch + '"' + expr;
         }
