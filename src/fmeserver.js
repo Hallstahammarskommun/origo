@@ -57,7 +57,7 @@ function render() {
   var el = Utils.createListButton({
     id: 'o-download',
     iconCls: 'o-icon-fa-download',
-    src: 'css/svg/fa-icons.svg#fa-download',
+    src: '#fa-download',
     text: buttonText
   });
   $('#o-menutools').append(el);

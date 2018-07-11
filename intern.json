@@ -43,7 +43,7 @@
         "text":"Nedan ser du vilka lager som kommer att hämtas från den aktuella vyn ",
         "currentExtent": true,
         "useVisibleLayers": true,
-        "url": "https://karta.hallstahammar.se/fmedatastreaming/Karttj%C3%A4nster/H%C3%A4mta%20data.fmw?",
+        "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?",
         "params": [{
           "name": "DestinationFormat",
           "title": "Välj format: ",
@@ -54,9 +54,9 @@
     }, {
         "name": "draganddrop"
     }, {
-        "name": "saveconfig"
+        "name": "--saveconfig"
     }, {
-        "--name": "splash",
+        "name": "--splash",
         "options": {
           "title": "Kartnytt",
           "url": "splash.html"
@@ -279,6 +279,7 @@
         "format": "image/png",
         "group": "TK",
         "type": "WMS",
+        "fme": true,
         "visible": false
     }, {
         "name": "pk",
