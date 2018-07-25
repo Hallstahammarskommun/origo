@@ -384,7 +384,7 @@
                 "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
               }, {
                 "title": "Fastighetsrapport: ",
-                "name": "obj",
+                "name": "--obj",
                 "urlPrefix": "https://karta.hallstahammar.se/intern/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
                 "url": "egn",
                 "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
@@ -881,6 +881,136 @@
                 "color": "rgba(165,0,165,0.45)"
             },
             "filter": "[typ] == 'Ja'"
+        }]
+      ],
+      "ks_dpan_y": [
+        [{
+            "fill": {
+              "color": "rgba(244,244,244,0.45)"
+            },
+            "filter": "[kategori] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
+        }],
+        [{
+            "fill": {
+              "color": "rgba(159,207,171,0.45)"
+            },
+            "filter": "[kategori] == '/^PARK|NATUR|SKYDD/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(255,255,163,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[b]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(138,111,76,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[chk]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(255,17,17,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[ds]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(138,171,255,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[ej]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(173,173,173,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[fgptv]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(127,255,127,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[ln]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(194,61,194,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[m]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(255,127,0,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[or]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(213,203,170,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[z]/i'"
+        }],
+        [{
+          "fill": {
+            "color": "rgba(179,217,255,0.45)"
+          },
+          "filter": "[beteckningkarta] == '/^[w]/i'"
+        }],
+        [{
+            "fill": {
+                "color": "rgb(0,0,0)"
+            }
+        }]
+      ],
+      "ks_dpe_y": [
+        [{
+          "custom": "detaljplan"
+        }]
+      ],
+      "ks_dpn_l": [
+          [{
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [70,15,70,15,5,15],
+            "width": 2
+          },
+          "filter": "[obj] == '0'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [50,10,10,10],
+            "width": 1.5
+          },
+          "filter": "[obj] == '1'",
+          "minScale": 2000
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [30,10,10,10,10,10],
+            "width": 1
+          },
+          "filter": "[obj] == '2'",
+          "minScale": 2000
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [30,10],
+            "width": 1
+          },
+          "filter": "[obj] == '3'",
+          "minScale": 2000
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [30,10,10,10,10,10],
+            "width": 1
+          },
+          "filter": "[obj] == '4'",
+          "minScale": 2000
         }]
       ],
       "pk_farg": [
