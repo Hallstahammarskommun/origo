@@ -219,6 +219,7 @@
         "source": "ows",
         "style": "tk_w_are_p",
         "group": "TK",
+        "fme": true,
         "type": "WFS",
         "geometryType": "Point",
         "visible": false,
@@ -256,6 +257,7 @@
       "style": "tk_w_gtu_p",
       "group": "TK",
       "type": "WFS",
+      "fme": true,
       "visible": false,
       "queryable": true,
       "attributes": [{
@@ -270,6 +272,7 @@
         "group": "TK",
         "queryable": false,
         "type": "WFS",
+        "fme": true,
         "visible": false
     }, {
         "name": "pk_farg",
@@ -289,6 +292,7 @@
         "format": "image/png",
         "group": "TK",
         "type": "WMS",
+        "fme": true,
         "visible": false
     }, {
         "name": "tk_w_stp_p",
@@ -297,6 +301,7 @@
         "title": "Stompunkter",
         "group": "TK",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "filter": "status <> 'förstörd'",
         "strategy": "bbox",
@@ -332,12 +337,12 @@
         "renderMode": "image",
         "visible": false
     }, {
-        "name": "detaljplan",
+        "name": "pbr_detaljplaner",
         "source": "geoserver",
         "style": "detaljplan",
         "title": "Detaljplan",
         "format": "image/png",
-        "group": "LM",
+        "group": "",
         "type": "WMS",
         "renderMode": "image",
         "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
@@ -351,6 +356,108 @@
           "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
           "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
           "urlSuffix": ".pdf"
+        }]
+    }, {
+        "name": "detaljplan",
+        "title": "Detaljplan",
+        "style": "detaljplan",
+        "group": "LM",
+        "type": "GROUP",
+        "fme": true,
+        "layers": [{
+            "name": "pbr_detaljplaner",
+            "source": "geoserver",
+            "style": "detaljplan",
+            "title": "Detaljplan",
+            "format": "image/png",
+            "type": "WMS",
+            "visible": true,
+            "minScale": 2000,
+            "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes": [{
+                "title": "Namn: ",
+                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+            }, {
+                "title": "Planakt: ",
+                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix": ".pdf"
+            }]
+        }, {
+            "name": "pbr_detaljplaner",
+            "source": "geoserver",
+            "style": "detaljplan",
+            "title": "Detaljplan",
+            "format": "image/png",
+            "type": "WMS",
+            "visible": true,
+            "opacity": 0.2,
+            "maxScale": 2000,
+            "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes": [{
+                "title": "Namn: ",
+                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+            }, {
+                "title": "Planakt: ",
+                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix": ".pdf"
+            }]
+        }, {
+            "name": "detaljplan",
+            "source": "wms",
+            "style": "detaljplan",
+            "format": "image/png",
+            "type": "WMS",
+            "renderMode": "image",
+            "visible": true,
+            "maxScale": 2000
+        }, {
+            "name": "ks_dpan_y",
+            "title": "Användning",
+            "source": "ows",
+            "style": "ks_dpan_y",
+            "type": "WFS",
+            "visible": true,
+            "maxScale": 2000,
+            "attributes": [{
+                "name": "kategori"
+            }]
+        }, {
+            "name": "ks_dpe_y",
+            "title": "Bestämmelse",
+            "source": "ows",
+            "style": "ks_dpe_y",
+            "type": "WFS",
+            "visible": true,
+            "maxScale": 2000,
+            "attributes": [{
+                "name": "bestammelseformulering"
+            }]
+        }, {
+            "name": "ks_dpad_y",
+            "title": "Administrativ bestämmelse",
+            "source": "ows",
+            "style": "ks_dpe_y",
+            "type": "WFS",
+            "visible": true,
+            "maxScale": 2000,
+            "attributes": [{
+                "name": "bestammelseformulering"
+            }]
+        },{
+            "name": "ks_dpn_l",
+            "title": "Bestämmelse",
+            "source": "ows",
+            "style": "ks_dpn_l",
+            "type": "WFS",
+            "visible": true,
+            "maxScale": 2000,
+            "attributes": [{
+                "name": "bestammelseformulering"
+            }]
         }]
     }, {
         "name": "fastighet",
@@ -975,6 +1082,15 @@
             "width": 2
           },
           "filter": "[obj] == '0'"
+        }],
+        [{
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [50,10,10,10],
+            "width": 5
+          },
+          "filter": "[typ] == '1'",
+          "minScale": 2000
         }],
         [{
           "stroke": {
