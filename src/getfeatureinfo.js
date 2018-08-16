@@ -14,6 +14,23 @@ function getFeaturesFromRemote(evt) {
         var requestPromises = getFeatureInfoRequests(evt).map(function(request) {
             return request.fn.then(function(feature) {
                 var layer = Viewer.getLayer(request.layer);
+
+                if (layer === undefined) {
+                  var groups = Viewer.getLayerGroups();
+                  for (var i = 0; i < groups.length; i++) {
+                    var layers = groups[i].get('layers');
+
+                    var layerInGroup = layers.getArray().filter(function(layer) {
+                      return (layer.get('name') === request.layer)
+                    });
+
+                    if (layerInGroup.length != 0) {
+                      layer = layerInGroup[0];
+                      break;
+                    }
+                  };
+                }
+
                 if(feature) {
                     requestResult.push({
                         title: layer.get('title'),

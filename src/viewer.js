@@ -326,6 +326,13 @@ function getLayer(layername) {
   return layer[0];
 }
 
+function getLayerGroups() {
+  var groups = $.grep(settings.layers, function(obj) {
+    return (obj.get('type') === 'GROUP');
+  });
+  return groups;
+}
+
 function getQueryableLayers() {
   var queryableLayers = settings.layers.filter(function(layer) {
     if (layer.get('queryable') && layer.getVisible()) {
@@ -586,6 +593,7 @@ module.exports.getMap = getMap;
 module.exports.getLayers = getLayers;
 module.exports.getLayersByProperty = getLayersByProperty;
 module.exports.getLayer = getLayer;
+module.exports.getLayerGroups = getLayerGroups;
 module.exports.getControlNames = getControlNames;
 module.exports.getQueryableLayers = getQueryableLayers;
 module.exports.getSearchableLayers = getSearchableLayers;
