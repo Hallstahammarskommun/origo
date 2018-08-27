@@ -337,27 +337,6 @@
         "renderMode": "image",
         "visible": false
     }, {
-        "name": "pbr_detaljplaner",
-        "source": "geoserver",
-        "style": "detaljplan",
-        "title": "Detaljplan",
-        "format": "image/png",
-        "group": "",
-        "type": "WMS",
-        "renderMode": "image",
-        "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-        "visible": false,
-        "attributes": [{
-          "title": "Namn: ",
-          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-        }, {
-          "title": "Planakt: ",
-          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-          "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-          "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-          "urlSuffix": ".pdf"
-        }]
-    }, {
         "name": "detaljplan",
         "title": "Detaljplan",
         "style": "detaljplan",
