@@ -444,6 +444,7 @@
         "style": "granser",
         "group": "LM",
         "type": "GROUP",
+        "fme": true,
         "visible": false,
         "layers": [
           {
