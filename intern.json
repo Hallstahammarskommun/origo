@@ -235,22 +235,6 @@
           "title": "Sökväg: "
         }]
     }, {
-      "name": "UAV",
-      "source": "intern",
-      "style": "orto",
-      "title": "Drönarfoto",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "visible": false,
-      "attributes": [{
-        "name": "obj",
-        "title": "Flygdatum: "
-      }, {
-        "name": "egn",
-        "title": "Upplösning: "
-      }]
-    }, {
       "name": "tk_w_gtu_p",
       "title": "Geoteknisk undersökning",
       "source": "ows",
@@ -677,6 +661,22 @@
         "group": "TV",
         "type": "WMS",
         "visible": false
+    }, {
+        "name": "UAV",
+        "source": "intern",
+        "style": "orto",
+        "title": "Drönarfoto",
+        "format": "image/png",
+        "group": "TK",
+        "type": "WMS",
+        "visible": false,
+        "attributes": [{
+          "name": "obj",
+          "title": "Flygdatum: "
+        }, {
+          "name": "egn",
+          "title": "Upplösning: "
+        }]
     }, {
         "name": "HE1907",
         "source": "historiska",
