@@ -467,6 +467,18 @@
             ]
           }]
     }, {
+        "name": "terrangskuggning",
+        "source": "wms",
+        "style": "rattigheter",
+        "title": "Höjdmodell",
+        "format": "image/png",
+        "opacity": 0.5,
+        "group": "LM",
+        "fme": true,
+        "type": "WMS",
+        "renderMode": "image",
+        "visible": false
+    }, {
         "name": "pbr_rattigheter",
         "source": "wms",
         "style": "rattigheter",
