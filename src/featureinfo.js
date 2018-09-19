@@ -135,7 +135,7 @@ function onClick(evt) {
           clear();
         }
         else if(pinning){
-          sidebar.setVisibility(false);
+          //sidebar.setVisibility(false);
           var resolution = map.getView().getResolution();
           setTimeout(function() {
             if(!maputils.checkZoomChange(resolution, map.getView().getResolution())) {
@@ -161,7 +161,7 @@ function setActive(state) {
 }
 function clear() {
   selectionLayer.clear();
-  sidebar.setVisibility(false);
+  //sidebar.setVisibility(false);
   if (overlay) {
     Viewer.removeOverlays(overlay);
   }
