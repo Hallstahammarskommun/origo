@@ -327,6 +327,7 @@
         "group": "LM",
         "type": "GROUP",
         "fme": true,
+        "visible": false,
         "layers": [{
             "name": "pbr_detaljplaner",
             "source": "geoserver",
