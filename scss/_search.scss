@@ -19,7 +19,7 @@ $search-width-l: calc(100% - calc(#{$search-menu-button-width} + #{$search-paddi
 
 #o-search-wrapper {
   left: calc(50% - 175px);
-  position: fixed;
+  position: absolute;
   top: .5em;
   z-index: 14
 }
