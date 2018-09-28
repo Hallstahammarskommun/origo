@@ -1,85 +1,119 @@
-{
-    "controls": [{
-        "name": "geoposition"
-    }, {
-        "name": "mapmenu"
-    }, {
-        "name": "search",
-        "options": {
-            "url": "https://karta.hallstahammar.se/search",
-            "geometryAttribute": "st_astext",
-            "layerNameAttribute": "layer",
-            "searchAttribute": "NAMN",
-            "titleAttribute": "layer",
-            "contentAttribute": "NAMN",
-            "hintText": "Sök i Hallstakartan"
+{  
+    "controls":[  
+      {  
+        "name":"geoposition"
+      },
+      {  
+        "name":"mapmenu"
+      },
+      {  
+        "name":"search",
+        "options":{  
+          "url":"https://karta.hallstahammar.se/search",
+          "geometryAttribute":"st_astext",
+          "layerNameAttribute":"layer",
+          "searchAttribute":"NAMN",
+          "titleAttribute":"layer",
+          "contentAttribute":"NAMN",
+          "hintText":"Sök i Hallstakartan"
         }
-    }, {
-        "name": "sharemap"
-    }, {
-        "name": "print"
-    }, {
-        "name": "measure"
-    }, {
-        "name": "legend",
-        "options": {
-          "hasMapLegend": false
+      },
+      {  
+        "name":"sharemap"
+      },
+      {  
+        "name":"print"
+      },
+      {  
+        "name":"measure"
+      },
+      {  
+        "name":"legend",
+        "options":{  
+          "hasMapLegend":false
         }
-    }, {
-      "name": "position",
-      "options": {
-        "title": "Sweref 99 16 30"
-      }
-    }, {
-      "name": "about",
-      "options": {
-        "title": "Om Kommunkartan",
-        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Tekniska förvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
-      }
-      }, {
-          "name": "download",
-          "options": {
-            "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?",
-            "params": [{
-              "name": "DestinationFormat",
-              "title": "Välj format: ",
-              "type": "dropdown",
-              "options": ["dwg", "shape", "GeoJSON"]
-            }]
+      },
+      {  
+        "name":"position",
+        "options":{  
+          "title":"Sweref 99 16 30"
+        }
+      },
+      {  
+        "name":"about",
+        "options":{  
+          "title":"Om Kommunkartan",
+          "content":"<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Tekniska förvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+        }
+      },
+      {  
+        "name":"download",
+        "options":{  
+          "url":"https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?",
+          "params":[  
+            {  
+              "name":"DestinationFormat",
+              "title":"Välj format: ",
+              "type":"dropdown",
+              "options":[  
+                "dwg",
+                "shape",
+                "GeoJSON"
+              ]
+            }
+          ]
+        }
+      },
+      {  
+        "name":"draganddrop"
+      },
+      {  
+        "name":"--saveconfig"
+      },
+      {  
+        "name":"splash",
+        "options":{  
+          "title":"Kartnytt",
+          "url":"splash.html",
+          "buttons":{  
+            "visible":true,
+            "confirmText":"Är du säker på att du vill dölja den här utgåvan av Kartnytt?"
           }
-        }, {
-        "name": "draganddrop"
-    }, {
-        "name": "--saveconfig"
-    }, {
-        "name": "splash",
-        "options": {
-          "title": "Kartnytt",
-          "url": "splash.html",
-          "buttons": {
-            "visible": true,
-            "confirmText": "Är du säker på att du vill dölja den här utgåvan av Kartnytt?"
         }
       }
-    }
-  ],
-    "pageSettings": {
-      "footer": {
-        "url" : "mailto:gis@hallstahammar.se?subject=Kommunkartan",
-        "urlText": "Skicka feedback till GIS-enheten"
+    ],
+    "pageSettings":{  
+      "footer":{  
+        "url":"mailto:gis@hallstahammar.se?subject=Kommunkartan",
+        "urlText":"Skicka feedback till GIS-enheten"
       }
     },
-    "projectionCode": "EPSG:3010",
-    "projectionExtent": [-166640, 6305699, 433362, 6905701],
-    "proj4Defs": [{
-        "code": "EPSG:3010",
-        "alias": "urn:ogc:def:crs:EPSG::3010",
-        "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
-    }],
-    "extent": [-166640, 6305699, 433362, 6905701],
-    "center": [133361, 6605700],
-    "zoom": 2,
-    "resolutions": [
+    "projectionCode":"EPSG:3010",
+    "projectionExtent":[  
+      -166640,
+      6305699,
+      433362,
+      6905701
+    ],
+    "proj4Defs":[  
+      {  
+        "code":"EPSG:3010",
+        "alias":"urn:ogc:def:crs:EPSG::3010",
+        "projection":"+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+      }
+    ],
+    "extent":[  
+      -166640,
+      6305699,
+      433362,
+      6905701
+    ],
+    "center":[  
+      133361,
+      6605700
+    ],
+    "zoom":2,
+    "resolutions":[  
       91.9577,
       61.3051,
       40.8701,
@@ -98,1261 +132,1883 @@
       0.21,
       0.14
     ],
-    "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
-    "source": {
-        "geoserver": {
-            "url": "https://karta.hallstahammar.se/geoserver/wms",
-            "version": "1.1.1"
-        },
-        "wms": {
-            "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
-            "version": "1.1.1"
-        },
-        "intern": {
-            "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
-            "version": "1.1.1"
-        },
-        "ows": {
-            "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
-            "strategy": "all"
-        },
-        "historiska": {
-            "url": "https://karta.hallstahammar.se/geoserver/bakgrund/wms",
-            "version": "1.1.1"
-        },
-        "basemap": {
-            "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
-        }
+    "capabilitiesURL":"https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
+    "source":{  
+      "geoserver":{  
+        "url":"https://karta.hallstahammar.se/geoserver/wms",
+        "version":"1.1.1"
+      },
+      "wms":{  
+        "url":"https://karta.hallstahammar.se/intern/kartserver/extern/wms",
+        "version":"1.1.1"
+      },
+      "intern":{  
+        "url":"https://karta.hallstahammar.se/intern/kartserver/intern/wms",
+        "version":"1.1.1"
+      },
+      "ows":{  
+        "url":"https://karta.hallstahammar.se/intern/kartserver/ows",
+        "strategy":"all"
+      },
+      "extern_wmts":{  
+        "url":"https://karta.hallstahammar.se/geoserver/extern/gwc/service/wmts"
+      },
+      "historiska":{  
+        "url":"https://karta.hallstahammar.se/geoserver/bakgrund/wms",
+        "version":"1.1.1"
+      },
+      "basemap":{  
+        "url":"https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
+      }
     },
-    "groups": [{
-        "name": "BM",
-        "title": "Bygg & miljö",
-        "expanded": true
-    }, {
-        "name": "KS",
-        "title": "Kommunstyrelsen",
-        "expanded": true
-    }, {
-        "name": "TK",
-        "title": "Tekniska",
-        "expanded": true
-    }, {
-        "name": "LM",
-        "title": "Lantmäteriet",
-        "expanded": false
-    }, {
-        "name": "LST",
-        "title": "Länsstyrelsen",
-        "expanded": false
-    }, {
-        "name": "MSB",
-        "title": "MSB",
-        "expanded": false
-    }, {
-        "name": "PTS",
-        "title": "Post- och telestyrelsen",
-        "expanded": false
-    }, {
-        "name": "RAA",
-        "title": "Riksantikvarieämbetet",
-        "expanded": false
-    }, {
-        "name": "SV",
-        "title": "Skatteverket",
-        "expanded": false
-    }, {
-        "name": "SGU",
-        "title": "SGU",
-        "expanded": false
-    }, {
-        "name": "TV",
-        "title": "Trafikverket",
-        "expanded": false
-    }, {
-        "name": "historiska",
-        "title": "Historiska kartor",
-        "expanded": false
-    }, {
-        "name": "background",
-        "title": "Bakgrundskartor",
-        "expanded": true
-    }],
-    "layers": [{
-        "name": "bm_avl_p",
-        "source": "ows",
-        "style": "bm_avl_p",
-        "title": "Enskilda avlopp",
-        "group": "BM",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-            "name": "obj"
-        }, {
-            "name": "egn"
-        }]
-    }, {
-        "name": "opto",
-        "source": "intern",
-        "style": "opto",
-        "title": "Opto",
-        "format": "image/png",
-        "group": "KS",
-        "type": "WMS",
-        "visible": false
-    }, {
-        "name": "ks_w_opo_p",
-        "title": "Opto ansluten",
-        "source": "ows",
-        "style": "ks_w_opo_p",
-        "group": "KS",
-        "type": "WFS",
-        "geometryType": "Point",
-        "visible": false,
-        "queryable": true,
-        "attributes": [{
-          "name": "obj",
-          "title": "Status: "
-      }]
-    }, {
-        "name": "tk_w_are_p",
-        "title": "Arrende",
-        "source": "ows",
-        "style": "tk_w_are_p",
-        "group": "TK",
-        "fme": true,
-        "type": "WFS",
-        "geometryType": "Point",
-        "visible": false,
-        "queryable": true,
-        "attributes": [{
-          "name": "obj",
-          "title": "Arrendator: "
-        }, {
-          "name": "typ",
-          "title": "Ändamål: "
-        }, {
-          "name": "url",
-          "title": "Sökväg: "
-        }]
-    }, {
-      "name": "tk_w_gtu_p",
-      "title": "Geoteknisk undersökning",
-      "source": "ows",
-      "style": "tk_w_gtu_p",
-      "group": "TK",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Nummer: "
-      }]
-    }, {
-        "name": "tk_kof_y",
-        "source": "ows",
-        "style": "tk_kof_y",
-        "title": "Kommunal mark",
-        "group": "TK",
-        "queryable": false,
-        "type": "WFS",
-        "fme": true,
-        "visible": false
-    }, {
-        "name": "pk_farg",
-        "source": "wms",
-        "style": "pk_farg",
-        "title": "Primärkarta, färg",
-        "format": "image/png",
-        "group": "TK",
-        "type": "WMS",
-        "fme": true,
-        "visible": false
-    }, {
-        "name": "pk",
-        "source": "wms",
-        "style": "pk_gra",
-        "title": "Primärkarta, grå",
-        "format": "image/png",
-        "group": "TK",
-        "type": "WMS",
-        "fme": true,
-        "visible": false
-    }, {
-        "name": "tk_w_stp_p",
-        "source": "ows",
-        "style": "tk_w_stp_p",
-        "title": "Stompunkter",
-        "group": "TK",
-        "type": "WFS",
-        "fme": true,
-        "visible": false,
-        "filter": "status <> 'förstörd'",
-        "strategy": "bbox",
-        "attributes": [{
-          "name": "pktnr",
-          "title": "Punktnummer: "
-        }, {
-            "xy": true
-        }, {
-            "title": "Z: ",
-            "name": "z"
-        }, {
-          "img": "img"
-        }]
-    }, {
-        "name": "va",
-        "source": "intern",
-        "style": "va",
-        "title": "VA nät",
-        "format": "image/png",
-        "group": "TK",
-        "queryable": false,
-        "type": "WMS",
-        "visible": false
-    }, {
-        "name": "pbr_bestammelser",
-        "source": "wms",
-        "style": "bestammelser",
-        "title": "Bestämmelse",
-        "format": "image/png",
-        "group": "LM",
-        "type": "WMS",
-        "renderMode": "image",
-        "visible": false
-    }, {
-        "name": "detaljplan",
-        "title": "Detaljplan",
-        "style": "detaljplan",
-        "group": "LM",
-        "type": "GROUP",
-        "fme": true,
-        "visible": false,
-        "layers": [{
-            "name": "pbr_detaljplaner",
-            "source": "geoserver",
-            "style": "detaljplan",
-            "title": "Detaljplan",
-            "format": "image/png",
-            "type": "WMS",
-            "visible": true,
-            "minScale": 2000,
-            "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-            "attributes": [{
-                "title": "Namn: ",
-                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            }, {
-                "title": "Planakt: ",
-                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-                "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-                "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-                "urlSuffix": ".pdf"
-            }]
-        }, {
-            "name": "pbr_detaljplaner",
-            "source": "geoserver",
-            "style": "detaljplan",
-            "title": "Detaljplan",
-            "format": "image/png",
-            "type": "WMS",
-            "visible": true,
-            "opacity": 0.2,
-            "maxScale": 2000,
-            "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-            "attributes": [{
-                "title": "Namn: ",
-                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            }, {
-                "title": "Planakt: ",
-                "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-                "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-                "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-                "urlSuffix": ".pdf"
-            }]
-        }, {
-            "name": "detaljplan",
-            "source": "wms",
-            "style": "detaljplan",
-            "format": "image/png",
-            "type": "WMS",
-            "renderMode": "image",
-            "visible": true,
-            "maxScale": 2000
-        }, {
-            "name": "ks_dpan_y",
-            "title": "Användning",
-            "source": "ows",
-            "style": "ks_dpan_y",
-            "type": "WFS",
-            "visible": true,
-            "maxScale": 2000,
-            "attributes": [{
-                "name": "kategori"
-            }]
-        }, {
-            "name": "ks_dpe_y",
-            "title": "Bestämmelse",
-            "source": "ows",
-            "style": "ks_dpe_y",
-            "type": "WFS",
-            "visible": true,
-            "maxScale": 2000,
-            "attributes": [{
-                "name": "bestammelseformulering"
-            }]
-        }, {
-            "name": "ks_dpad_y",
-            "title": "Administrativ bestämmelse",
-            "source": "ows",
-            "style": "ks_dpe_y",
-            "type": "WFS",
-            "visible": true,
-            "maxScale": 2000,
-            "attributes": [{
-                "name": "bestammelseformulering"
-            }]
-        },{
-            "name": "ks_dpn_l",
-            "title": "Bestämmelse",
-            "source": "ows",
-            "style": "ks_dpn_l",
-            "type": "WFS",
-            "visible": true,
-            "maxScale": 2000,
-            "attributes": [{
-                "name": "bestammelseformulering"
-            }]
-        }]
-    }, {
-        "name": "fastighet",
-        "title": "Fastighet",
-        "style": "granser",
-        "group": "LM",
-        "type": "GROUP",
-        "fme": true,
-        "visible": false,
-        "layers": [
-          {
-              "name": "fastighet_kvalitet",
-              "source": "wms",
-              "style": "granser",
-              "format": "image/png",
-              "group": "LM",
-              "type": "WMS",
-              "visible": true
-          }, {
-              "name": "tk_s_fat_y",
-              "source": "ows",
-              "style": "tk_s_fat_y",
-              "title": "Fastighet",
-              "format": "image/png",
-              "group": "LM",
-              "type": "WFS",
-              "visible": true,
-              "attributes": [{
-                "title": "Ägare: ",
-                "name": "obj",
-                "url": "egn",
-                "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
-              }, {
-                "title": "Fastighetsrapport: ",
-                "name": "--obj",
-                "urlPrefix": "https://karta.hallstahammar.se/intern/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
-                "url": "egn",
-                "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
+    "groups":[  
+      {  
+        "name":"BM",
+        "title":"Bygg & miljö",
+        "expanded":true
+      },
+      {  
+        "name":"KS",
+        "title":"Kommunstyrelsen",
+        "expanded":true
+      },
+      {  
+        "name":"TK",
+        "title":"Tekniska",
+        "expanded":true
+      },
+      {  
+        "name":"LM",
+        "title":"Lantmäteriet",
+        "expanded":false
+      },
+      {  
+        "name":"LST",
+        "title":"Länsstyrelsen",
+        "expanded":false
+      },
+      {  
+        "name":"MSB",
+        "title":"MSB",
+        "expanded":false
+      },
+      {  
+        "name":"PTS",
+        "title":"Post- och telestyrelsen",
+        "expanded":false
+      },
+      {  
+        "name":"RAA",
+        "title":"Riksantikvarieämbetet",
+        "expanded":false
+      },
+      {  
+        "name":"SV",
+        "title":"Skatteverket",
+        "expanded":false
+      },
+      {  
+        "name":"SGU",
+        "title":"SGU",
+        "expanded":false
+      },
+      {  
+        "name":"TV",
+        "title":"Trafikverket",
+        "expanded":false
+      },
+      {  
+        "name":"historiska",
+        "title":"Historiska kartor",
+        "expanded":false
+      },
+      {  
+        "name":"background",
+        "title":"Bakgrundskartor",
+        "expanded":true
+      }
+    ],
+    "layers":[  
+      {  
+        "name":"bm_avl_p",
+        "source":"ows",
+        "style":"bm_avl_p",
+        "title":"Enskilda avlopp",
+        "group":"BM",
+        "type":"WFS",
+        "visible":false,
+        "attributes":[  
+          {  
+            "name":"obj"
+          },
+          {  
+            "name":"egn"
+          }
+        ]
+      },
+      {  
+        "name":"opto",
+        "source":"intern",
+        "style":"opto",
+        "title":"Opto",
+        "format":"image/png",
+        "group":"KS",
+        "type":"WMS",
+        "visible":false
+      },
+      {  
+        "name":"ks_w_opo_p",
+        "title":"Opto ansluten",
+        "source":"ows",
+        "style":"ks_w_opo_p",
+        "group":"KS",
+        "type":"WFS",
+        "geometryType":"Point",
+        "visible":false,
+        "queryable":true,
+        "attributes":[  
+          {  
+            "name":"obj",
+            "title":"Status: "
+          }
+        ]
+      },
+      {  
+        "name":"tk_w_are_p",
+        "title":"Arrende",
+        "source":"ows",
+        "style":"tk_w_are_p",
+        "group":"TK",
+        "fme":true,
+        "type":"WFS",
+        "geometryType":"Point",
+        "visible":false,
+        "queryable":true,
+        "attributes":[  
+          {  
+            "name":"obj",
+            "title":"Arrendator: "
+          },
+          {  
+            "name":"typ",
+            "title":"Ändamål: "
+          },
+          {  
+            "name":"url",
+            "title":"Sökväg: "
+          }
+        ]
+      },
+      {  
+        "name":"tk_w_gtu_p",
+        "title":"Geoteknisk undersökning",
+        "source":"ows",
+        "style":"tk_w_gtu_p",
+        "group":"TK",
+        "type":"WFS",
+        "fme":true,
+        "visible":false,
+        "queryable":true,
+        "attributes":[  
+          {  
+            "name":"obj",
+            "title":"Nummer: "
+          }
+        ]
+      },
+      {  
+        "name":"tk_kof_y",
+        "source":"ows",
+        "style":"tk_kof_y",
+        "title":"Kommunal mark",
+        "group":"TK",
+        "queryable":false,
+        "type":"WFS",
+        "fme":true,
+        "visible":false
+      },
+      {  
+        "name":"pk_farg",
+        "source":"wms",
+        "style":"pk_farg",
+        "title":"Primärkarta, färg",
+        "format":"image/png",
+        "group":"TK",
+        "type":"WMS",
+        "fme":true,
+        "visible":false
+      },
+      {  
+        "name":"pk",
+        "source":"wms",
+        "style":"pk_gra",
+        "title":"Primärkarta, grå",
+        "format":"image/png",
+        "group":"TK",
+        "type":"WMS",
+        "fme":true,
+        "visible":false
+      },
+      {  
+        "name":"tk_w_stp_p",
+        "source":"ows",
+        "style":"tk_w_stp_p",
+        "title":"Stompunkter",
+        "group":"TK",
+        "type":"WFS",
+        "fme":true,
+        "visible":false,
+        "filter":"status <> 'förstörd'",
+        "strategy":"bbox",
+        "attributes":[  
+          {  
+            "name":"pktnr",
+            "title":"Punktnummer: "
+          },
+          {  
+            "xy":true
+          },
+          {  
+            "title":"Z: ",
+            "name":"z"
+          },
+          {  
+            "img":"img"
+          }
+        ]
+      },
+      {  
+        "name":"va",
+        "source":"intern",
+        "style":"va",
+        "title":"VA nät",
+        "format":"image/png",
+        "group":"TK",
+        "queryable":false,
+        "type":"WMS",
+        "visible":false
+      },
+      {  
+        "name":"pbr_bestammelser",
+        "source":"wms",
+        "style":"bestammelser",
+        "title":"Bestämmelse",
+        "format":"image/png",
+        "group":"LM",
+        "type":"WMS",
+        "renderMode":"image",
+        "visible":false
+      },
+      {  
+        "name":"detaljplan",
+        "title":"Detaljplan",
+        "style":"detaljplan",
+        "group":"LM",
+        "type":"GROUP",
+        "fme":true,
+        "visible":false,
+        "layers":[  
+          {  
+            "name":"pbr_detaljplaner",
+            "source":"geoserver",
+            "style":"detaljplan",
+            "title":"Detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "visible":true,
+            "minScale":2000,
+            "queryurl":"https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes":[  
+              {  
+                "title":"Namn: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+              },
+              {  
+                "title":"Planakt: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix":"http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix":".pdf"
               }
             ]
-          }]
-    }, {
-        "name": "terrangskuggning",
-        "source": "wms",
-        "style": "rattigheter",
-        "title": "Höjdmodell",
-        "format": "image/png",
-        "opacity": 0.5,
-        "group": "LM",
-        "fme": true,
-        "type": "WMS",
-        "renderMode": "image",
-        "visible": false
-    }, {
-        "name": "pbr_rattigheter",
-        "source": "wms",
-        "style": "rattigheter",
-        "title": "Rättighet",
-        "format": "image/png",
-        "group": "LM",
-        "type": "WMS",
-        "renderMode": "image",
-        "visible": false
-    }, {
-        "name": "LST_Potentiellt_fororenade_omraden",
-        "source": "wms",
-        "style": "lst_pfo_p",
-        "title": "Förorenade områden",
-        "format": "image/png",
-        "group": "LST",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "LST_Tillstandspliktig_miljofarlig_verksamhet_och_energitorvtakter_i_drift_Miljoreda",
-        "source": "wms",
-        "style": "lst_tmv_p",
-        "title": "Miljöfarlig verksamhet",
-        "format": "image/png",
-        "group": "LST",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "riksintresse3kapmb",
-        "source": "wms",
-        "style": "lst_ri3_y",
-        "title": "Riksintresse 3 kap MB",
-        "format": "image/png",
-        "group": "LST",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "riksintresse4kapmb",
-        "source": "wms",
-        "style": "lst_ri4_y",
-        "title": "Riksintresse 4 kap MB",
-        "format": "image/png",
-        "group": "LST",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Tema_Q100",
-        "source": "wms",
-        "style": "msb_q100_y",
-        "title": "Kolbäcksån 100-årsflöde (2014)",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Tema_Q200",
-        "source": "wms",
-        "style": "msb_q200_y",
-        "title": "Kolbäcksån 200-årsflöde (2014)",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Tema_QBHF",
-        "source": "wms",
-        "style": "msb_qbhf_y",
-        "title": "Kolbäcksån högsta beräknat flöde (2014)",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "MSB_Oversvamningskartering_Malaren_100arsniva",
-        "source": "wms",
-        "style": "msb_malaren_100_y",
-        "title": "Mälaren 100-årsnivå",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "MSB_Oversvamningskartering_Malaren_200arsniva",
-        "source": "wms",
-        "style": "msb_malaren_200_y",
-        "title": "Mälaren 200-årsnivå",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
-        "source": "wms",
-        "style": "msb_malaren_bhf_y",
-        "title": "Mälaren högsta beräknat flöde",
-        "format": "image/png",
-        "group": "MSB",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "pts_lek_y",
-        "source": "ows",
-        "style": "pts_lek_y",
-        "title": "Pågende grävarbeten",
-        "group": "PTS",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-            "title": "Ärende: ",
-            "name": "typ"
-          }, {
-            "title": "Startdatum: ",
-            "name": "startdate"
-        }, {
-          "title": "Slutdatum: ",
-          "name": "enddate"
-      }]
-    }, {
-        "name": "FMI_WMS",
-        "source": "wms",
-        "style": "fmi_wms",
-        "title": "Fornminne",
-        "format": "image/png",
-        "group": "RAA",
-        "type": "WMS",
-        "visible": false,
-        "queryable": true,
-        "attributes": [{
-            "title": "Mer information: ",
-            "name": "BENAMNING",
-            "url": "URL"
-          }]
-    }, {
-        "name": "tk_kir_p",
-        "source": "ows",
-        "style": "point",
-        "clusterStyle": "cluster",
-        "title": "Navet",
+          },
+          {  
+            "name":"pbr_detaljplaner",
+            "source":"geoserver",
+            "style":"detaljplan",
+            "title":"Detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "visible":true,
+            "opacity":0.2,
+            "maxScale":2000,
+            "queryurl":"https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes":[  
+              {  
+                "title":"Namn: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+              },
+              {  
+                "title":"Planakt: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix":"http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix":".pdf"
+              }
+            ]
+          },
+          {  
+            "name":"detaljplan",
+            "source":"wms",
+            "style":"detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "renderMode":"image",
+            "visible":true,
+            "maxScale":2000
+          },
+          {  
+            "name":"ks_dpan_y",
+            "title":"Användning",
+            "source":"ows",
+            "style":"ks_dpan_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"kategori"
+              }
+            ]
+          },
+          {  
+            "name":"ks_dpe_y",
+            "title":"Bestämmelse",
+            "source":"ows",
+            "style":"ks_dpe_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"bestammelseformulering"
+              }
+            ]
+          },
+          {  
+            "name":"ks_dpad_y",
+            "title":"Administrativ bestämmelse",
+            "source":"ows",
+            "style":"ks_dpe_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"bestammelseformulering"
+              }
+            ]
+          },
+          {  
+            "name":"ks_dpn_l",
+            "title":"Bestämmelse",
+            "source":"ows",
+            "style":"ks_dpn_l",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"bestammelseformulering"
+              }
+            ]
+          }
+        ]
+      },
+      {  
+        "name":"bm_elf_y",
+        "title":"Detaljplan Focus",
+        "style":"detaljplan",
+        "group":"--LM",
+        "type":"GROUP",
+        "fme":true,
+        "visible":false,
+        "layers":[  
+          {  
+            "name":"pbr_detaljplaner",
+            "source":"geoserver",
+            "style":"detaljplan",
+            "title":"Detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "visible":true,
+            "minScale":4000,
+            "queryurl":"https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes":[  
+              {  
+                "title":"Namn: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+              },
+              {  
+                "title":"Planakt: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix":"http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix":".pdf"
+              }
+            ]
+          },
+          {  
+            "name":"pbr_detaljplaner",
+            "source":"geoserver",
+            "style":"detaljplan",
+            "title":"Detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "visible":true,
+            "opacity":0.2,
+            "maxScale":4000,
+            "queryurl":"https://karta.hallstahammar.se/markreglering?ne=",
+            "attributes":[  
+              {  
+                "title":"Namn: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+              },
+              {  
+                "title":"Planakt: ",
+                "name":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+                "url":"env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+                "urlPrefix":"http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
+                "urlSuffix":".pdf"
+              }
+            ]
+          },
+          {  
+            "name":"detaljplan",
+            "source":"wms",
+            "style":"detaljplan",
+            "format":"image/png",
+            "type":"WMS",
+            "renderMode":"image",
+            "visible":true,
+            "maxScale":2000
+          },
+          {  
+            "name":"ks_focus_dpan_y",
+            "title":"Användning",
+            "source":"ows",
+            "style":"ks_focus_dpan_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":4000,
+            "attributes":[  
+              {  
+                "name":"description_pt"
+              }
+            ]
+          },
+          {  
+            "name":"ks_focus_dpe_y",
+            "title":"Bestämmelse",
+            "source":"ows",
+            "style":"ks_focus_dpe_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"description_pt"
+              }
+            ]
+          },
+          {  
+            "name":"ks_focus_dpad_y",
+            "title":"Administrativ bestämmelse",
+            "source":"ows",
+            "style":"ks_focus_dpe_y",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "attributes":[  
+              {  
+                "name":"description_pt"
+              }
+            ]
+          },
+          {  
+            "name":"ks_focus_dpn_l",
+            "title":"Bestämmelse",
+            "source":"ows",
+            "style":"ks_focus_dpn_l",
+            "type":"WFS",
+            "visible":true,
+            "maxScale":2000,
+            "queryable":false
+          }
+        ]
+      },
+      {  
+        "name":"fastighet",
+        "title":"Fastighet",
+        "style":"granser",
+        "group":"LM",
+        "type":"GROUP",
+        "fme":true,
+        "visible":false,
+        "layers":[  
+          {  
+            "name":"fastighet_kvalitet",
+            "source":"wms",
+            "style":"granser",
+            "format":"image/png",
+            "group":"LM",
+            "type":"WMS",
+            "visible":true
+          },
+          {  
+            "name":"tk_s_fat_y",
+            "source":"ows",
+            "style":"tk_s_fat_y",
+            "title":"Fastighet",
+            "format":"image/png",
+            "group":"LM",
+            "type":"WFS",
+            "visible":true,
+            "attributes":[  
+              {  
+                "title":"Ägare: ",
+                "name":"obj",
+                "url":"egn",
+                "urlPrefix":"https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
+              },
+              {  
+                "title":"Fastighetsrapport: ",
+                "name":"--obj",
+                "urlPrefix":"https://karta.hallstahammar.se/intern/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
+                "url":"egn",
+                "urlSuffix":"&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
+              }
+            ]
+          }
+        ]
+      },
+      {  
+        "name":"pbr_rattigheter",
+        "source":"wms",
+        "style":"rattigheter",
+        "title":"Rättighet",
+        "format":"image/png",
+        "group":"LM",
+        "type":"WMS",
+        "renderMode":"image",
+        "visible":false
+      },
+      {  
+        "format":"image/jpeg",
+        "group":"LM",
+        "name":"terranglutning",
+        "opacity":0.5,
+        "source":"extern_wmts",
+        "title":"Terränglutning",
+        "type":"WMTS",
+        "style":"rattigheter",
+        "visible":false
+      },
+      {  
+        "name":"LST_Potentiellt_fororenade_omraden",
+        "source":"wms",
+        "style":"lst_pfo_p",
+        "title":"Förorenade områden",
+        "format":"image/png",
+        "group":"LST",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"LST_Tillstandspliktig_miljofarlig_verksamhet_och_energitorvtakter_i_drift_Miljoreda",
+        "source":"wms",
+        "style":"lst_tmv_p",
+        "title":"Miljöfarlig verksamhet",
+        "format":"image/png",
+        "group":"LST",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"riksintresse3kapmb",
+        "source":"wms",
+        "style":"lst_ri3_y",
+        "title":"Riksintresse 3 kap MB",
+        "format":"image/png",
+        "group":"LST",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"riksintresse4kapmb",
+        "source":"wms",
+        "style":"lst_ri4_y",
+        "title":"Riksintresse 4 kap MB",
+        "format":"image/png",
+        "group":"LST",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Tema_Q100",
+        "source":"wms",
+        "style":"msb_q100_y",
+        "title":"Kolbäcksån 100-årsflöde (2014)",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Tema_Q200",
+        "source":"wms",
+        "style":"msb_q200_y",
+        "title":"Kolbäcksån 200-årsflöde (2014)",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Tema_QBHF",
+        "source":"wms",
+        "style":"msb_qbhf_y",
+        "title":"Kolbäcksån högsta beräknat flöde (2014)",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"MSB_Oversvamningskartering_Malaren_100arsniva",
+        "source":"wms",
+        "style":"msb_malaren_100_y",
+        "title":"Mälaren 100-årsnivå",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"MSB_Oversvamningskartering_Malaren_200arsniva",
+        "source":"wms",
+        "style":"msb_malaren_200_y",
+        "title":"Mälaren 200-årsnivå",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
+        "source":"wms",
+        "style":"msb_malaren_bhf_y",
+        "title":"Mälaren högsta beräknat flöde",
+        "format":"image/png",
+        "group":"MSB",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"pts_lek_y",
+        "source":"ows",
+        "style":"pts_lek_y",
+        "title":"Pågende grävarbeten",
+        "group":"PTS",
+        "type":"WFS",
+        "visible":false,
+        "attributes":[  
+          {  
+            "title":"Ärende: ",
+            "name":"typ"
+          },
+          {  
+            "title":"Startdatum: ",
+            "name":"startdate"
+          },
+          {  
+            "title":"Slutdatum: ",
+            "name":"enddate"
+          }
+        ]
+      },
+      {  
+        "name":"FMI_WMS",
+        "source":"wms",
+        "style":"fmi_wms",
+        "title":"Fornminne",
+        "format":"image/png",
+        "group":"RAA",
+        "type":"WMS",
+        "visible":false,
+        "queryable":true,
+        "attributes":[  
+          {  
+            "title":"Mer information: ",
+            "name":"BENAMNING",
+            "url":"URL"
+          }
+        ]
+      },
+      {  
+        "name":"tk_kir_p",
+        "source":"ows",
+        "style":"point",
+        "clusterStyle":"cluster",
+        "title":"Navet",
         "layerType":"cluster",
-        "group": "SV",
-        "type": "WFS",
-        "visible": false,
-        "attributes": [{
-          "title": "Personnummer: ",
-          "name": "obj"
-        }, {
-          "title": "Namn: ",
-          "name": "typ"
-        }]
-    }, {
-        "name": "jordarter",
-        "source": "geoserver",
-        "style": "detaljplan",
-        "title": "Jordarter",
-        "format": "image/png",
-        "group": "SGU",
-        "type": "WMS",
-        "opacity": 0.75,
-        "visible": false
-    }, {
-        "name": "SKRED_FINKORNING_JORDART",
-        "source": "wms",
-        "style": "sgu_skred_lutningsanalys",
-        "title": "Skred, lutningsanalys",
-        "format": "image/png",
-        "group": "SGU",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "SKRED_FINKORNING_JORDART_STRANDNARA",
-        "source": "wms",
-        "style": "sgu_skred_strandnara",
-        "title": "Skred, strandnära",
-        "format": "image/png",
-        "group": "SGU",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Vaghallare",
-        "source": "wms",
-        "style": "line",
-        "title": "Väghållare",
-        "format": "image/png",
-        "group": "TV",
-        "type": "WMS",
-        "visible": false
-    }, {
-        "name": "UAV",
-        "source": "intern",
-        "style": "orto",
-        "title": "Drönarfoto",
-        "format": "image/png",
-        "group": "TK",
-        "type": "WMS",
-        "visible": false,
-        "attributes": [{
-          "name": "obj",
-          "title": "Flygdatum: "
-        }, {
-          "name": "egn",
-          "title": "Upplösning: "
-        }]
-    }, {
-        "name": "HE1907",
-        "source": "historiska",
-        "style": "karta_farg",
-        "title": "1907",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Histortho_60",
-        "source": "historiska",
-        "style": "orto",
-        "title": "1960",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "EK1962",
-        "source": "historiska",
-        "style": "karta_farg",
-        "title": "1962",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "Histortho_75",
-        "source": "historiska",
-        "style": "orto",
-        "title": "1975",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "OF1997",
-        "source": "historiska",
-        "style": "orto",
-        "title": "1997",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "OF2001",
-        "source": "historiska",
-        "style": "orto",
-        "title": "2001",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "orto_2007",
-        "source": "historiska",
-        "style": "orto",
-        "title": "2007",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "orto_2010",
-        "source": "historiska",
-        "style": "orto",
-        "title": "2010",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "orto_2012",
-        "source": "historiska",
-        "style": "orto",
-        "title": "2012",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "orto_2014",
-        "source": "historiska",
-        "style": "orto",
-        "title": "2014",
-        "format": "image/png",
-        "group": "historiska",
-        "type": "WMS",
-        "visible": false,
-        "queryable": false
-    }, {
-        "name": "tk_mak_y",
-        "source": "ows",
-        "style": "tk_mak_y",
-        "title": "Mask",
-        "group": "tom",
-        "queryable": false,
-        "type": "WFS",
-        "visible": true
-    }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
-        "format": "image/jpeg",
-        "group": "background",
-        "name": "topowebbkartan_nedtonad",
-        "source": "basemap",
-        "title": "Karta, grå",
-        "type": "WMTS",
-        "style": "karta_gra",
-        "visible": true
-    }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
-        "format": "image/jpeg",
-        "group": "background",
-        "name": "topowebbkartan",
-        "source": "basemap",
-        "title": "Karta, färg",
-        "type": "WMTS",
-        "style": "karta_farg",
-        "visible": false
-    }, {
-        "attribution": "&copy Lantmäteriet Geodatasamverkan",
-        "format": "image/jpeg",
-        "group": "background",
-        "name": "orto",
-        "source": "basemap",
-        "title": "Flygfoto",
-        "type": "WMTS",
-        "style": "orto",
-        "visible": false
-    }, {
-        "group": "background",
-        "name": "blank",
-        "source": "",
-        "title": "Ingen bakgrundskarta",
-        "type": "WMTS",
-        "style": "",
-        "secure": false,
-        "visible": false
-    }],
-
-    "styles": {
-        "point": [
-            [{
-                "icon": {
-                    "size": [24, 36],
-                    "src": "img/png/drop_blue.png"
-                }
-            }]
-        ],
-        "line": [
-            [{
-                "stroke": {
-                    "color": "rgb(0,0,255)",
-                    "width": 1
-                }
-            }]
-        ],
-        "cirkel": [
-            [{
-                "circle": {
-                    "radius": 6,
-                    "stroke": {
-                        "color": "rgba(0,0,0,1)",
-                        "width": 2
-                    },
-                    "fill": {
-                        "color": "rgba(0,0,0,0.5)"
-                    }
-                }
-            }]
-        ],
-        "cluster": [
-        [
-          {
-            "circle": {
-              "radius": 16,
-              "fill": {
-                "color": "rgba(255,153,51,0.5)"
-              },
-              "stroke": {
-                "color": "rgba(255,153,51,0.9)",
-                "width": 4
-              }
-            }
+        "group":"SV",
+        "type":"WFS",
+        "visible":false,
+        "attributes":[  
+          {  
+            "title":"Personnummer: ",
+            "name":"obj"
           },
-          {
-            "text": {
-              "font": "Bold 12px Arial",
-              "textAlign": "center",
-              "text": "size",
-              "fill": {
-                "color": "rgba(0,0,0,1.0)"
+          {  
+            "title":"Namn: ",
+            "name":"typ"
+          }
+        ]
+      },
+      {  
+        "name":"jordarter",
+        "source":"geoserver",
+        "style":"detaljplan",
+        "title":"Jordarter",
+        "format":"image/png",
+        "group":"SGU",
+        "type":"WMS",
+        "opacity":0.75,
+        "visible":false
+      },
+      {  
+        "name":"SKRED_FINKORNING_JORDART",
+        "source":"wms",
+        "style":"sgu_skred_lutningsanalys",
+        "title":"Skred, lutningsanalys",
+        "format":"image/png",
+        "group":"SGU",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"SKRED_FINKORNING_JORDART_STRANDNARA",
+        "source":"wms",
+        "style":"sgu_skred_strandnara",
+        "title":"Skred, strandnära",
+        "format":"image/png",
+        "group":"SGU",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Vaghallare",
+        "source":"wms",
+        "style":"line",
+        "title":"Väghållare",
+        "format":"image/png",
+        "group":"TV",
+        "type":"WMS",
+        "visible":false
+      },
+      {  
+        "name":"UAV",
+        "source":"intern",
+        "style":"orto",
+        "title":"Drönarfoto",
+        "format":"image/png",
+        "group":"TK",
+        "type":"WMS",
+        "visible":false,
+        "attributes":[  
+          {  
+            "name":"obj",
+            "title":"Flygdatum: "
+          },
+          {  
+            "name":"egn",
+            "title":"Upplösning: "
+          }
+        ]
+      },
+      {  
+        "name":"HE1907",
+        "source":"historiska",
+        "style":"karta_farg",
+        "title":"1907",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Histortho_60",
+        "source":"historiska",
+        "style":"orto",
+        "title":"1960",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"EK1962",
+        "source":"historiska",
+        "style":"karta_farg",
+        "title":"1962",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"Histortho_75",
+        "source":"historiska",
+        "style":"orto",
+        "title":"1975",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"OF1997",
+        "source":"historiska",
+        "style":"orto",
+        "title":"1997",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"OF2001",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2001",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"orto_2007",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2007",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"orto_2010",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2010",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"orto_2012",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2012",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"orto_2014",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2014",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
+        "name":"tk_mak_y",
+        "source":"ows",
+        "style":"tk_mak_y",
+        "title":"Mask",
+        "group":"tom",
+        "queryable":false,
+        "type":"WFS",
+        "visible":true
+      },
+      {  
+        "attribution":"&copy Lantmäteriet Geodatasamverkan",
+        "format":"image/jpeg",
+        "group":"background",
+        "name":"topowebbkartan_nedtonad",
+        "source":"basemap",
+        "title":"Karta, grå",
+        "type":"WMTS",
+        "style":"karta_gra",
+        "visible":true
+      },
+      {  
+        "attribution":"&copy Lantmäteriet Geodatasamverkan",
+        "format":"image/jpeg",
+        "group":"background",
+        "name":"topowebbkartan",
+        "source":"basemap",
+        "title":"Karta, färg",
+        "type":"WMTS",
+        "style":"karta_farg",
+        "visible":false
+      },
+      {  
+        "attribution":"&copy Lantmäteriet Geodatasamverkan",
+        "format":"image/jpeg",
+        "group":"background",
+        "name":"orto",
+        "source":"basemap",
+        "title":"Flygfoto",
+        "type":"WMTS",
+        "style":"orto",
+        "visible":false
+      },
+      {  
+        "group":"background",
+        "name":"blank",
+        "source":"",
+        "title":"Ingen bakgrundskarta",
+        "type":"WMTS",
+        "style":"",
+        "secure":false,
+        "visible":false
+      }
+    ],
+    "styles":{  
+      "point":[  
+        [  
+          {  
+            "icon":{  
+              "size":[  
+                24,
+                36
+              ],
+              "src":"img/png/drop_blue.png"
+            }
+          }
+        ]
+      ],
+      "line":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(0,0,255)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "cirkel":[  
+        [  
+          {  
+            "circle":{  
+              "radius":6,
+              "stroke":{  
+                "color":"rgba(0,0,0,1)",
+                "width":2
               },
-              "stroke": {
-                "color": "rgba(255,153,51,0.5)",
-                "width": 2
+              "fill":{  
+                "color":"rgba(0,0,0,0.5)"
               }
             }
           }
         ]
       ],
-      "bm_avl_p": [
-          [{
-              "icon": {
-                  "src": "img/png/BM_avl_p1.png"
+      "cluster":[  
+        [  
+          {  
+            "circle":{  
+              "radius":16,
+              "fill":{  
+                "color":"rgba(255,153,51,0.5)"
               },
-              "filter": "[status] == '1'"
-          }],
-          [{
-              "icon": {
-                  "src": "img/png/BM_avl_p0.png"
+              "stroke":{  
+                "color":"rgba(255,153,51,0.9)",
+                "width":4
+              }
+            }
+          },
+          {  
+            "text":{  
+              "font":"Bold 12px Arial",
+              "textAlign":"center",
+              "text":"size",
+              "fill":{  
+                "color":"rgba(0,0,0,1.0)"
               },
-              "filter": "[status] == '0'"
-          }]
-      ],
-      "opto": [
-          [{
-              "stroke": {
-                  "color": "rgb(240,163,0)",
-                  "width": 1
+              "stroke":{  
+                "color":"rgba(255,153,51,0.5)",
+                "width":2
               }
-          }]
-      ],
-      "ks_w_opo_p": [
-        [{
-          "icon": {
-            "src": "img/png/KS_w_opo_p1.png"
-          },
-          "filter": "[obj] == 'Ansluten'"
-        }],
-        [{
-          "icon": {
-            "src": "img/png/KS_w_opo_p2.png"
-          },
-          "filter": "[obj] == 'Avtal'"
-        }],
-        [{
-          "icon": {
-            "src": "img/png/KS_w_opo_p4.png"
-          },
-          "filter": "[obj] == 'Intresse'"
-        }],
-        [{
-          "icon": {
-            "src": "img/png/KS_w_opo_p3.png"
-          },
-          "filter": "[obj] == 'Kampanj'"
-        }],
-        [{
-          "icon": {
-            "src": "img/png/KS_w_opo_p0.png"
-          },
-          "filter": "[obj] == 'Pumpstation'"
-        }]
-      ],
-      "tk_w_are_p": [
-        [{
-          "icon": {
-            "src": "img/png/TK_w_are_p.png"
+            }
           }
-        }]
-      ],
-      "tk_w_gtu_p": [
-        [{
-          "icon": {
-            "src": "img/png/tk_w_gtu_p.png"
-          }
-        }]
-      ],
-      "tk_kof_y": [
-        [{
-            "fill": {
-                "color": "rgba(165,0,165,0.25)"
-            },
-            "filter": "[typ] == 'Nej'"
-        }],
-        [{
-            "fill": {
-                "color": "rgba(165,0,165,0.45)"
-            },
-            "filter": "[typ] == 'Ja'"
-        }]
-      ],
-      "ks_dpan_y": [
-        [{
-            "fill": {
-              "color": "rgba(244,244,244,0.45)"
-            },
-            "filter": "[kategori] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
-        }],
-        [{
-            "fill": {
-              "color": "rgba(159,207,171,0.45)"
-            },
-            "filter": "[kategori] == '/^PARK|NATUR|SKYDD/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(255,255,163,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[b]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(138,111,76,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[chk]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(255,17,17,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ds]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(138,171,255,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ej]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(173,173,173,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[fgptv]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(127,255,127,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ln]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(194,61,194,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[m]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(255,127,0,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[or]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(213,203,170,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[z]/i'"
-        }],
-        [{
-          "fill": {
-            "color": "rgba(179,217,255,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[w]/i'"
-        }],
-        [{
-            "fill": {
-                "color": "rgb(0,0,0)"
-            }
-        }]
-      ],
-      "ks_dpe_y": [
-        [{
-          "custom": "detaljplan"
-        }]
-      ],
-      "ks_dpn_l": [
-          [{
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [70,15,70,15,5,15],
-            "width": 2
-          },
-          "filter": "[obj] == '0'"
-        }],
-        [{
-          "stroke": {
-            "color": "rgba(255,0,255,0.5)",
-            "lineDash": [50,10,10,10],
-            "width": 5
-          },
-          "filter": "[typ] == '1'",
-          "minScale": 2000
-        }],
-        [{
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [50,10,10,10],
-            "width": 1.5
-          },
-          "filter": "[obj] == '1'",
-          "minScale": 2000
-        }],
-        [{
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [30,10,10,10,10,10],
-            "width": 1
-          },
-          "filter": "[obj] == '2'",
-          "minScale": 2000
-        }],
-        [{
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [30,10],
-            "width": 1
-          },
-          "filter": "[obj] == '3'",
-          "minScale": 2000
-        }],
-        [{
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [30,10,10,10,10,10],
-            "width": 1
-          },
-          "filter": "[obj] == '4'",
-          "minScale": 2000
-        }]
-      ],
-      "pk_farg": [
-          [{
-              "image": {
-                  "src": "img/png/PK_farg.png"
-              }
-          }]
-      ],
-      "pk_gra": [
-          [{
-              "image": {
-                  "src": "img/png/PK_gra.png"
-              }
-          }]
-      ],
-      "tk_w_stp_p": [
-        [{
-          "icon": {
-            "src": "img/png/droppe_black.png"
-          },
-          "filter": "[stompunkttyp] == 'planpunkt'"
-        }], [{
-          "icon": {
-            "src": "img/png/drop_blue.png"
-          },
-          "filter": "[stompunkttyp] == 'plan-höjdpunkt'"
-        }], [{
-          "icon": {
-            "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[stompunkttyp] == 'höjdpunkt'"
-        }]
-      ],
-      "va": [
-          [{
-              "stroke": {
-                  "color": "rgb(0,0,255)",
-                  "width": 1,
-                  "lineDash": [3, 2]
-              }
-          }]
-      ],
-      "bestammelser": [
-            [{
-                "stroke": {
-                    "color": "rgb(144,169,61)",
-                    "width": 1
-                }
-            }]
-        ],
-        "detaljplan": [
-            [{
-                "stroke": {
-                    "color": "rgb(253,236,195)",
-                    "width": 1
-                }
-            }]
-        ],
-        "granser": [
-            [{
-                "stroke": {
-                    "color": "rgb(150,61,20)",
-                    "width": 1
-                }
-            }]
-        ],
-        "rattigheter": [
-            [{
-                "stroke": {
-                    "color": "rgb(0,120,193)",
-                    "width": 1
-                }
-            }]
-        ],
-        "lst_pfo_p": [
-            [{
-                "circle": {
-                    "radius": 7,
-                    "stroke": {
-                        "color": "rgb(0,0,0)",
-                        "width": 1
-                    },
-                    "fill": {
-                        "color": "rgb(255,170,0)"
-                    }
-                }
-            }]
-        ],
-        "lst_tmv_p": [
-            [{
-                "circle": {
-                    "radius": 7,
-                    "stroke": {
-                        "color": "rgb(0,0,0)",
-                        "width": 1
-                    },
-                    "fill": {
-                        "color": "rgb(255,92,207)"
-                    }
-                }
-            }]
-        ],
-        "lst_ri3_y": [
-            [{
-                "stroke": {
-                    "color": "rgba(255,122,122,0.6)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(255,122,122,0.3)"
-                }
-            }]
-        ],
-        "lst_ri4_y": [
-            [{
-                "stroke": {
-                    "color": "rgba(187,227,212,0.6)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(187,227,212,0.3)"
-                }
-            }]
-        ],
-        "msb_q100_y": [
-            [{
-              "fill": {
-                  "color": "rgb(0,197,255)"
-              }
-            }]
-        ],
-        "msb_q200_y": [
-            [{
-              "fill": {
-                  "color": "rgb(116,224,255)"
-            }
-            }]
-        ],
-        "msb_qbhf_y": [
-            [{
-              "fill": {
-                  "color": "rgb(0,111,255)"
-            }
-            }]
-        ],
-        "msb_malaren_100_y": [
-            [{
-              "fill": {
-                  "color": "rgb(122,182,245)"
-            }
-            }]
-        ],
-        "msb_malaren_200_y": [
-            [{
-              "fill": {
-                  "color": "rgb(170,102,205)"
-            }
-            }]
-        ],
-        "msb_malaren_bhf_y": [
-            [{
-              "fill": {
-                  "color": "rgb(0,92,230)"
-            }
-            }]
-        ],
-        "sgu_skred_lutningsanalys": [
-            [{
-              "fill": {
-                  "color": "rgb(246,197,103)"
-            }
-            }]
-        ],
-        "sgu_skred_strandnara": [
-            [{
-              "fill": {
-                  "color": "rgb(255,155,56)"
-            }
-            }]
-        ],
-        "pts_lek_y": [
-            [{
-                "stroke": {
-                    "color": "rgba(86,66,244,0.6)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(86,66,244,0.3)"
-                }
-            }]
-        ],
-        "fmi_wms": [
-            [{
-                "image": {
-                    "src": "img/png/FMI_WMS.png"
-                }
-            }]
-        ],
-        "tk_s_fat_y": [
-            [{
-                "fill": {
-                    "color": "rgba(0,0,0,0)"
-                }
-            }]
-        ],
-        "tk_mak_y": [
-            [{
-                "fill": {
-                    "color": "rgba(0,0,0,0.15)"
-                }
-            }]
-        ],
-        "karta_gra": [
-            [{
-                "image": {
-                    "src": "img/png/gra.png"
-                }
-            }]
-        ],
-        "karta_farg": [
-            [{
-                "image": {
-                    "src": "img/png/farg.png"
-                }
-            }]
-        ],
-        "orto": [
-            [{
-                "image": {
-                    "src": "img/png/orto.png"
-                }
-            }]
         ]
+      ],
+      "bm_avl_p":[  
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/BM_avl_p1.png"
+            },
+            "filter":"[status] == '1'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/BM_avl_p0.png"
+            },
+            "filter":"[status] == '0'"
+          }
+        ]
+      ],
+      "opto":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(240,163,0)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "ks_w_opo_p":[  
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/KS_w_opo_p1.png"
+            },
+            "filter":"[obj] == 'Ansluten'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/KS_w_opo_p2.png"
+            },
+            "filter":"[obj] == 'Avtal'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/KS_w_opo_p4.png"
+            },
+            "filter":"[obj] == 'Intresse'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/KS_w_opo_p3.png"
+            },
+            "filter":"[obj] == 'Kampanj'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/KS_w_opo_p0.png"
+            },
+            "filter":"[obj] == 'Pumpstation'"
+          }
+        ]
+      ],
+      "tk_w_are_p":[  
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/TK_w_are_p.png"
+            }
+          }
+        ]
+      ],
+      "tk_w_gtu_p":[  
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/tk_w_gtu_p.png"
+            }
+          }
+        ]
+      ],
+      "tk_kof_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(165,0,165,0.25)"
+            },
+            "filter":"[typ] == 'Nej'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(165,0,165,0.45)"
+            },
+            "filter":"[typ] == 'Ja'"
+          }
+        ]
+      ],
+      "ks_dpan_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(244,244,244,0.45)"
+            },
+            "filter":"[kategori] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(159,207,171,0.45)"
+            },
+            "filter":"[kategori] == '/^PARK|NATUR|SKYDD/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,255,163,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[b]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(138,111,76,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[chk]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,17,17,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[ds]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(138,171,255,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[ej]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(173,173,173,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[fgptv]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(127,255,127,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[ln]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(194,61,194,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[m]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,127,0,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[or]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(213,203,170,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[z]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(179,217,255,0.45)"
+            },
+            "filter":"[beteckningkarta] == '/^[w]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(0,0,0)"
+            }
+          }
+        ]
+      ],
+      "ks_dpe_y":[  
+        [  
+          {  
+            "custom":"detaljplan"
+          }
+        ]
+      ],
+      "ks_dpn_l":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                70,
+                15,
+                70,
+                15,
+                5,
+                15
+              ],
+              "width":2
+            },
+            "filter":"[obj] == '0'"
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(255,0,255,0.5)",
+              "lineDash":[  
+                50,
+                10,
+                10,
+                10
+              ],
+              "width":5
+            },
+            "filter":"[typ] == '1'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                50,
+                10,
+                10,
+                10
+              ],
+              "width":1.5
+            },
+            "filter":"[obj] == '1'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[obj] == '2'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[obj] == '3'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[obj] == '4'",
+            "minScale":2000
+          }
+        ]
+      ],
+      "ks_focus_dpan_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(244,244,244,0.45)"
+            },
+            "filter":"[value_pt] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(159,207,171,0.45)"
+            },
+            "filter":"[value_pt] == '/^PARK|NATUR|SKYDD/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,255,163,0.45)"
+            },
+            "filter":"[value_pt] == '/^[b]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(138,111,76,0.45)"
+            },
+            "filter":"[value_pt] == '/^[chk]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,17,17,0.45)"
+            },
+            "filter":"[value_pt] == '/^[ds]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(138,171,255,0.45)"
+            },
+            "filter":"[value_pt] == '/^[ej]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(173,173,173,0.45)"
+            },
+            "filter":"[value_pt] == '/^[fgptv]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(127,255,127,0.45)"
+            },
+            "filter":"[value_pt] == '/^[ln]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(194,61,194,0.45)"
+            },
+            "filter":"[value_pt] == '/^[m]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(255,127,0,0.45)"
+            },
+            "filter":"[value_pt] == '/^[or]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(213,203,170,0.45)"
+            },
+            "filter":"[value_pt] == '/^[z]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(179,217,255,0.45)"
+            },
+            "filter":"[value_pt] == '/^[w]/i'"
+          }
+        ],
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(0,0,0)"
+            }
+          }
+        ]
+      ],
+      "ks_focus_dpe_y":[  
+        [  
+          {  
+            "custom":"detaljplanFocus"
+          }
+        ]
+      ],
+      "ks_focus_dpn_l":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                70,
+                15,
+                70,
+                15,
+                5,
+                15
+              ],
+              "width":2
+            },
+            "filter":"[code] == '1000'"
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(255,0,255,0.5)",
+              "lineDash":[  
+                50,
+                10,
+                10,
+                10
+              ],
+              "width":5
+            },
+            "filter":"[code] == 'Utfart får inte finnas'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                50,
+                10,
+                10,
+                10
+              ],
+              "width":1.5
+            },
+            "filter":"[code] == '2000'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[code] == '3000'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[code] == '4000'",
+            "minScale":2000
+          }
+        ],
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(0,0,0,0.5)",
+              "lineDash":[  
+                30,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "width":1
+            },
+            "filter":"[code] == '6000'",
+            "minScale":2000
+          }
+        ]
+      ],
+      "pk_farg":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/PK_farg.png"
+            }
+          }
+        ]
+      ],
+      "pk_gra":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/PK_gra.png"
+            }
+          }
+        ]
+      ],
+      "tk_w_stp_p":[  
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/droppe_black.png"
+            },
+            "filter":"[stompunkttyp] == 'planpunkt'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/drop_blue.png"
+            },
+            "filter":"[stompunkttyp] == 'plan-höjdpunkt'"
+          }
+        ],
+        [  
+          {  
+            "icon":{  
+              "src":"img/png/droppe_orange.png"
+            },
+            "filter":"[stompunkttyp] == 'höjdpunkt'"
+          }
+        ]
+      ],
+      "va":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(0,0,255)",
+              "width":1,
+              "lineDash":[  
+                3,
+                2
+              ]
+            }
+          }
+        ]
+      ],
+      "bestammelser":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(144,169,61)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "detaljplan":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(253,236,195)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "granser":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(150,61,20)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "rattigheter":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(0,120,193)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "lst_pfo_p":[  
+        [  
+          {  
+            "circle":{  
+              "radius":7,
+              "stroke":{  
+                "color":"rgb(0,0,0)",
+                "width":1
+              },
+              "fill":{  
+                "color":"rgb(255,170,0)"
+              }
+            }
+          }
+        ]
+      ],
+      "lst_tmv_p":[  
+        [  
+          {  
+            "circle":{  
+              "radius":7,
+              "stroke":{  
+                "color":"rgb(0,0,0)",
+                "width":1
+              },
+              "fill":{  
+                "color":"rgb(255,92,207)"
+              }
+            }
+          }
+        ]
+      ],
+      "lst_ri3_y":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(255,122,122,0.6)",
+              "width":2
+            },
+            "fill":{  
+              "color":"rgba(255,122,122,0.3)"
+            }
+          }
+        ]
+      ],
+      "lst_ri4_y":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(187,227,212,0.6)",
+              "width":2
+            },
+            "fill":{  
+              "color":"rgba(187,227,212,0.3)"
+            }
+          }
+        ]
+      ],
+      "msb_q100_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(0,197,255)"
+            }
+          }
+        ]
+      ],
+      "msb_q200_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(116,224,255)"
+            }
+          }
+        ]
+      ],
+      "msb_qbhf_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(0,111,255)"
+            }
+          }
+        ]
+      ],
+      "msb_malaren_100_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(122,182,245)"
+            }
+          }
+        ]
+      ],
+      "msb_malaren_200_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(170,102,205)"
+            }
+          }
+        ]
+      ],
+      "msb_malaren_bhf_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(0,92,230)"
+            }
+          }
+        ]
+      ],
+      "sgu_skred_lutningsanalys":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(246,197,103)"
+            }
+          }
+        ]
+      ],
+      "sgu_skred_strandnara":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgb(255,155,56)"
+            }
+          }
+        ]
+      ],
+      "pts_lek_y":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgba(86,66,244,0.6)",
+              "width":2
+            },
+            "fill":{  
+              "color":"rgba(86,66,244,0.3)"
+            }
+          }
+        ]
+      ],
+      "fmi_wms":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/FMI_WMS.png"
+            }
+          }
+        ]
+      ],
+      "tk_s_fat_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(0,0,0,0)"
+            }
+          }
+        ]
+      ],
+      "tk_mak_y":[  
+        [  
+          {  
+            "fill":{  
+              "color":"rgba(0,0,0,0.15)"
+            }
+          }
+        ]
+      ],
+      "karta_gra":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/gra.png"
+            }
+          }
+        ]
+      ],
+      "karta_farg":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/farg.png"
+            }
+          }
+        ]
+      ],
+      "orto":[  
+        [  
+          {  
+            "image":{  
+              "src":"img/png/orto.png"
+            }
+          }
+        ]
+      ]
     }
-}
+  }
