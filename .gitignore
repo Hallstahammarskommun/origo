@@ -1,4 +1,6 @@
 build
+dist
+css/style.css
 examples
 node_modules
 npm-debug-log
