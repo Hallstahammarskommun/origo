@@ -1,10 +1,7 @@
-dist
-css/style.css
-dist/css/style.css
-dist/origo.js
-dist/origo.min.js
+build
 examples
 node_modules
 npm-debug-log
-build
 splash.html
+CONTRIBUTING.md
+DEVELOPING.md
