@@ -73,26 +73,26 @@ function createLayers(layerlist, savedLayers) {
   let getCapabilitiesLayers = [];
 
   if (settings.capabilitiesURL !== undefined) {
-      getCapabilitiesLayers = getCapabilities(settings.capabilitiesURL);
-
-      layerlist.forEach(function(layer) {
-        if (getCapabilitiesLayers.indexOf(layer.name) >= 0) {
+    getCapabilitiesLayers = getCapabilities(settings.capabilitiesURL);
+    layerlist.forEach((layer) => {
+      if (getCapabilitiesLayers.indexOf(layer.name) >= 0) {
         layer.secure = false;
       } else {
-        if (layer['secure'] === undefined) {
+        if (layer.secure === undefined) {
           layer.secure = true;
-          layer.abstract = "Du saknar behörighet att se detta lager";
-        };
+          layer.abstract = 'Du saknar behörighet att se detta lager';
+        }
       }
-      })
+    });
   } else {
-    layerlist.forEach(function(layer) {
-      if (layer['secure'] === undefined) {layer.secure = false};
-    })
+    layerlist.forEach((layer) => {
+      if (layer.secure === undefined) { layer.secure = false; }
+    });
   }
 
-  for (var i = layerlist.length - 1; i >= 0; i--) {
-    const savedLayer = {};
+  let i;
+  for (i = layerlist.length - 1; i >= 0; i -= 1) {
+    let savedLayer = {};
     if (savedLayers) {
       savedLayer = savedLayers[layerlist[i].name.split(':').pop()] || {
         visible: false,
@@ -237,9 +237,7 @@ function getLayer(layername) {
 }
 
 function getLayerGroups() {
-  const groups = $.grep(settings.layers, function(obj) {
-    return (obj.get('type') === 'GROUP');
-  });
+  const groups = $.grep(settings.layers, obj => (obj.get('type') === 'GROUP'));
   return groups;
 }
 
@@ -386,8 +384,8 @@ function removeOverlays(overlays) {
     }
   } else {
     overlays = map.getOverlays();
-    overlays.forEach(function(overlay) {
-      if (!(overlay.getId() == "geolocation-marker")){
+    overlays.forEach((overlay) => {
+      if (!(overlay.getId() === 'geolocation-marker')) {
         map.removeOverlay(overlay);
       }
     });
