@@ -1,44 +1,54 @@
-"use strict";
+import $ from 'jquery';
+import viewer from './src/viewer';
+import mapLoader from './src/maploader';
+import controlInitialiser from './src/controlinitialiser';
+import origoConfig from './conf/origoConfig';
+import controls from './conf/origoControls';
+import modal from './src/modal';
 
-window.proj4 = require('proj4');
-global.jQuery = require("jquery");
-
-var $ = require('jquery');
-var Viewer = require('./src/viewer');
-var mapLoader = require('./src/maploader');
-var controlInitialiser = require('./src/controlinitialiser');
-var Modal = require('./src/modal');
-
-var origo = {};
+const origo = {};
 origo.map = {};
-origo.config = require('./conf/origoConfig');
-origo.controls = require('./conf/origoControls');
+origo.config = origoConfig;
+origo.controls = controls;
 
-origo.map.init = function (options, OptConfig) {
-  var config = OptConfig ? $.extend(origo.config, OptConfig) : origo.config;
-  var url = 'https://karta.hallstahammar.se/intern/getconfig';
+function init(config) {
+  viewer.init(config.el, config.options);
 
-  if (options === 'temp.json') {
-    $.ajax({
-      type: 'GET',
-      dataType: 'json',
-      url: url,
-      timeout: 15000,
-      success: success,
-      error: error
-    });
-  } else {
-    loadMap(options);
+  // Init controls
+  controlInitialiser(config.options.controls);
+}
+
+origo.map.init = function initMap(options, defaultOptions) {
+  const config = defaultOptions ? $.extend(origo.config, defaultOptions) : origo.config;
+  const url = 'https://karta.hallstahammar.se/intern/getconfig';
+
+  function loadMap(mapOptions, errorText) {
+    const map = mapLoader(mapOptions, config);
+    if (map) {
+      map.then((mapConfig) => {
+        init(mapConfig);
+      }).then(() => {
+        if (errorText) {
+          modal.createModal('#o-map', {
+            title: 'Kunde inte ladda konfiguration',
+            content: `Något gick fel vid anslutning till databasen. Standardutförandet av kartan har laddats. Kontakta systemförvaltaren.
+              Felmeddelande: ${errorText}`
+          });
+          modal.showModal();
+        }
+      });
+      return viewer;
+    }
+    return null;
   }
 
   function success(result) {
-    var res;
+    let res;
     if (result[0].case === 'user not found') {
       res = options;
     } else {
       res = result[0].case;
     }
-
     loadMap(res);
   }
 
@@ -46,32 +56,18 @@ origo.map.init = function (options, OptConfig) {
     loadMap(options, jqXHR.responseText);
   }
 
-  function loadMap(options, errorText) {
-    var map = mapLoader(options, config);
-    if (map) {
-      map.then(function (config) {
-        init(config);
-      }).then(function () {
-        if (errorText) {
-          Modal.createModal('#o-map', {
-            title: 'Kunde inte ladda konfiguration',
-            content: 'Något gick fel vid anslutning till databasen. Standardutförandet av kartan har laddats. Kontakta systemförvaltaren. <hr>' +
-              'Felmeddelande: ' + errorText
-          });
-          Modal.showModal();
-        }
-      });
-      return Viewer;
-    }
-    return undefined;
+  if (options === 'temp.json') {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url,
+      timeout: 15000,
+      success,
+      error
+    });
+  } else {
+    loadMap(options);
   }
 };
 
-function init(config) {
-  Viewer.init(config.el, config.options);
-
-  // Init controls
-  controlInitialiser(config.options.controls);
-}
-
-module.exports = origo;
+export default origo;
