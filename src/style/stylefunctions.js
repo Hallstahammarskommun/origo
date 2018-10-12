@@ -1,19 +1,16 @@
-"use strict";
+import defaultStyle from './stylefunctions/default';
+import detaljplanStyle from './stylefunctions/detaljplan';
+import detaljplanFocusStyle from './stylefunctions/detaljplanfocus';
 
-var defaultStyle = require('./stylefunctions/default');
-var detaljplanStyle = require('./stylefunctions/detaljplan');
-var detaljplanFocusStyle = require('./stylefunctions/detaljplanfocus');
-
-var customStyles = {
+const customStyles = {
   default: defaultStyle,
   detaljplan: detaljplanStyle,
   detaljplanFocus: detaljplanFocusStyle
 };
 
-module.exports = function styleFunctions(customStyle, params) {
+export default function styleFunctions(customStyle, params) {
   if (customStyle in customStyles) {
     return customStyles[customStyle](params);
-  } else {
-    return customStyles.default(params);
   }
-};
+  return customStyles.default(params);
+}
