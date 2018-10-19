@@ -103,6 +103,7 @@ function createLayers(layerlist, savedLayers) {
     const layer = $.extend(layerlist[i], savedLayer);
     layers.push(layerCreator(layer));
   }
+  return layers;
 }
 
 function getUnits(proj) {
