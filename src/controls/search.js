@@ -4,9 +4,9 @@ import Awesomplete from 'awesomplete';
 import $ from 'jquery';
 import featureInfo from '../featureinfo';
 import generateUUID from '../utils/generateuuid';
-import getAttributes from '../getattributes';
+// import getAttributes from '../getattributes';
 import getCenter from '../geometry/getcenter';
-import getFeature from '../getfeature';
+// import getFeature from '../getfeature';
 import mapUtils from '../maputils';
 import popup from '../popup';
 import viewer from '../viewer';
@@ -25,12 +25,12 @@ const keyCodes = {
 let searchDb = {};
 let map;
 let name;
-let northing;
-let easting;
+// let northing;
+// let easting;
 let geometryAttribute;
-let idAttribute;
+// let idAttribute;
 let layerNameAttribute;
-let layerName;
+// let layerName;
 let titleAttribute;
 let contentAttribute;
 let includeSearchableLayers;
@@ -111,13 +111,13 @@ function showOverlay(data, coord) {
  * must be defined. */
 
 function selectHandler(evt) {
-  let id = evt.text.label;
+  const id = evt.text.label;
   const data = searchDb[id];
-  let layer;
+  // let layer;
   let feature;
   let content;
-  let coord;
-  if (layerNameAttribute && idAttribute) {
+  // let coord;
+  /* if (layerNameAttribute && idAttribute) {
     layer = viewer.getLayer(data[layerNameAttribute]);
     id = data[idAttribute];
     getFeature(id, layer)
@@ -137,20 +137,20 @@ function selectHandler(evt) {
     feature = mapUtils.wktToFeature(data[geometryAttribute], projectionCode);
     layer = viewer.getLayer(data[layerName]);
     showFeatureInfo([feature], layer.get('title'), getAttributes(feature, layer));
-  } else if (titleAttribute && contentAttribute && geometryAttribute) {
+  } */ if (titleAttribute && contentAttribute && geometryAttribute) {
     feature = mapUtils.wktToFeature(data[geometryAttribute], projectionCode);
 
     // Make sure the response is wrapped in a html element
     content = utils.createElement('div', data[contentAttribute]);
     showFeatureInfo([feature], data[titleAttribute], content);
-  } else if (geometryAttribute && title) {
+  } /* else if (geometryAttribute && title) {
     feature = mapUtils.wktToFeature(data[geometryAttribute], projectionCode);
     content = utils.createElement('div', data[name]);
     showFeatureInfo([feature], title, content);
   } else if (easting && northing && title) {
     coord = [data[easting], data[northing]];
     showOverlay(data, coord);
-  } else {
+  } */ else {
     console.log('Search options are missing');
   }
 }
@@ -236,7 +236,8 @@ function groupDb(data) {
     const type = item[layerNameAttribute];
     if (type in group === false) {
       group[type] = [];
-      item.header = viewer.getLayer(type).get('title');
+      // item.header = viewer.getLayer(type).get('title');
+      item.header = type;
     }
     group[type].push(item);
   });
@@ -340,15 +341,15 @@ function initAutocomplete() {
 
 function init(options) {
   name = options.searchAttribute;
-  northing = options.northing || undefined;
-  easting = options.easting || undefined;
+  // northing = options.northing || undefined;
+  // easting = options.easting || undefined;
   geometryAttribute = options.geometryAttribute;
 
   /** idAttribute in combination with layerNameAttribute
   must be defined if search result should be selected */
-  idAttribute = options.idAttribute;
+  // idAttribute = options.idAttribute;
   layerNameAttribute = options.layerNameAttribute || undefined;
-  layerName = options.layerName || undefined;
+  // layerName = options.layerName || undefined;
   url = options.url;
   title = options.title || '';
   titleAttribute = options.titleAttribute || undefined;
