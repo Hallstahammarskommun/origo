@@ -1060,6 +1060,17 @@
         "queryable":false
       },
       {  
+        "name":"orto_2016",
+        "source":"historiska",
+        "style":"orto",
+        "title":"2016",
+        "format":"image/png",
+        "group":"historiska",
+        "type":"WMS",
+        "visible":false,
+        "queryable":false
+      },
+      {  
         "name":"tk_mak_y",
         "source":"ows",
         "style":"tk_mak_y",
