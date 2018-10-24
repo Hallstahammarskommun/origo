@@ -704,14 +704,14 @@
         "visible":false
       },
       {  
-        "format":"image/jpeg",
-        "group":"LM",
         "name":"terranglutning",
         "opacity":0.5,
         "source":"extern_wmts",
+        "style":"terranglutning",
         "title":"Terränglutning",
+        "format":"image/jpeg",
+        "group":"LM",
         "type":"WMTS",
-        "style":"rattigheter",
         "visible":false
       },
       {  
@@ -1819,6 +1819,16 @@
           {  
             "stroke":{  
               "color":"rgb(0,120,193)",
+              "width":1
+            }
+          }
+        ]
+      ],
+      "terranglutning":[  
+        [  
+          {  
+            "stroke":{  
+              "color":"rgb(199,199,199)",
               "width":1
             }
           }
