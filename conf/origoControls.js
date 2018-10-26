@@ -14,7 +14,7 @@ import measure from '../src/controls/measure';
 import position from '../src/controls/position';
 import print from '../src/controls/print';
 import rotate from '../src/controls/rotate';
-import saveconfig from '../src/controls/saveconfig';
+// import saveconfig from '../src/controls/saveconfig';
 // import scale from '../src/controls/scale';
 // import scaleline from '../src/controls/scaleline';
 import search from '../src/controls/search';
@@ -32,14 +32,14 @@ const controls = {
   geoposition,
   // home,
   legend,
-  //link,
+  // link,
   mapmenu,
   measure,
   // offline,
   position,
   print,
   rotate,
-  saveconfig,
+  // saveconfig,
   // scale,
   // scaleline,
   search,
