@@ -1,15 +1,16 @@
-var ol = require('openlayers');
+import Fill from 'ol/style/fill';
+import Style from 'ol/style/style';
 
-module.exports = function detaljplanStyle(params) {
-  return function (feature, resolution) {
-    var canvas = document.createElement('canvas');
-    var context = canvas.getContext('2d');
-    var pixelRatio = ol.has.DEVICE_PIXEL_RATIO;
-    var fill;
-    var style;
+export default function detaljplanStyle() {
+  return function styles(feature) {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const pixelRatio = window.devicePixelRatio;
+    let fill;
+    let style;
 
     // Generate a canvasPattern with two circles on white background
-    var prickmark = (function () {
+    const prickmark = (function pm() {
       canvas.width = 8 * pixelRatio;
       canvas.height = 8 * pixelRatio;
       context.fillStyle = 'rgb(0, 0, 0)';
@@ -19,7 +20,7 @@ module.exports = function detaljplanStyle(params) {
       return context.createPattern(canvas, 'repeat');
     }());
 
-    var korsmark = (function () {
+    const korsmark = (function km() {
       canvas.width = 20 * pixelRatio;
       canvas.height = 20 * pixelRatio;
       context.fillStyle = 'rgb(0, 0, 0)';
@@ -32,31 +33,31 @@ module.exports = function detaljplanStyle(params) {
       return context.createPattern(canvas, 'repeat');
     }());
 
-    var regexPrick = new RegExp(/860/);
-    var regexPlus = new RegExp(/870/);
+    const regexPrick = new RegExp(/860/);
+    const regexPlus = new RegExp(/870/);
 
     if (regexPrick.test(feature.get('objid'))) {
-      fill = new ol.style.Fill({
+      fill = new Fill({
         color: prickmark
       });
-      style = new ol.style.Style({
-        fill: fill
+      style = new Style({
+        fill
       });
       return style;
     } else if (regexPlus.test(feature.get('objid'))) {
-      fill = new ol.style.Fill({
+      fill = new Fill({
         color: korsmark
       });
-      style = new ol.style.Style({
-        fill: fill
+      style = new Style({
+        fill
       });
       return style;
     }
-    style = new ol.style.Style({
-      fill: new ol.style.Fill({
+    style = new Style({
+      fill: new Fill({
         color: 'rgba(0,0,0,0)'
       })
     });
     return style;
   };
-};
+}

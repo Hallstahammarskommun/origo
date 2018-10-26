@@ -1,11 +1,9 @@
 import defaultStyle from './stylefunctions/default';
 import detaljplanStyle from './stylefunctions/detaljplan';
-import detaljplanFocusStyle from './stylefunctions/detaljplanfocus';
 
 const customStyles = {
   default: defaultStyle,
-  detaljplan: detaljplanStyle,
-  detaljplanFocus: detaljplanFocusStyle
+  detaljplan: detaljplanStyle
 };
 
 export default function styleFunctions(customStyle, params) {
