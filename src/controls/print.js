@@ -80,7 +80,7 @@ function render() {
     id: 'o-print',
     iconCls: 'o-icon-fa-print',
     src: '#fa-print',
-    text: 'Skriv ut'
+    text: ''
   });
   $('#o-menutools').append(el);
   $printButton = $('#o-print-button');

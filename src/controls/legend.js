@@ -103,7 +103,7 @@ function getSymbol(style) {
     </svg></div>`;
   } else if (Object.prototype.hasOwnProperty.call(s[0], 'image')) {
     const src = validateUrl(s[0].image.src, baseUrl);
-    const inlineStyle = `background: url(${src}) no-repeat;width: 30px; height: 30px;background-size: 30px;`;
+    const inlineStyle = `background: url(${src}) no-repeat;width: 20px; height: 20px;background-size: 20px;`;
     symbol = `<div class="o-legend-item-img" style="${inlineStyle}"></div>`;
   }
 
@@ -156,7 +156,7 @@ function createLegendItem(layerid, insertAfter, layerStyle, inSubgroup) {
     }
   }
 
-  if (layerStyle && Object.prototype.hasOwnProperty.call(layerStyle[0][0], 'filter')) {
+  /* if (layerStyle && Object.prototype.hasOwnProperty.call(layerStyle[0][0], 'filter')) {
     if (Object.prototype.hasOwnProperty.call(layerStyle[0][0], 'legend')) {
       legendItem += `<li class="o-legend ${layername}">`;
       legendItem += `<ul id="o-group-${layername}" class="o-legend-group o-ul-expand-false"><li class="${layername}" id="${layerid}">`;
@@ -193,10 +193,10 @@ function createLegendItem(layerid, insertAfter, layerStyle, inSubgroup) {
 
       legendItem += '</ul></li>';
     }
-  } else {
+  } */ else {
     legendItem += `<li class="o-legend ${layername}" id="${layerid}"><div class ="o-legend-item${subClass}"><div class="o-checkbox">
-                    <svg class="o-icon-fa-square-o"><use xlink:href="#fa-square-o"></use></svg>
-                    <svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check-square-o"></use></svg>
+                    <svg class="o-icon-fa-square-o"><use xlink:href=""></use></svg>
+                    <svg class="o-icon-fa-check-square-o"><use xlink:href="#fa-check"></use></svg>
                   </div>`;
     legendItem += layer.get('styleName') ? getSymbol(styleSettings[layer.get('styleName')]) : '';
     legendItem += `<div class="o-legend-item-title o-truncate">${layer.get('title')}</div>`;
@@ -289,7 +289,7 @@ function toggleGroup(groupheader) {
 }
 
 // Toggle subgroups
-function toggleSubGroupCheck(subgroup, toggleAll) {
+/* function toggleSubGroupCheck(subgroup, toggleAll) {
   const subGroup = $(subgroup);
   const subLayers = subGroup.find('.o-legend-item.o-legend-subitem');
   const groupList = $('.o-legend-subgroup');
@@ -354,7 +354,7 @@ function toggleSubGroupCheck(subgroup, toggleAll) {
         .addClass('o-checkbox-false');
     }
   });
-}
+} */
 
 // Toggle layers
 function toggleCheck(layerid) {
@@ -597,7 +597,7 @@ function addLegend(groups) {
   });
 
   // Add map legend unless set to false
-  if (hasMapLegend) {
+  /* if (hasMapLegend) {
     const mapLegend = `<div id="o-map-legend"><ul id="o-legend-overlay"><li class="o-legend o-hidden"><div class ="o-toggle-button o-toggle-button-max">
                         <svg class="o-icon-fa-angle-double-down"><use xlink:href="#fa-angle-double-down"></use></svg>
                         <svg class="o-icon-fa-angle-double-up"><use xlink:href="#fa-angle-double-up"></use></svg>
@@ -608,7 +608,7 @@ function addLegend(groups) {
     if (overlayGroup) {
       $('#o-map-legend-background').prepend('<div class="o-legend-item-divider"></div>');
     }
-  }
+  } */
 
   // Add layers to legend
   layers.forEach((layer) => {
@@ -628,7 +628,7 @@ function addLegend(groups) {
     // Append layer to group in legend. Add to default group if not defined.
     if (layer.get('group') === 'background') {
       // Append background layers to menu
-      item = `<li class="o-legend ${name}" id="${name}"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="#fa-check"></use></svg></div>${title}`;
+      item = `<li class="o-legend ${name}" id="${name}"><div class ="o-legend-item"><div class="o-checkbox"><svg class="o-icon-fa-check"><use xlink:href="#fa-circle"></use></svg></div>${title}`;
       $('#o-group-background .o-legend-header').after(item);
 
       // Append background layers to map legend

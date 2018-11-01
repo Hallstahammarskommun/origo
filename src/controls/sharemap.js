@@ -34,8 +34,8 @@ function init() {
   const el = utils.createListButton({
     id: 'o-share',
     iconCls: 'o-icon-fa-share-square-o',
-    src: '#fa-share-square-o',
-    text: 'Dela karta'
+    src: '#fa-share',
+    text: ''
   });
   $('#o-menutools').append(el);
   shareButton = $('#o-share-button');

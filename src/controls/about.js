@@ -11,7 +11,7 @@ function render() {
   const el = utils.createListButton({
     id: 'o-about',
     iconCls: 'o-icon-fa-info',
-    src: '#fa-info-circle',
+    src: '#fa-info',
     text: buttonText
   });
   $('#o-menutools').append(el);
@@ -32,7 +32,7 @@ function bindUIActions() {
 
 function init(opt) {
   const options = opt || {};
-  buttonText = options.buttonText || 'Om kartan';
+  buttonText = options.buttonText || '';
   title = options.title || 'Om kartan';
   content = options.content || '<p></p>';
 

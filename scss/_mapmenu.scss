@@ -1,13 +1,13 @@
 #o-mapmenu-button {
   right: .5rem;
   top: .5rem;
-  //width: 5.3125rem;
+  // width: 5.3125rem;
   z-index: 16;
-  .o-icon-fa-bars {
-  	//padding: .4rem;
-    //height: 1.2rem;
-    //width: 1.2rem;
-  }
+  /* .o-icon-fa-bars {
+  	padding: .4rem;
+    height: 1.2rem;
+    width: 1.2rem;
+  } */
 }
 #o-menutools {
   display: inline-flex;
@@ -27,13 +27,14 @@
 #o-mapmenu-button-close {
 		position: absolute;
 		right: .5em;
-		top: 0.5rem;
+		top: .5rem;
 }
 /*remove the boxshadow when selected*/
 .o-mapmenu-show .o-button-container {
   background-color: rgba(255,255,255,0.5);
   box-shadow: none;
 }
+
 .o-no-boxshadow #o-mapmenu-button .o-button {
   border: none;
 }
@@ -84,44 +85,38 @@
 .o-mapmenu-false {
 	display: none;
 }
-.o-menu-button {
-	padding: 0.5em 0em 0.5em 0.5em;
-}
 li .o-menu-button {
+  border-radius: 4rem;
   cursor: pointer;
   display: inline-block;
   font-family: Arial,sans-serif;
-  font-size: 0.9em;
+  font-size: 1rem;
   line-height: 1.5em;
-  padding: 0 5px;
+  margin: 0.75em 0em 0.75em 0.05em;
+  padding: 0;
   text-decoration: none;
   text-align: left;
-  width: 100%;
-  height: 1.5em;
+  width: 2.5em;
+  height: 2.5em;
   border: none;
   vertical-align: middle;
 }
 li .o-menu-button:hover {
-  background-color: #EEEEEE;
+  fill: $o-btn-hover-color;
+  background-color: $o-btn-hover-bg;
 }
 .o-menu-button .o-button-icon {
-  display: inline;
-  float: left;
-	height: 1.5em;
-  padding: 0 4px;
-	vertical-align: middle;
-	width: 1.5em;
+  align-items: center;
+  display: flex;
+  // float: left;
+	height: 2.5em;
+  padding: 0px;
+	// width: 1.5em;
 }
 .o-button.o-mapmenu-button-false span.o-button-text {
 	display: none;
 }
 &[class*=#{$media-l}] {
-  #o-mapmenu-button-close {
-  		top: 0.75rem;
-  }
-  .o-menu-button {
-  	padding: 0.75em 0em 0.75em 0.05em;
-  }
   #o-mapmenu-button {
     right: 0.75rem;
     top: 0.75rem;
@@ -129,5 +124,8 @@ li .o-menu-button:hover {
   }
 #o-mapmenu-button .o-button-text {
 	display: none;
+}
+#o-mapmenu-button-close {
+  top: 0.75rem;
 }
 }
