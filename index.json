@@ -299,6 +299,7 @@
         "style": "tk_sop_r",
         "title": "Solpotential",
         "group": "energi",
+        "queryable": false,
         "type": "WMS",
         "visible": false,
         "abstractTitle": "Så här fungerar solkartan",
