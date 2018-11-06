@@ -46,22 +46,20 @@ export default function (feature, layer) {
         if (attribute.name) {
           if (feature.get(attribute.name) || attribute.name.indexOf('.') > -1) {
             val = getNeastedAttr(attribute.name);
-            if (feature.get(attribute.name)) {
-              val = feature.get(attribute.name);
-              if (attribute.title) {
-                title = `<b>${attribute.title}</b>`;
-              }
-              if (attribute.url) {
-                // if (feature.get(attribute.url)) {
-                if (feature.get(attribute.url) || attribute.url.indexOf('.') > -1) {
-                  // const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties()));
-                  const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(getNeastedAttr(attribute.url), feature.getProperties()));
-                  val = `<a href="${url}" target="_blank">
-                  ${getNeastedAttr.get(attribute.name)}
-                  </a>`;
-                }
+            // if (feature.get(attribute.name)) {
+            // val = feature.get(attribute.name);
+            if (attribute.title) {
+              title = `<b>${attribute.title}</b>`;
+            }
+            if (attribute.url) {
+              // if (feature.get(attribute.url)) {
+              if (feature.get(attribute.url) || attribute.url.indexOf('.') > -1) {
+                // const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties()));
+                const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(getNeastedAttr(attribute.url), feature.getProperties()));
+                val = `<a href="${url}" target="_blank">${getNeastedAttr(attribute.name)}</a>`;
               }
             }
+            // }
           }
         } else if (attribute.url) {
           if (feature.get(attribute.url)) {
