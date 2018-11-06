@@ -245,6 +245,7 @@
         "format": "image/png",
         "group": "bygga",
         "type": "WMS",
+        "queryable": false,
         "fme": true,
         "visible": false
     }, {
