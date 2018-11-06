@@ -1,4 +1,5 @@
 import EsriJSON from 'ol/format/esrijson';
+import Collection from 'ol/collection';
 import $ from 'jquery';
 import viewer from './viewer';
 import maputils from './maputils';
@@ -194,13 +195,21 @@ function getFeaturesFromRemote(evt) {
     }
 
     if (features) {
-      features.forEach((feature) => {
+      if (features instanceof Collection) {
+        features.forEach((feature) => {
+          requestResult.push({
+            title: layer.get('title'),
+            feature,
+            content: getAttributes(feature, layer)
+          });
+        });
+      } else {
         requestResult.push({
           title: layer.get('title'),
-          feature,
-          content: getAttributes(feature, layer)
+          feature: features,
+          content: getAttributes(features, layer)
         });
-      });
+      }
       return requestResult;
     }
 
