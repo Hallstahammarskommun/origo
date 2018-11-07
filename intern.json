@@ -342,7 +342,7 @@
         "name":"pk",
         "source":"wms",
         "style":"pk_gra",
-        "title":"Primärkarta, grå",
+        "title":"Grundkarta",
         "format":"image/png",
         "group":"TK",
         "type":"WMS",
@@ -699,6 +699,7 @@
         "title":"Rättighet",
         "format":"image/png",
         "group":"LM",
+        "fme":true,
         "type":"WMS",
         "renderMode":"image",
         "visible":false
@@ -711,6 +712,7 @@
         "title":"Terränglutning",
         "format":"image/jpeg",
         "group":"LM",
+        "fme":true,
         "type":"WMTS",
         "visible":false
       },
