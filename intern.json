@@ -329,7 +329,7 @@
     },
     {
       "name": "grundkarta",
-      "source": "wms",
+      "source": "geoserver",
       "style": "grundkarta",
       "title": "Grundkarta",
       "format": "image/png",
@@ -340,7 +340,7 @@
     },
     {
       "name": "primarkarta",
-      "source": "wms",
+      "source": "geoserver",
       "style": "primarkarta",
       "title": "Primärkarta",
       "format": "image/png",
