@@ -124,11 +124,11 @@
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
-      "name": "extern:pk",
+      "name": "grundkarta",
       "source": "wms",
-      "title": "Primärkarta, grå",
+      "title": "Grundkarta",
       "type": "WMS",
-      "style": "pk_gra",
+      "style": "grundkarta",
       "visible": false
     }, {
       "name": "tk_w_are_p",
@@ -809,11 +809,11 @@
           }
         ]
       ],
-      "pk_gra": [
+      "grundkarta": [
         [
           {
             "image": {
-              "src": "img/png/pk_gra.png"
+              "src": "img/png/grundkarta.png"
             }
           }
         ]
