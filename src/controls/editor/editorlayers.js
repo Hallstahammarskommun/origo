@@ -75,6 +75,10 @@ export default function editorLayers(editableLayers, optOptions = {}) {
       dispatcher.emitToggleEdit('edit', {
         currentLayer: e.dataAttribute
       });
+      if (e.prevSelected) {
+        viewer.getLayer(e.prevSelected).setVisible(false);
+      }
+      viewer.getLayer(e.dataAttribute).setVisible(true);
     });
     $(document).on('toggleEdit', onToggleEdit);
     $(document).on('changeEdit', onChangeEdit);

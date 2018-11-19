@@ -22,7 +22,7 @@ function render() {
     id: 'o-editor',
     iconCls: 'o-icon-fa-pencil',
     src: '#fa-pencil',
-    text: 'Redigera'
+    text: ''
   });
   $('#o-menutools').append(el);
 }

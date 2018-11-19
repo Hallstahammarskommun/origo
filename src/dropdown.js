@@ -42,8 +42,10 @@ export default function dropDown(target, items, options) {
   function addListener() {
     $target.on('click', 'ul', (e) => {
       const $active = $(e.target);
+      const $prevAct = $active.parent().find('.o-active');
       $target.trigger({
         type: 'changeDropdown',
+        prevSelected: $prevAct.data(options.dataAttribute),
         dataAttribute: $(e.target).data(options.dataAttribute)
       });
       toggleActive($active);
