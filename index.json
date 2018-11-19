@@ -238,9 +238,9 @@
         "queryable": false
       }]
     }, {
-        "name": "extern:pk_farg",
+        "name": "primarkarta",
         "source": "wms",
-        "style": "pk_farg",
+        "style": "primarkarta",
         "title": "Primärkarta",
         "format": "image/png",
         "group": "bygga",
@@ -870,10 +870,10 @@
               "filter": "[obj] == 'Kolbäck'"
           }]
         ],
-        "pk_farg": [
+        "primarkarta": [
             [{
                 "image": {
-                    "src": "img/png/PK_farg.png"
+                    "src": "img/png/primarkarta.png"
                 }
             }]
         ],
