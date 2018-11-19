@@ -1,14 +1,14 @@
 .o-button-container {
   -webkit-box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
-  border-radius: 4px;
+  border-radius: 4rem;
   box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
   display: inline-block;
   position: absolute;
-  height: 2rem;
-  width: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 .o-button {
-  border-radius: 4px;
+  border-radius: 4rem;
   background-color: $o-btn-bg;
   border: none;
   color: $o-btn-color;
@@ -16,12 +16,12 @@
   display: inline-block;
   font-size: 1rem;
   position: relative;
-  height: 2em;
+  height: 2.5em;
   line-height: 1em;
   padding: 0;
   text-align: center;
   text-decoration: none;
-  width: 2em;
+  width: 2.5em;
 }
 .o-no-boxshadow {
   box-shadow: none;
@@ -63,16 +63,4 @@
   text-align: center;
   text-decoration: none;
   width: 2.5rem;
-}
-&[class*=#{$media-l}] {
-  .o-button {
-    border-radius: 4rem;
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-  .o-button-container {
-    border-radius: 4rem;
-    height: 2.5rem;
-    width: 2.5rem;
-  }
 }

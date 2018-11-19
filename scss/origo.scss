@@ -12,7 +12,8 @@
   @import 'reset.scss';
   @import 'helpers.scss';
   @import 'ol.scss';
-  @import 'externs/owl-carousel.scss';
+  @import 'externs/owl.carousel.scss';
+  @import 'externs/owl.theme.default.scss';
   @import 'font.scss';
   @import 'table.scss';
   @import 'card.scss';
@@ -47,7 +48,9 @@
   @import 'splash.scss';
   @import 'downloader.scss';
   @import 'hidden.scss';
-  @import 'download.scss'
+  @import 'featureinfo.scss';
+  @import 'download.scss';
+
 }
 html,
 body {
