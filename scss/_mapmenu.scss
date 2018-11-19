@@ -27,7 +27,7 @@
 #o-mapmenu-button-close {
 		position: absolute;
 		right: .5em;
-		top: .5rem;
+		top: .75rem;
 }
 /*remove the boxshadow when selected*/
 .o-mapmenu-show .o-button-container {
@@ -125,7 +125,7 @@ li .o-menu-button:hover {
 #o-mapmenu-button .o-button-text {
 	display: none;
 }
-#o-mapmenu-button-close {
+/*#o-mapmenu-button-close {
   top: 0.75rem;
-}
+}*/
 }
