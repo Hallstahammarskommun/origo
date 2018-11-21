@@ -428,6 +428,20 @@
             "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Gator-och-vagar/Trafik/Service--och-flexlinje/' target='_blank'>Mer information</a>"
         }]
     }, {
+        "name": "ks_skl_l",
+        "title": "Skollinjer",
+        "group": "trafik",
+        "source": "local",
+        "style": "ks_skl_l",
+        "type": "WFS",
+        "visible": false,
+        "attributes": [ {
+            "name": "obj",
+            "title": "Tur: "
+        }, {
+            "html": "<b>Länk:</b> <a href='https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola' target='_blank'> Mer information</a>"
+        }]
+    }, {
         "name": "tk_mak_y",
         "source": "local",
         "style": "tk_mak_y",
@@ -870,6 +884,36 @@
               "filter": "[obj] == 'Kolbäck'"
           }]
         ],
+        "ks_skl_l": [
+          [{
+            "stroke": {
+            "color": "rgba(72, 217, 99, 0.6)",
+            "width": 6
+          },
+            "filter": "[obj] == 'Tur 14'"
+        }],
+          [{
+            "stroke": {
+            "color": "rgba(151, 104, 209, 0.6)",
+            "width": 6
+          },
+            "filter": "[obj] == 'Tur 17'"
+          }],
+          [{
+              "stroke": {
+              "color": "rgba(243, 163, 42, 0.6)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Tur 11'"
+          }],
+          [{
+              "stroke": {
+              "color": "rgba(218, 114, 126, 0.6)",
+              "width": 6
+            },
+              "filter": "[obj] == 'Tur 12'"
+          }]
+        ],        
         "primarkarta": [
             [{
                 "image": {
