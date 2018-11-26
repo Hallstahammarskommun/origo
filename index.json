@@ -162,8 +162,8 @@
           "title": "Planakt: ",
           "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
           "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-          "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-          "urlSuffix": ".pdf"
+          "urlPrefix": "https://hallstahammar.se/sok?query=",
+          "urlSuffix": "&submitButton=S%C3%B6k"
         }]
     }, {
         "name": "tk_kof_y",
