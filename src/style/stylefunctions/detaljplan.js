@@ -33,10 +33,10 @@ export default function detaljplanStyle() {
       return context.createPattern(canvas, 'repeat');
     }());
 
-    const regexPrick = new RegExp(/860/);
-    const regexPlus = new RegExp(/870/);
+    const regexPrick = new RegExp(/Prickmark/);
+    const regexPlus = new RegExp(/Korsmark/);
 
-    if (regexPrick.test(feature.get('objid'))) {
+    if (regexPrick.test(feature.get('code'))) {
       fill = new Fill({
         color: prickmark
       });
@@ -44,7 +44,7 @@ export default function detaljplanStyle() {
         fill
       });
       return style;
-    } else if (regexPlus.test(feature.get('objid'))) {
+    } else if (regexPlus.test(feature.get('code'))) {
       fill = new Fill({
         color: korsmark
       });

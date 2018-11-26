@@ -416,132 +416,6 @@
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "minScale": 2000,
-          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-          "attributes": [
-            {
-              "title": "Namn: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            },
-            {
-              "title": "Planakt: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-              "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-              "urlSuffix": ".pdf"
-            }
-          ]
-        },
-        {
-          "name": "pbr_detaljplaner",
-          "source": "geoserver",
-          "style": "detaljplan",
-          "title": "Detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "visible": true,
-          "opacity": 0.2,
-          "maxScale": 2000,
-          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-          "attributes": [
-            {
-              "title": "Namn: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            },
-            {
-              "title": "Planakt: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-              "urlPrefix": "http://hallstahammar.se/globalassets/03-bygg--och-miljo/detaljplaner/arken2/",
-              "urlSuffix": ".pdf"
-            }
-          ]
-        },
-        {
-          "name": "detaljplan",
-          "source": "wms",
-          "style": "detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "renderMode": "image",
-          "visible": true,
-          "maxScale": 2000
-        },
-        {
-          "name": "ks_dpan_y",
-          "title": "Användning",
-          "source": "ows",
-          "style": "ks_dpan_y",
-          "type": "WFS",
-          "visible": true,
-          "maxScale": 2000,
-          "attributes": [
-            {
-              "name": "kategori"
-            }
-          ]
-        },
-        {
-          "name": "ks_dpe_y",
-          "title": "Bestämmelse",
-          "source": "ows",
-          "style": "ks_dpe_y",
-          "type": "WFS",
-          "visible": true,
-          "maxScale": 2000,
-          "attributes": [
-            {
-              "name": "bestammelseformulering"
-            }
-          ]
-        },
-        {
-          "name": "ks_dpad_y",
-          "title": "Administrativ bestämmelse",
-          "source": "ows",
-          "style": "ks_dpe_y",
-          "type": "WFS",
-          "visible": true,
-          "maxScale": 2000,
-          "attributes": [
-            {
-              "name": "bestammelseformulering"
-            }
-          ]
-        },
-        {
-          "name": "ks_dpn_l",
-          "title": "Bestämmelse",
-          "source": "ows",
-          "style": "ks_dpn_l",
-          "type": "WFS",
-          "visible": true,
-          "maxScale": 2000,
-          "attributes": [
-            {
-              "name": "bestammelseformulering"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "bm_elf_y",
-      "title": "Detaljplan Focus",
-      "style": "detaljplan",
-      "group": "--LM",
-      "type": "GROUP",
-      "fme": true,
-      "visible": false,
-      "layers": [
-        {
-          "name": "pbr_detaljplaner",
-          "source": "geoserver",
-          "style": "detaljplan",
-          "title": "Detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "visible": true,
           "minScale": 4000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
@@ -594,10 +468,10 @@
           "maxScale": 2000
         },
         {
-          "name": "ks_focus_dpan_y",
+          "name": "ks_dpan_y",
           "title": "Användning",
           "source": "ows",
-          "style": "ks_focus_dpan_y",
+          "style": "ks_dpan_y",
           "type": "WFS",
           "visible": true,
           "maxScale": 4000,
@@ -608,10 +482,10 @@
           ]
         },
         {
-          "name": "ks_focus_dpe_y",
+          "name": "ks_dpe_y",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_focus_dpe_y",
+          "style": "ks_dpe_y",
           "type": "WFS",
           "visible": true,
           "maxScale": 2000,
@@ -622,10 +496,10 @@
           ]
         },
         {
-          "name": "ks_focus_dpad_y",
+          "name": "ks_dpad_y",
           "title": "Administrativ bestämmelse",
           "source": "ows",
-          "style": "ks_focus_dpe_y",
+          "style": "ks_dpe_y",
           "type": "WFS",
           "visible": true,
           "maxScale": 2000,
@@ -636,10 +510,10 @@
           ]
         },
         {
-          "name": "ks_focus_dpn_l",
+          "name": "ks_dpn_l",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_focus_dpn_l",
+          "style": "ks_dpn_l",
           "type": "WFS",
           "visible": true,
           "maxScale": 2000,
@@ -1308,219 +1182,6 @@
           "fill": {
             "color": "rgba(244,244,244,0.45)"
           },
-          "filter": "[kategori] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(159,207,171,0.45)"
-          },
-          "filter": "[kategori] == '/^PARK|NATUR|SKYDD/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,255,163,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[b]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(138,111,76,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[chk]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,17,17,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ds]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(138,171,255,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ej]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(173,173,173,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[fgptv]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(127,255,127,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[ln]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(194,61,194,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[m]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,127,0,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[or]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(213,203,170,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[z]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(179,217,255,0.45)"
-          },
-          "filter": "[beteckningkarta] == '/^[w]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgb(0,0,0)"
-          }
-        }
-      ]
-    ],
-    "ks_dpe_y": [
-      [
-        {
-          "custom": "detaljplan"
-        }
-      ]
-    ],
-    "ks_dpn_l": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              70,
-              15,
-              70,
-              15,
-              5,
-              15
-            ],
-            "width": 2
-          },
-          "filter": "[obj] == '0'"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 5
-          },
-          "filter": "[typ] == '1'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 1.5
-          },
-          "filter": "[obj] == '1'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[obj] == '2'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[obj] == '3'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[obj] == '4'",
-          "minScale": 2000
-        }
-      ]
-    ],
-    "ks_focus_dpan_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(244,244,244,0.45)"
-          },
           "filter": "[value_pt] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
         }
       ],
@@ -1620,14 +1281,14 @@
         }
       ]
     ],
-    "ks_focus_dpe_y": [
+    "ks_dpe_y": [
       [
         {
-          "custom": "detaljplanFocus"
+          "custom": "detaljplan"
         }
       ]
     ],
-    "ks_focus_dpn_l": [
+    "ks_dpn_l": [
       [
         {
           "stroke": {

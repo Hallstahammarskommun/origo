@@ -180,7 +180,7 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
             return styleL;
           }
         }
-        if (eval(expr)) {
+        else if (eval(expr)) {
           styleL = styleList[j];
           return styleL;
         }
