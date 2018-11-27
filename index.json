@@ -434,6 +434,7 @@
         "source": "local",
         "style": "ks_skl_l",
         "type": "WFS",
+        "fme": true,
         "visible": false,
         "attributes": [ {
             "name": "obj",
