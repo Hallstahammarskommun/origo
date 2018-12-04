@@ -162,8 +162,8 @@
           "title": "Planakt: ",
           "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
           "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-          "urlPrefix": "https://hallstahammar.se/sok?query=",
-          "urlSuffix": "&submitButton=S%C3%B6k"
+          "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
+          "urlSuffix": ".pdf"
         }]
     }, {
         "name": "tk_kof_y",
@@ -914,7 +914,7 @@
             },
               "filter": "[obj] == 'Tur 12'"
           }]
-        ],        
+        ],
         "primarkarta": [
             [{
                 "image": {
