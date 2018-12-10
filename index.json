@@ -262,18 +262,6 @@
             "url": "url"
         }]
     }, {
-        "name": "bm_elf_y",
-        "source": "ows",
-        "style": "bm_elf_y",
-        "title": "Eldningsförbud",
-        "group": "energi",
-        "type": "WFS",
-        "fme": true,
-        "visible": false,
-        "attributes": [{
-            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Miljo-halsa--hallbar-utveckling/eldningsforbud' target='_blank'>Mer information</a>"
-        }]
-    }, {
         "name": "bm_lim_p",
         "source": "ows",
         "style": "bm_lim_p",
@@ -315,7 +303,7 @@
         "fme": true,
         "visible": false,
         "attributes": [{
-          "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/naturomraden' target='_blank'>Mer information</a>"
+          "html": "<a href='https://hallstahammar.se/uppleva-och-gora/sevardheter/natur-och-friluftsliv/naturreservat' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "bu_w_ska_p",
@@ -410,7 +398,7 @@
             "name": "obj",
             "title": "Hållplats: "
         }, {
-            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Gator-och-vagar/Trafik/' target='_blank'>Mer information</a>"
+            "html": "<a href='https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "ks_sel_l",
@@ -425,7 +413,7 @@
             "name": "obj",
             "title": "Tur: "
         }, {
-            "html": "<a href='http://hallstahammar.se/Boende-miljo-trafik/Gator-och-vagar/Trafik/Service--och-flexlinje/' target='_blank'>Mer information</a>"
+            "html": "<a href='https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik' target='_blank'>Mer information</a>"
         }]
     }, {
         "name": "ks_skl_l",
@@ -711,17 +699,6 @@
                     "fill": {
                         "color": "rgb(242,205,36)"
                     }
-                }
-            }]
-        ],
-        "bm_elf_y": [
-            [{
-                "stroke": {
-                    "color": "rgb(200,0,0)",
-                    "width": 2
-                },
-                "fill": {
-                    "color": "rgba(200,0,0,0.3)"
                 }
             }]
         ],
