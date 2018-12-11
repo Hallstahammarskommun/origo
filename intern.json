@@ -407,6 +407,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
+      "abstract": "<p>Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för  särskilda ytor. De rosa linjerna markerar utfartsförbud.</p><p>De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.</p>",
       "layers": [
         {
           "name": "pbr_detaljplaner",
