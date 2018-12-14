@@ -73,10 +73,10 @@ function init(optOptions) {
   const options = optOptions || {};
   title = options.title || defaultTitle;
   if (options.buttons) {
-    buttons = options.buttons.hasOwnProperty.call('visible') ? options.buttons.visible : false;
-    revisitText = options.buttons.hasOwnProperty.call('revisitText') ? options.buttons.revisitText : 'Visa vid nästa besök';
-    hideText = options.buttons.hasOwnProperty.call('hideText') ? options.buttons.hideText : 'Visa inte igen';
-    confirmText = options.buttons.hasOwnProperty.call('confirmText') ? options.buttons.confirmText : 'Är du säker på att du vill dölja den här informationen?';
+    buttons = Object.prototype.hasOwnProperty.call(options.buttons, 'visible') ? options.buttons.visible : false;
+    revisitText = Object.prototype.hasOwnProperty.call(options.buttons, 'revisitText') ? options.buttons.revisitText : 'Visa vid nästa besök';
+    hideText = Object.prototype.hasOwnProperty.call(options.buttons, 'hideText') ? options.buttons.hideText : 'Visa inte igen';
+    confirmText = Object.prototype.hasOwnProperty.call(options.buttons, 'confirmText') ? options.buttons.confirmText : 'Är du säker på att du vill dölja den här informationen?';
   }
   if (options.url) {
     const url = viewer.getBaseUrl() + options.url;
