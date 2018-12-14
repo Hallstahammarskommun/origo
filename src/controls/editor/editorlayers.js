@@ -34,8 +34,7 @@ export default function editorLayers(editableLayers, optOptions = {}) {
     });
     $('#o-editor-layers').after(popover);
     dropDown(options.target, options.selectOptions, {
-      dataAttribute: 'layer',
-      active: options.activeLayer
+      dataAttribute: 'layer'
     });
   }
 

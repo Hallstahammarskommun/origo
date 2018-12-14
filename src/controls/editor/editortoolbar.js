@@ -5,6 +5,7 @@ import dispatcher from './editdispatcher';
 import editHandler from './edithandler';
 import editorLayers from './editorlayers';
 import drawTools from './drawtools';
+import modal from '../../modal';
 
 const activeClass = 'o-control-active';
 const disableClass = 'o-disabled';
@@ -29,9 +30,17 @@ function render() {
 
 function bindUIActions() {
   $editDraw.on('click', (e) => {
-    dispatcher.emitToggleEdit('draw');
-    $editDraw.blur();
-    e.preventDefault();
+    if ($('#editor-toolbar-layers-dropdown').find('.o-active').length) {
+      dispatcher.emitToggleEdit('draw');
+      $editDraw.blur();
+      e.preventDefault();
+      return false;
+    }
+    modal.createModal('#o-map', {
+      title: 'Inget lager valt',
+      content: 'Börja med att välja ett lager innan du ritar.'
+    });
+    modal.showModal();
     return false;
   });
   $editAttribute.on('click', (e) => {
