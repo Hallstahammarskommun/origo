@@ -1,5 +1,5 @@
-import EsriJSON from 'ol/format/esrijson';
-import Collection from 'ol/collection';
+import EsriJSON from 'ol/format/EsriJSON';
+import Collection from 'ol/Collection';
 import $ from 'jquery';
 import viewer from './viewer';
 import maputils from './maputils';
