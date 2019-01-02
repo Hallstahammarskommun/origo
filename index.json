@@ -262,6 +262,30 @@
             "url": "url"
         }]
     }, {
+        "name": "ks_kmv_y",
+        "source": "ows",
+        "style": "ks_kmv_y",
+        "title": "Värdefulla byggnader",
+        "group": "bygga",
+        "type": "WFS",
+        "fme": false,
+        "visible": false,
+        "abstract": "<p>Lagret visar Västmanlands läns musems byggnadsinventerring som gjoders mellan åren 2012-2018.</p>",
+        "attributes": [{
+            "name": "vardebeskrivn",
+            "title": "Värdebeskrivning: "
+        }, {
+            "name": "byggar_start",
+            "title": "Byggår: "
+        }, {
+            "img": "urlsmall"
+        }, {
+            "name": "namn",
+            "title": "Område: "
+        }, {
+            "name": "beskrivning"
+        }]
+    }, {
         "name": "bm_lim_p",
         "source": "ows",
         "style": "bm_lim_p",
@@ -592,6 +616,20 @@
               "color": "rgba(255,198,105,0.3)"
             }
           }]
+        ],
+        "ks_kmv_y": [
+            [{
+                "fill": {
+                    "color": "rgba(125,0,0,0.6)"
+                },
+                "filter": "[obj] == '1'"
+            }],
+            [{
+                "fill": {
+                    "color": "rgba(223,184,47,0.25)"
+                },
+                "filter": "[obj] == '2'"
+            }]
         ],
         "tk_kof_y": [
             [{
