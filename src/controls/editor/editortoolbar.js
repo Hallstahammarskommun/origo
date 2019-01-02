@@ -5,7 +5,7 @@ import dispatcher from './editdispatcher';
 import editHandler from './edithandler';
 import editorLayers from './editorlayers';
 import drawTools from './drawtools';
-import modal from '../../modal';
+import Modal from '../../ui';
 
 const activeClass = 'o-control-active';
 const disableClass = 'o-disabled';
@@ -16,7 +16,6 @@ let $editDraw;
 let $editDelete;
 let $editLayers;
 let $editSave;
-let $editClose;
 
 function render() {
   $('#o-tools-bottom').append(editortemplate);
@@ -25,7 +24,20 @@ function render() {
   $editDelete = $('#o-editor-delete');
   $editLayers = $('#o-editor-layers');
   $editSave = $('#o-editor-save');
-  $editClose = $('#o-editor-close');
+}
+
+function toggleToolbar(state) {
+  if (state) {
+    $('.o-map').first().trigger({
+      type: 'enableInteraction',
+      interaction: 'editor'
+    });
+  } else {
+    $('.o-map').first().trigger({
+      type: 'enableInteraction',
+      interaction: 'featureInfo'
+    });
+  }
 }
 
 function bindUIActions() {
@@ -61,15 +73,6 @@ function bindUIActions() {
   $editSave.on('click', (e) => {
     dispatcher.emitToggleEdit('save');
     $editSave.blur();
-    e.preventDefault();
-  });
-  $editClose.on('click', (e) => {
-    $('.o-map').first().trigger({
-      type: 'enableInteraction',
-      interaction: 'featureInfo'
-    });
-    $editClose.blur();
-    e.stopPropagation();
     e.preventDefault();
   });
 }
@@ -124,16 +127,16 @@ function toggleSave(e) {
   }
 }
 
-function init(options) {
+function init(options, v) {
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
 
-  editHandler(options);
+  editHandler(options, v);
   render();
   editorLayers(editableLayers, {
     activeLayer: currentLayer
-  });
-  drawTools(options.drawTools, currentLayer);
+  }, v);
+  drawTools(options.drawTools, currentLayer, v);
 
   $(document).on('enableInteraction', onEnableInteraction);
   $(document).on('changeEdit', onChangeEdit);
@@ -143,11 +146,12 @@ function init(options) {
 
   if (options.isActive) {
     setActive(true);
-  }
+  }  
 }
 
 export default (function exportInit() {
   return {
-    init
+    init,
+    toggleToolbar
   };
 }());

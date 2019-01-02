@@ -1,7 +1,8 @@
 import wfs from './wfs';
-// import agsFeature from './agsfeature';
-// import topojson from './topojson';
-// import geojson from './geojson';
+import agsFeature from './agsfeature';
+import agsMap from './agsmap';
+import topojson from './topojson';
+import geojson from './geojson';
 import wms from './wms';
 import wmts from './wmts';
 // import agsTile from './agstile';
@@ -13,9 +14,10 @@ import wmts from './wmts';
 const type = {};
 
 type.WFS = wfs;
-// type.AGS_FEATURE = agsFeature;
-// type.TOPOJSON = topojson;
-// type.GEOJSON = geojson;
+type.AGS_FEATURE = agsFeature;
+type.AGS_MAP = agsMap;
+type.TOPOJSON = topojson;
+type.GEOJSON = geojson;
 type.WMS = wms;
 type.WMTS = wmts;
 // type.AGS_TILE = agsTile;

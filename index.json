@@ -544,6 +544,7 @@
         "cluster": [
         [
           {
+            "label": "Origokommuner",
             "circle": {
               "radius": 16,
               "fill": {

@@ -1,10 +1,9 @@
 .awesomplete > ul {
-	border-radius: 0.2rem;
-	//margin: 0.2em 0 0;
-	background: hsla(0,0%,100%,1);
-	background: linear-gradient(to bottom right, white, hsla(0,0%,100%,1));
-	//border: 1px solid rgba(0,0,0,.3);
-	box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
+	border-radius: 0.3rem;
+	margin: 0.2em 0 0;
+	background: hsla(0,0%,100%,.9);
+	background: linear-gradient(to bottom right, white, hsla(0,0%,100%,.8));
+	box-shadow: $shadow;
 	text-shadow: none;
 	min-width: $search-width;
 	width: 348px
@@ -87,8 +86,10 @@
 	color: #fff;
 }
 
-&[class*=#{$media-l}] {
+&[class*=#{$media-l-m}] {
 	.awesomplete > ul {
-		min-width: 100%;
+		min-width: calc(100% + 2rem);
+		max-width: calc(100% + 2rem);
+		top: 2.25rem;
 	}
 }
