@@ -6,7 +6,7 @@
 	box-shadow: $shadow;
 	text-shadow: none;
 	min-width: $search-width;
-	width: 348px
+	width: 310px
 }
 @supports (transform: scale(0)) {
 	.awesomplete > ul {
