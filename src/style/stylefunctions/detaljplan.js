@@ -1,5 +1,5 @@
-import Fill from 'ol/style/fill';
-import Style from 'ol/style/style';
+import Fill from 'ol/style/Fill';
+import Style from 'ol/style/Style';
 
 export default function detaljplanStyle() {
   return function styles(feature) {
