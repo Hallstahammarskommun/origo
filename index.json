@@ -346,6 +346,7 @@
             "style": "ks_kmv_y",
             "title": "Värdefulla byggnader",
             "group": "bygga",
+            "filter": "obj = '1'",
             "type": "WFS",
             "fme": false,
             "visible": false,
