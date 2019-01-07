@@ -10,12 +10,12 @@ export default {
     l: [1280, 500]
   },
   breakPointsPrefix: 'o-media',
-  defaultControls: [{
+  defaultControls: [/*{
     name: 'scaleline'
   },
   {
     name: 'zoom'
-  },
+  },*/
   {
     name: 'rotate'
   },
