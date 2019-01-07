@@ -270,7 +270,7 @@
         "type": "WFS",
         "fme": false,
         "visible": false,
-        "abstract": "<p>Lagret visar Västmanlands läns musems byggnadsinventerring som gjoders mellan åren 2012-2018.</p>",
+        "abstract": "<p>Lagret visar Västmanlands läns museums byggnadsinventering som gjordes mellan åren 2012-2018.</p>",
         "attributes": [{
             "name": "vardebeskrivn",
             "title": "Värdebeskrivning: "
