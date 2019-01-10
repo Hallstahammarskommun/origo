@@ -316,7 +316,7 @@
             "name": "egn",
             "title": "Typ: ",
             "type": "dropdown",
-            "options": ["Förskola", "Grundskola", "Grundsärskola"]
+            "options": ["Förskola", "Grundskola", "Grundsärskola", "Privat förskola"]
           }, {
             "name": "tel",
             "title": "Telefon: ",

@@ -345,7 +345,7 @@
         "group": "utbildning",
         "type": "WFS",
         "fme": true,
-        "filter": "egn = 'Förskola'",
+        "filter": "egn = 'Förskola' OR egn = 'Privat förskola'",
         "visible": false,
         "attributes": [{
             "name": "obj",
@@ -805,7 +805,15 @@
                 "icon": {
                     "size": [24, 24],
                     "src": "img/png/bu_w_fos_p.png"
-                }
+                },
+                "filter": "[egn] == 'Förskola'"
+            }],
+            [{
+                "icon": {
+                    "size": [24, 24],
+                    "src": "img/png/bu_w_pfs_p.png"
+                },
+                "filter": "[egn] == 'Privat förskola'"
             }]
         ],
         "bu_w_grs_p": [
