@@ -25,17 +25,6 @@
             "name": "print"
         },
         {
-            "--name": "splash",
-            "options": {
-                "title": "Kartnytt",
-                "url": "splash.html",
-                "buttons": {
-                    "visible": true,
-                    "confirmText": "Är du säker på att du vill dölja den här utgåvan av Kartnytt?"
-                }
-            }
-        },
-        {
             "name": "about",
             "options": {
                 "content": "<p>Hallstakartan är en karttjänst framtagen av tekniska förvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
