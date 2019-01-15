@@ -153,9 +153,6 @@
     "extern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/extern/gwc/service/wmts"
     },
-	"intern_wmts": {
-      "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
-    },
     "historiska": {
       "url": "https://karta.hallstahammar.se/geoserver/bakgrund/wms",
       "version": "1.1.1"
@@ -811,12 +808,12 @@
     },
     {
       "name": "UAV",
-      "source": "intern_wmts",
+      "source": "intern",
       "style": "orto",
       "title": "Drönarfoto",
       "format": "image/png",
       "group": "TK",
-      "type": "WMTS",
+      "type": "WMS",
       "visible": false,
       "attributes": [
         {
