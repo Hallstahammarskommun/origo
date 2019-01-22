@@ -30,20 +30,15 @@ const Download = function Download(options = {}) {
   let attributeObjects;
   let map;
   let layers;
-  const isActive = false;
 
-  function toggleDownload() {
-    if (isActive) {
-      document.dispatchEvent(new CustomEvent('toggleInteraction', {
-        bubbles: true,
-        detail: 'featureInfo'
-      }));
-    } else {
-      document.dispatchEvent(new CustomEvent('toggleInteraction', {
-        bubbles: true,
-        detail: 'download'
-      }));
-    }
+  function getLayerTitles() {
+    let titles = '';
+    layers.forEach((el) => {
+      if (el.getVisible() === true && el.get('fme')) {
+        titles += `<li>${el.get('title')}</li>`;
+      }
+    });
+    return titles;
   }
 
   function setSidebarContent() {
@@ -55,8 +50,18 @@ const Download = function Download(options = {}) {
       return obj;
     });
 
-    formElement = attributeObjects.reduce((prev, next) => prev + next.formElement, '');
+    if (selectedIndex) {
+      $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
+    }
+    layerTitles = getLayerTitles();
 
+    if (layerTitles) {
+      layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
+    } else {
+      layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
+    }
+
+    formElement = attributeObjects.reduce((prev, next) => prev + next.formElement, '');
     areaButtons = '<input id="o-extent-button" type="button" value="Aktuell vy"></input>' +
       '<input id="o-drawarea-button" type="button" value="Rita område"></input><br>';
 
@@ -65,20 +70,8 @@ const Download = function Download(options = {}) {
     } else {
       areaButtons = areaButtons.replace('"o-extent-button"', '"o-extent-button" class="o-area-active"');
     }
-
     form = `<br><form>${formElement}<br><input id="o-fme-download-button" type="button" value="Spara" disabled></input></div></form>`;
     return `<div id="tool-instructions"></div><br>${areaButtons}<br>${form}`;
-  }
-
-  function getLayerTitles() {
-    let titles = '';
-
-    layers.forEach((el) => {
-      if (el.getVisible() === true && el.get('fme')) {
-        titles += `<li>${el.get('title')}</li>`;
-      }
-    });
-    return titles;
   }
 
   function fmeDownloadEnabled() {
@@ -93,16 +86,13 @@ const Download = function Download(options = {}) {
     if (!drawLayer) {
       drawLayer = featureLayer(null, map);
     }
-
     drawInteraction = new DrawInteraction({
       source: drawLayer.getFeatureLayer().getSource(),
       type: 'Polygon'
     });
-
     modifyInteraction = new ModifyInteraction({
       source: drawLayer.getFeatureLayer().getSource()
     });
-
     drawInteraction.on('drawstart', () => {
       $('.o-map').first().trigger({
         type: 'enableInteraction',
@@ -110,7 +100,6 @@ const Download = function Download(options = {}) {
       });
       drawLayer.getFeatureLayer().getSource().clear();
     });
-
     drawInteraction.on('drawend', () => {
       map.removeInteraction(drawInteraction);
       drawLayer.getFeatureLayer().getSource().clear();
@@ -138,6 +127,17 @@ const Download = function Download(options = {}) {
     map.removeInteraction(modifyInteraction);
   }
 
+  function getVisibleLayers() {
+    let layerNames = '';
+    layers.forEach((el) => {
+      if (el.getVisible() === true && el.get('fme')) {
+        layerNames += `${el.get('name')};`;
+      }
+    });
+    layerNames = layerNames.slice(0, -1);
+    return layerNames;
+  }
+
   function sendToFME(params) {
     let size;
     let extent;
@@ -145,9 +145,7 @@ const Download = function Download(options = {}) {
     let visibleLayers;
     const paramsLength = Object.keys(params).length;
     let i;
-    let fmeUrl;
-
-    fmeUrl = options.url;
+    let fmeUrl = options.url;
 
     for (i = 0; i < paramsLength; i += 1) {
       if (i === (paramsLength - 1)) {
@@ -155,18 +153,6 @@ const Download = function Download(options = {}) {
       } else {
         fmeUrl += `${Object.keys(params)[i]}=${params[Object.keys(params)[i]]}&`;
       }
-    }
-
-    function getVisibleLayers() {
-      let layerNames = '';
-
-      layers.forEach((el) => {
-        if (el.getVisible() === true && el.get('fme')) {
-          layerNames += `${el.get('name')};`;
-        }
-      });
-      layerNames = layerNames.slice(0, -1);
-      return layerNames;
     }
 
     const formatTypes = {
@@ -187,6 +173,8 @@ const Download = function Download(options = {}) {
       extent.forEach((coordinate, j) => {
         extent[j] = Math.round(coordinate * 100) / 100;
       });
+      extent = encodeURI(extent).replace(/,/g, '%20');
+      fmeUrl += `&extent=${extent}`;
     } else {
       const feature = drawLayer.getFeatureLayer().getSource().getFeatures()[0];
       drawExtent = feature.getGeometry().getCoordinates();
@@ -198,12 +186,6 @@ const Download = function Download(options = {}) {
           });
         });
       });
-    }
-
-    if (extent) {
-      extent = encodeURI(extent).replace(/,/g, '%20');
-      fmeUrl += `&extent=${extent}`;
-    } else {
       drawExtent = encodeURI(drawExtent).replace(/,/g, '%20');
       fmeUrl += `&polygon=${drawExtent}`;
     }
@@ -222,24 +204,11 @@ const Download = function Download(options = {}) {
       menuItem = mapMenu.MenuItem({
         click() {
           mapMenu.close();
-          toggleDownload();
           sidebar.init(viewer);
           sidebar.setContent({
             content: setSidebarContent(),
             title: 'Hämta data'
           });
-
-
-          if (selectedIndex) {
-            $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
-          }
-          layerTitles = getLayerTitles();
-
-          if (layerTitles) {
-            layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
-          } else {
-            layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
-          }
 
           $(layerInfo).insertAfter('#tool-instructions');
           fmeDownloadEnabled();
@@ -297,12 +266,6 @@ const Download = function Download(options = {}) {
             $('#o-fme-download-button').blur();
             sendToFME(params);
             e.preventDefault();
-
-            sidebar.setContent({
-              content: 'Ditt data hämtas nu, beroende på vilket data som valts kan de ta olika lång tid.<br><br>Referenssystem för hämtat data är Sweref 99 16 30 och RH 2000.',
-              title: 'Hämta data'
-            });
-
           });
 
           $('.o-close-button').on('click', () => {
@@ -326,7 +289,6 @@ const Download = function Download(options = {}) {
             if (interactionExist) {
               removeInteractions();
             }
-            toggleDownload();
           });
         },
         icon,
