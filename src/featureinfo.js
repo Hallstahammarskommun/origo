@@ -141,32 +141,32 @@ const Featureinfo = function Featureinfo(options = {}) {
     content = `<div id="o-identify"><div id="o-identify-carousel" class="owl-carousel owl-theme">${content}</div></div>`;
     switch (target) {
       case 'overlay':
-      {
-        popup = Popup(`#${viewer.getId()}`);
-        popup.setContent({
-          content,
-          title: items[0].title
-        });
+        {
+          popup = Popup(`#${viewer.getId()}`);
+          popup.setContent({
+            content,
+            title: items[0].title
+          });
 
-        initCarousel('#o-identify-carousel');
-        popup.setVisibility(true);
-        const popupHeight = $('.o-popup').outerHeight() + 20;
-        $('#o-popup').height(popupHeight);
-        overlay = new Overlay({
-          element: popup.getEl(),
-          autoPan: true,
-          autoPanAnimation: {
-            duration: 500
-          },
-          autoPanMargin: 40,
-          positioning: 'bottom-center'
-        });
-        const geometry = items[0].feature.getGeometry();
-        const coord = geometry.getType() === 'Point' ? geometry.getCoordinates() : coordinate;
-        map.addOverlay(overlay);
-        overlay.setPosition(coord);
-        break;
-      }
+          initCarousel('#o-identify-carousel');
+          popup.setVisibility(true);
+          const popupHeight = $('.o-popup').outerHeight() + 20;
+          $('#o-popup').height(popupHeight);
+          overlay = new Overlay({
+            element: popup.getEl(),
+            autoPan: true,
+            autoPanAnimation: {
+              duration: 500
+            },
+            autoPanMargin: 40,
+            positioning: 'bottom-center'
+          });
+          const geometry = items[0].feature.getGeometry();
+          const coord = geometry.getType() === 'Point' ? geometry.getCoordinates() : coordinate;
+          map.addOverlay(overlay);
+          overlay.setPosition(coord);
+          break;
+        }
       case 'sidebar': {
         sidebar.setContent({
           content,
