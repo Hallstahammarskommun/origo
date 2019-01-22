@@ -1,16 +1,12 @@
 import DrawInteraction from 'ol/interaction/Draw';
 import ModifyInteraction from 'ol/interaction/Modify';
 import $ from 'jquery';
-import utils from '../utils';
 import formCreator from '../utils/formcreator';
 import sidebar from '../sidebar';
 import featureLayer from '../featurelayer';
 import { Component } from '../ui';
 
 const Download = function Download(options = {}) {
-  let {
-    params
-  } = options;
   const {
     icon = '#ic_get_app_24px',
     title = 'Hämta data'
@@ -19,11 +15,9 @@ const Download = function Download(options = {}) {
   let viewer;
   let mapMenu;
   let menuItem;
-  // let modal;
 
   let activeButton;
   let selectedIndex;
-  // let buttonText;
   let drawInteraction;
   let modifyInteraction;
   let drawLayer;
@@ -32,46 +26,11 @@ const Download = function Download(options = {}) {
   let form;
   let layerInfo;
   let formOptions;
-  let url;
   let formElement;
   let attributeObjects;
   let map;
-  // let options;
   let layers;
-  let isActive = false;
-
-  /*function render() {
-    const el = utils.createListButton({
-      id: 'o-download',
-      iconCls: 'o-icon-fa-download',
-      src: '#fa-download',
-      text: buttonText
-    });
-    $('#o-menutools').append(el);
-  }*/
-
-  /*const toggleState = function toggleState(state) {
-    if (state === false) {
-      menuItem.dispatch('change', { state: 'active' });
-    } else {
-      menuItem.dispatch('change', { state: 'initial' });
-    }
-  };*/
-
-  /*function onEnableInteraction(e) {
-    if (e.interaction === 'download') {
-      toggleState(true);
-    } else {
-      toggleState(false);
-    }
-  }*/
-
-  /*function enableInteraction() {
-    console.log(menuItem.getId())
-    document.getElementById(menuItem.getId()).classList.add('active');
-    setActive(true);
-    document.getElementById(menuItem.getId()).click();
-  }*/
+  const isActive = false;
 
   function toggleDownload() {
     if (isActive) {
@@ -79,13 +38,11 @@ const Download = function Download(options = {}) {
         bubbles: true,
         detail: 'featureInfo'
       }));
-      disableInteraction();
     } else {
       document.dispatchEvent(new CustomEvent('toggleInteraction', {
         bubbles: true,
         detail: 'download'
       }));
-      //enableInteraction();
     }
   }
 
@@ -157,6 +114,7 @@ const Download = function Download(options = {}) {
     drawInteraction.on('drawend', () => {
       map.removeInteraction(drawInteraction);
       drawLayer.getFeatureLayer().getSource().clear();
+      sidebar.setVisibility(true);
     });
   }
 
@@ -189,7 +147,7 @@ const Download = function Download(options = {}) {
     let i;
     let fmeUrl;
 
-    fmeUrl = url;
+    fmeUrl = options.url;
 
     for (i = 0; i < paramsLength; i += 1) {
       if (i === (paramsLength - 1)) {
@@ -253,131 +211,6 @@ const Download = function Download(options = {}) {
     window.open(fmeUrl, '_self');
   }
 
-  function bindUIActions() {
-    
-    $('#o-download-button').on('click', () => {
-      //toggleState(true);
-      toggleDownload();
-      sidebar.init();
-      sidebar.setContent({
-        content: setSidebarContent(),
-        title: 'Hämta data'
-      });
-
-      if (selectedIndex) {
-        $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
-      }
-      layerTitles = getLayerTitles();
-
-      if (layerTitles) {
-        layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
-      } else {
-        layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
-      }
-
-      $(layerInfo).insertAfter('#tool-instructions');
-      fmeDownloadEnabled();
-      sidebar.setVisibility(true);
-
-      $('#input-DestinationFormat').change(() => {
-        fmeDownloadEnabled();
-      });
-
-      initInteractions();
-
-      if ($('#o-drawarea-button').hasClass('o-area-active')) {
-        addInteractions();
-      }
-
-      $('#o-extent-button').on('click', () => {
-        if ($('#o-drawarea-button').hasClass('o-area-active')) {
-          $('#o-drawarea-button').removeClass('o-area-active');
-        }
-
-        if (!$('#o-extent-button').hasClass('o-area-active')) {
-          $('#o-extent-button').addClass('o-area-active');
-          drawLayer.getFeatureLayer().getSource().clear();
-        }
-        const interactionExist = drawInteractionAdded();
-
-        if (interactionExist) {
-          removeInteractions();
-        }
-      });
-
-      $('#o-drawarea-button').on('click', () => {
-        if ($('#o-extent-button').hasClass('o-area-active')) {
-          $('#o-extent-button').removeClass('o-area-active');
-        }
-
-        if (!$('#o-drawarea-button').hasClass('o-area-active')) {
-          $('#o-drawarea-button').addClass('o-area-active');
-        }
-
-        if ($('#o-drawarea-button').hasClass('o-area-active')) {
-          const interactionExist = drawInteractionAdded();
-
-          if (!interactionExist) {
-            addInteractions();
-          }
-        }
-      });
-
-      $('#o-fme-download-button').on('click', (e) => {
-        const params = {};
-        attributeObjects.forEach((obj) => {
-          params[obj.name.toString()] = $(obj.elId).val();
-        });
-        $('#o-fme-download-button').blur();
-        sendToFME(params);
-        e.preventDefault();
-      });
-
-      $('.o-close-button').on('click', () => {
-        if (drawLayer) {
-          drawLayer.getFeatureLayer().getSource().clear();
-        }
-
-        if ($('#o-drawarea-button').hasClass('o-area-active')) {
-          activeButton = 'area';
-        } else {
-          activeButton = 'extent';
-        }
-
-        if ($('#input-DestinationFormat')[0].selectedIndex !== 0) {
-          selectedIndex = $('#input-DestinationFormat')[0].selectedIndex;
-        } else {
-          selectedIndex = 0;
-        }
-        const interactionExist = drawInteractionAdded();
-
-        if (interactionExist) {
-          removeInteractions();
-        }
-
-        //toggleState(false);
-        toggleDownload();
-      });
-    });
-  }
-
-  /*function init(optOptions) {
-    map = viewer.getMap();
-    layers = map.getLayers();
-    options = optOptions || {};
-    formOptions = options.params;
-    buttonText = options.buttontext || '';
-    url = options.url || '';
-
-    $('.o-map').on('enableInteraction', onEnableInteraction);
-    render();
-    bindUIActions();
-  }*/
-
-
-
-1
-
   return Component({
     name: 'download',
     onAdd(evt) {
@@ -389,30 +222,112 @@ const Download = function Download(options = {}) {
       menuItem = mapMenu.MenuItem({
         click() {
           mapMenu.close();
-          //toggleState(true);
           toggleDownload();
-          sidebar.init();
+          sidebar.init(viewer);
           sidebar.setContent({
             content: setSidebarContent(),
             title: 'Hämta data'
           });
 
-          
-      if (selectedIndex) {
-        $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
-      }
-      layerTitles = getLayerTitles();
 
-      if (layerTitles) {
-        layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
-      } else {
-        layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
-      }
+          if (selectedIndex) {
+            $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
+          }
+          layerTitles = getLayerTitles();
 
-      $(layerInfo).insertAfter('#tool-instructions');
-      fmeDownloadEnabled();
+          if (layerTitles) {
+            layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
+          } else {
+            layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
+          }
 
+          $(layerInfo).insertAfter('#tool-instructions');
+          fmeDownloadEnabled();
           sidebar.setVisibility(true);
+
+          $('#input-DestinationFormat').change(() => {
+            fmeDownloadEnabled();
+          });
+
+          initInteractions();
+
+          if ($('#o-drawarea-button').hasClass('o-area-active')) {
+            addInteractions();
+          }
+
+          $('#o-extent-button').on('click', () => {
+            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+              $('#o-drawarea-button').removeClass('o-area-active');
+            }
+
+            if (!$('#o-extent-button').hasClass('o-area-active')) {
+              $('#o-extent-button').addClass('o-area-active');
+              drawLayer.getFeatureLayer().getSource().clear();
+            }
+            const interactionExist = drawInteractionAdded();
+
+            if (interactionExist) {
+              removeInteractions();
+            }
+          });
+
+          $('#o-drawarea-button').on('click', () => {
+            if ($('#o-extent-button').hasClass('o-area-active')) {
+              $('#o-extent-button').removeClass('o-area-active');
+            }
+
+            if (!$('#o-drawarea-button').hasClass('o-area-active')) {
+              $('#o-drawarea-button').addClass('o-area-active');
+            }
+
+            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+              const interactionExist = drawInteractionAdded();
+
+              if (!interactionExist) {
+                addInteractions();
+              }
+            }
+          });
+
+          $('#o-fme-download-button').on('click', (e) => {
+            const params = {};
+            attributeObjects.forEach((obj) => {
+              params[obj.name.toString()] = $(obj.elId).val();
+            });
+            $('#o-fme-download-button').blur();
+            sendToFME(params);
+            e.preventDefault();
+
+            sidebar.setContent({
+              content: 'Ditt data hämtas nu, beroende på vilket data som valts kan de ta olika lång tid.<br><br>Referenssystem för hämtat data är Sweref 99 16 30 och RH 2000.',
+              title: 'Hämta data'
+            });
+
+          });
+
+          $('.o-close-button').on('click', () => {
+            if (drawLayer) {
+              drawLayer.getFeatureLayer().getSource().clear();
+            }
+
+            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+              activeButton = 'area';
+            } else {
+              activeButton = 'extent';
+            }
+
+            if ($('#input-DestinationFormat')[0].selectedIndex !== 0) {
+              selectedIndex = $('#input-DestinationFormat')[0].selectedIndex;
+            } else {
+              selectedIndex = 0;
+            }
+            const interactionExist = drawInteractionAdded();
+
+            if (interactionExist) {
+              removeInteractions();
+            }
+            toggleDownload();
+          });
         },
         icon,
         title
