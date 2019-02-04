@@ -191,7 +191,22 @@ function getFeaturesFromRemote(requestOptions, viewer) {
   const requestResult = [];
 
   const requestPromises = getFeatureInfoRequests(requestOptions, viewer).map(request => request.fn.then((features) => {
-    const layer = viewer.getLayer(request.layer);
+    let layer = viewer.getLayer(request.layer);
+
+    if (layer === undefined) {
+      const groups = viewer.getLayerGroups();
+      for (let i = 0; i < groups.length; i += 1) {
+        const layers = groups[i].get('layers');
+
+        const layerInGroup = layers.getArray().filter(filteredLayer => filteredLayer.get('name') === request.layer);
+
+        if (layerInGroup.length !== 0) {
+          layer = layerInGroup[0];
+          break;
+        }
+      }
+    }
+
     if (features) {
       if (features instanceof Collection) {
         features.forEach((feature) => {
