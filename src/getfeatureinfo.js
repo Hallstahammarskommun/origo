@@ -221,8 +221,8 @@ function getFeaturesFromRemote(requestOptions, viewer) {
       } else {
         requestResult.push({
           title: layer.get('title'),
-          feature,
-          content: getAttributes(feature, layer, map),
+          feature: features,
+          content: getAttributes(features, layer, map),
           layer: layer.get('name')
         });
       }
