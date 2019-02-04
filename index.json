@@ -154,8 +154,121 @@
   ],
   "layers": [
     {
+      "name": "detaljplan",
+      "title": "Detaljplan",
+      "style": "detaljplan",
+      "group": "bygga",
+      "type": "GROUP",
+      "fme": true,
+      "visible": false,
+      "abstract": "<p>Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för  särskilda ytor. De rosa linjerna markerar utfartsförbud.</p><p>De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.</p>",
+      "layers": [
+        {
+          "name": "pbr_detaljplaner",
+          "source": "wms",
+          "style": "detaljplan",
+          "title": "Gällande detaljplan",
+          "format": "image/png",
+          "type": "WMS",
+          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+          "visible": true,
+          "minScale": 4000,
+          "attributes": [
+            {
+              "title": "Namn: ",
+              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+            },
+            {
+              "title": "Planakt: ",
+              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
+              "urlSuffix": ".pdf"
+            }
+          ]
+        },
+        {
+          "name": "pbr_detaljplaner",
+          "source": "wms",
+          "style": "detaljplan",
+          "title": "Gällande detaljplan",
+          "format": "image/png",
+          "type": "WMS",
+          "visible": true,
+          "opacity": 0.2,
+          "maxScale": 4000,
+          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+          "attributes": [
+            {
+              "title": "Namn: ",
+              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
+            },
+            {
+              "title": "Planakt: ",
+              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
+              "urlSuffix": ".pdf"
+            }
+          ]
+        },
+        {
+          "name": "ks_dpan_y",
+          "title": "Användning",
+          "source": "ows",
+          "style": "ks_dpan_y",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 4000,
+          "attributes": [
+            {
+              "name": "description_pt"
+            }
+          ]
+        },
+        {
+          "name": "ks_dpe_y",
+          "title": "Bestämmelse",
+          "source": "ows",
+          "style": "ks_dpe_y",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 2000,
+          "attributes": [
+            {
+              "name": "description_pt"
+            }
+          ]
+        },
+        {
+          "name": "ks_dpad_y",
+          "title": "Administrativ bestämmelse",
+          "source": "ows",
+          "style": "ks_dpe_y",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 2000,
+          "attributes": [
+            {
+              "name": "description_pt"
+            }
+          ]
+        },
+        {
+          "name": "ks_dpn_l",
+          "title": "Bestämmelse",
+          "source": "ows",
+          "style": "ks_dpn_l",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 2000,
+          "queryable": false
+        }
+      ]
+    },
+    {
       "name": "fastigheter",
-      "title": "Fastighetsgränser",
+      "title": "Fastighetsgräns",
       "style": "granser",
       "group": "bygga",
       "type": "GROUP",
@@ -185,31 +298,6 @@
               "name": "obj"
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "pbr_detaljplaner",
-      "source": "wms",
-      "style": "detaljplan",
-      "title": "Gällande detaljplan",
-      "format": "image/png",
-      "group": "bygga",
-      "type": "WMS",
-      "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "title": "Namn: ",
-          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-        },
-        {
-          "title": "Planakt: ",
-          "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-          "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-          "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
-          "urlSuffix": ".pdf"
         }
       ]
     },
@@ -764,6 +852,306 @@
             "color": "rgba(255,198,105,0.3)"
           },
           "label": "Gällande planer"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 1.5
+          },
+          "label": "Användningsgräns",
+          "filter": "[code] == '2000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Egenskapsgräns",
+          "filter": "[code] == '3000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Administrativ gräns",
+          "filter": "[code] == '4000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Egenskapsgräns och administrativ gräns",
+          "filter": "[code] == '6000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 5
+          },
+          "label": "Utfartsförbud",
+          "filter": "[code] == 'Utfart får inte finnas'",
+          "minScale": 2000
+        }
+      ]
+    ],
+    "ks_dpan_y": [
+      [
+        {
+          "fill": {
+            "color": "rgba(244,244,244,0.45)"
+          },
+          "filter": "[value_pt] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(159,207,171,0.45)"
+          },
+          "filter": "[value_pt] == '/^PARK|NATUR|SKYDD/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(255,255,163,0.45)"
+          },
+          "filter": "[value_pt] == '/^[b]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(138,111,76,0.45)"
+          },
+          "filter": "[value_pt] == '/^[chk]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(255,17,17,0.45)"
+          },
+          "filter": "[value_pt] == '/^[ds]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(138,171,255,0.45)"
+          },
+          "filter": "[value_pt] == '/^[ej]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(173,173,173,0.45)"
+          },
+          "filter": "[value_pt] == '/^[fgptv]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(127,255,127,0.45)"
+          },
+          "filter": "[value_pt] == '/^[ln]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(194,61,194,0.45)"
+          },
+          "filter": "[value_pt] == '/^[m]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(255,127,0,0.45)"
+          },
+          "filter": "[value_pt] == '/^[or]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(213,203,170,0.45)"
+          },
+          "filter": "[value_pt] == '/^[z]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(179,217,255,0.45)"
+          },
+          "filter": "[value_pt] == '/^[w]/i'"
+        }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgb(0,0,0)"
+          }
+        }
+      ]
+    ],
+    "ks_dpe_y": [
+      [
+        {
+          "custom": "detaljplan"
+        }
+      ]
+    ],
+    "ks_dpn_l": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              70,
+              15,
+              70,
+              15,
+              5,
+              15
+            ],
+            "width": 2
+          },
+          "filter": "[code] == '1000'"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 5
+          },
+          "filter": "[code] == 'Utfart får inte finnas'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 1.5
+          },
+          "filter": "[code] == '2000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "filter": "[code] == '3000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10
+            ],
+            "width": 1
+          },
+          "filter": "[code] == '4000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "filter": "[code] == '6000'",
+          "minScale": 2000
         }
       ]
     ],
