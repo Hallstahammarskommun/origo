@@ -639,6 +639,17 @@
       "queryable": false
     },
     {
+      "name": "strandskydd",
+      "source": "wms",
+      "style": "lst_sts_l",
+      "title": "Strandskydd",
+      "format": "image/png",
+      "group": "LST",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false
+    },
+    {
       "name": "Tema_Q100",
       "source": "wms",
       "style": "msb_q100_y",
@@ -1559,6 +1570,14 @@
         }
       ]
     ],
+    "lst_sts_l": [
+      [{
+          "stroke": {
+              "color": "rgb(157, 193, 173)",
+              "width": 1
+          }
+      }]
+      ],
     "msb_q100_y": [
       [
         {

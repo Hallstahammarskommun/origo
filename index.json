@@ -427,7 +427,7 @@
       "type": "WFS",
       "fme": false,
       "visible": false,
-      "abstract": "Lagret visar Västmanlands läns musems byggnadsinventerring som gjoders mellan åren 2012-2018.",
+      "abstract": "Lagret visar Västmanlands läns museums byggnadsinventering som gjordes mellan åren 2012-2018.",
       "attributes": [
         {
           "name": "vardebeskrivn",
@@ -521,7 +521,7 @@
       "group": "utbildning",
       "type": "WFS",
       "fme": true,
-      "filter": "egn = 'Förskola'",
+      "filter": "egn = 'Förskola' OR egn = 'Privat förskola'",
       "visible": false,
       "attributes": [
         {
@@ -529,7 +529,7 @@
           "url": "url"
         },
         {
-          "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats</a>"
+          "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats (gäller endast kommmunala förskolor)</a>"
         },
         {
           "name": "tel",
@@ -1403,7 +1403,21 @@
             ],
             "src": "img/png/bu_w_fos_p.png"
           },
-          "label": "Förskola"
+          "label": "Förskola",
+          "filter": "[egn] == 'Förskola'"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "size": [
+              24,
+              24
+            ],
+            "src": "img/png/bu_w_pfs_p.png"
+          },
+          "label": "Privat förskola",
+          "filter": "[egn] == 'Privat förskola'"
         }
       ]
     ],
