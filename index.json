@@ -161,7 +161,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
-      "abstract": "<p>Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för  särskilda ytor. De rosa linjerna markerar utfartsförbud.</p><p>De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.</p>",
+      "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.",
       "layers": [
         {
           "name": "pbr_detaljplaner",
@@ -427,7 +427,7 @@
       "type": "WFS",
       "fme": false,
       "visible": false,
-      "abstract": "<p>Lagret visar Västmanlands läns musems byggnadsinventerring som gjoders mellan åren 2012-2018.</p>",
+      "abstract": "Lagret visar Västmanlands läns musems byggnadsinventerring som gjoders mellan åren 2012-2018.",
       "attributes": [
         {
           "name": "vardebeskrivn",
@@ -487,7 +487,7 @@
       "type": "WMS",
       "visible": false,
       "abstractTitle": "Så här fungerar solkartan",
-      "abstract": "<p>Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam.</p><p>För mer information besök kommunens <a href='http://hallstahammar.se/Boende-miljo-trafik/Energi-och-klimatradgivning/solenergi' target='_blank'>hemsida om solel.</a></p>"
+      "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='http://hallstahammar.se/Boende-miljo-trafik/Energi-och-klimatradgivning/solenergi' target='_blank'>hemsida om solel.</a>"
     },
     {
       "name": "bm_nar_y",
