@@ -55,9 +55,21 @@ const Featureinfo = function Featureinfo(options = {}) {
         clone,
         selectionStyles[items[currentItem].feature.getGeometry().getType()]
       );
-      const layer = viewer.getLayer(items[currentItem].layer.get('name'));
-      const featureinfoTitle = layer.getProperties().featureinfoTitle;
+      let featureinfoTitle;
       let title;
+      let layer;
+      if (items[currentItem].layer) {
+        if (typeof items[currentItem].layer === 'string') {
+          layer = viewer.getLayer(items[currentItem].layer);
+        }
+        else {
+          layer = viewer.getLayer(items[currentItem].layer.get('name'));
+        }
+    }
+      if (layer) {
+        featureinfoTitle = layer.getProperties().featureinfoTitle;
+      }
+
       if (featureinfoTitle) {
         const featureProps = items[currentItem].feature.getProperties();
         title = replacer.replace(featureinfoTitle, featureProps);
@@ -141,32 +153,31 @@ const Featureinfo = function Featureinfo(options = {}) {
     content = `<div id="o-identify"><div id="o-identify-carousel" class="owl-carousel owl-theme">${content}</div></div>`;
     switch (target) {
       case 'overlay':
-        {
-          popup = Popup(`#${viewer.getId()}`);
-          popup.setContent({
-            content,
-            title: items[0].title
-          });
-
-          initCarousel('#o-identify-carousel');
-          popup.setVisibility(true);
-          const popupHeight = $('.o-popup').outerHeight() + 20;
-          $('#o-popup').height(popupHeight);
-          overlay = new Overlay({
-            element: popup.getEl(),
-            autoPan: true,
-            autoPanAnimation: {
-              duration: 500
-            },
-            autoPanMargin: 40,
-            positioning: 'bottom-center'
-          });
-          const geometry = items[0].feature.getGeometry();
-          const coord = geometry.getType() === 'Point' ? geometry.getCoordinates() : coordinate;
-          map.addOverlay(overlay);
-          overlay.setPosition(coord);
-          break;
-        }
+      {
+        popup = Popup(`#${viewer.getId()}`);
+        popup.setContent({
+          content,
+          title: items[0].title
+        });
+        popup.setVisibility(true);
+        initCarousel('#o-identify-carousel');
+        const popupHeight = $('.o-popup').outerHeight() + 20;
+        $('#o-popup').height(popupHeight);
+        overlay = new Overlay({
+          element: popup.getEl(),
+          autoPan: true,
+          autoPanAnimation: {
+            duration: 500
+          },
+          autoPanMargin: 40,
+          positioning: 'bottom-center'
+        });
+        const geometry = items[0].feature.getGeometry();
+        const coord = geometry.getType() === 'Point' ? geometry.getCoordinates() : coordinate;
+        map.addOverlay(overlay);
+        overlay.setPosition(coord);
+        break;
+      }
       case 'sidebar': {
         sidebar.setContent({
           content,
@@ -195,7 +206,7 @@ const Featureinfo = function Featureinfo(options = {}) {
       hitTolerance,
       map,
       pixel
-    });
+    }, viewer);
     // Abort if clientResult is false
     if (clientResult !== false) {
       getFeatureInfo.getFeaturesFromRemote({
