@@ -1095,7 +1095,8 @@
           "icon": {
             "src": "img/png/BM_avl_p1.png"
           },
-          "filter": "[status] == '1'"
+          "filter": "[status] == '1'",
+          "label": "Godkänd"
         }
       ],
       [
@@ -1103,7 +1104,8 @@
           "icon": {
             "src": "img/png/BM_avl_p0.png"
           },
-          "filter": "[status] == '0'"
+          "filter": "[status] == '0'",
+          "label": "Ej kontrollerad"
         }
       ]
     ],
