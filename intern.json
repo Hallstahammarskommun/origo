@@ -147,6 +147,10 @@
       "version": "1.1.1"
     },
     "ows": {
+      "url": "https://karta.hallstahammar.se/geoserver/ows",
+      "strategy": "all"
+    },
+    "internows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
       "strategy": "all"
     },
@@ -262,7 +266,7 @@
     {
       "name": "ks_w_opo_p",
       "title": "Opto ansluten",
-      "source": "ows",
+      "source": "internows",
       "style": "ks_w_opo_p",
       "group": "KS",
       "type": "WFS",
@@ -279,7 +283,7 @@
     {
       "name": "tk_w_are_p",
       "title": "Arrende",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_w_are_p",
       "group": "TK",
       "fme": true,
@@ -305,7 +309,7 @@
     {
       "name": "tk_w_gtu_p",
       "title": "Geoteknisk undersökning",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_w_gtu_p",
       "group": "TK",
       "type": "WFS",
@@ -321,7 +325,7 @@
     },
     {
       "name": "tk_kof_y",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_kof_y",
       "title": "Kommunal mark",
       "group": "TK",
@@ -354,7 +358,7 @@
     },
     {
       "name": "tk_w_stp_p",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_w_stp_p",
       "title": "Stompunkter",
       "group": "TK",
@@ -717,7 +721,7 @@
     },
     {
       "name": "pts_lek_y",
-      "source": "ows",
+      "source": "internows",
       "style": "pts_lek_y",
       "title": "Pågende grävarbeten",
       "group": "PTS",
@@ -758,7 +762,7 @@
     },
     {
       "name": "tk_kir_p",
-      "source": "ows",
+      "source": "internows",
       "style": "point",
       "clusterStyle": "cluster",
       "title": "Navet",
