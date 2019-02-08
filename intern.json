@@ -1009,13 +1009,13 @@
       "visible": false
     },
     {
+      "name": "tk_mak_y__background",
+      "source": "ows",
+      "style": "tk_mak_y_background",
+      "title": "Mask_background",
       "group": "background",
-      "name": "blank",
-      "source": "",
-      "title": "Ingen bakgrundskarta",
-      "type": "WMTS",
-      "style": "",
-      "secure": false,
+      "queryable": false,
+      "type": "WFS",
       "visible": false
     }
   ],
@@ -1719,6 +1719,15 @@
         {
           "image": {
             "src": "img/png/orto.png"
+          }
+        }
+      ]
+    ],
+    "tk_mak_y_background": [
+      [
+        {
+          "image": {
+            "src": "img/png/mask.png"
           }
         }
       ]
