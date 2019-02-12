@@ -157,7 +157,7 @@
     "extern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/extern/gwc/service/wmts"
     },
-	"intern_wmts": {
+    "intern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
     },
     "historiska": {
@@ -171,18 +171,18 @@
   "groups": [
     {
       "name": "BM",
-      "title": "Bygg & miljö",
-      "expanded": true
+      "title": "Bygg- och miljöförvaltningen",
+      "expanded": false
     },
     {
       "name": "KS",
-      "title": "Kommunstyrelsen",
-      "expanded": true
+      "title": "Kommunstyrelseförvaltningen",
+      "expanded": false
     },
     {
       "name": "TK",
-      "title": "Tekniska",
-      "expanded": true
+      "title": "Tekniska förvaltningen",
+      "expanded": false
     },
     {
       "name": "LM",
@@ -827,12 +827,13 @@
     {
       "name": "UAV",
       "source": "intern_wmts",
-      "style": "orto",
+      "style": "uav",
       "title": "Drönarfoto",
       "format": "image/png",
       "group": "TK",
       "type": "WMTS",
       "visible": false,
+      "abstract": "Ortofoto framtaget från drönarflygning på mellan 50 och 120 meters höjd.",
       "attributes": [
         {
           "name": "obj",
@@ -847,18 +848,19 @@
     {
       "name": "HE1907",
       "source": "historiska",
-      "style": "karta_farg",
+      "style": "karta",
       "title": "1907",
       "format": "image/png",
       "group": "historiska",
       "type": "WMS",
       "visible": false,
+      "abstract": "Häradsekonomiska kartan (1859-1934) baserades på laga skifteskartor och beskriver markanvändning, vegetation, bebyggelse, kommunikationer och gränser.",
       "queryable": false
     },
     {
       "name": "Histortho_60",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "1960",
       "format": "image/png",
       "group": "historiska",
@@ -869,18 +871,19 @@
     {
       "name": "EK1962",
       "source": "historiska",
-      "style": "karta_farg",
+      "style": "karta",
       "title": "1962",
       "format": "image/png",
       "group": "historiska",
       "type": "WMS",
       "visible": false,
+      "abstract": "Ekonomiska kartan (1935-1978) var registerkarta och redovisar fastigheterna och registerbeteckningarna. Bostadsbyggnader, tomt och trädgård, odlingsområden samt fornminnen och ett stort antal ortnamn redovisas.",
       "queryable": false
     },
     {
       "name": "Histortho_75",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "1975",
       "format": "image/png",
       "group": "historiska",
@@ -891,7 +894,7 @@
     {
       "name": "OF1997",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "1997",
       "format": "image/png",
       "group": "historiska",
@@ -902,7 +905,7 @@
     {
       "name": "OF2001",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2001",
       "format": "image/png",
       "group": "historiska",
@@ -913,7 +916,7 @@
     {
       "name": "orto_2007",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2007",
       "format": "image/png",
       "group": "historiska",
@@ -924,7 +927,7 @@
     {
       "name": "orto_2010",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2010",
       "format": "image/png",
       "group": "historiska",
@@ -935,7 +938,7 @@
     {
       "name": "orto_2012",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2012",
       "format": "image/png",
       "group": "historiska",
@@ -946,7 +949,7 @@
     {
       "name": "orto_2014",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2014",
       "format": "image/png",
       "group": "historiska",
@@ -957,7 +960,7 @@
     {
       "name": "orto_2016",
       "source": "historiska",
-      "style": "orto",
+      "style": "uav",
       "title": "2016",
       "format": "image/png",
       "group": "historiska",
@@ -1092,26 +1095,39 @@
     "bm_avl_p": [
       [
         {
+          "label": "Godkänd",
+          "filter": "[status] == '1'",
           "icon": {
             "src": "img/png/BM_avl_p1.png"
-          },
-          "filter": "[status] == '1'",
-          "label": "Godkänd"
+          }
         }
       ],
       [
         {
+          "label": "Ej kontrollerad",
+          "filter": "[status] == '0'",
           "icon": {
             "src": "img/png/BM_avl_p0.png"
-          },
-          "filter": "[status] == '0'",
-          "label": "Ej kontrollerad"
+          }
         }
       ]
     ],
     "opto": [
       [
         {
+          "label": "Opto nodpunkt",
+          "circle": {
+            "radius": 5,
+            "stroke": {
+              "color": "rgb(240,163,0)",
+              "width": 5
+            }
+          }
+        }
+      ],
+      [
+        {
+          "label": "Optonät",
           "stroke": {
             "color": "rgb(240,163,0)",
             "width": 1
@@ -1122,48 +1138,54 @@
     "ks_w_opo_p": [
       [
         {
+          "label": "Ansluten",
+          "filter": "[obj] == 'Ansluten'",
           "icon": {
             "src": "img/png/KS_w_opo_p1.png"
-          },
-          "filter": "[obj] == 'Ansluten'"
+          }
         }
       ],
       [
         {
+          "label": "Avtalad",
+          "filter": "[obj] == 'Avtal'",
           "icon": {
             "src": "img/png/KS_w_opo_p2.png"
-          },
-          "filter": "[obj] == 'Avtal'"
+          }
         }
       ],
       [
         {
+          "label": "Intresserad",
+          "filter": "[obj] == 'Intresse'",
           "icon": {
             "src": "img/png/KS_w_opo_p4.png"
-          },
-          "filter": "[obj] == 'Intresse'"
+          }
         }
       ],
       [
         {
+          "label": "Kampanj",
+          "filter": "[obj] == 'Kampanj'",
           "icon": {
             "src": "img/png/KS_w_opo_p3.png"
-          },
-          "filter": "[obj] == 'Kampanj'"
+          }
         }
       ],
       [
         {
+          "label": "Pumpstation",
+          "filter": "[obj] == 'Pumpstation'",
           "icon": {
             "src": "img/png/KS_w_opo_p0.png"
-          },
-          "filter": "[obj] == 'Pumpstation'"
+          }
         }
       ]
     ],
     "tk_w_are_p": [
       [
         {
+          "label": "Arrendeavtal",
           "icon": {
             "src": "img/png/TK_w_are_p.png"
           }
@@ -1173,6 +1195,7 @@
     "tk_w_gtu_p": [
       [
         {
+          "label": "Geoteknisk undersökning",
           "icon": {
             "src": "img/png/tk_w_gtu_p.png"
           }
@@ -1182,18 +1205,28 @@
     "tk_kof_y": [
       [
         {
+          "label": "Kommunal fastighet",
+          "filter": "[typ] == 'Nej'",
           "fill": {
             "color": "rgba(165,0,165,0.25)"
           },
-          "filter": "[typ] == 'Nej'"
+          "stroke": {
+            "color": "rgba(165,0,165,0.25)",
+            "width": 1
+          }
         }
       ],
       [
         {
+          "label": "Tomträtt",
+          "filter": "[typ] == 'Ja'",
           "fill": {
             "color": "rgba(165,0,165,0.45)"
           },
-          "filter": "[typ] == 'Ja'"
+          "stroke": {
+            "color": "rgba(165,0,165,0.45)",
+            "width": 1
+          }
         }
       ]
     ],
@@ -1413,7 +1446,8 @@
     "grundkarta": [
       [
         {
-          "image": {
+          "label": "Grundkarta",
+          "icon": {
             "src": "img/png/grundkarta.png"
           }
         }
@@ -1422,7 +1456,8 @@
     "primarkarta": [
       [
         {
-          "image": {
+          "label": "Primärkarta",
+          "icon": {
             "src": "img/png/primarkarta.png"
           }
         }
@@ -1431,32 +1466,58 @@
     "tk_w_stp_p": [
       [
         {
-          "icon": {
-            "src": "img/png/droppe_black.png"
-          },
-          "filter": "[stompunkttyp] == 'planpunkt'"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/drop_blue.png"
-          },
-          "filter": "[stompunkttyp] == 'plan-höjdpunkt'"
-        }
-      ],
-      [
-        {
+          "label": "Höjdfix",
+          "filter": "[stompunkttyp] == 'höjdpunkt'",
           "icon": {
             "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[stompunkttyp] == 'höjdpunkt'"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Planpunkt",
+          "filter": "[stompunkttyp] == 'planpunkt'",
+          "icon": {
+            "src": "img/png/droppe_black.png"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Plan- och höjdpunkt",
+          "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
+          "icon": {
+            "src": "img/png/drop_blue.png"
+          }
         }
       ]
     ],
     "va": [
       [
         {
+          "label": "Dagvatten",
+          "stroke": {
+            "color": "rgb(0,128,0)",
+            "width": 1,
+            "lineDash": [
+              6,
+              2
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Spillvatten",
+          "stroke": {
+            "color": "rgb(255,0,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Vatten",
           "stroke": {
             "color": "rgb(0,0,255)",
             "width": 1,
@@ -1577,13 +1638,15 @@
       ]
     ],
     "lst_sts_l": [
-      [{
+      [
+        {
           "stroke": {
-              "color": "rgb(157, 193, 173)",
-              "width": 1
+            "color": "rgb(157, 193, 173)",
+            "width": 1
           }
-      }]
-      ],
+        }
+      ]
+    ],
     "msb_q100_y": [
       [
         {
@@ -1718,6 +1781,25 @@
       [
         {
           "image": {
+            "src": "img/png/orto.png"
+          }
+        }
+      ]
+    ],
+    "karta": [
+      [
+        {
+          "icon": {
+            "src": "img/png/farg.png"
+          }
+        }
+      ]
+    ],
+    "uav": [
+      [
+        {
+          "label": "Drönarfoto",
+          "icon": {
             "src": "img/png/orto.png"
           }
         }
