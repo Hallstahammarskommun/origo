@@ -171,18 +171,18 @@
   "groups": [
     {
       "name": "BM",
-      "title": "Bygg- och miljöförvaltningen",
-      "expanded": false
+      "title": "Bygg- och miljöförvaltning",
+      "expanded": true
     },
     {
       "name": "KS",
-      "title": "Kommunstyrelseförvaltningen",
-      "expanded": false
+      "title": "Kommunstyrelseförvaltning",
+      "expanded": true
     },
     {
       "name": "TK",
       "title": "Tekniska förvaltningen",
-      "expanded": false
+      "expanded": true
     },
     {
       "name": "LM",
@@ -200,18 +200,8 @@
       "expanded": false
     },
     {
-      "name": "PTS",
-      "title": "Post- och telestyrelsen",
-      "expanded": false
-    },
-    {
       "name": "RAA",
       "title": "Riksantikvarieämbetet",
-      "expanded": false
-    },
-    {
-      "name": "SV",
-      "title": "Skatteverket",
       "expanded": false
     },
     {
@@ -254,6 +244,28 @@
       ]
     },
     {
+      "name": "grundkarta",
+      "source": "geoserver",
+      "style": "grundkarta",
+      "title": "Grundkarta",
+      "format": "image/png",
+      "group": "KS",
+      "type": "WMS",
+      "fme": true,
+      "visible": false
+    },
+    {
+      "name": "primarkarta",
+      "source": "geoserver",
+      "style": "primarkarta",
+      "title": "Primärkarta",
+      "format": "image/png",
+      "group": "KS",
+      "type": "WMS",
+      "fme": true,
+      "visible": false
+    },
+    {
       "name": "opto",
       "source": "intern",
       "style": "opto",
@@ -277,6 +289,34 @@
         {
           "name": "obj",
           "title": "Status: "
+        }
+      ]
+    },
+    {
+      "name": "tk_w_stp_p",
+      "source": "internows",
+      "style": "tk_w_stp_p",
+      "title": "Stompunkter",
+      "group": "KS",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "filter": "status <> 'förstörd'",
+      "strategy": "bbox",
+      "attributes": [
+        {
+          "name": "pktnr",
+          "title": "Punktnummer: "
+        },
+        {
+          "xy": true
+        },
+        {
+          "title": "Z: ",
+          "name": "z"
+        },
+        {
+          "img": "img"
         }
       ]
     },
@@ -335,56 +375,6 @@
       "visible": false
     },
     {
-      "name": "grundkarta",
-      "source": "geoserver",
-      "style": "grundkarta",
-      "title": "Grundkarta",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "primarkarta",
-      "source": "geoserver",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "tk_w_stp_p",
-      "source": "internows",
-      "style": "tk_w_stp_p",
-      "title": "Stompunkter",
-      "group": "TK",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "filter": "status <> 'förstörd'",
-      "strategy": "bbox",
-      "attributes": [
-        {
-          "name": "pktnr",
-          "title": "Punktnummer: "
-        },
-        {
-          "xy": true
-        },
-        {
-          "title": "Z: ",
-          "name": "z"
-        },
-        {
-          "img": "img"
-        }
-      ]
-    },
-    {
       "name": "va",
       "source": "intern",
       "style": "va",
@@ -414,7 +404,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
-      "abstract": "<p>Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för  särskilda ytor. De rosa linjerna markerar utfartsförbud.</p><p>De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.</p>",
+      "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.",
       "layers": [
         {
           "name": "pbr_detaljplaner",
@@ -424,7 +414,7 @@
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "minScale": 4000,
+          "minScale": 6000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
             {
@@ -448,8 +438,8 @@
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "opacity": 0.2,
-          "maxScale": 4000,
+          "opacity": 0.1,
+          "maxScale": 6000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
             {
@@ -482,7 +472,7 @@
           "style": "ks_dpan_y",
           "type": "WFS",
           "visible": true,
-          "maxScale": 4000,
+          "maxScale": 6000,
           "attributes": [
             {
               "name": "description_pt"
@@ -537,6 +527,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
+      "abstract": "Fastighetsindelningen i lagret motsvarar gränserna i Registerkartan. Det är viktigt att komma ihåg att innehållet i Registerkartan inte har rättsverkan. Det är förrättningskartan tillsammans med beslut och protokoll som utgör de juridiska dokument som gäller. Dessa dokument finns arkiverade hos Lantmäteriet.",
       "layers": [
         {
           "name": "fastighet_kvalitet",
@@ -720,29 +711,6 @@
       "queryable": false
     },
     {
-      "name": "pts_lek_y",
-      "source": "internows",
-      "style": "pts_lek_y",
-      "title": "Pågende grävarbeten",
-      "group": "PTS",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "title": "Ärende: ",
-          "name": "typ"
-        },
-        {
-          "title": "Startdatum: ",
-          "name": "startdate"
-        },
-        {
-          "title": "Slutdatum: ",
-          "name": "enddate"
-        }
-      ]
-    },
-    {
       "name": "FMI_WMS",
       "source": "wms",
       "style": "fmi_wms",
@@ -761,30 +729,9 @@
       ]
     },
     {
-      "name": "tk_kir_p",
-      "source": "internows",
-      "style": "point",
-      "clusterStyle": "cluster",
-      "title": "Navet",
-      "layerType": "cluster",
-      "group": "SV",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "title": "Personnummer: ",
-          "name": "obj"
-        },
-        {
-          "title": "Namn: ",
-          "name": "typ"
-        }
-      ]
-    },
-    {
       "name": "jordarter",
       "source": "geoserver",
-      "style": "detaljplan",
+      "style": "bestammelser",
       "title": "Jordarter",
       "format": "image/png",
       "group": "SGU",
@@ -1543,17 +1490,136 @@
       [
         {
           "stroke": {
-            "color": "rgb(253,236,195)",
+            "color": "rgba(229,109,30,0.6)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(255,198,105,0.3)"
+          },
+          "label": "Gällande planer"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 1.5
+          },
+          "label": "Användningsgräns",
+          "filter": "[code] == '2000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
             "width": 1
-          }
+          },
+          "label": "Egenskapsgräns",
+          "filter": "[code] == '3000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Administrativ gräns",
+          "filter": "[code] == '4000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Egenskapsgräns och administrativ gräns",
+          "filter": "[code] == '6000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 5
+          },
+          "label": "Utfartsförbud",
+          "filter": "[code] == 'Utfart får inte finnas'",
+          "minScale": 2000
         }
       ]
     ],
     "granser": [
       [
         {
+          "label": "Medelfel (m) 0,001 - 0,050",
           "stroke": {
-            "color": "rgb(150,61,20)",
+            "color": "rgb(0,200,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) 0,051 - 0,200",
+          "stroke": {
+            "color": "rgb(225,225,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) 0,201 - 0,500",
+          "stroke": {
+            "color": "rgb(225,140,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) > 0,500",
+          "stroke": {
+            "color": "rgb(255,0,0)",
             "width": 1
           }
         }
@@ -1715,19 +1781,6 @@
         {
           "fill": {
             "color": "rgb(255,155,56)"
-          }
-        }
-      ]
-    ],
-    "pts_lek_y": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(86,66,244,0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(86,66,244,0.3)"
           }
         }
       ]
