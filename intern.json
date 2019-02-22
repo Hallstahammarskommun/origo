@@ -134,15 +134,11 @@
   ],
   "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
   "source": {
-    "geoserver": {
+    "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",
       "version": "1.1.1"
     },
-    "wms": {
-      "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
-      "version": "1.1.1"
-    },
-    "intern": {
+    "internwms": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
       "version": "1.1.1"
     },
@@ -159,10 +155,6 @@
     },
     "intern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
-    },
-    "historiska": {
-      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/wms",
-      "version": "1.1.1"
     },
     "basemap": {
       "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
@@ -245,7 +237,7 @@
     },
     {
       "name": "grundkarta",
-      "source": "geoserver",
+      "source": "wms",
       "style": "grundkarta",
       "title": "Grundkarta",
       "format": "image/png",
@@ -257,7 +249,7 @@
     },
     {
       "name": "primarkarta",
-      "source": "geoserver",
+      "source": "wms",
       "style": "primarkarta",
       "title": "Primärkarta",
       "format": "image/png",
@@ -269,7 +261,7 @@
     },
     {
       "name": "opto",
-      "source": "intern",
+      "source": "internwms",
       "style": "opto",
       "title": "Opto",
       "format": "image/png",
@@ -378,7 +370,7 @@
     },
     {
       "name": "va",
-      "source": "intern",
+      "source": "internwms",
       "style": "va",
       "title": "VA nät",
       "format": "image/png",
@@ -411,7 +403,7 @@
       "layers": [
         {
           "name": "pbr_detaljplaner",
-          "source": "geoserver",
+          "source": "wms",
           "style": "detaljplan",
           "title": "Detaljplan",
           "format": "image/png",
@@ -435,7 +427,7 @@
         },
         {
           "name": "pbr_detaljplaner",
-          "source": "geoserver",
+          "source": "wms",
           "style": "detaljplan",
           "title": "Detaljplan",
           "format": "image/png",
@@ -735,7 +727,7 @@
     },
     {
       "name": "jordarter",
-      "source": "geoserver",
+      "source": "wms",
       "style": "bestammelser",
       "title": "Jordarter",
       "format": "image/png",
@@ -799,7 +791,7 @@
     },
     {
       "name": "HE1907",
-      "source": "historiska",
+      "source": "wms",
       "style": "karta",
       "title": "1907",
       "format": "image/png",
@@ -811,7 +803,7 @@
     },
     {
       "name": "Histortho_60",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "1960",
       "format": "image/png",
@@ -822,7 +814,7 @@
     },
     {
       "name": "EK1962",
-      "source": "historiska",
+      "source": "wms",
       "style": "karta",
       "title": "1962",
       "format": "image/png",
@@ -834,7 +826,7 @@
     },
     {
       "name": "Histortho_75",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "1975",
       "format": "image/png",
@@ -845,7 +837,7 @@
     },
     {
       "name": "OF1997",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "1997",
       "format": "image/png",
@@ -856,7 +848,7 @@
     },
     {
       "name": "OF2001",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2001",
       "format": "image/png",
@@ -867,7 +859,7 @@
     },
     {
       "name": "orto_2007",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2007",
       "format": "image/png",
@@ -878,7 +870,7 @@
     },
     {
       "name": "orto_2010",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2010",
       "format": "image/png",
@@ -889,7 +881,7 @@
     },
     {
       "name": "orto_2012",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2012",
       "format": "image/png",
@@ -900,7 +892,7 @@
     },
     {
       "name": "orto_2014",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2014",
       "format": "image/png",
@@ -911,7 +903,7 @@
     },
     {
       "name": "orto_2016",
-      "source": "historiska",
+      "source": "wms",
       "style": "uav",
       "title": "2016",
       "format": "image/png",
