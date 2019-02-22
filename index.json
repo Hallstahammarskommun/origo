@@ -154,8 +154,43 @@
   ],
   "layers": [
     {
+      "name": "fastigheter",
+      "title": "Fastighetsgräns",
+      "style": "granser",
+      "group": "bygga",
+      "type": "GROUP",
+      "fme": true,
+      "visible": false,
+      "layers": [
+        {
+          "name": "granser",
+          "source": "wms",
+          "style": "granser",
+          "format": "image/png",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
+        },
+        {
+          "name": "tk_s_fat_y",
+          "source": "ows",
+          "style": "tk_s_fat_y",
+          "title": "Fastighet",
+          "format": "image/png",
+          "group": "bygga",
+          "type": "WFS",
+          "visible": true,
+          "attributes": [
+            {
+              "name": "obj"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "detaljplan",
-      "title": "Detaljplan",
+      "title": "Gällande detaljplan",
       "style": "detaljplan",
       "group": "bygga",
       "type": "GROUP",
@@ -167,7 +202,7 @@
           "name": "pbr_detaljplaner",
           "source": "wms",
           "style": "detaljplan",
-          "title": "Gällande detaljplan",
+          "title": "detaljplan",
           "format": "image/png",
           "type": "WMS",
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
@@ -263,41 +298,6 @@
           "visible": true,
           "maxScale": 2000,
           "queryable": false
-        }
-      ]
-    },
-    {
-      "name": "fastigheter",
-      "title": "Fastighetsgräns",
-      "style": "granser",
-      "group": "bygga",
-      "type": "GROUP",
-      "fme": true,
-      "visible": false,
-      "layers": [
-        {
-          "name": "granser",
-          "source": "wms",
-          "style": "granser",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WMS",
-          "visible": true
-        },
-        {
-          "name": "tk_s_fat_y",
-          "source": "ows",
-          "style": "tk_s_fat_y",
-          "title": "Fastighet",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WFS",
-          "visible": true,
-          "attributes": [
-            {
-              "name": "obj"
-            }
-          ]
         }
       ]
     },
