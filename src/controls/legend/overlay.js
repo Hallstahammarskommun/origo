@@ -14,12 +14,18 @@ const OverlayLayer = function OverlayLayer(options) {
     style
   } = options;
 
-  const cls = `${clsSettings} flex row align-center padding-left padding-right item`.trim();
+  let cls = `${clsSettings} flex row align-center padding-left padding-right item`.trim();
   const title = layer.get('title') || 'No title';
+  const secure = layer.get('secure');
   const name = layer.get('name');
 
   const checkIcon = '#ic_check_circle_24px';
-  const uncheckIcon = '#ic_radio_button_unchecked_24px';
+  let uncheckIcon = '#ic_radio_button_unchecked_24px';
+
+  if (secure) {
+    uncheckIcon = '#ic_lock_outline_24px';
+    cls += '"style="pointer-events:none';
+  }
 
   const opacity = layer.getOpacity();
 
@@ -62,7 +68,9 @@ const OverlayLayer = function OverlayLayer(options) {
   const toggleButton = Button({
     cls: 'round small icon-smaller no-shrink',
     click() {
-      toggleVisible(layer.getVisible());
+      if (!secure) {
+        toggleVisible(layer.getVisible());
+      }
     },
     style: {
       'align-self': 'center',
