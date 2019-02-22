@@ -52,11 +52,11 @@ export default function (feature, layer, map) {
               title = `<b>${attribute.title}</b>`;
             }
             if (attribute.url) {
-              if (feature.get(attribute.url)) {
-                const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties(), null, map));
-                val = `<a href="${url}" target="_blank">
-                  ${feature.get(attribute.name)}
-                  </a>`;
+              // if (feature.get(attribute.url)) {
+              if (feature.get(attribute.url) || attribute.url.indexOf('.') > -1) {
+                // const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties(), null, map));
+                const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(getNeastedAttr(attribute.url), feature.getProperties(), null, map));
+                val = `<a href="${url}" target="_blank">${getNeastedAttr(attribute.name)}</a>`;
               }
             }
             // }
