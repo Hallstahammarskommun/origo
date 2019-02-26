@@ -4,6 +4,7 @@ import geom from 'ol/geom/Geometry';
 import { Component } from './ui';
 import Map from './map';
 import proj from './projection';
+import getCapabilities from './getCapabilities';
 import MapSize from './utils/mapsize';
 import Featureinfo from './featureinfo';
 import maputils from './maputils';
@@ -40,6 +41,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
     center: centerOption = [0, 0],
     zoom: zoomOption = 0,
     resolutions = null,
+    capabilitiesURL = null,
     layers: layerOptions = [],
     map: mapName,
     params: urlParams = {},
@@ -55,6 +57,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
   const center = urlParams.center || centerOption;
   const zoom = urlParams.zoom || zoomOption;
   const groups = flattenGroups(groupOptions);
+  const getCapabilitiesLayers = (capabilitiesURL === null) ? null : getCapabilities(capabilitiesURL);
   const defaultTileGridOptions = {
     alignBottomLeft: true,
     extent,
@@ -85,44 +88,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
     });
   };
 
-  const createLayers = function createLayers(layerlist, savedLayers) {
-    const layers = [];
-    let getCapabilitiesLayers = [];
-  
-    if (settings.capabilitiesURL !== undefined) {
-      getCapabilitiesLayers = getCapabilities(settings.capabilitiesURL);
-      layerlist.forEach((layer) => {
-        if (getCapabilitiesLayers.indexOf(layer.name) >= 0) {
-          layer.secure = false;
-        } else {
-          if (layer.secure === undefined) {
-            layer.secure = true;
-            layer.abstract = 'Du saknar behörighet att se detta lager';
-          }
-        }
-      });
-    } else {
-      layerlist.forEach((layer) => {
-        if (layer.secure === undefined) { layer.secure = false; }
-      });
-    }
-  
-    let i;
-    for (i = layerlist.length - 1; i >= 0; i -= 1) {
-      let savedLayer = {};
-      if (savedLayers) {
-        savedLayer = savedLayers[layerlist[i].name.split(':').pop()] || {
-          visible: false,
-          legend: false
-        };
-        savedLayer.name = layerlist[i].name;
-      }
-      const layer = $.extend(layerlist[i], savedLayer);
-      layers.push(layerCreator(layer));
-    }
-    return layers;
-  }
-  
   const getExtent = () => extent;
 
   const getBaseUrl = () => baseUrl;
@@ -259,9 +224,23 @@ const Viewer = function Viewer(targetOption, options = {}) {
 
   const getMain = () => main;
 
-  const mergeSavedLayerProps = (initialLayerProps, savedLayerProps) => {
+  const mergeSecuredLayer = (layerlist, capabilitiesLayers) => {
+    if (capabilitiesLayers !== null) {
+      layerlist.forEach((layer) => {
+        if (capabilitiesLayers.indexOf(layer.name) >= 0) {
+          layer.secure = false;
+        } else {
+          layer.secure = true;
+        }
+      });
+    }
+    return layerlist;
+  };
+
+  const mergeSavedLayerProps = (initialLayerProps, savedLayerProps, capabilitiesLayers) => {
+    let mergedLayerProps;
     if (savedLayerProps) {
-      const mergedLayerProps = initialLayerProps.reduce((acc, initialProps) => {
+      mergedLayerProps = initialLayerProps.reduce((acc, initialProps) => {
         const layerName = initialProps.name.split(':').pop();
         const savedProps = savedLayerProps[layerName] || {
           visible: false,
@@ -272,9 +251,9 @@ const Viewer = function Viewer(targetOption, options = {}) {
         acc.push(mergedProps);
         return acc;
       }, []);
-      return mergedLayerProps;
+      return mergeSecuredLayer(mergedLayerProps, capabilitiesLayers);
     }
-    return initialLayerProps;
+    return mergeSecuredLayer(initialLayerProps, capabilitiesLayers);
   };
 
   const removeOverlays = function removeOverlays(overlays) {
@@ -401,7 +380,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
         target: this.getId()
       }));
 
-      const layerProps = mergeSavedLayerProps(layerOptions, urlParams.layers);
+      const layerProps = mergeSavedLayerProps(layerOptions, urlParams.layers, getCapabilitiesLayers);
       this.addLayers(layerProps);
 
       mapSize = MapSize(map, {
@@ -442,7 +421,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
     addLayers,
     addSource,
     addStyle,
-    createLayers,
     getBaseUrl,
     getBreakPoints,
     getClusterOptions,
