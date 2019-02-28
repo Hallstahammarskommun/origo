@@ -8,14 +8,14 @@ import drawTools from './drawtools';
 import Modal from '../../ui';
 
 const activeClass = 'o-control-active';
-const disableClass = 'o-disabled';
+// const disableClass = 'o-disabled';
 let currentLayer;
 let editableLayers;
 let $editAttribute;
 let $editDraw;
 let $editDelete;
 let $editLayers;
-let $editSave;
+// let $editSave;
 
 function render() {
   $('#o-tools-bottom').append(editortemplate);
@@ -23,7 +23,7 @@ function render() {
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
   $editLayers = $('#o-editor-layers');
-  $editSave = $('#o-editor-save');
+  // $editSave = $('#o-editor-save');
 }
 
 function toggleToolbar(state) {
@@ -70,11 +70,11 @@ function bindUIActions() {
     $editLayers.blur();
     e.preventDefault();
   });
-  $editSave.on('click', (e) => {
+  /* $editSave.on('click', (e) => {
     dispatcher.emitToggleEdit('save');
     $editSave.blur();
     e.preventDefault();
-  });
+  }); */
 }
 
 function setActive(state) {
@@ -117,7 +117,7 @@ function onChangeEdit(e) {
   }
 }
 
-function toggleSave(e) {
+/* function toggleSave(e) {
   if (e.edits) {
     if ($editSave.hasClass(disableClass)) {
       $editSave.removeClass(disableClass);
@@ -125,7 +125,7 @@ function toggleSave(e) {
   } else {
     $editSave.addClass(disableClass);
   }
-}
+} */
 
 function init(options, v) {
   currentLayer = options.currentLayer;
@@ -140,7 +140,7 @@ function init(options, v) {
 
   $(document).on('enableInteraction', onEnableInteraction);
   $(document).on('changeEdit', onChangeEdit);
-  $(document).on('editsChange', toggleSave);
+  // $(document).on('editsChange', toggleSave);
 
   bindUIActions();
 
