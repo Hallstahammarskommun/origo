@@ -5,7 +5,7 @@ import dispatcher from './editdispatcher';
 import editHandler from './edithandler';
 import editorLayers from './editorlayers';
 import drawTools from './drawtools';
-import Modal from '../../ui';
+import Modal from '../../ui/modal';
 
 const activeClass = 'o-control-active';
 // const disableClass = 'o-disabled';
@@ -16,6 +16,7 @@ let $editDraw;
 let $editDelete;
 let $editLayers;
 // let $editSave;
+let viewer;
 
 function render() {
   $('#o-tools-bottom').append(editortemplate);
@@ -48,11 +49,11 @@ function bindUIActions() {
       e.preventDefault();
       return false;
     }
-    modal.createModal('#o-map', {
+    Modal({
       title: 'Inget lager valt',
-      content: 'Börja med att välja ett lager innan du ritar.'
+      content: 'Börja med att välja ett lager innan du ritar.',
+      target: viewer.getId()
     });
-    modal.showModal();
     return false;
   });
   $editAttribute.on('click', (e) => {
@@ -128,6 +129,7 @@ function onChangeEdit(e) {
 } */
 
 function init(options, v) {
+  viewer = v;
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
 
@@ -146,7 +148,7 @@ function init(options, v) {
 
   if (options.isActive) {
     setActive(true);
-  }  
+  }
 }
 
 export default (function exportInit() {
