@@ -514,7 +514,7 @@
       "visible": false
     },
     {
-      "name": "bu_w_ska_p__Förskola",
+      "name": "bu_w_ska_p__Forskola",
       "source": "ows",
       "style": "bu_w_fos_p",
       "title": "Förskola",
@@ -563,7 +563,7 @@
       ]
     },
     {
-      "name": "bu_w_ska_p__Grundsärskola",
+      "name": "bu_w_ska_p__Grundsarskola",
       "source": "ows",
       "style": "bu_w_gss_p",
       "title": "Grundsärskola",
