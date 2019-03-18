@@ -5,18 +5,18 @@ import dispatcher from './editdispatcher';
 import editHandler from './edithandler';
 import editorLayers from './editorlayers';
 import drawTools from './drawtools';
-import modal from '../../modal';
+import Modal from '../../ui/modal';
 
 const activeClass = 'o-control-active';
-const disableClass = 'o-disabled';
+// const disableClass = 'o-disabled';
 let currentLayer;
 let editableLayers;
 let $editAttribute;
 let $editDraw;
 let $editDelete;
 let $editLayers;
-let $editSave;
-let $editClose;
+// let $editSave;
+let viewer;
 
 function render() {
   $('#o-tools-bottom').append(editortemplate);
@@ -24,8 +24,21 @@ function render() {
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
   $editLayers = $('#o-editor-layers');
-  $editSave = $('#o-editor-save');
-  $editClose = $('#o-editor-close');
+  // $editSave = $('#o-editor-save');
+}
+
+function toggleToolbar(state) {
+  if (state) {
+    $('.o-map').first().trigger({
+      type: 'enableInteraction',
+      interaction: 'editor'
+    });
+  } else {
+    $('.o-map').first().trigger({
+      type: 'enableInteraction',
+      interaction: 'featureInfo'
+    });
+  }
 }
 
 function bindUIActions() {
@@ -36,11 +49,11 @@ function bindUIActions() {
       e.preventDefault();
       return false;
     }
-    modal.createModal('#o-map', {
+    Modal({
       title: 'Inget lager valt',
-      content: 'Börja med att välja ett lager innan du ritar.'
+      content: 'Börja med att välja ett lager innan du ritar.',
+      target: viewer.getId()
     });
-    modal.showModal();
     return false;
   });
   $editAttribute.on('click', (e) => {
@@ -58,20 +71,11 @@ function bindUIActions() {
     $editLayers.blur();
     e.preventDefault();
   });
-  $editSave.on('click', (e) => {
+  /* $editSave.on('click', (e) => {
     dispatcher.emitToggleEdit('save');
     $editSave.blur();
     e.preventDefault();
-  });
-  $editClose.on('click', (e) => {
-    $('.o-map').first().trigger({
-      type: 'enableInteraction',
-      interaction: 'featureInfo'
-    });
-    $editClose.blur();
-    e.stopPropagation();
-    e.preventDefault();
-  });
+  }); */
 }
 
 function setActive(state) {
@@ -114,7 +118,7 @@ function onChangeEdit(e) {
   }
 }
 
-function toggleSave(e) {
+/* function toggleSave(e) {
   if (e.edits) {
     if ($editSave.hasClass(disableClass)) {
       $editSave.removeClass(disableClass);
@@ -122,22 +126,23 @@ function toggleSave(e) {
   } else {
     $editSave.addClass(disableClass);
   }
-}
+} */
 
-function init(options) {
+function init(options, v) {
+  viewer = v;
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
 
-  editHandler(options);
+  editHandler(options, v);
   render();
   editorLayers(editableLayers, {
     activeLayer: currentLayer
-  });
-  drawTools(options.drawTools, currentLayer);
+  }, v);
+  drawTools(options.drawTools, currentLayer, v);
 
   $(document).on('enableInteraction', onEnableInteraction);
   $(document).on('changeEdit', onChangeEdit);
-  $(document).on('editsChange', toggleSave);
+  // $(document).on('editsChange', toggleSave);
 
   bindUIActions();
 
@@ -148,6 +153,7 @@ function init(options) {
 
 export default (function exportInit() {
   return {
-    init
+    init,
+    toggleToolbar
   };
 }());

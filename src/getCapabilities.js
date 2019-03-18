@@ -1,38 +1,35 @@
-"use strict";
+import $ from 'jquery';
 
-var $ = require('jquery');
-var getCapabilities;
-var getCapabilitiesLayers;
-
-function responseParser(response) {
-  var parser = new DOMParser();
-  var xmlDoc = parser.parseFromString(response,"text/xml");
-  xmlToArray(xmlDoc);
-}
+let getCapabilitiesLayers;
 
 function xmlToArray(xmlDoc) {
-  getCapabilitiesLayers = $(xmlDoc).find("Layer > Name").map(function() {
+  getCapabilitiesLayers = $(xmlDoc).find('Layer > Name').map(function fullLayerName() {
     return $(this).text();
   }).get();
 
-  getCapabilitiesLayers.forEach(function(getCapabilitiesLayer, i) {
-  var data = getCapabilitiesLayer.split(':');
-  getCapabilitiesLayers[i] = data.pop();
-  })
-
-
+  getCapabilitiesLayers.forEach((getCapabilitiesLayer, i) => {
+    const data = getCapabilitiesLayer.split(':');
+    getCapabilitiesLayers[i] = data.pop();
+  });
 }
 
-getCapabilities = function getCapabilities(getCapabilitiesURL) {
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.onreadystatechange = function() {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-       responseParser(xmlHttp.responseText);
-    };
-    xmlHttp.open("GET", getCapabilitiesURL, false); // true for asynchronous
-    xmlHttp.send(null);
-
-    return getCapabilitiesLayers;
+function responseParser(response) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(response, 'text/xml');
+  xmlToArray(xmlDoc);
 }
 
-module.exports = getCapabilities;
+const getCapabilities = function getCapabilities(getCapabilitiesURL) {
+  const xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function parseResponse() {
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+      responseParser(xmlHttp.responseText);
+    }
+  };
+  xmlHttp.open('GET', getCapabilitiesURL, false); // true for asynchronous
+  xmlHttp.send(null);
+
+  return getCapabilitiesLayers;
+};
+
+export default getCapabilities;

@@ -3,7 +3,7 @@ export default `<div id="o-editor-toolbar" class="o-editor-toolbar o-toolbar o-t
       <div class="o-popover-container">
         <button id="o-editor-draw" class="o-button-lg" type="button" name="button">
           <svg class="o-icon-24">
-              <use xlink:href="#ic_mode_edit_24px"></use>
+              <use xlink:href="#ic_add_24px"></use>
           </svg>
         </button>
       </div>
@@ -25,14 +25,9 @@ export default `<div id="o-editor-toolbar" class="o-editor-toolbar o-toolbar o-t
         </svg>
       </button>
     </div>
-    <button id="o-editor-save" class="o-button-lg o-disabled" type="button" name="button">
+    <!-- <button id="o-editor-save" class="o-button-lg o-disabled" type="button" name="button">
       <svg class="o-icon-24">
           <use xlink:href="#ic_save_24px"></use>
       </svg>
-    </button>
-    <button id="o-editor-close" class="o-button-lg" type="button" name="button">
-        <svg class="o-icon-24">
-            <use xlink:href="#ic_close_24px"></use>
-        </svg>
-    </button>
+    </button> -->
 </div>`;

@@ -2,51 +2,68 @@
   "controls": [
     {
       "name": "geoposition"
-    }, {
+    },
+    {
       "name": "mapmenu"
-    }, {
-        "name": "search",
-        "options": {
-            "url": "https://karta.hallstahammar.se/search",
-            "geometryAttribute": "st_astext",
-            "layerNameAttribute": "layer",
-            "searchAttribute": "NAMN",
-            "titleAttribute": "layer",
-            "contentAttribute": "NAMN",
-            "hintText": "Sök i Hallstakartan"
-        }
-    }, {
+    },
+    {
+      "name": "search",
+      "options": {
+        "url": "https://karta.hallstahammar.se/search",
+        "geometryAttribute": "st_astext",
+        "layerNameAttribute": "layer",
+        "searchAttribute": "NAMN",
+        "titleAttribute": "layer",
+        "contentAttribute": "NAMN",
+        "hintText": "Sök i Kartskaparen"
+      }
+    },
+    {
       "name": "about",
       "options": {
         "title": "Om Kartskaparen",
         "content": "<p>Kartskaparen är ett redigeringsverktyg för lager som är publicerade i våra karttjänster.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att verktyget ska fungera som bäst.</p>"
       }
-    }, {
+    },
+    {
       "name": "editor",
       "options": {
-        "editableLayers": ["tk_w_are_p", "tk_w_gtu_p", "tk_w_lem_y", "ks_w_opo_p", "tk_w_pak_p", "tk_w_pak_y", "tk_w_pap_y", "bu_w_ska_p", "tk_w_snr_l", "tk_w_stp_p"],
         "isActive": true,
         "autoSave": true,
         "autoForm": true
       }
-    }, {
-        "name": "legend",
-        "options": {
-          "hasMapLegend": false
-        }
+    },
+    {
+      "name": "legend",
+      "options": {
+        "hasMapLegend": false
+      }
     }
   ],
   "projectionCode": "EPSG:3010",
-  "projectionExtent": [-166640, 6305699, 433362, 6905701],
-  "proj4Defs": [
-      {
-          "code": "EPSG:3010",
-          "alias": "urn:ogc:def:crs:EPSG::3010",
-          "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
-      }
+  "projectionExtent": [
+    -166640,
+    6305699,
+    433362,
+    6905701
   ],
-  "extent": [-16640, 6455699, 283362, 6755701],
-  "center": [133361, 6605700],
+  "proj4Defs": [
+    {
+      "code": "EPSG:3010",
+      "alias": "urn:ogc:def:crs:EPSG::3010",
+      "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    }
+  ],
+  "extent": [
+    -16640,
+    6455699,
+    283362,
+    6755701
+  ],
+  "center": [
+    133361,
+    6605700
+  ],
   "zoom": 2,
   "resolutions": [
     91.9577,
@@ -69,16 +86,16 @@
   ],
   "source": {
     "wms": {
-        "url": "https://karta.hallstahammar.se/geoserver/wms",
-        "version": "1.1.1"
+      "url": "https://karta.hallstahammar.se/geoserver/wms",
+      "version": "1.1.1"
     },
     "ows": {
-        "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
-        "workspace": "intern",
-        "strategy": "all"
+      "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
+      "workspace": "intern",
+      "strategy": "all"
     },
     "basemap": {
-        "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
+      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
     }
   },
   "groups": [
@@ -88,30 +105,28 @@
       "expanded": true
     },
     {
+      "name": "edit",
+      "title": "Redigeringsbaralager",
+      "expanded": false
+    },
+    {
       "name": "background",
       "title": "Bakgrundskartor",
       "expanded": true
     }
   ],
-  "layers": [{
-      "name": "detaljplan",
-      "source": "wms",
-      "style": "detaljplan",
-      "title": "Detaljplan",
-      "format": "image/png",
-      "group": "hjälplager",
-      "type": "WMS",
-      "visible": false
-    }, {
+  "layers": [
+    {
       "name": "granser",
       "source": "wms",
       "style": "granser",
-      "title": "Fastighetsgränser",
+      "title": "Fastighetsgräns",
       "format": "image/png",
       "group": "hjälplager",
       "type": "WMS",
       "visible": false
-    }, {
+    },
+    {
       "name": "tk_kof_y",
       "source": "ows",
       "style": "tk_kof_y",
@@ -120,7 +135,8 @@
       "queryable": false,
       "type": "WFS",
       "visible": false
-    }, {
+    },
+    {
       "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
@@ -130,357 +146,494 @@
       "type": "WMS",
       "style": "grundkarta",
       "visible": false
-    }, {
+    },
+    {
       "name": "tk_w_are_p",
       "title": "Arrende",
       "source": "ows",
       "style": "tk_w_are_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Arrendator: ",
-        "type": "text"
-      }, {
-        "name": "typ",
-        "title": "Ändamål: ",
-        "type": "text"
-      }, {
-        "name": "url",
-        "title": "Sökväg: ",
-        "type": "text"
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Arrendator: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Ändamål: ",
+          "type": "text"
+        },
+        {
+          "name": "url",
+          "title": "Sökväg: ",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "name": "tk_w_gtu_p",
       "title": "Geoteknisk undersökning",
       "source": "ows",
       "style": "tk_w_gtu_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Nummer: ",
-        "type": "text"
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Nummer: ",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "name": "tk_w_lem_y",
       "title": "Ledig mark",
       "source": "ows",
       "style": "tk_w_lem_y",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Område / Fastighet: ",
-        "type": "text"
-      }, {
-        "name": "typ",
-        "title": "Typ: ",
-        "type": "dropdown",
-        "options": ["Smahus", "Industri"]
-      }, {
-        "name": "egn",
-        "title": "Pris: ",
-        "type": "text"
-      }, {
-        "name": "area",
-        "title": "Area: ",
-        "type": "text"
-      }, {
-        "name": "status",
-        "title": "Status: ",
-        "type": "dropdown",
-        "options": ["Bokad", "Kommande", "Ledig", "Såld"]
-      }, {
-        "name": "datum",
-        "title": "Beskrivning av kommande område: ",
-        "type": "textarea"
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Område / Fastighet: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Typ: ",
+          "type": "dropdown",
+          "options": [
+            "Smahus",
+            "Industri"
+          ]
+        },
+        {
+          "name": "egn",
+          "title": "Pris: ",
+          "type": "text"
+        },
+        {
+          "name": "area",
+          "title": "Area: ",
+          "type": "text"
+        },
+        {
+          "name": "status",
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "Bokad",
+            "Kommande",
+            "Ledig",
+            "Såld"
+          ]
+        },
+        {
+          "name": "datum",
+          "title": "Beskrivning av kommande område: ",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
       "name": "ks_w_opo_p",
       "title": "Opto ansluten",
       "source": "ows",
       "style": "ks_w_opo_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Status: ",
-        "type": "dropdown",
-        "options": ["Ansluten", "Avtal", "Intresse", "Kampanj", "Pumpstation"]
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "Ansluten",
+            "Avtal",
+            "Intresse",
+            "Kampanj",
+            "Pumpstation"
+          ]
+        }
+      ]
+    },
+    {
       "name": "tk_w_pak_p",
       "title": "Park punkt",
       "source": "ows",
       "style": "tk_w_pak_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Objekt: ",
-        "type": "dropdown",
-        "options": ["Papperskorg", "Parkbänk", "Papperskorg + parkbänk"]
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Objekt: ",
+          "type": "dropdown",
+          "options": [
+            "Papperskorg",
+            "Parkbänk",
+            "Papperskorg + parkbänk"
+          ]
+        }
+      ]
+    },
+    {
       "name": "tk_w_pak_y",
       "title": "Park yta",
       "source": "ows",
       "style": "tk_w_pak_y",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
       "queryable": true,
+      "editable": true,
       "attributes": [
         {
           "name": "obj",
           "title": "Markslag: ",
           "type": "dropdown",
-          "options": ["Gräs", "Skog"]
+          "options": [
+            "Gräs",
+            "Skog"
+          ]
         },
-          {
-            "name": "typ",
-            "title": "Nummer: ",
-            "type": "text"
-          },
-          {
-            "name": "egn",
-            "title": "Skötselintervall: ",
-            "type": "dropdown",
-            "constraint": "change:obj:Gräs",
-            "options": ["Kontinuerlig", "1-3 gånger/säsong"]
-          },
-          {
-            "name": "egn",
-            "title": "Skötselintervall: ",
-            "type": "dropdown",
-            "constraint": "change:obj:Skog",
-            "options": ["2017", "2018", "2019"]
-          }
+        {
+          "name": "typ",
+          "title": "Nummer: ",
+          "type": "text"
+        },
+        {
+          "name": "egn",
+          "title": "Skötselintervall: ",
+          "type": "dropdown",
+          "constraint": "change:obj:Gräs",
+          "options": [
+            "Kontinuerlig",
+            "1-3 gånger/säsong"
+          ]
+        },
+        {
+          "name": "egn",
+          "title": "Skötselintervall: ",
+          "type": "dropdown",
+          "constraint": "change:obj:Skog",
+          "options": [
+            "2017",
+            "2018",
+            "2019"
+          ]
+        }
       ]
-    }, {
+    },
+    {
       "name": "tk_w_pap_y",
       "title": "Pågående detaljplan",
       "source": "ows",
       "style": "tk_w_pap_y",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Plannamn: ",
-        "type": "text"
-      }, {
-        "name": "url",
-        "title": "Länk: ",
-        "type": "text"
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Plannamn: ",
+          "type": "text"
+        },
+        {
+          "name": "url",
+          "title": "Länk: ",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "name": "bu_w_ska_p",
       "title": "Skola",
       "source": "ows",
       "style": "bu_w_grs_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "queryable": true,
+      "editable": true,
       "attributes": [
-          {
-            "name": "obj",
-            "title": "Namn: ",
-            "type": "text"
-          }, {
-            "name": "typ",
-            "title": "Årskurs: ",
-            "type": "text"
-          }, {
-            "name": "egn",
-            "title": "Typ: ",
-            "type": "dropdown",
-            "options": ["Förskola", "Grundskola", "Grundsärskola", "Fristående förskola/pedagogisk omsorg"]
-          }, {
-            "name": "tel",
-            "title": "Telefon: ",
-            "type": "text"
-          }, {
-            "name": "url",
-            "title": "Länk: ",
-            "type": "text"
-          }
+        {
+          "name": "obj",
+          "title": "Namn: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Årskurs: ",
+          "type": "text"
+        },
+        {
+          "name": "egn",
+          "title": "Typ: ",
+          "type": "dropdown",
+          "options": [
+            "Förskola",
+            "Grundskola",
+            "Grundsärskola",
+            "Fristående förskola/pedagogisk omsorg"
+          ]
+        },
+        {
+          "name": "tel",
+          "title": "Telefon: ",
+          "type": "text"
+        },
+        {
+          "name": "url",
+          "title": "Länk: ",
+          "type": "text"
+        }
       ]
-    }, {
+    },
+    {
       "name": "tk_w_stp_p",
       "title": "Stompunkter",
       "source": "ows",
       "style": "tk_w_stp_p",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
       "filter": "status <> 'förstörd'",
       "strategy": "bbox",
       "queryable": true,
-      "attributes": [{
-        "name": "status",
-        "title": "Status: ",
-        "type": "dropdown",
-        "options": ["förstörd", "återfunnen"]
-      }]
-    }, {
+      "editable": true,
+      "attributes": [
+        {
+          "name": "status",
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "förstörd",
+            "återfunnen"
+          ]
+        }
+      ]
+    },
+    {
       "name": "tk_w_snr_l",
       "title": "Snöröjning",
       "source": "ows",
       "style": "tk_w_snr_l",
-      "group": "",
+      "group": "edit",
       "type": "WFS",
       "geometryType": "LineString",
       "visible": false,
       "queryable": true,
-      "attributes": [{
-        "name": "obj",
-        "title": "Område: ",
-        "type": "dropdown",
-        "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
-      }]
-    }, {
-          "name": "tk_mak_y",
-          "source": "ows",
-          "style": "tk_mak_y",
-          "title": "Mask",
-          "queryable": false,
-          "type": "WFS",
-          "visible": true
-    }, {
-          "attribution": "&copy Lantmäteriet Geodatasamverkan",
-          "format": "image/jpeg",
-          "group": "background",
-          "name": "topowebbkartan_nedtonad",
-          "source": "basemap",
-          "title": "Karta, grå",
-          "type": "WMTS",
-          "style": "karta_gra",
-          "visible": true
-      }, {
-          "attribution": "&copy Lantmäteriet Geodatasamverkan",
-          "format": "image/jpeg",
-          "group": "background",
-          "name": "topowebbkartan",
-          "source": "basemap",
-          "title": "Karta, färg",
-          "type": "WMTS",
-          "style": "karta_farg",
-          "visible": false
-      }, {
-          "attribution": "&copy Lantmäteriet Geodatasamverkan",
-          "format": "image/jpeg",
-          "group": "background",
-          "name": "orto",
-          "source": "basemap",
-          "title": "Flygfoto",
-          "type": "WMTS",
-          "style": "orto",
-          "visible": false
-      }],
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Område: ",
+          "type": "dropdown",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tk_mak_y",
+      "source": "ows",
+      "style": "tk_mak_y",
+      "title": "Mask",
+      "queryable": false,
+      "type": "WFS",
+      "visible": true
+    },
+    {
+      "attribution": "&copy Lantmäteriet Geodatasamverkan",
+      "format": "image/jpeg",
+      "group": "background",
+      "name": "topowebbkartan_nedtonad",
+      "source": "basemap",
+      "title": "Karta, grå",
+      "type": "WMTS",
+      "style": "karta_gra",
+      "visible": true
+    },
+    {
+      "attribution": "&copy Lantmäteriet Geodatasamverkan",
+      "format": "image/jpeg",
+      "group": "background",
+      "name": "topowebbkartan",
+      "source": "basemap",
+      "title": "Karta, färg",
+      "type": "WMTS",
+      "style": "karta_farg",
+      "visible": false
+    },
+    {
+      "attribution": "&copy Lantmäteriet Geodatasamverkan",
+      "format": "image/jpeg",
+      "group": "background",
+      "name": "orto",
+      "source": "basemap",
+      "title": "Flygfoto",
+      "type": "WMTS",
+      "style": "orto",
+      "visible": false
+    }
+  ],
   "styles": {
-      "mask": [
-        [
-          {
-            "stroke": {
-              "color": "rgba(0,0,0,1.0)"
-            },
-            "fill": {
-              "color": "rgba(0,0,0,1.0)"
-            }
+    "mask": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,1.0)"
+          },
+          "fill": {
+            "color": "rgba(0,0,0,1.0)"
           }
-        ]
+        }
+      ]
+    ],
+    "granser": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(150,61,20)",
+            "width": 1
+          },
+          "label": "Fastighetsgräns"
+        }
+      ]
+    ],
+    "tk_kof_y": [
+      [
+        {
+          "label": "Kommunal fastighet",
+          "filter": "[typ] == 'Nej'",
+          "fill": {
+            "color": "rgba(165,0,165,0.25)"
+          },
+          "stroke": {
+            "color": "rgba(165,0,165,0.25)",
+            "width": 1
+          }
+        }
       ],
-      "detaljplan": [
-          [{
-              "stroke": {
-                  "color": "rgb(253,236,195)",
-                  "width": 1
-              }
-          }]
-      ],
-      "granser": [
-        [{
-            "stroke": {
-                "color": "rgb(150,61,20)",
-                "width": 1
-            }
-        }]
-      ],
-      "tk_kof_y": [
-          [{
-              "fill": {
-                  "color": "rgba(165,0,165,0.25)"
-              },
-              "filter": "[typ] == 'Nej'"
-          }]
-      ],
-      "tk_w_are_p": [
-        [{
+      [
+        {
+          "label": "Tomträtt",
+          "filter": "[typ] == 'Ja'",
+          "fill": {
+            "color": "rgba(165,0,165,0.45)"
+          },
+          "stroke": {
+            "color": "rgba(165,0,165,0.45)",
+            "width": 1
+          }
+        }
+      ]
+    ],
+    "tk_w_are_p": [
+      [
+        {
+          "label": "Arrendeavtal",
           "icon": {
             "src": "img/png/TK_w_are_p.png"
           }
-        }]
-      ],
-      "tk_w_gtu_p": [
-        [{
+        }
+      ]
+    ],
+    "tk_w_gtu_p": [
+      [
+        {
+          "label": "Geoteknisk undersökning",
           "icon": {
             "src": "img/png/tk_w_gtu_p.png"
           }
-        }]
-      ],
-      "tk_w_pak_p": [
-        [{
+        }
+      ]
+    ],
+    "tk_w_pak_p": [
+      [
+        {
           "icon": {
             "src": "img/png/TK_w_pak_p0.png"
           },
           "filter": "[obj] == 'Parkbänk'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "icon": {
             "src": "img/png/TK_w_pak_p1.png"
           },
           "filter": "[obj] == 'Papperskorg'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "icon": {
             "src": "img/png/TK_w_pak_p2.png"
           },
           "filter": "[obj] == 'Papperskorg + parkbänk'"
-        }]
-      ],
-      "bu_w_grs_p": [
-        [{
+        }
+      ]
+    ],
+    "bu_w_grs_p": [
+      [
+        {
+          "label": "Skola",
           "icon": {
             "src": "img/png/BU_w_grs_p.png"
           }
-        }]
-      ],
-      "tk_w_lem_y": [
-        [{
+        }
+      ]
+    ],
+    "tk_w_lem_y": [
+      [
+        {
           "filter": "[status] == 'Bokad'",
+          "label": "Bokad",
           "stroke": {
             "color": "rgba(0,0,0,0.6)",
             "width": 1
@@ -488,9 +641,12 @@
           "fill": {
             "color": "rgba(255,255,0,0.3)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[status] == 'Kommande'",
+          "label": "Kommande",
           "stroke": {
             "color": "rgba(255,0,0,0.6)",
             "width": 2
@@ -498,9 +654,12 @@
           "fill": {
             "color": "rgba(255,0,0,0.3)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[status] == 'Ledig'",
+          "label": "Ledig",
           "stroke": {
             "color": "rgba(0,0,0,0.6)",
             "width": 1
@@ -508,84 +667,117 @@
           "fill": {
             "color": "rgba(0,225,0,0.3)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "filter": "[status] == 'Såld'",
+          "label": "Såld",
           "stroke": {
             "color": "rgba(255,0,0,0.5)",
-            "lineDash": [10,10],
+            "lineDash": [
+              10,
+              10
+            ],
             "width": 3
           }
-        }]
+        }
+      ]
+    ],
+    "tk_w_lim_y": [
+      [
+        {
+          "filter": "[status] == 'Ledig'",
+          "stroke": {
+            "color": "rgba(103, 60, 31, 0.6)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(103, 60, 31,0.3)"
+          }
+        }
       ],
-        "tk_w_lim_y": [
-          [{
-            "filter": "[status] == 'Ledig'",
-            "stroke": {
-              "color": "rgba(103, 60, 31, 0.6)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgba(103, 60, 31,0.3)"
-            }
-          }],
-          [{
-            "filter": "[status] == 'Bokad'",
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgba(255,255,0,0.25)"
-            }
-          }],
-          [{
-            "filter": "[status] == 'null'",
-            "stroke": {
-              "color": "rgba(0,0,0,0.5)",
-              "width": 1
-            }
-          }]
+      [
+        {
+          "filter": "[status] == 'Bokad'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(255,255,0,0.25)"
+          }
+        }
       ],
-      "ks_w_opo_p": [
-        [{
+      [
+        {
+          "filter": "[status] == 'null'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "width": 1
+          }
+        }
+      ]
+    ],
+    "ks_w_opo_p": [
+      [
+        {
+          "label": "Saknar attribut",
           "icon": {
             "src": "img/png/droppe.png"
           },
           "filter": "[obj] == 'null'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "label": "Ansluten",
           "icon": {
             "src": "img/png/KS_w_opo_p1.png"
           },
           "filter": "[obj] == 'Ansluten'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "label": "Avtal",
           "icon": {
             "src": "img/png/KS_w_opo_p2.png"
           },
           "filter": "[obj] == 'Avtal'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "label": "Intresse",
           "icon": {
             "src": "img/png/KS_w_opo_p4.png"
           },
           "filter": "[obj] == 'Intresse'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "label": "Kampanj",
           "icon": {
             "src": "img/png/KS_w_opo_p3.png"
           },
           "filter": "[obj] == 'Kampanj'"
-        }],
-        [{
+        }
+      ],
+      [
+        {
+          "label": "Pumpstation",
           "icon": {
             "src": "img/png/KS_w_opo_p0.png"
           },
           "filter": "[obj] == 'Pumpstation'"
-        }]
-      ],
-      "tk_w_pak_y": [
-        [{
+        }
+      ]
+    ],
+    "tk_w_pak_y": [
+      [
+        {
           "filter": "[egn] == 'Kontinuerlig'",
           "stroke": {
             "color": "rgba(0,0,0,0.1)",
@@ -594,8 +786,10 @@
           "fill": {
             "color": "rgba(0,255,0,0.5)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[egn] == '1-3 gånger/säsong'",
           "stroke": {
             "color": "rgba(0,0,0,0.1)",
@@ -604,8 +798,10 @@
           "fill": {
             "color": "rgba(255,255,0,0.5)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[egn] == '2017'",
           "stroke": {
             "color": "rgba(204,30,1,0.25)",
@@ -614,8 +810,10 @@
           "fill": {
             "color": "rgba(204,30,1,0.5)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[egn] == '2018'",
           "stroke": {
             "color": "rgba(112,0,90,0.25)",
@@ -624,8 +822,10 @@
           "fill": {
             "color": "rgba(112,0,90,0.5)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[egn] == '2019'",
           "stroke": {
             "color": "rgba(1,0,72,0.25)",
@@ -634,8 +834,10 @@
           "fill": {
             "color": "rgba(1,0,72,0.5)"
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "stroke": {
             "color": "rgba(0,0,0,0.25)",
             "width": 1
@@ -643,180 +845,224 @@
           "fill": {
             "color": "rgba(255,255,255,0.5)"
           }
-        }]
-      ],
-      "tk_w_pap_y": [
-        [{
-            "stroke": {
-                "color": "rgba(229,109,30,0.6)",
-                "width": 1
-            },
-            "fill": {
-                "color": "rgba(66,89,179,0.3)"
-            }
-        }]
-      ],
-          "tk_w_snr_l": [
-        [{
+        }
+      ]
+    ],
+    "tk_w_pap_y": [
+      [
+        {
+          "label": "Pågående detaljplan",
+          "stroke": {
+            "color": "rgba(229,109,30,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(66,89,179,0.3)"
+          }
+        }
+      ]
+    ],
+    "tk_w_snr_l": [
+      [
+        {
           "filter": "[obj] == '1'",
           "stroke": {
             "color": "rgb(166,206,227)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '2'",
           "stroke": {
             "color": "rgb(31,120,180)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '3'",
           "stroke": {
             "color": "rgb(178,223,138)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '4'",
           "stroke": {
             "color": "rgb(51,160,44)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '5'",
           "stroke": {
             "color": "rgb(251,154,153)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '6'",
           "stroke": {
             "color": "rgb(227,26,28)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '7'",
           "stroke": {
             "color": "rgb(253,191,111)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '8'",
           "stroke": {
             "color": "rgb(255,127,0)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '9'",
           "stroke": {
             "color": "rgb(202,178,214)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '10'",
           "stroke": {
             "color": "rgb(106,61,154)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '11'",
           "stroke": {
             "color": "rgb(255,255,153)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '12'",
           "stroke": {
             "color": "rgb(229,213,5)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '13'",
           "stroke": {
             "color": "rgb(177,89,40)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '14'",
           "stroke": {
             "color": "rgb(127,89,67)",
             "width": 5
           }
-        }],
-        [{
+        }
+      ],
+      [
+        {
           "filter": "[obj] == '15'",
           "stroke": {
             "color": "rgb(0,0,0)",
             "width": 5
           }
-        }]
+        }
+      ]
     ],
-      "tk_w_stp_p": [
-        [{
+    "tk_w_stp_p": [
+      [
+        {
+          "label": "Återfunnen",
           "icon": {
             "src": "img/png/drop_blue.png"
           },
           "filter": "[status] == 'återfunnen'"
-        }], [{
+        }
+      ],
+      [
+        {
+          "label": "Ej inventerad",
           "icon": {
             "src": "img/png/droppe_orange.png"
           }
-        }]
-      ],
-      "tk_mak_y": [
-          [{
-              "fill": {
-                  "color": "rgba(0,0,0,0.15)"
-              }
-          }]
-      ],
-      "karta_gra": [
-        [
-          {
-            "image": {
-              "src": "img/png/gra.png"
-            }
-          }
-        ]
-      ],
-      "karta_farg": [
-        [
-          {
-            "image": {
-              "src": "img/png/farg.png"
-            }
-          }
-        ]
-      ],
-      "orto": [
-        [
-          {
-            "image": {
-              "src": "img/png/orto.png"
-            }
-          }
-        ]
-      ],
-      "grundkarta": [
-        [
-          {
-            "image": {
-              "src": "img/png/grundkarta.png"
-            }
-          }
-        ]
+        }
       ]
+    ],
+    "tk_mak_y": [
+      [
+        {
+          "fill": {
+            "color": "rgba(0,0,0,0.15)"
+          }
+        }
+      ]
+    ],
+    "karta_gra": [
+      [
+        {
+          "image": {
+            "src": "img/png/gra.png"
+          }
+        }
+      ]
+    ],
+    "karta_farg": [
+      [
+        {
+          "image": {
+            "src": "img/png/farg.png"
+          }
+        }
+      ]
+    ],
+    "orto": [
+      [
+        {
+          "image": {
+            "src": "img/png/orto.png"
+          }
+        }
+      ]
+    ],
+    "grundkarta": [
+      [
+        {
+          "label": "Grundkarta",
+          "icon": {
+            "src": "img/png/grundkarta.png"
+          }
+        }
+      ]
+    ]
   }
 }

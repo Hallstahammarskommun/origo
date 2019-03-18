@@ -134,31 +134,27 @@
   ],
   "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
   "source": {
-    "geoserver": {
+    "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",
       "version": "1.1.1"
     },
-    "wms": {
-      "url": "https://karta.hallstahammar.se/intern/kartserver/extern/wms",
-      "version": "1.1.1"
-    },
-    "intern": {
+    "internwms": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
       "version": "1.1.1"
     },
     "ows": {
+      "url": "https://karta.hallstahammar.se/geoserver/ows",
+      "strategy": "all"
+    },
+    "internows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
       "strategy": "all"
     },
     "extern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/extern/gwc/service/wmts"
     },
-	"intern_wmts": {
+    "intern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
-    },
-    "historiska": {
-      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/wms",
-      "version": "1.1.1"
     },
     "basemap": {
       "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
@@ -167,17 +163,17 @@
   "groups": [
     {
       "name": "BM",
-      "title": "Bygg & miljö",
+      "title": "Bygg- och miljöförvaltning",
       "expanded": true
     },
     {
       "name": "KS",
-      "title": "Kommunstyrelsen",
+      "title": "Kommunstyrelseförvaltning",
       "expanded": true
     },
     {
       "name": "TK",
-      "title": "Tekniska",
+      "title": "Tekniska förvaltningen",
       "expanded": true
     },
     {
@@ -196,18 +192,8 @@
       "expanded": false
     },
     {
-      "name": "PTS",
-      "title": "Post- och telestyrelsen",
-      "expanded": false
-    },
-    {
       "name": "RAA",
       "title": "Riksantikvarieämbetet",
-      "expanded": false
-    },
-    {
-      "name": "SV",
-      "title": "Skatteverket",
       "expanded": false
     },
     {
@@ -250,8 +236,32 @@
       ]
     },
     {
+      "name": "grundkarta",
+      "source": "wms",
+      "style": "grundkarta",
+      "title": "Grundkarta",
+      "format": "image/png",
+      "group": "KS",
+      "type": "WMS",
+      "fme": true,
+      "visible": false,
+      "abstract": "Grundkartan är en storskalig karta som används som underlag för upprättande av detaljplan."
+    },
+    {
+      "name": "primarkarta",
+      "source": "wms",
+      "style": "primarkarta",
+      "title": "Primärkarta",
+      "format": "image/png",
+      "group": "KS",
+      "type": "WMS",
+      "fme": true,
+      "visible": false,
+      "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad."
+    },
+    {
       "name": "opto",
-      "source": "intern",
+      "source": "internwms",
       "style": "opto",
       "title": "Opto",
       "format": "image/png",
@@ -262,7 +272,7 @@
     {
       "name": "ks_w_opo_p",
       "title": "Opto ansluten",
-      "source": "ows",
+      "source": "internows",
       "style": "ks_w_opo_p",
       "group": "KS",
       "type": "WFS",
@@ -277,9 +287,37 @@
       ]
     },
     {
+      "name": "tk_w_stp_p",
+      "source": "internows",
+      "style": "tk_w_stp_p",
+      "title": "Stompunkter",
+      "group": "KS",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "filter": "status <> 'förstörd'",
+      "strategy": "bbox",
+      "attributes": [
+        {
+          "name": "pktnr",
+          "title": "Punktnummer: "
+        },
+        {
+          "xy": true
+        },
+        {
+          "title": "Z: ",
+          "name": "z"
+        },
+        {
+          "img": "img"
+        }
+      ]
+    },
+    {
       "name": "tk_w_are_p",
       "title": "Arrende",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_w_are_p",
       "group": "TK",
       "fme": true,
@@ -305,7 +343,7 @@
     {
       "name": "tk_w_gtu_p",
       "title": "Geoteknisk undersökning",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_w_gtu_p",
       "group": "TK",
       "type": "WFS",
@@ -321,7 +359,7 @@
     },
     {
       "name": "tk_kof_y",
-      "source": "ows",
+      "source": "internows",
       "style": "tk_kof_y",
       "title": "Kommunal mark",
       "group": "TK",
@@ -331,58 +369,8 @@
       "visible": false
     },
     {
-      "name": "grundkarta",
-      "source": "geoserver",
-      "style": "grundkarta",
-      "title": "Grundkarta",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "primarkarta",
-      "source": "geoserver",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "tk_w_stp_p",
-      "source": "ows",
-      "style": "tk_w_stp_p",
-      "title": "Stompunkter",
-      "group": "TK",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "filter": "status <> 'förstörd'",
-      "strategy": "bbox",
-      "attributes": [
-        {
-          "name": "pktnr",
-          "title": "Punktnummer: "
-        },
-        {
-          "xy": true
-        },
-        {
-          "title": "Z: ",
-          "name": "z"
-        },
-        {
-          "img": "img"
-        }
-      ]
-    },
-    {
       "name": "va",
-      "source": "intern",
+      "source": "internwms",
       "style": "va",
       "title": "VA nät",
       "format": "image/png",
@@ -400,7 +388,8 @@
       "group": "LM",
       "type": "WMS",
       "renderMode": "image",
-      "visible": false
+      "visible": false,
+      "abstract": "Skiktet innehåller bestämmelser enligt Miljöbalken, Väglagen, Vattenlagen, Kulturminneslagen, Byggnadslagen, Mineral-, gruv- och torvlagen och Lagen om byggande av järnväg. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
       "name": "detaljplan",
@@ -410,17 +399,17 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
-      "abstract": "<p>Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för  särskilda ytor. De rosa linjerna markerar utfartsförbud.</p><p>De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.</p>",
+      "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>",
       "layers": [
         {
           "name": "pbr_detaljplaner",
-          "source": "geoserver",
+          "source": "wms",
           "style": "detaljplan",
           "title": "Detaljplan",
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "minScale": 4000,
+          "minScale": 6000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
             {
@@ -438,14 +427,14 @@
         },
         {
           "name": "pbr_detaljplaner",
-          "source": "geoserver",
+          "source": "wms",
           "style": "detaljplan",
           "title": "Detaljplan",
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "opacity": 0.2,
-          "maxScale": 4000,
+          "opacity": 0.1,
+          "maxScale": 6000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
             {
@@ -478,7 +467,7 @@
           "style": "ks_dpan_y",
           "type": "WFS",
           "visible": true,
-          "maxScale": 4000,
+          "maxScale": 6000,
           "attributes": [
             {
               "name": "description_pt"
@@ -533,6 +522,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
+      "abstract": "Fastighetsindelningen i lagret motsvarar gränserna i Registerkartan. Det är viktigt att komma ihåg att innehållet i Registerkartan inte har rättsverkan. Det är förrättningskartan tillsammans med beslut och protokoll som utgör de juridiska dokument som gäller. Dessa dokument finns arkiverade hos Lantmäteriet.",
       "layers": [
         {
           "name": "fastighet_kvalitet",
@@ -580,7 +570,8 @@
       "fme": true,
       "type": "WMS",
       "renderMode": "image",
-      "visible": false
+      "visible": false,
+      "abstract": "Skiktet innehåller servitut, nyttjanderätt, ledningsrätt, gemensamhetsanläggning, vägrätt, gräns för viltvårdsområde samt före detta gräns för kronomark. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
       "name": "terranglutning",
@@ -592,7 +583,8 @@
       "group": "LM",
       "fme": true,
       "type": "WMTS",
-      "visible": false
+      "visible": false,
+      "abstract": "Skiktet Terränglutning visar den beräknade lutningen i gråskala för varje pixel."
     },
     {
       "name": "LST_Potentiellt_fororenade_omraden",
@@ -716,29 +708,6 @@
       "queryable": false
     },
     {
-      "name": "pts_lek_y",
-      "source": "ows",
-      "style": "pts_lek_y",
-      "title": "Pågende grävarbeten",
-      "group": "PTS",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "title": "Ärende: ",
-          "name": "typ"
-        },
-        {
-          "title": "Startdatum: ",
-          "name": "startdate"
-        },
-        {
-          "title": "Slutdatum: ",
-          "name": "enddate"
-        }
-      ]
-    },
-    {
       "name": "FMI_WMS",
       "source": "wms",
       "style": "fmi_wms",
@@ -757,30 +726,9 @@
       ]
     },
     {
-      "name": "tk_kir_p",
-      "source": "ows",
-      "style": "point",
-      "clusterStyle": "cluster",
-      "title": "Navet",
-      "layerType": "cluster",
-      "group": "SV",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "title": "Personnummer: ",
-          "name": "obj"
-        },
-        {
-          "title": "Namn: ",
-          "name": "typ"
-        }
-      ]
-    },
-    {
       "name": "jordarter",
-      "source": "geoserver",
-      "style": "detaljplan",
+      "source": "wms",
+      "style": "bestammelser",
       "title": "Jordarter",
       "format": "image/png",
       "group": "SGU",
@@ -823,12 +771,13 @@
     {
       "name": "UAV",
       "source": "intern_wmts",
-      "style": "orto",
+      "style": "uav",
       "title": "Drönarfoto",
       "format": "image/png",
       "group": "TK",
       "type": "WMTS",
       "visible": false,
+      "abstract": "Ortofoto framtaget från drönarflygning på mellan 50 och 120 meters höjd.",
       "attributes": [
         {
           "name": "obj",
@@ -842,19 +791,20 @@
     },
     {
       "name": "HE1907",
-      "source": "historiska",
-      "style": "karta_farg",
+      "source": "wms",
+      "style": "karta",
       "title": "1907",
       "format": "image/png",
       "group": "historiska",
       "type": "WMS",
       "visible": false,
+      "abstract": "Häradsekonomiska kartan (1859-1934) baserades på laga skifteskartor och beskriver markanvändning, vegetation, bebyggelse, kommunikationer och gränser.",
       "queryable": false
     },
     {
       "name": "Histortho_60",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "1960",
       "format": "image/png",
       "group": "historiska",
@@ -864,19 +814,20 @@
     },
     {
       "name": "EK1962",
-      "source": "historiska",
-      "style": "karta_farg",
+      "source": "wms",
+      "style": "karta",
       "title": "1962",
       "format": "image/png",
       "group": "historiska",
       "type": "WMS",
       "visible": false,
+      "abstract": "Ekonomiska kartan (1935-1978) var registerkarta och redovisar fastigheterna och registerbeteckningarna. Bostadsbyggnader, tomt och trädgård, odlingsområden samt fornminnen och ett stort antal ortnamn redovisas.",
       "queryable": false
     },
     {
       "name": "Histortho_75",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "1975",
       "format": "image/png",
       "group": "historiska",
@@ -886,8 +837,8 @@
     },
     {
       "name": "OF1997",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "1997",
       "format": "image/png",
       "group": "historiska",
@@ -897,8 +848,8 @@
     },
     {
       "name": "OF2001",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2001",
       "format": "image/png",
       "group": "historiska",
@@ -908,8 +859,8 @@
     },
     {
       "name": "orto_2007",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2007",
       "format": "image/png",
       "group": "historiska",
@@ -919,8 +870,8 @@
     },
     {
       "name": "orto_2010",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2010",
       "format": "image/png",
       "group": "historiska",
@@ -930,8 +881,8 @@
     },
     {
       "name": "orto_2012",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2012",
       "format": "image/png",
       "group": "historiska",
@@ -941,8 +892,8 @@
     },
     {
       "name": "orto_2014",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2014",
       "format": "image/png",
       "group": "historiska",
@@ -952,8 +903,8 @@
     },
     {
       "name": "orto_2016",
-      "source": "historiska",
-      "style": "orto",
+      "source": "wms",
+      "style": "uav",
       "title": "2016",
       "format": "image/png",
       "group": "historiska",
@@ -1005,13 +956,13 @@
       "visible": false
     },
     {
+      "name": "tk_mak_y__background",
+      "source": "ows",
+      "style": "tk_mak_y_background",
+      "title": "Mask_background",
       "group": "background",
-      "name": "blank",
-      "source": "",
-      "title": "Ingen bakgrundskarta",
-      "type": "WMTS",
-      "style": "",
-      "secure": false,
+      "queryable": false,
+      "type": "WFS",
       "visible": false
     }
   ],
@@ -1088,24 +1039,39 @@
     "bm_avl_p": [
       [
         {
+          "label": "Godkänd",
+          "filter": "[status] == '1'",
           "icon": {
             "src": "img/png/BM_avl_p1.png"
-          },
-          "filter": "[status] == '1'"
+          }
         }
       ],
       [
         {
+          "label": "Ej kontrollerad",
+          "filter": "[status] == '0'",
           "icon": {
             "src": "img/png/BM_avl_p0.png"
-          },
-          "filter": "[status] == '0'"
+          }
         }
       ]
     ],
     "opto": [
       [
         {
+          "label": "Opto nodpunkt",
+          "circle": {
+            "radius": 5,
+            "stroke": {
+              "color": "rgb(240,163,0)",
+              "width": 5
+            }
+          }
+        }
+      ],
+      [
+        {
+          "label": "Optonät",
           "stroke": {
             "color": "rgb(240,163,0)",
             "width": 1
@@ -1116,48 +1082,54 @@
     "ks_w_opo_p": [
       [
         {
+          "label": "Ansluten",
+          "filter": "[obj] == 'Ansluten'",
           "icon": {
             "src": "img/png/KS_w_opo_p1.png"
-          },
-          "filter": "[obj] == 'Ansluten'"
+          }
         }
       ],
       [
         {
+          "label": "Avtalad",
+          "filter": "[obj] == 'Avtal'",
           "icon": {
             "src": "img/png/KS_w_opo_p2.png"
-          },
-          "filter": "[obj] == 'Avtal'"
+          }
         }
       ],
       [
         {
+          "label": "Intresserad",
+          "filter": "[obj] == 'Intresse'",
           "icon": {
             "src": "img/png/KS_w_opo_p4.png"
-          },
-          "filter": "[obj] == 'Intresse'"
+          }
         }
       ],
       [
         {
+          "label": "Kampanj",
+          "filter": "[obj] == 'Kampanj'",
           "icon": {
             "src": "img/png/KS_w_opo_p3.png"
-          },
-          "filter": "[obj] == 'Kampanj'"
+          }
         }
       ],
       [
         {
+          "label": "Pumpstation",
+          "filter": "[obj] == 'Pumpstation'",
           "icon": {
             "src": "img/png/KS_w_opo_p0.png"
-          },
-          "filter": "[obj] == 'Pumpstation'"
+          }
         }
       ]
     ],
     "tk_w_are_p": [
       [
         {
+          "label": "Arrendeavtal",
           "icon": {
             "src": "img/png/TK_w_are_p.png"
           }
@@ -1167,6 +1139,7 @@
     "tk_w_gtu_p": [
       [
         {
+          "label": "Geoteknisk undersökning",
           "icon": {
             "src": "img/png/tk_w_gtu_p.png"
           }
@@ -1176,18 +1149,28 @@
     "tk_kof_y": [
       [
         {
+          "label": "Kommunal fastighet",
+          "filter": "[typ] == 'Nej'",
           "fill": {
             "color": "rgba(165,0,165,0.25)"
           },
-          "filter": "[typ] == 'Nej'"
+          "stroke": {
+            "color": "rgba(165,0,165,0.25)",
+            "width": 1
+          }
         }
       ],
       [
         {
+          "label": "Tomträtt",
+          "filter": "[typ] == 'Ja'",
           "fill": {
             "color": "rgba(165,0,165,0.45)"
           },
-          "filter": "[typ] == 'Ja'"
+          "stroke": {
+            "color": "rgba(165,0,165,0.45)",
+            "width": 1
+          }
         }
       ]
     ],
@@ -1407,7 +1390,8 @@
     "grundkarta": [
       [
         {
-          "image": {
+          "label": "Grundkarta",
+          "icon": {
             "src": "img/png/grundkarta.png"
           }
         }
@@ -1416,7 +1400,8 @@
     "primarkarta": [
       [
         {
-          "image": {
+          "label": "Primärkarta",
+          "icon": {
             "src": "img/png/primarkarta.png"
           }
         }
@@ -1425,32 +1410,58 @@
     "tk_w_stp_p": [
       [
         {
-          "icon": {
-            "src": "img/png/droppe_black.png"
-          },
-          "filter": "[stompunkttyp] == 'planpunkt'"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/drop_blue.png"
-          },
-          "filter": "[stompunkttyp] == 'plan-höjdpunkt'"
-        }
-      ],
-      [
-        {
+          "label": "Höjdfix",
+          "filter": "[stompunkttyp] == 'höjdpunkt'",
           "icon": {
             "src": "img/png/droppe_orange.png"
-          },
-          "filter": "[stompunkttyp] == 'höjdpunkt'"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Planpunkt",
+          "filter": "[stompunkttyp] == 'planpunkt'",
+          "icon": {
+            "src": "img/png/droppe_black.png"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Plan- och höjdpunkt",
+          "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
+          "icon": {
+            "src": "img/png/drop_blue.png"
+          }
         }
       ]
     ],
     "va": [
       [
         {
+          "label": "Dagvatten",
+          "stroke": {
+            "color": "rgb(0,128,0)",
+            "width": 1,
+            "lineDash": [
+              6,
+              2
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Spillvatten",
+          "stroke": {
+            "color": "rgb(255,0,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Vatten",
           "stroke": {
             "color": "rgb(0,0,255)",
             "width": 1,
@@ -1476,17 +1487,136 @@
       [
         {
           "stroke": {
-            "color": "rgb(253,236,195)",
+            "color": "rgba(229,109,30,0.6)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(255,198,105,0.3)"
+          },
+          "label": "Gällande planer"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 1.5
+          },
+          "label": "Användningsgräns",
+          "filter": "[code] == '2000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
             "width": 1
-          }
+          },
+          "label": "Egenskapsgräns",
+          "filter": "[code] == '3000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Administrativ gräns",
+          "filter": "[code] == '4000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "lineDash": [
+              30,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            "width": 1
+          },
+          "label": "Egenskapsgräns och administrativ gräns",
+          "filter": "[code] == '6000'",
+          "minScale": 2000
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 5
+          },
+          "label": "Utfartsförbud",
+          "filter": "[code] == 'Utfart får inte finnas'",
+          "minScale": 2000
         }
       ]
     ],
     "granser": [
       [
         {
+          "label": "Medelfel (m) 0,001 - 0,050",
           "stroke": {
-            "color": "rgb(150,61,20)",
+            "color": "rgb(0,200,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) 0,051 - 0,200",
+          "stroke": {
+            "color": "rgb(225,225,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) 0,201 - 0,500",
+          "stroke": {
+            "color": "rgb(225,140,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Medelfel (m) > 0,500",
+          "stroke": {
+            "color": "rgb(255,0,0)",
             "width": 1
           }
         }
@@ -1571,13 +1701,15 @@
       ]
     ],
     "lst_sts_l": [
-      [{
+      [
+        {
           "stroke": {
-              "color": "rgb(157, 193, 173)",
-              "width": 1
+            "color": "rgb(157, 193, 173)",
+            "width": 1
           }
-      }]
-      ],
+        }
+      ]
+    ],
     "msb_q100_y": [
       [
         {
@@ -1650,19 +1782,6 @@
         }
       ]
     ],
-    "pts_lek_y": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(86,66,244,0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(86,66,244,0.3)"
-          }
-        }
-      ]
-    ],
     "fmi_wms": [
       [
         {
@@ -1713,6 +1832,34 @@
         {
           "image": {
             "src": "img/png/orto.png"
+          }
+        }
+      ]
+    ],
+    "karta": [
+      [
+        {
+          "icon": {
+            "src": "img/png/farg.png"
+          }
+        }
+      ]
+    ],
+    "uav": [
+      [
+        {
+          "label": "Drönarfoto",
+          "icon": {
+            "src": "img/png/orto.png"
+          }
+        }
+      ]
+    ],
+    "tk_mak_y_background": [
+      [
+        {
+          "image": {
+            "src": "img/png/mask.png"
           }
         }
       ]

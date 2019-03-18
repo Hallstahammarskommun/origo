@@ -1,106 +1,110 @@
-import $ from 'jquery';
-import modal from '../modal';
-import viewer from '../viewer';
+import { Component, Button, Modal } from '../ui';
 
-const defaultTitle = 'Om kartan';
-const defaultContent = '<p></p>';
-const cls = 'o-splash';
-let title;
-let content;
-let buttons;
-let revisitText;
-let hideText;
-let confirmText;
+const Splash = function Splash(options = {}) {
+  const defaultTitle = 'Om kartan';
+  const defaultContent = '<p></p>';
+  const cls = 'o-splash';
+  let viewer;
+  let closeButton;
+  let modal;
+  let component;
 
-function getContent(url) {
-  return $.get(url);
-}
-
-function openModal() {
-  modal.createModal('#o-map', {
+  let {
     title,
     content,
-    cls
-  });
-  modal.showModal();
-}
+    target,
+    hideText,
+    confirmText
+  } = options;
 
-function addButtons() {
-  const visitButtons = `${'<br>' +
-    '<input id="o-splash-revisit-button" type="button" value="'}${revisitText}">` +
-    `<input id="o-splash-hide-button" type="button" value="${hideText}">`;
+  const {
+    buttons,
+    url
+  } = options;
 
-  const bodyIndex = content.lastIndexOf('</body>');
-  if (bodyIndex !== -1) {
-    content = content.substring(0, bodyIndex) + visitButtons + content.substring(bodyIndex);
-  } else {
-    content += visitButtons;
-  }
-}
+  const addButton = function addButton() {
+    const closeButtonHtml = closeButton.render();
+    content += closeButtonHtml;
+    return content;
+  };
 
-function clearLocalStorage() {
-  localStorage.removeItem('splashVisibility');
-  localStorage.removeItem('splashContent');
-}
+  const clearLocalStorage = function clearLocalStorage() {
+    localStorage.removeItem('splashVisibility');
+    localStorage.removeItem('splashContent');
+  };
 
-function bindUIActions() {
-  $('#o-splash-revisit-button').on('click', () => {
-    modal.closeModal();
-  });
-
-  $('#o-splash-hide-button').on('click', () => {
-    const proceed = window.confirm(confirmText);
-    if (proceed) {
-      modal.closeModal();
-      localStorage.setItem('splashVisibility', false);
+  const setLocalStorage = function setLocalStorage() {
+    const newContent = localStorage.getItem('splashContent') !== content;
+    if (localStorage.getItem('splashVisibility') !== 'false' || newContent) {
+      localStorage.setItem('splashContent', content);
+      if (newContent) {
+        localStorage.setItem('splashVisibility', 'true');
+      }
     }
-  });
-}
+  };
 
-function setLocalStorage() {
-  const newContent = localStorage.getItem('splashContent') !== content;
-  if (localStorage.getItem('splashVisibility') !== 'false' || newContent) {
-    openModal();
-    bindUIActions();
-    localStorage.setItem('splashContent', content);
-    if (newContent) {
-      localStorage.setItem('splashVisibility', 'true');
-    }
-  }
-}
+  const createModal = function createModal(modalContent) {
+    content = modalContent;
 
-function init(optOptions) {
-  const options = optOptions || {};
-  title = options.title || defaultTitle;
-  if (options.buttons) {
-    buttons = Object.prototype.hasOwnProperty.call(options.buttons, 'visible') ? options.buttons.visible : false;
-    revisitText = Object.prototype.hasOwnProperty.call(options.buttons, 'revisitText') ? options.buttons.revisitText : 'Visa vid nästa besök';
-    hideText = Object.prototype.hasOwnProperty.call(options.buttons, 'hideText') ? options.buttons.hideText : 'Visa inte igen';
-    confirmText = Object.prototype.hasOwnProperty.call(options.buttons, 'confirmText') ? options.buttons.confirmText : 'Är du säker på att du vill dölja den här informationen?';
-  }
-  if (options.url) {
-    const url = viewer.getBaseUrl() + options.url;
-    getContent(url)
-      .done((data) => {
-        content = data;
-        if (buttons) {
-          addButtons();
-          setLocalStorage();
-        } else {
-          clearLocalStorage();
-          openModal();
-        }
-      });
-  } else {
-    content = options.content || defaultContent;
     if (buttons) {
-      addButtons();
       setLocalStorage();
+      component.addComponent(closeButton);
+      content = addButton();
     } else {
       clearLocalStorage();
-      openModal();
     }
-  }
-}
 
-export default { init };
+    if (localStorage.getItem('splashVisibility') !== 'false') {
+      modal = Modal({
+        title,
+        content,
+        cls,
+        target
+      });
+      component.dispatch('render');
+    }
+  };
+
+  return Component({
+    name: 'splash',
+    onInit() {
+      if (!title) title = defaultTitle;
+      if (!content) content = defaultContent;
+      if (options.buttons) {
+        hideText = Object.prototype.hasOwnProperty.call(options.buttons, 'hideText') ? options.buttons.hideText : 'Visa inte igen';
+        confirmText = Object.prototype.hasOwnProperty.call(options.buttons, 'confirmText') ? options.buttons.confirmText : 'Är du säker på att du vill dölja den här informationen?';
+      }
+      if (buttons) {
+        closeButton = Button({
+          cls: 'rounded margin-top-small padding-y grey-lightest',
+          style: 'display: block;',
+          text: hideText,
+          click() {
+            const proceed = window.confirm(confirmText);
+            if (proceed) {
+              modal.closeModal();
+              localStorage.setItem('splashVisibility', false);
+            }
+          }
+        });
+      }
+    },
+    onAdd(evt) {
+      component = this;
+      viewer = evt.target;
+      target = viewer.getId();
+      if (url) {
+        const fullUrl = viewer.getBaseUrl() + url;
+        const req = new Request(`${fullUrl}`);
+        fetch(req).then(response => response.text().then((text) => {
+          content = text;
+          createModal(content);
+        }));
+      } else {
+        createModal(content);
+      }
+    }
+  });
+};
+
+export default Splash;
