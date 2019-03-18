@@ -20,7 +20,7 @@ const OverlayLayer = function OverlayLayer(options) {
   let ButtonsHtml;
   let layerList;
 
-  const cls = `${clsSettings} flex row align-center padding-left padding-right item`.trim();
+  let cls = `${clsSettings} flex row align-center padding-left padding-right item`.trim();
   const title = layer.get('title') || 'Titel saknas';
   const name = layer.get('name');
   const secure = layer.get('secure');
