@@ -2,7 +2,7 @@ import { Component, Button, Modal } from '../ui';
 
 const Splash = function Splash(options = {}) {
   const defaultTitle = 'Om kartan';
-  const defaultContent = '<p></p>';
+  const defaultContent = '';
   const cls = 'o-splash';
   let viewer;
   let closeButton;
@@ -93,15 +93,23 @@ const Splash = function Splash(options = {}) {
       component = this;
       viewer = evt.target;
       target = viewer.getId();
+      if (!title) title = defaultTitle;
+      if (!content) content = defaultContent;
+
       if (url) {
         const fullUrl = viewer.getBaseUrl() + url;
         const req = new Request(`${fullUrl}`);
         fetch(req).then(response => response.text().then((text) => {
-          content = text;
-          createModal(content);
+          createModal(text);
+          if (modal) {
+            this.addComponent(modal);
+          }
         }));
       } else {
         createModal(content);
+        if (modal) {
+          this.addComponent(modal);
+        }
       }
     }
   });
