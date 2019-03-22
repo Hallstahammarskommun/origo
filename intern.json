@@ -451,16 +451,6 @@
           ]
         },
         {
-          "name": "detaljplan",
-          "source": "wms",
-          "style": "detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "renderMode": "image",
-          "visible": true,
-          "maxScale": 2000
-        },
-        {
           "name": "ks_dpan_y",
           "title": "Användning",
           "source": "ows",
