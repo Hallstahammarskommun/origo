@@ -202,7 +202,7 @@
           "name": "pbr_detaljplaner",
           "source": "wms",
           "style": "detaljplan",
-          "title": "detaljplan",
+          "title": "Gällande detaljplan",
           "format": "image/png",
           "type": "WMS",
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
