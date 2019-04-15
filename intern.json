@@ -718,7 +718,7 @@
     {
       "name": "jordarter",
       "source": "wms",
-      "style": "bestammelser",
+      "style": "sgu_jordarter",
       "title": "Jordarter",
       "format": "image/png",
       "group": "SGU",
@@ -751,7 +751,7 @@
     {
       "name": "Vaghallare",
       "source": "wms",
-      "style": "line",
+      "style": "tv_vaghallare",
       "title": "Väghållare",
       "format": "image/png",
       "group": "TV",
@@ -794,7 +794,7 @@
     {
       "name": "Histortho_60",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "1960",
       "format": "image/png",
       "group": "historiska",
@@ -817,7 +817,7 @@
     {
       "name": "Histortho_75",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "1975",
       "format": "image/png",
       "group": "historiska",
@@ -828,7 +828,7 @@
     {
       "name": "OF1997",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "1997",
       "format": "image/png",
       "group": "historiska",
@@ -839,7 +839,7 @@
     {
       "name": "OF2001",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2001",
       "format": "image/png",
       "group": "historiska",
@@ -850,7 +850,7 @@
     {
       "name": "orto_2007",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2007",
       "format": "image/png",
       "group": "historiska",
@@ -861,7 +861,7 @@
     {
       "name": "orto_2010",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2010",
       "format": "image/png",
       "group": "historiska",
@@ -872,7 +872,7 @@
     {
       "name": "orto_2012",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2012",
       "format": "image/png",
       "group": "historiska",
@@ -883,7 +883,7 @@
     {
       "name": "orto_2014",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2014",
       "format": "image/png",
       "group": "historiska",
@@ -894,7 +894,7 @@
     {
       "name": "orto_2016",
       "source": "wms",
-      "style": "uav",
+      "style": "orto_historisk",
       "title": "2016",
       "format": "image/png",
       "group": "historiska",
@@ -1644,7 +1644,8 @@
             "fill": {
               "color": "rgb(255,170,0)"
             }
-          }
+          },
+          "label": "Förorenade områden"
         }
       ]
     ],
@@ -1660,7 +1661,8 @@
             "fill": {
               "color": "rgb(255,92,207)"
             }
-          }
+          },
+          "label": "Miljöfarlig verksamhet"
         }
       ]
     ],
@@ -1673,7 +1675,8 @@
           },
           "fill": {
             "color": "rgba(255,122,122,0.3)"
-          }
+          },
+          "label": "Riksintresse 3 kap MB"
         }
       ]
     ],
@@ -1686,7 +1689,8 @@
           },
           "fill": {
             "color": "rgba(187,227,212,0.3)"
-          }
+          },
+          "label": "Riksintresse 4 kap MB"
         }
       ]
     ],
@@ -1696,88 +1700,149 @@
           "stroke": {
             "color": "rgb(157, 193, 173)",
             "width": 1
-          }
+          },
+          "label": "Strandskydd"
         }
       ]
     ],
     "msb_q100_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(0,197,255)"
+          },
           "fill": {
             "color": "rgb(0,197,255)"
-          }
+          },
+          "label": "Kolbäcksån 100-årsflöde (2014)"
         }
       ]
     ],
     "msb_q200_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(116,224,255)"
+          },
           "fill": {
             "color": "rgb(116,224,255)"
-          }
+          },
+          "label": "Kolbäcksån 200-årsflöde (2014)"
         }
       ]
     ],
     "msb_qbhf_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(0,111,255)"
+          },
           "fill": {
             "color": "rgb(0,111,255)"
-          }
+          },
+          "label": "Kolbäcksån högsta beräknat flöde (2014)"
         }
       ]
     ],
     "msb_malaren_100_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(122,182,245)"
+          },
           "fill": {
             "color": "rgb(122,182,245)"
-          }
+          },
+          "label": "Mälaren 100-årsnivå"
         }
       ]
     ],
     "msb_malaren_200_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(170,102,205)"
+          },
           "fill": {
             "color": "rgb(170,102,205)"
-          }
+          },
+          "label": "Mälaren 200-årsnivå"
         }
       ]
     ],
     "msb_malaren_bhf_y": [
       [
         {
+          "stroke": {
+            "color": "rgb(0,92,230)"
+          },
           "fill": {
             "color": "rgb(0,92,230)"
-          }
+          },
+          "label": "Mälaren högsta beräknat flöde"
+        }
+      ]
+    ],
+    "sgu_jordarter": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(237,171,102)"
+          },
+          "fill": {
+            "color": "rgb(237,171,102)"
+          },
+          "label": "Jordarter"
         }
       ]
     ],
     "sgu_skred_lutningsanalys": [
       [
         {
+          "stroke": {
+            "color": "rgb(246,197,103)"
+          },
           "fill": {
             "color": "rgb(246,197,103)"
-          }
+          },
+          "label": "Skred, lutningsanalys"
         }
       ]
     ],
     "sgu_skred_strandnara": [
       [
         {
+          "stroke": {
+            "color": "rgb(255,155,56)"
+          },
           "fill": {
             "color": "rgb(255,155,56)"
-          }
+          },
+          "label": "Skred, strandnära"
         }
       ]
     ],
     "fmi_wms": [
       [
         {
-          "image": {
+          "icon": {
             "src": "img/png/FMI_WMS.png"
-          }
+          },
+          "label": "Fornminne"
+        }
+      ]
+    ],
+    "tv_vaghallare": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(29,16,255)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
+          },
+          "label": "Väghållare"
         }
       ]
     ],
@@ -1826,6 +1891,16 @@
         }
       ]
     ],
+    "orto_historisk": [
+      [
+        {
+          "icon": {
+            "src": "img/png/orto.png"
+          },
+          "label": "Historiskt ortofoto"
+        }
+      ]
+    ],
     "karta": [
       [
         {
@@ -1838,10 +1913,10 @@
     "uav": [
       [
         {
-          "label": "Drönarfoto",
           "icon": {
             "src": "img/png/orto.png"
-          }
+          },
+          "label": "Drönarfoto"
         }
       ]
     ],
