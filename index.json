@@ -487,7 +487,7 @@
       "type": "WMS",
       "visible": false,
       "abstractTitle": "Så här fungerar solkartan",
-      "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='http://hallstahammar.se/Boende-miljo-trafik/Energi-och-klimatradgivning/solenergi' target='_blank'>hemsida om solel.</a>"
+      "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='https://hallstahammar.se/boende-miljo-och-trafik/miljo-och-klimat/energi--och-klimatradgivning' target='_blank'>webbplats om energi- och klimatrådgivning.</a>"
     },
     {
       "name": "bm_nar_y",
