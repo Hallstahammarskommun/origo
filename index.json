@@ -163,7 +163,7 @@
       "visible": false,
       "layers": [
         {
-          "name": "granser",
+          "name": "fastighet",
           "source": "wms",
           "style": "granser",
           "format": "image/png",
