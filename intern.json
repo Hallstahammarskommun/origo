@@ -749,6 +749,18 @@
       "queryable": false
     },
     {
+      "name": "SE.GOV.SGU.JORD.GRUNDLAGER.STRAND_ERODERBARHET.25K",
+      "source": "wms",
+      "format": "image/png",
+      "style": "sgu_erosion",
+      "title": "Stränders eroderbarhet",
+      "group": "SGU",
+      "queryable": false,
+      "type": "WMS",
+      "visible": false,
+      "abstract": "Se SGU:s <a target=_blank href=http://resource.sgu.se/dokument/produkter/produktblad/strandernas-jordart-och-eroderbarhet.pdf>produktblad</a> för mer information."
+    },
+    {
       "name": "Vaghallare",
       "source": "wms",
       "style": "tv_vaghallare",
@@ -1780,6 +1792,19 @@
             "color": "rgb(0,92,230)"
           },
           "label": "Mälaren högsta beräknat flöde"
+        }
+      ]
+    ],
+    "sgu_erosion": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(242,91,255)"
+          },
+          "fill": {
+            "color": "rgb(242,91,255)"
+          },
+          "label": "Stränders eroderbarhet"
         }
       ]
     ],
