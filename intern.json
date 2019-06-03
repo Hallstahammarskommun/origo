@@ -632,9 +632,9 @@
       "queryable": false
     },
     {
-      "name": "Tema_Q100",
+      "name": "kolbacksan_100",
       "source": "wms",
-      "style": "msb_q100_y",
+      "style": "msb_kolbacksan_100_y",
       "title": "Kolbäcksån 100-årsflöde (2014)",
       "format": "image/png",
       "group": "MSB",
@@ -643,9 +643,9 @@
       "queryable": false
     },
     {
-      "name": "Tema_Q200",
+      "name": "kolbacksan_200",
       "source": "wms",
-      "style": "msb_q200_y",
+      "style": "msb_kolbacksan_200_y",
       "title": "Kolbäcksån 200-årsflöde (2014)",
       "format": "image/png",
       "group": "MSB",
@@ -654,9 +654,9 @@
       "queryable": false
     },
     {
-      "name": "Tema_QBHF",
+      "name": "kolbacksan_bhf",
       "source": "wms",
-      "style": "msb_qbhf_y",
+      "style": "msb_kolbacksan_bhf_y",
       "title": "Kolbäcksån högsta beräknat flöde (2014)",
       "format": "image/png",
       "group": "MSB",
@@ -1717,7 +1717,7 @@
         }
       ]
     ],
-    "msb_q100_y": [
+    "msb_kolbacksan_100_y": [
       [
         {
           "stroke": {
@@ -1730,7 +1730,7 @@
         }
       ]
     ],
-    "msb_q200_y": [
+    "msb_kolbacksan_200_y": [
       [
         {
           "stroke": {
@@ -1743,7 +1743,7 @@
         }
       ]
     ],
-    "msb_qbhf_y": [
+    "msb_kolbacksan_bhf_y": [
       [
         {
           "stroke": {
