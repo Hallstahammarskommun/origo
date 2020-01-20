@@ -698,7 +698,7 @@
       "queryable": false
     },
     {
-      "name": "FMI_WMS",
+      "name": "fornsok",
       "source": "wms",
       "style": "fmi_wms",
       "title": "Fornminne",
@@ -706,14 +706,7 @@
       "group": "RAA",
       "type": "WMS",
       "visible": false,
-      "queryable": true,
-      "attributes": [
-        {
-          "title": "Mer information: ",
-          "name": "BENAMNING",
-          "url": "URL"
-        }
-      ]
+      "queryable": false
     },
     {
       "name": "jordarter",
@@ -860,7 +853,7 @@
       "queryable": false
     },
     {
-      "name": "orto_2007",
+      "name": "Ortofoto_farg_2007",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2007",
@@ -871,7 +864,7 @@
       "queryable": false
     },
     {
-      "name": "orto_2010",
+      "name": "Ortofoto_farg_2010",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2010",
@@ -882,7 +875,7 @@
       "queryable": false
     },
     {
-      "name": "orto_2012",
+      "name": "Ortofoto_farg_2012",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2012",
@@ -893,7 +886,7 @@
       "queryable": false
     },
     {
-      "name": "orto_2014",
+      "name": "Ortofoto_farg_2014",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2014",
@@ -904,7 +897,7 @@
       "queryable": false
     },
     {
-      "name": "orto_2016",
+      "name": "Ortofoto_farg_2016",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2016",
