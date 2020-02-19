@@ -68,17 +68,13 @@
       "name": "draganddrop"
     },
     {
-      "name": "--saveconfig"
-    },
-    {
       "name": "splash",
       "options": {
-        "title": "Kartnytt",
         "url": "splash.html",
-        "buttons": {
-          "visible": true,
-          "confirmText": "Är du säker på att du vill dölja den här utgåvan av Kartnytt?"
-        }
+        "hideButton": {
+          "visible": true
+        },
+        "style": "width: 600px;"
       }
     }
   ],
