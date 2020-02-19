@@ -1,10 +1,10 @@
 [class^="o-icon-"],
 [class*=" o-icon-"] {
-  // padding: .35em;
-  height: 1em;
-  // width: 1.3em;
+  padding: .35em;
+  height: 1.3em;
+  width: 1.3em;
   float: right;
-  // fill: $o-btn-color;
+  fill: $o-btn-color;
 }
 [class^="o-icon-24"],
 [class*=" o-icon-24"] {
@@ -13,12 +13,12 @@
   width: 1.5rem;
   fill: $o-btn-color;
 }
-/* .o-menu-button [class^="o-icon-"],
+.o-menu-button [class^="o-icon-"],
 .o-menu-button [class*=" o-icon-"] {
 	padding: 0.25em;
 	height: 1em;
 	width: 1em;
-} */
+}
 .ol-control>button:hover [class^="o-icon-"],
 .ol-control>button:hover [class*=" o-icon-"],
 .o-button:hover [class^="o-icon-"],
