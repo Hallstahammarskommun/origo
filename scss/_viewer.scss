@@ -8,7 +8,7 @@
   top: 0;
 }
 .o-toolbar-maptools {
-  //margin-top: .5rem;
+  margin-top: .5rem;
 }
 .o-toolbar-misc {
   margin-top: .5rem;
@@ -53,9 +53,10 @@
   width: 40%;
 }
 .o-footer .o-footer-middle .o-footer-middle-content {
-  padding: 0.1em 0;
+  padding: 0.25em 0;
 }
 .o-footer .o-footer-middle img {
+  height: 2em;
   padding-right: 5px;
 }
 .o-footer .o-footer-middle .o-footer-middle-content p {
@@ -101,6 +102,8 @@
   .o-footer {
     display: none;
   }
+}
+&[class*=#{$media-l-m}] {
   .o-tools-left {
     bottom: 0;
     top: auto;
