@@ -5,18 +5,16 @@ import dispatcher from './editdispatcher';
 import editHandler from './edithandler';
 import editorLayers from './editorlayers';
 import drawTools from './drawtools';
-import Modal from '../../ui/modal';
 
 const activeClass = 'o-control-active';
-// const disableClass = 'o-disabled';
+const disableClass = 'o-disabled';
 let currentLayer;
 let editableLayers;
 let $editAttribute;
 let $editDraw;
 let $editDelete;
 let $editLayers;
-// let $editSave;
-let viewer;
+let $editSave;
 
 function render() {
   $('#o-tools-bottom').append(editortemplate);
@@ -24,7 +22,7 @@ function render() {
   $editDraw = $('#o-editor-draw');
   $editDelete = $('#o-editor-delete');
   $editLayers = $('#o-editor-layers');
-  // $editSave = $('#o-editor-save');
+  $editSave = $('#o-editor-save');
 }
 
 function toggleToolbar(state) {
@@ -43,17 +41,9 @@ function toggleToolbar(state) {
 
 function bindUIActions() {
   $editDraw.on('click', (e) => {
-    if ($('#editor-toolbar-layers-dropdown').find('.o-active').length) {
-      dispatcher.emitToggleEdit('draw');
-      $editDraw.blur();
-      e.preventDefault();
-      return false;
-    }
-    Modal({
-      title: 'Inget lager valt',
-      content: 'Börja med att välja ett lager innan du ritar.',
-      target: viewer.getId()
-    });
+    dispatcher.emitToggleEdit('draw');
+    $editDraw.blur();
+    e.preventDefault();
     return false;
   });
   $editAttribute.on('click', (e) => {
@@ -71,11 +61,11 @@ function bindUIActions() {
     $editLayers.blur();
     e.preventDefault();
   });
-  /* $editSave.on('click', (e) => {
+  $editSave.on('click', (e) => {
     dispatcher.emitToggleEdit('save');
     $editSave.blur();
     e.preventDefault();
-  }); */
+  });
 }
 
 function setActive(state) {
@@ -118,7 +108,7 @@ function onChangeEdit(e) {
   }
 }
 
-/* function toggleSave(e) {
+function toggleSave(e) {
   if (e.edits) {
     if ($editSave.hasClass(disableClass)) {
       $editSave.removeClass(disableClass);
@@ -126,10 +116,9 @@ function onChangeEdit(e) {
   } else {
     $editSave.addClass(disableClass);
   }
-} */
+}
 
 function init(options, v) {
-  viewer = v;
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
 
@@ -142,13 +131,13 @@ function init(options, v) {
 
   $(document).on('enableInteraction', onEnableInteraction);
   $(document).on('changeEdit', onChangeEdit);
-  // $(document).on('editsChange', toggleSave);
+  $(document).on('editsChange', toggleSave);
 
   bindUIActions();
 
   if (options.isActive) {
     setActive(true);
-  }
+  }  
 }
 
 export default (function exportInit() {
