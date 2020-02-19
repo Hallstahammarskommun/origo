@@ -170,6 +170,7 @@
           "format": "image/png",
           "group": "bygga",
           "type": "WMS",
+          "queryable": false,
           "visible": true
         },
         {
