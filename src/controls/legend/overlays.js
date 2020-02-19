@@ -21,13 +21,13 @@ const Overlays = function Overlays(options) {
   } = options;
 
   const cls = `${clsSettings} o-layerswitcher-overlays flex row overflow-hidden`.trim();
-  const style = dom.createStyle(Object.assign({}, { width: '220px;' }, styleSettings));
+  const style = dom.createStyle(Object.assign({}, { width: '220px', height: '100%', 'min-width': '220px' }, styleSettings));
   const nonGroupNames = ['background', 'none'];
   const rootGroupNames = ['root', '', null, undefined];
   let overlays;
 
   const themeGroups = ThemeGroups();
-  const rootGroup = GroupList({ viewer });
+  const rootGroup = GroupList({ viewer }, true);
 
   const groupCmps = viewer.getGroups().reduce((acc, group) => {
     if (nonGroupNames.includes(group.name)) return acc;
@@ -72,41 +72,10 @@ const Overlays = function Overlays(options) {
     }
   });
 
-  const initialState = expanded ? 'expanded' : 'collapsed';
-  const collapseButton = Button({
-    icon: '#o_expand_more_24px',
-    iconCls: 'rotate-180 grey',
-    cls: 'icon-smaller compact round',
-    state: initialState,
-    validStates: ['expanded', 'collapsed'],
-    click() {
-      if (this.getState() === 'expanded') {
-        this.setState('collapsed');
-      } else {
-        this.setState('expanded');
-      }
-    }
-  });
-
   const collapseHeader = Component({
-    onInit() {
-      this.addComponent(collapseButton);
-    },
-    onRender() {
-      this.dispatch('render');
-      const el = document.getElementById(this.getId());
-      el.addEventListener('click', () => {
-        const customEvt = new CustomEvent('collapse:toggle', {
-          bubbles: true
-        });
-        collapseButton.dispatch('click');
-        el.dispatchEvent(customEvt);
-      });
-    },
     render() {
-      const headerCls = 'flex row grow no-shrink justify-center align-center pointer collapse-header';
-      return `<div id="${this.getId()}" class="${headerCls}" style="height: 1.5rem;">
-                ${collapseButton.render()}
+      const headerCls = 'flex row grow no-shrink justify-center align-center collapse-header';
+      return `<div id="${this.getId()}" class="${headerCls}" style="height: 0.5rem;">
               </div>`;
     }
   });
@@ -127,6 +96,33 @@ const Overlays = function Overlays(options) {
   const readOverlays = () => {
     overlays = viewer.getLayers().filter(layer => layer.get('group') !== 'background' && layer.get('group') !== 'none');
     return overlays.reverse();
+  };
+
+  const emptyGroupCheck = function emptyGroupCheck(groupName) {
+    let isEmpty = true;
+    const group = viewer.getGroups().find(item => item.name === groupName);
+    if (group) {
+      if (viewer.getLayersByProperty('group', groupName).length > 0) {
+        return false;
+      }
+    }
+    const subgroups = viewer.getGroups().filter((item) => {
+      if (item.parent) {
+        return item.parent === groupName;
+      }
+      return false;
+    });
+    if (subgroups.length) {
+      for (let subgroup of subgroups) {
+        const name = subgroup.name;
+        const subgroupEmpty = emptyGroupCheck(name);
+        if (!subgroupEmpty) {
+          isEmpty = false;
+          break;
+        }
+      }
+    }
+    return isEmpty;
   };
 
   // Hide overlays container when empty
@@ -153,6 +149,7 @@ const Overlays = function Overlays(options) {
       const groupCmp = groupCmps.find(cmp => cmp.name === groupName);
       if (groupCmp) {
         groupCmp.addOverlay(overlay);
+        document.getElementById(groupCmp.getId()).classList.remove('hidden');
       }
     }
   };
@@ -192,6 +189,9 @@ const Overlays = function Overlays(options) {
       const groupCmp = groupCmps.find(cmp => cmp.name === groupName);
       if (groupCmp) {
         groupCmp.removeOverlay(layerName);
+        if (emptyGroupCheck(groupName)) {
+          document.getElementById(groupCmp.getId()).classList.add('hidden');
+        }
       }
     } else {
       rootGroup.removeOverlay(layerName);
@@ -240,9 +240,13 @@ const Overlays = function Overlays(options) {
       el.addEventListener('overlayproperties', (evt) => {
         if (evt.detail.layer) {
           const layer = evt.detail.layer;
-          const layerProperties = LayerProperties({ layer, viewer });
+          const parent = this;
+          const layerProperties = LayerProperties({ layer, viewer, parent });
           slidenav.setSecondary(layerProperties);
           slidenav.slideToSecondary();
+          slidenav.on('slide', () => {
+            el.classList.remove('width-100');
+          });
         }
         evt.stopPropagation();
       });

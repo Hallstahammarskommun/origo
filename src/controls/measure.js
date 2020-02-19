@@ -98,7 +98,7 @@ const Measure = function Measure({
     });
     let output;
 
-    if (length > 100) {
+    if (length > 1000) {
       output = `${Math.round((length / 1000) * 100) / 100} km`;
     } else {
       output = `${Math.round(length * 100) / 100} m`;
@@ -239,19 +239,11 @@ const Measure = function Measure({
   }
 
   function toggleMeasure() {
-    if (isActive) {
-      document.dispatchEvent(new CustomEvent('toggleInteraction', {
-        bubbles: true,
-        detail: 'featureInfo'
-      }));
-      disableInteraction();
-    } else {
-      document.dispatchEvent(new CustomEvent('toggleInteraction', {
-        bubbles: true,
-        detail: 'measure'
-      }));
-      enableInteraction();
-    }
+    const detail = {
+      name: 'measure',
+      active: !isActive
+    };
+    viewer.dispatch('toggleClickInteraction', detail);
   }
 
   function toggleType(button) {
@@ -287,6 +279,13 @@ const Measure = function Measure({
       map.addLayer(vector);
       this.addComponents(buttons);
       this.render();
+      viewer.on('toggleClickInteraction', (detail) => {
+        if (detail.name === 'measure' && detail.active) {
+          enableInteraction();
+        } else {
+          disableInteraction();
+        }
+      });
     },
     onInit() {
       lengthTool = measureTools.indexOf('length') >= 0;
@@ -299,24 +298,26 @@ const Measure = function Measure({
         });
 
         measureButton = Button({
-          cls: 'o-measure padding-small margin-bottom-smaller icon-smaller rounded light box-shadow',
+          cls: 'o-measure padding-small margin-bottom-smaller icon-smaller round light box-shadow',
           click() {
             toggleMeasure();
           },
-          icon: '#ic_straighten_24px'
+          icon: '#ic_straighten_24px',
+          tooltipText: 'Mäta',
+          tooltipPlacement: 'east'
         });
         buttons.push(measureButton);
 
         if (lengthTool) {
           lengthToolButton = Button({
-            cls: 'o-measure-length padding-small margin-bottom-smaller icon-smaller rounded light box-shadow hidden',
+            cls: 'o-measure-length padding-small margin-bottom-smaller icon-smaller round light box-shadow hidden',
             click() {
               type = 'LineString';
               toggleType(this);
             },
             icon: '#minicons-line-vector',
             tooltipText: 'Linje',
-            tooltipPlacement: 'north'
+            tooltipPlacement: 'east'
           });
           buttons.push(lengthToolButton);
           defaultButton = lengthToolButton;
@@ -324,14 +325,14 @@ const Measure = function Measure({
 
         if (areaTool) {
           areaToolButton = Button({
-            cls: 'o-measure-area padding-small icon-smaller rounded light box-shadow hidden',
+            cls: 'o-measure-area padding-small icon-smaller round light box-shadow hidden',
             click() {
               type = 'Polygon';
               toggleType(this);
             },
             icon: '#minicons-square-vector',
             tooltipText: 'Yta',
-            tooltipPlacement: 'north'
+            tooltipPlacement: 'east'
           });
           buttons.push(areaToolButton);
           defaultButton = defaultTool === 'length' ? lengthToolButton : areaToolButton;

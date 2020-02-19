@@ -74,7 +74,7 @@ export default function editorLayers(editableLayers, optOptions = {}, v) {
       e.stopImmediatePropagation(e);
       setActive(false);
       dispatcher.emitToggleEdit('edit', {
-        currentLayer: e.dataAttribute
+        currentLayer: e.detail.dataAttribute
       });
       if (e.prevSelected) {
         viewer.getLayer(e.prevSelected).setVisible(false);
