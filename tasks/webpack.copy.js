@@ -16,9 +16,7 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: 'dist/origo.min.js', to: 'js/origo.min.js' },
       'css/**',
-      // 'examples/**',
       'data/*',
-      // 'index.html',
       'index.json',
       'intern.json',
       'skapa.json',
