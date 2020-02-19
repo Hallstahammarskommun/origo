@@ -25,9 +25,9 @@ export default `<div id="o-editor-toolbar" class="o-editor-toolbar o-toolbar o-t
         </svg>
       </button>
     </div>
-    <!-- <button id="o-editor-save" class="o-button-lg o-disabled" type="button" name="button">
+    <button id="o-editor-save" class="o-button-lg o-disabled" type="button" name="button">
       <svg class="o-icon-24">
           <use xlink:href="#ic_save_24px"></use>
       </svg>
-    </button> -->
+    </button>
 </div>`;
