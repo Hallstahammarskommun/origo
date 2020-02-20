@@ -299,6 +299,9 @@
           "title": "Punktnummer: "
         },
         {
+          "xy": true
+        },
+        {
           "title": "Z: ",
           "name": "z"
         },
