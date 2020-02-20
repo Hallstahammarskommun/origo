@@ -84,6 +84,15 @@ const getContent = {
     newElement.classList.add(attribute.cls);
     newElement.innerHTML = val;
     return newElement;
+  },
+  xy(feature, attribute) {
+    const val = `<b>E: </b> ${feature.getGeometry().getCoordinates()[0]}
+           <b>N: </b> ${feature.getGeometry().getCoordinates()[1]}`;
+
+    const newElement = document.createElement('li');
+    newElement.classList.add(attribute.cls);
+    newElement.innerHTML = val;
+    return newElement;
   }
 };
 
@@ -133,6 +142,8 @@ function getAttributes(feature, layer, map) {
             val = getContent.img(feature, attribute, attributes, map);
           } else if (attribute.html) {
             val = getContent.html(feature, attribute, attributes, map);
+          } else if (attribute.xy) {
+            val = getContent.xy(feature, attribute, attributes, map);
           } else {
             val = customAttribute(feature, attribute, attributes, map);
           }
