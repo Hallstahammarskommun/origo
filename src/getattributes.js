@@ -8,33 +8,53 @@ function createUrl(prefix, suffix, url) {
   return p + url + s;
 }
 
+function getNeastedAttr(attributePath, feature) {
+  const neastedAttributePath = attributePath.split('.');
+  const featureProp = feature.getProperties();
+  let val;
+
+  neastedAttributePath.forEach((element, index) => {
+    if (index === 0) {
+      val = featureProp[element];
+    } else {
+      val = val[element];
+    }
+  });
+  return val;
+}
 const getContent = {
   name(feature, attribute, attributes, map) {
     let val = '';
     let title = '';
-    if (feature.get(attribute.name)) {
-      const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
-      if (featureValue) {
-        val = feature.get(attribute.name);
-        if (attribute.title) {
-          title = `<b>${attribute.title}</b>`;
-        }
-        if (attribute.url) {
-          if (feature.get(attribute.url)) {
-            const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties(), null, map));
-            let aTarget = '_blank';
-            let aCls = 'o-identify-link';
-            if (attribute.target === 'modal') {
-              aTarget = 'modal';
-              aCls = 'o-identify-link-modal';
-            } else if (attribute.target === 'modal-full') {
-              aTarget = 'modal-full';
-              aCls = 'o-identify-link-modal';
-            }
-            val = `<a class="${aCls}" target="${aTarget}" href="${url}">${feature.get(attribute.name)}</a>`;
+    if (feature.get(attribute.name) || attribute.name.indexOf('.') > -1) {
+      // const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
+      // if (featureValue) {
+      val = getNeastedAttr(attribute.name, feature);
+      // val = feature.get(attribute.name);
+      if (attribute.title) {
+        title = `<b>${attribute.title}</b>`;
+      }
+
+
+      if (attribute.url) {
+        // if (feature.get(attribute.url)) {
+        if (feature.get(attribute.url) || attribute.url.indexOf('.') > -1) {
+          // const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties(), null, map));
+          const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(getNeastedAttr(attribute.url, feature), feature.getProperties(), null, map));
+          let aTarget = '_blank';
+          let aCls = 'o-identify-link';
+          if (attribute.target === 'modal') {
+            aTarget = 'modal';
+            aCls = 'o-identify-link-modal';
+          } else if (attribute.target === 'modal-full') {
+            aTarget = 'modal-full';
+            aCls = 'o-identify-link-modal';
           }
+          // val = `<a class="${aCls}" target="${aTarget}" href="${url}">${feature.get(attribute.name)}</a>`;
+          val = `<a class="${aCls}" target="${aTarget}" href="${url}">${getNeastedAttr(attribute.name, feature)}</a>`;
         }
       }
+      // }
     }
     const newElement = document.createElement('li');
     newElement.classList.add(attribute.cls);
