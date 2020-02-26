@@ -1,9 +1,9 @@
-import DrawInteraction from 'ol/interaction/Draw';
-import ModifyInteraction from 'ol/interaction/Modify';
+// import DrawInteraction from 'ol/interaction/Draw';
+// import ModifyInteraction from 'ol/interaction/Modify';
 import $ from 'jquery';
 import formCreator from '../utils/formcreator';
 import sidebar from '../sidebar';
-import featureLayer from '../featurelayer';
+// import featureLayer from '../featurelayer';
 import { Component } from '../ui';
 
 const Download = function Download(options = {}) {
@@ -16,12 +16,12 @@ const Download = function Download(options = {}) {
   let mapMenu;
   let menuItem;
 
-  let activeButton;
+  // let activeButton;
   let selectedIndex;
-  let drawInteraction;
-  let modifyInteraction;
+  // let drawInteraction;
+  // let modifyInteraction;
   let drawLayer;
-  let areaButtons;
+  // let areaButtons;
   let layerTitles;
   let form;
   let layerInfo;
@@ -56,22 +56,22 @@ const Download = function Download(options = {}) {
     layerTitles = getLayerTitles();
 
     if (layerTitles) {
-      layerInfo = `<br>Nedan listas de lager som du kommer att hämta:<br><br>${layerTitles}<br>`;
+      layerInfo = `<br>Nedan listas de lager som du kommer att hämta från den aktuella vyn:<br><br>${layerTitles}<br>`;
     } else {
       layerInfo = '<p style="font-style:italic;">Du måste tända ett nedladdningsbart lager i kartan för att kunna hämta hem data.</p>';
     }
 
     formElement = attributeObjects.reduce((prev, next) => prev + next.formElement, '');
-    areaButtons = '<input id="o-extent-button" type="button" value="Aktuell vy"></input>' +
-      '<input id="o-drawarea-button" type="button" value="Rita område"></input><br>';
+    /* areaButtons = '<input id="o-extent-button" type="button" value="Aktuell vy"></input>' +
+     '<input id="o-drawarea-button" type="button" value="Rita område"></input><br>';
 
     if (activeButton === 'area') {
       areaButtons = areaButtons.replace('"o-drawarea-button"', '"o-drawarea-button" class="o-area-active"');
     } else {
       areaButtons = areaButtons.replace('"o-extent-button"', '"o-extent-button" class="o-area-active"');
-    }
+    } */
     form = `<br><form>${formElement}<br><input id="o-fme-download-button" type="button" value="Spara" disabled></input></div></form>`;
-    return `<div id="tool-instructions"></div><br>${areaButtons}<br>${form}`;
+    return `<div id="tool-instructions"></div>${form}`;
   }
 
   function fmeDownloadEnabled() {
@@ -82,7 +82,7 @@ const Download = function Download(options = {}) {
     }
   }
 
-  function initInteractions() {
+  /* function initInteractions() {
     if (!drawLayer) {
       drawLayer = featureLayer(null, map);
     }
@@ -125,7 +125,7 @@ const Download = function Download(options = {}) {
   function removeInteractions() {
     map.removeInteraction(drawInteraction);
     map.removeInteraction(modifyInteraction);
-  }
+  } */
 
   function getVisibleLayers() {
     let layerNames = '';
@@ -141,7 +141,7 @@ const Download = function Download(options = {}) {
   function sendToFME(params) {
     let size;
     let extent;
-    let drawExtent;
+    // let drawExtent;
     let visibleLayers;
     const paramsLength = Object.keys(params).length;
     let i;
@@ -167,15 +167,15 @@ const Download = function Download(options = {}) {
     fmeUrl += `&layer=${visibleLayers}`;
 
     // Aktuell vy är vald, annars ritat område. Avrundar till 2 decimaler.
-    if ($('#o-extent-button').hasClass('o-area-active')) {
-      size = map.getSize();
-      extent = map.getView().calculateExtent(size);
-      extent.forEach((coordinate, j) => {
-        extent[j] = Math.round(coordinate * 100) / 100;
-      });
-      extent = encodeURI(extent).replace(/,/g, '%20');
-      fmeUrl += `&extent=${extent}`;
-    } else {
+    // if ($('#o-extent-button').hasClass('o-area-active')) {
+    size = map.getSize();
+    extent = map.getView().calculateExtent(size);
+    extent.forEach((coordinate, j) => {
+      extent[j] = Math.round(coordinate * 100) / 100;
+    });
+    extent = encodeURI(extent).replace(/,/g, '%20');
+    fmeUrl += `&extent=${extent}`;
+    /* } else {
       const feature = drawLayer.getFeatureLayer().getSource().getFeatures()[0];
       drawExtent = feature.getGeometry().getCoordinates();
       drawExtent.forEach((coordinateArray) => {
@@ -188,7 +188,7 @@ const Download = function Download(options = {}) {
       });
       drawExtent = encodeURI(drawExtent).replace(/,/g, '%20');
       fmeUrl += `&polygon=${drawExtent}`;
-    }
+    } */
 
     window.open(fmeUrl, '_self');
   }
@@ -218,13 +218,13 @@ const Download = function Download(options = {}) {
             fmeDownloadEnabled();
           });
 
-          initInteractions();
+          // initInteractions();
 
-          if ($('#o-drawarea-button').hasClass('o-area-active')) {
+          /* if ($('#o-drawarea-button').hasClass('o-area-active')) {
             addInteractions();
-          }
+          } */
 
-          $('#o-extent-button').on('click', () => {
+          /* $('#o-extent-button').on('click', () => {
             if ($('#o-drawarea-button').hasClass('o-area-active')) {
               $('#o-drawarea-button').removeClass('o-area-active');
             }
@@ -256,7 +256,7 @@ const Download = function Download(options = {}) {
                 addInteractions();
               }
             }
-          });
+          }); */
 
           $('#o-fme-download-button').on('click', (e) => {
             const params = {};
@@ -273,22 +273,22 @@ const Download = function Download(options = {}) {
               drawLayer.getFeatureLayer().getSource().clear();
             }
 
-            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+            /* if ($('#o-drawarea-button').hasClass('o-area-active')) {
               activeButton = 'area';
             } else {
-              activeButton = 'extent';
-            }
+             activeButton = 'extent';
+            } */
 
             if ($('#input-DestinationFormat')[0].selectedIndex !== 0) {
               selectedIndex = $('#input-DestinationFormat')[0].selectedIndex;
             } else {
               selectedIndex = 0;
             }
-            const interactionExist = drawInteractionAdded();
+            // const interactionExist = drawInteractionAdded();
 
-            if (interactionExist) {
+            /* if (interactionExist) {
               removeInteractions();
-            }
+            } */
           });
         },
         icon,
