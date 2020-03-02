@@ -139,7 +139,7 @@ const Download = function Download(options = {}) {
   }
 
   function sendToFME(params) {
-    let size;
+    const size = map.getSize();
     let extent;
     // let drawExtent;
     let visibleLayers;
@@ -168,7 +168,7 @@ const Download = function Download(options = {}) {
 
     // Aktuell vy är vald, annars ritat område. Avrundar till 2 decimaler.
     // if ($('#o-extent-button').hasClass('o-area-active')) {
-    size = map.getSize();
+    // size = map.getSize();
     extent = map.getView().calculateExtent(size);
     extent.forEach((coordinate, j) => {
       extent[j] = Math.round(coordinate * 100) / 100;
