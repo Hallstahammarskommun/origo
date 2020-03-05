@@ -517,25 +517,54 @@
     },
     {
       "name": "bu_w_ska_p__Forskola",
-      "source": "ows",
       "style": "bu_w_fos_p",
       "title": "Förskola",
       "group": "utbildning",
-      "type": "WFS",
+      "type": "GROUP",
       "fme": true,
-      "filter": "egn = 'Förskola' OR egn = 'Privat förskola'",
       "visible": false,
-      "attributes": [
+      "layers":
+      [
         {
-          "name": "obj",
-          "url": "url"
+          "name": "bu_w_ska_p__Forskola",
+          "source": "ows",
+          "filter": "egn = 'Förskola'",
+          "style": "bu_w_fos_p",
+          "title": "Förskola",
+          "type": "WFS",
+          "visible": true,
+          "attributes": [
+            {
+              "name": "obj",
+              "url": "url"
+            },
+            {
+              "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats (gäller endast kommmunala förskolor)</a>"
+            },
+            {
+              "name": "tel",
+              "title": "Telefon: "
+            }
+          ]
         },
         {
-          "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats (gäller endast kommmunala förskolor)</a>"
-        },
-        {
-          "name": "tel",
-          "title": "Telefon: "
+          "name": "bu_w_ska_p__Forskola",
+          "source": "ows",
+          "filter": "egn = 'Privat förskola'",
+          "style": "bu_w_fos_p",
+          "title": "Förskola",
+          "type": "WFS",
+          "visible": true,
+          "attributes": [
+            {
+              "name": "obj",
+              "url": "url"
+            },
+            {
+              "name": "tel",
+              "title": "Telefon: "
+            }
+          ]
         }
       ]
     },
