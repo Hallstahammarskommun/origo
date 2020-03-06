@@ -57,6 +57,20 @@
       "options": {
         "hasMapLegend": false
       }
+    },
+    {
+      "name": "externalurl",
+      "options": {
+        "links": 
+        [
+          {
+            "tooltipText": "Google street view",
+            "method": "LatLon",
+            "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{LAT}},{{LON}}&heading=-45&pitch=10&fov=80",
+            "buttonImage": "img/png/gsv.png"
+          }
+        ]
+      }
     }
   ],
   "pageSettings": {
@@ -474,7 +488,9 @@
           "name": "status"
         },
         {
-          "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1' target='_blank'>Lämna synpunkter och klagomål</a>"
+          "title": "Lämna synpunkter och klagomål",
+          "url": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
+          "target": "_blank"
         }
       ]
     },
@@ -502,7 +518,9 @@
       "visible": false,
       "attributes": [
         {
-          "html": "<a href='https://hallstahammar.se/uppleva-och-gora/natur-och-friluftsliv/naturreservat-i-kommunen' target='_blank'>Mer information</a>"
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/uppleva-och-gora/natur-och-friluftsliv/naturreservat-i-kommunen",
+          "taget": "_blank"
         }
       ]
     },
@@ -539,7 +557,9 @@
               "url": "url"
             },
             {
-              "html": "<a href='https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910' target='_blank'>Ansök om plats (gäller endast kommmunala förskolor)</a>"
+              "title": "Ansök om plats (gäller endast kommmunala förskolor)",
+              "url": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910",
+              "target": "_blank"
             },
             {
               "name": "tel",
@@ -649,7 +669,9 @@
           "title": "Hållplats: "
         },
         {
-          "html": "<a href='https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik' target='_blank'>Mer information</a>"
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
+          "taget": "_blank"
         }
       ]
     },
@@ -668,7 +690,9 @@
           "title": "Tur: "
         },
         {
-          "html": "<a href='https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik' target='_blank'>Mer information</a>"
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
+          "taget": "_blank"
         }
       ]
     },
@@ -687,7 +711,9 @@
           "title": "Tur: "
         },
         {
-          "html": "<b>Länk:</b> <a href='https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola' target='_blank'> Mer information</a>"
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
+          "taget": "_blank"
         }
       ]
     },
