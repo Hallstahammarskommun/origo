@@ -25,7 +25,13 @@
       "name": "print"
     },
     {
-      "name": "measure"
+      "name": "measure",
+      "options": {
+        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
+        "elevationTargetProjection": "EPSG:3010",
+        "elevationAttribute": "geometry.coordinates[2]",
+        "measureTools": ["length", "area", "elevation"]        
+      }
     },
     {
       "name": "legend",
