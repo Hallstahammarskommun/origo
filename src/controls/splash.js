@@ -4,8 +4,9 @@ const Splash = function Splash(options = {}) {
   const defaultTitle = 'Om kartan';
   const defaultContent = '';
   const cls = 'o-splash';
+  const style = options.style || '';
   let viewer;
-  let closeButton;
+  let hideButton;
   let modal;
   let component;
 
@@ -13,18 +14,18 @@ const Splash = function Splash(options = {}) {
     title,
     content,
     target,
+    hideButtonVisible,
     hideText,
     confirmText
   } = options;
 
   const {
-    buttons,
     url
   } = options;
 
   const addButton = function addButton() {
-    const closeButtonHtml = closeButton.render();
-    content += closeButtonHtml;
+    const hideButtonHtml = hideButton.render();
+    content += hideButtonHtml;
     return content;
   };
 
@@ -46,9 +47,9 @@ const Splash = function Splash(options = {}) {
   const createModal = function createModal(modalContent) {
     content = modalContent;
 
-    if (buttons) {
+    if (hideButton) {
       setLocalStorage();
-      component.addComponent(closeButton);
+      component.addComponent(hideButton);
       content = addButton();
     } else {
       clearLocalStorage();
@@ -59,7 +60,8 @@ const Splash = function Splash(options = {}) {
         title,
         content,
         cls,
-        target
+        target,
+        style
       });
       component.dispatch('render');
     }
@@ -70,12 +72,13 @@ const Splash = function Splash(options = {}) {
     onInit() {
       if (!title) title = defaultTitle;
       if (!content) content = defaultContent;
-      if (options.buttons) {
-        hideText = Object.prototype.hasOwnProperty.call(options.buttons, 'hideText') ? options.buttons.hideText : 'Visa inte igen';
-        confirmText = Object.prototype.hasOwnProperty.call(options.buttons, 'confirmText') ? options.buttons.confirmText : 'Är du säker på att du vill dölja den här informationen?';
+      if (options.hideButton) {
+        hideButtonVisible = Object.prototype.hasOwnProperty.call(options.hideButton, 'visible') ? options.hideButton.visible : false;
+        hideText = Object.prototype.hasOwnProperty.call(options.hideButton, 'hideText') ? options.hideButton.hideText : 'Visa inte igen';
+        confirmText = Object.prototype.hasOwnProperty.call(options.hideButton, 'confirmText') ? options.hideButton.confirmText : 'Är du säker på att du inte vill se informationen igen?';
       }
-      if (buttons) {
-        closeButton = Button({
+      if (hideButtonVisible) {
+        hideButton = Button({
           cls: 'rounded margin-top-small padding-y grey-lightest',
           style: 'display: block;',
           text: hideText,

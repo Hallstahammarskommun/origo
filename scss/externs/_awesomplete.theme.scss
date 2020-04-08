@@ -6,7 +6,6 @@
 	box-shadow: $shadow;
 	text-shadow: none;
 	min-width: $search-width;
-	width: 310px
 }
 @supports (transform: scale(0)) {
 	.awesomplete > ul {
@@ -56,17 +55,13 @@
 }
 
 .awesomplete > ul > li .suggestion:hover {
-	//background-color: $search-hover-backround;
-	background-color: #0097cf;
-	//color: #000;
-	color: #fff;
+	background-color: $search-hover-backround;
+	color: #000;
 }
 
 .awesomplete > ul > li[aria-selected="true"] > .suggestion {
-	//background-color: $search-hover-backround;
-	//color: #000;
-	background-color: #0097cf;
-	color: #fff;
+	background-color: $search-hover-backround;
+	color: #000;
 }
 
 .awesomplete mark {
@@ -75,15 +70,11 @@
 }
 
 .awesomplete li .suggestion:hover mark {
-	//background-color: $search-hover-backround;
-	background-color: #0097cf;
-	color: #fff;
+	background-color: $search-hover-backround;
 }
 
 .awesomplete li[aria-selected="true"] mark {
-	//background-color: $search-hover-backround;
-	background-color: #0097cf;
-	color: #fff;
+	background-color: $search-hover-backround;
 }
 
 &[class*=#{$media-l-m}] {

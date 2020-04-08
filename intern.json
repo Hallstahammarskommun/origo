@@ -25,7 +25,13 @@
       "name": "print"
     },
     {
-      "name": "measure"
+      "name": "measure",
+      "options": {
+        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
+        "elevationTargetProjection": "EPSG:3010",
+        "elevationAttribute": "geometry.coordinates[2]",
+        "measureTools": ["length", "area", "elevation"]        
+      }
     },
     {
       "name": "legend",
@@ -68,17 +74,13 @@
       "name": "draganddrop"
     },
     {
-      "name": "--saveconfig"
-    },
-    {
       "name": "splash",
       "options": {
-        "title": "Kartnytt",
         "url": "splash.html",
-        "buttons": {
-          "visible": true,
-          "confirmText": "Är du säker på att du vill dölja den här utgåvan av Kartnytt?"
-        }
+        "hideButton": {
+          "visible": true
+        },
+        "style": "width: 600px;"
       }
     }
   ],

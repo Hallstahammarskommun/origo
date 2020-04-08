@@ -107,7 +107,7 @@
     {
       "name": "edit",
       "title": "Redigeringsbara lager",
-      "expanded": false
+      "expanded": true
     },
     {
       "name": "background",

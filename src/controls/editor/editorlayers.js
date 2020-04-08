@@ -36,7 +36,8 @@ export default function editorLayers(editableLayers, optOptions = {}, v) {
     });
     $('#o-editor-layers').after(popover);
     dropDown(options.target, options.selectOptions, {
-      dataAttribute: 'layer'
+      dataAttribute: 'layer',
+      active: options.activeLayer
     });
   }
 
@@ -74,12 +75,8 @@ export default function editorLayers(editableLayers, optOptions = {}, v) {
       e.stopImmediatePropagation(e);
       setActive(false);
       dispatcher.emitToggleEdit('edit', {
-        currentLayer: e.dataAttribute
+        currentLayer: e.detail.dataAttribute
       });
-      if (e.prevSelected) {
-        viewer.getLayer(e.prevSelected).setVisible(false);
-      }
-      viewer.getLayer(e.dataAttribute).setVisible(true);
     });
     $(document).on('toggleEdit', onToggleEdit);
     $(document).on('changeEdit', onChangeEdit);
