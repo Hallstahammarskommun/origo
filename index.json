@@ -81,7 +81,12 @@
   ],
   "pageSettings": {
     "footer": {
-      "img": "css/svg/kommunvapen.svg"
+      "img": "css/svg/kommunvapen.svg",
+      "url": "https://www.hallstahammar.se",
+      "urlText": "Hallstahammars kommun"
+    },
+    "mapGrid": {
+      "visible": true
     }
   },
   "projectionCode": "EPSG:3010",
@@ -128,6 +133,9 @@
     0.21,
     0.14
   ],
+  "featureinfoOptions": {
+    "infowindow": "infowindow"
+  },
   "source": {
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",

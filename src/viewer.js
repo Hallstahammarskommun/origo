@@ -7,6 +7,7 @@ import proj from './projection';
 import getCapabilities from './getCapabilities';
 import MapSize from './utils/mapsize';
 import Featureinfo from './featureinfo';
+import Selectionmanager from './selectionmanager';
 import maputils from './maputils';
 import utils from './utils';
 import Layer from './layer';
@@ -20,6 +21,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
   let map;
   let tileGrid;
   let featureinfo;
+  let selectionmanager;
 
   let {
     projection
@@ -37,7 +39,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
     enableRotation = true,
     featureinfoOptions = {},
     groups: groupOptions = [],
-    mapGrid = true,
     pageSettings = {},
     projectionCode,
     projectionExtent,
@@ -70,7 +71,12 @@ const Viewer = function Viewer(targetOption, options = {}) {
     tileSize: [256, 256]
   };
   const tileGridSettings = Object.assign({}, defaultTileGridOptions, tileGridOptions);
-  const mapGridCls = mapGrid ? 'o-mapgrid' : '';
+  let mapGridCls = '';
+  if (pageSettings.mapGrid) {
+    if (pageSettings.mapGrid.visible) {
+      mapGridCls = 'o-map-grid';
+    }
+  }
   const cls = `${clsOptions} ${mapGridCls} ${mapCls} o-ui`.trim();
   const footerData = pageSettings.footer || {};
   const main = Main();
@@ -102,6 +108,8 @@ const Viewer = function Viewer(targetOption, options = {}) {
   };
 
   const getFeatureinfo = () => featureinfo;
+
+  const getSelectionManager = () => selectionmanager;
 
   const getCenter = () => getcenter;
 
@@ -176,7 +184,10 @@ const Viewer = function Viewer(targetOption, options = {}) {
     return queryableLayers;
   };
 
-  const getLayerGroups = () => getLayers().filter(layer => layer.get('type') === 'GROUP');
+  const getGroupLayers = function getGroupLayers() {
+    const groupLayers = getLayers().filter(layer => layer.get('type') === "GROUP");
+    return groupLayers;
+  };
 
   const getSearchableLayers = function getSearchableLayers(searchableDefault) {
     const searchableLayers = [];
@@ -466,8 +477,13 @@ const Viewer = function Viewer(targetOption, options = {}) {
       }
 
       featureinfoOptions.viewer = this;
+
+      selectionmanager = Selectionmanager(featureinfoOptions);
+      this.addComponent(selectionmanager);
+
       featureinfo = Featureinfo(featureinfoOptions);
       this.addComponent(featureinfo);
+
       this.addControls();
     },
     render() {
@@ -507,6 +523,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
     getMapUtils,
     getUtils,
     getQueryableLayers,
+    getGroupLayers,
     getResolutions,
     getSearchableLayers,
     getSize,
@@ -529,7 +546,8 @@ const Viewer = function Viewer(targetOption, options = {}) {
     getUrlParams,
     removeGroup,
     removeOverlays,
-    zoomToExtent
+    zoomToExtent,
+    getSelectionManager
   });
 };
 
