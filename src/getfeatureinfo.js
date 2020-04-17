@@ -224,7 +224,7 @@ function getFeaturesFromRemote(requestOptions, viewer) {
     const map = viewer.getMap();
 
     if (layer === undefined) {
-      const groups = viewer.getLayerGroups();
+      const groups = viewer.getGroupLayers();
       for (let i = 0; i < groups.length; i += 1) {
         const layers = groups[i].get('layers');
 

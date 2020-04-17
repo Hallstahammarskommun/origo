@@ -133,9 +133,6 @@
     0.21,
     0.14
   ],
-  "featureinfoOptions": {
-    "infowindow": "infowindow"
-  },
   "source": {
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",

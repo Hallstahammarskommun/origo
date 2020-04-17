@@ -529,7 +529,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
     getSize,
     getLayer,
     getLayers,
-    getLayerGroups,
     getLayersByProperty,
     getMap,
     getMapName,
