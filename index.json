@@ -27,8 +27,9 @@
     {
       "name": "about",
       "options": {
-        "title": "Om Hallstakartan",
-        "content": "<p>Hallstakartan är en karttjänst framtagen av kommunstyrelseförvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
+        "buttonText": "Om Origo",
+        "title": "Om Origo",
+        "content": "<p>Origo är ett ramverk för webbkartor. Ramverket bygger på JavaScript-biblioteket OpenLayers. Du kan använda Origo för att skapa egna webbaserade kartapplikationer.</p><br><p>Projektet drivs och underhålls av ett antal svenska kommuner. Besök gärna <a href='https://github.com/origo-map/origo' target='_blank'>Origo på GitHub</a> för mer information.</p>"
       }
     },
     {
@@ -41,21 +42,9 @@
       }
     },
     {
-      "name": "download",
+      "name": "legend",
       "options": {
-        "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?",
-        "params": [
-          {
-            "name": "DestinationFormat",
-            "title": "Välj format: ",
-            "type": "dropdown",
-            "options": [
-              "dwg",
-              "shape",
-              "GeoJSON"
-            ]
-          }
-        ]
+        "labelOpacitySlider": "Opacity"
       }
     },
     {
@@ -81,15 +70,15 @@
   ],
   "pageSettings": {
     "footer": {
-      "img": "css/svg/kommunvapen.svg",
-      "url": "https://www.hallstahammar.se",
-      "urlText": "Hallstahammars kommun"
+      "img": "img/png/logo.png",
+      "url": "https://github.com/origo-map/origo",
+      "urlText": "Origo"
     },
     "mapGrid": {
-      "visible": false
+      "visible": true
     }
   },
-  "projectionCode": "EPSG:3010",
+  "projectionCode": "EPSG:3857",
   "projectionExtent": [
     -166640,
     6305699,
@@ -98,9 +87,8 @@
   ],
   "proj4Defs": [
     {
-      "code": "EPSG:3010",
-      "alias": "urn:ogc:def:crs:EPSG::3010",
-      "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+      "code": "EPSG:3006",
+      "projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
     }
   ],
   "extent": [
@@ -133,6 +121,9 @@
     0.21,
     0.14
   ],
+  "featureinfoOptions": {
+    "infowindow": "infowindow"
+  },
   "source": {
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",
@@ -351,130 +342,10 @@
       "visible": false,
       "attributes": [
         {
-          "name": "egn",
-          "title": "Pris: "
-        },
-        {
-          "name": "area",
-          "title": "Area: "
-        },
-        {
-          "name": "status",
-          "title": "Status: "
+          "name": "name"
         }
-      ]
-    },
-    {
-      "name": "tk_w_lem_y",
-      "title": "Lediga tomter",
-      "style": "tk_w_lem_y",
-      "group": "bygga",
-      "fme": true,
-      "type": "GROUP",
-      "visible": false,
-      "layers": [
-        {
-          "name": "tk_w_lem_y__smahus",
-          "source": "ows",
-          "style": "tk_w_lem_y",
-          "title": "Lediga tomter",
-          "group": "bygga",
-          "type": "WFS",
-          "filter": "typ = 'Smahus'",
-          "visible": true,
-          "queryable": true,
-          "attributes": [
-            {
-              "name": "obj"
-            },
-            {
-              "name": "egn"
-            },
-            {
-              "name": "area"
-            },
-            {
-              "name": "status"
-            },
-            {
-              "name": "datum"
-            }
-          ]
-        },
-        {
-          "name": "tk_w_lem_p",
-          "source": "ows",
-          "style": "tk_w_lem_p",
-          "clusterStyle": "tk_w_lem_p_cluster",
-          "title": "Lediga tomter punkt",
-          "layerType": "cluster",
-          "group": "bygga",
-          "type": "WFS",
-          "filter": "typ = 'Smahus'",
-          "visible": true,
-          "queryable": false
-        }
-      ]
-    },
-    {
-      "name": "primarkarta",
-      "source": "wms",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "bygga",
-      "type": "WMS",
-      "queryable": false,
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "tk_w_pap_y",
-      "source": "ows",
-      "style": "tk_w_pap_y",
-      "title": "Pågående detaljplan",
-      "group": "bygga",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "url": "url"
-        }
-      ]
-    },
-    {
-      "name": "ks_kmv_y",
-      "source": "ows",
-      "style": "ks_kmv_y",
-      "title": "Värdefulla byggnader",
-      "group": "bygga",
-      "filter": "obj = '1'",
-      "type": "WFS",
-      "fme": false,
-      "visible": false,
-      "abstract": "Lagret visar Västmanlands läns museums byggnadsinventering som gjordes mellan åren 2012-2018.",
-      "attributes": [
-        {
-          "name": "vardebeskrivn",
-          "title": "Värdebeskrivning: "
-        },
-        {
-          "name": "byggar_start",
-          "title": "Byggår: "
-        },
-        {
-          "img": "urlsmall"
-        },
-        {
-          "name": "namn",
-          "title": "Område: "
-        },
-        {
-          "name": "beskrivning"
-        }
-      ]
+      ],
+      "visible": true
     },
     {
       "name": "bm_lim_p",
@@ -773,50 +644,54 @@
     }
   ],
   "styles": {
-    "point": [
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/drop_blue.png"
-          }
-        }
-      ]
-    ],
-    "tk_w_lem_p": [
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_red.png"
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_black.png"
-          }
-        }
-      ]
-    ],
-    "line": [
+    "mask": [
       [
         {
           "stroke": {
-            "color": "rgb(0,0,255)",
-            "width": 1
+            "color": "rgba(0,0,0,1.0)"
+          },
+          "fill": {
+            "color": "rgba(0,0,0,1.0)"
+          }
+        }
+      ]
+    ],
+    "origo-logo": [
+      [
+        {
+          "label": "Origokommuner",
+          "circle": {
+            "radius": 10,
+            "stroke": {
+              "color": "rgba(0,0,0,1)",
+              "width": 2.5
+            },
+            "stroke": {
+              "color": "rgba(255,153,51,0.9)",
+              "width": 4
+            }
+          }
+        },
+        {
+          "text": {
+            "font": "Bold 12px Arial",
+            "textAlign": "center",
+            "text": "size",
+            "fill": {
+              "color": "rgba(255,255,255,0.9)"
+            }
+          }
+        },
+        {
+          "circle": {
+            "radius": 2.5,
+            "stroke": {
+              "color": "rgba(0,0,0,0)",
+              "width": 1
+            },
+            "fill": {
+              "color": "rgba(37,129,196,1)"
+            }
           }
         }
       ]
@@ -837,872 +712,11 @@
         }
       ]
     ],
-    "cluster": [
+    "karta_osm": [
       [
         {
-          "label": "Origokommuner",
-          "circle": {
-            "radius": 16,
-            "fill": {
-              "color": "rgba(255,153,51,0.5)"
-            },
-            "stroke": {
-              "color": "rgba(255,153,51,0.9)",
-              "width": 4
-            }
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "text": "size",
-            "fill": {
-              "color": "rgba(0,0,0,1.0)"
-            },
-            "stroke": {
-              "color": "rgba(255,153,51,0.5)",
-              "width": 2
-            }
-          }
-        }
-      ]
-    ],
-    "tk_w_lem_p_cluster": [
-      [
-        {
-          "circle": {
-            "radius": 16,
-            "fill": {
-              "color": "rgba(0,0,0,0.5)"
-            },
-            "stroke": {
-              "color": "rgba(0,0,0,0.9)",
-              "width": 4
-            }
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "text": "size",
-            "fill": {
-              "color": "rgba(255,255,255,1.0)"
-            },
-            "stroke": {
-              "color": "rgba(103,60,31,0.9",
-              "width": 2
-            }
-          }
-        }
-      ]
-    ],
-    "granser": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(150,61,20)",
-            "width": 1
-          },
-          "label": "Fastighetsgräns"
-        }
-      ]
-    ],
-    "detaljplan": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(229,109,30,0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(255,198,105,0.3)"
-          },
-          "label": "Gällande planer"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 1.5
-          },
-          "label": "Användningsgräns",
-          "filter": "[code] == '2000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "label": "Egenskapsgräns",
-          "filter": "[code] == '3000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10
-            ],
-            "width": 1
-          },
-          "label": "Administrativ gräns",
-          "filter": "[code] == '4000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "label": "Egenskapsgräns och administrativ gräns",
-          "filter": "[code] == '6000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 5
-          },
-          "label": "Utfartsförbud",
-          "filter": "[code] == 'Utfart får inte finnas'",
-          "minScale": 2000
-        }
-      ]
-    ],
-    "ks_dpan_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(244,244,244,0.45)"
-          },
-          "filter": "[value_pt] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(159,207,171,0.45)"
-          },
-          "filter": "[value_pt] == '/^PARK|NATUR|SKYDD/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,255,163,0.45)"
-          },
-          "filter": "[value_pt] == '/^[b]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(138,111,76,0.45)"
-          },
-          "filter": "[value_pt] == '/^[chk]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,17,17,0.45)"
-          },
-          "filter": "[value_pt] == '/^[ds]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(138,171,255,0.45)"
-          },
-          "filter": "[value_pt] == '/^[ej]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(173,173,173,0.45)"
-          },
-          "filter": "[value_pt] == '/^[fgptv]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(127,255,127,0.45)"
-          },
-          "filter": "[value_pt] == '/^[ln]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(194,61,194,0.45)"
-          },
-          "filter": "[value_pt] == '/^[m]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255,127,0,0.45)"
-          },
-          "filter": "[value_pt] == '/^[or]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(213,203,170,0.45)"
-          },
-          "filter": "[value_pt] == '/^[z]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(179,217,255,0.45)"
-          },
-          "filter": "[value_pt] == '/^[w]/i'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgb(0,0,0)"
-          }
-        }
-      ]
-    ],
-    "ks_dpe_y": [
-      [
-        {
-          "custom": "detaljplan"
-        }
-      ]
-    ],
-    "ks_dpn_l": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              70,
-              15,
-              70,
-              15,
-              5,
-              15
-            ],
-            "width": 2
-          },
-          "filter": "[code] == '1000'"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 5
-          },
-          "filter": "[code] == 'Utfart får inte finnas'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 1.5
-          },
-          "filter": "[code] == '2000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[code] == '3000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[code] == '4000'",
-          "minScale": 2000
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
-            "width": 1
-          },
-          "filter": "[code] == '6000'",
-          "minScale": 2000
-        }
-      ]
-    ],
-    "ks_kmv_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(125,0,0,0.6)"
-          },
-          "stroke": {
-            "color": "rgba(125,0,0,0.6)",
-            "width": 1
-          },
-          "label": "Värdefull byggnad",
-          "filter": "[obj] == '1'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(223,184,47,0.25)"
-          },
-          "stroke": {
-            "color": "rgba(223,184,47,0.25)",
-            "width": 1
-          },
-          "label": "Område",
-          "filter": "[obj] == '2'"
-        }
-      ]
-    ],
-    "tk_kof_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(165,0,165,0.25)"
-          },
-          "stroke": {
-            "color": "rgba(165,0,165,0.25)",
-            "width": 1
-          },
-          "label": "Kommunal mark",
-          "filter": "[typ] == 'Nej'"
-        }
-      ]
-    ],
-    "tk_w_lim_y": [
-      [
-        {
-          "filter": "[status] == 'Ledig'",
-          "label": "Ledig",
-          "stroke": {
-            "color": "rgba(103, 60, 31, 0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(103, 60, 31,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Bokad'",
-          "label": "Bokad",
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(255,255,0,0.25)"
-          }
-        }
-      ]
-    ],
-    "tk_w_lem_y": [
-      [
-        {
-          "filter": "[status] == 'Bokad'",
-          "label": "Bokad",
-          "stroke": {
-            "color": "rgba(0,0,0,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(255,255,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "label": "Kommande",
-          "stroke": {
-            "color": "rgba(255,0,0,0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(255,0,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Ledig'",
-          "label": "Ledig",
-          "stroke": {
-            "color": "rgba(0,0,0,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(0,225,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Såld'",
-          "label": "Såld",
-          "stroke": {
-            "color": "rgba(255,0,0,0.5)",
-            "lineDash": [
-              10,
-              10
-            ],
-            "width": 3
-          }
-        }
-      ]
-    ],
-    "tk_w_pap_y": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(229,109,30,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(66,89,179,0.3)"
-          },
-          "label": "Pågående"
-        }
-      ]
-    ],
-    "tk_s_fat_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ]
-    ],
-    "tk_sop_r": [
-      [
-        {
-          "circle": {
-            "radius": 7,
-            "stroke": {
-              "color": "rgb(210,76,99)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgb(242,205,36)"
-            }
-          },
-          "label": "Solpotential"
-        }
-      ]
-    ],
-    "bm_lim_p_cluster": [
-      [
-        {
-          "circle": {
-            "radius": 16,
-            "fill": {
-              "color": "rgba(255,153,51,0.5)"
-            },
-            "stroke": {
-              "color": "rgba(255,153,51,0.9)",
-              "width": 4
-            }
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "text": "size",
-            "fill": {
-              "color": "rgba(0,0,0,1.0)"
-            },
-            "stroke": {
-              "color": "rgba(255,153,51,0.5)",
-              "width": 2
-            }
-          }
-        }
-      ]
-    ],
-    "bm_lim_p": [
-      [
-        {
-          "icon": {
-            "src": "img/png/BM_lim_p0.png"
-          },
-          "filter": "[egn] == 'Utan avvikelse'",
-          "label": "Utan avvikelse"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/BM_lim_p1.png"
-          },
-          "filter": "[egn] == 'Med avvikelse'",
-          "label": "Med avvikelse"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/BM_lim_p2.png"
-          },
-          "label": "Ingen kontroll genomförd"
-        }
-      ]
-    ],
-    "bm_nar_y": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(137,210,103)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(137,210,103,0.3)"
-          },
-          "label": "Naturreservat"
-        }
-      ]
-    ],
-    "bu_w_fos_p": [
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              24
-            ],
-            "src": "img/png/bu_w_fos_p.png"
-          },
-          "label": "Förskola",
-          "filter": "[egn] == 'Förskola'"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              24
-            ],
-            "src": "img/png/bu_w_pfs_p.png"
-          },
-          "label": "Privat förskola",
-          "filter": "[egn] == 'Privat förskola'"
-        }
-      ]
-    ],
-    "bu_w_grs_p": [
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              24
-            ],
-            "src": "img/png/bu_w_grs_p.png"
-          },
-          "label": "Grundskola"
-        }
-      ]
-    ],
-    "bu_w_gss_p": [
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              24
-            ],
-            "src": "img/png/bu_w_gss_p.png"
-          },
-          "label": "Grundsärskola"
-        }
-      ]
-    ],
-    "bu_upo_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(178, 223, 138,0.3)"
-          },
-          "stroke": {
-            "color": "rgba(178, 223, 138,0.3)",
-            "width": 1
-          },
-          "filter": "[obj] == 'Lindbo'",
-          "label": "Lindbo"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(31, 120, 180,0.3)"
-          },
-          "stroke": {
-            "color": "rgba(31, 120, 180,0.3)",
-            "width": 1
-          },
-          "filter": "[obj] == 'Näs'",
-          "label": "Näs"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255, 127, 0,0.3)"
-          },
-          "stroke": {
-            "color": "rgba(255, 127, 0,0.3)",
-            "width": 1
-          },
-          "filter": "[obj] == 'Nibble'",
-          "label": "Nibble"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(202, 178, 214,0.3)"
-          },
-          "stroke": {
-            "color": "rgba(202, 178, 214,0.3)",
-            "width": 1
-          },
-          "filter": "[obj] == 'Strömsholm'",
-          "label": "Strömsholm"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255, 255, 153,0.3)"
-          },
-          "stroke": {
-            "color": "rgba(255, 255, 153,0.3)",
-            "width": 1
-          },
-          "filter": "[obj] == 'Kolbäck'",
-          "label": "Kolbäck"
-        }
-      ]
-    ],
-    "ks_brl_g": [
-      [
-        {
-          "filter": "[egn] == 'sträckning'",
-          "label": "Linje",
-          "stroke": {
-            "color": "rgb(74, 125, 179)",
-            "width": 6
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/ks_brl_g.png"
-          },
-          "label": "Hållplats"
-        }
-      ]
-    ],
-    "ks_sel_l": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(218, 114, 126)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Hallstahammar'",
-          "label": "Hallstahammar"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(151, 104, 209, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Svedvi'",
-          "label": "Kyrktur Svedvi"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(243, 163, 42, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Berg'",
-          "label": "Bergssocken turen"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgb(72, 217, 99)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Kolbäck'",
-          "label": "Kolbäck"
-        }
-      ]
-    ],
-    "ks_skl_l": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(72, 217, 99, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 14'",
-          "label": "Tur 14"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(151, 104, 209, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 17'",
-          "label": "Tur 17"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(243, 163, 42, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 11'",
-          "label": "Tur 11"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(218, 114, 126, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 12'",
-          "label": "Tur 12"
-        }
-      ]
-    ],
-    "primarkarta": [
-      [
-        {
-          "icon": {
-            "src": "img/png/primarkarta.png"
-          },
-          "label": "Primärkarta"
-        }
-      ]
-    ],
-    "tk_mak_y": [
-      [
-        {
-          "fill": {
-            "color": "rgba(0,0,0,0.15)"
+          "image": {
+            "src": "img/png/osm.png"
           }
         }
       ]
