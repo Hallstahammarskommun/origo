@@ -86,8 +86,12 @@
   ],
   "pageSettings": {
     "footer": {
+      "img": "css/svg/kommunvapen.svg",
       "url": "mailto:gis@hallstahammar.se?subject=Kommunkartan",
       "urlText": "Skicka feedback till GIS-enheten"
+    },
+    "mapGrid": {
+      "visible": true
     }
   },
   "projectionCode": "EPSG:3010",
