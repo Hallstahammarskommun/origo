@@ -10,11 +10,15 @@ export default function (features, map) {
   });
   const featureLayer = new VectorLayer({
     source: featureLayerStore,
-    map
+    map,
+    zIndex:1
   });
   return {
     addFeature: function addFeature(feature) {
       featureLayerStore.addFeature(feature);
+    },
+    removeFeature: function removeFeature(feature) {
+      featureLayerStore.removeFeature(feature);
     },
     setSourceLayer: function setSourceLayer(layer) {
       sourceLayer = layer;
