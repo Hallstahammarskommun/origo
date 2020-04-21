@@ -36,10 +36,16 @@ function getFeatureInfoUrl({
   resolution,
   projection
 }, layer) {
-  const url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
-    INFO_FORMAT: 'application/json',
-    FEATURE_COUNT: '20'
-  });
+  let url;
+
+  if (layer.get('queryurl') !== undefined) {
+    url = `${layer.get('queryurl') + coordinate[1]},${coordinate[0]}`;
+  } else {
+    url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
+      INFO_FORMAT: 'application/json',
+      FEATURE_COUNT: '20'
+    });
+  }
 
   return $.ajax(url, {
     type: 'post'
