@@ -86,7 +86,7 @@
       "urlText": "Hallstahammars kommun"
     },
     "mapGrid": {
-      "visible": true
+      "visible": false
     }
   },
   "projectionCode": "EPSG:3010",
