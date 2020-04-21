@@ -40,6 +40,20 @@
       }
     },
     {
+      "name": "externalurl",
+      "options": {
+        "links": 
+        [
+          {
+            "tooltipText": "Google street view",
+            "method": "LatLon",
+            "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{LAT}},{{LON}}&heading=-45&pitch=10&fov=80",
+            "buttonImage": "img/png/gsv.png"
+          }
+        ]
+      }
+    },
+    {
       "name": "position",
       "options": {
         "title": "Sweref 99 16 30"
