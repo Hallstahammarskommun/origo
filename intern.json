@@ -186,7 +186,7 @@
   "groups": [
     {
       "name": "BM",
-      "title": "Bygg- och miljöförvaltning",
+      "title": "Bygg- & miljöförvaltning",
       "expanded": true
     },
     {
@@ -268,6 +268,7 @@
       "type": "WMS",
       "fme": true,
       "visible": false,
+      "queryable": false,
       "abstract": "Grundkartan är en storskalig karta som används som underlag för upprättande av detaljplan."
     },
     {
@@ -280,6 +281,7 @@
       "type": "WMS",
       "fme": true,
       "visible": false,
+      "queryable": false,
       "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad."
     },
     {
@@ -290,7 +292,8 @@
       "format": "image/png",
       "group": "KS",
       "type": "WMS",
-      "visible": false
+      "visible": false,
+      "queryable": false
     },
     {
       "name": "ks_w_opo_p",
@@ -301,7 +304,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "attributes": [
         {
           "name": "obj",
@@ -347,7 +349,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "attributes": [
         {
           "name": "obj",
@@ -372,7 +373,6 @@
       "type": "WFS",
       "fme": true,
       "visible": false,
-      "queryable": true,
       "attributes": [
         {
           "name": "obj",
@@ -412,6 +412,7 @@
       "type": "WMS",
       "renderMode": "image",
       "visible": false,
+      "queryable": false,
       "abstract": "Skiktet innehåller bestämmelser enligt Miljöbalken, Väglagen, Vattenlagen, Kulturminneslagen, Byggnadslagen, Mineral-, gruv- och torvlagen och Lagen om byggande av järnväg. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
@@ -544,7 +545,8 @@
           "format": "image/png",
           "group": "LM",
           "type": "WMS",
-          "visible": true
+          "visible": true,
+          "queryable": false
         },
         {
           "name": "tk_s_fat_y",
@@ -584,6 +586,7 @@
       "type": "WMS",
       "renderMode": "image",
       "visible": false,
+      "queryable": false,
       "abstract": "Skiktet innehåller servitut, nyttjanderätt, ledningsrätt, gemensamhetsanläggning, vägrätt, gräns för viltvårdsområde samt före detta gräns för kronomark. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
@@ -597,6 +600,7 @@
       "fme": true,
       "type": "WMTS",
       "visible": false,
+      "queryable": false,
       "abstract": "Skiktet Terränglutning visar den beräknade lutningen i gråskala för varje pixel."
     },
     {
@@ -740,7 +744,8 @@
       "group": "SGU",
       "type": "WMS",
       "opacity": 0.75,
-      "visible": false
+      "visible": false,
+      "queryable": false
     },
     {
       "name": "SKRED_FINKORNING_JORDART",
@@ -771,9 +776,9 @@
       "style": "sgu_erosion",
       "title": "Stränders eroderbarhet",
       "group": "SGU",
-      "queryable": false,
       "type": "WMS",
       "visible": false,
+      "queryable": false,
       "abstract": "Se SGU:s <a target=_blank href=http://resource.sgu.se/dokument/produkter/produktblad/strandernas-jordart-och-eroderbarhet.pdf>produktblad</a> för mer information."
     },
     {
@@ -784,7 +789,8 @@
       "format": "image/png",
       "group": "TV",
       "type": "WMS",
-      "visible": false
+      "visible": false,
+      "queryable": false
     },
     {
       "name": "UAV",
@@ -936,9 +942,9 @@
       "style": "tk_mak_y",
       "title": "Mask",
       "group": "tom",
-      "queryable": false,
       "type": "WFS",
-      "visible": true
+      "visible": true,
+      "queryable": false
     },
     {
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
