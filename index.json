@@ -235,7 +235,6 @@
           "title": "Gällande detaljplan",
           "format": "image/png",
           "type": "WMS",
-          "queryable": true,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "visible": true,
           "minScale": 4000,
@@ -386,7 +385,6 @@
           "type": "WFS",
           "filter": "typ = 'Smahus'",
           "visible": true,
-          "queryable": true,
           "attributes": [
             {
               "name": "obj"
