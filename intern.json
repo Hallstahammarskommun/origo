@@ -413,7 +413,7 @@
       "renderMode": "image",
       "visible": false,
       "queryable": false,
-      "abstract": "Skiktet innehåller bestämmelser enligt Miljöbalken, Väglagen, Vattenlagen, Kulturminneslagen, Byggnadslagen, Mineral-, gruv- och torvlagen och Lagen om byggande av järnväg. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
+      "abstract": "Skiktet innehåller bestämmelser enligt Miljöbalken, Väglagen, Vattenlagen, Kulturminneslagen, Byggnadslagen, Mineral-, gruv- och torvlagen och Lagen om byggande av järnväg. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visning.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
       "name": "detaljplan",
@@ -423,7 +423,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
-      "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>",
+      "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visning.pdf>Länk till Lantmäteriets teckenförklaring</a>",
       "layers": [
         {
           "name": "pbr_detaljplaner",
@@ -587,7 +587,7 @@
       "renderMode": "image",
       "visible": false,
       "queryable": false,
-      "abstract": "Skiktet innehåller servitut, nyttjanderätt, ledningsrätt, gemensamhetsanläggning, vägrätt, gräns för viltvårdsområde samt före detta gräns för kronomark. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visn_v1.1_1.4.pdf>Länk till Lantmäteriets teckenförklaring</a>"
+      "abstract": "Skiktet innehåller servitut, nyttjanderätt, ledningsrätt, gemensamhetsanläggning, vägrätt, gräns för viltvårdsområde samt före detta gräns för kronomark. <a target=_blank href=https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/geodatatjanster/tf_pbr_visning.pdf>Länk till Lantmäteriets teckenförklaring</a>"
     },
     {
       "name": "terranglutning",
