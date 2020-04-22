@@ -153,6 +153,9 @@
     0.14
   ],
   "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
+  "featureinfoOptions": {
+    "infowindow": "infowindow"
+  },
   "source": {
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",

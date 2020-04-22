@@ -1,5 +1,4 @@
 import EsriJSON from 'ol/format/EsriJSON';
-import Collection from 'ol/Collection';
 import $ from 'jquery';
 import maputils from './maputils';
 import SelectedItem from './models/SelectedItem';
@@ -53,7 +52,7 @@ function getFeatureInfoUrl({
     .then((response) => {
       if (response.error) {
         return [];
-      } else if (layer.get('queryurl') !== undefined) {
+      } if (layer.get('queryurl') !== undefined) {
         const feature = maputils.jsonToPointFeature(response, coordinate);
         return feature;
       }
@@ -219,7 +218,7 @@ function getFeaturesFromRemote(requestOptions, viewer) {
   const requestResult = [];
 
   const requestPromises = getFeatureInfoRequests(requestOptions, viewer).map((request) => request.fn.then((features) => {
-    const layer = viewer.getLayer(request.layer);
+    let layer = viewer.getLayer(request.layer);
     const groupLayers = viewer.getGroupLayers();
     const map = viewer.getMap();
 
@@ -228,7 +227,7 @@ function getFeaturesFromRemote(requestOptions, viewer) {
       for (let i = 0; i < groups.length; i += 1) {
         const layers = groups[i].get('layers');
 
-        const layerInGroup = layers.getArray().filter(filteredLayer => filteredLayer.get('name') === request.layer);
+        const layerInGroup = layers.getArray().filter((filteredLayer) => filteredLayer.get('name') === request.layer);
 
         if (layerInGroup.length !== 0) {
           layer = layerInGroup[0];
@@ -238,11 +237,17 @@ function getFeaturesFromRemote(requestOptions, viewer) {
     }
 
     if (features) {
-      features.forEach((feature) => {
-        const si = createSelectedItem(feature, layer, map, groupLayers);
+      if (Array.isArray(features)) {
+        features.forEach((feature) => {
+          const si = createSelectedItem(feature, layer, map, groupLayers);
+          requestResult.push(si);
+        });
+        return requestResult;
+      } if (!Array.isArray(features)) {
+        const si = createSelectedItem(features, layer, map, groupLayers);
         requestResult.push(si);
-      });
-      return requestResult;
+        return requestResult;
+      }
     }
 
     return false;
