@@ -27,21 +27,15 @@ const getContent = {
   name(feature, attribute, attributes, map) {
     let val = '';
     let title = '';
-    // if (feature.get(attribute.name) || attribute.name.indexOf('.') > -1) {
     const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
     if (featureValue || attribute.name.indexOf('.') > -1) {
       val = getNeastedAttr(attribute.name, feature);
-      // val = feature.get(attribute.name);
       if (attribute.title) {
         title = `<b>${attribute.title}</b>`;
       }
-
-
       if (attribute.url) {
-        // if (feature.get(attribute.url)) {
         let url;
         if (feature.get(attribute.url) || attribute.url.indexOf('.') > -1) {
-          // const url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(feature.get(attribute.url), feature.getProperties(), null, map));
           url = createUrl(attribute.urlPrefix, attribute.urlSuffix, replacer.replace(getNeastedAttr(attribute.url, feature), feature.getProperties(), null, map));
         } else if (isUrl(attribute.url)) {
           url = attribute.url;
@@ -58,7 +52,6 @@ const getContent = {
         val = `<a class="${aCls}" target="${aTarget}" href="${url}">${getNeastedAttr(attribute.name, feature)}</a>`;
       }
     }
-    // }
     const newElement = document.createElement('li');
     newElement.classList.add(attribute.cls);
     newElement.innerHTML = `${title}${val}`;
