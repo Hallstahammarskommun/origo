@@ -52,6 +52,8 @@ function getFeatureInfoUrl({
     .then((response) => {
       if (response.error) {
         return [];
+      } if (response.length === 0) {
+        return [];
       } if (layer.get('queryurl') !== undefined) {
         const feature = maputils.jsonToPointFeature(response, coordinate);
         return feature;
