@@ -27,9 +27,9 @@ const getContent = {
   name(feature, attribute, attributes, map) {
     let val = '';
     let title = '';
-    if (feature.get(attribute.name) || attribute.name.indexOf('.') > -1) {
-      // const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
-      // if (featureValue) {
+    // if (feature.get(attribute.name) || attribute.name.indexOf('.') > -1) {
+    const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
+    if (featureValue || attribute.name.indexOf('.') > -1) {
       val = getNeastedAttr(attribute.name, feature);
       // val = feature.get(attribute.name);
       if (attribute.title) {
@@ -55,11 +55,10 @@ const getContent = {
           aTarget = 'modal-full';
           aCls = 'o-identify-link-modal';
         }
-        // val = `<a class="${aCls}" target="${aTarget}" href="${url}">${feature.get(attribute.name)}</a>`;
         val = `<a class="${aCls}" target="${aTarget}" href="${url}">${getNeastedAttr(attribute.name, feature)}</a>`;
       }
-      // }
     }
+    // }
     const newElement = document.createElement('li');
     newElement.classList.add(attribute.cls);
     newElement.innerHTML = `${title}${val}`;
