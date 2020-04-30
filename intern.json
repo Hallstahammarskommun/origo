@@ -447,7 +447,7 @@
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
             }, {
-              "title": "Geodataenheten: ",
+              "title": "Akt Direkt, låst: ",
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
               "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/document/index.djvu?archive=19&id="
@@ -564,15 +564,23 @@
           "visible": true,
           "attributes": [
             {
-              "title": "Ägare: ",
+              "title": "Fastighetsbeteckning: ",
+              "name": "obj"
+            },
+            {
+              "title": "Areal: ",
+              "name": "typ"
+            },
+            {
+              "title": "Ägare, låst: ",
               "name": "obj",
               "url": "egn",
               "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
             },
             {
-              "title": "Fastighetsrapport: ",
-              "name": "--obj",
-              "urlPrefix": "https://karta.hallstahammar.se/intern/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
+              "title": "FB webb, låst: ",
+              "name": "egn",
+              "urlPrefix": "http://10.7.2.48/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
               "url": "egn",
               "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
             }
