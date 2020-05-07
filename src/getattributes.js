@@ -20,6 +20,9 @@ function getNeastedAttr(attributePath, feature) {
     } else {
       val = val[element];
     }
+    if (val === undefined) {
+      val = '';
+    }
   });
   return val;
 }
