@@ -185,18 +185,8 @@
   },
   "groups": [
     {
-      "name": "BM",
-      "title": "Bygg- & miljöförvaltning",
-      "expanded": true
-    },
-    {
-      "name": "KS",
-      "title": "Kommunstyrelseförvaltning",
-      "expanded": true
-    },
-    {
-      "name": "TK",
-      "title": "Tekniska förvaltningen",
+      "name": "HHR",
+      "title": "Hallstahammars kommun",
       "expanded": true
     },
     {
@@ -246,7 +236,7 @@
       "source": "ows",
       "style": "bm_avl_p",
       "title": "Enskilda avlopp",
-      "group": "BM",
+      "group": "HHR",
       "type": "WFS",
       "visible": false,
       "attributes": [
@@ -264,7 +254,7 @@
       "style": "grundkarta",
       "title": "Grundkarta",
       "format": "image/png",
-      "group": "KS",
+      "group": "HHR",
       "type": "WMS",
       "fme": true,
       "visible": false,
@@ -277,7 +267,7 @@
       "style": "primarkarta",
       "title": "Primärkarta",
       "format": "image/png",
-      "group": "KS",
+      "group": "HHR",
       "type": "WMS",
       "fme": true,
       "visible": false,
@@ -290,7 +280,7 @@
       "style": "opto",
       "title": "Opto",
       "format": "image/png",
-      "group": "KS",
+      "group": "HHR",
       "type": "WMS",
       "visible": false,
       "queryable": false
@@ -300,7 +290,7 @@
       "title": "Opto ansluten",
       "source": "internows",
       "style": "ks_w_opo_p",
-      "group": "KS",
+      "group": "HHR",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -316,7 +306,7 @@
       "source": "internows",
       "style": "tk_w_stp_p",
       "title": "Stompunkter",
-      "group": "KS",
+      "group": "HHR",
       "type": "WFS",
       "fme": true,
       "visible": false,
@@ -344,7 +334,7 @@
       "title": "Arrende",
       "source": "internows",
       "style": "tk_w_are_p",
-      "group": "TK",
+      "group": "HHR",
       "fme": true,
       "type": "WFS",
       "geometryType": "Point",
@@ -369,7 +359,7 @@
       "title": "Geoteknisk undersökning",
       "source": "internows",
       "style": "tk_w_gtu_p",
-      "group": "TK",
+      "group": "HHR",
       "type": "WFS",
       "fme": true,
       "visible": false,
@@ -385,7 +375,7 @@
       "source": "internows",
       "style": "tk_kof_y",
       "title": "Kommunal mark",
-      "group": "TK",
+      "group": "HHR",
       "queryable": false,
       "type": "WFS",
       "fme": true,
@@ -397,7 +387,7 @@
       "style": "va",
       "title": "VA nät",
       "format": "image/png",
-      "group": "TK",
+      "group": "HHR",
       "queryable": false,
       "type": "WMS",
       "visible": false
