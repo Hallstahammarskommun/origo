@@ -144,9 +144,6 @@
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
       "strategy": "all"
-    },
-    "wmts": {
-      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
     }
   },
   "groups": [
@@ -699,9 +696,9 @@
       ]
     },
     {
-      "name": "tk_mak_y",
+      "name": "y_mask",
       "source": "ows",
-      "style": "tk_mak_y",
+      "style": "y_mask",
       "title": "Mask",
       "group": "tom",
       "queryable": false,
@@ -713,9 +710,9 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan_nedtonad",
-      "source": "wmts",
+      "source": "wms",
       "title": "Karta, grå",
-      "type": "WMTS",
+      "type": "WMS",
       "style": "karta_gra",
       "visible": true
     },
@@ -724,9 +721,9 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan",
-      "source": "wmts",
+      "source": "wms",
       "title": "Karta, färg",
-      "type": "WMTS",
+      "type": "WMS",
       "style": "karta_farg",
       "visible": false
     },
@@ -734,10 +731,10 @@
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "orto",
-      "source": "wmts",
+      "name": "ortofoto",
+      "source": "wms",
       "title": "Flygfoto",
-      "type": "WMTS",
+      "type": "WMS",
       "style": "orto",
       "visible": false
     }
@@ -1640,7 +1637,7 @@
         }
       ]
     ],
-    "tk_mak_y": [
+    "y_mask": [
       [
         {
           "fill": {
