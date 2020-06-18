@@ -36,7 +36,9 @@ function showInfowindow() {
   mainContainer.classList.remove('hidden');
 }
 
-function makeElementDraggable(elmnt) {
+
+function makeElementDraggable(elm) {
+  const elmnt = elm;
   let pos1 = 0;
   let pos2 = 0;
   let pos3 = 0;
@@ -51,9 +53,7 @@ function makeElementDraggable(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    // eslint-disable-next-line no-param-reassign
     elmnt.style.top = `${elmnt.offsetTop - pos2}px`;
-    // eslint-disable-next-line no-param-reassign
     elmnt.style.left = `${elmnt.offsetLeft - pos1}px`;
   }
 
@@ -79,7 +79,6 @@ function makeElementDraggable(elmnt) {
     document.getElementById(`${elmnt.id}-draggable`).onmousedown = dragMouseDown;
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV: */
-    // eslint-disable-next-line no-param-reassign
     elmnt.onmousedown = dragMouseDown;
   }
 }
@@ -188,8 +187,8 @@ function createToaster(status, message) {
   const toaster = document.createElement('div');
   toaster.style.fontSize = '12px';
   if (!message) {
-    const successMsg = exportOptions.toasterMessages && exportOptions.toasterMessages.success ? exportOptions.toasterMessages.success : 'Det gick bra!';
-    const failMsg = exportOptions.toasterMessages && exportOptions.toasterMessages.fail ? exportOptions.toasterMessages.fail : 'Något gick fel, kontakta administratören.';
+    const successMsg = exportOptions.toasterMessages && exportOptions.toasterMessages.success ? exportOptions.toasterMessages.success : 'Success!';
+    const failMsg = exportOptions.toasterMessages && exportOptions.toasterMessages.fail ? exportOptions.toasterMessages.fail : 'Sorry, something went wrong. Please contact your administrator';
     msg = status === 'ok' ? successMsg : failMsg;
   }
   // It cannot be appended to infowindow bcuz in mobile tranform:translate is used css, and it causes that position: fixed loses its effect.
@@ -216,15 +215,14 @@ function createSubexportComponent(selectionGroup) {
   let layerSpecificExportOptions;
   const simpleExportLayers = exportOptions.simpleExportLayers ? exportOptions.simpleExportLayers : [];
   const simpleExportUrl = exportOptions.simpleExportUrl;
-  const simpleExportButtonText = exportOptions.simpleExportButtonText || 'Exporera alla features i urvalet';
-  const exportedFileName = exportOptions.exportedFileName || 'ExportedFeatures';
+  const simpleExportButtonText = exportOptions.simpleExportButtonText || 'Export';
+  const exportedFileName = exportOptions.exportedFileName;
   const activeLayer = viewer.getLayer(selectionGroup);
 
   const subexportContainer = document.createElement('div');
   subexportContainer.classList.add('export-buttons-container');
 
   if (activeLayer.get('type') === 'GROUP') {
-    // eslint-disable-next-line no-console
     console.warn('The selected layer is a LayerGroup, be careful!');
   }
 
@@ -235,11 +233,11 @@ function createSubexportComponent(selectionGroup) {
   if (layerSpecificExportOptions) {
     const exportUrls = layerSpecificExportOptions.exportUrls || [];
     const attributesToSendToExportPerLayer = layerSpecificExportOptions.attributesToSendToExport;
-    const layerSpecificExportedFileName = layerSpecificExportOptions.exportedFileName || exportedFileName;
 
     exportUrls.forEach((obj) => {
-      const buttonText = obj.buttonText || 'External Call';
+      const buttonText = obj.buttonText || 'Export';
       const url = obj.url;
+      const layerSpecificExportedFileName = obj.exportedFileName;
       const attributesToSendToExport = obj.attributesToSendToExport ? obj.attributesToSendToExport : attributesToSendToExportPerLayer;
       const exportBtn = createExportButton(buttonText);
       const btn = exportBtn.querySelector('button');
@@ -267,8 +265,7 @@ function createSubexportComponent(selectionGroup) {
           }
           exportBtn.loadStop();
         }).catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          console.error(err);
           createToaster('fail');
           exportBtn.loadStop();
         });
@@ -290,20 +287,17 @@ function createSubexportComponent(selectionGroup) {
         simpleExportHandler(simpleExportUrl, activeLayer, selectedItems, exportedFileName).then(() => {
           exportBtn.loadStop();
         }).catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          console.error(err);
           createToaster('fail');
           exportBtn.loadStop();
         });
       });
       subexportContainer.appendChild(exportBtn);
     } else {
-      // eslint-disable-next-line no-console
-      console.log(`Export is not allowed for selection group: ${selectionGroup}`);
+      console.warn(`Export is not allowed for selection group: ${selectionGroup}`);
     }
   } else {
-    // eslint-disable-next-line no-console
-    console.log(`Neither Specific Export is specified for selection group: ${selectionGroup} nor Simple Export is allowed!`);
+    console.warn(`Neither Specific Export is specified for selection group: ${selectionGroup} nor Simple Export is allowed!`);
   }
 
   return subexportContainer;

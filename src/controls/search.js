@@ -154,7 +154,7 @@ const Search = function Search(options = {}) {
       coord = [data[easting], data[northing]];
       showOverlay(data, coord);
     } else {
-      console.log('Search options are missing');
+      console.error('Search options are missing');
     }
   }
 
@@ -200,11 +200,11 @@ const Search = function Search(options = {}) {
 
     document.getElementsByClassName('o-search-field')[0].addEventListener('blur', () => {
       document.getElementById(`${wrapperElement.getId()}`).classList.remove('active');
-      window.dispatchEvent(new Event('resize'));
+      window.dispatchEvent(new CustomEvent('resize'));
     });
     document.getElementsByClassName('o-search-field')[0].addEventListener('focus', () => {
       document.getElementById(`${wrapperElement.getId()}`).classList.add('active');
-      window.dispatchEvent(new Event('resize'));
+      window.dispatchEvent(new CustomEvent('resize'));
     });
   }
 
@@ -234,8 +234,8 @@ const Search = function Search(options = {}) {
     const group = {};
     const ids = Object.keys(data);
     ids.forEach((id) => {
-      const item = data[id];      
-      let typeTitle = undefined;
+      const item = data[id];
+      let typeTitle;
       if (layerNameAttribute && idAttribute) {
         typeTitle = viewer.getLayer(item[layerNameAttribute]).get('title');
       } else if (geometryAttribute && layerName) {
@@ -253,8 +253,8 @@ const Search = function Search(options = {}) {
       }
       if (typeTitle) {
         group[typeTitle].push(item);
-      } else if (id == 0) {
-        console.log('Search options are missing');
+      } else if (id === 0) {
+        console.error('Search options are missing');
       }
     });
     return group;

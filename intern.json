@@ -157,6 +157,10 @@
     "infowindow": "infowindow"
   },
   "source": {
+    "kartwms": {
+      "url": "https://karta.hallstahammar.se/kartmotor/wms",
+      "version": "1.1.1"
+    },
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",
       "version": "1.1.1"
@@ -261,6 +265,38 @@
       "queryable": false,
       "abstract": "Grundkartan är en storskalig karta som används som underlag för upprättande av detaljplan."
     },
+    {
+      "name": "2016_kmv_p",
+      "source": "kartwms",
+      "style": "ks_kmv_p",
+      "title": "Kulturmiljövårdsprogram",
+      "format": "image/png",
+      "group": "HHR",
+      "type": "WFS",
+      "fme": false,
+      "visible": false,
+      "queryable": true,
+      "abstract": "Inventeringen är gjorde mellan åren ",
+      "attributes": [
+        {
+          "name": "allman_info",
+          "title": "Allmän info"
+        },
+        {
+          "name": "vardebeskrivning",
+          "title": "Värdebeskrivning"
+        },
+        {
+          "name": "byggar",
+          "title": "Byggår"
+        },
+        {
+          "urlPrefix": "https://karta.hallstahammar.se/img/kmv/small/",
+          "img": "img_0",
+          "urlSuffix": ".jpg"
+        }
+      ]
+    },    
     {
       "name": "primarkarta",
       "source": "wms",
@@ -1083,6 +1119,26 @@
         }
       ]
     ],
+    "ks_kmv_p": [
+      [
+        {
+          "label": "Ej klassad",
+          "filter": "[obj] == '0'",
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Värdefull byggnad",
+          "filter": "[obj] == '1'",
+          "icon": {
+            "src": "img/png/droppe_lila.png"
+          }
+        }
+      ]
+  ],
     "opto": [
       [
         {
