@@ -10,12 +10,13 @@
       "name": "search",
       "options": {
         "url": "https://karta.hallstahammar.se/search",
-        "geometryAttribute": "st_astext",
-        "layerNameAttribute": "layer",
         "searchAttribute": "NAMN",
+        "geometryAttribute": "st_astext",
         "titleAttribute": "layer",
         "contentAttribute": "NAMN",
-        "hintText": "Sök i Hallstakartan"
+        "groupSuggestions": true,
+        "hintText": "Sök i Hallstakartan",
+        "minLength": 1
       }
     },
     {
