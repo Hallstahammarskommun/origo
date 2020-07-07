@@ -1,10 +1,48 @@
 {
   "controls": [
     {
+      "name": "externalurl",
+      "options": {
+        "links": 
+        [
+          {
+            "tooltipText": "Google street view",
+            "method": "LatLon",
+            "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{LAT}},{{LON}}&heading=-45&pitch=10&fov=80",
+            "buttonImage": "img/png/gsv.png"
+          }
+        ]
+      }
+    },
+    {
       "name": "geoposition"
     },
     {
+      "name": "legend",
+      "options": {
+        "labelOpacitySlider": "Opacity"
+      }
+    },
+    {
       "name": "mapmenu"
+    },
+    {
+      "name": "measure",
+      "options": {
+        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
+        "elevationTargetProjection": "EPSG:3010",
+        "elevationAttribute": "geometry.coordinates[2]",
+        "measureTools": ["length", "area", "elevation"]
+      }
+    },
+    {
+      "name": "position",
+      "options": {
+        "title": "Sweref 99 16 30",
+        "projections": {
+          "EPSG:3006": "Sweref 99 TM"
+        }
+      }
     },
     {
       "name": "search",
@@ -20,30 +58,10 @@
       }
     },
     {
-      "name": "sharemap"
-    },
-    {
-      "name": "print",
-      "options": {
-          "logo": {
-            "src": "css/svg/logo-print.svg"
-            }
-      }
-    },
-    {
       "name": "about",
       "options": {
         "title": "Om Hallstakartan",
         "content": "<p>Hallstakartan är en karttjänst framtagen av kommunstyrelseförvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
-      }
-    },
-    {
-      "name": "measure",
-      "options": {
-        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
-        "elevationTargetProjection": "EPSG:3010",
-        "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]        
       }
     },
     {
@@ -65,24 +83,15 @@
       }
     },
     {
-      "name": "legend",
+      "name": "print",
       "options": {
-        "labelOpacitySlider": "Opacity"
+          "logo": {
+            "src": "css/svg/logo-print.svg"
+            }
       }
     },
     {
-      "name": "externalurl",
-      "options": {
-        "links": 
-        [
-          {
-            "tooltipText": "Google street view",
-            "method": "LatLon",
-            "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{LAT}},{{LON}}&heading=-45&pitch=10&fov=80",
-            "buttonImage": "img/png/gsv.png"
-          }
-        ]
-      }
+      "name": "sharemap"
     }
   ],
   "pageSettings": {
@@ -103,6 +112,10 @@
     6905701
   ],
   "proj4Defs": [
+    {
+      "code": "EPSG:3006",
+      "projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    },
     {
       "code": "EPSG:3010",
       "alias": "urn:ogc:def:crs:EPSG::3010",
@@ -188,7 +201,7 @@
     {
       "name": "fastigheter",
       "title": "Fastighetsgräns",
-      "style": "granser",
+      "style": "fastigheter",
       "group": "bygga",
       "type": "GROUP",
       "fme": true,
@@ -197,7 +210,7 @@
         {
           "name": "fastighet",
           "source": "wms",
-          "style": "granser",
+          "style": "fastigheter",
           "format": "image/png",
           "group": "bygga",
           "type": "WMS",
@@ -205,9 +218,9 @@
           "visible": true
         },
         {
-          "name": "tk_s_fat_y",
+          "name": "y_sokFastighet",
           "source": "ows",
-          "style": "tk_s_fat_y",
+          "style": "y_sokFastighet",
           "title": "Fastighet",
           "format": "image/png",
           "group": "bygga",
@@ -281,10 +294,10 @@
           ]
         },
         {
-          "name": "ks_dpan_y",
+          "name": "y_dpAnvandning",
           "title": "Användning",
           "source": "ows",
-          "style": "ks_dpan_y",
+          "style": "y_dpAnvandning",
           "type": "WFS",
           "visible": true,
           "maxScale": 4000,
@@ -295,13 +308,13 @@
           ]
         },
         {
-          "name": "ks_dpe_y",
+          "name": "y_dpEgenskap",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_dpe_y",
+          "style": "y_dpEgenskap",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 3000,
           "attributes": [
             {
               "name": "description_pt"
@@ -309,13 +322,13 @@
           ]
         },
         {
-          "name": "ks_dpad_y",
+          "name": "y_dpAdministrativ",
           "title": "Administrativ bestämmelse",
           "source": "ows",
-          "style": "ks_dpe_y",
+          "style": "y_dpEgenskap",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 3000,
           "attributes": [
             {
               "name": "description_pt"
@@ -323,21 +336,21 @@
           ]
         },
         {
-          "name": "ks_dpn_l",
+          "name": "l_detaljplan",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_dpn_l",
+          "style": "l_detaljplan",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 4000,
           "queryable": false
         }
       ]
     },
     {
-      "name": "tk_kof_y",
+      "name": "y_kommunalFastighet",
       "source": "ows",
-      "style": "tk_kof_y",
+      "style": "y_kommunalFastighet",
       "title": "Kommunal mark",
       "group": "bygga",
       "queryable": false,
@@ -346,9 +359,9 @@
       "visible": false
     },
     {
-      "name": "tk_w_lem_y__industri",
+      "name": "w_y_ledigMark__industri",
       "source": "ows",
-      "style": "tk_w_lim_y",
+      "style": "w_y_ledigMark__industri",
       "title": "Ledig industrimark",
       "group": "bygga",
       "type": "WFS",
@@ -371,18 +384,18 @@
       ]
     },
     {
-      "name": "tk_w_lem_y",
+      "name": "w_y_ledigMark",
       "title": "Lediga tomter",
-      "style": "tk_w_lem_y",
+      "style": "w_y_ledigMark",
       "group": "bygga",
       "fme": true,
       "type": "GROUP",
       "visible": false,
       "layers": [
         {
-          "name": "tk_w_lem_y__smahus",
+          "name": "w_y_ledigMark__smahus",
           "source": "ows",
-          "style": "tk_w_lem_y",
+          "style": "w_y_ledigMark",
           "title": "Lediga tomter",
           "group": "bygga",
           "type": "WFS",
@@ -407,10 +420,10 @@
           ]
         },
         {
-          "name": "tk_w_lem_p",
+          "name": "w_p_ledigMark",
           "source": "ows",
-          "style": "tk_w_lem_p",
-          "clusterStyle": "tk_w_lem_p_cluster",
+          "style": "w_p_ledigMark",
+          "clusterStyle": "w_p_ledigMark_cluster",
           "title": "Lediga tomter punkt",
           "layerType": "cluster",
           "group": "bygga",
@@ -434,9 +447,9 @@
       "visible": false
     },
     {
-      "name": "tk_w_pap_y",
+      "name": "w_y_plan",
       "source": "ows",
-      "style": "tk_w_pap_y",
+      "style": "w_y_plan",
       "title": "Pågående detaljplan",
       "group": "bygga",
       "type": "WFS",
@@ -450,10 +463,12 @@
       ]
     },
     {
-      "name": "bm_lim_p",
+      "name": "p_livsmedel",
       "source": "ows",
-      "style": "bm_lim_p",
+      "style": "p_livsmedel",
+      "clusterStyle": "p_livsmedel_cluster",
       "title": "Livsmedelsinspektion",
+      "layerType": "cluster",
       "group": "energi",
       "type": "WFS",
       "fme": true,
@@ -492,9 +507,9 @@
       "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='https://hallstahammar.se/boende-miljo-och-trafik/miljo-och-klimat/energi--och-klimatradgivning' target='_blank'>webbplats om energi- och klimatrådgivning.</a>"
     },
     {
-      "name": "bm_nar_y",
+      "name": "y_naturreservat",
       "source": "ows",
-      "style": "bm_nar_y",
+      "style": "y_naturreservat",
       "title": "Naturreservat",
       "group": "uppleva",
       "type": "WFS",
@@ -509,17 +524,17 @@
       ]
     },
     {
-      "name": "bu_w_ska_p",
+      "name": "w_p_skola",
       "source": "ows",
-      "style": "point",
+      "style": "w_p_skola",
       "title": "Skollager",
       "group": "none",
       "type": "WFS",
       "visible": false
     },
     {
-      "name": "bu_w_ska_p__Forskola",
-      "style": "bu_w_fos_p",
+      "name": "w_p_skola__Forskola",
+      "style": "w_p_skola",
       "title": "Förskola",
       "group": "utbildning",
       "type": "GROUP",
@@ -528,10 +543,10 @@
       "layers":
       [
         {
-          "name": "bu_w_ska_p__Forskola",
+          "name": "w_p_skola__Forskola",
           "source": "ows",
           "filter": "egn = 'Förskola'",
-          "style": "bu_w_fos_p",
+          "style": "w_p_skola",
           "title": "Förskola",
           "type": "WFS",
           "visible": true,
@@ -552,10 +567,10 @@
           ]
         },
         {
-          "name": "bu_w_ska_p__Forskola",
+          "name": "w_p_skola__Forskola",
           "source": "ows",
           "filter": "egn = 'Privat förskola'",
-          "style": "bu_w_fos_p",
+          "style": "w_p_skola",
           "title": "Förskola",
           "type": "WFS",
           "visible": true,
@@ -573,9 +588,9 @@
       ]
     },
     {
-      "name": "bu_w_ska_p__Grundskola",
+      "name": "w_p_skola__Grundskola",
       "source": "ows",
-      "style": "bu_w_grs_p",
+      "style": "w_p_skola__Grundskola",
       "title": "Grundskola",
       "group": "utbildning",
       "type": "WFS",
@@ -598,9 +613,9 @@
       ]
     },
     {
-      "name": "bu_w_ska_p__Grundsarskola",
+      "name": "w_p_skola__Grundsarskola",
       "source": "ows",
-      "style": "bu_w_gss_p",
+      "style": "w_p_skola__Grundsarskola",
       "title": "Grundsärskola",
       "group": "utbildning",
       "type": "WFS",
@@ -623,9 +638,9 @@
       ]
     },
     {
-      "name": "bu_upo_y",
+      "name": "y_upptagningsomrade",
       "source": "ows",
-      "style": "bu_upo_y",
+      "style": "y_upptagningsomrade",
       "title": "Upptagningsområden",
       "group": "utbildning",
       "type": "WFS",
@@ -639,9 +654,9 @@
       ]
     },
     {
-      "name": "ks_brl_g",
+      "name": "g_brukslinjen",
       "source": "ows",
-      "style": "ks_brl_g",
+      "style": "g_brukslinjen",
       "title": "Brukslinjen",
       "group": "trafik",
       "type": "WFS",
@@ -660,9 +675,9 @@
       ]
     },
     {
-      "name": "ks_sel_l",
+      "name": "l_servicelinjen",
       "source": "ows",
-      "style": "ks_sel_l",
+      "style": "l_servicelinjen",
       "title": "Servicelinjen",
       "group": "trafik",
       "type": "WFS",
@@ -681,11 +696,11 @@
       ]
     },
     {
-      "name": "ks_skl_l",
+      "name": "l_skollinjen",
       "title": "Skollinjer",
       "group": "trafik",
       "source": "ows",
-      "style": "ks_skl_l",
+      "style": "l_skollinjen",
       "type": "WFS",
       "fme": true,
       "visible": false,
@@ -718,6 +733,7 @@
       "name": "topowebbkartan_nedtonad",
       "source": "wms",
       "title": "Karta, grå",
+	    "queryable": false,
       "type": "WMS",
       "style": "karta_gra",
       "visible": true
@@ -729,6 +745,7 @@
       "name": "topowebbkartan",
       "source": "wms",
       "title": "Karta, färg",
+	    "queryable": false,
       "type": "WMS",
       "style": "karta_farg",
       "visible": false
@@ -740,6 +757,7 @@
       "name": "ortofoto",
       "source": "wms",
       "title": "Flygfoto",
+	    "queryable": false,
       "type": "WMS",
       "style": "orto",
       "visible": false
@@ -755,31 +773,6 @@
               36
             ],
             "src": "img/png/drop_blue.png"
-          }
-        }
-      ]
-    ],
-    "tk_w_lem_p": [
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_red.png"
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_black.png"
           }
         }
       ]
@@ -841,7 +834,7 @@
         }
       ]
     ],
-    "tk_w_lem_p_cluster": [
+    "w_p_ledigMark_cluster": [
       [
         {
           "circle": {
@@ -871,7 +864,32 @@
         }
       ]
     ],
-    "granser": [
+    "w_p_ledigMark": [
+      [
+        {
+          "filter": "[status] == 'Kommande'",
+          "icon": {
+            "size": [
+              24,
+              36
+            ],
+            "src": "img/png/droppe_red.png"
+          }
+        }
+      ],
+      [
+        {
+          "icon": {
+            "size": [
+              24,
+              36
+            ],
+            "src": "img/png/droppe_black.png"
+          }
+        }
+      ]
+    ],
+    "fastigheter": [
       [
         {
           "stroke": {
@@ -983,7 +1001,7 @@
         }
       ]
     ],
-    "ks_dpan_y": [
+    "y_dpAnvandning": [
       [
         {
           "fill": {
@@ -1088,14 +1106,14 @@
         }
       ]
     ],
-    "ks_dpe_y": [
+    "y_dpEgenskap": [
       [
         {
           "custom": "detaljplan"
         }
       ]
     ],
-    "ks_dpn_l": [
+    "l_detaljplan": [
       [
         {
           "stroke": {
@@ -1126,7 +1144,7 @@
             "width": 5
           },
           "filter": "[code] == 'Utfart får inte finnas'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1142,7 +1160,7 @@
             "width": 1.5
           },
           "filter": "[code] == '2000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1160,7 +1178,7 @@
             "width": 1
           },
           "filter": "[code] == '3000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1174,7 +1192,7 @@
             "width": 1
           },
           "filter": "[code] == '4000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1192,11 +1210,11 @@
             "width": 1
           },
           "filter": "[code] == '6000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ]
     ],
-    "tk_kof_y": [
+    "y_kommunalFastighet": [
       [
         {
           "fill": {
@@ -1211,7 +1229,7 @@
         }
       ]
     ],
-    "tk_w_lim_y": [
+    "w_y_ledigMark__industri": [
       [
         {
           "filter": "[status] == 'Ledig'",
@@ -1239,7 +1257,7 @@
         }
       ]
     ],
-    "tk_w_lem_y": [
+    "w_y_ledigMark": [
       [
         {
           "filter": "[status] == 'Bokad'",
@@ -1294,7 +1312,7 @@
         }
       ]
     ],
-    "tk_w_pap_y": [
+    "w_y_plan": [
       [
         {
           "stroke": {
@@ -1308,7 +1326,7 @@
         }
       ]
     ],
-    "tk_s_fat_y": [
+    "y_sokFastighet": [
       [
         {
           "fill": {
@@ -1334,7 +1352,7 @@
         }
       ]
     ],
-    "bm_lim_p_cluster": [
+    "p_livsmedel_cluster": [
       [
         {
           "circle": {
@@ -1364,7 +1382,7 @@
         }
       ]
     ],
-    "bm_lim_p": [
+    "p_livsmedel": [
       [
         {
           "icon": {
@@ -1392,7 +1410,7 @@
         }
       ]
     ],
-    "bm_nar_y": [
+    "y_naturreservat": [
       [
         {
           "stroke": {
@@ -1406,7 +1424,7 @@
         }
       ]
     ],
-    "bu_w_fos_p": [
+    "w_p_skola": [
       [
         {
           "icon": {
@@ -1434,7 +1452,7 @@
         }
       ]
     ],
-    "bu_w_grs_p": [
+    "w_p_skola__Grundskola": [
       [
         {
           "icon": {
@@ -1448,7 +1466,7 @@
         }
       ]
     ],
-    "bu_w_gss_p": [
+    "w_p_skola__Grundsarskola": [
       [
         {
           "icon": {
@@ -1462,7 +1480,7 @@
         }
       ]
     ],
-    "bu_upo_y": [
+    "y_upptagningsomrade": [
       [
         {
           "fill": {
@@ -1529,7 +1547,7 @@
         }
       ]
     ],
-    "ks_brl_g": [
+    "g_brukslinjen": [
       [
         {
           "filter": "[egn] == 'sträckning'",
@@ -1549,7 +1567,7 @@
         }
       ]
     ],
-    "ks_sel_l": [
+    "l_servicelinjen": [
       [
         {
           "stroke": {
@@ -1591,7 +1609,7 @@
         }
       ]
     ],
-    "ks_skl_l": [
+    "l_skollinjen": [
       [
         {
           "stroke": {
