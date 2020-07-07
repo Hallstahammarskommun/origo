@@ -23,7 +23,12 @@
       "name": "sharemap"
     },
     {
-      "name": "print"
+      "name": "print",
+      "options": {
+          "logo": {
+            "src": "css/svg/logo-print.svg"
+            }
+      }
     },
     {
       "name": "about",
