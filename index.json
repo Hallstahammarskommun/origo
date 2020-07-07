@@ -494,7 +494,7 @@
       ]
     },
     {
-      "name": "TK_sop_r",
+      "name": "solpotential",
       "source": "wms",
       "format": "image/png",
       "style": "tk_sop_r",
