@@ -36,7 +36,7 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]        
+        "measureTools": ["length", "area", "elevation"]
       }
     },
     {
@@ -62,7 +62,10 @@
     {
       "name": "position",
       "options": {
-        "title": "Sweref 99 16 30"
+        "title": "Sweref 99 16 30",
+        "projections": {
+          "EPSG:3006": "Sweref 99 TM"
+        }
       }
     },
     {
@@ -122,6 +125,10 @@
     6905701
   ],
   "proj4Defs": [
+    {
+      "code": "EPSG:3006",
+      "projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    },
     {
       "code": "EPSG:3010",
       "alias": "urn:ogc:def:crs:EPSG::3010",
@@ -188,9 +195,6 @@
     },
     "intern_wmts": {
       "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
-    },
-    "basemap": {
-      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
     }
   },
   "groups": [
@@ -982,23 +986,24 @@
       "queryable": false
     },
     {
-      "name": "tk_mak_y",
+      "name": "y_mask",
       "source": "ows",
-      "style": "tk_mak_y",
+      "style": "y_mask",
       "title": "Mask",
       "group": "tom",
+      "queryable": false,
       "type": "WFS",
-      "visible": true,
-      "queryable": false
+      "visible": true
     },
     {
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan_nedtonad",
-      "source": "basemap",
+      "source": "wms",
       "title": "Karta, grå",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "karta_gra",
       "visible": true
     },
@@ -1007,9 +1012,10 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan",
-      "source": "basemap",
+      "source": "wms",
       "title": "Karta, färg",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "karta_farg",
       "visible": false
     },
@@ -1017,17 +1023,18 @@
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "orto",
-      "source": "basemap",
+      "name": "ortofoto",
+      "source": "wms",
       "title": "Flygfoto",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "orto",
       "visible": false
     },
     {
-      "name": "tk_mak_y__background",
+      "name": "y_mask__background",
       "source": "ows",
-      "style": "tk_mak_y_background",
+      "style": "y_mask_background",
       "title": "Mask_background",
       "group": "background",
       "queryable": false,
@@ -1967,7 +1974,7 @@
         }
       ]
     ],
-    "tk_mak_y": [
+    "y_mask": [
       [
         {
           "fill": {
@@ -2032,7 +2039,7 @@
         }
       ]
     ],
-    "tk_mak_y_background": [
+    "y_mask_background": [
       [
         {
           "image": {
