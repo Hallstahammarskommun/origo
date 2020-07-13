@@ -58,11 +58,7 @@
       }
     },
     {
-      "name": "about",
-      "options": {
-        "title": "Om Hallstakartan",
-        "content": "<p>Hallstakartan är en karttjänst framtagen av kommunstyrelseförvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
-      }
+      "name": "sharemap"
     },
     {
       "name": "download",
@@ -83,15 +79,19 @@
       }
     },
     {
+      "name": "about",
+      "options": {
+        "title": "Om Hallstakartan",
+        "content": "<p>Hallstakartan är en karttjänst framtagen av kommunstyrelseförvaltningen på Hallstahammars kommun. I kartan hittar du olika typer av samhällsinformation.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att kartan ska fungera som bäst.</p><p>Data som finns i karttjänsten saknar rättsverkan.</p>"
+      }
+    },
+    {
       "name": "print",
       "options": {
           "logo": {
             "src": "css/svg/logo-print.svg"
             }
       }
-    },
-    {
-      "name": "sharemap"
     }
   ],
   "pageSettings": {
