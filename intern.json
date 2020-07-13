@@ -1,49 +1,7 @@
 {
   "controls": [
     {
-      "name": "geoposition"
-    },
-    {
-      "name": "mapmenu"
-    },
-    {
-      "name": "search",
-      "options": {
-        "url": "https://karta.hallstahammar.se/search",
-        "searchAttribute": "NAMN",
-        "geometryAttribute": "st_astext",
-        "titleAttribute": "layer",
-        "contentAttribute": "NAMN",
-        "groupSuggestions": true,
-        "hintText": "Sök i Hallstakartan",
-        "minLength": 1
-      }
-    },
-    {
-      "name": "sharemap"
-    },
-    {
-      "name": "print",
-      "options": {
-          "logo": {
-            "src": "css/svg/logo-print.svg"
-            }
-      }
-    },
-    {
-      "name": "measure",
-      "options": {
-        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
-        "elevationTargetProjection": "EPSG:3010",
-        "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]
-      }
-    },
-    {
-      "name": "legend",
-      "options": {
-        "labelOpacitySlider": "Opacity"
-      }
+      "name": "draganddrop"
     },
     {
       "name": "externalurl",
@@ -60,6 +18,27 @@
       }
     },
     {
+      "name": "geoposition"
+    },
+    {
+      "name": "legend",
+      "options": {
+        "labelOpacitySlider": "Opacity"
+      }
+    },
+    {
+      "name": "mapmenu"
+    },
+    {
+      "name": "measure",
+      "options": {
+        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
+        "elevationTargetProjection": "EPSG:3010",
+        "elevationAttribute": "geometry.coordinates[2]",
+        "measureTools": ["length", "area", "elevation"]
+      }
+    },
+    {
       "name": "position",
       "options": {
         "title": "Sweref 99 16 30",
@@ -69,11 +48,30 @@
       }
     },
     {
-      "name": "about",
+      "name": "search",
       "options": {
-        "title": "Om Kommunkartan",
-        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Kommunstyrelseförvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+        "url": "https://karta.hallstahammar.se/search",
+        "searchAttribute": "NAMN",
+        "geometryAttribute": "st_astext",
+        "titleAttribute": "layer",
+        "contentAttribute": "NAMN",
+        "groupSuggestions": true,
+        "hintText": "Sök i kartan",
+        "minLength": 1
       }
+    },
+    {
+      "name": "splash",
+      "options": {
+        "url": "splash.html",
+        "hideButton": {
+          "visible": true
+        },
+        "style": "width: 600px;"
+      }
+    },
+    {
+      "name": "sharemap"
     },
     {
       "name": "download",
@@ -94,16 +92,18 @@
       }
     },
     {
-      "name": "draganddrop"
+      "name": "about",
+      "options": {
+        "title": "Om kartan",
+        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Kommunstyrelseförvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+      }
     },
     {
-      "name": "splash",
+      "name": "print",
       "options": {
-        "url": "splash.html",
-        "hideButton": {
-          "visible": true
-        },
-        "style": "width: 600px;"
+          "logo": {
+            "src": "css/svg/logo-print.svg"
+            }
       }
     }
   ],
