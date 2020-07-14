@@ -4,9 +4,6 @@
       "name": "geoposition"
     },
     {
-      "name": "mapmenu"
-    },
-    {
       "name": "search",
       "options": {
         "url": "https://karta.hallstahammar.se/search",
@@ -17,13 +14,6 @@
         "groupSuggestions": true,
         "hintText": "Sök i Hallstakartan",
         "minLength": 1
-      }
-    },
-    {
-      "name": "about",
-      "options": {
-        "title": "Om Kartskaparen",
-        "content": "<p>Kartskaparen är ett redigeringsverktyg för lager som är publicerade i våra karttjänster.</p><p>Vi rekommenderar att du använder den senaste versionen av din webbläsare för att verktyget ska fungera som bäst.</p>"
       }
     },
     {
@@ -92,11 +82,8 @@
     },
     "ows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
-      "workspace": "intern",
+      "workspace": "geodataenheten",
       "strategy": "all"
-    },
-    "basemap": {
-      "url": "https://karta.hallstahammar.se/geoserver/bakgrund/gwc/service/wmts"
     }
   },
   "groups": [
@@ -128,9 +115,9 @@
       "visible": false
     },
     {
-      "name": "tk_kof_y",
+      "name": "y_kommunalFastighet",
       "source": "ows",
-      "style": "tk_kof_y",
+      "style": "y_kommunalFastighet",
       "title": "Kommunal mark",
       "group": "hjälplager",
       "queryable": false,
@@ -138,7 +125,6 @@
       "visible": false
     },
     {
-      "attribution": "&copy Hallstahammars kommun, Tekniska förvaltningen",
       "format": "image/png",
       "group": "hjälplager",
       "name": "grundkarta",
@@ -149,10 +135,10 @@
       "visible": false
     },
     {
-      "name": "tk_w_are_p",
+      "name": "w_p_arrende",
       "title": "Arrende",
       "source": "ows",
-      "style": "tk_w_are_p",
+      "style": "w_p_arrende",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -178,10 +164,10 @@
       ]
     },
     {
-      "name": "tk_w_gtu_p",
+      "name": "w_p_geoteknisk",
       "title": "Geoteknisk undersökning",
       "source": "ows",
-      "style": "tk_w_gtu_p",
+      "style": "w_p_geoteknisk",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -197,10 +183,10 @@
       ]
     },
     {
-      "name": "tk_w_lem_y",
+      "name": "w_y_ledigMark",
       "title": "Ledig mark",
       "source": "ows",
-      "style": "tk_w_lem_y",
+      "style": "w_y_ledigMark",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -251,10 +237,10 @@
       ]
     },
     {
-      "name": "ks_w_opo_p",
+      "name": "w_p_opto",
       "title": "Opto ansluten",
       "source": "ows",
-      "style": "ks_w_opo_p",
+      "style": "w_p_opto",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -277,10 +263,10 @@
       ]
     },
     {
-      "name": "tk_w_pak_p",
+      "name": "w_p_park",
       "title": "Park punkt",
       "source": "ows",
-      "style": "tk_w_pak_p",
+      "style": "w_p_park",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -301,10 +287,10 @@
       ]
     },
     {
-      "name": "tk_w_pak_y",
+      "name": "w_y_park",
       "title": "Park yta",
       "source": "ows",
-      "style": "tk_w_pak_y",
+      "style": "w_y_park",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -350,10 +336,10 @@
       ]
     },
     {
-      "name": "tk_w_pap_y",
+      "name": "w_y_plan",
       "title": "Pågående detaljplan",
       "source": "ows",
-      "style": "tk_w_pap_y",
+      "style": "w_y_plan",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Polygon",
@@ -374,10 +360,10 @@
       ]
     },
     {
-      "name": "bu_w_ska_p",
+      "name": "w_p_skola",
       "title": "Skola",
       "source": "ows",
-      "style": "bu_w_grs_p",
+      "style": "w_p_skola",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -419,10 +405,10 @@
       ]
     },
     {
-      "name": "tk_w_stp_p",
+      "name": "w_p_stompunkt",
       "title": "Stompunkter",
       "source": "ows",
-      "style": "tk_w_stp_p",
+      "style": "w_p_stompunkt",
       "group": "edit",
       "type": "WFS",
       "geometryType": "Point",
@@ -444,10 +430,10 @@
       ]
     },
     {
-      "name": "tk_w_snr_l",
+      "name": "w_l_snorojning",
       "title": "Snöröjning",
       "source": "ows",
-      "style": "tk_w_snr_l",
+      "style": "w_l_snorojning",
       "group": "edit",
       "type": "WFS",
       "geometryType": "LineString",
@@ -480,10 +466,11 @@
       ]
     },
     {
-      "name": "tk_mak_y",
+      "name": "y_mask",
       "source": "ows",
-      "style": "tk_mak_y",
+      "style": "y_mask",
       "title": "Mask",
+      "group": "tom",
       "queryable": false,
       "type": "WFS",
       "visible": true
@@ -493,9 +480,10 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan_nedtonad",
-      "source": "basemap",
+      "source": "wms",
       "title": "Karta, grå",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "karta_gra",
       "visible": true
     },
@@ -504,9 +492,10 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan",
-      "source": "basemap",
+      "source": "wms",
       "title": "Karta, färg",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "karta_farg",
       "visible": false
     },
@@ -514,10 +503,11 @@
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "orto",
-      "source": "basemap",
+      "name": "ortofoto",
+      "source": "wms",
       "title": "Flygfoto",
-      "type": "WMTS",
+	    "queryable": false,
+      "type": "WMS",
       "style": "orto",
       "visible": false
     }
@@ -546,7 +536,7 @@
         }
       ]
     ],
-    "tk_kof_y": [
+    "y_kommunalFastighet": [
       [
         {
           "label": "Kommunal fastighet",
@@ -574,7 +564,7 @@
         }
       ]
     ],
-    "tk_w_are_p": [
+    "w_p_arrende": [
       [
         {
           "label": "Arrendeavtal",
@@ -584,7 +574,7 @@
         }
       ]
     ],
-    "tk_w_gtu_p": [
+    "w_p_geoteknisk": [
       [
         {
           "label": "Geoteknisk undersökning",
@@ -594,7 +584,7 @@
         }
       ]
     ],
-    "tk_w_pak_p": [
+    "w_p_park": [
       [
         {
           "icon": {
@@ -620,7 +610,7 @@
         }
       ]
     ],
-    "bu_w_grs_p": [
+    "w_p_skola": [
       [
         {
           "label": "Skola",
@@ -630,7 +620,7 @@
         }
       ]
     ],
-    "tk_w_lem_y": [
+    "w_y_ledigMark": [
       [
         {
           "filter": "[status] == 'Bokad'",
@@ -729,7 +719,7 @@
         }
       ]
     ],
-    "ks_w_opo_p": [
+    "w_p_opto": [
       [
         {
           "label": "Saknar attribut",
@@ -785,7 +775,7 @@
         }
       ]
     ],
-    "tk_w_pak_y": [
+    "w_y_park": [
       [
         {
           "filter": "[egn] == 'Kontinuerlig'",
@@ -858,7 +848,7 @@
         }
       ]
     ],
-    "tk_w_pap_y": [
+    "w_y_plan": [
       [
         {
           "label": "Pågående detaljplan",
@@ -872,7 +862,7 @@
         }
       ]
     ],
-    "tk_w_snr_l": [
+    "w_l_snorojning": [
       [
         {
           "filter": "[obj] == '1'",
@@ -1009,7 +999,7 @@
         }
       ]
     ],
-    "tk_w_stp_p": [
+    "w_p_stompunkt": [
       [
         {
           "label": "Återfunnen",
@@ -1028,7 +1018,7 @@
         }
       ]
     ],
-    "tk_mak_y": [
+    "y_mask": [
       [
         {
           "fill": {
