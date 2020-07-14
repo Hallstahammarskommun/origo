@@ -170,16 +170,12 @@
     "infowindow": "infowindow"
   },
   "source": {
-    "kartwms": {
-      "url": "https://karta.hallstahammar.se/kartmotor/wms",
-      "version": "1.1.1"
-    },
     "wms": {
       "url": "https://karta.hallstahammar.se/geoserver/wms",
       "version": "1.1.1"
     },
     "internwms": {
-      "url": "https://karta.hallstahammar.se/intern/kartserver/intern/wms",
+      "url": "https://karta.hallstahammar.se/intern/kartserver/wms",
       "version": "1.1.1"
     },
     "ows": {
@@ -189,12 +185,6 @@
     "internows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
       "strategy": "all"
-    },
-    "extern_wmts": {
-      "url": "https://karta.hallstahammar.se/geoserver/extern/gwc/service/wmts"
-    },
-    "intern_wmts": {
-      "url": "https://karta.hallstahammar.se/geoserver/intern/gwc/service/wmts"
     }
   },
   "groups": [
@@ -246,9 +236,9 @@
   ],
   "layers": [
     {
-      "name": "bm_avl_p",
+      "name": "p_avlopp",
       "source": "ows",
-      "style": "bm_avl_p",
+      "style": "p_avlopp",
       "title": "Enskilda avlopp",
       "group": "HHR",
       "type": "WFS",
@@ -276,8 +266,19 @@
       "abstract": "Grundkartan är en storskalig karta som används som underlag för upprättande av detaljplan."
     },
     {
+      "name": "y_kommunalFastighet",
+      "source": "ows",
+      "style": "y_kommunalFastighet",
+      "title": "Kommunal mark",
+      "group": "HHR",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "visible": false
+    },
+    {
       "name": "2016_kmv_p",
-      "source": "kartwms",
+      "source": "internows",
       "style": "ks_kmv_p",
       "title": "Kulturmiljövårdsprogram",
       "format": "image/png",
@@ -286,19 +287,19 @@
       "fme": false,
       "visible": false,
       "queryable": true,
-      "abstract": "Inventeringen är gjorde mellan åren ",
+      "abstract": "Kulturmiljövårdsprogram för Hallstahammars kommun, inventeringen är gjord mellan åren 2017 och 2018.",
       "attributes": [
         {
           "name": "allman_info",
-          "title": "Allmän info"
+          "title": "Allmän info: "
         },
         {
           "name": "vardebeskrivning",
-          "title": "Värdebeskrivning"
+          "title": "Värdebeskrivning: "
         },
         {
           "name": "byggar",
-          "title": "Byggår"
+          "title": "Byggår: "
         },
         {
           "urlPrefix": "https://karta.hallstahammar.se/img/kmv/small/",
@@ -306,7 +307,34 @@
           "urlSuffix": ".jpg"
         }
       ]
-    },    
+    },
+    {
+      "name": "opto",
+      "source": "internwms",
+      "style": "opto",
+      "title": "Opto",
+      "format": "image/png",
+      "group": "HHR",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false
+    },
+    {
+      "name": "w_p_opto",
+      "title": "Opto ansluten",
+      "source": "ows",
+      "style": "w_p_opto",
+      "group": "HHR",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Status: "
+        }
+      ]
+    },
     {
       "name": "primarkarta",
       "source": "wms",
@@ -321,36 +349,9 @@
       "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad."
     },
     {
-      "name": "opto",
-      "source": "internwms",
-      "style": "opto",
-      "title": "Opto",
-      "format": "image/png",
-      "group": "HHR",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false
-    },
-    {
-      "name": "ks_w_opo_p",
-      "title": "Opto ansluten",
-      "source": "internows",
-      "style": "ks_w_opo_p",
-      "group": "HHR",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Status: "
-        }
-      ]
-    },
-    {
-      "name": "tk_w_stp_p",
-      "source": "internows",
-      "style": "tk_w_stp_p",
+      "name": "w_p_stompunkt",
+      "source": "ows",
+      "style": "w_p_stompunkt",
       "title": "Stompunkter",
       "group": "HHR",
       "type": "WFS",
@@ -358,6 +359,7 @@
       "visible": false,
       "filter": "status <> 'förstörd'",
       "strategy": "bbox",
+      "abstract": "I Hallstahammars har vi ungefär 1 800 stompunkter som tillsammans utgör Hallstahammars geodetiska stomnät. Stompunkterna är grunden för all kartframställning och för all lägesdokumentation, fastighetsbildning och inmätning.",
       "attributes": [
         {
           "name": "pktnr",
@@ -376,10 +378,10 @@
       ]
     },
     {
-      "name": "tk_w_are_p",
+      "name": "w_p_arrende",
       "title": "Arrende",
-      "source": "internows",
-      "style": "tk_w_are_p",
+      "source": "ows",
+      "style": "w_p_arrende",
       "group": "HHR",
       "fme": true,
       "type": "WFS",
@@ -401,10 +403,10 @@
       ]
     },
     {
-      "name": "tk_w_gtu_p",
+      "name": "w_p_geoteknisk",
       "title": "Geoteknisk undersökning",
-      "source": "internows",
-      "style": "tk_w_gtu_p",
+      "source": "ows",
+      "style": "w_p_geoteknisk",
       "group": "HHR",
       "type": "WFS",
       "fme": true,
@@ -415,17 +417,6 @@
           "title": "Nummer: "
         }
       ]
-    },
-    {
-      "name": "tk_kof_y",
-      "source": "internows",
-      "style": "tk_kof_y",
-      "title": "Kommunal mark",
-      "group": "HHR",
-      "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "visible": false
     },
     {
       "name": "va",
@@ -498,7 +489,7 @@
           "format": "image/png",
           "type": "WMS",
           "visible": true,
-          "opacity": 0.1,
+          "opacity": 0.2,
           "maxScale": 6000,
           "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
@@ -512,14 +503,20 @@
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
+            },
+            {
+              "title": "Akt Direkt, låst: ",
+              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
+              "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/document/index.djvu?archive=19&id="
             }
           ]
         },
         {
-          "name": "ks_dpan_y",
+          "name": "y_dpAnvandning",
           "title": "Användning",
           "source": "ows",
-          "style": "ks_dpan_y",
+          "style": "y_dpAnvandning",
           "type": "WFS",
           "visible": true,
           "maxScale": 6000,
@@ -530,13 +527,13 @@
           ]
         },
         {
-          "name": "ks_dpe_y",
+          "name": "y_dpEgenskap",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_dpe_y",
+          "style": "y_dpEgenskap",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 3000,
           "attributes": [
             {
               "name": "description_pt"
@@ -544,13 +541,13 @@
           ]
         },
         {
-          "name": "ks_dpad_y",
+          "name": "y_dpAdministrativ",
           "title": "Administrativ bestämmelse",
           "source": "ows",
-          "style": "ks_dpe_y",
+          "style": "y_dpEgenskap",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 3000,
           "attributes": [
             {
               "name": "description_pt"
@@ -558,13 +555,13 @@
           ]
         },
         {
-          "name": "ks_dpn_l",
+          "name": "l_detaljplan",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "ks_dpn_l",
+          "style": "l_detaljplan",
           "type": "WFS",
           "visible": true,
-          "maxScale": 2000,
+          "maxScale": 6000,
           "queryable": false
         }
       ]
@@ -590,9 +587,9 @@
           "queryable": false
         },
         {
-          "name": "tk_s_fat_y",
+          "name": "y_sokFastighet",
           "source": "ows",
-          "style": "tk_s_fat_y",
+          "style": "y_sokFastighet",
           "title": "Fastighet",
           "format": "image/png",
           "group": "LM",
@@ -641,13 +638,13 @@
     {
       "name": "terranglutning",
       "opacity": 0.5,
-      "source": "extern_wmts",
+      "source": "wms",
       "style": "terranglutning",
       "title": "Terränglutning",
       "format": "image/jpeg",
       "group": "LM",
       "fme": true,
-      "type": "WMTS",
+      "type": "WMS",
       "visible": false,
       "queryable": false,
       "abstract": "Skiktet Terränglutning visar den beräknade lutningen i gråskala för varje pixel."
@@ -661,7 +658,8 @@
       "group": "LST",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "EBH-stödet är länsstyrelsernas register över potentiella och konstaterade förorenade områden. Ett förorenat område kan bestå av mark, grundvatten, ytvatten, sediment och byggnader."
     },
     {
       "name": "LST_Tillstandspliktig_miljofarlig_verksamhet_och_energitorvtakter_i_drift_Miljoreda",
@@ -672,7 +670,8 @@
       "group": "LST",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Tillståndspliktig miljöfarlig verksamhet och energitorvtäkter i drift. Innehåller A, B och T-anläggningar med status Drift, Planerad, ej igångsatt, efterbehandling."
     },
     {
       "name": "riksintresse3kapmb",
@@ -687,6 +686,7 @@
     },
     {
       "name": "riksintresse4kapmb",
+      "opacity": 0.5,
       "source": "wms",
       "style": "lst_ri4_y",
       "title": "Riksintresse 4 kap MB",
@@ -705,10 +705,12 @@
       "group": "LST",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Innehåller Länsstyrelsens lager för Generellt strandskydd och Utvidgat strandskydd 300m."
     },
     {
       "name": "kolbacksan_100",
+      "opacity":0.5,
       "source": "wms",
       "style": "msb_kolbacksan_100_y",
       "title": "Kolbäcksån 100-årsflöde (2014)",
@@ -720,6 +722,7 @@
     },
     {
       "name": "kolbacksan_200",
+      "opacity":0.5,
       "source": "wms",
       "style": "msb_kolbacksan_200_y",
       "title": "Kolbäcksån 200-årsflöde (2014)",
@@ -742,6 +745,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_100arsniva",
+      "opacity":0.5,
       "source": "wms",
       "style": "msb_malaren_100_y",
       "title": "Mälaren 100-årsnivå",
@@ -753,6 +757,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_200arsniva",
+      "opacity":0.5,
       "source": "wms",
       "style": "msb_malaren_200_y",
       "title": "Mälaren 200-årsnivå",
@@ -764,6 +769,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
+      "opacity":0.5,
       "source": "wms",
       "style": "msb_malaren_bhf_y",
       "title": "Mälaren högsta beräknat flöde",
@@ -792,12 +798,12 @@
       "format": "image/png",
       "group": "SGU",
       "type": "WMS",
-      "opacity": 0.75,
+      "opacity": 0.5,
       "visible": false,
       "queryable": false
     },
     {
-      "name": "SKRED_FINKORNING_JORDART",
+      "name": "SE.GOV.SGU.FORUTSATTNING_SKRED_FINKORNING_JORDART",
       "source": "wms",
       "style": "sgu_skred_lutningsanalys",
       "title": "Skred, lutningsanalys",
@@ -805,10 +811,11 @@
       "group": "SGU",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Beräknat och klassat aktsamhetsområde baserat på lutningsanalys."
     },
     {
-      "name": "SKRED_FINKORNING_JORDART_STRANDNARA",
+      "name": "SE.GOV.SGU.FORUTSATTNING_SKRED_FINKORNING_JORDART_STRANDNARA",
       "source": "wms",
       "style": "sgu_skred_strandnara",
       "title": "Skred, strandnära",
@@ -816,7 +823,8 @@
       "group": "SGU",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Aktsamhetsområden baserade på närhet till vatten, högsta kustlinjen samt fasta jordarter."
     },
     {
       "name": "SE.GOV.SGU.JORD.GRUNDLAGER.STRAND_ERODERBARHET.25K",
@@ -843,12 +851,12 @@
     },
     {
       "name": "UAV",
-      "source": "intern_wmts",
+      "source": "wms",
       "style": "uav",
       "title": "Drönarfoto",
       "format": "image/png",
       "group": "TK",
-      "type": "WMTS",
+      "type": "WMS",
       "visible": false,
       "abstract": "Ortofoto framtaget från drönarflygning på mellan 50 och 120 meters höjd.",
       "attributes": [
@@ -875,7 +883,7 @@
       "queryable": false
     },
     {
-      "name": "Histortho_60",
+      "name": "OI.Histortho_60",
       "source": "wms",
       "style": "orto_historisk",
       "title": "1960",
@@ -898,7 +906,7 @@
       "queryable": false
     },
     {
-      "name": "Histortho_75",
+      "name": "OI.Histortho_75",
       "source": "wms",
       "style": "orto_historisk",
       "title": "1975",
@@ -909,7 +917,7 @@
       "queryable": false
     },
     {
-      "name": "OF1997",
+      "name": "OF1997_05",
       "source": "wms",
       "style": "orto_historisk",
       "title": "1997",
@@ -1112,7 +1120,7 @@
         }
       ]
     ],
-    "bm_avl_p": [
+    "p_avlopp": [
       [
         {
           "label": "Godkänd",
@@ -1175,7 +1183,7 @@
         }
       ]
     ],
-    "ks_w_opo_p": [
+    "w_p_opto": [
       [
         {
           "label": "Ansluten",
@@ -1222,7 +1230,7 @@
         }
       ]
     ],
-    "tk_w_are_p": [
+    "w_p_arrende": [
       [
         {
           "label": "Arrendeavtal",
@@ -1232,7 +1240,7 @@
         }
       ]
     ],
-    "tk_w_gtu_p": [
+    "w_p_geoteknisk": [
       [
         {
           "label": "Geoteknisk undersökning",
@@ -1242,7 +1250,7 @@
         }
       ]
     ],
-    "tk_kof_y": [
+    "y_kommunalFastighet": [
       [
         {
           "label": "Kommunal fastighet",
@@ -1268,9 +1276,22 @@
             "width": 1
           }
         }
+      ],
+      [
+        {
+          "label": "Hallstahems fastighet",
+          "filter": "[obj] == '1'",
+          "fill": {
+            "color": "rgba(90,90,90,0.35)"
+          },
+          "stroke": {
+            "color": "rgba(165,0,165,0.25)",
+            "width": 1
+          }
+        }
       ]
     ],
-    "ks_dpan_y": [
+    "y_dpAnvandning": [
       [
         {
           "fill": {
@@ -1375,14 +1396,14 @@
         }
       ]
     ],
-    "ks_dpe_y": [
+    "y_dpEgenskap": [
       [
         {
           "custom": "detaljplan"
         }
       ]
     ],
-    "ks_dpn_l": [
+    "l_detaljplan": [
       [
         {
           "stroke": {
@@ -1413,7 +1434,7 @@
             "width": 5
           },
           "filter": "[code] == 'Utfart får inte finnas'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1429,7 +1450,7 @@
             "width": 1.5
           },
           "filter": "[code] == '2000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1447,7 +1468,7 @@
             "width": 1
           },
           "filter": "[code] == '3000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1461,7 +1482,7 @@
             "width": 1
           },
           "filter": "[code] == '4000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ],
       [
@@ -1479,7 +1500,7 @@
             "width": 1
           },
           "filter": "[code] == '6000'",
-          "minScale": 2000
+          "minScale": 3000
         }
       ]
     ],
@@ -1503,7 +1524,7 @@
         }
       ]
     ],
-    "tk_w_stp_p": [
+    "w_p_stompunkt": [
       [
         {
           "label": "Höjdfix",
@@ -1965,7 +1986,7 @@
         }
       ]
     ],
-    "tk_s_fat_y": [
+    "y_sokFastighet": [
       [
         {
           "fill": {
