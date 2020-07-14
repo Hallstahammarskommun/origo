@@ -109,9 +109,8 @@
   ],
   "pageSettings": {
     "footer": {
-      "img": "css/svg/kommunvapen.svg",
       "url": "mailto:gis@hallstahammar.se?subject=Kommunkartan",
-      "urlText": "Skicka feedback till GIS-enheten"
+      "text": "Hjälp oss förbättra kartan genom att mejla fel och synpunkter till Geodataenheten"
     },
     "mapGrid": {
       "visible": true
@@ -648,6 +647,20 @@
       "visible": false,
       "queryable": false,
       "abstract": "Skiktet Terränglutning visar den beräknade lutningen i gråskala för varje pixel."
+    },
+    {
+      "name": "terrangskuggning",
+      "opacity": 0.5,
+      "source": "wms",
+      "style": "terranglutning",
+      "title": "Terrängskuggning",
+      "format": "image/jpeg",
+      "group": "LM",
+      "fme": true,
+      "type": "WMS",
+      "visible": false,
+      "queryable": false,
+      "abstract": "Skiktet Terrängskuggning presenteras en rasterbild i gråskala som tagits fram genom att en höjdmodell belysts med en simulerad belysningskälla."
     },
     {
       "name": "LST_Potentiellt_fororenade_omraden",
