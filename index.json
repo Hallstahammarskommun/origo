@@ -98,7 +98,7 @@
     "footer": {
       "img": "css/svg/kommunvapen.svg",
       "url": "https://www.hallstahammar.se",
-      "urlText": "Hallstahammars kommun"
+      "text": "Hallstahammars kommun"
     },
     "mapGrid": {
       "visible": false
