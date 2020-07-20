@@ -235,6 +235,31 @@
   ],
   "layers": [
     {
+      "name": "w_p_arrende",
+      "title": "Arrende",
+      "source": "ows",
+      "style": "w_p_arrende",
+      "group": "HHR",
+      "fme": true,
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Arrendator: "
+        },
+        {
+          "name": "typ",
+          "title": "Ändamål: "
+        },
+        {
+          "name": "url",
+          "title": "Sökväg: "
+        }
+      ]
+    },
+    {
       "name": "p_avlopp",
       "source": "ows",
       "style": "p_avlopp",
@@ -248,6 +273,22 @@
         },
         {
           "name": "egn"
+        }
+      ]
+    },
+    {
+      "name": "w_p_geoteknisk",
+      "title": "Geoteknisk undersökning",
+      "source": "ows",
+      "style": "w_p_geoteknisk",
+      "group": "HHR",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Nummer: "
         }
       ]
     },
@@ -373,47 +414,6 @@
         },
         {
           "img": "img"
-        }
-      ]
-    },
-    {
-      "name": "w_p_arrende",
-      "title": "Arrende",
-      "source": "ows",
-      "style": "w_p_arrende",
-      "group": "HHR",
-      "fme": true,
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Arrendator: "
-        },
-        {
-          "name": "typ",
-          "title": "Ändamål: "
-        },
-        {
-          "name": "url",
-          "title": "Sökväg: "
-        }
-      ]
-    },
-    {
-      "name": "w_p_geoteknisk",
-      "title": "Geoteknisk undersökning",
-      "source": "ows",
-      "style": "w_p_geoteknisk",
-      "group": "HHR",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Nummer: "
         }
       ]
     },
@@ -863,27 +863,6 @@
       "queryable": false
     },
     {
-      "name": "UAV",
-      "source": "wms",
-      "style": "uav",
-      "title": "Drönarfoto",
-      "format": "image/png",
-      "group": "TK",
-      "type": "WMS",
-      "visible": false,
-      "abstract": "Ortofoto framtaget från drönarflygning på mellan 50 och 120 meters höjd.",
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Flygdatum: "
-        },
-        {
-          "name": "egn",
-          "title": "Upplösning: "
-        }
-      ]
-    },
-    {
       "name": "HE1907",
       "source": "wms",
       "style": "karta",
@@ -941,7 +920,7 @@
       "queryable": false
     },
     {
-      "name": "OF2001",
+      "name": "OF2001_1",
       "source": "wms",
       "style": "orto_historisk",
       "title": "2001",
@@ -1259,6 +1238,19 @@
           "label": "Geoteknisk undersökning",
           "icon": {
             "src": "img/png/tk_w_gtu_p.png"
+          }
+        }
+      ]
+    ],
+    "y_dronare": [
+      [
+        {
+          "fill": {
+            "color": "rgba(20,110,30,0.5)"
+          },
+          "stroke": {
+            "color": "rgba(20,110,30,0.5)",
+            "width": 1
           }
         }
       ]
@@ -2060,16 +2052,6 @@
           "icon": {
             "src": "img/png/farg.png"
           }
-        }
-      ]
-    ],
-    "uav": [
-      [
-        {
-          "icon": {
-            "src": "img/png/orto.png"
-          },
-          "label": "Drönarfoto"
         }
       ]
     ],
