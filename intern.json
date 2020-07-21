@@ -292,7 +292,7 @@
       "group": "DF",
       "type": "WFS",
       "visible": false,
-      "abstract": "Innehåller översikt av ortofoton framtagna från drönarbilder tagna på mellan 50 och 120 meters höjd.",
+      "abstract": "Innehåller översikt av ortofoton framtagna från drönarbilder.",
       "attributes": [
         {
           "name": "obj",
@@ -303,6 +303,17 @@
           "title": "Upplösning: "
         }
       ]
+    {
+      "name": "Flygfoto2015",
+      "source": "wms",
+      "style": "orto",
+      "title": "Drönarfoto 2015",
+      "format": "image/png",
+      "group": "DF",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false,
+      "abstract": "Lagret innehåller ortofoton framtagna från drönarbilder tagna mellan 2015 - 2019."
     },
     {
       "name": "w_p_geoteknisk",
