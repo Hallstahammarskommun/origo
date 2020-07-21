@@ -190,7 +190,14 @@
     {
       "name": "HHR",
       "title": "Hallstahammars kommun",
-      "expanded": true
+      "expanded": true,
+      "groups": [
+        {
+          "name": "DF",
+          "title": "Drönarfoton",
+          "expanded": false
+        }
+      ]
     },
     {
       "name": "LM",
@@ -273,6 +280,27 @@
         },
         {
           "name": "egn"
+        }
+      ]
+    },
+    {
+      "name": "y_dronare",
+      "source": "ows",
+      "style": "y_dronare",
+      "title": "Drönaröversikt",
+      "format": "image/png",
+      "group": "DF",
+      "type": "WFS",
+      "visible": false,
+      "abstract": "Innehåller översikt av ortofoton framtagna från drönarbilder tagna på mellan 50 och 120 meters höjd.",
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Datum: "
+        },
+        {
+          "name": "egn",
+          "title": "Upplösning: "
         }
       ]
     },
