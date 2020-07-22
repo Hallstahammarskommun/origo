@@ -35,7 +35,8 @@ const replacer = function replacer() {
           object = obj;
         }
       }
-      return searchAndReplace(name.replace(matches[0], val), object, map);
+      // Z
+      return searchAndReplace(name.replace(matches[0], val), obj, map);
     }
     return name;
   }
