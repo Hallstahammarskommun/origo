@@ -303,30 +303,6 @@
           "title": "Upplösning: "
         }
       ]
-    },    
-    {
-      "name": "Flygfoto2020",
-      "source": "wms",
-      "style": "orto",
-      "title": "Drönarfoto 2020",
-      "format": "image/png",
-      "group": "DF",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Lagret innehåller ortofoton framtagna från drönarbilder tagna från 2020 -"
-    },
-    {
-      "name": "Flygfoto2015",
-      "source": "wms",
-      "style": "orto",
-      "title": "Drönarfoto 2015",
-      "format": "image/png",
-      "group": "DF",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Lagret innehåller ortofoton framtagna från drönarbilder tagna mellan 2015 - 2019."
     },
     {
       "name": "w_p_geoteknisk",
@@ -913,6 +889,30 @@
       "type": "WMS",
       "visible": false,
       "queryable": false
+    },
+    {
+      "name": "Flygfoto2020",
+      "source": "wms",
+      "style": "orto",
+      "title": "Drönarfoto 2020",
+      "format": "image/png",
+      "group": "DF",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false,
+      "abstract": "Lagret innehåller ortofoton framtagna från drönarbilder tagna från 2020 -"
+    },
+    {
+      "name": "Flygfoto2015",
+      "source": "wms",
+      "style": "orto",
+      "title": "Drönarfoto 2015",
+      "format": "image/png",
+      "group": "DF",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false,
+      "abstract": "Lagret innehåller ortofoton framtagna från drönarbilder tagna mellan 2015 - 2019."
     },
     {
       "name": "HE1907",
