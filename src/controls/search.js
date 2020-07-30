@@ -375,7 +375,7 @@ const Search = function Search(options = {}) {
       searchableDefault = Object.prototype.hasOwnProperty.call(options, 'searchableDefault') ? options.searchableDefault : false;
       if (!maxZoomLevel) maxZoomLevel = viewer.getResolutions().length - 2 || viewer.getResolutions();
       if (!limit) limit = 9;
-      if (!minLength) minLength = 1;
+      if (!minLength) minLength = 4;
       projectionCode = viewer.getProjectionCode();
       map = viewer.getMap();
 
