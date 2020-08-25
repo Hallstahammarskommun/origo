@@ -72,7 +72,8 @@
             "options": [
               "dwg",
               "shape",
-              "GeoJSON"
+              "GeoJSON",
+              "GeoPackage"
             ]
           }
         ]
