@@ -1025,6 +1025,17 @@
       "queryable": false
     },
     {
+      "name": "Ortofoto_farg_2018",
+      "source": "wms",
+      "style": "orto_historisk",
+      "title": "2018",
+      "format": "image/png",
+      "group": "historiska",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false
+    },
+    {
       "name": "y_mask",
       "source": "ows",
       "style": "y_mask",
