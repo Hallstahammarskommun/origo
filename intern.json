@@ -192,6 +192,7 @@
     },
     "internows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
+      "workspace": "geodataenheten",
       "strategy": "all"
     }
   },
@@ -258,7 +259,7 @@
     {
       "name": "w_p_arrende",
       "title": "Arrende",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_arrende",
       "group": "HHR",
       "fme": true,
@@ -322,7 +323,7 @@
     {
       "name": "w_p_geoteknisk",
       "title": "Geoteknisk undersökning",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_geoteknisk",
       "group": "HHR",
       "type": "WFS",
@@ -340,7 +341,7 @@
     {
       "name": "w_y_ledigMark",
       "title": "Ledig mark",
-      "source": "ows",
+      "source": "internows",
       "style": "w_y_ledigMark",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -394,7 +395,7 @@
     {
       "name": "w_p_park",
       "title": "Park punkt",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_park",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -418,7 +419,7 @@
     {
       "name": "w_y_park",
       "title": "Park yta",
-      "source": "ows",
+      "source": "internows",
       "style": "w_y_park",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -467,7 +468,7 @@
     {
       "name": "w_y_plan",
       "title": "Pågående detaljplan",
-      "source": "ows",
+      "source": "internows",
       "style": "w_y_plan",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -491,7 +492,7 @@
     {
       "name": "w_p_skola",
       "title": "Skola",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_skola",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -536,7 +537,7 @@
     {
       "name": "w_l_snorojning",
       "title": "Snöröjning",
-      "source": "ows",
+      "source": "internows",
       "style": "w_l_snorojning",
       "group": "Kartskaparen",
       "type": "WFS",
@@ -639,7 +640,7 @@
     {
       "name": "w_p_opto",
       "title": "Opto ansluten",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_opto",
       "group": "HHR",
       "type": "WFS",
@@ -668,7 +669,7 @@
     },
     {
       "name": "w_p_stompunkt",
-      "source": "ows",
+      "source": "internows",
       "style": "w_p_stompunkt",
       "title": "Stompunkter",
       "group": "HHR",
