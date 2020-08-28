@@ -338,34 +338,6 @@
       ]
     },
     {
-      "name": "opto",
-      "source": "internwms",
-      "style": "opto",
-      "title": "Opto",
-      "format": "image/png",
-      "group": "HHR",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false
-    },
-    {
-      "name": "w_p_opto",
-      "title": "Opto ansluten",
-      "source": "ows",
-      "style": "w_p_opto",
-      "group": "HHR",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Status: "
-        }
-      ]
-    },
-    {
       "name": "w_y_ledigMark",
       "title": "Ledig mark",
       "source": "ows",
@@ -650,6 +622,34 @@
           "urlPrefix": "https://karta.hallstahammar.se/img/kmv/small/",
           "img": "img_0",
           "urlSuffix": ".jpg"
+        }
+      ]
+    },
+    {
+      "name": "opto",
+      "source": "internwms",
+      "style": "opto",
+      "title": "Opto",
+      "format": "image/png",
+      "group": "HHR",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false
+    },
+    {
+      "name": "w_p_opto",
+      "title": "Opto ansluten",
+      "source": "ows",
+      "style": "w_p_opto",
+      "group": "HHR",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Status: "
         }
       ]
     },
