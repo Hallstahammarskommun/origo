@@ -205,6 +205,11 @@
           "name": "DF",
           "title": "Drönarfoton",
           "expanded": false
+        },
+        {
+          "name": "Kartskaparen",
+          "title": "Kartskaparen",
+          "expanded": false
         }
       ]
     },
@@ -241,11 +246,6 @@
     {
       "name": "historiska",
       "title": "Historiska kartor",
-      "expanded": false
-    },
-    {
-      "name": "edit",
-      "title": "Redigeringsbara lager",
       "expanded": false
     },
     {
@@ -370,7 +370,7 @@
       "title": "Ledig mark",
       "source": "ows",
       "style": "w_y_ledigMark",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -424,7 +424,7 @@
       "title": "Park punkt",
       "source": "ows",
       "style": "w_p_park",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -448,7 +448,7 @@
       "title": "Park yta",
       "source": "ows",
       "style": "w_y_park",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -497,7 +497,7 @@
       "title": "Pågående detaljplan",
       "source": "ows",
       "style": "w_y_plan",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
@@ -521,7 +521,7 @@
       "title": "Skola",
       "source": "ows",
       "style": "w_p_skola",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
@@ -566,7 +566,7 @@
       "title": "Snöröjning",
       "source": "ows",
       "style": "w_l_snorojning",
-      "group": "edit",
+      "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "LineString",
       "visible": false,
