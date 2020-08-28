@@ -624,7 +624,7 @@
     {
       "name": "2016_kmv_p",
       "source": "internows",
-      "style": "ks_kmv_p",
+      "style": "2016_kmv_p",
       "title": "Kulturmiljövårdsprogram",
       "format": "image/png",
       "group": "HHR",
@@ -1433,11 +1433,11 @@
         }
       ]
     ],
-    "ks_kmv_p": [
+    "2016_kmv_p": [
       [
         {
           "label": "Ej klassad",
-          "filter": "[obj] == '0'",
+          "filter": "[obj] == '1'",
           "icon": {
             "src": "img/png/droppe_orange.png"
           }
@@ -1446,7 +1446,7 @@
       [
         {
           "label": "Värdefull byggnad",
-          "filter": "[obj] == '1'",
+          "filter": "[obj] == '0'",
           "icon": {
             "src": "img/png/droppe_lila.png"
           }
