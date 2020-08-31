@@ -61,12 +61,7 @@
       }
     },
     {
-      "name": "editor",
-      "options": {
-        "isActive": false,
-        "autoSave": true,
-        "autoForm": true
-      }
+      "name": "editor"
     },
     {
       "name": "splash",
@@ -270,15 +265,18 @@
       "attributes": [
         {
           "name": "obj",
-          "title": "Arrendator: "
+          "title": "Arrendator: ",
+          "type": "text"
         },
         {
           "name": "typ",
-          "title": "Ändamål: "
+          "title": "Ändamål: ",
+          "type": "text"
         },
         {
           "name": "url",
-          "title": "Sökväg: "
+          "title": "Sökväg: ",
+          "type": "text"
         }
       ]
     },
@@ -334,7 +332,8 @@
       "attributes": [
         {
           "name": "obj",
-          "title": "Nummer: "
+          "title": "Nummer: ",
+          "type": "text"
         }
       ]
     },
@@ -650,7 +649,15 @@
       "attributes": [
         {
           "name": "obj",
-          "title": "Status: "
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "Ansluten",
+            "Avtal",
+            "Intresse",
+            "Kampanj",
+            "Pumpstation"
+          ]
         }
       ]
     },
@@ -685,6 +692,15 @@
         {
           "name": "pktnr",
           "title": "Punktnummer: "
+        },
+        {
+          "name": "status",
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "förstörd",
+            "återfunnen"
+          ]
         },
         {
           "xy": true
