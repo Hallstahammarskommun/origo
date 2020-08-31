@@ -61,7 +61,10 @@
       }
     },
     {
-      "name": "editor"
+      "name": "editor",
+      "options": {
+        "isActive": false
+      }
     },
     {
       "name": "splash",
