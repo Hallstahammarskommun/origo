@@ -63,7 +63,8 @@
     {
       "name": "editor",
       "options": {
-        "isActive": false
+        "isActive": false,
+        "autoForm": true
       }
     },
     {
@@ -690,7 +691,6 @@
       "filter": "status <> 'förstörd'",
       "strategy": "bbox",
       "abstract": "I Hallstahammars har vi ungefär 1 800 stompunkter som tillsammans utgör Hallstahammars geodetiska stomnät. Stompunkterna är grunden för all kartframställning och för all lägesdokumentation, fastighetsbildning och inmätning.",
-      "editable": true,
       "attributes": [
         {
           "name": "pktnr",
