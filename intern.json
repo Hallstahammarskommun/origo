@@ -1467,7 +1467,7 @@
           "label": "Värdefull byggnad",
           "filter": "[obj] == '0'",
           "icon": {
-            "src": "img/png/droppe_lila.png"
+            "src": "img/png/droppe.png"
           }
         }
       ]
