@@ -17,7 +17,6 @@ module.exports = merge(common, {
       patterns: [
         { from: 'dist/origo.min.js', to: 'js/origo.min.js' },
         'css/**',
-        'data/*',
         'index.html',
         'index.json',
         'intern.html',
