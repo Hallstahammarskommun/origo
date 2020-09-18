@@ -63,7 +63,8 @@
     {
       "name": "editor",
       "options": {
-        "isActive": false
+        "isActive": false,
+        "autoForm": true
       }
     },
     {
@@ -690,7 +691,6 @@
       "filter": "status <> 'förstörd'",
       "strategy": "bbox",
       "abstract": "I Hallstahammars har vi ungefär 1 800 stompunkter som tillsammans utgör Hallstahammars geodetiska stomnät. Stompunkterna är grunden för all kartframställning och för all lägesdokumentation, fastighetsbildning och inmätning.",
-      "editable": true,
       "attributes": [
         {
           "name": "pktnr",
@@ -906,15 +906,14 @@
             {
               "title": "Ägare, låst: ",
               "name": "obj",
-              "url": "egn",
-              "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
+              "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?objektid=",
+              "url": "uuid"
             },
             {
               "title": "FB webb, låst: ",
-              "name": "egn",
-              "urlPrefix": "http://10.7.2.48/FBwebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&User=karta&Pass=karta&Fnr=",
-              "url": "egn",
-              "urlSuffix": "&FastighetsKarta&Samfall&Forening&Skattetal&LagfarenAgare&LagfarenAgarePersOrgNr&Tomtrattshavare&TomtrattshavarePersOrgNr&TidigareAgare&TidigareAgarePersOrgNr&Tomtrattsupplatelser&Taxering&TaxeringVardeenheter&TaxeringPersOrgNr&TaxeringsAr=2013&Planer&AvregistreradePlaner&PlanBeror&PlanMyndighetsinformation&PlanDelomradesinformation&PlanHanvisningar&PlanKommunEgnaUppgifter&PageBreakBeforeFastighet&Atgarder&AtgardsFast&Adress&Distrikt&Areal&Fiske&Koord&Koord3DInfo&Omrade&TidBet&Ursprung&AvskildMark&AvregTill&Noteringar&Byggnader&ByggAdresser&ByggNamn&Rattigheter&RattigheterForman&RattigheterLast&Anteckningar&Inskrivningar&InskrivningsFastigheter&Inteckningar"
+              "name": "obj",
+              "urlPrefix": "http://10.7.2.48/FBWebb/Fir/FBFirWebbRapport.aspx?Database=Hallstahammar&Sparad&Uuid=",
+              "url": "uuid"
             }
           ]
         }
@@ -1468,7 +1467,7 @@
           "label": "Värdefull byggnad",
           "filter": "[obj] == '0'",
           "icon": {
-            "src": "img/png/droppe_lila.png"
+            "src": "img/png/droppe.png"
           }
         }
       ]
