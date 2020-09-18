@@ -493,6 +493,44 @@
       ]
     },
     {
+      "name": "w_p_samhallsbyggnad",
+      "title": "Samhällsbyggnadsprojekt",
+      "source": "internows",
+      "style": "w_p_samhallsbyggnad",
+      "group": "Kartskaparen",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "queryable": true,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "?: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Typ av bostad eller antal: ",
+          "type": "text"
+        },
+        {
+          "name": "egn",
+          "title": "Beskrivning: ",
+          "type": "textarea"
+        },
+        {
+          "name": "status",
+          "title": "Skede: ",
+          "type": "dropdown",
+          "options": [
+            "Kommande",
+            "Pågående"
+          ]
+        }
+      ]
+    },
+    {
       "name": "w_p_skola",
       "title": "Skola",
       "source": "internows",
@@ -1542,6 +1580,16 @@
         }
       ]
     ],
+    "w_p_samhallsbyggnad": [
+      [
+        {
+          "label": "Lagret innehåller olika exploaterings och sammhällsbyggnadsprojekt",
+          "icon": {
+            "src": "img/png/droppe_lila.png"
+          }
+        }
+      ]
+  ],
     "w_p_arrende": [
       [
         {
