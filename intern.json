@@ -906,8 +906,8 @@
             {
               "title": "Ägare, låst: ",
               "name": "obj",
-              "url": "egn",
-              "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?fnr="
+              "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?objektid=",
+              "url": "uuid"
             },
             {
               "title": "FB webb, låst: ",
