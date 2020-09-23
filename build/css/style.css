@@ -2442,6 +2442,8 @@ body {
     visibility: hidden; }
   .o-map .print-created-none {
     display: none; }
+  .o-map .printmap-north-arrow {
+    display: block; }
   @media print {
     .o-map .no-print {
       display: none; } }
