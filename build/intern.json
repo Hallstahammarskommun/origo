@@ -506,7 +506,7 @@
       "attributes": [
         {
           "name": "obj",
-          "title": "?: ",
+          "title": "Projekt: ",
           "type": "text"
         },
         {
