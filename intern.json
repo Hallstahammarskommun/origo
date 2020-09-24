@@ -103,7 +103,7 @@
       "name": "about",
       "options": {
         "title": "Om kartan",
-        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Kommunstyrelseförvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom <a href='https://karta.hallstahammar.se/skapa' target='_blank'>Kartskaparen</a> ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:gis@hallstahammar.se?Subject=Kommunkartan'>gis@hallstahammar.se</a>"
+        "content": "<p>Kommunkartan är ett kommungemensamt verktyg och en samlingsplats för information från olika källor. Kommunstyrelseförvaltningen ansvarar för underhåll, drift och support men samtliga förvaltningar är välkomna att bidra med sin information.</p><p>Respektive förvaltning har eget ansvar för sin information. De krav som ställs är att informationen ska vara ajourhållen och konsekvent. Om kraven inte uppfylls kommer de påverkade lagren att tas bort från kartan.</p><p>Information som hämtas från databaser uppdateras i regel med en veckas intervall. I de fall lager uppdateras manuellt genom kartskaparen ligger ansvaret på informationsägaren att ajourhålla informationen som visas i kartan.</p><p>Har ni några frågor om Kommunkartan går det alltid bra att kontakta oss på <a href='mailto:geodata@hallstahammar.se?Subject=Kommunkartan'>geodata@hallstahammar.se</a>"
       }
     },
     {
@@ -117,7 +117,7 @@
   ],
   "pageSettings": {
     "footer": {
-      "url": "mailto:gis@hallstahammar.se?subject=Kommunkartan",
+      "url": "mailto:geodata@hallstahammar.se?subject=Kommunkartan",
       "text": "Hjälp oss förbättra kartan genom att mejla fel och synpunkter till Geodataenheten"
     },
     "mapGrid": {
