@@ -911,6 +911,7 @@
           "fill": {
             "color": "rgba(255,198,105,0.3)"
           },
+          "header": true,
           "label": "Gällande planer"
         }
       ],
