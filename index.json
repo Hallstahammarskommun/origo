@@ -911,6 +911,7 @@
           "fill": {
             "color": "rgba(255,198,105,0.3)"
           },
+          "header": true,
           "label": "Gällande planer"
         }
       ],
@@ -1235,6 +1236,7 @@
         {
           "filter": "[status] == 'Ledig'",
           "label": "Ledig",
+          "header": true,
           "stroke": {
             "color": "rgba(103, 60, 31, 0.6)",
             "width": 2
@@ -1289,6 +1291,7 @@
         {
           "filter": "[status] == 'Ledig'",
           "label": "Ledig",
+          "header": true,
           "stroke": {
             "color": "rgba(0,0,0,0.6)",
             "width": 1
@@ -1390,7 +1393,8 @@
             "src": "img/png/BM_lim_p0.png"
           },
           "filter": "[egn] == 'Utan avvikelse'",
-          "label": "Utan avvikelse"
+          "label": "Utan avvikelse",
+          "header": true
         }
       ],
       [
@@ -1553,6 +1557,7 @@
         {
           "filter": "[egn] == 'sträckning'",
           "label": "Linje",
+          "header": true,
           "stroke": {
             "color": "rgb(74, 125, 179)",
             "width": 6

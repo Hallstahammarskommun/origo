@@ -81,6 +81,13 @@
       "name": "sharemap"
     },
     {
+      "name": "link",
+      "options": {
+        "title": "Hallstakartan",
+        "url": "https://karta.hallstahammar.se"
+      }
+    },
+    {
       "name": "download",
       "options": {
         "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?",
@@ -1503,6 +1510,7 @@
       [
         {
           "label": "Värdefull byggnad",
+          "header": true,
           "filter": "[obj] == '0'",
           "icon": {
             "src": "img/png/droppe_blue.png"
@@ -1526,6 +1534,7 @@
       [
         {
           "label": "Optonät",
+          "header": true,
           "stroke": {
             "color": "rgb(240,163,0)",
             "width": 1
@@ -1537,6 +1546,7 @@
       [
         {
           "label": "Ansluten",
+          "header": true,
           "filter": "[obj] == 'Ansluten'",
           "icon": {
             "src": "img/png/KS_w_opo_p1.png"
@@ -1952,6 +1962,7 @@
         {
           "label": "Kommunal fastighet",
           "filter": "[typ] == 'Nej'",
+          "header": true,
           "fill": {
             "color": "rgba(165,0,165,0.25)"
           },
@@ -2245,7 +2256,7 @@
           "label": "Plan- och höjdpunkt",
           "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
           "icon": {
-            "src": "img/png/drop_blue.png"
+            "src": "img/png/droppe_blue.png"
           }
         }
       ]
@@ -2307,6 +2318,7 @@
           "fill": {
             "color": "rgba(255,198,105,0.3)"
           },
+          "header": true,
           "label": "Gällande planer"
         }
       ],
