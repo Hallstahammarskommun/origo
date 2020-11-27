@@ -1131,6 +1131,7 @@
       "group": "MSB",
       "type": "WMS",
       "visible": false,
+      "abstract": "För att minska risken att byggnader skadas i ras och skred genomförs stabilitetskarteringar på uppdrag av Myndigheten för samhällskydd och beredskap. Karteringen visar de område där förutsättningar för ras eller skred i bebyggda områden finns. För att utföra åtgärder i områden måste en detaljerad stabilitetskartering genomföras.",
       "queryable": false
     },
     {
@@ -2642,7 +2643,7 @@
           "fill": {
             "color": "rgb(247,127,0)"
           },
-          "label": "Stabilitetskartering"
+          "label": "Stabilitetszon 2"
         }
       ]
     ],
