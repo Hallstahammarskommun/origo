@@ -1123,6 +1123,17 @@
       "queryable": false
     },
     {
+      "name": "2019_msb_stabilitetskartering_y",
+      "source": "wms",
+      "style": "2019_msb_stabilitetskartering_y",
+      "title": "Stabilitetskartering",
+      "format": "image/png",
+      "group": "MSB",
+      "type": "WMS",
+      "visible": false,
+      "queryable": false
+    },
+    {
       "name": "fornsok",
       "source": "wms",
       "style": "fmi_wms",
@@ -2619,6 +2630,19 @@
             "color": "rgb(0,92,230)"
           },
           "label": "Mälaren högsta beräknat flöde"
+        }
+      ]
+    ],
+    "2019_msb_stabilitetskartering_y": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(247,127,0)"
+          },
+          "fill": {
+            "color": "rgb(247,127,0)"
+          },
+          "label": "Stabilitetskartering"
         }
       ]
     ],
