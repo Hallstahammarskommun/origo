@@ -2638,12 +2638,34 @@
       [
         {
           "stroke": {
-            "color": "rgb(247,127,0)"
+            "color": "rgba(214,40,40,.5)"
           },
           "fill": {
-            "color": "rgb(247,127,0)"
+            "color": "rgba(214,40,40,.5)"
+          },
+          "label": "Stabilitetszon 1"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(233,196,106,.5)"
+          },
+          "fill": {
+            "color": "rgba(233,196,106,.5)"
           },
           "label": "Stabilitetszon 2"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(42,157,143,.5)"
+          },
+          "fill": {
+            "color": "rgba(42,157,143,.5)"
+          },
+          "label": "Stabilitetszon 3"
         }
       ]
     ],
