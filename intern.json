@@ -309,6 +309,25 @@
       ]
     },
     {
+      "name": "g_gatubelysning",
+      "source": "ows",
+      "style": "g_gatubelysning",
+      "title": "Gatubelysning",
+      "group": "HHR",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "egn",
+          "title": "Objekt: "
+        },
+        {
+          "name": "id_malarenergi",
+          "title": "ID: "
+        }
+      ]
+    },
+    {
       "name": "y_dronare",
       "source": "ows",
       "style": "y_dronare",
@@ -1493,6 +1512,48 @@
           "filter": "[status] == '0'",
           "icon": {
             "src": "img/png/BM_avl_p0.png"
+          }
+        }
+      ]
+    ],
+    "g_gatubelysning": [
+      [
+        {
+          "filter": "[egn] == 'Ledning'",
+          "label": "Ledning",
+          "stroke": {
+            "color": "rgb(131,43,202)",
+            "width": 3
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == 'Stolpe'",
+          "label": "Stolpe",
+          "circle": {
+            "radius": 4,
+            "fill": {
+              "color": "rgb(131,43,202)"
+            },
+            "stroke":{
+              "color":"rgb(255,255,255)"
+            }
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == 'Ljuspunkt'",
+          "label": "Ljuspunkt",
+          "circle": {
+            "radius": 4,
+            "fill": {
+              "color": "rgb(131,43,202)"
+            },
+            "stroke":{
+              "color":"rgb(255,255,255)"
+            }
           }
         }
       ]
