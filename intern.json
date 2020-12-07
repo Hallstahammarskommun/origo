@@ -1131,7 +1131,7 @@
       "group": "MSB",
       "type": "WMS",
       "visible": false,
-      "abstract": "För att minska risken att byggnader skadas i ras och skred genomförs stabilitetskarteringar på uppdrag av Myndigheten för samhällskydd och beredskap. Karteringen visar de område där förutsättningar för ras eller skred i bebyggda områden finns. För att utföra åtgärder i områden måste en detaljerad stabilitetskartering genomföras.",
+      "abstract": "Karteringen visar de område där förutsättningar för ras eller skred i bebyggda områden finns. Inom zon I finns förutsättningar för initiala spontana eller provocerade skred och ras. Inom zon II finns inga förutsättningar för initiala skred eller ras, men zonen kan komma att beröras av skred och ras som initieras inom angränsande zon I. Inom zon III saknas förutsättningar för skred eller ras men aktiviteter inom zonen kan ha negativ inverkan på stabiliteten i de angränsande zonerna.",
       "queryable": false
     },
     {
@@ -1168,30 +1168,6 @@
       "visible": false,
       "queryable": false,
       "abstract": "Beräknat och klassat aktsamhetsområde baserat på lutningsanalys."
-    },
-    {
-      "name": "SE.GOV.SGU.FORUTSATTNING_SKRED_FINKORNING_JORDART_STRANDNARA",
-      "source": "wms",
-      "style": "sgu_skred_strandnara",
-      "title": "Skred, strandnära",
-      "format": "image/png",
-      "group": "SGU",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Aktsamhetsområden baserade på närhet till vatten, högsta kustlinjen samt fasta jordarter."
-    },
-    {
-      "name": "SE.GOV.SGU.JORD.GRUNDLAGER.STRAND_ERODERBARHET.25K",
-      "source": "wms",
-      "format": "image/png",
-      "style": "sgu_erosion",
-      "title": "Stränders eroderbarhet",
-      "group": "SGU",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Se SGU:s <a target=_blank href=http://resource.sgu.se/dokument/produkter/produktblad/strandernas-jordart-och-eroderbarhet.pdf>produktblad</a> för mer information."
     },
     {
       "name": "Vaghallare",
@@ -2669,19 +2645,6 @@
         }
       ]
     ],
-    "sgu_erosion": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(242,91,255)"
-          },
-          "fill": {
-            "color": "rgb(242,91,255)"
-          },
-          "label": "Stränders eroderbarhet"
-        }
-      ]
-    ],
     "sgu_jordarter": [
       [
         {
@@ -2705,19 +2668,6 @@
             "color": "rgb(246,197,103)"
           },
           "label": "Skred, lutningsanalys"
-        }
-      ]
-    ],
-    "sgu_skred_strandnara": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(255,155,56)"
-          },
-          "fill": {
-            "color": "rgb(255,155,56)"
-          },
-          "label": "Skred, strandnära"
         }
       ]
     ],
