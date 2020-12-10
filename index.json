@@ -92,7 +92,8 @@
       "options": {
           "logo": {
             "src": "css/png/logo_print.png"
-            }
+          },
+          "showNorthArrow": false
       }
     }
   ],

@@ -24,7 +24,6 @@ const PrintSettings = function PrintSettings({
   map,
   showCreated,
   showNorthArrow,
-  scales,
   resolution = 150,
   showScale
 } = {}) {

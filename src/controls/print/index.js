@@ -13,7 +13,7 @@ const Print = function Print(options = {}) {
     showScale = true
   } = options;
   let {
-    showNorthArrow = false
+    showNorthArrow = true
   } = options;
 
   let viewer;
