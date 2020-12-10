@@ -118,7 +118,8 @@
       "options": {
           "logo": {
             "src": "css/png/logo_print.png"
-          }
+          },
+          "showNorthArrow": false
       }
     }
   ],
@@ -305,6 +306,25 @@
         },
         {
           "name": "egn"
+        }
+      ]
+    },
+    {
+      "name": "g_gatubelysning",
+      "source": "ows",
+      "style": "g_gatubelysning",
+      "title": "Gatubelysning",
+      "group": "HHR",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "egn",
+          "title": "Objekt: "
+        },
+        {
+          "name": "id_malarenergi",
+          "title": "ID: "
         }
       ]
     },
@@ -1123,6 +1143,18 @@
       "queryable": false
     },
     {
+      "name": "2019_msb_stabilitetskartering_y",
+      "source": "wms",
+      "style": "2019_msb_stabilitetskartering_y",
+      "title": "Stabilitetskartering",
+      "format": "image/png",
+      "group": "MSB",
+      "type": "WMS",
+      "visible": false,
+      "abstract": "Karteringen visar de område där förutsättningar för ras eller skred i bebyggda områden finns. Inom zon I finns förutsättningar för initiala spontana eller provocerade skred och ras. Inom zon II finns inga förutsättningar för initiala skred eller ras, men zonen kan komma att beröras av skred och ras som initieras inom angränsande zon I. Inom zon III saknas förutsättningar för skred eller ras men aktiviteter inom zonen kan ha negativ inverkan på stabiliteten i de angränsande zonerna.",
+      "queryable": false
+    },
+    {
       "name": "fornsok",
       "source": "wms",
       "style": "fmi_wms",
@@ -1156,30 +1188,6 @@
       "visible": false,
       "queryable": false,
       "abstract": "Beräknat och klassat aktsamhetsområde baserat på lutningsanalys."
-    },
-    {
-      "name": "SE.GOV.SGU.FORUTSATTNING_SKRED_FINKORNING_JORDART_STRANDNARA",
-      "source": "wms",
-      "style": "sgu_skred_strandnara",
-      "title": "Skred, strandnära",
-      "format": "image/png",
-      "group": "SGU",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Aktsamhetsområden baserade på närhet till vatten, högsta kustlinjen samt fasta jordarter."
-    },
-    {
-      "name": "SE.GOV.SGU.JORD.GRUNDLAGER.STRAND_ERODERBARHET.25K",
-      "source": "wms",
-      "format": "image/png",
-      "style": "sgu_erosion",
-      "title": "Stränders eroderbarhet",
-      "group": "SGU",
-      "type": "WMS",
-      "visible": false,
-      "queryable": false,
-      "abstract": "Se SGU:s <a target=_blank href=http://resource.sgu.se/dokument/produkter/produktblad/strandernas-jordart-och-eroderbarhet.pdf>produktblad</a> för mer information."
     },
     {
       "name": "Vaghallare",
@@ -1497,6 +1505,48 @@
         }
       ]
     ],
+    "g_gatubelysning": [
+      [
+        {
+          "filter": "[egn] == 'Ledning'",
+          "label": "Ledning",
+          "stroke": {
+            "color": "rgb(131,43,202)",
+            "width": 3
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == 'Stolpe'",
+          "label": "Stolpe",
+          "circle": {
+            "radius": 4,
+            "fill": {
+              "color": "rgb(131,43,202)"
+            },
+            "stroke":{
+              "color":"rgb(255,255,255)"
+            }
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == 'Ljuspunkt'",
+          "label": "Ljuspunkt",
+          "circle": {
+            "radius": 4,
+            "fill": {
+              "color": "rgb(131,43,202)"
+            },
+            "stroke":{
+              "color":"rgb(255,255,255)"
+            }
+          }
+        }
+      ]
+    ],
     "2016_kmv_p": [
       [
         {
@@ -1794,6 +1844,9 @@
               10
             ],
             "width": 3
+          },
+          "fill": {
+            "color":"rgba(200,0,0,0.2)"
           }
         }
       ],
@@ -2619,16 +2672,38 @@
         }
       ]
     ],
-    "sgu_erosion": [
+    "2019_msb_stabilitetskartering_y": [
       [
         {
           "stroke": {
-            "color": "rgb(242,91,255)"
+            "color": "rgba(214,40,40,.5)"
           },
           "fill": {
-            "color": "rgb(242,91,255)"
+            "color": "rgba(214,40,40,.5)"
           },
-          "label": "Stränders eroderbarhet"
+          "label": "Stabilitetszon 1"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(233,196,106,.5)"
+          },
+          "fill": {
+            "color": "rgba(233,196,106,.5)"
+          },
+          "label": "Stabilitetszon 2"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(42,157,143,.5)"
+          },
+          "fill": {
+            "color": "rgba(42,157,143,.5)"
+          },
+          "label": "Stabilitetszon 3"
         }
       ]
     ],
@@ -2655,19 +2730,6 @@
             "color": "rgb(246,197,103)"
           },
           "label": "Skred, lutningsanalys"
-        }
-      ]
-    ],
-    "sgu_skred_strandnara": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(255,155,56)"
-          },
-          "fill": {
-            "color": "rgb(255,155,56)"
-          },
-          "label": "Skred, strandnära"
         }
       ]
     ],
