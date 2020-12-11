@@ -311,7 +311,7 @@
     },
     {
       "name": "g_gatubelysning",
-      "source": "ows",
+      "source": "internows",
       "style": "g_gatubelysning",
       "title": "Gatubelysning",
       "group": "HHR",
