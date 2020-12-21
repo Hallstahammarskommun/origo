@@ -630,6 +630,9 @@
   .o-ui .button.active svg,
   .o-ui button.active svg {
     fill: #008ff5; }
+  .o-ui .button.tracking svg,
+  .o-ui button.tracking svg {
+    fill: #008ff5; }
   .o-ui .button.inactive svg,
   .o-ui button.inactive svg {
     fill: #7a7a7a; }
