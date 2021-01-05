@@ -376,8 +376,8 @@
       "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Polygon",
+      "fme": true,
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -431,7 +431,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -455,7 +454,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -504,7 +502,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -528,7 +525,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -566,7 +562,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -611,7 +606,6 @@
       "type": "WFS",
       "geometryType": "LineString",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -672,7 +666,6 @@
       "type": "WFS",
       "fme": false,
       "visible": false,
-      "queryable": true,
       "abstract": "Kulturmiljövårdsprogram för Hallstahammars kommun, inventeringen är gjord mellan åren 2017 och 2018.",
       "attributes": [
         {
