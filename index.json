@@ -533,59 +533,29 @@
       "group": "none",
       "type": "WFS",
       "visible": false
-    },
+    },    
     {
       "name": "w_p_skola__Forskola",
+      "source": "ows",
       "style": "w_p_skola",
       "title": "Förskola",
       "group": "utbildning",
-      "type": "GROUP",
+      "type": "WFS",
       "fme": true,
       "visible": false,
-      "layers":
-      [
+      "attributes": [
         {
-          "name": "w_p_skola__Forskola",
-          "source": "ows",
-          "filter": "egn = 'Förskola'",
-          "style": "w_p_skola",
-          "title": "Förskola",
-          "type": "WFS",
-          "visible": true,
-          "attributes": [
-            {
-              "name": "obj",
-              "url": "url"
-            },
-            {
-              "title": "Ansök om plats (gäller endast kommmunala förskolor)",
-              "url": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910",
-              "target": "_blank"
-            },
-            {
-              "name": "tel",
-              "title": "Telefon: "
-            }
-          ]
+          "name": "obj",
+          "url": "url"
         },
         {
-          "name": "w_p_skola__Forskola",
-          "source": "ows",
-          "filter": "egn = 'Privat förskola'",
-          "style": "w_p_skola",
-          "title": "Förskola",
-          "type": "WFS",
-          "visible": true,
-          "attributes": [
-            {
-              "name": "obj",
-              "url": "url"
-            },
-            {
-              "name": "tel",
-              "title": "Telefon: "
-            }
-          ]
+          "title": "Ansök om plats",
+          "url": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=d41aec64-7b30-4d77-bdc6-c4901afe9910",
+          "target": "_blank"
+        },
+        {
+          "name": "tel",
+          "title": "Telefon: "
         }
       ]
     },
