@@ -376,8 +376,8 @@
       "group": "Kartskaparen",
       "type": "WFS",
       "geometryType": "Polygon",
+      "fme": true,
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -431,7 +431,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -455,7 +454,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -504,7 +502,6 @@
       "type": "WFS",
       "geometryType": "Polygon",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -528,7 +525,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -566,7 +562,6 @@
       "type": "WFS",
       "geometryType": "Point",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -611,7 +606,6 @@
       "type": "WFS",
       "geometryType": "LineString",
       "visible": false,
-      "queryable": true,
       "editable": true,
       "attributes": [
         {
@@ -672,7 +666,6 @@
       "type": "WFS",
       "fme": false,
       "visible": false,
-      "queryable": true,
       "abstract": "Kulturmiljövårdsprogram för Hallstahammars kommun, inventeringen är gjord mellan åren 2017 och 2018.",
       "attributes": [
         {
@@ -1198,7 +1191,8 @@
       "group": "TV",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Staten genom Trafikverket, ansvarar för de allmänna vägarna. Undantaget är de allmänna vägar som ingår i kommunal väghållning. <br/> <br/> Kommunerna förvaltar kommunala gator och vägar. <br/> <br/> Enskilda vägar förvaltas av vägföreningar/samfällighetsföreningar eller av enskild fastighetsägare."
     },
     {
       "name": "Flygfoto2020",
@@ -2746,14 +2740,29 @@
     "tv_vaghallare": [
       [
         {
+          "label": "Statlig",
           "stroke": {
-            "color": "rgb(29,16,255)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          },
-          "label": "Väghållare"
+            "color": "rgb(217,4,41)",
+            "width": 2
+          }
+        }
+      ],
+      [
+        {
+          "label": "Kommunal",
+          "stroke": {
+            "color": "rgb(0,119,182)",
+            "width": 2
+          }
+        }
+      ],
+      [
+        {
+          "label": "Enskild",
+          "stroke": {
+            "color": "rgb(254,201,0)",
+            "width": 2
+          }
         }
       ]
     ],
