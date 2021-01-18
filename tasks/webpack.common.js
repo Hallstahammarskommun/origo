@@ -9,7 +9,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        enforce: "pre",
+        enforce: 'pre',
         use: ['source-map-loader']
       },
       {
@@ -46,6 +46,6 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       proj4: 'proj4'
-    }),
+    })
   ]
 };

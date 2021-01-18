@@ -13,6 +13,7 @@ import Viewer from './src/viewer';
 import loadResources from './src/loadresources';
 import titleCase from './src/utils/titlecase';
 import * as origoControls from './src/controls';
+import * as origoExtensions from './src/extensions';
 import supports from './src/utils/supports';
 import renderError from './src/utils/rendererror';
 import Style from './src/style';
@@ -23,7 +24,8 @@ import * as Utils from './src/utils';
 import dropdown from './src/dropdown';
 import { renderSvgIcon } from './src/utils/legendmaker';
 import SelectedItem from './src/models/SelectedItem';
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const Origo = function Origo(configPath, options = {}) {
   let viewer;
@@ -72,6 +74,21 @@ const Origo = function Origo(configPath, options = {}) {
     return controls;
   };
 
+  const initExtensions = (extensionDefs) => {
+    const extensions = [];
+    extensionDefs.forEach((def) => {
+      if ('name' in def) {
+        const extensionName = titleCase(def.name);
+        const extensionOptions = def.options || {};
+        if (extensionName in origoExtensions) {
+          const extension = origoExtensions[extensionName](extensionOptions);
+          extensions.push(extension);
+        }
+      }
+    });
+    return extensions;
+  };
+
   const api = () => viewer;
   const getConfig = () => origoConfig;
 
@@ -80,16 +97,16 @@ const Origo = function Origo(configPath, options = {}) {
     getConfig,
     onInit() {
       const defaultConfig = Object.assign({}, origoConfig, options);
-      const request = loadResources(configPath, defaultConfig);
-      if (request) {
-        request.then((data) => {
+      loadResources(configPath, defaultConfig)
+        .then((data) => {
           const viewerOptions = data.options;
           viewerOptions.controls = initControls(viewerOptions.controls);
+          viewerOptions.extensions = initExtensions(viewerOptions.extensions || []);
           const target = viewerOptions.target;
           viewer = Viewer(target, viewerOptions);
           this.dispatch('load', viewer);
-        });
-      }
+        })
+        .catch(error => console.error(error));
     }
   });
 };
@@ -98,6 +115,7 @@ olInteraction.Draw.createBox = createBox;
 olGeom.Polygon.fromCircle = fromCircle;
 olGeom.Polygon.fromExtent = fromExtent;
 Origo.controls = origoControls;
+Origo.extensions = origoExtensions;
 Origo.ui = ui;
 Origo.Style = Style;
 Origo.featurelayer = featurelayer;

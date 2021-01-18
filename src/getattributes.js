@@ -43,6 +43,7 @@ const getContent = {
         } else if (isUrl(attribute.url)) {
           url = attribute.url;
         } else return false;
+        const aTargetTitle = replacer.replace(attribute.targetTitle, attributes) || url;
         let aTarget = '_blank';
         let aCls = 'o-identify-link';
         if (attribute.target === 'modal') {
@@ -52,7 +53,7 @@ const getContent = {
           aTarget = 'modal-full';
           aCls = 'o-identify-link-modal';
         }
-        val = `<a class="${aCls}" target="${aTarget}" href="${url}">${getNeastedAttr(attribute.name, feature)}</a>`;
+        val = `<a class="${aCls}" target="${aTarget}" href="${url}" title="${aTargetTitle}">${getNeastedAttr(attribute.name, feature)}</a>`;
       }
     }
     const newElement = document.createElement('li');
@@ -69,6 +70,7 @@ const getContent = {
       url = attribute.url;
     } else return false;
     const text = attribute.html || attribute.title || attribute.url;
+    const aTargetTitle = replacer.replace(attribute.targetTitle, attributes) || url;
     let aTarget = '_blank';
     let aCls = 'o-identify-link';
     if (attribute.target === 'modal') {
@@ -78,7 +80,7 @@ const getContent = {
       aTarget = 'modal-full';
       aCls = 'o-identify-link-modal';
     }
-    val = `<a class="${aCls}" target="${aTarget}" href="${url}">${text}</a>`;
+    val = `<a class="${aCls}" target="${aTarget}" href="${url}" title="${aTargetTitle}">${text}</a>`;
     const newElement = document.createElement('li');
     newElement.classList.add(attribute.cls);
     newElement.innerHTML = val;
