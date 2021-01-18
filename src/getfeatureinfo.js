@@ -85,22 +85,19 @@ function getAGSIdentifyUrl({ layer, coordinate }, viewer) {
     `&layers=all:${layerId}`,
     `&mapExtent=${extent}`,
     `&imageDisplay=${size},96`].join('');
-
-  return $.ajax({
-    url,
-    dataType: 'jsonp'
-  })
-    .then((response) => {
-      if (response.error) {
-        return [];
-      }
-      const obj = {};
-      obj.features = response.results;
-      const features = esrijsonFormat.readFeatures(obj, {
-        featureProjection: viewer.getProjection()
-      });
-      return features;
+  return fetch(url, { type: 'GET', dataType: 'jsonp' }).then((res) => {
+    if (res.error) {
+      return [];
+    }
+    return res.json();
+  }).then((json) => {
+    const obj = {};
+    obj.features = json.results;
+    const features = esrijsonFormat.readFeatures(obj, {
+      featureProjection: viewer.getProjection()
     });
+    return features;
+  }).catch(error => console.error(error));
 }
 
 function isTainted({
@@ -252,7 +249,7 @@ function getFeaturesFromRemote(requestOptions, viewer) {
 
     return false;
   }));
-  return $.when(...requestPromises).then(() => requestResult);
+  return Promise.all([...requestPromises]).then(() => requestResult).catch(error => console.log(error));
 }
 
 function getFeaturesAtPixel({
