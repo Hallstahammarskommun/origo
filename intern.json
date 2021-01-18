@@ -1558,7 +1558,7 @@
           "header": true,
           "filter": "[obj] == '0'",
           "icon": {
-            "src": "img/png/droppe_blue.png"
+            "src": "img/png/drop_blue.png"
           }
         }
       ]
@@ -2304,7 +2304,7 @@
           "label": "Plan- och höjdpunkt",
           "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
           "icon": {
-            "src": "img/png/droppe_blue.png"
+            "src": "img/png/drop_blue.png"
           }
         }
       ]
