@@ -70,7 +70,7 @@ const maputils = {
     });
     feature.setProperties(json);
     return feature;
-  },  
+  },
   geojsonToWkt: function geojsonToWkt(obj) {
     return (new WKT()).writeFeatures((new GeoJSON()).readFeatures(obj));
   },
