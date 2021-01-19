@@ -59,6 +59,19 @@ function getFeatureInfoUrl({
       }
       return maputils.geojsonToFeature(response);
     });
+
+  /*
+  return fetch(url, { type: 'GET' }).then((res) => {
+    if (res.error) {
+      return [];
+    } if (layer.get('queryurl') !== undefined) {
+      const feature = maputils.jsonToPointFeature(res, coordinate);
+      return feature;
+    }
+    return res.json();
+  }).then(json => maputils.geojsonToFeature(json)).catch(error => console.error(error));
+
+*/
 }
 
 function getAGSIdentifyUrl({ layer, coordinate }, viewer) {
