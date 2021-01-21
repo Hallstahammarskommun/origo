@@ -1,5 +1,4 @@
 import EsriJSON from 'ol/format/EsriJSON';
-import $ from 'jquery';
 import maputils from './maputils';
 import SelectedItem from './models/SelectedItem';
 
@@ -36,42 +35,31 @@ function getFeatureInfoUrl({
 }, layer) {
   let url;
 
-  if (layer.get('queryurl') !== undefined) {
-    url = `${layer.get('queryurl') + coordinate[1]},${coordinate[0]}`;
-  } else {
-    url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
-      INFO_FORMAT: 'application/json',
-      FEATURE_COUNT: '20'
-    });
+  async function retrieveRes() {
+    const response = await fetch(url)
+      .then(res => res.json());
+    if (response.length === 0) {
+      return [];
+    }
+    const feature = maputils.jsonToPointFeature(response, coordinate);
+    return feature;
   }
 
-  return $.ajax(url, {
-    type: 'get'
-  })
-    .then((response) => {
-      if (response.error) {
-        return [];
-      } if (response.length === 0) {
-        return [];
-      } if (layer.get('queryurl') !== undefined) {
-        const feature = maputils.jsonToPointFeature(response, coordinate);
-        return feature;
-      }
-      return maputils.geojsonToFeature(response);
-    });
+  if (layer.get('queryurl') !== undefined) {
+    url = `${layer.get('queryurl') + coordinate[1]},${coordinate[0]}`;
+    return retrieveRes();
+  }
+  url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
+    INFO_FORMAT: 'application/json',
+    FEATURE_COUNT: '20'
+  });
 
-  /*
   return fetch(url, { type: 'GET' }).then((res) => {
     if (res.error) {
       return [];
-    } if (layer.get('queryurl') !== undefined) {
-      const feature = maputils.jsonToPointFeature(res, coordinate);
-      return feature;
     }
     return res.json();
   }).then(json => maputils.geojsonToFeature(json)).catch(error => console.error(error));
-
-*/
 }
 
 function getAGSIdentifyUrl({ layer, coordinate }, viewer) {
