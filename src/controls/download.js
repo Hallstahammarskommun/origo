@@ -221,16 +221,16 @@ const Download = function Download(options = {}) {
 
           // initInteractions();
 
-          /* if ($('#o-drawarea-button').hasClass('o-area-active')) {
+          /* if (document.querySelector('#o-drawarea-button').classList.contains('o-area-active')) {
             addInteractions();
           } */
 
-          /* $('#o-extent-button').on('click', () => {
-            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+          /* document.querySelector('#o-extent-button').addEventListener('click', () => {
+            if (document.querySelector('#o-drawarea-button').classList.contains('o-area-active')) {
               $('#o-drawarea-button').removeClass('o-area-active');
             }
 
-            if (!$('#o-extent-button').hasClass('o-area-active')) {
+            if (!document.querySelector('#o-extent-button').classList.contains('o-area-active')) {
               $('#o-extent-button').addClass('o-area-active');
               drawLayer.getFeatureLayer().getSource().clear();
             }
@@ -241,16 +241,16 @@ const Download = function Download(options = {}) {
             }
           });
 
-          $('#o-drawarea-button').on('click', () => {
-            if ($('#o-extent-button').hasClass('o-area-active')) {
+          document.querySelector('#o-drawarea-button').addEventListener('click', () => {
+            if (document.querySelector('#o-extent-button').classList.contains('o-area-active')) {
               $('#o-extent-button').removeClass('o-area-active');
             }
 
-            if (!$('#o-drawarea-button').hasClass('o-area-active')) {
+            if (!document.querySelector('#o-drawarea-button').classList.contains('o-area-active')) {
               $('#o-drawarea-button').addClass('o-area-active');
             }
 
-            if ($('#o-drawarea-button').hasClass('o-area-active')) {
+            if (document.querySelector('#o-drawarea-button').classList.contains('o-area-active')) {
               const interactionExist = drawInteractionAdded();
 
               if (!interactionExist) {
@@ -259,12 +259,13 @@ const Download = function Download(options = {}) {
             }
           }); */
 
-          $('#o-fme-download-button').on('click', (e) => {
+          document.querySelector('#o-fme-download-button').addEventListener('click', (e) => {
             const params = {};
             attributeObjects.forEach((obj) => {
-              params[obj.name.toString()] = $(obj.elId).val();
+              const formatSelector = document.getElementById('input-DestinationFormat');
+              params[obj.name.toString()] = formatSelector.options[formatSelector.selectedIndex].value;
             });
-            $('#o-fme-download-button').blur();
+            document.querySelector('#o-fme-download-button').classList.replace('focus', 'blurred');
             sendToFME(params);
             e.preventDefault();
           });
@@ -274,14 +275,14 @@ const Download = function Download(options = {}) {
               drawLayer.getFeatureLayer().getSource().clear();
             }
 
-            /* if ($('#o-drawarea-button').hasClass('o-area-active')) {
+            /* if (document.querySelector('#o-drawarea-button').classList.contains('o-area-active')) {
               activeButton = 'area';
             } else {
              activeButton = 'extent';
             } */
 
-            if ($('#input-DestinationFormat')[0].selectedIndex !== 0) {
-              selectedIndex = $('#input-DestinationFormat')[0].selectedIndex;
+            if (document.getElementById('#input-DestinationFormat')[0].selectedIndex !== 0) {
+              selectedIndex = document.getElementById('#input-DestinationFormat')[0].selectedIndex;
             } else {
               selectedIndex = 0;
             }
