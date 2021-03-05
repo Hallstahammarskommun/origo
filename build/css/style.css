@@ -167,7 +167,7 @@
     height: 100%;
     position: relative;
     width: 100%; }
-  .o-ui .dropdown .collapse-container-no-height {
+  .o-ui .dropdown .collapse-container {
     position: absolute;
     width: 100%; }
   .o-ui .dropdown .collapse-header {
@@ -565,21 +565,16 @@
   .o-ui .button-group.divider-vertical > button:last-child {
     border-right: 0; }
   .o-ui .collapse-container {
-    height: 100%;
     overflow: hidden;
     position: relative;
     transition: all 0.3s; }
-  .o-ui .collapse-container-no-height {
-    overflow: hidden;
-    position: relative;
-    transition: all 0.3s; }
-  .o-ui .collapse-scroll > .collapse-header .rotate.icon {
+  .o-ui .collapse > .collapse-header .rotate.icon, .o-ui .collapse-scroll > .collapse-header .rotate.icon {
     transition: all 0.3s ease; }
-  .o-ui .expanded.collapse-scroll > .collapse-header {
-    border-bottom: 'none'; }
-    .o-ui .expanded.collapse-scroll > .collapse-header .rotate.icon {
+  .o-ui .collapse.expanded > .collapse-header, .o-ui .expanded.collapse-scroll > .collapse-header {
+    border-bottom: none; }
+    .o-ui .collapse.expanded > .collapse-header .rotate.icon, .o-ui .expanded.collapse-scroll > .collapse-header .rotate.icon {
       transform: rotate(90deg); }
-    .o-ui .expanded.collapse-scroll > .collapse-header .rotate-180.icon {
+    .o-ui .collapse.expanded > .collapse-header .rotate-180.icon, .o-ui .expanded.collapse-scroll > .collapse-header .rotate-180.icon {
       transform: rotate(180deg); }
   .o-ui .collapse-scroll.expanded {
     height: calc(100% - 2rem); }
@@ -1264,6 +1259,8 @@
     pointer-events: auto; }
   .o-ui .transparent > .transparent {
     pointer-events: none; }
+  .o-ui .semifaded {
+    opacity: 0.5; }
   .o-ui .faded {
     opacity: 0;
     pointer-events: none; }
@@ -2001,7 +1998,7 @@ body {
     position: absolute;
     text-align: left;
     white-space: normal;
-    width: 100%;
+    width: 270px;
     z-index: 1010; }
   .o-map .o-popup::before,
   .o-map .o-popup::after {
@@ -2025,10 +2022,11 @@ body {
     left: 50%;
     margin-left: -11px; }
   .o-map .o-popup .icon {
-    pointer-events: none; }
-  .o-map[class*=o-media-l-m-s] #o-popup {
+    pointer-events: none;
+    display: block; }
+  .o-map[class*=o-media-l-m-s] #o-popup, .o-map[class*=o-media-l-m-s] .o-popup {
     width: 240px; }
-  .o-map[class*=o-media-l-m-s-xs] #o-popup {
+  .o-map[class*=o-media-l-m-s-xs] #o-popup, .o-map[class*=o-media-l-m-s-xs] .o-popup {
     width: 200px; }
   .o-map .o-popup .o-card-content {
     max-height: calc(70vh - 46px) !important; }
@@ -2441,12 +2439,12 @@ body {
     padding: .3em;
     width: 1.4em; }
   .o-map .o-tooltip-measure {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     color: white;
-    font: 80% normal, sans-serif;
-    opacity: 0.8;
-    padding: 4px 8px;
+    font: 70% normal, sans-serif;
+    opacity: 0.6;
+    padding: 1px 2px;
     pointer-events: none;
     position: relative;
     white-space: nowrap; }
@@ -2702,24 +2700,6 @@ body {
   .o-map #o-identify-carousel > .o-identify-content {
     max-height: calc(70vh - 46px);
     overflow-y: auto; }
-  .o-map #o-fme-download-button {
-    width: 100%; }
-  .o-map #input-DestinationFormat {
-    width: 100%; }
-  .o-map #o-extent-button {
-    position: relative;
-    float: left;
-    width: 47%; }
-  .o-map #o-drawarea-button {
-    position: relative;
-    float: right;
-    width: 47%; }
-  .o-map #o-extent-button.o-area-active {
-    background-color: #0097cf;
-    color: #fff; }
-  .o-map #o-drawarea-button.o-area-active {
-    background-color: #0097cf;
-    color: #fff; }
   .o-map .sidebarcontainer {
     background-color: white;
     border-radius: 0.5em;
@@ -2893,13 +2873,13 @@ body {
   .o-map[class*=o-media-l-m-s] .sidebarcontainer {
     left: 5em;
     transform: none; }
-  .o-map .errormsg {
+  .o-map .validate > .errorMsg {
     color: #ff9500; }
-  .o-map :optional {
+  .o-map .validate > input:optional {
     border-color: #ebebeb; }
-  .o-map :required:invalid {
+  .o-map .validate > input:required:invalid {
     border-color: #ff9500; }
-  .o-map :invalid {
+  .o-map .validate > input:invalid {
     border-color: #ff9500; }
   .o-map .o-scale {
     font-family: Arial, 'Helvetica Neue', sans-serif;

@@ -339,9 +339,7 @@ function onAttributesSave(feature, attrs) {
   document.getElementById('o-save-button').addEventListener('click', (e) => {
     const editEl = {};
     const valid = {};
-    let fileReader;
-    let input;
-    let file;
+    const fileReaders = [];
 
     // Read values from form
     attrs.forEach((attribute) => {
@@ -365,11 +363,11 @@ function onAttributesSave(feature, attrs) {
       }
       // Check if file. If file, read and trigger resize
       if (inputType === 'file') {
-        input = document.getElementById(attribute.elId);
-        file = input.files[0];
+        const input = document.getElementById(attribute.elId);
+        const file = input.files[0];
 
         if (file) {
-          fileReader = new FileReader();
+          const fileReader = new FileReader();
           fileReader.onload = () => {
             getImageOrientation(file, (orientation) => {
               imageresizer(fileReader.result, attribute, orientation, (resized) => {
@@ -381,6 +379,7 @@ function onAttributesSave(feature, attrs) {
           };
 
           fileReader.readAsDataURL(file);
+          fileReaders.push(fileReader);
         } else {
           editEl[attribute.name] = document.getElementById(attribute.elId).getAttribute('value');
         }
@@ -539,7 +538,7 @@ function onAttributesSave(feature, attrs) {
 
     // If valid, continue
     if (valid.validates) {
-      if (fileReader && fileReader.readyState === 1) {
+      if (fileReaders.length > 0 && fileReaders.every(reader => reader.readyState === 1)) {
         document.addEventListener('imageresized', () => {
           attributesSaveHandler(feature, editEl);
         });
@@ -558,7 +557,7 @@ function addListener() {
   const fn = (obj) => {
     document.getElementById(obj.elDependencyId).addEventListener(obj.eventType, () => {
       const containerClass = `.${obj.elId}`;
-      if (document.getElementById(`${obj.elDependencyId} option:selected`).textContent === obj.requiredVal) {
+      if (document.getElementById(obj.elDependencyId).value === obj.requiredVal) {
         document.querySelector(containerClass).classList.remove('o-hidden');
       } else {
         document.querySelector(containerClass).classList.add('o-hidden');
@@ -585,6 +584,7 @@ function addImageListener() {
     });
 
     document.querySelector(`${containerClass} input[type=button]`).addEventListener('click', (e) => {
+      document.getElementById(obj.elId).setAttribute('value', '');
       document.getElementById(obj.elId).value = '';
       document.querySelector(`${containerClass} img`).classList.add('o-hidden');
       e.target.classList.add('o-hidden');

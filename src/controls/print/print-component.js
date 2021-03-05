@@ -15,23 +15,44 @@ const PrintComponent = function PrintComponent(options = {}) {
   const {
     logo,
     northArrow,
-    name = 'origo-map',
+    filename = 'origo-map',
     map,
     target,
     viewer,
-    createdPrefix,
+    titlePlaceholderText,
+    titleAlignment,
+    titleSizes,
+    titleFormatIsVisible,
+    descriptionPlaceholderText,
+    descriptionAlignment,
+    descriptionSizes,
+    descriptionFormatIsVisible,
+    sizes,
+    sizeCustomMinHeight,
+    sizeCustomMaxHeight,
+    sizeCustomMinWidth,
+    sizeCustomMaxWidth,
+    resolutions,
     scales,
-    classes,
-    defaultClass
+    scaleInitial,
+    createdPrefix,
+    rotation,
+    rotationStep,
+    leftFooterText
   } = options;
 
   let {
-    size = 'a4',
-    orientation = 'portrait',
+    title,
+    titleSize,
+    description,
+    descriptionSize,
+    size,
+    orientation,
+    resolution,
+    showMargins,
     showCreated,
-    showNorthArrow,
-    resolution = 150,
-    showScale
+    showScale,
+    showNorthArrow
   } = options;
 
   let pageElement;
@@ -39,25 +60,14 @@ const PrintComponent = function PrintComponent(options = {}) {
   let targetElement;
   const pageContainerId = cuid();
   const pageId = cuid();
-  let title = '';
-  let titleSize = 'h4';
-  let titleAlign = 'text-align-center';
-  let description = '';
-  let descriptionSize = 'h4';
-  let descriptionAlign = 'text-align-center';
+  let titleAlign = `text-align-${titleAlignment}`;
+  let descriptionAlign = `text-align-${descriptionAlignment}`;
   let viewerMapTarget;
   const printMarginClass = 'print-margin';
-  let usePrintMargins = true;
   let today = new Date(Date.now());
   let printScale = 0;
   let widthImage = 0;
   let heightImage = 0;
-
-  const sizes = {
-    a3: [420, 297],
-    a4: [297, 210],
-    custom: [297, 210]
-  };
 
   const setCustomSize = function setCustomSize(sizeObj) {
     if ('width' in sizeObj) {
@@ -82,9 +92,19 @@ const PrintComponent = function PrintComponent(options = {}) {
   });
   const createdComponent = Component({
     update() { dom.replace(document.getElementById(this.getId()), this.render()); },
-    render() { return `<div id="${this.getId()}" class="o-print-created padding-right text-grey-dark text-align-right text-smaller empty">${created()}</div>`; }
+    render() { return `<div id="${this.getId()}" class="o-print-created text-align-right no-shrink">${created()}</div>`; }
   });
-  const printMapComponent = PrintMap({ baseUrl: viewer.getBaseUrl(), logo, northArrow, map, viewer, showNorthArrow });
+  const footerComponent = Component({
+    update() { dom.replace(document.getElementById(this.getId()), this.render()); },
+    render() {
+      return `<div id="${this.getId()}" class="o-print-footer flex row justify-space-between padding-left padding-right text-grey-dark text-smaller empty">
+        <div class="o-print-footer-left text-align-left">${leftFooterText}</div>
+        ${createdComponent.render()}
+      </div>`;
+    }
+  });
+
+  const printMapComponent = PrintMap({ logo, northArrow, map, viewer, showNorthArrow });
 
   const setScale = function setScale(scale) {
     printScale = scale;
@@ -106,18 +126,36 @@ const PrintComponent = function PrintComponent(options = {}) {
   };
 
   const printSettings = PrintSettings({
-    orientation,
-    customSize: sizes.custom,
-    initialSize: size,
-    sizes: Object.keys(sizes),
     map,
-    showCreated,
-    showNorthArrow,
-    scales,
+    title,
+    titlePlaceholderText,
+    titleAlignment,
+    titleSizes,
+    titleSize,
+    titleFormatIsVisible,
+    description,
+    descriptionPlaceholderText,
+    descriptionAlignment,
+    descriptionSizes,
+    descriptionSize,
+    descriptionFormatIsVisible,
+    sizes,
+    size,
+    sizeCustomMinHeight,
+    sizeCustomMaxHeight,
+    sizeCustomMinWidth,
+    sizeCustomMaxWidth,
+    orientation,
+    resolutions,
     resolution,
+    scales,
+    scaleInitial,
+    showMargins,
+    showCreated,
     showScale,
-    classes,
-    defaultClass
+    showNorthArrow,
+    rotation,
+    rotationStep
   });
   const printToolbar = PrintToolbar();
   const closeButton = Button({
@@ -213,11 +251,11 @@ const PrintComponent = function PrintComponent(options = {}) {
       setScale(evt.scale);
     },
     printMargin() {
-      return usePrintMargins ? 'print-margin' : '';
+      return showMargins ? 'print-margin' : '';
     },
     toggleMargin() {
       pageElement.classList.toggle(printMarginClass);
-      usePrintMargins = !usePrintMargins;
+      showMargins = !showMargins;
       this.updatePageSize();
     },
     toggleCreated() {
@@ -235,6 +273,9 @@ const PrintComponent = function PrintComponent(options = {}) {
     },
     close() {
       printMapComponent.removePrintControls();
+      if (map.getView().getRotation() !== 0) {
+        map.getView().setRotation(0);
+      }
       const printElement = document.getElementById(this.getId());
       map.setTarget(viewerMapTarget);
       this.restoreViewerControls();
@@ -244,7 +285,7 @@ const PrintComponent = function PrintComponent(options = {}) {
       await downloadPNG({
         afterRender: afterRender(map),
         beforeRender: beforeRender(map),
-        filename: `${name}.png`,
+        filename: `${filename}.png`,
         el: pageElement
       });
     },
@@ -265,7 +306,7 @@ const PrintComponent = function PrintComponent(options = {}) {
         afterRender: afterRender(map),
         beforeRender: beforeRender(map),
         el: pageElement,
-        filename: name,
+        filename,
         height,
         orientation: pdfOrientation,
         size,
@@ -287,7 +328,7 @@ const PrintComponent = function PrintComponent(options = {}) {
       heightImage = orientation === 'portrait' ? Math.round((sizes[size][0] * resolution) / 25.4) : Math.round((sizes[size][1] * resolution) / 25.4);
       await printToScalePDF({
         el: pageElement,
-        filename: name,
+        filename,
         height,
         orientation: pdfOrientation,
         size,
@@ -344,7 +385,7 @@ const PrintComponent = function PrintComponent(options = {}) {
             style="margin-bottom: 4rem;">
             <div class="flex column no-margin width-full height-full overflow-hidden">
   ${pageTemplate({
-    descriptionComponent, printMapComponent, titleComponent, createdComponent
+    descriptionComponent, printMapComponent, titleComponent, footerComponent
   })}
             </div>
           </div>

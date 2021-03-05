@@ -16,6 +16,7 @@ import Footer from './components/footer';
 import flattenGroups from './utils/flattengroups';
 import getAttributes from './getattributes';
 import getcenter from './geometry/getcenter';
+import isEmbedded from './utils/isembedded';
 
 const Viewer = function Viewer(targetOption, options = {}) {
   let map;
@@ -28,7 +29,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
   } = options;
 
   const {
-    baseUrl = '',
     breakPoints,
     breakPointsPrefix,
     clsOptions = '',
@@ -85,7 +85,9 @@ const Viewer = function Viewer(targetOption, options = {}) {
 
   const addControl = function addControl(control) {
     if (control.onAdd && control.dispatch) {
-      this.addComponent(control);
+      if (!control.options.hideWhenEmbedded || !isEmbedded(this.getTarget())) {
+        this.addComponent(control);
+      }
     } else {
       throw new Error('Valid control must have onAdd and dispatch methods');
     }
@@ -98,8 +100,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
   };
 
   const getExtent = () => extent;
-
-  const getBaseUrl = () => baseUrl;
 
   const getBreakPoints = function getBreakPoints(size) {
     return size && size in breakPoints ? breakPoints[size] : breakPoints;
@@ -495,7 +495,6 @@ const Viewer = function Viewer(targetOption, options = {}) {
     addLayers,
     addSource,
     addStyle,
-    getBaseUrl,
     getBreakPoints,
     getCenter,
     getClusterOptions,
