@@ -1,11 +1,7 @@
 build-dev
 dist
 css/style.css
-examples
 node_modules
 npm-debug-log
 splash.html
 plugins
-CONTRIBUTING.md
-DEVELOPING.md
-CODE_OF_CONDUCT.md
