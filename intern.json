@@ -967,7 +967,7 @@
               "name": "obj",
               "urlPrefix": "https://karta.hallstahammar.se/intern/origoserver/estate/inskrivning?objektid=",
               "url": "uuid",
-              "target": "modal"
+              "target": "modal-full"
             },
             {
               "title": "FB webb, låst: ",
