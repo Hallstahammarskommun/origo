@@ -312,7 +312,7 @@ function cancelDraw() {
 }
 
 function onChangeShape(e) {
-  setInteractions(e.shape);
+  setInteractions(e.detail.shape);
   startDraw();
 }
 
