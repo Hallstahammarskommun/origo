@@ -9,6 +9,23 @@ function createUrl(prefix, suffix, url) {
   return p + url + s;
 }
 
+function getNeastedAttr(attributePath, feature) {
+  const neastedAttributePath = attributePath.split('.');
+  const featureProp = feature.getProperties();
+  let val;
+
+  neastedAttributePath.forEach((element, index) => {
+    if (index === 0) {
+      val = featureProp[element];
+    } else {
+      val = val[element];
+    }
+    if (val === undefined) {
+      val = '';
+    }
+  });
+  return val;
+}
 function parseUrl(urlattr, feature, attribute, attributes, map) {
   let val = '';
   let url;
@@ -37,13 +54,21 @@ const getContent = {
     let val = '';
     let title = '';
     const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
-    if (featureValue) {
-      val = featureValue;
+    if (featureValue || attribute.name.indexOf('.') > -1) {
+      val = getNeastedAttr(attribute.name, feature);
       if (attribute.title) {
-        title = `<b>${attribute.title}</b>`;
+        if (attribute.name.indexOf('.') > -1) {
+          title = '';
+        } else {
+          title = `<b>${attribute.title}</b>`;
+        }
       }
       if (attribute.url) {
-        if (attribute.splitter) {
+        if (attribute.url.indexOf('.') > -1) {
+          const link = getNeastedAttr(attribute.url, feature);
+          val = parseUrl(link, feature, attribute, attributes, map);
+        } else if
+        (attribute.splitter) {
           const urlArr = feature.get(attribute.url).split(attribute.splitter);
           if (urlArr[0] !== '') {
             urlArr.forEach((url) => {
@@ -108,6 +133,15 @@ const getContent = {
     newElement.classList.add(attribute.cls);
     newElement.innerHTML = val;
     return newElement;
+  },
+  xy(feature, attribute) {
+    const val = `<b>E: </b> ${feature.getGeometry().getCoordinates()[0]}
+           <b>N: </b> ${feature.getGeometry().getCoordinates()[1]}`;
+
+    const newElement = document.createElement('li');
+    newElement.classList.add(attribute.cls);
+    newElement.innerHTML = val;
+    return newElement;
   }
 };
 
@@ -157,6 +191,8 @@ function getAttributes(feature, layer, map) {
             val = getContent.img(feature, attribute, attributes, map);
           } else if (attribute.html) {
             val = getContent.html(feature, attribute, attributes, map);
+          } else if (attribute.xy) {
+            val = getContent.xy(feature, attribute, attributes, map);
           } else {
             val = customAttribute(feature, attribute, attributes, map);
           }
