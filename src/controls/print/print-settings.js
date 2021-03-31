@@ -11,6 +11,7 @@ import TitleControl from './title-control';
 import CreatedControl from './created-control';
 import NorthArrowControl from './north-arrow-control';
 import RotationControl from './rotation-control';
+import SetScaleControl from './set-scale-control';
 import ResolutionControl from './resolution-control';
 import ShowScaleControl from './show-scale-control';
 
@@ -58,6 +59,7 @@ const PrintSettings = function PrintSettings(options = {}) {
   let customSizeControl;
   let northArrowControl;
   let rotationControl;
+  let setScaleControl;
 
   const toggle = function toggle() {
     if (openButton.getState() === 'hidden') {
@@ -170,6 +172,7 @@ const PrintSettings = function PrintSettings(options = {}) {
             createdControl,
             northArrowControl,
             rotationControl,
+            setScaleControl,
             resolutionControl,
             showScaleControl
           });
@@ -203,6 +206,7 @@ const PrintSettings = function PrintSettings(options = {}) {
       createdControl.on('change:check', (evt) => this.dispatch('change:created', evt));
       northArrowControl.on('change:check', (evt) => this.dispatch('change:northarrow', evt));
       resolutionControl.on('change:resolution', (evt) => this.dispatch('change:resolution', evt));
+      setScaleControl.on('change:scale', (evt) => this.dispatch('change:scale', evt));
       showScaleControl.on('change:check', (evt) => this.dispatch('change:showscale', evt));
     },
     onChangeSize(evt) {
