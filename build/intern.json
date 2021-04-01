@@ -738,9 +738,9 @@
       "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad."
     },
     {
-      "name": "w_p_stompunkt",
+      "name": "p_stompunkt",
       "source": "internows",
-      "style": "w_p_stompunkt",
+      "style": "p_stompunkt",
       "title": "Stompunkter",
       "group": "HHR",
       "type": "WFS",
@@ -2281,7 +2281,7 @@
         }
       ]
     ],
-    "w_p_stompunkt": [
+    "p_stompunkt": [
       [
         {
           "label": "Höjdfix",
