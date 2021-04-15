@@ -1,6 +1,5 @@
 // import DrawInteraction from 'ol/interaction/Draw';
 // import ModifyInteraction from 'ol/interaction/Modify';
-import $ from 'jquery';
 import formCreator from '../utils/formcreator';
 import sidebar from '../sidebar';
 // import featureLayer from '../featurelayer';
@@ -44,14 +43,14 @@ const Download = function Download(options = {}) {
   function setSidebarContent() {
     attributeObjects = formOptions.map((attributeObject) => {
       const obj = {};
-      $.extend(obj, attributeObject);
+      Object.assign(obj, attributeObject);
       obj.elId = `#input-${obj.name}`;
       obj.formElement = formCreator(obj);
       return obj;
     });
 
     if (selectedIndex) {
-      $(`#input-DestinationFormat :nth-child(${selectedIndex + 1})`).prop('selected', true);
+      `#input-DestinationFormat :nth-child(${selectedIndex + 1})`.el.selected(true);
     }
     layerTitles = getLayerTitles();
 
@@ -71,14 +70,14 @@ const Download = function Download(options = {}) {
       areaButtons = areaButtons.replace('"o-extent-button"', '"o-extent-button" class="o-area-active"');
     } */
     form = `<br><form>${formElement}<br><input id="o-fme-download-button" type="button" value="Spara" disabled></input></div></form>`;
-    return `<div id="tool-instructions"></div>${form}`;
+    return `<div id="tool-instructions">${layerInfo}</div>${form}`;
   }
 
   function fmeDownloadEnabled() {
-    if (layerTitles && $('#input-DestinationFormat')[0].selectedIndex !== 0) {
-      $('#o-fme-download-button').removeAttr('disabled');
+    if (layerTitles && document.querySelector('#input-DestinationFormat')[0].selectedIndex !== 0) {
+      document.querySelector('#o-fme-download-button').removeAttribute('disabled');
     } else {
-      $('#o-fme-download-button').prop('disabled', true);
+      document.querySelector('#o-fme-download-button').disabled = true;
     }
   }
 
@@ -211,11 +210,10 @@ const Download = function Download(options = {}) {
             title: 'Hämta data'
           });
 
-          $(layerInfo).insertAfter('#tool-instructions');
           fmeDownloadEnabled();
           sidebar.setVisibility(true);
 
-          $('#input-DestinationFormat').change(() => {
+          document.querySelector('#input-DestinationFormat').addEventListener('change', () => {
             fmeDownloadEnabled();
           });
 
@@ -270,7 +268,7 @@ const Download = function Download(options = {}) {
             e.preventDefault();
           });
 
-          $('.o-close-button').on('click', () => {
+          document.querySelector('#o-close-button').addEventListener('click', () => {
             if (drawLayer) {
               drawLayer.getFeatureLayer().getSource().clear();
             }
@@ -281,8 +279,8 @@ const Download = function Download(options = {}) {
              activeButton = 'extent';
             } */
 
-            if (document.getElementById('#input-DestinationFormat')[0].selectedIndex !== 0) {
-              selectedIndex = document.getElementById('#input-DestinationFormat')[0].selectedIndex;
+            if (document.querySelector('#input-DestinationFormat')[0].selectedIndex !== 0) {
+              selectedIndex = document.querySelector('#input-DestinationFormat')[0].selectedIndex;
             } else {
               selectedIndex = 0;
             }
