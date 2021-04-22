@@ -129,7 +129,7 @@
       "text": "Hjälp oss förbättra kartan genom att mejla fel och synpunkter till Geodataenheten"
     },
     "mapGrid": {
-      "visible": true
+      "visible": false
     }
   },
   "projectionCode": "EPSG:3010",
