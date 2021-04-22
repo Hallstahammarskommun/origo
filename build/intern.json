@@ -129,7 +129,7 @@
       "text": "Hjälp oss förbättra kartan genom att mejla fel och synpunkter till Geodataenheten"
     },
     "mapGrid": {
-      "visible": true
+      "visible": false
     }
   },
   "projectionCode": "EPSG:3010",
@@ -514,43 +514,6 @@
           "name": "url",
           "title": "Länk: ",
           "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "w_p_samhallsbyggnad",
-      "title": "Samhällsbyggnadsprojekt",
-      "source": "internows",
-      "style": "w_p_samhallsbyggnad",
-      "group": "Kartskaparen",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Projekt: ",
-          "type": "text"
-        },
-        {
-          "name": "typ",
-          "title": "Typ av bostad eller antal: ",
-          "type": "text"
-        },
-        {
-          "name": "egn",
-          "title": "Beskrivning: ",
-          "type": "textarea"
-        },
-        {
-          "name": "status",
-          "title": "Skede: ",
-          "type": "dropdown",
-          "options": [
-            "Kommande",
-            "Pågående"
-          ]
         }
       ]
     },
@@ -1636,16 +1599,6 @@
         }
       ]
     ],
-    "w_p_samhallsbyggnad": [
-      [
-        {
-          "label": "Lagret innehåller olika exploaterings och sammhällsbyggnadsprojekt",
-          "icon": {
-            "src": "img/png/droppe_lila.png"
-          }
-        }
-      ]
-  ],
     "w_p_arrende": [
       [
         {
