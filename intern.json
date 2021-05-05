@@ -487,9 +487,9 @@
           "type": "dropdown",
           "constraint": "change:obj:Skog",
           "options": [
-            "2017",
-            "2018",
-            "2019"
+            "2021",
+            "2022",
+            "2023"
           ]
         }
       ]
@@ -1649,6 +1649,7 @@
       [
         {
           "filter": "[egn] == 'Kontinuerlig'",
+          "label": "Gräs - Kontinuerlig",
           "stroke": {
             "color": "rgba(0,0,0,0.1)",
             "width": 1
@@ -1661,6 +1662,7 @@
       [
         {
           "filter": "[egn] == '1-3 gånger/säsong'",
+          "label": "Gräs - 1-3 gånger/säsong",
           "stroke": {
             "color": "rgba(0,0,0,0.1)",
             "width": 1
@@ -1672,7 +1674,8 @@
       ],
       [
         {
-          "filter": "[egn] == '2017'",
+          "filter": "[egn] == '2021'",
+          "label": "Skog - 2021",
           "stroke": {
             "color": "rgba(204,30,1,0.25)",
             "width": 1
@@ -1684,7 +1687,8 @@
       ],
       [
         {
-          "filter": "[egn] == '2018'",
+          "filter": "[egn] == '2022'",
+          "label": "Skog - 2022",
           "stroke": {
             "color": "rgba(112,0,90,0.25)",
             "width": 1
@@ -1696,7 +1700,8 @@
       ],
       [
         {
-          "filter": "[egn] == '2019'",
+          "filter": "[egn] == '2023'",
+          "label": "Skog - 2023",
           "stroke": {
             "color": "rgba(1,0,72,0.25)",
             "width": 1
