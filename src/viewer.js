@@ -257,6 +257,10 @@ const Viewer = function Viewer(targetOption, options = {}) {
 
   const getMain = () => main;
 
+  const getEmbedded = function getEmbedded() {
+    return isEmbedded(this.getTarget());
+  };
+
   const mergeSecuredLayer = (layerlist, capabilitiesLayers) => {
     if (capabilitiesLayers !== null) {
       layerlist.forEach((layer) => {
@@ -552,7 +556,8 @@ const Viewer = function Viewer(targetOption, options = {}) {
     removeGroup,
     removeOverlays,
     zoomToExtent,
-    getSelectionManager
+    getSelectionManager,
+    getEmbedded
   });
 };
 

@@ -301,6 +301,21 @@ function createStyleRule(options) {
   return styleRule;
 }
 
+function createGeometryCollectionStyle(options) {
+  const styleRule = [];
+
+  createStyleRule(options.Point).forEach((item) => {
+    styleRule.push(item);
+  });
+  createStyleRule(options.LineString).forEach((item) => {
+    styleRule.push(item);
+  });
+  createStyleRule(options.Polygon).forEach((item) => {
+    styleRule.push(item);
+  });
+  return styleRule;
+}
+
 function createGeometryStyle(geometryStyleOptions) {
   return {
     Point: createStyleRule(geometryStyleOptions.Point),
@@ -308,7 +323,8 @@ function createGeometryStyle(geometryStyleOptions) {
     LineString: createStyleRule(geometryStyleOptions.LineString),
     MultiLineString: createStyleRule(geometryStyleOptions.LineString),
     Polygon: createStyleRule(geometryStyleOptions.Polygon),
-    MultiPolygon: createStyleRule(geometryStyleOptions.Polygon)
+    MultiPolygon: createStyleRule(geometryStyleOptions.Polygon),
+    GeometryCollection: createGeometryCollectionStyle(geometryStyleOptions)
   };
 }
 
