@@ -2957,7 +2957,8 @@ body {
 html,
 body {
   height: 100%;
-  margin: 0; }
+  margin: 0;
+  overscroll-behavior-y: contain; }
 
 #o-wrapper,
 #app-wrapper {
