@@ -424,29 +424,6 @@
       ]
     },
     {
-      "name": "w_p_park",
-      "title": "Park punkt",
-      "source": "internows",
-      "style": "w_p_park",
-      "group": "Kartskaparen",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Objekt: ",
-          "type": "dropdown",
-          "options": [
-            "Papperskorg",
-            "Parkbänk",
-            "Papperskorg + parkbänk"
-          ]
-        }
-      ]
-    },
-    {
       "name": "w_y_park",
       "title": "Park yta",
       "source": "internows",
@@ -1616,32 +1593,6 @@
           "icon": {
             "src": "img/png/tk_w_gtu_p.png"
           }
-        }
-      ]
-    ],
-    "w_p_park": [
-      [
-        {
-          "icon": {
-            "src": "img/png/TK_w_pak_p0.png"
-          },
-          "filter": "[obj] == 'Parkbänk'"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/TK_w_pak_p1.png"
-          },
-          "filter": "[obj] == 'Papperskorg'"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/TK_w_pak_p2.png"
-          },
-          "filter": "[obj] == 'Papperskorg + parkbänk'"
         }
       ]
     ],
