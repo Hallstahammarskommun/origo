@@ -9,6 +9,7 @@ export default function printTemplate({
   createdControl,
   northArrowControl,
   rotationControl,
+  setScaleControl,
   resolutionControl,
   showScaleControl
 }) {
@@ -28,6 +29,8 @@ export default function printTemplate({
     <div class="padding-top"></div>
     <h6>Upplösning</h6>
     ${resolutionControl.render()}
+    <div class="padding-top"></div>
+      ${setScaleControl.render()}
     <div class="padding-top-large"></div>
     <div class="flex padding-right-small">
       <div class="grow text-normal">Använd marginaler</div>
