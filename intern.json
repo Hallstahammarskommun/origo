@@ -270,71 +270,6 @@
   ],
   "layers": [
     {
-      "name": "w_p_arrende",
-      "title": "Arrende",
-      "source": "internows",
-      "style": "w_p_arrende",
-      "group": "HHR",
-      "fme": true,
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Arrendator: ",
-          "type": "text"
-        },
-        {
-          "name": "typ",
-          "title": "Ändamål: ",
-          "type": "text"
-        },
-        {
-          "name": "url",
-          "title": "Sökväg: ",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "p_avlopp",
-      "source": "ows",
-      "style": "p_avlopp",
-      "title": "Enskilda avlopp",
-      "group": "HHR",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj"
-        },
-        {
-          "name": "egn"
-        }
-      ]
-    },
-    {
-      "name": "g_gatubelysning",
-      "source": "internows",
-      "style": "g_gatubelysning",
-      "title": "Gatubelysning",
-      "group": "HHR",
-      "type": "WFS",
-      "visible": false,
-      "attributes": [
-        {
-          "name": "egn",
-          "title": "Objekt: "
-        },
-        {
-          "name": "id_malarenergi",
-          "title": "ID: "
-        }
-      ]
-    },
-    {
       "name": "y_dronare",
       "source": "ows",
       "style": "y_dronare",
@@ -352,25 +287,6 @@
         {
           "name": "egn",
           "title": "Upplösning: "
-        }
-      ]
-    },
-    {
-      "name": "w_p_geoteknisk",
-      "title": "Geoteknisk undersökning",
-      "source": "internows",
-      "style": "w_p_geoteknisk",
-      "group": "HHR",
-      "type": "WFS",
-      "geometryType": "Point",
-      "fme": true,
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Nummer: ",
-          "type": "text"
         }
       ]
     },
@@ -425,6 +341,31 @@
           "name": "datum",
           "title": "Beskrivning av kommande område: ",
           "type": "textarea"
+        }
+      ]
+    },
+    {
+      "name": "w_p_opto",
+      "title": "Opto ansluten",
+      "source": "internows",
+      "style": "w_p_opto",
+      "group": "Kartskaparen",
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Status: ",
+          "type": "dropdown",
+          "options": [
+            "Ansluten",
+            "Avtal",
+            "Intresse",
+            "Kampanj",
+            "Pumpstation"
+          ]
         }
       ]
     },
@@ -579,6 +520,102 @@
       ]
     },
     {
+      "name": "y_tatort",
+      "source": "ows",
+      "style": "y_tatort",
+      "title": "Tätort",
+      "group": "omrade",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
+    },
+    {
+      "name": "w_p_arrende",
+      "title": "Arrende",
+      "source": "internows",
+      "style": "w_p_arrende",
+      "group": "HHR",
+      "fme": true,
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Arrendator: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Ändamål: ",
+          "type": "text"
+        },
+        {
+          "name": "url",
+          "title": "Sökväg: ",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "p_avlopp",
+      "source": "ows",
+      "style": "p_avlopp",
+      "title": "Enskilda avlopp",
+      "group": "HHR",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj"
+        },
+        {
+          "name": "egn"
+        }
+      ]
+    },
+    {
+      "name": "g_gatubelysning",
+      "source": "internows",
+      "style": "g_gatubelysning",
+      "title": "Gatubelysning",
+      "group": "HHR",
+      "type": "WFS",
+      "visible": false,
+      "attributes": [
+        {
+          "name": "egn",
+          "title": "Objekt: "
+        },
+        {
+          "name": "id_malarenergi",
+          "title": "ID: "
+        }
+      ]
+    },    
+    {
+      "name": "w_p_geoteknisk",
+      "title": "Geoteknisk undersökning",
+      "source": "internows",
+      "style": "w_p_geoteknisk",
+      "group": "HHR",
+      "type": "WFS",
+      "geometryType": "Point",
+      "fme": true,
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Nummer: ",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "name": "grundkarta",
       "source": "wms",
       "style": "grundkarta",
@@ -601,18 +638,6 @@
       "type": "WFS",
       "fme": true,
       "visible": false
-    },
-    {
-      "name": "y_tatort",
-      "source": "ows",
-      "style": "y_tatort",
-      "title": "Tätort",
-      "group": "omrade",
-      "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
     },
     {
       "name": "2016_kmv_p",
@@ -655,31 +680,6 @@
       "type": "WMS",
       "visible": false,
       "queryable": false
-    },
-    {
-      "name": "w_p_opto",
-      "title": "Opto ansluten",
-      "source": "internows",
-      "style": "w_p_opto",
-      "group": "HHR",
-      "type": "WFS",
-      "geometryType": "Point",
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Status: ",
-          "type": "dropdown",
-          "options": [
-            "Ansluten",
-            "Avtal",
-            "Intresse",
-            "Kampanj",
-            "Pumpstation"
-          ]
-        }
-      ]
     },
     {
       "name": "primarkarta",
@@ -1521,30 +1521,6 @@
         }
       ]
   ],
-    "opto": [
-      [
-        {
-          "label": "Opto nodpunkt",
-          "circle": {
-            "radius": 5,
-            "stroke": {
-              "color": "rgb(240,163,0)",
-              "width": 5
-            }
-          }
-        }
-      ],
-      [
-        {
-          "label": "Optonät",
-          "header": true,
-          "stroke": {
-            "color": "rgb(240,163,0)",
-            "width": 1
-          }
-        }
-      ]
-    ],
     "w_p_opto": [
       [
         {
@@ -1642,98 +1618,6 @@
         }
       ]
     ],
-    "w_y_park": [
-      [
-        {
-          "filter": "[egn] == 'Kontinuerlig'",
-          "label": "Gräs - Kontinuerlig",
-          "stroke": {
-            "color": "rgba(0,0,0,0.1)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(0,255,0,0.5)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[egn] == '1-3 gånger/säsong'",
-          "label": "Gräs - 1-3 gånger/säsong",
-          "stroke": {
-            "color": "rgba(0,0,0,0.1)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(255,255,0,0.5)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[egn] == '2021'",
-          "label": "Skog - 2021",
-          "stroke": {
-            "color": "rgba(204,30,1,0.25)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(204,30,1,0.5)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[egn] == '2022'",
-          "label": "Skog - 2022",
-          "stroke": {
-            "color": "rgba(112,0,90,0.25)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(112,0,90,0.5)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[egn] == '2023'",
-          "label": "Skog - 2023",
-          "stroke": {
-            "color": "rgba(1,0,72,0.25)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(1,0,72,0.5)"
-          }
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,0,0,0.25)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(255,255,255,0.5)"
-          }
-        }
-      ]
-    ],
-    "w_y_plan": [
-      [
-        {
-          "label": "Pågående detaljplan",
-          "stroke": {
-            "color": "rgba(229,109,30,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(66,89,179,0.3)"
-          }
-        }
-      ]
-    ],
     "w_p_skola": [
       [
         {
@@ -1743,74 +1627,7 @@
           }
         }
       ]
-    ],    
-    "w_y_ledigMark": [
-      [
-        {
-          "filter": "[status] == 'Bokad'",
-          "label": "Bokad",
-          "stroke": {
-            "color": "rgba(0,0,0,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(255,255,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "label": "Kommande",
-          "stroke": {
-            "color": "rgba(255,0,0,0.6)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(255,0,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Ledig'",
-          "label": "Ledig",
-          "stroke": {
-            "color": "rgba(0,0,0,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(0,225,0,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'Såld'",
-          "label": "Såld",
-          "stroke": {
-            "color": "rgba(255,0,0,0.5)",
-            "lineDash": [
-              10,
-              10
-            ],
-            "width": 3
-          },
-          "fill": {
-            "color":"rgba(200,0,0,0.2)"
-          }
-        }
-      ],
-      [
-        {
-          "filter": "[status] == 'null'",
-          "stroke": {
-            "color": "rgba(0,0,0,0.5)",
-            "width": 1
-          }
-        }
-      ]
-    ],
+    ],   
     "w_l_snorojning": [
       [
         {
@@ -1948,6 +1765,226 @@
         }
       ]
     ],
+    "opto": [
+      [
+        {
+          "label": "Opto nodpunkt",
+          "circle": {
+            "radius": 5,
+            "stroke": {
+              "color": "rgb(240,163,0)",
+              "width": 5
+            }
+          }
+        }
+      ],
+      [
+        {
+          "label": "Optonät",
+          "header": true,
+          "stroke": {
+            "color": "rgb(240,163,0)",
+            "width": 1
+          }
+        }
+      ]
+    ],
+    "va": [
+      [
+        {
+          "label": "Dagvatten",
+          "stroke": {
+            "color": "rgb(0,128,0)",
+            "width": 1,
+            "lineDash": [
+              6,
+              2
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Spillvatten",
+          "stroke": {
+            "color": "rgb(255,0,0)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Vatten",
+          "stroke": {
+            "color": "rgb(0,0,255)",
+            "width": 1,
+            "lineDash": [
+              3,
+              2
+            ]
+          }
+        }
+      ]
+    ],
+    "w_y_park": [
+      [
+        {
+          "filter": "[egn] == 'Kontinuerlig'",
+          "label": "Gräs - Kontinuerlig",
+          "stroke": {
+            "color": "rgba(0,0,0,0.1)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,255,0,0.5)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == '1-3 gånger/säsong'",
+          "label": "Gräs - 1-3 gånger/säsong",
+          "stroke": {
+            "color": "rgba(0,0,0,0.1)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,0,0.5)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == '2021'",
+          "label": "Skog - 2021",
+          "stroke": {
+            "color": "rgba(204,30,1,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(204,30,1,0.5)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == '2022'",
+          "label": "Skog - 2022",
+          "stroke": {
+            "color": "rgba(112,0,90,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(112,0,90,0.5)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[egn] == '2023'",
+          "label": "Skog - 2023",
+          "stroke": {
+            "color": "rgba(1,0,72,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(1,0,72,0.5)"
+          }
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,0,0,0.25)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,255,0.5)"
+          }
+        }
+      ]
+    ],
+    "w_y_plan": [
+      [
+        {
+          "label": "Pågående detaljplan",
+          "stroke": {
+            "color": "rgba(229,109,30,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(66,89,179,0.3)"
+          }
+        }
+      ]
+    ], 
+    "w_y_ledigMark": [
+      [
+        {
+          "filter": "[status] == 'Bokad'",
+          "label": "Bokad",
+          "stroke": {
+            "color": "rgba(0,0,0,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(255,255,0,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[status] == 'Kommande'",
+          "label": "Kommande",
+          "stroke": {
+            "color": "rgba(255,0,0,0.6)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(255,0,0,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[status] == 'Ledig'",
+          "label": "Ledig",
+          "stroke": {
+            "color": "rgba(0,0,0,0.6)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,225,0,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[status] == 'Såld'",
+          "label": "Såld",
+          "stroke": {
+            "color": "rgba(255,0,0,0.5)",
+            "lineDash": [
+              10,
+              10
+            ],
+            "width": 3
+          },
+          "fill": {
+            "color":"rgba(200,0,0,0.2)"
+          }
+        }
+      ],
+      [
+        {
+          "filter": "[status] == 'null'",
+          "stroke": {
+            "color": "rgba(0,0,0,0.5)",
+            "width": 1
+          }
+        }
+      ]
+    ],    
     "y_dronare": [
       [
         {
@@ -2278,43 +2315,6 @@
           "label": "Primärkarta",
           "icon": {
             "src": "img/png/primarkarta.png"
-          }
-        }
-      ]
-    ],
-    "va": [
-      [
-        {
-          "label": "Dagvatten",
-          "stroke": {
-            "color": "rgb(0,128,0)",
-            "width": 1,
-            "lineDash": [
-              6,
-              2
-            ]
-          }
-        }
-      ],
-      [
-        {
-          "label": "Spillvatten",
-          "stroke": {
-            "color": "rgb(255,0,0)",
-            "width": 1
-          }
-        }
-      ],
-      [
-        {
-          "label": "Vatten",
-          "stroke": {
-            "color": "rgb(0,0,255)",
-            "width": 1,
-            "lineDash": [
-              3,
-              2
-            ]
           }
         }
       ]
