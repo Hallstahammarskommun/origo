@@ -218,6 +218,11 @@
           "name": "Kartskaparen",
           "title": "Kartskaparen",
           "expanded": false
+        },
+        {
+          "name": "omrade",
+          "title": "Områden",
+          "expanded": false
         }
       ]
     },
@@ -598,6 +603,18 @@
       "visible": false
     },
     {
+      "name": "y_tatort",
+      "source": "ows",
+      "style": "y_tatort",
+      "title": "Tätort",
+      "group": "omrade",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
+    },
+    {
       "name": "2016_kmv_p",
       "source": "internows",
       "style": "2016_kmv_p",
@@ -681,7 +698,7 @@
       "name": "p_stompunkt",
       "source": "internows",
       "style": "p_stompunkt",
-      "title": "Stompunkter",
+      "title": "Stompunkt",
       "group": "HHR",
       "type": "WFS",
       "geometryType": "Point",
@@ -1596,6 +1613,35 @@
         }
       ]
     ],
+    "p_stompunkt": [
+      [
+        {
+          "label": "Höjdfix",
+          "filter": "[stompunkttyp] == 'höjdpunkt'",
+          "icon": {
+            "src": "img/png/droppe_orange.png"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Planpunkt",
+          "filter": "[stompunkttyp] == 'planpunkt'",
+          "icon": {
+            "src": "img/png/droppe_black.png"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Plan- och höjdpunkt",
+          "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
+          "icon": {
+            "src": "img/png/drop_blue.png"
+          }
+        }
+      ]
+    ],
     "w_y_park": [
       [
         {
@@ -2170,6 +2216,52 @@
         }
       ]
     ],
+    "y_tatort": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(77,23,109,0.7)",
+            "width": 1.4
+          },
+          "fill": {
+            "color": "rgba(77,23,109,0.3)"
+          }
+        },
+        {
+          "text": {
+            "font": "Bold 16px Arial",
+            "textAlign": "center",
+            "offsetX": 0,
+            "offsetY": 0,
+            "overflow": true,
+            "stroke": {
+              "color": "rgba(255,255,255,0.7)",
+              "width": 4
+            },
+            "text": "{{tatort}}",
+            "fill": {
+              "color": "rgba(77,23,109,0.9)"
+            }
+          }
+        },
+        {
+          "text": {
+            "font": "Bold 11px Arial",
+            "textAlign": "center",
+            "offsetX": 0,
+            "offsetY": 17,
+            "stroke": {
+              "color": "rgba(255,255,255,0.7)",
+              "width": 2
+            },
+            "text": "Befolkning: {{bef}}",
+            "fill": {
+              "color": "rgba(77,23,109,0.9)"
+            }
+          }
+        }
+      ]
+    ],
     "grundkarta": [
       [
         {
@@ -2186,35 +2278,6 @@
           "label": "Primärkarta",
           "icon": {
             "src": "img/png/primarkarta.png"
-          }
-        }
-      ]
-    ],
-    "p_stompunkt": [
-      [
-        {
-          "label": "Höjdfix",
-          "filter": "[stompunkttyp] == 'höjdpunkt'",
-          "icon": {
-            "src": "img/png/droppe_orange.png"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Planpunkt",
-          "filter": "[stompunkttyp] == 'planpunkt'",
-          "icon": {
-            "src": "img/png/droppe_black.png"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Plan- och höjdpunkt",
-          "filter": "[stompunkttyp] == 'plan-höjdpunkt'",
-          "icon": {
-            "src": "img/png/drop_blue.png"
           }
         }
       ]
