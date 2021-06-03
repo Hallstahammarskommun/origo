@@ -175,6 +175,8 @@ const Download = function Download(options = {}) {
     });
     extent = encodeURI(extent).replace(/,/g, '%20');
     fmeUrl += `&extent=${extent}`;
+    const username = localStorage.getItem('username');
+    fmeUrl += `&username=${username}`;
     /* } else {
       const feature = drawLayer.getFeatureLayer().getSource().getFeatures()[0];
       drawExtent = feature.getGeometry().getCoordinates();
