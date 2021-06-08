@@ -93,7 +93,17 @@
           "logo": {
             "src": "css/png/logo_print.png"
           },
-          "showNorthArrow": false
+          "showNorthArrow": false,
+          "scales": [
+            "1:100000",
+            "1:50000",
+            "1:25000",
+            "1:10000",
+            "1:5000",
+            "1:2500",
+            "1:1000",
+            "1:500"
+          ]
       }
     }
   ],

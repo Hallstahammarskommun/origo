@@ -55,8 +55,8 @@ export default function SetScaleControl(options = {}, map) {
     render() {
       return `
       <div class="padding-top-large"></div>
-      <h6 style="display: none;">Välj utskriftsskala</h6>
-      <div class="padding-smaller o-tooltip active" style="display: none;">
+      <h6>Välj utskriftsskala</h6>
+      <div class="padding-smaller o-tooltip active">
         ${selectScale.render()}
       </div>`;
     }
