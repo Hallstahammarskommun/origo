@@ -221,18 +221,15 @@
       "groups": [
         {
           "name": "DF",
-          "title": "Drönarfoton",
-          "expanded": false
+          "title": "Drönarfoton"
         },
         {
           "name": "Kartskaparen",
-          "title": "Kartskaparen",
-          "expanded": false
+          "title": "Kartskaparen"
         },
         {
           "name": "omrade",
-          "title": "Områden",
-          "expanded": false
+          "title": "Områden"
         }
       ]
     },
@@ -624,19 +621,6 @@
           "type": "text"
         }
       ]
-    },
-    {
-      "name": "grundkarta",
-      "source": "wms",
-      "style": "grundkarta",
-      "title": "Grundkarta",
-      "format": "image/png",
-      "group": "HHR",
-      "type": "WMS",
-      "fme": true,
-      "visible": false,
-      "queryable": false,
-      "abstract": "Grundkartan är en storskalig karta som används som underlag för upprättande av detaljplan."
     },
     {
       "name": "y_kommunalFastighet",
@@ -2305,16 +2289,6 @@
             "fill": {
               "color": "rgba(77,23,109,0.9)"
             }
-          }
-        }
-      ]
-    ],
-    "grundkarta": [
-      [
-        {
-          "label": "Grundkarta",
-          "icon": {
-            "src": "img/png/grundkarta.png"
           }
         }
       ]
