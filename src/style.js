@@ -169,11 +169,9 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
       if (Object.prototype.hasOwnProperty.call(s[j][0], 'filter')) {
         let expr;
         // find attribute vale between [] defined in styles
-
         let regexExpr;
         let regexFilter;
         let featMatch;
-
         const matches = s[j][0].filter.match(/\[(.*?)\]/);
         if (matches) {
           let first = feature;
@@ -193,6 +191,7 @@ function checkOptions(feature, scale, styleSettings, styleList, size) {
             styleL = styleList[j];
             return styleL;
           }
+        // eslint-disable-next-line brace-style
         }
         // eslint-disable-next-line no-eval
         else if (eval(expr)) {
@@ -300,7 +299,6 @@ function createStyleRule(options) {
   }
   return styleRule;
 }
-
 function createGeometryCollectionStyle(options) {
   const styleRule = [];
 
