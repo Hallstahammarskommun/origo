@@ -98,7 +98,6 @@
             "type": "dropdown",
             "options": [
               "dwg",
-              "shape",
               "GeoJSON",
               "GeoPackage"
             ]
