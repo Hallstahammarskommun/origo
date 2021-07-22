@@ -6,8 +6,7 @@
     {
       "name": "externalurl",
       "options": {
-        "links": 
-        [
+        "links": [
           {
             "tooltipText": "Google street view",
             "method": "LatLon",
@@ -35,7 +34,11 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]
+        "measureTools": [
+          "length",
+          "area",
+          "elevation"
+        ]
       }
     },
     {
@@ -115,20 +118,20 @@
     {
       "name": "print",
       "options": {
-          "logo": {
-            "src": "css/png/logo_print.png"
-          },
-          "showNorthArrow": false,
-          "scales": [
-            "1:100000",
-            "1:50000",
-            "1:25000",
-            "1:10000",
-            "1:5000",
-            "1:2500",
-            "1:1000",
-            "1:500"
-          ]
+        "logo": {
+          "src": "css/png/logo_print.png"
+        },
+        "showNorthArrow": false,
+        "scales": [
+          "1:100000",
+          "1:50000",
+          "1:25000",
+          "1:10000",
+          "1:5000",
+          "1:2500",
+          "1:1000",
+          "1:500"
+        ]
       }
     }
   ],
@@ -224,7 +227,8 @@
         },
         {
           "name": "Kartskaparen",
-          "title": "Kartskaparen"
+          "title": "Kartskaparen",
+          "abstract": "Här finns de lager som förvaltningarna själva ansvarar för och ajourhåller."
         },
         {
           "name": "omrade",
@@ -243,24 +247,27 @@
       "expanded": false
     },
     {
-      "name": "MSB",
-      "title": "MSB",
-      "expanded": false
-    },
-    {
-      "name": "RAA",
-      "title": "Riksantikvarieämbetet",
-      "expanded": false
-    },
-    {
-      "name": "SGU",
-      "title": "SGU",
-      "expanded": false
-    },
-    {
-      "name": "TV",
-      "title": "Trafikverket",
-      "expanded": false
+      "name": "MY",
+      "title": "Myndgiheter",
+      "expanded": false,
+      "groups": [
+        {
+          "name": "MSB",
+          "title": "MSB"
+        },
+        {
+          "name": "RAA",
+          "title": "Riksantikvarieämbetet"
+        },
+        {
+          "name": "SGU",
+          "title": "SGU"
+        },
+        {
+          "name": "TV",
+          "title": "Trafikverket"
+        }
+      ]
     },
     {
       "name": "historiska",
@@ -295,6 +302,56 @@
           "title": "Upplösning: "
         }
       ]
+    },
+    {
+      "name": "w_p_arrende",
+      "title": "Arrende",
+      "source": "internows",
+      "style": "w_p_arrende",
+      "group": "Kartskaparen",
+      "fme": true,
+      "type": "WFS",
+      "geometryType": "Point",
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Arrendator: ",
+          "type": "text"
+        },
+        {
+          "name": "typ",
+          "title": "Ändamål: ",
+          "type": "text"
+        },
+        {
+          "name": "url",
+          "title": "Sökväg: ",
+          "type": "text"
+        }
+      ],
+      "abstract": "Fastighetsavdelningen ansvarar för lagret"
+    },
+    {
+      "name": "w_p_geoteknisk",
+      "title": "Geoteknisk undersökning",
+      "source": "internows",
+      "style": "w_p_geoteknisk",
+      "group": "Kartskaparen",
+      "type": "WFS",
+      "geometryType": "Point",
+      "fme": true,
+      "visible": false,
+      "editable": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Nummer: ",
+          "type": "text"
+        }
+      ],
+      "abstract": "VA-avdelningen ansvarar för lagret"
     },
     {
       "name": "w_y_ledigMark",
@@ -348,7 +405,8 @@
           "title": "Beskrivning av kommande område: ",
           "type": "textarea"
         }
-      ]
+      ],
+      "abstract": "Kundcenter ansvarar för lagret"
     },
     {
       "name": "w_p_opto",
@@ -373,7 +431,8 @@
             "Pumpstation"
           ]
         }
-      ]
+      ],
+      "abstract": "Strategisk utveckling och planering ansvarar för lagret"
     },
     {
       "name": "w_y_park",
@@ -444,7 +503,8 @@
           "title": "Länk: ",
           "type": "text"
         }
-      ]
+      ],
+      "abstract": "Samhällsbyggnadsenheten ansvarar för lagret"
     },
     {
       "name": "w_p_skola",
@@ -526,6 +586,18 @@
       ]
     },
     {
+      "name": "omradesgrans_y",
+      "source": "ows",
+      "style": "omradesgrans_y",
+      "title": "Områdesgräns",
+      "group": "omrade",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "abstract": "Områdesgränserna är digitaliserade Samhällsbyggnadsenheten och delar in kommunen i olika delar."
+    },
+    {
       "name": "y_tatort",
       "source": "ows",
       "style": "y_tatort",
@@ -538,33 +610,39 @@
       "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
     },
     {
-      "name": "w_p_arrende",
-      "title": "Arrende",
+      "name": "p_folkbokforing",
       "source": "internows",
-      "style": "w_p_arrende",
+      "style": "p_folkbokforing",
+      "title": "Befolkning",
+      "format": "image/png",
       "group": "HHR",
-      "fme": true,
       "type": "WFS",
-      "geometryType": "Point",
+      "fme": false,
       "visible": false,
-      "editable": true,
       "attributes": [
         {
-          "name": "obj",
-          "title": "Arrendator: ",
-          "type": "text"
+          "name": "fornamn"
         },
         {
-          "name": "typ",
-          "title": "Ändamål: ",
-          "type": "text"
+          "name": "efternamn"
         },
         {
-          "name": "url",
-          "title": "Sökväg: ",
-          "type": "text"
+          "name": "adress"
+        },
+        {
+          "name": "postnr"
+        },
+        {
+          "name": "ort"
+        },
+        {
+          "name": "koen"
+        },
+        {
+          "name": "personnr"
         }
-      ]
+      ],
+      "abstract": "Lagret innehåller personuppgifter, du är ansvarig för att data inte sprids."
     },
     {
       "name": "p_avlopp",
@@ -581,7 +659,8 @@
         {
           "name": "egn"
         }
-      ]
+      ],
+      "abstract": "Data läses från EDP Vision"
     },
     {
       "name": "g_gatubelysning",
@@ -600,26 +679,8 @@
           "name": "id_malarenergi",
           "title": "ID: "
         }
-      ]
-    },    
-    {
-      "name": "w_p_geoteknisk",
-      "title": "Geoteknisk undersökning",
-      "source": "internows",
-      "style": "w_p_geoteknisk",
-      "group": "HHR",
-      "type": "WFS",
-      "geometryType": "Point",
-      "fme": true,
-      "visible": false,
-      "editable": true,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Nummer: ",
-          "type": "text"
-        }
-      ]
+      ],
+      "abstract": "Data kommer från Mälarenergi och uppdateras en gång om året"
     },
     {
       "name": "y_kommunalFastighet",
@@ -672,7 +733,8 @@
       "group": "HHR",
       "type": "WMS",
       "visible": false,
-      "queryable": false
+      "queryable": false,
+      "abstract": "Data kommer från Mälarenergi och uppdateras en gång om året"
     },
     {
       "name": "primarkarta",
@@ -735,7 +797,8 @@
       "group": "HHR",
       "queryable": false,
       "type": "WMS",
-      "visible": false
+      "visible": false,
+      "abstract": "Data läses från VA-Banken"
     },
     {
       "name": "pbr_bestammelser",
@@ -781,7 +844,8 @@
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
-            }, {
+            },
+            {
               "title": "Akt Direkt, låst",
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
@@ -1018,7 +1082,7 @@
     },
     {
       "name": "kolbacksan_100",
-      "opacity":0.5,
+      "opacity": 0.5,
       "source": "wms",
       "style": "msb_kolbacksan_100_y",
       "title": "Kolbäcksån 100-årsflöde (2014)",
@@ -1030,7 +1094,7 @@
     },
     {
       "name": "kolbacksan_200",
-      "opacity":0.5,
+      "opacity": 0.5,
       "source": "wms",
       "style": "msb_kolbacksan_200_y",
       "title": "Kolbäcksån 200-årsflöde (2014)",
@@ -1053,7 +1117,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_100arsniva",
-      "opacity":0.5,
+      "opacity": 0.5,
       "source": "wms",
       "style": "msb_malaren_100_y",
       "title": "Mälaren 100-årsnivå",
@@ -1065,7 +1129,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_200arsniva",
-      "opacity":0.5,
+      "opacity": 0.5,
       "source": "wms",
       "style": "msb_malaren_200_y",
       "title": "Mälaren 200-årsnivå",
@@ -1077,7 +1141,7 @@
     },
     {
       "name": "MSB_Oversvamningskartering_Malaren_BeraknatHogstaFlode",
-      "opacity":0.5,
+      "opacity": 0.5,
       "source": "wms",
       "style": "msb_malaren_bhf_y",
       "title": "Mälaren högsta beräknat flöde",
@@ -1293,7 +1357,7 @@
       "visible": false,
       "queryable": false
     },
-	{
+    {
       "name": "Ortofoto_farg_2018",
       "source": "wms",
       "style": "orto_historisk",
@@ -1321,7 +1385,7 @@
       "name": "topowebbkartan_nedtonad",
       "source": "wms",
       "title": "Karta, grå",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_gra",
       "visible": true
@@ -1333,7 +1397,7 @@
       "name": "topowebbkartan",
       "source": "wms",
       "title": "Karta, färg",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_farg",
       "visible": false
@@ -1345,7 +1409,7 @@
       "name": "ortofoto",
       "source": "wms",
       "title": "Flygfoto",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "orto",
       "visible": false
@@ -1431,6 +1495,23 @@
         }
       ]
     ],
+    "p_folkbokforing": [
+      [
+        {
+          "label": "Folkbokföring",
+          "circle": {
+            "radius": 6,
+            "stroke": {
+              "color": "rgba(104, 164, 74, 0.9)",
+              "width": 2
+            },
+            "fill": {
+              "color": "rgba(187, 214, 205,0.5)"
+            }
+          }
+        }
+      ]
+    ],
     "p_avlopp": [
       [
         {
@@ -1471,8 +1552,8 @@
             "fill": {
               "color": "rgb(131,43,202)"
             },
-            "stroke":{
-              "color":"rgb(255,255,255)"
+            "stroke": {
+              "color": "rgb(255,255,255)"
             }
           }
         }
@@ -1486,8 +1567,8 @@
             "fill": {
               "color": "rgb(131,43,202)"
             },
-            "stroke":{
-              "color":"rgb(255,255,255)"
+            "stroke": {
+              "color": "rgb(255,255,255)"
             }
           }
         }
@@ -1513,7 +1594,7 @@
           }
         }
       ]
-  ],
+    ],
     "w_p_opto": [
       [
         {
@@ -1620,7 +1701,7 @@
           }
         }
       ]
-    ],   
+    ],
     "w_l_snorojning": [
       [
         {
@@ -1910,7 +1991,7 @@
           }
         }
       ]
-    ], 
+    ],
     "w_y_ledigMark": [
       [
         {
@@ -1964,7 +2045,7 @@
             "width": 3
           },
           "fill": {
-            "color":"rgba(200,0,0,0.2)"
+            "color": "rgba(200,0,0,0.2)"
           }
         }
       ],
@@ -1977,7 +2058,7 @@
           }
         }
       ]
-    ],    
+    ],
     "y_dronare": [
       [
         {
@@ -2243,6 +2324,36 @@
           },
           "filter": "[code] == '6000'",
           "minScale": 3000
+        }
+      ]
+    ],
+    "omradesgrans_y": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(100,107,117,0.7)",
+            "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(100,107,117,0.3)"
+          }
+        },
+        {
+          "text": {
+            "font": "Bold 12px Arial",
+            "textAlign": "center",
+            "offsetX": 0,
+            "offsetY": 0,
+            "overflow": true,
+            "stroke": {
+              "color": "rgba(255,255,255,0.7)",
+              "width": 4
+            },
+            "text": "{{namn}}",
+            "fill": {
+              "color": "rgba(0,0,0,0.9)"
+            }
+          }
         }
       ]
     ],

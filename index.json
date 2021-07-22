@@ -3,8 +3,7 @@
     {
       "name": "externalurl",
       "options": {
-        "links": 
-        [
+        "links": [
           {
             "tooltipText": "Google street view",
             "method": "LatLon",
@@ -21,7 +20,7 @@
       "name": "legend",
       "options": {
         "labelOpacitySlider": "Opacity",
-        "useGroupIndication" : true
+        "useGroupIndication": true
       }
     },
     {
@@ -33,7 +32,11 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]
+        "measureTools": [
+          "length",
+          "area",
+          "elevation"
+        ]
       }
     },
     {
@@ -89,20 +92,20 @@
     {
       "name": "print",
       "options": {
-          "logo": {
-            "src": "css/png/logo_print.png"
-          },
-          "showNorthArrow": false,
-          "scales": [
-            "1:100000",
-            "1:50000",
-            "1:25000",
-            "1:10000",
-            "1:5000",
-            "1:2500",
-            "1:1000",
-            "1:500"
-          ]
+        "logo": {
+          "src": "css/png/logo_print.png"
+        },
+        "showNorthArrow": false,
+        "scales": [
+          "1:100000",
+          "1:50000",
+          "1:25000",
+          "1:10000",
+          "1:5000",
+          "1:2500",
+          "1:1000",
+          "1:500"
+        ]
       }
     }
   ],
@@ -542,7 +545,7 @@
       "group": "none",
       "type": "WFS",
       "visible": false
-    },    
+    },
     {
       "name": "w_p_skola__Forskola",
       "source": "ows",
@@ -714,7 +717,7 @@
       "name": "topowebbkartan_nedtonad",
       "source": "wms",
       "title": "Karta, grå",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_gra",
       "visible": true
@@ -726,7 +729,7 @@
       "name": "topowebbkartan",
       "source": "wms",
       "title": "Karta, färg",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_farg",
       "visible": false
@@ -738,7 +741,7 @@
       "name": "ortofoto",
       "source": "wms",
       "title": "Flygfoto",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "orto",
       "visible": false
@@ -1294,7 +1297,7 @@
             "width": 3
           },
           "fill": {
-            "color":"rgba(200,0,0,0.2)"
+            "color": "rgba(200,0,0,0.2)"
           }
         }
       ]
