@@ -91,24 +91,6 @@
       }
     },
     {
-      "name": "download",
-      "options": {
-        "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?token=fd92fd2624f48b1631c8a967cc7a4708c6e97797&",
-        "params": [
-          {
-            "name": "DestinationFormat",
-            "title": "Välj format: ",
-            "type": "dropdown",
-            "options": [
-              "dwg",
-              "GeoJSON",
-              "GeoPackage"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "name": "about",
       "options": {
         "title": "Om kartan",
