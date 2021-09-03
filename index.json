@@ -620,27 +620,6 @@
       ]
     },
     {
-      "name": "g_brukslinjen",
-      "source": "ows",
-      "style": "g_brukslinjen",
-      "title": "Brukslinjen",
-      "group": "trafik",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Hållplats: "
-        },
-        {
-          "title": "Mer information",
-          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
-          "taget": "_blank"
-        }
-      ]
-    },
-    {
       "name": "l_servicelinjen",
       "source": "ows",
       "style": "l_servicelinjen",
@@ -1517,27 +1496,6 @@
           },
           "filter": "[obj] == 'Kolbäck'",
           "label": "Kolbäck"
-        }
-      ]
-    ],
-    "g_brukslinjen": [
-      [
-        {
-          "filter": "[egn] == 'sträckning'",
-          "label": "Linje",
-          "header": true,
-          "stroke": {
-            "color": "rgb(74, 125, 179)",
-            "width": 6
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/ks_brl_g.png"
-          },
-          "label": "Hållplats"
         }
       ]
     ],
