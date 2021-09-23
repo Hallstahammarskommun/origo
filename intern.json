@@ -189,11 +189,11 @@
     },
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
-      "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/ows?service=WMS&version=1.1.1&request=GetCapabilities",
       "strategy": "all"
     },
     "internows": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/ows",
+      "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/ows?service=WMS&version=1.1.1&request=GetCapabilities",
       "workspace": "geodataenheten",
       "strategy": "all"
     }
@@ -211,11 +211,13 @@
         {
           "name": "Kartskaparen",
           "title": "Kartskaparen",
+          "toggleAll": false,
           "abstract": "Här finns de lager som förvaltningarna själva ansvarar för och ajourhåller."
         },
         {
           "name": "omrade",
-          "title": "Områden"
+          "title": "Områden",
+          "toggleAll": false
         }
       ]
     },
@@ -736,7 +738,7 @@
     },
     {
       "name": "p_stompunkt",
-      "source": "internows",
+      "source": "ows",
       "style": "p_stompunkt",
       "title": "Stompunkt",
       "group": "HHR",
