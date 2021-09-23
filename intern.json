@@ -236,7 +236,8 @@
       "groups": [
         {
           "name": "MSB",
-          "title": "MSB"
+          "title": "MSB",
+          "toggleAll": false
         },
         {
           "name": "RAA",
@@ -244,7 +245,8 @@
         },
         {
           "name": "SGU",
-          "title": "SGU"
+          "title": "SGU",
+          "toggleAll": false
         },
         {
           "name": "TV",
