@@ -174,7 +174,6 @@
     0.21,
     0.14
   ],
-  "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
   "featureinfoOptions": {
     "infowindow": "infowindow"
   },
@@ -185,10 +184,12 @@
     },
     "internwms": {
       "url": "https://karta.hallstahammar.se/intern/kartserver/wms",
+      "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/wms?service=WMS&version=1.1.1&request=GetCapabilities",
       "version": "1.1.1"
     },
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
+      "capabilitiesURL": "https://karta.hallstahammar.se/intern/kartserver/ows?service=WMS&version=1.1.1&request=GetCapabilities",
       "strategy": "all"
     },
     "internows": {
