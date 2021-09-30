@@ -55,7 +55,7 @@
       "options": {
         "url": "https://karta.hallstahammar.se/search",
         "searchAttribute": "NAMN",
-        "geometryAttribute": "st_astext",
+        "geometryAttribute": "GEOM",
         "titleAttribute": "layer",
         "contentAttribute": "NAMN",
         "groupSuggestions": true,
