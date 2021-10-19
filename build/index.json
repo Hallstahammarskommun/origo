@@ -3,8 +3,7 @@
     {
       "name": "externalurl",
       "options": {
-        "links": 
-        [
+        "links": [
           {
             "tooltipText": "Google street view",
             "method": "LatLon",
@@ -21,7 +20,7 @@
       "name": "legend",
       "options": {
         "labelOpacitySlider": "Opacity",
-        "useGroupIndication" : true
+        "useGroupIndication": true
       }
     },
     {
@@ -33,7 +32,11 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]
+        "measureTools": [
+          "length",
+          "area",
+          "elevation"
+        ]
       }
     },
     {
@@ -50,7 +53,7 @@
       "options": {
         "url": "https://karta.hallstahammar.se/search",
         "searchAttribute": "NAMN",
-        "geometryAttribute": "st_astext",
+        "geometryAttribute": "GEOM",
         "titleAttribute": "layer",
         "contentAttribute": "NAMN",
         "groupSuggestions": true,
@@ -62,25 +65,6 @@
       "name": "sharemap"
     },
     {
-      "name": "download",
-      "options": {
-        "url": "https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?token=fd92fd2624f48b1631c8a967cc7a4708c6e97797&",
-        "params": [
-          {
-            "name": "DestinationFormat",
-            "title": "Välj format: ",
-            "type": "dropdown",
-            "options": [
-              "dwg",
-              "shape",
-              "GeoJSON",
-              "GeoPackage"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "name": "about",
       "options": {
         "title": "Om Hallstakartan",
@@ -90,20 +74,20 @@
     {
       "name": "print",
       "options": {
-          "logo": {
-            "src": "css/png/logo_print.png"
-          },
-          "showNorthArrow": false,
-          "scales": [
-            "1:100000",
-            "1:50000",
-            "1:25000",
-            "1:10000",
-            "1:5000",
-            "1:2500",
-            "1:1000",
-            "1:500"
-          ]
+        "logo": {
+          "src": "css/png/logo_print.png"
+        },
+        "showNorthArrow": false,
+        "scales": [
+          "1:100000",
+          "1:50000",
+          "1:25000",
+          "1:10000",
+          "1:5000",
+          "1:2500",
+          "1:1000",
+          "1:500"
+        ]
       }
     }
   ],
@@ -543,7 +527,7 @@
       "group": "none",
       "type": "WFS",
       "visible": false
-    },    
+    },
     {
       "name": "w_p_skola__Forskola",
       "source": "ows",
@@ -636,27 +620,6 @@
       ]
     },
     {
-      "name": "g_brukslinjen",
-      "source": "ows",
-      "style": "g_brukslinjen",
-      "title": "Brukslinjen",
-      "group": "trafik",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Hållplats: "
-        },
-        {
-          "title": "Mer information",
-          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
-          "taget": "_blank"
-        }
-      ]
-    },
-    {
       "name": "l_servicelinjen",
       "source": "ows",
       "style": "l_servicelinjen",
@@ -715,7 +678,7 @@
       "name": "topowebbkartan_nedtonad",
       "source": "wms",
       "title": "Karta, grå",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_gra",
       "visible": true
@@ -727,7 +690,7 @@
       "name": "topowebbkartan",
       "source": "wms",
       "title": "Karta, färg",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "karta_farg",
       "visible": false
@@ -739,7 +702,7 @@
       "name": "ortofoto",
       "source": "wms",
       "title": "Flygfoto",
-	    "queryable": false,
+      "queryable": false,
       "type": "WMS",
       "style": "orto",
       "visible": false
@@ -1295,7 +1258,7 @@
             "width": 3
           },
           "fill": {
-            "color":"rgba(200,0,0,0.2)"
+            "color": "rgba(200,0,0,0.2)"
           }
         }
       ]
@@ -1533,27 +1496,6 @@
           },
           "filter": "[obj] == 'Kolbäck'",
           "label": "Kolbäck"
-        }
-      ]
-    ],
-    "g_brukslinjen": [
-      [
-        {
-          "filter": "[egn] == 'sträckning'",
-          "label": "Linje",
-          "header": true,
-          "stroke": {
-            "color": "rgb(74, 125, 179)",
-            "width": 6
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "src": "img/png/ks_brl_g.png"
-          },
-          "label": "Hållplats"
         }
       ]
     ],
