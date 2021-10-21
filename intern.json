@@ -213,11 +213,6 @@
           "title": "Kartskaparen",
           "toggleAll": false,
           "abstract": "Här finns de lager som förvaltningarna själva ansvarar för och ajourhåller."
-        },
-        {
-          "name": "omrade",
-          "title": "Områden",
-          "toggleAll": false
         }
       ]
     },
@@ -467,7 +462,8 @@
             "2023"
           ]
         }
-      ]
+      ],
+      "abstract": "Gata/park ansvarar för lagret"
     },
     {
       "name": "w_y_plan",
@@ -571,32 +567,8 @@
             "15"
           ]
         }
-      ], 
+      ],
       "abstract": "Gata/park ansvarar för lagret"
-    },
-    {
-      "name": "omradesgrans_y",
-      "source": "ows",
-      "style": "omradesgrans_y",
-      "title": "Områdesgräns",
-      "group": "omrade",
-      "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "abstract": "Områdesgränserna är digitaliserade Samhällsbyggnadsenheten och delar in kommunen i olika delar."
-    },
-    {
-      "name": "y_tatort",
-      "source": "ows",
-      "style": "y_tatort",
-      "title": "Tätort",
-      "group": "omrade",
-      "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
     },
     {
       "name": "p_folkbokforing",
@@ -681,7 +653,7 @@
       "type": "WFS",
       "fme": true,
       "visible": false,
-      "abstract": "Data läses från FBWebb"
+      "abstract": "Data läses från FB Webb"
     },
     {
       "name": "2016_kmv_p",
@@ -777,6 +749,18 @@
           "img": "img"
         }
       ]
+    },
+    {
+      "name": "y_tatort",
+      "source": "ows",
+      "style": "y_tatort",
+      "title": "Tätort",
+      "group": "HHR",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "abstract": "En tätort har sammanhängande bebyggelse med minst 200 invånare. Statistiken sammanställs av SCB. Senaste uppdateringen av tätortsytan är från 2018."
     },
     {
       "name": "va",
@@ -2314,36 +2298,6 @@
           },
           "filter": "[code] == '6000'",
           "minScale": 3000
-        }
-      ]
-    ],
-    "omradesgrans_y": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(100,107,117,0.7)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(100,107,117,0.3)"
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "offsetX": 0,
-            "offsetY": 0,
-            "overflow": true,
-            "stroke": {
-              "color": "rgba(255,255,255,0.7)",
-              "width": 4
-            },
-            "text": "{{namn}}",
-            "fill": {
-              "color": "rgba(0,0,0,0.9)"
-            }
-          }
         }
       ]
     ],
