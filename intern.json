@@ -535,7 +535,8 @@
           "title": "Länk: ",
           "type": "text"
         }
-      ]
+      ],
+      "abstract": "Barn- och utbildningsnämnden ansvarar för lagret"
     },
     {
       "name": "w_l_snorojning",
@@ -570,7 +571,8 @@
             "15"
           ]
         }
-      ]
+      ], 
+      "abstract": "Gata/park ansvarar för lagret"
     },
     {
       "name": "omradesgrans_y",
@@ -678,7 +680,8 @@
       "queryable": false,
       "type": "WFS",
       "fme": true,
-      "visible": false
+      "visible": false,
+      "abstract": "Data läses från FBWebb"
     },
     {
       "name": "2016_kmv_p",
@@ -734,7 +737,7 @@
       "fme": true,
       "visible": false,
       "queryable": false,
-      "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad."
+      "abstract": "Primärkarta är en mycket detaljerad karta som ligger till grund för de nybyggnadskartor och grundkartor som används inom stadsbyggnad. Samhällsbyggnadsenheten ansvarar för lagret."
     },
     {
       "name": "p_stompunkt",
@@ -748,7 +751,7 @@
       "visible": false,
       "filter": "status <> 'förstörd'",
       "strategy": "bbox",
-      "abstract": "I Hallstahammars har vi ungefär 1 800 stompunkter som tillsammans utgör Hallstahammars geodetiska stomnät. Stompunkterna är grunden för all kartframställning och för all lägesdokumentation, fastighetsbildning och inmätning.",
+      "abstract": "I Hallstahammars har vi ungefär 1 800 stompunkter som tillsammans utgör Hallstahammars geodetiska stomnät. Stompunkterna är grunden för all kartframställning och för all lägesdokumentation, fastighetsbildning och inmätning. Samhällsbyggnadsenheten ansvarar för lagret.",
       "attributes": [
         {
           "name": "pktnr",
