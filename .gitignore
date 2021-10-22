@@ -3,5 +3,12 @@ dist
 css/style.css
 node_modules
 npm-debug-log
-splash.html
 plugins
+
+android-chrome-144x144.png
+apple-touch-icon.png
+favicon.ico
+intern.html
+intern.json
+splash.html
+site.webmanifest
