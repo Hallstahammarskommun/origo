@@ -25,11 +25,6 @@
   position: relative;
 }
 
-.o-position-button:focus {
-  background-color: #fff;
-  color: #000;
-}
-
 .o-position-center-button {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 50%;
@@ -42,15 +37,6 @@
   position: relative;
   vertical-align: middle;
   z-index: 100;
-}
-
-.o-position-center-button:focus {
-  background-color: rgba(255, 255, 255, 0.7);
-  color: #fff;
-
-  .o-icon-position {
-    fill: #000;
-  }
 }
 
 .o-position-center-button.o-active {

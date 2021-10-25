@@ -93,11 +93,6 @@ input[type=range] {
   min-width: 0;
 }
 
-input[type=range]:focus {
-  outline: none;
-  border: 1px solid $black;
-}
-
 input[type=range]::-webkit-slider-runnable-track {
   animation: 0.2s;
   background: $primary-color;
