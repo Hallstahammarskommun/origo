@@ -1,19 +1,6 @@
 {
   "controls": [
     {
-      "name": "externalurl",
-      "options": {
-        "links": [
-          {
-            "tooltipText": "Google street view",
-            "method": "LatLon",
-            "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{LAT}},{{LON}}&heading=-45&pitch=10&fov=80",
-            "buttonImage": "img/png/gsv.png"
-          }
-        ]
-      }
-    },
-    {
       "name": "geoposition"
     },
     {
@@ -666,7 +653,7 @@
       "source": "ows",
       "style": "y_mask",
       "title": "Mask",
-      "group": "tom",
+      "group": "none",
       "queryable": false,
       "type": "WFS",
       "visible": true
