@@ -1545,11 +1545,11 @@
       [
         {
           "stroke": {
-            "color": "rgba(72, 217, 99, 0.6)",
+            "color": "rgba(243, 163, 42, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 14'",
-          "label": "Tur 14"
+          "filter": "[obj] == 'Tur 11'",
+          "label": "Tur 1"
         }
       ],
       [
@@ -1559,17 +1559,7 @@
             "width": 6
           },
           "filter": "[obj] == 'Tur 17'",
-          "label": "Tur 17"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(243, 163, 42, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 11'",
-          "label": "Tur 11"
+          "label": "Tur 2/8"
         }
       ],
       [
@@ -1579,7 +1569,17 @@
             "width": 6
           },
           "filter": "[obj] == 'Tur 12'",
-          "label": "Tur 12"
+          "label": "Tur 3"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(72, 217, 99, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Tur 14'",
+          "label": "Tur 4"
         }
       ]
     ],
