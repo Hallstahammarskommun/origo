@@ -27,6 +27,7 @@ function getNeastedAttr(attributePath, feature) {
   return val;
 }
 function parseUrl(urlattr, feature, attribute, attributes, map) {
+function parseUrl(urlattr, feature, attribute, attributes, map, linktext) {
   let val = '';
   let url;
   if (urlattr) {
@@ -34,7 +35,7 @@ function parseUrl(urlattr, feature, attribute, attributes, map) {
   } else if (isUrl(attribute.url)) {
     url = attribute.url;
   } else return '';
-  const text = feature.get(attribute.name) || attribute.html || attribute.title || urlattr;
+  const text = linktext || feature.get(attribute.name) || attribute.html || attribute.title || urlattr;
   const aTargetTitle = replacer.replace(attribute.targetTitle, attributes) || url;
   let aTarget = '_blank';
   let aCls = 'o-identify-link';
@@ -53,6 +54,33 @@ function parseUrl(urlattr, feature, attribute, attributes, map) {
   }
   val = `<a class="${aCls}" target="${aTarget}" href="${url}" title="${aTargetTitle}">${text}</a>`;
   return val;
+}
+
+/**
+ * Creates HTML containing clickable links from attribute content. Internal helper.
+ * @param {any} feature The feature in question
+ * @param {any} attribute The current attribute configuration to format
+ * @param {any} attributes All other attribute configurations
+ * @param {any} map The map
+ */
+function buildUrlContent(feature, attribute, attributes, map) {
+  if (attribute.splitter) {
+    let val = '';
+    const urlArr = feature.get(attribute.url).split(attribute.splitter);
+    let linkArr;
+    if (attribute.linktext) {
+      linkArr = feature.get(attribute.linktext).split(attribute.splitter);
+    }
+    if (urlArr[0] !== '') {
+      urlArr.forEach((url, ix) => {
+        // Assume linkText array is same size as links array.
+        const linkText = linkArr ? linkArr[ix] : null;
+        val += `<p>${parseUrl(url, feature, attribute, attributes, map, linkText)}</p>`;
+      });
+    }
+    return val;
+  }
+  return parseUrl(feature.get(attribute.url), feature, attribute, attributes, map);
 }
 
 const getContent = {
@@ -84,6 +112,7 @@ const getContent = {
         } else {
           val = parseUrl(feature.get(attribute.url), feature, attribute, attributes, map);
         }
+        val = buildUrlContent(feature, attribute, attributes, map);
       }
     }
     const newElement = document.createElement('li');
@@ -95,16 +124,11 @@ const getContent = {
   },
   url(feature, attribute, attributes, map) {
     let val = '';
-    if (attribute.splitter) {
-      const urlArr = feature.get(attribute.url).split(attribute.splitter);
-      if (urlArr[0] !== '') {
-        urlArr.forEach((url) => {
-          val += `<p>${parseUrl(url, feature, attribute, attributes, map)}</p>`;
-        });
-      }
-    } else {
-      val = parseUrl(feature.get(attribute.url), feature, attribute, attributes, map);
+    // Use a common title for all links. If no splitter only one link is assumed and title is used as link text instead.
+    if (attribute.title && attribute.splitter) {
+      val = `<b>${attribute.title}</b>`;
     }
+    val += buildUrlContent(feature, attribute, attributes, map);
     const newElement = document.createElement('li');
     if (typeof (attribute.cls) !== 'undefined') {
       newElement.classList.add(attribute.cls);
