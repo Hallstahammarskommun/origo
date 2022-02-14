@@ -26,7 +26,6 @@ function getNeastedAttr(attributePath, feature) {
   });
   return val;
 }
-function parseUrl(urlattr, feature, attribute, attributes, map) {
 function parseUrl(urlattr, feature, attribute, attributes, map, linktext) {
   let val = '';
   let url;
