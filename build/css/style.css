@@ -2072,9 +2072,6 @@ body {
     transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transform-style: preserve-3d;
     width: 300px;
     z-index: 1100; }
   .o-map .o-no-csstransforms .o-modal {
