@@ -258,10 +258,10 @@
           "title": "Gällande detaljplan",
           "format": "image/png",
           "type": "WMS",
+          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "visible": true,
           "opacity": 0.2,
           "maxScale": 4000,
-          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
           "attributes": [
             {
               "title": "Namn: ",
@@ -277,52 +277,50 @@
           ]
         },
         {
-          "name": "y_dpAnvandning",
+          "name": "db_v_mosaik_anvandningomrade_y",
           "title": "Användning",
           "source": "ows",
-          "style": "y_dpAnvandning",
+          "style": "db_v_mosaik_anvandningomrade_y",
           "type": "WFS",
           "visible": true,
           "maxScale": 4000,
           "attributes": [
             {
-              "name": "description_pt"
+              "name": "anvandbestformuleringar",
+              "title": "Användning: "
             }
           ]
         },
         {
-          "name": "y_dpEgenskap",
+          "name": "db_v_mosaik_egenskapsomrade_y",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "y_dpEgenskap",
+          "style": "db_v_mosaik_egenskapsomrade_y",
           "type": "WFS",
           "visible": true,
-          "maxScale": 3000,
+          "maxScale": 4000,
           "attributes": [
             {
-              "name": "description_pt"
-            }
+              "name": "egenbestformuleringar",
+              "title": "Bestämmelseformulering: "
+            }            
           ]
         },
         {
-          "name": "y_dpAdministrativ",
-          "title": "Administrativ bestämmelse",
-          "source": "ows",
-          "style": "y_dpEgenskap",
-          "type": "WFS",
-          "visible": true,
-          "maxScale": 3000,
-          "attributes": [
-            {
-              "name": "description_pt"
-            }
-          ]
-        },
-        {
-          "name": "l_detaljplan",
+          "name": "db_v_mosaik_grans_l",
           "title": "Bestämmelse",
           "source": "ows",
-          "style": "l_detaljplan",
+          "style": "db_v_mosaik_grans_l",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 4000,
+          "queryable": false
+        },
+        {
+          "name": "db_v_mosaik_egn_varlinje_l",
+          "title": "Bestämmelse",
+          "source": "ows",
+          "style": "db_v_mosaik_egn_varlinje_l",
           "type": "WFS",
           "visible": true,
           "maxScale": 4000,
@@ -934,13 +932,13 @@
         }
       ]
     ],
-    "y_dpAnvandning": [
+    "db_v_mosaik_anvandningomrade_y": [
       [
         {
           "fill": {
             "color": "rgba(244,244,244,0.45)"
           },
-          "filter": "[value_pt] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
+          "filter": "[huvudbeteckning] == '/^TORG|GATA|VÄG|GÅNG|CYKEL|P-PLATS|ÅTERVINNING/i'"
         }
       ],
       [
@@ -948,7 +946,7 @@
           "fill": {
             "color": "rgba(159,207,171,0.45)"
           },
-          "filter": "[value_pt] == '/^PARK|NATUR|SKYDD/i'"
+          "filter": "[huvudbeteckning] == '/^PARK|NATUR|SKYDD/i'"
         }
       ],
       [
@@ -956,7 +954,7 @@
           "fill": {
             "color": "rgba(255,255,163,0.45)"
           },
-          "filter": "[value_pt] == '/^[b]/i'"
+          "filter": "[huvudbeteckning] == '/^[b]/i'"
         }
       ],
       [
@@ -964,7 +962,7 @@
           "fill": {
             "color": "rgba(138,111,76,0.45)"
           },
-          "filter": "[value_pt] == '/^[chk]/i'"
+          "filter": "[huvudbeteckning] == '/^[chk]/i'"
         }
       ],
       [
@@ -972,7 +970,7 @@
           "fill": {
             "color": "rgba(255,17,17,0.45)"
           },
-          "filter": "[value_pt] == '/^[ds]/i'"
+          "filter": "[huvudbeteckning] == '/^[ds]/i'"
         }
       ],
       [
@@ -980,7 +978,7 @@
           "fill": {
             "color": "rgba(138,171,255,0.45)"
           },
-          "filter": "[value_pt] == '/^[ej]/i'"
+          "filter": "[huvudbeteckning] == '/^[ej]/i'"
         }
       ],
       [
@@ -988,7 +986,7 @@
           "fill": {
             "color": "rgba(173,173,173,0.45)"
           },
-          "filter": "[value_pt] == '/^[fgptv]/i'"
+          "filter": "[huvudbeteckning] == '/^[fgptv]/i'"
         }
       ],
       [
@@ -996,7 +994,7 @@
           "fill": {
             "color": "rgba(127,255,127,0.45)"
           },
-          "filter": "[value_pt] == '/^[ln]/i'"
+          "filter": "[huvudbeteckning] == '/^[ln]/i'"
         }
       ],
       [
@@ -1004,7 +1002,7 @@
           "fill": {
             "color": "rgba(194,61,194,0.45)"
           },
-          "filter": "[value_pt] == '/^[m]/i'"
+          "filter": "[huvudbeteckning] == '/^[m]/i'"
         }
       ],
       [
@@ -1012,7 +1010,7 @@
           "fill": {
             "color": "rgba(255,127,0,0.45)"
           },
-          "filter": "[value_pt] == '/^[or]/i'"
+          "filter": "[huvudbeteckning] == '/^[or]/i'"
         }
       ],
       [
@@ -1020,7 +1018,7 @@
           "fill": {
             "color": "rgba(213,203,170,0.45)"
           },
-          "filter": "[value_pt] == '/^[z]/i'"
+          "filter": "[huvudbeteckning] == '/^[z]/i'"
         }
       ],
       [
@@ -1028,7 +1026,7 @@
           "fill": {
             "color": "rgba(179,217,255,0.45)"
           },
-          "filter": "[value_pt] == '/^[w]/i'"
+          "filter": "[huvudbeteckning] == '/^[w]/i'"
         }
       ],
       [
@@ -1039,14 +1037,30 @@
         }
       ]
     ],
-    "y_dpEgenskap": [
+    "db_v_mosaik_egenskapsomrade_y": [
       [
         {
           "custom": "detaljplan"
         }
       ]
     ],
-    "l_detaljplan": [
+    "db_v_mosaik_egn_varlinje_l": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(255,0,255,0.5)",
+            "lineDash": [
+              50,
+              10,
+              10,
+              10
+            ],
+            "width": 5
+          }
+        }
+      ]
+    ],
+    "db_v_mosaik_grans_l": [
       [
         {
           "stroke": {
@@ -1061,23 +1075,7 @@
             ],
             "width": 2
           },
-          "filter": "[code] == '1000'"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
-            "width": 5
-          },
-          "filter": "[code] == 'Utfart får inte finnas'",
-          "minScale": 3000
+          "filter": "[dp_granstyp] == 'plan'"
         }
       ],
       [
@@ -1092,8 +1090,7 @@
             ],
             "width": 1.5
           },
-          "filter": "[code] == '2000'",
-          "minScale": 3000
+          "filter": "[dp_granstyp] == 'anv'"
         }
       ],
       [
@@ -1110,8 +1107,7 @@
             ],
             "width": 1
           },
-          "filter": "[code] == '3000'",
-          "minScale": 3000
+          "filter": "[dp_granstyp] == 'eg'"
         }
       ],
       [
@@ -1124,8 +1120,7 @@
             ],
             "width": 1
           },
-          "filter": "[code] == '4000'",
-          "minScale": 3000
+          "filter": "[dp_granstyp] == 'ad'"
         }
       ],
       [
@@ -1142,8 +1137,7 @@
             ],
             "width": 1
           },
-          "filter": "[code] == '6000'",
-          "minScale": 3000
+          "filter": "[dp_granstyp] == 'eg_ad'"
         }
       ]
     ],

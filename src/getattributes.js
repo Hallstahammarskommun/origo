@@ -115,18 +115,9 @@ const getContent = {
         if (attribute.url.indexOf('.') > -1) {
           const link = getNeastedAttr(attribute.url, feature);
           val = parseUrl(link, feature, attribute, attributes, map);
-        } else if
-        (attribute.splitter) {
-          const urlArr = feature.get(attribute.url).split(attribute.splitter);
-          if (urlArr[0] !== '') {
-            urlArr.forEach((url) => {
-              val += `<p>${parseUrl(url, feature, attribute, attributes, map)}</p>`;
-            });
-          }
         } else {
-          val = parseUrl(feature.get(attribute.url), feature, attribute, attributes, map);
+          val = buildUrlContent(feature, attribute, attributes, map);
         }
-        val = buildUrlContent(feature, attribute, attributes, map);
       }
     }
     const newElement = document.createElement('li');
@@ -213,15 +204,6 @@ const getContent = {
     }
     newElement.innerHTML = val;
     return newElement;
-  },
-  xy(feature, attribute) {
-    const val = `<b>E: </b> ${feature.getGeometry().getCoordinates()[0]}
-           <b>N: </b> ${feature.getGeometry().getCoordinates()[1]}`;
-
-    const newElement = document.createElement('li');
-    newElement.classList.add(attribute.cls);
-    newElement.innerHTML = val;
-    return newElement;
   }
 };
 
@@ -271,8 +253,6 @@ function getAttributes(feature, layer, map) {
             val = getContent.img(feature, attribute, attributes, map);
           } else if (attribute.html) {
             val = getContent.html(feature, attribute, attributes, map);
-          } else if (attribute.xy) {
-            val = getContent.xy(feature, attribute, attributes, map);
           } else if (attribute.carousel) {
             val = getContent.carousel(feature, attribute, attributes, map);
             ulList.classList.add('o-carousel-list');
