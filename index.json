@@ -243,7 +243,7 @@
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
             },
             {
-              "title": "Planakt",
+              "title": "Planakt: ",
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
@@ -308,7 +308,7 @@
         },
         {
           "name": "db_v_mosaik_grans_l",
-          "title": "Bestämmelse",
+          "title": "Linje",
           "source": "ows",
           "style": "db_v_mosaik_grans_l",
           "type": "WFS",
@@ -318,7 +318,7 @@
         },
         {
           "name": "db_v_mosaik_egn_varlinje_l",
-          "title": "Bestämmelse",
+          "title": "Linje",
           "source": "ows",
           "style": "db_v_mosaik_egn_varlinje_l",
           "type": "WFS",
