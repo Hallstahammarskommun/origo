@@ -243,7 +243,7 @@
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
             },
             {
-              "title": "Planakt: ",
+              "title": "Planakt",
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
@@ -268,7 +268,7 @@
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
             },
             {
-              "title": "Planakt: ",
+              "title": "Planakt",
               "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
               "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
@@ -278,7 +278,7 @@
         },
         {
           "name": "db_v_mosaik_anvandningomrade_y",
-          "title": "Användning",
+          "title": "Användningsbestämmelser",
           "source": "ows",
           "style": "db_v_mosaik_anvandningomrade_y",
           "type": "WFS",
@@ -286,14 +286,13 @@
           "maxScale": 4000,
           "attributes": [
             {
-              "name": "anvandbestformuleringar",
-              "title": "Användningsbestämmelser: "
+              "name": "anvandbestformuleringar"
             }
           ]
         },
         {
           "name": "db_v_mosaik_egenskapsomrade_y",
-          "title": "Bestämmelse",
+          "title": "Egenskapsbestämmelser",
           "source": "ows",
           "style": "db_v_mosaik_egenskapsomrade_y",
           "type": "WFS",
@@ -302,7 +301,6 @@
           "attributes": [
             {
               "name": "egenbestformuleringar",
-              "title": "Egenskapsbestämmelser: ",
             }            
           ]
         },
