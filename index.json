@@ -1040,6 +1040,13 @@
         {
           "custom": "detaljplan"
         }
+      ],
+      [
+        {
+          "fill": {
+            "color": "rgba(0,0,0,0.15)"
+          }
+        }
       ]
     ],
     "db_v_mosaik_egn_varlinje_l": [
