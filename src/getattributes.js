@@ -277,4 +277,7 @@ function getAttributes(feature, layer, map) {
   return content;
 }
 
-export { getAttributes as default, getContent };
+// export { getAttributes as default, getContent };
+
+export default getAttributes;
+export { getContent };
