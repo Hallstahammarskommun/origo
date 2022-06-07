@@ -314,6 +314,20 @@
           ]
         },
         {
+          "name": "db_v_mosaik_adminiomrade_y",
+          "title": "Egenskapsbestämmelser",
+          "source": "ows",
+          "style": "db_v_mosaik_egenskapsomrade_y",
+          "type": "WFS",
+          "visible": true,
+          "maxScale": 4000,
+          "attributes": [
+            {
+              "name": "adminibestformuleringar"
+            }            
+          ]
+        },
+        {
           "name": "db_v_mosaik_grans_l",
           "title": "Linje",
           "source": "ows",
