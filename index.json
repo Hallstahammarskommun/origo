@@ -188,7 +188,7 @@
       "source": "data/vattenskydd.geojson",
       "style": "vattenskydd",
       "type": "GEOJSON",
-      "visible": true
+      "visible": false
     },
     {
       "name": "fastigheter",
