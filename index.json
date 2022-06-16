@@ -210,9 +210,9 @@
           "visible": true
         },
         {
-          "name": "y_sokFastighet",
+          "name": "y_fastighet",
           "source": "ows",
-          "style": "y_sokFastighet",
+          "style": "y_fastighet",
           "title": "Fastighet",
           "format": "image/png",
           "group": "bygga",
@@ -1286,7 +1286,7 @@
         }
       ]
     ],
-    "y_sokFastighet": [
+    "y_fastighet": [
       [
         {
           "fill": {
