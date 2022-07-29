@@ -303,7 +303,7 @@
       "type": "GROUP",
       "fme": true,
       "visible": false,
-      "abstract": "Fastighetsgränserna i kartan har stora variationer i noggrannhet och saknar rättsverkan.",
+      "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>",
       "layers": [
         {
           "name": "fastighet",
@@ -327,6 +327,9 @@
           "attributes": [
             {
               "name": "obj"
+            },
+            {
+              "html": "</br><i>Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>"
             }
           ]
         }
