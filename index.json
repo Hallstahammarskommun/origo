@@ -7,7 +7,10 @@
       "name": "legend",
       "options": {
         "labelOpacitySlider": "Opacity",
-        "useGroupIndication": true
+        "useGroupIndication": true,
+        "contentStyle": {
+          "width": "240px"
+          }
       }
     },
     {
@@ -165,11 +168,6 @@
       "expanded": true
     },
     {
-      "name": "uppleva",
-      "title": "Uppleva & göra",
-      "expanded": true
-    },
-    {
       "name": "utbildning",
       "title": "Utbildning & barnomsorg",
       "expanded": true
@@ -191,44 +189,8 @@
       "visible": false
     },
     {
-      "name": "fastigheter",
-      "title": "Fastighetsgräns",
-      "style": "fastigheter",
-      "group": "bygga",
-      "type": "GROUP",
-      "fme": true,
-      "visible": false,
-      "layers": [
-        {
-          "name": "fastighet",
-          "source": "wms",
-          "style": "fastigheter",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WMS",
-          "queryable": false,
-          "visible": true
-        },
-        {
-          "name": "y_fastighet",
-          "source": "ows",
-          "style": "y_fastighet",
-          "title": "Fastighet",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WFS",
-          "visible": true,
-          "attributes": [
-            {
-              "name": "obj"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "detaljplan",
-      "title": "Gällande detaljplan",
+      "title": "Detaljplan, gällande",
       "style": "detaljplan",
       "group": "bygga",
       "type": "GROUP",
@@ -350,6 +312,59 @@
       ]
     },
     {
+      "name": "w_y_plan",
+      "source": "ows",
+      "style": "w_y_plan",
+      "title": "Detaljplan, pågående",
+      "group": "bygga",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj",
+          "url": "url"
+        }
+      ]
+    },
+    {
+      "name": "fastigheter",
+      "title": "Fastighetsgräns",
+      "style": "fastigheter",
+      "group": "bygga",
+      "type": "GROUP",
+      "fme": true,
+      "visible": false,
+      "abstract": "Fastighetsgränserna i kartan har stora variationer i noggrannhet och saknar rättsverkan.",
+      "layers": [
+        {
+          "name": "fastighet",
+          "source": "wms",
+          "style": "fastigheter",
+          "format": "image/png",
+          "group": "bygga",
+          "type": "WMS",
+          "queryable": false,
+          "visible": true
+        },
+        {
+          "name": "y_fastighet",
+          "source": "ows",
+          "style": "y_fastighet",
+          "title": "Fastighet",
+          "format": "image/png",
+          "group": "bygga",
+          "type": "WFS",
+          "visible": true,
+          "attributes": [
+            {
+              "name": "obj"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "y_kommunalFastighet",
       "source": "ows",
       "style": "y_kommunalFastighet",
@@ -437,34 +452,6 @@
       ]
     },
     {
-      "name": "primarkarta",
-      "source": "wms",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "bygga",
-      "type": "WMS",
-      "queryable": false,
-      "fme": true,
-      "visible": false
-    },
-    {
-      "name": "w_y_plan",
-      "source": "ows",
-      "style": "w_y_plan",
-      "title": "Pågående detaljplan",
-      "group": "bygga",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "url": "url"
-        }
-      ]
-    },
-    {
       "name": "p_livsmedel",
       "source": "ows",
       "style": "p_livsmedel",
@@ -496,6 +483,23 @@
       ]
     },
     {
+      "name": "y_naturreservat",
+      "source": "ows",
+      "style": "y_naturreservat",
+      "title": "Naturreservat",
+      "group": "energi",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "attributes": [
+        {
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/uppleva-och-gora/natur-och-friluftsliv/naturreservat-i-kommunen",
+          "taget": "_blank"
+        }
+      ]
+    },
+    {
       "name": "solpotential",
       "source": "wms",
       "format": "image/png",
@@ -509,18 +513,58 @@
       "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='https://hallstahammar.se/boende-miljo-och-trafik/miljo-och-klimat/energi--och-klimatradgivning' target='_blank'>webbplats om energi- och klimatrådgivning.</a>"
     },
     {
-      "name": "y_naturreservat",
+      "name": "l_cykelvag",
       "source": "ows",
-      "style": "y_naturreservat",
-      "title": "Naturreservat",
-      "group": "uppleva",
+      "style": "l_cykelvag_l",
+      "stylePicker": [
+        {"title": "Defaultstil", "style": "l_cykelvag_l"},
+        {"title": "Grön stil", "style": "l_cykelvag_g"}
+        ],
+      "title": "Cykelväg",
+      "group": "trafik",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "queryable": false
+    },
+    {
+      "name": "l_servicelinjen",
+      "source": "ows",
+      "style": "l_servicelinjen",
+      "title": "Servicelinjen",
+      "group": "trafik",
       "type": "WFS",
       "fme": true,
       "visible": false,
       "attributes": [
         {
+          "name": "obj",
+          "title": "Tur: "
+        },
+        {
           "title": "Mer information",
-          "url": "https://hallstahammar.se/uppleva-och-gora/natur-och-friluftsliv/naturreservat-i-kommunen",
+          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
+          "taget": "_blank"
+        }
+      ]
+    },
+    {
+      "name": "l_skollinjen",
+      "title": "Skollinjer",
+      "group": "trafik",
+      "source": "ows",
+      "style": "l_skollinjen",
+      "type": "WFS",
+      "fme": true,
+      "visible": false,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Tur: "
+        },
+        {
+          "title": "Mer information",
+          "url": "https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
           "taget": "_blank"
         }
       ]
@@ -626,48 +670,6 @@
       ]
     },
     {
-      "name": "l_servicelinjen",
-      "source": "ows",
-      "style": "l_servicelinjen",
-      "title": "Servicelinjen",
-      "group": "trafik",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Tur: "
-        },
-        {
-          "title": "Mer information",
-          "url": "https://hallstahammar.se/boende-miljo-och-trafik/gator-trafik-och-resande/kollektivtrafik",
-          "taget": "_blank"
-        }
-      ]
-    },
-    {
-      "name": "l_skollinjen",
-      "title": "Skollinjer",
-      "group": "trafik",
-      "source": "ows",
-      "style": "l_skollinjen",
-      "type": "WFS",
-      "fme": true,
-      "visible": false,
-      "attributes": [
-        {
-          "name": "obj",
-          "title": "Tur: "
-        },
-        {
-          "title": "Mer information",
-          "url": "https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
-          "taget": "_blank"
-        }
-      ]
-    },
-    {
       "name": "y_mask",
       "source": "ows",
       "style": "y_mask",
@@ -711,6 +713,18 @@
       "queryable": false,
       "type": "WMS",
       "style": "orto",
+      "visible": false
+    },
+    {
+      "name": "primarkarta",
+      "source": "wms",
+      "style": "primarkarta",
+      "title": "Primärkarta",
+      "format": "image/png",
+      "group": "background",
+      "type": "WMS",
+      "queryable": false,
+      "fme": true,
       "visible": false
     }
   ],
@@ -782,72 +796,6 @@
               "width": 2
             }
           }
-        }
-      ]
-    ],
-    "w_p_ledigMark_cluster": [
-      [
-        {
-          "circle": {
-            "radius": 16,
-            "fill": {
-              "color": "rgba(0,0,0,0.5)"
-            },
-            "stroke": {
-              "color": "rgba(0,0,0,0.9)",
-              "width": 4
-            }
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "text": "size",
-            "fill": {
-              "color": "rgba(255,255,255,1.0)"
-            },
-            "stroke": {
-              "color": "rgba(103,60,31,0.9",
-              "width": 2
-            }
-          }
-        }
-      ]
-    ],
-    "w_p_ledigMark": [
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_red.png"
-          }
-        }
-      ],
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_black.png"
-          }
-        }
-      ]
-    ],
-    "fastigheter": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(150,61,20)",
-            "width": 1
-          },
-          "label": "Fastighetsgräns"
         }
       ]
     ],
@@ -1169,6 +1117,44 @@
         }
       ]
     ],
+    "w_y_plan": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(170, 53, 206,0.6)",
+            "width": 2,
+            "lineDash": [
+              5,
+              5
+            ]
+          },
+          "fill": {
+            "color": "rgba(66,89,179,0.3)"
+          },
+          "label": "Pågående"
+        }
+      ]
+    ],
+    "fastigheter": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(150,61,20)",
+            "width": 1
+          },
+          "label": "Fastighetsgräns"
+        }
+      ]
+    ],
+    "y_fastighet": [
+      [
+        {
+          "fill": {
+            "color": "rgba(0,0,0,0)"
+          }
+        }
+      ]
+    ],
     "y_kommunalFastighet": [
       [
         {
@@ -1181,6 +1167,61 @@
           },
           "label": "Kommunal mark",
           "filter": "[typ] == 'Nej'"
+        }
+      ]
+    ],
+    "w_p_ledigMark_cluster": [
+      [
+        {
+          "circle": {
+            "radius": 16,
+            "fill": {
+              "color": "rgba(0,0,0,0.5)"
+            },
+            "stroke": {
+              "color": "rgba(0,0,0,0.9)",
+              "width": 4
+            }
+          }
+        },
+        {
+          "text": {
+            "font": "Bold 12px Arial",
+            "textAlign": "center",
+            "text": "size",
+            "fill": {
+              "color": "rgba(255,255,255,1.0)"
+            },
+            "stroke": {
+              "color": "rgba(103,60,31,0.9",
+              "width": 2
+            }
+          }
+        }
+      ]
+    ],
+    "w_p_ledigMark": [
+      [
+        {
+          "filter": "[status] == 'Kommande'",
+          "icon": {
+            "size": [
+              24,
+              36
+            ],
+            "src": "img/png/droppe_red.png"
+          }
+        }
+      ],
+      [
+        {
+          "icon": {
+            "size": [
+              24,
+              36
+            ],
+            "src": "img/png/droppe_black.png"
+          }
         }
       ]
     ],
@@ -1272,46 +1313,6 @@
         }
       ]
     ],
-    "w_y_plan": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(229,109,30,0.6)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(66,89,179,0.3)"
-          },
-          "label": "Pågående"
-        }
-      ]
-    ],
-    "y_fastighet": [
-      [
-        {
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ]
-    ],
-    "tk_sop_r": [
-      [
-        {
-          "circle": {
-            "radius": 7,
-            "stroke": {
-              "color": "rgb(210,76,99)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgb(242,205,36)"
-            }
-          },
-          "label": "Solpotential"
-        }
-      ]
-    ],
     "p_livsmedel_cluster": [
       [
         {
@@ -1368,6 +1369,129 @@
             "src": "img/png/BM_lim_p2.png"
           },
           "label": "Ingen kontroll genomförd"
+        }
+      ]
+    ],
+    "tk_sop_r": [
+      [
+        {
+          "circle": {
+            "radius": 7,
+            "stroke": {
+              "color": "rgb(210,76,99)",
+              "width": 2
+            },
+            "fill": {
+              "color": "rgb(242,205,36)"
+            }
+          },
+          "label": "Solpotential"
+        }
+      ]
+    ],
+    "l_cykelvag_g": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(0,237,0,1.0)",
+            "width": 2
+          },
+          "label": "Cykelvägar"
+        }
+      ]
+    ],
+    "l_cykelvag_l": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(178,108,189,1.0)",
+            "width": 2
+          },
+          "label": "Cykelvägar"
+        }
+      ]
+    ],
+    "l_servicelinjen": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(218, 114, 126)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Hallstahammar'",
+          "label": "Hallstahammar"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(151, 104, 209, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Svedvi'",
+          "label": "Kyrktur Svedvi"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(243, 163, 42, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Berg'",
+          "label": "Bergssocken turen"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgb(72, 217, 99)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Kolbäck'",
+          "label": "Kolbäck"
+        }
+      ]
+    ],
+    "l_skollinjen": [
+      [
+        {
+          "stroke": {
+            "color": "rgba(243, 163, 42, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Tur 11'",
+          "label": "Tur 1"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(151, 104, 209, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Tur 17'",
+          "label": "Tur 2/8"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(218, 114, 126, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Tur 12'",
+          "label": "Tur 3"
+        }
+      ],
+      [
+        {
+          "stroke": {
+            "color": "rgba(72, 217, 99, 0.6)",
+            "width": 6
+          },
+          "filter": "[obj] == 'Tur 14'",
+          "label": "Tur 4"
         }
       ]
     ],
@@ -1508,90 +1632,6 @@
         }
       ]
     ],
-    "l_servicelinjen": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(218, 114, 126)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Hallstahammar'",
-          "label": "Hallstahammar"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(151, 104, 209, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Svedvi'",
-          "label": "Kyrktur Svedvi"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(243, 163, 42, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Berg'",
-          "label": "Bergssocken turen"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgb(72, 217, 99)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Kolbäck'",
-          "label": "Kolbäck"
-        }
-      ]
-    ],
-    "l_skollinjen": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(243, 163, 42, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 11'",
-          "label": "Tur 1"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(151, 104, 209, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 17'",
-          "label": "Tur 2/8"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(218, 114, 126, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 12'",
-          "label": "Tur 3"
-        }
-      ],
-      [
-        {
-          "stroke": {
-            "color": "rgba(72, 217, 99, 0.6)",
-            "width": 6
-          },
-          "filter": "[obj] == 'Tur 14'",
-          "label": "Tur 4"
-        }
-      ]
-    ],
 
 
     "vattenskydd": [
@@ -1646,16 +1686,6 @@
     ],
 
 
-    "primarkarta": [
-      [
-        {
-          "icon": {
-            "src": "img/png/primarkarta.png"
-          },
-          "label": "Primärkarta"
-        }
-      ]
-    ],
     "y_mask": [
       [
         {
@@ -1689,6 +1719,16 @@
           "image": {
             "src": "img/png/orto.png"
           }
+        }
+      ]
+    ],
+    "primarkarta": [
+      [
+        {
+          "image": {
+            "src": "img/png/primarkarta.png"
+          },
+          "label": "Primärkarta"
         }
       ]
     ]
