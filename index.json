@@ -199,49 +199,17 @@
       "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.",
       "layers": [
         {
-          "name": "pbr_detaljplaner",
-          "source": "wms",
+          "name": "db_v_mosaik_plan_y",
+          "title": "Plan",
+          "source": "ows",
           "style": "detaljplan",
-          "title": "Gällande detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
+          "type": "WFS",
           "visible": true,
-          "minScale": 4000,
           "attributes": [
             {
-              "title": "Namn: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            },
-            {
-              "title": "Planakt",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
-              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
-              "urlSuffix": ".pdf"
-            }
-          ]
-        },
-        {
-          "name": "pbr_detaljplaner",
-          "source": "wms",
-          "style": "detaljplan",
-          "title": "Gällande detaljplan",
-          "format": "image/png",
-          "type": "WMS",
-          "queryurl": "https://karta.hallstahammar.se/markreglering?ne=",
-          "visible": true,
-          "opacity": 0.2,
-          "maxScale": 4000,
-          "attributes": [
-            {
-              "title": "Namn: ",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:namn"
-            },
-            {
-              "title": "Planakt",
-              "name": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:Planattribut.app:aktbeteckning",
-              "url": "env:Envelope.env:Body.app:MarkregleringResponse.app:MarkregleringMember.app:Plan.app:objektidentitet",
+              "title": "Planakt: ",
+              "name": "dp_plannamn",
+              "url": "dp_reg_uuid",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
             }
