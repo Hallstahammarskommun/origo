@@ -10,7 +10,7 @@
         "useGroupIndication": true,
         "contentStyle": {
           "width": "240px"
-          }
+        }
       }
     },
     {
@@ -272,7 +272,7 @@
           "attributes": [
             {
               "name": "egenbestformuleringar"
-            }            
+            }
           ]
         },
         {
@@ -286,7 +286,7 @@
           "attributes": [
             {
               "name": "adminibestformuleringar"
-            }            
+            }
           ]
         },
         {
@@ -517,9 +517,15 @@
       "source": "ows",
       "style": "l_cykelvag_l",
       "stylePicker": [
-        {"title": "Defaultstil", "style": "l_cykelvag_l"},
-        {"title": "Grön stil", "style": "l_cykelvag_g"}
-        ],
+        {
+          "title": "Defaultstil",
+          "style": "l_cykelvag_l"
+        },
+        {
+          "title": "Grön stil",
+          "style": "l_cykelvag_g"
+        }
+      ],
       "title": "Cykelväg",
       "group": "trafik",
       "type": "WFS",
@@ -1632,8 +1638,6 @@
         }
       ]
     ],
-
-
     "vattenskydd": [
       [
         {
@@ -1684,8 +1688,6 @@
         }
       ]
     ],
-
-
     "y_mask": [
       [
         {
