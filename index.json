@@ -19,7 +19,7 @@
     {
       "name": "measure",
       "options": {
-        "elevationServiceURL": "https://karta.hallstahammar.se/elevation/3010/{easting}/{northing}",
+        "elevationServiceURL": "https://karta.hallstahammar.se/origoserver/lm/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
         "measureTools": [
@@ -41,7 +41,7 @@
     {
       "name": "search",
       "options": {
-        "url": "https://karta.hallstahammar.se/search",
+        "url": "https://karta.hallstahammar.se/origoserver/search",
         "searchAttribute": "NAMN",
         "geometryAttribute": "GEOM",
         "titleAttribute": "layer",
@@ -84,7 +84,7 @@
   "pageSettings": {
     "footer": {
       "img": "css/svg/kommunvapen.svg",
-      "url": "https://www.hallstahammar.se"
+      "url": "https://hallstahammar.se"
     },
     "mapGrid": {
       "visible": false
@@ -541,7 +541,7 @@
         },
         {
           "title": "Mer information",
-          "url": "https://hallstahammar.se/barn-och-utbildning/grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
+          "url": "https://hallstahammar.se/barnomsorg-och-utbildning/grundskola-grundsarskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
           "taget": "_blank"
         }
       ]
