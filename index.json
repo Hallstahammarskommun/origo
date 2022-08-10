@@ -547,15 +547,6 @@
       ]
     },
     {
-      "name": "w_p_skola",
-      "source": "ows",
-      "style": "w_p_skola",
-      "title": "Skollager",
-      "group": "none",
-      "type": "WFS",
-      "visible": false
-    },
-    {
       "name": "w_p_skola__Forskola",
       "source": "ows",
       "style": "w_p_skola",
