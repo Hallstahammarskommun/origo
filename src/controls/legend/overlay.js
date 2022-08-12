@@ -67,6 +67,20 @@ const OverlayLayer = function OverlayLayer(options) {
       layers.forEach(l => l.setVisible(false));
     }
     layer.setVisible(!visible);
+    if (!visible) {
+      const fmeTitle = layer.get('title')
+      let fmeLayerUrl = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?'
+      fmeLayerUrl += `username=${localStorage.getItem('username')}`;
+      fmeLayerUrl += `&layer=${fmeTitle}`;
+      fmeLayerUrl += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=38ac17c6ac5427fd6947465d391528d7f1771c9b';
+      function httpGet(fmeLayerUrl) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", fmeLayerUrl, true); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+      }
+      httpGet(fmeLayerUrl)
+    }
     return !visible;
   };
 
