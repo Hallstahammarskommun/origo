@@ -9,23 +9,6 @@ function createUrl(prefix, suffix, url) {
   return p + url + s;
 }
 
-function getNeastedAttr(attributePath, feature) {
-  const neastedAttributePath = attributePath.split('.');
-  const featureProp = feature.getProperties();
-  let val;
-
-  neastedAttributePath.forEach((element, index) => {
-    if (index === 0) {
-      val = featureProp[element];
-    } else {
-      val = val[element];
-    }
-    if (val === undefined) {
-      val = '';
-    }
-  });
-  return val;
-}
 function parseUrl(urlattr, feature, attribute, attributes, map, linktext) {
   let val = '';
   let url;
@@ -89,14 +72,12 @@ const getContent = {
     let prefix = '';
     let suffix = '';
     const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
-    if (featureValue || attribute.name.indexOf('.') > -1) {
-      val = getNeastedAttr(attribute.name, feature);
+    if (featureValue) {
+      val = featureValue;
+      val = val.replace(/^\s+|\s+$/g, '');
+      val = val.replace(/(\r\n|\n|\r)/gm, "<br><br>");
       if (attribute.title) {
-        if (attribute.name.indexOf('.') > -1) {
-          title = '';
-        } else {
-          title = `<b>${attribute.title}</b>`;
-        }
+        title = `<b>${attribute.title}</b>`;
       }
       if (attribute.prefix) {
         prefix = attribute.prefix;
@@ -112,12 +93,7 @@ const getContent = {
         }
       }
       if (attribute.url) {
-        if (attribute.url.indexOf('.') > -1) {
-          const link = getNeastedAttr(attribute.url, feature);
-          val = parseUrl(link, feature, attribute, attributes, map);
-        } else {
-          val = buildUrlContent(feature, attribute, attributes, map);
-        }
+        val = buildUrlContent(feature, attribute, attributes, map);
       }
     }
     const newElement = document.createElement('li');
