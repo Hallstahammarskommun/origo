@@ -70,13 +70,6 @@ const maputils = {
     });
     return vectorSource.getFeatures();
   },
-  jsonToPointFeature: function jsonToPointFeature(json, coordinate) {
-    const feature = new Feature({
-      geometry: new Point(coordinate)
-    });
-    feature.setProperties(json);
-    return feature;
-  },
   geojsonToWkt: function geojsonToWkt(obj) {
     return (new WKT()).writeFeatures((new GeoJSON()).readFeatures(obj));
   },

@@ -103,8 +103,6 @@ function getFeaturesByIds(type, layer, ids) {
       if (source.getFeatureById(id)) {
         feature = source.getFeatureById(id);
         feature.unset('bbox');
-        const username = localStorage.getItem('username');
-        feature.values_.user = username;
         features.push(feature);
       }
     });

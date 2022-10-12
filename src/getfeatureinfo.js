@@ -59,23 +59,6 @@ function getFeatureInfoUrl({
   resolution,
   projection
 }, layer) {
-  let url;
-
-  async function retrieveRes() {
-    const response = await fetch(url)
-      .then(res => res.json());
-    if (response.length === 0) {
-      return [];
-    }
-    const feature = maputils.jsonToPointFeature(response, coordinate);
-    return feature;
-  }
-
-  if (layer.get('queryurl') !== undefined) {
-    url = `${layer.get('queryurl') + coordinate[1]},${coordinate[0]}`;
-    return retrieveRes();
-  }
-
   if (layer.get('infoFormat') === 'application/geo+json' || layer.get('infoFormat') === 'application/geojson') {
     const url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
       INFO_FORMAT: layer.get('infoFormat'),
@@ -104,11 +87,10 @@ function getFeatureInfoUrl({
       })
       .catch(error => console.error(error));
   }
-  url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
+  const url = layer.getSource().getFeatureInfoUrl(coordinate, resolution, projection, {
     INFO_FORMAT: 'application/json',
     FEATURE_COUNT: '20'
   });
-
   return fetch(url, { type: 'GET' }).then((res) => {
     if (res.error) {
       return [];
@@ -221,36 +203,15 @@ function getFeaturesFromRemote(requestOptions, viewer) {
   const requestResult = [];
 
   const requestPromises = getFeatureInfoRequests(requestOptions, viewer).map((request) => request.fn.then((features) => {
-    let layer = viewer.getLayer(request.layer);
+    const layer = viewer.getLayer(request.layer);
     const groupLayers = viewer.getGroupLayers();
     const map = viewer.getMap();
-
-    if (layer === undefined) {
-      const groups = viewer.getGroupLayers();
-      for (let i = 0; i < groups.length; i += 1) {
-        const layers = groups[i].get('layers');
-
-        const layerInGroup = layers.getArray().filter((filteredLayer) => filteredLayer.get('name') === request.layer);
-
-        if (layerInGroup.length !== 0) {
-          layer = layerInGroup[0];
-          break;
-        }
-      }
-    }
-
     if (features) {
-      if (Array.isArray(features)) {
-        features.forEach((feature) => {
-          const si = createSelectedItem(feature, layer, map, groupLayers);
-          requestResult.push(si);
-        });
-        return requestResult;
-      } if (!Array.isArray(features)) {
-        const si = createSelectedItem(features, layer, map, groupLayers);
+      features.forEach((feature) => {
+        const si = createSelectedItem(feature, layer, map, groupLayers);
         requestResult.push(si);
-        return requestResult;
-      }
+      });
+      return requestResult;
     }
 
     return false;
