@@ -74,8 +74,10 @@ const getContent = {
     const featureValue = feature.get(attribute.name) === 0 ? feature.get(attribute.name).toString() : feature.get(attribute.name);
     if (featureValue) {
       val = featureValue;
-      val = val.replace(/^\s+|\s+$/g, '');
-      val = val.replace(/(\r\n|\n|\r)/gm, "<br><br>");
+      if (typeof val === 'string' || val instanceof String) {
+        val = val.replace(/^\s+|\s+$/g, '');
+        val = val.replace(/(\r\n|\n|\r)/gm, "<br><br>");
+      }
       if (attribute.title) {
         title = `<b>${attribute.title}</b>`;
       }
