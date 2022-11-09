@@ -226,11 +226,11 @@
           "attributes": [
             {
               "name": "anvandbestformuleringar",
-              "title":"Formuleringar: "
+              "title":"Användningsbestämmelse: "
             },
             {
               "name":"anvandbeteckningkoder",
-              "title":"Beteckningkoder: " 
+              "title":"Användningskod: " 
             }
           ]
         },
