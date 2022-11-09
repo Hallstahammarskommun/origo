@@ -225,7 +225,12 @@
           "maxScale": 4000,
           "attributes": [
             {
-              "name": "anvandbestformuleringar"
+              "name": "anvandbestformuleringar",
+              "title":"Formuleringar: "
+            },
+            {
+              "name":"anvandbeteckningkoder",
+              "title":"Beteckningkoder: " 
             }
           ]
         },
