@@ -1618,6 +1618,10 @@ body {
     margin: 1px;
     padding: 0 2px;
     text-align: center; }
+  .o-map .ol-scale-singlebar-even {
+    background-color: #000000; }
+  .o-map .ol-scale-singlebar-odd {
+    background-color: #FFFFFF; }
   .o-map .ol-has-tooltip [role=tooltip] {
     border: 0;
     clip: rect(1px 1px 1px 1px);
@@ -2825,8 +2829,7 @@ body {
     background-color: #eeeeee; }
   .o-map[class*=o-media-l-m] .awesomplete > ul {
     max-width: calc(100% + 2rem);
-    min-width: calc(100% + 2rem);
-    top: 2.25rem; }
+    min-width: calc(100% + 2rem); }
   .o-map .o-search-wrapper {
     max-width: calc(100% - 8rem);
     width: 310px; }
