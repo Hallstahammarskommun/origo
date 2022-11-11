@@ -74,7 +74,7 @@ const OverlayLayer = function OverlayLayer(options) {
       let fmeLayerUrl = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?'
       fmeLayerUrl += `username=${localStorage.getItem('username')}`;
       fmeLayerUrl += `&layer=${fmeTitle}`;
-      fmeLayerUrl += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=38ac17c6ac5427fd6947465d391528d7f1771c9b';
+      fmeLayerUrl += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=a9a5e35af9e9ccc8f8275314cda3111703d70139';
       function httpGet(fmeLayerUrl) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", fmeLayerUrl, true); // false for synchronous request
