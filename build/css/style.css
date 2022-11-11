@@ -2621,7 +2621,7 @@ body {
     margin: 0; }
   .o-map input.o-position-find {
     padding: 0;
-    width: 95px; }
+    width: auto; }
   .o-map .o-progress {
     background: #008ff5;
     bottom: 0;
