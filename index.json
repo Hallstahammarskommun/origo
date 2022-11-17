@@ -305,12 +305,11 @@
       "style": "fastigheter",
       "group": "bygga",
       "type": "GROUP",
-      "fme": true,
       "visible": false,
       "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>",
       "layers": [
         {
-          "name": "fastighet",
+          "name": "granser",
           "source": "wms",
           "style": "fastigheter",
           "format": "image/png",
@@ -347,7 +346,6 @@
       "group": "bygga",
       "queryable": false,
       "type": "WFS",
-      "fme": true,
       "visible": false
     },
     {
