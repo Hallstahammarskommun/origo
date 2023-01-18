@@ -438,6 +438,7 @@ const Legend = function Legend(options = {}) {
     },
     getuseGroupIndication() { return useGroupIndication; },
     getOverlaysCollapse() { return overlaysCmp.overlaysCollapse; },
+    setVisibleLayersViewActive,
     addButtonToTools(button) {
       const toolsEl = document.getElementById(toolsCmp.getId());
       toolsEl.classList.remove('hidden');
@@ -469,6 +470,12 @@ const Legend = function Legend(options = {}) {
       this.render();
       this.dispatch('render');
       viewer.getMap().on('click', onMapClick);
+    },
+    hide() {
+      document.getElementById(mainContainerCmp.getId()).classList.add("hidden");
+    },
+    unhide() {
+      document.getElementById(mainContainerCmp.getId()).classList.remove("hidden");
     },
     onRender() {
       const layerControlCmps = [];
