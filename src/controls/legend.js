@@ -15,6 +15,7 @@ const Legend = function Legend(options = {}) {
     expanded = true,
     contentCls,
     contentStyle,
+    turnOnLayersControl = false,
     name = 'legend',
     labelOpacitySlider = '',
     visibleLayersControl = false,
@@ -140,6 +141,22 @@ const Legend = function Legend(options = {}) {
     });
   };
 
+  const turnOnAllLayers = function turnOnAllLayers() {
+    const layers = viewer.getLayers();
+    layers.forEach((el) => {
+      if (!(['none', 'background'].includes(el.get('group')))) {
+        const group = viewer.getGroups().find((item) => item.name === el.get('group'));
+        if (typeof group !== 'undefined') {
+          if (!group.exclusive) {
+            el.setVisible(true);
+          }
+        } else {
+          el.setVisible(true);
+        }
+      }
+    });
+  };
+
   const divider = El({
     cls: 'divider margin-x-small',
     style: {
@@ -222,9 +239,25 @@ const Legend = function Legend(options = {}) {
     setVisibleLayersViewActive(!visibleLayersViewActive);
   };
 
+  const turnOnLayersButton = Button({
+    cls: 'round compact icon-small margin-x-smaller',
+    title: 'Tänd alla lager utom bakgrundslager',
+    click() {
+      viewer.dispatch('active:turnonlayers');
+    },
+    style: {
+      'align-self': 'center',
+      'padding-right': '6px'
+    },
+    icon: '#ic_visibility_24px',
+    iconStyle: {
+      fill: '#7a7a7a'
+    }
+  });
+
   const layerSearchInput = Input({
     cls: 'o-search-layer-field placeholder-text-smaller smaller',
-    style: { height: '1.5rem', margin: 0, width: '100%' },
+    style: { height: '1.5rem', margin: 0, width: '180px' },
     placeholderText: searchLayersPlaceholderText,
     value: ''
   });
@@ -447,7 +480,14 @@ const Legend = function Legend(options = {}) {
         toolsEl.insertBefore(dom.html(divider.render()), toolsEl.firstChild);
         toolsEl.insertBefore(dom.html(button.render()), toolsEl.firstChild);
       } else {
-        toolsEl.appendChild(dom.html(button.render()));
+        const node = document.createElement('div');
+        if (typeof button.getValue === 'function') {
+          node.classList.add('grow');
+          toolsEl.appendChild(node);
+          node.appendChild(dom.html(button.render()));
+        } else {
+          toolsEl.appendChild(dom.html(button.render()));
+        }
       }
       toolsCmp.addComponent(button);
       button.onRender();
@@ -457,7 +497,12 @@ const Legend = function Legend(options = {}) {
     },
     onAdd(evt) {
       viewer = evt.target;
-      viewer.on('active:turnofflayers', turnOffAllLayers);
+      if (turnOffLayersControl) {
+        viewer.on('active:turnofflayers', turnOffAllLayers);
+      }
+      if (turnOnLayersControl) {
+        viewer.on('active:turnonlayers', turnOnAllLayers);
+      }
       viewer.on('active:togglevisibleLayers', toggleShowVisibleLayers);
 
       const backgroundLayers = viewer.getLayersByProperty('group', 'background').reverse();
@@ -472,15 +517,17 @@ const Legend = function Legend(options = {}) {
       viewer.getMap().on('click', onMapClick);
     },
     hide() {
-      document.getElementById(mainContainerCmp.getId()).classList.add("hidden");
+      document.getElementById(mainContainerCmp.getId()).classList.add('hidden');
     },
     unhide() {
-      document.getElementById(mainContainerCmp.getId()).classList.remove("hidden");
+      document.getElementById(mainContainerCmp.getId()).classList.remove('hidden');
     },
     onRender() {
       const layerControlCmps = [];
+      if (turnOnLayersControl) layerControlCmps.push(turnOnLayersButton);
       if (turnOffLayersControl) layerControlCmps.push(turnOffLayersButton);
       const layerControl = El({
+        cls: 'grow flex justify-end align-center no-shrink',
         components: layerControlCmps
       });
       mainContainerEl = document.getElementById(mainContainerCmp.getId());
