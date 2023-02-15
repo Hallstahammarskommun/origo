@@ -410,10 +410,10 @@
           ]
         },
         {
-          "name": "w_p_ledigMark",
+          "name": "v_p_ledigMark",
           "source": "ows",
-          "style": "w_p_ledigMark",
-          "clusterStyle": "w_p_ledigMark_cluster",
+          "style": "v_p_ledigMark",
+          "clusterStyle": "v_p_ledigMark_cluster",
           "title": "Lediga tomter punkt",
           "layerType": "cluster",
           "group": "bygga",
@@ -1140,7 +1140,7 @@
         }
       ]
     ],
-    "w_p_ledigMark_cluster": [
+    "v_p_ledigMark_cluster": [
       [
         {
           "circle": {
@@ -1170,7 +1170,7 @@
         }
       ]
     ],
-    "w_p_ledigMark": [
+    "v_p_ledigMark": [
       [
         {
           "filter": "[status] == 'Kommande'",
