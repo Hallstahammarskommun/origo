@@ -76,7 +76,7 @@ const getContent = {
       val = featureValue;
       if (typeof val === 'string' || val instanceof String) {
         val = val.replace(/^\s+|\s+$/g, '');
-        val = val.replace(/(\r\n|\n|\r)/gm, "<br><br>");
+        val = val.replace(/(\r\n|\n|\r)/gm, '<br><br>');
       }
       if (attribute.title) {
         title = `<b>${attribute.title}</b>`;

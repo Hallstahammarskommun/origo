@@ -33,8 +33,8 @@ export default function detaljplanStyle() {
       return context.createPattern(canvas, 'repeat');
     }());
 
-    const regexPrick = new RegExp(/Prickmark/);
-    const regexPlus = new RegExp(/Korsmark/);
+    const regexPrick = /Prickmark/;
+    const regexPlus = /Korsmark/;
 
     if (regexPrick.test(feature.get('egenkapsbestammelsetyper'))) {
       fill = new Fill({
