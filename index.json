@@ -478,7 +478,7 @@
       "format": "image/png",
       "style": "tk_sop_r",
       "title": "Solpotential",
-      "group": "energi",
+      "group": "none",
       "queryable": false,
       "type": "WMS",
       "visible": false,
