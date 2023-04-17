@@ -22,11 +22,7 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/origoserver/lm/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": [
-          "length",
-          "area",
-          "elevation"
-        ]
+        "measureTools": ["length", "area", "elevation"]
       }
     },
     {
@@ -91,12 +87,7 @@
     }
   },
   "projectionCode": "EPSG:3010",
-  "projectionExtent": [
-    -166640,
-    6305699,
-    433362,
-    6905701
-  ],
+  "projectionExtent": [-166640, 6305699, 433362, 6905701],
   "proj4Defs": [
     {
       "code": "EPSG:3006",
@@ -108,35 +99,12 @@
       "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
     }
   ],
-  "extent": [
-    -166640,
-    6305699,
-    433362,
-    6905701
-  ],
-  "center": [
-    133361,
-    6605700
-  ],
+  "extent": [-166640, 6305699, 433362, 6905701],
+  "center": [133361, 6605700],
   "zoom": 2,
   "resolutions": [
-    91.9577,
-    61.3051,
-    40.8701,
-    27.2467,
-    18.1645,
-    12.1097,
-    8.0731,
-    5.382,
-    3.588,
-    2.392,
-    1.5947,
-    1.0631,
-    0.7088,
-    0.4725,
-    0.315,
-    0.21,
-    0.14
+    91.9577, 61.3051, 40.8701, 27.2467, 18.1645, 12.1097, 8.0731, 5.382, 3.588,
+    2.392, 1.5947, 1.0631, 0.7088, 0.4725, 0.315, 0.21, 0.14
   ],
   "featureinfoOptions": {
     "infowindow": "overlay"
@@ -185,8 +153,7 @@
       "group": "none",
       "source": "data/vattenskydd.geojson",
       "style": "vattenskydd",
-      "type": "GEOJSON",
-      "visible": false
+      "type": "GEOJSON"
     },
     {
       "name": "detaljplan",
@@ -195,7 +162,6 @@
       "group": "bygga",
       "type": "GROUP",
       "fme": true,
-      "visible": false,
       "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.",
       "layers": [
         {
@@ -212,6 +178,9 @@
               "url": "dp_reg_uuid",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
+            },
+            {
+              "html": "</br><i>De digitaliserade planerna är endast illustrativa och ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det den länkade plankartan som gäller.</i>"
             }
           ]
         },
@@ -228,8 +197,7 @@
               "name": "anvandbestformuleringar"
             },
             {
-              "name":"anvandbeteckningkoder"
-               
+              "name": "anvandbeteckningkoder"
             }
           ]
         },
@@ -291,7 +259,6 @@
       "group": "bygga",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -305,12 +272,10 @@
       "style": "fastigheter",
       "group": "bygga",
       "type": "GROUP",
-      "fme": true,
-      "visible": false,
       "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>",
       "layers": [
         {
-          "name": "fastighet",
+          "name": "granser",
           "source": "wms",
           "style": "fastigheter",
           "format": "image/png",
@@ -346,9 +311,7 @@
       "title": "Kommunal mark",
       "group": "bygga",
       "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "visible": false
+      "type": "WFS"
     },
     {
       "name": "w_y_ledigMark__industri",
@@ -359,7 +322,6 @@
       "type": "WFS",
       "fme": true,
       "filter": "typ = 'Industri'",
-      "visible": false,
       "attributes": [
         {
           "name": "egn",
@@ -382,7 +344,6 @@
       "group": "bygga",
       "fme": true,
       "type": "GROUP",
-      "visible": false,
       "layers": [
         {
           "name": "w_y_ledigMark__smahus",
@@ -412,10 +373,10 @@
           ]
         },
         {
-          "name": "w_p_ledigMark",
+          "name": "v_p_ledigMark",
           "source": "ows",
-          "style": "w_p_ledigMark",
-          "clusterStyle": "w_p_ledigMark_cluster",
+          "style": "v_p_ledigMark",
+          "clusterStyle": "v_p_ledigMark_cluster",
           "title": "Lediga tomter punkt",
           "layerType": "cluster",
           "group": "bygga",
@@ -436,7 +397,6 @@
       "group": "energi",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj"
@@ -465,7 +425,6 @@
       "group": "energi",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "title": "Mer information",
@@ -480,10 +439,9 @@
       "format": "image/png",
       "style": "tk_sop_r",
       "title": "Solpotential",
-      "group": "energi",
+      "group": "none",
       "queryable": false,
       "type": "WMS",
-      "visible": false,
       "abstractTitle": "Så här fungerar solkartan",
       "abstract": "Röda fält visar mycket god potential för en solcellsanläggning och orange fält visar god potential för en solcellsanläggning. Blåa fält visar mindre potential och är inte i dagsläget ekonomiskt lönsam. För mer information besök kommunens <a href='https://hallstahammar.se/boende-miljo-och-trafik/miljo-och-klimat/energi--och-klimatradgivning' target='_blank'>webbplats om energi- och klimatrådgivning.</a>"
     },
@@ -505,7 +463,6 @@
       "group": "trafik",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "queryable": false
     },
     {
@@ -516,7 +473,6 @@
       "group": "trafik",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -537,7 +493,6 @@
       "style": "l_skollinjen",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -558,7 +513,6 @@
       "group": "utbildning",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -584,7 +538,6 @@
       "type": "WFS",
       "fme": true,
       "filter": "egn = 'Grundskola'",
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -609,7 +562,6 @@
       "type": "WFS",
       "fme": true,
       "filter": "egn = 'Grundsärskola'",
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -633,7 +585,6 @@
       "group": "utbildning",
       "type": "WFS",
       "fme": true,
-      "visible": false,
       "attributes": [
         {
           "name": "obj",
@@ -705,10 +656,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              36
-            ],
+            "size": [24, 36],
             "src": "img/png/drop_blue.png"
           }
         }
@@ -789,12 +737,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [50, 10, 10, 10],
             "width": 1.5
           },
           "label": "Användningsgräns",
@@ -806,14 +749,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [30, 10, 10, 10, 10, 10],
             "width": 1
           },
           "label": "Egenskapsgräns",
@@ -825,10 +761,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10
-            ],
+            "lineDash": [30, 10],
             "width": 1
           },
           "label": "Administrativ gräns",
@@ -840,14 +773,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [30, 10, 10, 10, 10, 10],
             "width": 1
           },
           "label": "Egenskapsgräns och administrativ gräns",
@@ -859,12 +785,7 @@
         {
           "stroke": {
             "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [50, 10, 10, 10],
             "width": 5
           },
           "label": "Utfartsförbud",
@@ -997,12 +918,7 @@
         {
           "stroke": {
             "color": "rgba(255,0,255,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [50, 10, 10, 10],
             "width": 5
           }
         }
@@ -1013,14 +929,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              70,
-              15,
-              70,
-              15,
-              5,
-              15
-            ],
+            "lineDash": [70, 15, 70, 15, 5, 15],
             "width": 2
           },
           "filter": "[dp_granstyp] == 'plan'"
@@ -1030,12 +939,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              50,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [50, 10, 10, 10],
             "width": 1.5
           },
           "filter": "[dp_granstyp] == 'anv'"
@@ -1045,14 +949,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [30, 10, 10, 10, 10, 10],
             "width": 1
           },
           "filter": "[dp_granstyp] == 'eg'"
@@ -1062,10 +959,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10
-            ],
+            "lineDash": [30, 10],
             "width": 1
           },
           "filter": "[dp_granstyp] == 'ad'"
@@ -1075,14 +969,7 @@
         {
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
-            "lineDash": [
-              30,
-              10,
-              10,
-              10,
-              10,
-              10
-            ],
+            "lineDash": [30, 10, 10, 10, 10, 10],
             "width": 1
           },
           "filter": "[dp_granstyp] == 'eg_ad'"
@@ -1095,10 +982,7 @@
           "stroke": {
             "color": "rgba(170, 53, 206,0.6)",
             "width": 2,
-            "lineDash": [
-              5,
-              5
-            ]
+            "lineDash": [5, 5]
           },
           "fill": {
             "color": "rgba(66,89,179,0.3)"
@@ -1142,7 +1026,7 @@
         }
       ]
     ],
-    "w_p_ledigMark_cluster": [
+    "v_p_ledigMark_cluster": [
       [
         {
           "circle": {
@@ -1172,15 +1056,12 @@
         }
       ]
     ],
-    "w_p_ledigMark": [
+    "v_p_ledigMark": [
       [
         {
           "filter": "[status] == 'Kommande'",
           "icon": {
-            "size": [
-              24,
-              36
-            ],
+            "size": [24, 36],
             "src": "img/png/droppe_red.png"
           }
         }
@@ -1188,10 +1069,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              36
-            ],
+            "size": [24, 36],
             "src": "img/png/droppe_black.png"
           }
         }
@@ -1273,10 +1151,7 @@
           "label": "Såld",
           "stroke": {
             "color": "rgba(255,0,0,0.5)",
-            "lineDash": [
-              10,
-              10
-            ],
+            "lineDash": [10, 10],
             "width": 3
           },
           "fill": {
@@ -1485,10 +1360,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              24
-            ],
+            "size": [24, 24],
             "src": "img/png/bu_w_fos_p.png"
           },
           "label": "Förskola",
@@ -1498,10 +1370,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              24
-            ],
+            "size": [24, 24],
             "src": "img/png/bu_w_pfs_p.png"
           },
           "label": "Privat förskola",
@@ -1513,10 +1382,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              24
-            ],
+            "size": [24, 24],
             "src": "img/png/bu_w_grs_p.png"
           },
           "label": "Grundskola"
@@ -1527,10 +1393,7 @@
       [
         {
           "icon": {
-            "size": [
-              24,
-              24
-            ],
+            "size": [24, 24],
             "src": "img/png/bu_w_gss_p.png"
           },
           "label": "Grundsärskola"
