@@ -178,6 +178,9 @@
               "url": "dp_reg_uuid",
               "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
               "urlSuffix": ".pdf"
+            },
+            {
+              "html": "</br><i>De digitaliserade planerna är endast illustrativa och ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det den länkade plankartan som gäller.</i>"
             }
           ]
         },
