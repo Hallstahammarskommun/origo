@@ -388,10 +388,10 @@
       ]
     },
     {
-      "name": "p_livsmedel",
+      "name": "p_edp_livsmedel",
       "source": "ows",
-      "style": "p_livsmedel",
-      "clusterStyle": "p_livsmedel_cluster",
+      "style": "p_edp_livsmedel",
+      "clusterStyle": "p_edp_livsmedel_cluster",
       "title": "Livsmedelsinspektion",
       "layerType": "cluster",
       "group": "energi",
@@ -1148,7 +1148,7 @@
         }
       ]
     ],
-    "p_livsmedel_cluster": [
+    "p_edp_livsmedel_cluster": [
       [
         {
           "circle": {
@@ -1178,7 +1178,7 @@
         }
       ]
     ],
-    "p_livsmedel": [
+    "p_edp_livsmedel": [
       [
         {
           "icon": {
