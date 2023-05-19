@@ -251,7 +251,7 @@
       "name": "w_y_plan",
       "source": "ows",
       "style": "w_y_plan",
-      "title": "Detaljplan, pågående",
+      "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
       "fme": true,
