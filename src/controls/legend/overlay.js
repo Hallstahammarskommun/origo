@@ -69,7 +69,10 @@ const OverlayLayer = function OverlayLayer(options) {
     }
     layer.setVisible(!visible);
     if (!visible) {
-      const fmeTitle = layer.get('title');
+      const fmeTitle = layer.get('title')
+        .replace(/å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/ö/g, 'o');
       let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?';
       layerLogURL += `username=${localStorage.getItem('username')}`;
       layerLogURL += `&layer=${fmeTitle}`;
