@@ -29,6 +29,17 @@ const getCapabilities = function getCapabilities(name, getCapabilitiesURL) {
     xmlHttp.open('GET', getCapabilitiesURL);
     xmlHttp.setRequestHeader('Content-type', 'application/xml; charset=UTF-8');
     xmlHttp.send(null);
+
+    let userLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20login.fmw?';
+    userLogURL += `username=${localStorage.getItem('username')}`;
+    userLogURL += '&opt_showresult=false&opt_servicemode=sync&token=d5d8d6ea28a9e362b4fb56f4d1f1ec50bbce66c2';
+
+    fetch(userLogURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/xml; charset=UTF-8'
+      }
+    });
   });
 };
 

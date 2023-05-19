@@ -60,13 +60,6 @@ const OverlayLayer = function OverlayLayer(options) {
 
   const getLayer = () => layer;
 
-  function httpGet(fmeLayerUrl) {
-    const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', fmeLayerUrl, true); // false for synchronous request
-    xmlHttp.send(null);
-    return xmlHttp.responseText;
-  }
-
   const toggleVisible = function toggleVisible(visible) {
     const layerGroup = layer.get('group');
     const groupExclusive = (viewer.getGroup(layerGroup) && viewer.getGroup(layerGroup).exclusive);
@@ -76,12 +69,21 @@ const OverlayLayer = function OverlayLayer(options) {
     }
     layer.setVisible(!visible);
     if (!visible) {
-      const fmeTitle = layer.get('title');
-      let fmeLayerUrl = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?';
-      fmeLayerUrl += `username=${localStorage.getItem('username')}`;
-      fmeLayerUrl += `&layer=${fmeTitle}`;
-      fmeLayerUrl += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=0faad637053aa36f6a1cb4b5adf3d5401bfd0bd7';
-      httpGet(fmeLayerUrl);
+      const fmeTitle = layer.get('title')
+        .replace(/å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/ö/g, 'o');
+      let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?';
+      layerLogURL += `username=${localStorage.getItem('username')}`;
+      layerLogURL += `&layer=${fmeTitle}`;
+      layerLogURL += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=0faad637053aa36f6a1cb4b5adf3d5401bfd0bd7';
+
+      fetch(layerLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
     }
     return !visible;
   };
