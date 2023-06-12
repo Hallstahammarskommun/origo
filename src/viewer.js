@@ -177,6 +177,12 @@ const Viewer = function Viewer(targetOption, options = {}) {
 
   const getStyles = () => styles;
 
+  const addStyle = function addStyle(styleName, styleProps) {
+    if (!(styleName in styles)) {
+      styles[styleName] = styleProps;
+    }
+  };
+
   const getResolutions = () => resolutions;
 
   const getMapUrl = () => {
@@ -419,6 +425,11 @@ const Viewer = function Viewer(targetOption, options = {}) {
     if (thisProps.layerParam && layerParams[thisProps.layerParam]) {
       layerProps = Object.assign({}, layerParams[thisProps.layerParam], thisProps);
     }
+    if (thisProps.styleDef && !thisProps.style) {
+      const styleId = generateUUID();
+      addStyle(styleId, [thisProps.styleDef]);
+      layerProps.style = styleId;
+    }
     const layer = Layer(layerProps, this);
     addLayerStylePicker(layerProps);
     if (insertBefore) {
@@ -497,15 +508,12 @@ const Viewer = function Viewer(targetOption, options = {}) {
     }
   };
 
-  const addStyle = function addStyle(styleName, styleProps) {
-    if (!(styleName in styles)) {
-      styles[styleName] = styleProps;
-    }
+  const addMarker = function addMarker(coordinates, title, content, layerProps, showPopup) {
+    maputils.createMarker(coordinates, title, content, this, layerProps, showPopup);
   };
 
-  const addMarker = function addMarker(coordinates, title, content) {
-    const layer = maputils.createMarker(coordinates, title, content, this);
-    map.addLayer(layer);
+  const removeMarkers = function removeMarkers(layerName) {
+    maputils.removeMarkers(this, layerName);
   };
 
   const getUrlParams = function getUrlParams() {
@@ -537,12 +545,31 @@ const Viewer = function Viewer(targetOption, options = {}) {
             mapId: this.getId()
           });
 
+          if (urlParams.pin) {
+            featureinfoOptions.savedPin = urlParams.pin;
+          } else if (urlParams.selection) {
+            // This needs further development for proper handling in permalink
+            featureinfoOptions.savedSelection = new Feature({
+              geometry: new geom[urlParams.selection.geometryType](urlParams.selection.coordinates)
+            });
+          }
+
+          featureinfoOptions.viewer = this;
+
+          selectionmanager = Selectionmanager(featureinfoOptions);
+          featureinfo = Featureinfo(featureinfoOptions);
+          this.addComponent(selectionmanager);
+          this.addComponent(featureinfo);
+          this.addComponent(centerMarker);
+
+          this.addControls();
+
           if (urlParams.feature) {
             const featureId = urlParams.feature;
             const layerName = featureId.split('.')[0];
             const layer = getLayer(layerName);
-            const layerType = layer.get('type');
-            if (layer && layerType !== 'GROUP') {
+            if (layer && layer.get('type') !== 'GROUP') {
+              const layerType = layer.get('type');
               // FIXME: postrender event is only emitted if any features from a layer is actually drawn, which means there is no feature in the default extent,
               // it will not be triggered until map is panned or zoomed where a feature exists.
               layer.once('postrender', () => {
@@ -590,28 +617,10 @@ const Viewer = function Viewer(targetOption, options = {}) {
             }
           }
 
-          if (urlParams.pin) {
-            featureinfoOptions.savedPin = urlParams.pin;
-          } else if (urlParams.selection) {
-            // This needs further development for proper handling in permalink
-            featureinfoOptions.savedSelection = new Feature({
-              geometry: new geom[urlParams.selection.geometryType](urlParams.selection.coordinates)
-            });
-          }
-
           if (!urlParams.zoom && !urlParams.mapStateId && startExtent) {
             map.getView().fit(startExtent, { size: map.getSize() });
           }
 
-          featureinfoOptions.viewer = this;
-
-          selectionmanager = Selectionmanager(featureinfoOptions);
-          featureinfo = Featureinfo(featureinfoOptions);
-          this.addComponent(selectionmanager);
-          this.addComponent(featureinfo);
-          this.addComponent(centerMarker);
-
-          this.addControls();
           this.dispatch('loaded');
         });
     },
@@ -681,6 +690,7 @@ const Viewer = function Viewer(targetOption, options = {}) {
     removeGroup,
     removeLayer,
     removeOverlays,
+    removeMarkers,
     setStyle,
     zoomToExtent,
     getSelectionManager,
