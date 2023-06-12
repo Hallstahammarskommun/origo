@@ -73,10 +73,10 @@ const OverlayLayer = function OverlayLayer(options) {
         .replace(/å/g, 'a')
         .replace(/ä/g, 'a')
         .replace(/ö/g, 'o');
-      let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/Layerlog.fmw?';
+      let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20layer.fmw?';
       layerLogURL += `username=${localStorage.getItem('username')}`;
       layerLogURL += `&layer=${fmeTitle}`;
-      layerLogURL += '&DestDataset_POSTGRES=PostGIS%20geodata&opt_showresult=false&opt_servicemode=sync&token=0faad637053aa36f6a1cb4b5adf3d5401bfd0bd7';
+      layerLogURL += '&DestDataset_POSTGRES_3=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=127e716d93866c8beb54017ee26a69cdd639bbd5';
 
       fetch(layerLogURL, {
         method: 'POST',
