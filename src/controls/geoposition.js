@@ -60,12 +60,12 @@ const Geoposition = function Geoposition(options = {}) {
 
   const toggleState = function toggleState() {
     if (positionButton.getState() === 'initial') {
-      let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-      layerLogURL += `username=${localStorage.getItem('username')}`;
-      layerLogURL += '&obj=Geoposition';
-      layerLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+      let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+      interactionLogURL += `username=${localStorage.getItem('username')}`;
+      interactionLogURL += '&obj=Geoposition';
+      interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
 
-      fetch(layerLogURL, {
+      fetch(interactionLogURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml; charset=UTF-8'
