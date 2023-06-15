@@ -70,6 +70,19 @@ const Search = function Search(options = {}) {
     obj.feature = features[0];
     obj.title = objTitle;
     obj.content = content;
+    let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+    interactionLogURL += `username=${localStorage.getItem('username')}`;
+    interactionLogURL += '&obj=Search click';
+    interactionLogURL += `&typ=${objTitle}/${content.replace(/<\/?div>/g, '')}`;
+    interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+    fetch(interactionLogURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/xml; charset=UTF-8'
+      }
+    });
+
     clear();
     featureInfo.render([obj], 'overlay', getCenter(features[0].getGeometry()), { ignorePan: true });
     viewer.zoomToExtent(features[0].getGeometry(), maxZoomLevel);
@@ -338,6 +351,19 @@ const Search = function Search(options = {}) {
       if (includeSearchableLayers) {
         queryUrl += `&l=${viewer.getSearchableLayers(searchableDefault)}`;
       }
+      let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+      interactionLogURL += `username=${localStorage.getItem('username')}`;
+      interactionLogURL += '&obj=Search';
+      interactionLogURL += `&typ=${obj.value}`;
+      interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+      fetch(interactionLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
+
       fetch(queryUrl)
         .then(response => response.json())
         .then((data) => {
