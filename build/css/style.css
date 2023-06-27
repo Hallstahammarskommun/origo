@@ -2164,11 +2164,9 @@ body {
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
-    bottom: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     max-height: 70vh;
-    padding: 1px;
     position: absolute;
     text-align: left;
     white-space: normal;
@@ -2183,11 +2181,37 @@ body {
     pointer-events: none;
     position: absolute;
     width: 0; }
-  .o-map .o-popup::after {
+  .o-map .popup-top-center .o-popup {
+    bottom: 0; }
+  .o-map .popup-bottom-center .o-popup {
+    bottom: 12px; }
+  .o-map .popup-center-left .o-popup {
+    left: 10px; }
+  .o-map .popup-center-right .o-popup {
+    right: 10px; }
+  .o-map .popup-top-center .o-popup::after {
+    border-bottom-color: white;
+    border-width: 10px;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px; }
+  .o-map .popup-bottom-center .o-popup::after {
     border-top-color: white;
     border-width: 10px;
     bottom: -20px;
     left: 50%;
+    margin-left: -10px; }
+  .o-map .popup-center-left .o-popup::after {
+    border-right-color: white;
+    border-width: 10px;
+    left: -10px;
+    top: calc(50% - 6px);
+    margin-left: -10px; }
+  .o-map .popup-center-right .o-popup::after {
+    border-left-color: white;
+    border-width: 10px;
+    right: -20px;
+    top: calc(50% - 6px);
     margin-left: -10px; }
   .o-map .o-popup::before {
     border-top-color: #999;
@@ -3018,7 +3042,7 @@ body {
     top: 6em;
     width: 320px;
     z-index: 1;
-    overflow-x: hidden; }
+    overflow: visible; }
     .o-map .sidebarcontainer.expandable_list {
       cursor: move; }
   .o-map .expandable_list .urvalcontainer {
@@ -3036,7 +3060,8 @@ body {
     font-size: 12px;
     font-weight: bold;
     padding: 1em 1em 1em 2em;
-    z-index: 10; }
+    z-index: 10;
+    border-radius: inherit; }
   .o-map .expandable_list .urval-textnode-container {
     font-weight: bold;
     margin: 1em; }
@@ -3145,13 +3170,11 @@ body {
     font-size: 12px;
     font-weight: normal; }
   .o-map .expandable_list .export-buttons-container {
-    padding: 0.5em 0;
-    margin: 0; }
+    padding: 0.5em 1.8em;
+    margin-left: 0; }
   .o-map .export-buttons-container {
     margin: 0.5em 0.2em;
     margin-left: 1.8em; }
-  .o-map .expandable_list .export-buttons-container {
-    padding: 0.5em 0; }
   .o-map .export-button {
     background-color: whitesmoke;
     border: 1px solid #ccc;
