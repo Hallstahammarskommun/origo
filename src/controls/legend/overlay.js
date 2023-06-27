@@ -71,6 +71,9 @@ const OverlayLayer = function OverlayLayer(options) {
     layer.setVisible(!visible);
     if (!visible) {
       const fmeTitle = layer.get('title')
+        .replace(/Å/g, 'A')
+        .replace(/Ä/g, 'A')
+        .replace(/Ö/g, 'O')
         .replace(/å/g, 'a')
         .replace(/ä/g, 'a')
         .replace(/ö/g, 'o');
