@@ -93,6 +93,19 @@ const Editor = function Editor(options = {}) {
       editorButton = Button({
         cls: 'o-menu-button padding-small icon-smaller round light box-shadow o-tooltip',
         click() {
+          if (!toolbarVisible) {
+            let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+            interactionLogURL += `username=${localStorage.getItem('username')}`;
+            interactionLogURL += '&obj=Editor';
+            interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+            fetch(interactionLogURL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/xml; charset=UTF-8'
+              }
+            });
+          }
           toggleState();
         },
         icon: '#ic_edit_24px',
