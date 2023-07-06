@@ -435,7 +435,7 @@ const Legend = function Legend(options = {}) {
       document.getElementById(`${layerSearchInput.getId()}`).addEventListener('awesomplete-selectcomplete', selectHandler);
 
       document.getElementsByClassName('o-search-layer-field')[0].addEventListener('input', () => {
-        /* let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+        let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
         interactionLogURL += `username=${localStorage.getItem('username')}`;
         interactionLogURL += '&obj=LayerSearch';
         interactionLogURL += `&typ=${document.getElementsByClassName('o-search-layer-field')[0].value}`;
@@ -446,7 +446,7 @@ const Legend = function Legend(options = {}) {
           headers: {
             'Content-Type': 'application/xml; charset=UTF-8'
           }
-        }); */
+        });
         if (document.getElementsByClassName('o-search-layer-field')[0].value && document.getElementById(`${layerSearchInput.getId()}`).classList.contains('o-search-false')) {
           document.getElementById(`${layerSearchInput.getId()}`).classList.remove('o-search-false');
           document.getElementById(`${layerSearchInput.getId()}`).classList.add('o-search-true');
