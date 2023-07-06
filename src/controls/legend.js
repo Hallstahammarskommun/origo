@@ -323,6 +323,17 @@ const Legend = function Legend(options = {}) {
     cls: 'round compact primary icon-small margin-x-smaller o-tooltip',
     click() {
       togglePopupMenu();
+      let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+      interactionLogURL += `username=${localStorage.getItem('username')}`;
+      interactionLogURL += '&obj=AddLayer';
+      interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+      fetch(interactionLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
     },
     style: {
       'align-self': 'center'
@@ -379,6 +390,18 @@ const Legend = function Legend(options = {}) {
   function selectHandler(evt) {
     const label = evt.text.label;
     if (name) {
+      let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+      interactionLogURL += `username=${localStorage.getItem('username')}`;
+      interactionLogURL += '&obj=LayerSearchClick';
+      interactionLogURL += `&typ=${label}`;
+      interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+      fetch(interactionLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
       // Todo
       const layer = viewer.getLayer(label);
       const layerGroup = layer.get('group');
@@ -412,6 +435,18 @@ const Legend = function Legend(options = {}) {
       document.getElementById(`${layerSearchInput.getId()}`).addEventListener('awesomplete-selectcomplete', selectHandler);
 
       document.getElementsByClassName('o-search-layer-field')[0].addEventListener('input', () => {
+        /* let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
+        interactionLogURL += `username=${localStorage.getItem('username')}`;
+        interactionLogURL += '&obj=LayerSearch';
+        interactionLogURL += `&typ=${document.getElementsByClassName('o-search-layer-field')[0].value}`;
+        interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
+
+        fetch(interactionLogURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/xml; charset=UTF-8'
+          }
+        }); */
         if (document.getElementsByClassName('o-search-layer-field')[0].value && document.getElementById(`${layerSearchInput.getId()}`).classList.contains('o-search-false')) {
           document.getElementById(`${layerSearchInput.getId()}`).classList.remove('o-search-false');
           document.getElementById(`${layerSearchInput.getId()}`).classList.add('o-search-true');
