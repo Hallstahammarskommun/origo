@@ -22,7 +22,11 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/origoserver/lm/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
-        "measureTools": ["length", "area", "elevation"]
+        "measureTools": [
+          "length",
+          "area",
+          "elevation"
+        ]
       }
     },
     {
@@ -87,7 +91,12 @@
     }
   },
   "projectionCode": "EPSG:3010",
-  "projectionExtent": [-166640, 6305699, 433362, 6905701],
+  "projectionExtent": [
+    -166640,
+    6305699,
+    433362,
+    6905701
+  ],
   "proj4Defs": [
     {
       "code": "EPSG:3006",
@@ -99,8 +108,16 @@
       "projection": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
     }
   ],
-  "extent": [-166640, 6305699, 433362, 6905701],
-  "center": [133361, 6605700],
+  "extent": [
+    -166640,
+    6305699,
+    433362,
+    6905701
+  ],
+  "center": [
+    133361,
+    6605700
+  ],
   "zoom": 2,
   "resolutions": [
     114.688,
@@ -439,23 +456,12 @@
       ]
     },
     {
-      "name": "l_cykelvag",
-      "source": "ows",
+      "name": "Cykelvagar",
+      "source": "wms",
       "style": "l_cykelvag_l",
-      "stylePicker": [
-        {
-          "title": "Defaultstil",
-          "style": "l_cykelvag_l"
-        },
-        {
-          "title": "Grön stil",
-          "style": "l_cykelvag_g"
-        }
-      ],
       "title": "Cykelväg",
       "group": "trafik",
-      "type": "WFS",
-      "fme": true,
+      "type": "WMS",
       "queryable": false
     },
     {
@@ -649,7 +655,10 @@
       [
         {
           "icon": {
-            "size": [24, 36],
+            "size": [
+              24,
+              36
+            ],
             "src": "img/png/drop_blue.png"
           }
         }
@@ -733,7 +742,10 @@
           "stroke": {
             "color": "rgba(170, 53, 206,0.6)",
             "width": 2,
-            "lineDash": [5, 5]
+            "lineDash": [
+              5,
+              5
+            ]
           },
           "fill": {
             "color": "rgba(66,89,179,0.3)"
@@ -812,7 +824,10 @@
         {
           "filter": "[status] == 'Kommande'",
           "icon": {
-            "size": [24, 36],
+            "size": [
+              24,
+              36
+            ],
             "src": "img/png/droppe_red.png"
           }
         }
@@ -820,7 +835,10 @@
       [
         {
           "icon": {
-            "size": [24, 36],
+            "size": [
+              24,
+              36
+            ],
             "src": "img/png/droppe_black.png"
           }
         }
@@ -902,7 +920,10 @@
           "label": "Såld",
           "stroke": {
             "color": "rgba(255,0,0,0.5)",
-            "lineDash": [10, 10],
+            "lineDash": [
+              10,
+              10
+            ],
             "width": 3
           },
           "fill": {
@@ -1111,7 +1132,10 @@
       [
         {
           "icon": {
-            "size": [24, 24],
+            "size": [
+              24,
+              24
+            ],
             "src": "img/png/bu_w_fos_p.png"
           },
           "label": "Förskola",
@@ -1121,7 +1145,10 @@
       [
         {
           "icon": {
-            "size": [24, 24],
+            "size": [
+              24,
+              24
+            ],
             "src": "img/png/bu_w_pfs_p.png"
           },
           "label": "Privat förskola",
@@ -1133,7 +1160,10 @@
       [
         {
           "icon": {
-            "size": [24, 24],
+            "size": [
+              24,
+              24
+            ],
             "src": "img/png/bu_w_grs_p.png"
           },
           "label": "Grundskola"
@@ -1144,7 +1174,10 @@
       [
         {
           "icon": {
-            "size": [24, 24],
+            "size": [
+              24,
+              24
+            ],
             "src": "img/png/bu_w_gss_p.png"
           },
           "label": "Grundsärskola"
