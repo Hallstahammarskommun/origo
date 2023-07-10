@@ -174,14 +174,6 @@
   ],
   "layers": [
     {
-      "name": "vattenskydd",
-      "title": "vattenskydd",
-      "group": "none",
-      "source": "data/vattenskydd.geojson",
-      "style": "vattenskydd",
-      "type": "GEOJSON"
-    },
-    {
       "name": "detaljplan",
       "title": "Detaljplan",
       "abstract": "Detta lager innehåller digitaliserade tolkningar av kommunens detaljplaner. Samtliga ytor är klickbara där mer information ges om vilka planbestämmelser som gäller för särskilda ytor. De digitaliserade ytorna är ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det dock den länkade plankartan som gäller.",
@@ -342,7 +334,6 @@
       "title": "Ledig industrimark",
       "group": "bygga",
       "type": "WFS",
-      "fme": true,
       "filter": "typ = 'Industri'",
       "attributes": [
         {
@@ -364,7 +355,6 @@
       "title": "Lediga tomter",
       "style": "w_y_ledigMark",
       "group": "bygga",
-      "fme": true,
       "type": "GROUP",
       "layers": [
         {
@@ -418,7 +408,6 @@
       "layerType": "cluster",
       "group": "energi",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj"
@@ -446,7 +435,6 @@
       "title": "Naturreservat",
       "group": "energi",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "title": "Mer information",
@@ -471,7 +459,6 @@
       "title": "Servicelinjen",
       "group": "trafik",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
@@ -491,7 +478,6 @@
       "source": "ows",
       "style": "l_skollinjen",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
@@ -511,7 +497,6 @@
       "title": "Förskola",
       "group": "utbildning",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
@@ -535,7 +520,6 @@
       "title": "Grundskola",
       "group": "utbildning",
       "type": "WFS",
-      "fme": true,
       "filter": "egn = 'Grundskola'",
       "attributes": [
         {
@@ -559,7 +543,6 @@
       "title": "Grundsärskola",
       "group": "utbildning",
       "type": "WFS",
-      "fme": true,
       "filter": "egn = 'Grundsärskola'",
       "attributes": [
         {
@@ -583,7 +566,6 @@
       "title": "Upptagningsområden",
       "group": "utbildning",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
@@ -991,34 +973,6 @@
         }
       ]
     ],
-    "tk_sop_r": [
-      [
-        {
-          "circle": {
-            "radius": 7,
-            "stroke": {
-              "color": "rgb(210,76,99)",
-              "width": 2
-            },
-            "fill": {
-              "color": "rgb(242,205,36)"
-            }
-          },
-          "label": "Solpotential"
-        }
-      ]
-    ],
-    "l_cykelvag_g": [
-      [
-        {
-          "stroke": {
-            "color": "rgba(0,237,0,1.0)",
-            "width": 2
-          },
-          "label": "Cykelvägar"
-        }
-      ]
-    ],
     "l_cykelvag_l": [
       [
         {
@@ -1248,56 +1202,6 @@
           },
           "filter": "[obj] == 'Kolbäck'",
           "label": "Kolbäck"
-        }
-      ]
-    ],
-    "vattenskydd": [
-      [
-        {
-          "fill": {
-            "color": "rgba(6, 214, 160,0.5)"
-          },
-          "stroke": {
-            "color": "rgba(6, 214, 160,0.5)",
-            "width": 1
-          },
-          "filter": "[egn] == 'p-grundvatten'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(17, 138, 178,0.5)"
-          },
-          "stroke": {
-            "color": "rgba(17, 138, 178,0.5)",
-            "width": 1
-          },
-          "filter": "[egn] == 's-grundvatten'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(255, 209, 102,0.5)"
-          },
-          "stroke": {
-            "color": "rgba(255, 209, 102,0.5)",
-            "width": 1
-          },
-          "filter": "[egn] == 'p-ytvatten'"
-        }
-      ],
-      [
-        {
-          "fill": {
-            "color": "rgba(229, 152, 155,0.5)"
-          },
-          "stroke": {
-            "color": "rgba(229, 152, 155,0.5)",
-            "width": 1
-          },
-          "filter": "[egn] == 's-ytvatten'"
         }
       ]
     ],
