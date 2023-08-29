@@ -281,40 +281,20 @@
       ]
     },
     {
-      "name": "fastigheter",
+      "name": "y_fastighet",
+      "source": "ows",
+      "style": "y_fastighet",
       "title": "Fastighetsgräns",
-      "style": "fastigheter",
+      "format": "image/png",
       "group": "bygga",
-      "type": "GROUP",
-      "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>",
-      "layers": [
+      "type": "WFS",
+      "visible": false,
+      "attributes": [
         {
-          "name": "granser",
-          "source": "wms",
-          "style": "fastigheter",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WMS",
-          "queryable": false,
-          "visible": true
+          "name": "obj"
         },
         {
-          "name": "y_fastighet",
-          "source": "ows",
-          "style": "y_fastighet",
-          "title": "Fastighet",
-          "format": "image/png",
-          "group": "bygga",
-          "type": "WFS",
-          "visible": true,
-          "attributes": [
-            {
-              "name": "obj"
-            },
-            {
-              "html": "</br><i>Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>"
-            }
-          ]
+          "html": "</br><i>Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>"
         }
       ]
     },
@@ -736,22 +716,15 @@
         }
       ]
     ],
-    "fastigheter": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(150,61,20)",
-            "width": 1
-          },
-          "label": "Fastighetsgräns"
-        }
-      ]
-    ],
     "y_fastighet": [
       [
         {
           "fill": {
             "color": "rgba(0,0,0,0)"
+          },
+          "stroke": {
+            "color": "rgba(245, 146, 39, 1)",
+            "width": 1
           }
         }
       ]
