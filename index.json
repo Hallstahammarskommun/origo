@@ -14,6 +14,13 @@
       }
     },
     {
+      "name": "draganddrop",
+      "options": {
+        "showLegendButton": false,
+        "styleByAttribute": true
+      }
+    },
+    {
       "name": "mapmenu"
     },
     {
