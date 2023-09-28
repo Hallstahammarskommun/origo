@@ -49,13 +49,12 @@
       "name": "search",
       "options": {
         "url": "https://karta.hallstahammar.se/origoserver/search",
-        "searchAttribute": "NAMN",
-        "geometryAttribute": "GEOM",
-        "titleAttribute": "layer",
-        "contentAttribute": "NAMN",
-        "groupSuggestions": true,
-        "hintText": "Sök i Hallstakartan",
-        "minLength": 1
+          "searchAttribute": "NAMN",
+          "layerNameAttribute": "TYPE",
+          "idAttribute": "GID",
+          "geometryAttribute": "GEOM",
+          "hintText": "Sök adress eller fastighet",
+          "minLength": 4
       }
     },
     {
@@ -180,6 +179,23 @@
     }
   ],
   "layers": [
+    {
+      "name": "p_adress",
+      "title": "Adress",
+      "abstract": "Adresspunkter, läses från fastighetsregistret",
+      "source": "ows",
+      "style": "point",
+      "group": "0",
+      "type": "WFS",
+      "geometryType": "Point",
+      "fme": true,
+      "attributes": [
+        {
+          "name": "obj",
+          "title": "Adress: "
+        }
+      ]
+    },
     {
       "name": "detaljplan",
       "title": "Detaljplan",
