@@ -79,7 +79,7 @@ const Search = function Search(options = {}) {
     let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
     interactionLogURL += `username=${localStorage.getItem('username')}`;
     interactionLogURL += '&obj=Search click';
-    interactionLogURL += `&typ=${objTitle}/${content.replace(/<\/?div>/g, '')}`;
+    //interactionLogURL += `&typ=${objTitle}/${content.replace(/<\/?div>/g, '')}`;
     interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
 
     fetch(interactionLogURL, {
