@@ -190,8 +190,7 @@
       "geometryType": "Point",
       "attributes": [
         {
-          "name": "obj",
-          "title": "Adress: "
+          "name": "obj"
         }
       ]
     },
@@ -203,7 +202,12 @@
       "style": "line",
       "group": "0",
       "type": "WFS",
-      "geometryType": "Line"
+      "geometryType": "Line",
+      "attributes": [
+        {
+          "name": "obj"
+        }
+      ]
     },
     {
       "name": "detaljplan",
