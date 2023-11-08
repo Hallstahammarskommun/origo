@@ -542,7 +542,7 @@ const Legend = function Legend(options = {}) {
           return suggestionValue.toLowerCase().includes(userInput.toLowerCase()) ? suggestionValue : false;
         }
       });
-
+      awesomplete.ul.style.maxHeight = `${calcMaxHeight(getTargetHeight()) / 2}px`;
       input.parentNode.classList.add('black');
       input.parentNode.classList.add('grow');
       input.addEventListener('keyup', (e) => {
@@ -640,9 +640,11 @@ const Legend = function Legend(options = {}) {
     },
     hide() {
       document.getElementById(mainContainerCmp.getId()).classList.add('hidden');
+      document.getElementById(layerButton.getId()).classList.add('hidden');
     },
     unhide() {
       document.getElementById(mainContainerCmp.getId()).classList.remove('hidden');
+      document.getElementById(layerButton.getId()).classList.remove('hidden');
     },
     onRender() {
       const layerControlCmps = [];
