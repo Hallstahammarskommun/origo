@@ -173,15 +173,7 @@ const DragAndDrop = function DragAndDrop(options = {}) {
           features: event.features
         };
         if (!styleByAttribute) {
-          let styles = [];
-          const types = [];
-          event.features.forEach((feature) => {
-            if (!types.includes(feature.getGeometry().getType())) {
-              styles = styles.concat(featureStyles[feature.getGeometry().getType()]);
-            }
-            types.push(feature.getGeometry().getType());
-          });
-          layerOptions.styleDef = styles;
+          layerOptions.styleDef = featureStyles[event.features[0].getGeometry().getType()];
         }
         const layer = viewer.addLayer(layerOptions);
         if (zoomToExtentOnLoad) {

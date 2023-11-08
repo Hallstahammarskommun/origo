@@ -66,10 +66,6 @@ function showInfowindow() {
   mainContainer.classList.remove('hidden');
 }
 
-function getActiveSelectionGroup() {
-  return activeSelectionGroup;
-}
-
 function makeElementDraggable(elm) {
   const elmnt = elm;
   let pos1 = 0;
@@ -170,13 +166,12 @@ function render(viewerId) {
   makeElementDraggable(mainContainer);
 }
 
-// This function actually does nothing but is kept for the selectionmanager, hopefully the infowindow_expandableList.js will soon be merged with infowindow.js
 function showSelectedList(selectionGroup) {
   if (activeSelectionGroup === selectionGroup) {
     return;
   }
 
-  activeSelectionGroup = null;
+  activeSelectionGroup = selectionGroup;
 }
 
 function createUrvalElement(selectionGroup, selectionGroupTitle) {
@@ -431,7 +426,6 @@ function init(options) {
   render(options.viewer.getId());
 
   return {
-    getActiveSelectionGroup,
     createListElement,
     removeListElement,
     expandListElement,

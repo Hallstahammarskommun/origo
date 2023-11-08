@@ -353,7 +353,6 @@ const DrawHandler = function DrawHandler(options = {}) {
         drawLayer.un('change:visible', onChangeVisible);
       }
       drawLayer = layer;
-      drawLayer.setVisible(true);
       drawLayer.on('change:visible', onChangeVisible);
       onChangeVisible();
     } else {
@@ -388,7 +387,6 @@ const DrawHandler = function DrawHandler(options = {}) {
       queryable,
       removable,
       exportable,
-      zoomToExtent = true,
       drawlayer
     } = layerOptions;
     let newLayer;
@@ -410,7 +408,6 @@ const DrawHandler = function DrawHandler(options = {}) {
         queryable,
         removable,
         exportable,
-        zoomToExtent,
         drawlayer,
         type: 'GEOJSON',
         attributes: [

@@ -98,9 +98,8 @@ const Splash = function Splash(options = {}) {
       component = this;
       viewer = evt.target;
       target = viewer.getId();
-      const mapName = viewer.getMapName() ? viewer.getMapName().split('.')[0] : 'inline';
-      contentKey = `splashContent;${window.location.pathname};${mapName}`;
-      visibilityKey = `splashVisibility;${window.location.pathname};${mapName}`;
+      contentKey = `splashContent;${window.location.pathname};${viewer.getMapName().split('.')[0]}`;
+      visibilityKey = `splashVisibility;${window.location.pathname};${viewer.getMapName().split('.')[0]}`;
       if (!title) title = defaultTitle;
       if (!content) content = defaultContent;
 
