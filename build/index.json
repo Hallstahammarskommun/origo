@@ -188,11 +188,24 @@
       "group": "0",
       "type": "WFS",
       "geometryType": "Point",
-      "fme": true,
       "attributes": [
         {
-          "name": "obj",
-          "title": "Adress: "
+          "name": "obj"
+        }
+      ]
+    },
+    {
+      "name": "l_gatunamn",
+      "title": "Gatunamn",
+      "abstract": "Gatunamn läses från Lantmäteriets kommunikationsdata",
+      "source": "ows",
+      "style": "line",
+      "group": "0",
+      "type": "WFS",
+      "geometryType": "Line",
+      "attributes": [
+        {
+          "name": "obj"
         }
       ]
     },
