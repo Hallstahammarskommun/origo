@@ -58,8 +58,13 @@ export function layerSpecificExportHandler(url, activeLayer, selectedItems, attr
   }
 
   const features = {};
+  // Fastighetsutdrag
+  const params = [];
+  let layer = '';
   selectedItems.forEach((item) => {
     const layerName = item.getLayer().get('name');
+    // Fastighetsutdrag
+    layer = layerName;
     if (!features[layerName]) {
       features[layerName] = [];
     }
@@ -71,6 +76,8 @@ export function layerSpecificExportHandler(url, activeLayer, selectedItems, attr
       attributesToSendToExport.forEach((att) => {
         if (att in properties) {
           obj[att] = properties[att];
+          // Fastighetsutdrag
+          params.push(properties[att]);
         }
       });
     } else {
@@ -79,7 +86,10 @@ export function layerSpecificExportHandler(url, activeLayer, selectedItems, attr
     if (obj[geometryName]) delete obj[geometryName];
     features[layerName].push(obj);
   });
-
+  // Fastighetsutdrag
+  if (layer === 'y_fastighet') {
+    return window.open(`https://karta.hallstahammar.se/fmedatastreaming/Fastighetsutdrag/Fastighetsutdrag.fmw?username=${localStorage.getItem('username')}&uuid=${params}`);
+  }
   // eslint-disable-next-line consistent-return
   return fetch(url, {
     method: 'POST', // or 'PUT'
