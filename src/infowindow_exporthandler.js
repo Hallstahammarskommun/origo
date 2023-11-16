@@ -282,8 +282,10 @@ function createExportButtons(
       selectedItems,
       attributesToSendToExport,
       layerSpecificExportedFileName
-    )
-      .then((data) => {
+    );
+    // Fastighetsutdrag
+    btn.loadStop();
+    /* .then((data) => {
         if (data) {
           switch (data.status) {
             case 'ok':
@@ -302,7 +304,7 @@ function createExportButtons(
         console.error(err);
         createToaster('fail', exportOptions);
         btn.loadStop();
-      });
+      }); */
   });
   return exportBtn;
 }
