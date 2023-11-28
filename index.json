@@ -416,6 +416,19 @@
       ]
     },
     {
+      "name": "primarkarta",
+      "source": "wms",
+      "style": "primarkarta",
+      "title": "Primärkarta",
+      "format": "image/png",
+      "group": "bygga",
+      "type": "WMS",
+      "queryable": false,
+      "fme": true,
+      "visible": false,
+      "maxScale": 2000
+    },
+    {
       "name": "p_edp_livsmedel",
       "source": "ows",
       "style": "p_edp_livsmedel",
@@ -633,18 +646,6 @@
       "queryable": false,
       "type": "WMS",
       "style": "orto",
-      "visible": false
-    },
-    {
-      "name": "primarkarta",
-      "source": "wms",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "background",
-      "type": "WMS",
-      "queryable": false,
-      "fme": true,
       "visible": false
     }
   ],
