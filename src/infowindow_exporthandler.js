@@ -88,7 +88,7 @@ export function layerSpecificExportHandler(url, activeLayer, selectedItems, attr
   });
   // Fastighetsutdrag
   if (layer === 'y_fastighet') {
-    return window.open(`https://karta.hallstahammar.se/fmedatastreaming/Fastighetsutdrag/Fastighetsutdrag.fmw?username=${localStorage.getItem('username')}&uuid=${params}`);
+    return window.open(`https://karta.hallstahammar.se/fmedatastreaming/Fastighetsdata/Fastighetsutdrag.fmw?uuid=${params}`);
   }
   // eslint-disable-next-line consistent-return
   return fetch(url, {
