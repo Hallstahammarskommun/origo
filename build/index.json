@@ -142,10 +142,6 @@
     "infowindow": "overlay"
   },
   "source": {
-    "wms": {
-      "url": "https://karta.hallstahammar.se/geoserver/wms",
-      "version": "1.1.1"
-    },
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
       "strategy": "all"
@@ -220,7 +216,7 @@
       "layers": [
         {
           "name": "theme-dp-mosaik-alla",
-          "source": "wms",
+          "source": "ows",
           "style": "detaljplan",
           "format": "image/png",
           "type": "WMS",
@@ -417,7 +413,7 @@
     },
     {
       "name": "primarkarta",
-      "source": "wms",
+      "source": "ows",
       "style": "primarkarta",
       "title": "Primärkarta",
       "format": "image/png",
@@ -474,7 +470,7 @@
     },
     {
       "name": "Cykelvagar",
-      "source": "wms",
+      "source": "ows",
       "style": "l_cykelvag_l",
       "title": "Cykelväg",
       "group": "trafik",
@@ -617,7 +613,7 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan_nedtonad",
-      "source": "wms",
+      "source": "ows",
       "title": "Karta, grå",
       "queryable": false,
       "type": "WMS",
@@ -629,7 +625,7 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "topowebbkartan",
-      "source": "wms",
+      "source": "ows",
       "title": "Karta, färg",
       "queryable": false,
       "type": "WMS",
@@ -641,7 +637,7 @@
       "format": "image/jpeg",
       "group": "background",
       "name": "ortofoto",
-      "source": "wms",
+      "source": "ows",
       "title": "Flygfoto",
       "queryable": false,
       "type": "WMS",
