@@ -1,7 +1,16 @@
 {
   "controls": [
     {
-      "name": "geoposition"
+      "name": "fullscreen",
+      "options": {
+          "hideWhenEmbedded": true
+      }
+    },
+    {
+      "name": "geoposition",
+      "options":{
+        "hideWhenEmbedded": true
+      }
     },
     {
       "name": "legend",
@@ -10,18 +19,23 @@
         "useGroupIndication": true,
         "contentStyle": {
           "width": "240px"
-        }
+        },
+        "hideWhenEmbedded": true
       }
     },
     {
       "name": "draganddrop",
       "options": {
         "showLegendButton": false,
-        "styleByAttribute": true
+        "styleByAttribute": true,
+        "hideWhenEmbedded": true
       }
     },
     {
-      "name": "mapmenu"
+      "name": "mapmenu",
+      "options":{
+        "hideWhenEmbedded": true
+      }
     },
     {
       "name": "measure",
@@ -29,6 +43,7 @@
         "elevationServiceURL": "https://karta.hallstahammar.se/origoserver/lm/elevation/3010/{easting}/{northing}",
         "elevationTargetProjection": "EPSG:3010",
         "elevationAttribute": "geometry.coordinates[2]",
+        "hideWhenEmbedded": true,
         "measureTools": [
           "length",
           "area",
@@ -39,6 +54,7 @@
     {
       "name": "position",
       "options": {
+        "hideWhenEmbedded": true,
         "title": "Sweref 99 16 30",
         "projections": {
           "EPSG:3006": "Sweref 99 TM"
@@ -54,7 +70,8 @@
           "idAttribute": "GID",
           "geometryAttribute": "GEOM",
           "hintText": "Sök adress eller fastighet",
-          "minLength": 4
+          "minLength": 4,
+          "hideWhenEmbedded": true
       }
     },
     {
