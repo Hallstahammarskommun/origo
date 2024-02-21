@@ -3160,7 +3160,8 @@ body {
     transition: 0.5s; }
   .o-map .o-identify-content {
     display: inline-block;
-    width: 100%; }
+    width: 100%;
+    overflow-wrap: anywhere; }
   .o-map .folded {
     max-height: 0;
     overflow: hidden;

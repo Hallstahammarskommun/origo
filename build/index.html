@@ -2,36 +2,51 @@
 <html lang="sv">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-	<!-- On production systems a Content-Security-Policy and referrer meta-tag should be added, see below.
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+    <!-- On production systems a Content-Security-Policy and referrer meta-tag should be added, see below.
 	The CSP should be modified with adding specific sources that should be allowed, f.e. connect-src 'self' webanalysis.example.com geospatialdata.example.com; -->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';">
-	<meta name="referrer" content="same-origin">
-	<meta name="description" content="En karttjänst från Hallstahammars kommun. Här hittar du olika typer av samhällsinformation">
-	<title>Hallstakartan</title>
-	<link href="css/style.css" rel="stylesheet">
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';">
+    <meta name="referrer" content="same-origin">
+    <meta name="description"
+        content="En karttjänst från Hallstahammars kommun. Här hittar du olika typer av samhällsinformation">
+    <title>Hallstakartan</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
 
 <body>
-	<div id="app-wrapper"></div>
-	<script src="js/origo.min.js"></script>
-	<script src="plugins/fme.js"></script>
-	<script type="text/javascript">
-		//Init origo
-		var origo = Origo('index.json');
-		origo.on('load', function (viewer) {
-			var fme = FME({
-				destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
-				title: 'Hämta data',
-				url: 'https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?token=db3957deef642c9585710ef4beb1ac1bb3c07aa6'
-			});
-			viewer.addComponent(fme);
-		});
-	</script>
+    <div id="app-wrapper"></div>
+    <script src="js/origo.min.js"></script>
+    <script src="plugins/fme.js"></script>
+    <script type="text/javascript">
+        //Init origo
+        var url = window.location.href;
+        var parts = url.split('#');
+        var jsonFileName = "index.json";
+        if (parts.length > 1) {
+            var hash = parts[1]; // Använder index 1 för det som kommer efter första #
+            jsonFileName = hash + ".json";
+        }
+
+        // Om intern
+        if (jsonFileName === "intern.json") {
+            jsonFileName = "https://karta.hallstahammar.se/minjsonfil.json";
+        }
+
+        var origo = Origo(jsonFileName);
+        origo.on('load', function (viewer) {
+            var fme = FME({
+                destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
+                title: 'Hämta data',
+                url: 'https://karta.hallstahammar.se/fmedatastreaming/Script/H%C3%A4mta%20data.fmw?token=db3957deef642c9585710ef4beb1ac1bb3c07aa6'
+            });
+            viewer.addComponent(fme);
+        });
+    </script>
 </body>
 
 </html>
