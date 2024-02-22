@@ -10,9 +10,8 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'none'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';">
     <meta name="referrer" content="same-origin">
-    <meta name="description"
-        content="En karttjänst från Hallstahammars kommun. Här hittar du olika typer av samhällsinformation">
-    <title>Hallstakartan</title>
+    <meta name="description" content="Här hittar du olika typer av samhällsinformation">
+    <title>Kartan</title>
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
@@ -34,11 +33,13 @@
 
         // Om intern
         if (jsonFileName === "intern.json") {
-            jsonFileName = "https://karta.hallstahammar.se/minjsonfil.json";
+            jsonFileName = "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?";
+            var loadSwiper = true;
         }
 
         var origo = Origo(jsonFileName);
         origo.on('load', function (viewer) {
+            // FME
             var fme = FME({
                 destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
                 title: 'Hämta data',
