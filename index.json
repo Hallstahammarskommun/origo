@@ -321,7 +321,6 @@
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
