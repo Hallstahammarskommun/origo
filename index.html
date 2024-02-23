@@ -22,7 +22,24 @@
     <script src="js/origo.min.js"></script>
     <script src="plugins/fme.js"></script>
     <script type="text/javascript">
-        //Init origo
+
+        // Init origo
+        function initOrigo(jsonFileName) {
+            var origo = Origo(jsonFileName);
+            origo.on('load', function (viewer) {
+
+                // FME
+                var fme = FME({
+                    destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
+                    title: 'Hämta data',
+                    url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
+                });
+                viewer.addComponent(fme);
+                
+            });
+        }
+
+        //Koll vilken json som ska läsas in
         var url = window.location.href;
         var parts = url.split('#');
         var jsonFileName = "index.json";
@@ -33,20 +50,21 @@
 
         // Om intern
         if (jsonFileName === "intern.json") {
-            jsonFileName = "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?";
-            var loadSwiper = true;
-        }
 
-        var origo = Origo(jsonFileName);
-        origo.on('load', function (viewer) {
-            // FME
-            var fme = FME({
-                destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
-                title: 'Hämta data',
-                url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
-            });
-            viewer.addComponent(fme);
-        });
+            // Läs in JSON-filen och spara användare till sessionStorage
+            fetch("https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?")
+                .then(response => response.json())
+                .then(data => {
+                    // Spara användarnamnet i Session Storage
+                    sessionStorage.setItem('username', data.user);
+
+                    initOrigo(data);
+                })
+                .catch(error => console.error('Error fetching JSON:', error));
+        } else {
+            initOrigo(jsonFileName)
+        }
+        
     </script>
 </body>
 
