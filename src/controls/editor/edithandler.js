@@ -712,6 +712,31 @@ function setEditProps(options) {
  * @returns a promise which is resolved when feature is deleted from db (or immediately id not autosave)
  */
 async function deleteFeature(feature, layer, supressDbDelete) {
+  // FME start
+  async function deleteFeatureLedigMark() {
+    const featureID = feature.get('id');
+    let deleteFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
+    deleteFeatureURL += `id=${featureID}`;
+    deleteFeatureURL += '&operation=DELETE';
+    try {
+      const response = await fetch(deleteFeatureURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Delete Feature logging failed with status ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error logging Delete Feature:', error);
+    }
+  }
+  if (currentLayer === 'w_y_ledigMark') {
+    deleteFeatureLedigMark();
+  }
+  // FME end
   // If editor is in auto save mode we can delete in the correct order by start by recursing before deleting anything
   // If editor is not in auto save, it is up to the transactionhandler in combination with the map server if
   // delete order is preserved. Better not have any db constraints if mode is 'cascade'.
@@ -845,6 +870,44 @@ function attributesSaveHandler(features, formEl) {
         feature.set(attribute.name, formEl[attribute.name]);
       }
     });
+    // FME start
+    async function upsertFeatureLedigMark() {
+      const featureID = feature.get('id');
+      const obj = encodeURIComponent(feature.get('obj'));
+      const typ = encodeURIComponent(feature.get('typ'));
+      const egn = encodeURIComponent(feature.get('egn'));
+      const area = encodeURIComponent(feature.get('area'));
+      const status = encodeURIComponent(feature.get('status'));
+      const datum = encodeURIComponent(feature.get('datum'));
+      const geom = feature.get('geom')?.flatCoordinates || '';
+      let upsertFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
+      upsertFeatureURL += `id=${featureID}`;
+      upsertFeatureURL += '&operation=UPDATE';
+      upsertFeatureURL += `&obj=${obj}`;
+      upsertFeatureURL += `&typ=${typ}`;
+      upsertFeatureURL += `&egn=${egn}`;
+      upsertFeatureURL += `&area=${area}`;
+      upsertFeatureURL += `&status=${status}`;
+      upsertFeatureURL += `&datum=${datum}`;
+      upsertFeatureURL += `&geom=${geom}`;
+      try {
+        const response = await fetch(upsertFeatureURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/xml; charset=UTF-8'
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`Upsert Feature logging failed with status ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Error logging Upsert Feature:', error);
+      }
+    }
+    if (currentLayer === 'w_y_ledigMark') {
+      upsertFeatureLedigMark();
+    }
+    // FME end
     saveFeature({
       feature,
       layerName: currentLayer,
@@ -1065,7 +1128,6 @@ function onAttributesSave(features, attrs) {
     // If valid, continue
     if (valid.validates) {
       attributesSaveHandler(features, editEl);
-
       document.getElementById(`o-save-button-${currentLayer}`).blur();
       modal.closeModal();
       // The modal does not fire close event when it is closed externally
@@ -1290,14 +1352,12 @@ function editAttributes(feat) {
       form = `<div id="o-form">${formElement}${relatedTablesFormHTML}${attachmentsForm}<br><div class="o-form-save"><input id="o-save-button-${currentLayer}" type="button" value="Spara" aria-label="Spara"></input><input id="o-abort-button-${currentLayer}" type="button" value="Ta bort" aria-label="Ta bort"></input></div></div>`;
       autoCreatedFeature = false;
     }
-
     modal = Modal({
       title: dlgTitle,
       content: form,
       static: true,
       target: viewer.getId()
     });
-
     // This injects the entire attachment handling which is performed independently from save, so fire and forget it sets up
     // its own callbacks and what not.
     // Lucky for us when the form is saved, that handler only looks for attributes in the attributesObjects array, so we don't
@@ -1342,7 +1402,6 @@ function editAttributes(feat) {
         obj.addListener(obj);
       }
     });
-
     onAttributesSave(features, attributeObjects);
     onAttributesAbort(features);
   }
