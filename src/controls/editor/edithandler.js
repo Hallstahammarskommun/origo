@@ -58,6 +58,68 @@ let autoCreatedFeature = false;
 let infowindowCmp = false;
 let preselectedFeature;
 
+// FME Start
+async function upsertFeatureLedigMark(feature) {
+  const featureID = feature.get('id');
+  const obj = encodeURIComponent(feature.get('obj'));
+  const typ = encodeURIComponent(feature.get('typ'));
+  const egn = encodeURIComponent(feature.get('egn'));
+  const area = encodeURIComponent(feature.get('area'));
+  const status = encodeURIComponent(feature.get('status'));
+  const datum = encodeURIComponent(feature.get('datum'));
+  const geom = feature.getGeometry().flatCoordinates;
+  let upsertFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
+  upsertFeatureURL += `id=${featureID}`;
+  upsertFeatureURL += '&operation=UPDATE';
+  upsertFeatureURL += `&obj=${obj}`;
+  upsertFeatureURL += `&typ=${typ}`;
+  upsertFeatureURL += `&egn=${egn}`;
+  upsertFeatureURL += `&area=${area}`;
+  upsertFeatureURL += `&status=${status}`;
+  upsertFeatureURL += `&datum=${datum}`;
+  upsertFeatureURL += `&geom=${geom}`;
+  try {
+    const response = await fetch(upsertFeatureURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/xml; charset=UTF-8'
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`Upsert Feature logging failed with status ${response.status}`);
+    }
+    if (response.ok && featureID === undefined) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  } catch (error) {
+    console.error('Error logging Upsert Feature:', error);
+  }
+}
+
+async function deleteFeatureLedigMark(feature) {
+  const featureID = feature.get('id');
+  let deleteFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
+  deleteFeatureURL += `id=${featureID}`;
+  deleteFeatureURL += '&operation=DELETE';
+  try {
+    const response = await fetch(deleteFeatureURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/xml; charset=UTF-8'
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`Delete Feature logging failed with status ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error logging Delete Feature:', error);
+  }
+}
+
+// FME End
+
 function isActive() {
   // FIXME: this only happens at startup as they are set to null on closing. If checking for null/falsley/not truely it could work as isVisible with
   // the exption that it can not determine if it is visble before interactions are set, i.e. it can't be used to determine if interactions should be set.
@@ -230,6 +292,10 @@ function onModifyEnd(evt) {
   if (validateOnDraw && !topology.isGeometryValid(feature.getGeometry())) {
     feature.setGeometry(modifyGeometry);
   } else {
+    // FME
+    if (currentLayer === 'w_y_ledigMark') {
+      upsertFeatureLedigMark(feature);
+    }
     saveFeature({
       feature,
       layerName: currentLayer,
@@ -712,31 +778,10 @@ function setEditProps(options) {
  * @returns a promise which is resolved when feature is deleted from db (or immediately id not autosave)
  */
 async function deleteFeature(feature, layer, supressDbDelete) {
-  // FME start
-  async function deleteFeatureLedigMark() {
-    const featureID = feature.get('id');
-    let deleteFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
-    deleteFeatureURL += `id=${featureID}`;
-    deleteFeatureURL += '&operation=DELETE';
-    try {
-      const response = await fetch(deleteFeatureURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/xml; charset=UTF-8'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Delete Feature logging failed with status ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error logging Delete Feature:', error);
-    }
-  }
+  // FME
   if (currentLayer === 'w_y_ledigMark') {
-    deleteFeatureLedigMark();
+    deleteFeatureLedigMark(feature);
   }
-  // FME end
   // If editor is in auto save mode we can delete in the correct order by start by recursing before deleting anything
   // If editor is not in auto save, it is up to the transactionhandler in combination with the map server if
   // delete order is preserved. Better not have any db constraints if mode is 'cascade'.
@@ -870,44 +915,10 @@ function attributesSaveHandler(features, formEl) {
         feature.set(attribute.name, formEl[attribute.name]);
       }
     });
-    // FME start
-    async function upsertFeatureLedigMark() {
-      const featureID = feature.get('id');
-      const obj = encodeURIComponent(feature.get('obj'));
-      const typ = encodeURIComponent(feature.get('typ'));
-      const egn = encodeURIComponent(feature.get('egn'));
-      const area = encodeURIComponent(feature.get('area'));
-      const status = encodeURIComponent(feature.get('status'));
-      const datum = encodeURIComponent(feature.get('datum'));
-      const geom = feature.get('geom')?.flatCoordinates || '';
-      let upsertFeatureURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Editor/redigeraledigmark.fmw?';
-      upsertFeatureURL += `id=${featureID}`;
-      upsertFeatureURL += '&operation=UPDATE';
-      upsertFeatureURL += `&obj=${obj}`;
-      upsertFeatureURL += `&typ=${typ}`;
-      upsertFeatureURL += `&egn=${egn}`;
-      upsertFeatureURL += `&area=${area}`;
-      upsertFeatureURL += `&status=${status}`;
-      upsertFeatureURL += `&datum=${datum}`;
-      upsertFeatureURL += `&geom=${geom}`;
-      try {
-        const response = await fetch(upsertFeatureURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/xml; charset=UTF-8'
-          }
-        });
-        if (!response.ok) {
-          throw new Error(`Upsert Feature logging failed with status ${response.status}`);
-        }
-      } catch (error) {
-        console.error('Error logging Upsert Feature:', error);
-      }
-    }
+    // FME
     if (currentLayer === 'w_y_ledigMark') {
-      upsertFeatureLedigMark();
+      upsertFeatureLedigMark(feature);
     }
-    // FME end
     saveFeature({
       feature,
       layerName: currentLayer,
