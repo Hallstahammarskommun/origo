@@ -11,6 +11,7 @@
     <meta name="description" content="Här hittar du olika typer av samhällsinformation">
     <title>Kartan</title>
     <link href="css/style.css" rel="stylesheet">
+    <link href="plugins/swiper.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
@@ -19,10 +20,11 @@
     <div id="app-wrapper"></div>
     <script src="js/origo.min.js"></script>
     <script src="plugins/fme.js"></script>
+    <script src="plugins/swiper.min.js"></script>
     <script type="module">
 
         // Init origo
-        const initOrigo = (jsonFileName) => {
+        const initOrigo = (jsonFileName, loadSwiper) => {
             const origo = Origo(jsonFileName);
             origo.on('load', (viewer) => {
 
@@ -33,6 +35,25 @@
                     url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
                 });
                 viewer.addComponent(fme);
+
+                // Swiper
+                if (loadSwiper) {
+                    const swiper = new Swiper({
+                        origoConfig: jsonFileName,
+                        circleRadius: 150,
+                        alwaysOnTop: false,
+                        initialLayer: "ortofoto",
+                        initialControl: 'swipe',
+                        showLayerListOnStart: true,
+                        tooltips: {
+                            swiper: 'Jämför kartvyer',
+                            swipeBetweenLayers: 'Jämför sida-sida',
+                            circleSwipe: 'Jämför med kikhål',
+                            layerList: 'Välj lager från lista'
+                        }
+                    });
+                    viewer.addComponent(swiper);
+                };
 
             });
         }
@@ -48,7 +69,8 @@
 
         // Om intern
         if (jsonFileName === "intern.json") {
-
+            
+            const loadSwiper = true;
             const logData = {
                 userAgent: navigator.userAgent,
                 screenResolution: `${window.screen.width}x${window.screen.height}`,
@@ -64,7 +86,7 @@
                     // Spara användarnamnet i Session Storage
                     sessionStorage.setItem('username', data.user);
 
-                    initOrigo(data);
+                    initOrigo(data, loadSwiper);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
         } else {
