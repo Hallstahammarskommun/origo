@@ -65,10 +65,14 @@ const OverlayLayer = function OverlayLayer(options) {
         .replace(/å/g, 'a')
         .replace(/ä/g, 'a')
         .replace(/ö/g, 'o');
-      let layerLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20layer.fmw?';
-      layerLogURL += `username=${localStorage.getItem('username')}`;
-      layerLogURL += `&layer=${fmeTitle}`;
-      layerLogURL += '&DestDataset_POSTGRES_3=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=127e716d93866c8beb54017ee26a69cdd639bbd5';
+
+      const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+      console.log(fragmentIdentifier);
+      let layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?anchor=${fragmentIdentifier}&layer=${fmeTitle}&opt_showresult=false&opt_servicemode=sync`;
+
+      if (fragmentIdentifier !== 'intern') {
+        layerLogURL += '&token=d20d058367af05b5a7fbde46223f8ae112dac9f6';
+      }
 
       fetch(layerLogURL, {
         method: 'POST',
