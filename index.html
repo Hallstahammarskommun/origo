@@ -24,7 +24,7 @@
     <script type="module">
 
         // Init origo
-        const initOrigo = (jsonFileName, loadFME, loadSwiper) => {
+        const initOrigo = (jsonFileName, fetchURL, loadFME, loadSwiper) => {
             const origo = Origo(jsonFileName);
             origo.on('load', (viewer) => {
 
@@ -40,8 +40,8 @@
 
                 // Swiper
                 if (loadSwiper) {
-                    const swiper = new Swiper({
-                        origoConfig: jsonFileName,
+                    const swiper = Swiper({
+                        origoConfig: fetchURL,
                         circleRadius: 150,
                         alwaysOnTop: false,
                         initialLayer: "ortofoto",
@@ -69,6 +69,7 @@
             jsonFileName = `${hash}.json`;
         }
 
+        // Om intern
         if (jsonFileName === "index.json") {
             const loadFME = true
             initOrigo(jsonFileName, loadFME)
@@ -88,7 +89,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // Spara användarnamnet i Session Storage
-                    initOrigo(data, loadFME, loadSwiper);
+                    initOrigo(data, fetchURL, loadFME, loadSwiper);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
         } else {
