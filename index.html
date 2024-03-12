@@ -88,7 +88,6 @@
             fetch(fetchURL)
                 .then(response => response.json())
                 .then(data => {
-                    // Spara användarnamnet i Session Storage
                     initOrigo(data, fetchURL, loadFME, loadSwiper);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
