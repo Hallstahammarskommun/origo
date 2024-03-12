@@ -24,7 +24,7 @@
     <script type="module">
 
         // Init origo
-        const initOrigo = (jsonFileName, fetchURL, loadFME, loadSwiper) => {
+        const initOrigo = (jsonFileName, loadFME, loadSwiper, swiperURL) => {
             const origo = Origo(jsonFileName);
             origo.on('load', (viewer) => {
 
@@ -41,7 +41,7 @@
                 // Swiper
                 if (loadSwiper) {
                     const swiper = Swiper({
-                        origoConfig: fetchURL,
+                        origoConfig: swiperURL,
                         circleRadius: 150,
                         alwaysOnTop: false,
                         initialLayer: "ortofoto",
@@ -88,7 +88,7 @@
             fetch(fetchURL)
                 .then(response => response.json())
                 .then(data => {
-                    initOrigo(data, fetchURL, loadFME, loadSwiper);
+                    initOrigo(data, loadFME, loadSwiper, fetchURL);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
         } else {
