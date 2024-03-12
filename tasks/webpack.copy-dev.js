@@ -20,8 +20,6 @@ module.exports = merge(common, {
         'css/**',
         'index.html',
         'index.json',
-        'intern.html',
-        'intern.json',
         'img/**'
       ]
     })
