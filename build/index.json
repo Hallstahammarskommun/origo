@@ -3,12 +3,12 @@
     {
       "name": "fullscreen",
       "options": {
-          "hideWhenEmbedded": true
+        "hideWhenEmbedded": true
       }
     },
     {
       "name": "geoposition",
-      "options":{
+      "options": {
         "hideWhenEmbedded": true
       }
     },
@@ -33,7 +33,7 @@
     },
     {
       "name": "mapmenu",
-      "options":{
+      "options": {
         "hideWhenEmbedded": true
       }
     },
@@ -65,13 +65,13 @@
       "name": "search",
       "options": {
         "url": "https://karta.hallstahammar.se/origoserver/search",
-          "searchAttribute": "NAMN",
-          "layerNameAttribute": "TYPE",
-          "idAttribute": "GID",
-          "geometryAttribute": "GEOM",
-          "hintText": "Sök adress eller fastighet",
-          "minLength": 4,
-          "hideWhenEmbedded": true
+        "searchAttribute": "NAMN",
+        "layerNameAttribute": "TYPE",
+        "idAttribute": "GID",
+        "geometryAttribute": "GEOM",
+        "hintText": "Sök adress eller fastighet",
+        "minLength": 4,
+        "hideWhenEmbedded": true
       }
     },
     {
@@ -321,7 +321,6 @@
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
-      "fme": true,
       "attributes": [
         {
           "name": "obj",
@@ -414,12 +413,10 @@
           ]
         },
         {
-          "name": "v_p_ledigMark",
+          "name": "w_y_ledigMark__smahusPunkt",
           "source": "ows",
-          "style": "v_p_ledigMark",
-          "clusterStyle": "v_p_ledigMark_cluster",
-          "title": "Lediga tomter punkt",
-          "layerType": "cluster",
+          "style": "w_y_ledigMarkPunkt",
+          "title": "Lediga tomter",
           "group": "bygga",
           "type": "WFS",
           "filter": "typ = 'Smahus'",
@@ -439,7 +436,7 @@
       "queryable": false,
       "fme": true,
       "visible": false,
-      "maxScale": 2000
+      "maxScale": 2500
     },
     {
       "name": "p_edp_livsmedel",
@@ -794,58 +791,17 @@
         }
       ]
     ],
-    "v_p_ledigMark_cluster": [
-      [
-        {
-          "circle": {
-            "radius": 16,
-            "fill": {
-              "color": "rgba(0,0,0,0.5)"
-            },
-            "stroke": {
-              "color": "rgba(0,0,0,0.9)",
-              "width": 4
-            }
-          }
-        },
-        {
-          "text": {
-            "font": "Bold 12px Arial",
-            "textAlign": "center",
-            "text": "size",
-            "fill": {
-              "color": "rgba(255,255,255,1.0)"
-            },
-            "stroke": {
-              "color": "rgba(103,60,31,0.9",
-              "width": 2
-            }
-          }
-        }
-      ]
-    ],
-    "v_p_ledigMark": [
-      [
-        {
-          "filter": "[status] == 'Kommande'",
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_red.png"
-          }
-        }
-      ],
+    "w_y_ledigMarkPunkt": [
       [
         {
           "icon": {
             "size": [
-              24,
+              23,
               36
             ],
-            "src": "img/png/droppe_black.png"
-          }
+            "src": "img/png/droppe_lila.png"
+          },
+          "geometry": "centerPoint"
         }
       ]
     ],
