@@ -130,17 +130,16 @@ const DragAndDrop = function DragAndDrop(options = {}) {
       this.addInteraction();
 
       dragAndDrop.on('addfeatures', (event) => {
-        let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-        interactionLogURL += `username=${localStorage.getItem('username')}`;
-        interactionLogURL += '&obj=DragAndDrop';
-        interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
-
-        fetch(interactionLogURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/xml; charset=UTF-8'
-          }
-        });
+        const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+        if (fragmentIdentifier === 'intern') {
+          const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=DragAndDrop&typ=&opt_showresult=false&opt_servicemode=sync';
+          fetch(interactionLogURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/xml; charset=UTF-8'
+            }
+          });
+        }
         let layerName = event.file.name.split('.')[0].replace(/\W/g, '');
         let layerTitle = event.file.name.split('.')[0];
         if (viewer.getLayer(layerName)) {

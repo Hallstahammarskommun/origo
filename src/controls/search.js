@@ -75,18 +75,16 @@ const Search = function Search(options = {}) {
     obj.feature = features[0];
     obj.title = objTitle;
     obj.content = content;
-    let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-    interactionLogURL += `username=${localStorage.getItem('username')}`;
-    interactionLogURL += '&obj=Search click';
-    interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
-
-    fetch(interactionLogURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/xml; charset=UTF-8'
-      }
-    });
-
+    const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+    if (fragmentIdentifier === 'intern') {
+      const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search click&typ=&opt_showresult=false&opt_servicemode=sync';
+      fetch(interactionLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
+    }
     clear();
     featureInfo.render([obj], 'overlay', getCenter(features[0].getGeometry()), { ignorePan: true });
     viewer.zoomToExtent(features[0].getGeometry(), maxZoomLevel);
@@ -547,17 +545,16 @@ const Search = function Search(options = {}) {
       if (input.value.length >= minLength) {
         const keyCode = e.keyCode;
         if (keyCode === 13) {
-          let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-          interactionLogURL += `username=${localStorage.getItem('username')}`;
-          interactionLogURL += '&obj=Search result';
-          interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
-
-          fetch(interactionLogURL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/xml; charset=UTF-8'
-            }
-          });
+          const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+          if (fragmentIdentifier === 'intern') {
+            const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search result&typ=&opt_showresult=false&opt_servicemode=sync';
+            fetch(interactionLogURL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/xml; charset=UTF-8'
+              }
+            });
+          }
           switch (searchlistPlacement) {
             case 'floating':
             case 'left':

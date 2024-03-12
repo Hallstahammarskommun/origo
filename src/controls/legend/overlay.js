@@ -67,7 +67,6 @@ const OverlayLayer = function OverlayLayer(options) {
         .replace(/ö/g, 'o');
 
       const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-      console.log(fragmentIdentifier);
       let layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?anchor=${fragmentIdentifier}&layer=${fmeTitle}&opt_showresult=false&opt_servicemode=sync`;
 
       if (fragmentIdentifier !== 'intern') {

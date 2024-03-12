@@ -136,16 +136,16 @@ const Print = function Print(options = {}) {
           cls: 'o-print padding-small margin-bottom-smaller icon-smaller round light box-shadow',
           click() {
             printComponent.render();
-            let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-            interactionLogURL += `username=${localStorage.getItem('username')}`;
-            interactionLogURL += '&obj=Print';
-            interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
-            fetch(interactionLogURL, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/xml; charset=UTF-8'
-              }
-            });
+            const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+            if (fragmentIdentifier === 'intern') {
+              const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Print&typ=&opt_showresult=false&opt_servicemode=sync';
+              fetch(interactionLogURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/xml; charset=UTF-8'
+                }
+              });
+            }
           },
           icon,
           tooltipText: title,
@@ -157,18 +157,18 @@ const Print = function Print(options = {}) {
         mapMenu = viewer.getControlByName('mapmenu');
         menuItem = mapMenu.MenuItem({
           click() {
-            let interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Script/tracker%20interaction.fmw?';
-            interactionLogURL += `username=${localStorage.getItem('username')}`;
-            interactionLogURL += '&obj=Print';
-            interactionLogURL += '&DestDataset_POSTGRES=PostgreSQL%20geodata&opt_showresult=false&opt_servicemode=sync&token=46b87662b6a67111c1386a1d37e03d01e394a3b1';
-            fetch(interactionLogURL, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/xml; charset=UTF-8'
-              }
-            });
-            mapMenu.close();
-            printComponent.render();
+            const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+            if (fragmentIdentifier === 'intern') {
+              const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Print&typ=&opt_showresult=false&opt_servicemode=sync';
+              fetch(interactionLogURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/xml; charset=UTF-8'
+                }
+              });
+              mapMenu.close();
+              printComponent.render();
+            }
           },
           icon,
           title
