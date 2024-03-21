@@ -82,15 +82,26 @@
                 operatingSystem: navigator.platform
             };
 
-            const fetchURL = `https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?&userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
+            const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
 
+						const internURL = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?'
             // Läs in JSON-filen
-            fetch(fetchURL)
+            fetch(internURL)
                 .then(response => response.json())
                 .then(data => {
-                    initOrigo(data, loadFME, loadSwiper, fetchURL);
+                    initOrigo(data, loadFME, loadSwiper, internURL);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
+						try {
+							const response = await fetch(loginTrackerURL, {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/xml; charset=UTF-8'
+								}
+							});
+						} catch (error) {
+							console.error('Error Tracker login:', error);
+						}
         } else {
             initOrigo(jsonFileName)
         }
