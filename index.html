@@ -102,6 +102,8 @@
 						} catch (error) {
 							console.error('Error Tracker login:', error);
 						}
+						// localStorage
+						localStorage.setItem('navigator', 'medarbetare');
         } else {
             initOrigo(jsonFileName)
         }
