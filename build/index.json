@@ -530,9 +530,9 @@
       ]
     },
     {
-      "name": "w_p_skola__Forskola",
+      "name": "p_skola__Forskola",
       "source": "ows",
-      "style": "w_p_skola",
+      "style": "p_skola",
       "title": "Förskola",
       "group": "utbildning",
       "type": "WFS",
@@ -553,9 +553,9 @@
       ]
     },
     {
-      "name": "w_p_skola__Grundskola",
+      "name": "p_skola__Grundskola",
       "source": "ows",
-      "style": "w_p_skola__Grundskola",
+      "style": "p_skola__Grundskola",
       "title": "Grundskola",
       "group": "utbildning",
       "type": "WFS",
@@ -576,9 +576,9 @@
       ]
     },
     {
-      "name": "w_p_skola__Grundsarskola",
+      "name": "p_skola__Grundsarskola",
       "source": "ows",
-      "style": "w_p_skola__Grundsarskola",
+      "style": "p_skola__Grundsarskola",
       "title": "Grundsärskola",
       "group": "utbildning",
       "type": "WFS",
@@ -1061,7 +1061,7 @@
         }
       ]
     ],
-    "w_p_skola": [
+    "p_skola": [
       [
         {
           "icon": {
@@ -1089,7 +1089,7 @@
         }
       ]
     ],
-    "w_p_skola__Grundskola": [
+    "p_skola__Grundskola": [
       [
         {
           "icon": {
@@ -1103,7 +1103,7 @@
         }
       ]
     ],
-    "w_p_skola__Grundsarskola": [
+    "p_skola__Grundsarskola": [
       [
         {
           "icon": {
