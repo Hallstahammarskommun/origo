@@ -46,7 +46,8 @@ const Search = function Search(options = {}) {
     url,
     queryParameterName = 'q',
     autocompletePlacement,
-    searchlistOptions = {}
+    searchlistOptions = {},
+    queryType
   } = options;
 
   const searchlistPlacement = searchlistOptions.placement;
@@ -517,12 +518,25 @@ const Search = function Search(options = {}) {
       infowindow.changeContent(listcomponent, `${searchlistTitle.replace('{{value}}', searchVal)}`);
     };
 
-    function makeRequest(reqHandler, obj, opt, ignoreGroup = false) {
+    function makeRequest(params) {
+      const {
+        reqHandler,
+        obj,
+        opt = {},
+        ignoreGroup = false,
+        complete = false
+      } = params;
       const searchVal = obj.value;
       let queryUrl = `${url}${url.indexOf('?') !== -1 ? '&' : '?'}${queryParameterName}=${encodeURI(obj.value)}`;
 
       if (includeSearchableLayers) {
         queryUrl += `&l=${viewer.getSearchableLayers(searchableDefault)}`;
+      }
+      if (complete) {
+        queryUrl += '&c=true';
+      }
+      if (queryType) {
+        queryUrl += `&t=${queryType}`;
       }
       fetch(queryUrl)
         .then(response => response.json())
@@ -558,11 +572,11 @@ const Search = function Search(options = {}) {
           switch (searchlistPlacement) {
             case 'floating':
             case 'left':
-              makeRequest(infowindowHandler, input, {}, true);
+              makeRequest({ reqHandler: infowindowHandler, obj: input, ignoreGroup: true, complete: true });
               clearAll();
               break;
             default:
-              makeRequest(handler, input);
+              makeRequest({ reqHandler: handler, obj: input, complete: true });
           }
         } else if (keyCode in keyCodes) {
           // empty
@@ -570,10 +584,10 @@ const Search = function Search(options = {}) {
           switch (autocompletePlacement) {
             case 'floating':
             case 'left':
-              makeRequest(infowindowHandler, input);
+              makeRequest({ reqHandler: infowindowHandler, obj: input });
               break;
             default:
-              makeRequest(handler, input);
+              makeRequest({ reqHandler: handler, obj: input });
           }
         }
       } else {
