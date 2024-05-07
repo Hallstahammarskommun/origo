@@ -12,6 +12,7 @@
     <title>Kartan</title>
     <link href="css/style.css" rel="stylesheet">
     <link href="plugins/swiper.css" rel="stylesheet">
+    <link href="plugins/cesium.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
@@ -19,14 +20,24 @@
 <body>
     <div id="app-wrapper"></div>
     <script src="js/origo.min.js"></script>
+    <script src="plugins/cesium.min.js"></script>
     <script src="plugins/fme.min.js"></script>
     <script src="plugins/swiper.min.js"></script>
     <script type="module">
 
         // Init origo
-        const initOrigo = (jsonFileName, loadFME, loadSwiper, swiperURL) => {
+        const initOrigo = (jsonFileName, loadCesium, loadFME, loadSwiper, swiperURL) => {
             const origo = Origo(jsonFileName);
             origo.on('load', (viewer) => {
+
+                // Cesium
+                if (loadCesium) {
+                    const cesium = Cesium({
+                        buttonText: "Cesium",
+                        content: 'Cesium',
+                    });
+                    viewer.addComponent(cesium);
+                }
 
                 // FME
                 if (loadFME) {
@@ -71,9 +82,11 @@
 
         // Om intern
         if (jsonFileName === "index.json") {
+            const loadCesium = false
             const loadFME = true
-            initOrigo(jsonFileName, loadFME)
+            initOrigo(jsonFileName, loadCesium, loadFME)
         } else if (jsonFileName === "intern.json") {
+            const loadCesium = true;
             const loadFME = true;
             const loadSwiper = true;
             const logData = {
@@ -84,26 +97,26 @@
 
             const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
 
-						const internURL = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?'
+            const internURL = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?'
             // Läs in JSON-filen
             fetch(internURL)
                 .then(response => response.json())
                 .then(data => {
-                    initOrigo(data, loadFME, loadSwiper, internURL);
+                    initOrigo(data, loadCesium, loadFME, loadSwiper, internURL);
                 })
                 .catch(error => console.error('Error fetching JSON:', error));
-						try {
-							const response = await fetch(loginTrackerURL, {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/xml; charset=UTF-8'
-								}
-							});
-						} catch (error) {
-							console.error('Error Tracker login:', error);
-						}
-						// localStorage
-						localStorage.setItem('navigator', 'medarbetare');
+            try {
+                const response = await fetch(loginTrackerURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/xml; charset=UTF-8'
+                    }
+                });
+            } catch (error) {
+                console.error('Error Tracker login:', error);
+            }
+            // localStorage
+            localStorage.setItem('navigator', 'medarbetare');
         } else {
             initOrigo(jsonFileName)
         }
