@@ -4,6 +4,7 @@ css/style.css
 node_modules
 npm-debug-log
 plugins
+splash
 
 android-chrome-144x144.png
 apple-touch-icon.png
