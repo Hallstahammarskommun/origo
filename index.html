@@ -100,7 +100,28 @@
 		if (jsonFileName === "index.json") {
 			const loadFME = true;
 			const loadCesium = false;
-			addComponents(loadFME, loadCesium)
+			addComponents(loadFME, loadCesium);
+			// local storage
+			const logData = {
+				userAgent: navigator.userAgent,
+				screenResolution: `${window.screen.width}x${window.screen.height}`,
+				operatingSystem: navigator.platform,
+				anchor: jsonFileName.split(".")[0],
+				token: "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2",
+				user: localStorage.getItem('navigator') || "null"
+			};
+
+			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}&token=${logData.token}&user=${logData.user}`;
+			try {
+				const response = fetch(loginTrackerURL, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/xml; charset=UTF-8'
+					}
+				});
+			} catch (error) {
+				console.error('Error Tracker login:', error);
+			}
 		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
 			const loadFME = true;
 			const loadCesium = true;
@@ -110,7 +131,8 @@
 			const logData = {
 				userAgent: navigator.userAgent,
 				screenResolution: `${window.screen.width}x${window.screen.height}`,
-				operatingSystem: navigator.platform
+				operatingSystem: navigator.platform,
+				anchor: "intern",
 			};
 
 			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
@@ -128,7 +150,27 @@
 			// localStorage
 			localStorage.setItem('navigator', 'medarbetare');
 		} else {
-			addComponents()
+			addComponents();
+			const logData = {
+				userAgent: navigator.userAgent,
+				screenResolution: `${window.screen.width}x${window.screen.height}`,
+				operatingSystem: navigator.platform,
+				anchor: jsonFileName.split(".")[0],
+				token: "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2",
+				user: localStorage.getItem('navigator') || "null"
+			};
+
+			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}&token=${logData.token}&user=${logData.user}`;
+			try {
+				const response = fetch(loginTrackerURL, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/xml; charset=UTF-8'
+					}
+				});
+			} catch (error) {
+				console.error('Error Tracker login:', error);
+			}
 		}
 
 	</script>
