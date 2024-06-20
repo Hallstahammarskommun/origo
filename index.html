@@ -135,7 +135,7 @@
 				anchor: "intern",
 			};
 
-			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
+			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}`;
 
 			try {
 				const response = fetch(loginTrackerURL, {
