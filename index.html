@@ -95,72 +95,27 @@
 			});
 		}
 
-
-		// Add components
-		if (jsonFileName === "index.json") {
-			const loadFME = true;
-			const loadCesium = false;
-			addComponents(loadFME, loadCesium);
-			// local storage
+		// Function to tracker login 
+		function trackerLogin(anchor, user, token) {
 			const logData = {
 				userAgent: navigator.userAgent,
 				screenResolution: `${window.screen.width}x${window.screen.height}`,
 				operatingSystem: navigator.platform,
-				anchor: jsonFileName.split(".")[0],
-				token: "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2",
-				user: localStorage.getItem('navigator') || "null"
+				anchor: anchor,
+				user: user,
+				token: token
 			};
 
-			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}&token=${logData.token}&user=${logData.user}`;
-			try {
-				const response = fetch(loginTrackerURL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/xml; charset=UTF-8'
-					}
-				});
-			} catch (error) {
-				console.error('Error Tracker login:', error);
-			}
-		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
-			const loadFME = true;
-			const loadCesium = true;
-			const loadSwiper = true;
-			const swiperURL = jsonFileName
-			addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
-			const logData = {
-				userAgent: navigator.userAgent,
-				screenResolution: `${window.screen.width}x${window.screen.height}`,
-				operatingSystem: navigator.platform,
-				anchor: "intern",
+			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${encodeURIComponent(logData.userAgent)}&screenResolution=${logData.screenResolution}&operatingSystem=${encodeURIComponent(logData.operatingSystem)}&anchor=${logData.anchor}`;
+
+			if (user) {
+				loginTrackerURL += `&user=${logData.user}`
 			};
 
-			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}`;
-
-			try {
-				const response = fetch(loginTrackerURL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/xml; charset=UTF-8'
-					}
-				});
-			} catch (error) {
-				console.error('Error Tracker login:', error);
-			}
-			// localStorage
-			localStorage.setItem('navigator', 'medarbetare');
-		} else {
-			addComponents();
-			const logData = {
-				userAgent: navigator.userAgent,
-				screenResolution: `${window.screen.width}x${window.screen.height}`,
-				operatingSystem: navigator.platform,
-				anchor: jsonFileName.split(".")[0],
-				token: "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2",
-				user: localStorage.getItem('navigator') || "null"
+			if (token) {
+				loginTrackerURL += `&token=${logData.token}`
 			};
 
-			const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}&anchor=${logData.anchor}&token=${logData.token}&user=${logData.user}`;
 			try {
 				const response = fetch(loginTrackerURL, {
 					method: 'POST',
@@ -172,7 +127,33 @@
 				console.error('Error Tracker login:', error);
 			}
 		}
+		// Add components
+		if (jsonFileName === "index.json") {
+			const loadFME = true;
+			const loadCesium = false;
+			addComponents(loadFME, loadCesium);
+			const anchor = "extern";
+			const user = localStorage.getItem('navigator') || "null";
+			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
+			trackerLogin(anchor, user, token)
 
+		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
+			// localStorage
+			localStorage.setItem('navigator', 'medarbetare');
+			const loadFME = true;
+			const loadCesium = true;
+			const loadSwiper = true;
+			const swiperURL = jsonFileName
+			addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
+			const anchor = "intern";
+			trackerLogin(anchor);
+		} else {
+			addComponents();
+			const anchor = jsonFileName.split(".")[0];
+			const user = localStorage.getItem('navigator') || "null";
+			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
+			trackerLogin(anchor, user, token)
+		}
 	</script>
 </body>
 
