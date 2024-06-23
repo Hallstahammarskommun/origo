@@ -127,6 +127,20 @@
 				console.error('Error Tracker login:', error);
 			}
 		}
+		// Function to get the value of the parameter "map" when the map is shared.
+		function getAnchor(hash, param) {
+			// Split the hash into key-value pairs
+			let params = new URLSearchParams(hash);
+			// Return the value of the specified parameter
+			let anchor = params.get(param).split(".")[0];
+			if (!anchor) {
+				anchor = hash.split(".")[0];
+			}
+			if (anchor === 'index') {
+				anchor = 'extern'
+			}
+			return anchor;
+		}
 		// Add components
 		if (jsonFileName === "index.json") {
 			const loadFME = true;
@@ -149,7 +163,7 @@
 			trackerLogin(anchor);
 		} else {
 			addComponents();
-			const anchor = jsonFileName.split(".")[0];
+			const anchor = getAnchor(jsonFileName, 'map');
 			const user = localStorage.getItem('navigator') || "null";
 			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
 			trackerLogin(anchor, user, token)
