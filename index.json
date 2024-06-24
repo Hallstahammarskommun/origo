@@ -331,9 +331,9 @@
       ]
     },
     {
-      "name": "w_y_plan",
+      "name": "y_plan",
       "source": "ows",
-      "style": "w_y_plan",
+      "style": "y_plan",
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
@@ -771,7 +771,7 @@
         }
       ]
     ],
-    "w_y_plan": [
+    "y_plan": [
       [
         {
           "stroke": {
