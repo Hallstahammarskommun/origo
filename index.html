@@ -27,6 +27,10 @@
 	<script src="plugins/swiper.min.js"></script>
 
 	<script type="text/javascript">
+		// Ensure that the session data is cleared when the page visibility changes (e.g., when the user switches tabs).
+		window.addEventListener('visibilitychange', function () {
+			sessionStorage.clear();
+		});
 
 		let jsonFileName = "index.json"; // Declare jsonFileName in the outer scope
 
@@ -166,7 +170,15 @@
 			const anchor = getAnchor(jsonFileName, 'map');
 			const user = localStorage.getItem('navigator') || "null";
 			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
-			trackerLogin(anchor, user, token)
+			if (anchor === 'op') {
+				// Using sessionStorage to Execute the trackerLogin Function only once per one visit.
+				if (!sessionStorage.getItem('trackerLogin')) {
+					trackerLogin(anchor, user, token);
+					sessionStorage.setItem('trackerLogin', 'true');
+				}
+			} else {
+				trackerLogin(anchor, user, token)
+			}
 		}
 	</script>
 </body>
