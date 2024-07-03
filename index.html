@@ -108,6 +108,8 @@
 							viewer.addMarker(e.coordinate, 'Koordinater', `<b>${CRS}<br/>Logitud, Latitud: </b> ${coordinate}<br/>${googleMaps}`);
 							const minimizeButton = document.getElementById('o-minimize-button');
 							minimizeButton.style.visibility = 'hidden';
+						} else {
+							viewer.removeMarkers();
 						}
 					})
 				}
