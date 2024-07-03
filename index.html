@@ -55,7 +55,7 @@
 		const origo = Origo(getJsonFileName());
 
 		// Function to add components to the viewer
-		const addComponents = (loadFME, loadCesium, loadSwiper, swiperURL) => {
+		const addComponents = (loadFME, loadCesium, loadSwiper, swiperURL, getCoordinate) => {
 			origo.on('load', (viewer) => {
 
 				// FME
@@ -95,7 +95,22 @@
 					});
 					viewer.addComponent(swiper);
 				};
-
+				// Get Coordinate
+				if (getCoordinate) {
+					viewer.getMap().on('click', function (e) {
+						if (event.ctrlKey && event.shiftKey) {
+							const coordinate = document.querySelector('.ol-mouse-position').innerText;
+							const CRS = document.querySelector('.o-position-button').innerText;
+							let googleMaps = '';
+							if (CRS === 'WGS 84 decimalgrader') {
+								googleMaps = `<p><a href="https://www.google.com/maps?q=${coordinate.split(',')[1]},${coordinate.split(',')[0]}" target="_blank">Google Maps</a></p>`
+							}
+							viewer.addMarker(e.coordinate, 'Coordinate', `<b>${CRS}<br/>Logitude, Latitude: </b> ${coordinate}<br/>${googleMaps}`);
+							const minimizeButton = document.getElementById('o-minimize-button');
+							minimizeButton.style.visibility = 'hidden';
+						}
+					})
+				}
 			});
 		}
 
@@ -161,8 +176,9 @@
 			const loadFME = true;
 			const loadCesium = true;
 			const loadSwiper = true;
-			const swiperURL = jsonFileName
-			addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
+			const swiperURL = jsonFileName;
+			const getCoordinate = true;
+			addComponents(loadFME, loadCesium, loadSwiper, swiperURL, getCoordinate);
 			const anchor = "intern";
 			trackerLogin(anchor);
 		} else {
