@@ -105,7 +105,7 @@
 							if (CRS === 'WGS 84 decimalgrader') {
 								googleMaps = `<p><a href="https://www.google.com/maps?q=${coordinate.split(',')[1]},${coordinate.split(',')[0]}" target="_blank">Google Maps</a></p>`
 							}
-							viewer.addMarker(e.coordinate, 'Coordinate', `<b>${CRS}<br/>Logitude, Latitude: </b> ${coordinate}<br/>${googleMaps}`);
+							viewer.addMarker(e.coordinate, 'Koordinater', `<b>${CRS}<br/>Logitud, Latitud: </b> ${coordinate}<br/>${googleMaps}`);
 							const minimizeButton = document.getElementById('o-minimize-button');
 							minimizeButton.style.visibility = 'hidden';
 						}
