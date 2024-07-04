@@ -98,7 +98,7 @@
 				// Get Coordinate
 				if (getCoordinate) {
 					viewer.getMap().on('click', function (e) {
-						if (event.ctrlKey && event.shiftKey) {
+						if (e.originalEvent.ctrlKey && e.originalEvent.shiftKey) {
 							const coordinate = document.querySelector('.ol-mouse-position').innerText;
 							const CRS = document.querySelector('.o-position-button').innerText;
 							let googleMaps = '';
@@ -108,7 +108,7 @@
 							viewer.addMarker(e.coordinate, 'Koordinater', `<b>${CRS}<br/>Logitud, Latitud: </b> ${coordinate}<br/>${googleMaps}`);
 							const minimizeButton = document.getElementById('o-minimize-button');
 							minimizeButton.style.visibility = 'hidden';
-						} if (!event.ctrlKey) {
+						} if (!e.originalEvent.ctrlKey) {
 							viewer.removeMarkers();
 						}
 					})
