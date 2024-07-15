@@ -186,11 +186,27 @@
       "expanded": true
     },
     {
+      "name": "historiska",
+      "title": "Historiska kartor",
+      "expanded": true,
+      "exclusive": true
+    },
+    {
       "name": "background",
       "title": "Bakgrundskartor",
       "expanded": true
     }
   ],
+  "layerParams": {
+    "historiska": {
+      "source": "ows",
+      "style": "orto_historisk",
+      "format": "image/png",
+      "group": "historiska",
+      "type": "WMS",
+      "queryable": false
+    }
+  },
   "layers": [
     {
       "name": "p_adress",
@@ -315,9 +331,9 @@
       ]
     },
     {
-      "name": "w_y_plan",
+      "name": "y_plan",
       "source": "ows",
-      "style": "w_y_plan",
+      "style": "y_plan",
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
@@ -613,6 +629,16 @@
       ]
     },
     {
+      "name": "OI.Histortho_60",
+      "title": "1960",
+      "layerParam": "historiska"
+    },
+    {
+      "name": "OI.Histortho_75",
+      "title": "1975",
+      "layerParam": "historiska"
+    },
+    {
       "name": "y_mask",
       "source": "ows",
       "style": "y_mask",
@@ -745,7 +771,7 @@
         }
       ]
     ],
-    "w_y_plan": [
+    "y_plan": [
       [
         {
           "stroke": {
@@ -1217,6 +1243,16 @@
           "image": {
             "src": "img/png/orto.png"
           }
+        }
+      ]
+    ],
+    "orto_historisk": [
+      [
+        {
+          "icon": {
+            "src": "img/png/orto.png"
+          },
+          "label": "Historiskt ortofoto"
         }
       ]
     ],

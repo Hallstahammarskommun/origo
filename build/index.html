@@ -2,113 +2,206 @@
 <html lang="sv">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://karta.hallstahammar.se https://karta.hallstahammar.se/fmedatastreaming/ 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src https://karta.hallstahammar.se/splash/; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://karta.hallstahammar.se https://karta.hallstahammar.se/fmedatastreaming/ 
     https://karta.hallstahammar.se/fmejobsubmitter/; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'; frame-src https://karta.hallstahammar.se;">
-    <meta name="referrer" content="same-origin">
-    <meta name="description" content="Här hittar du olika typer av samhällsinformation">
-    <title>Kartan</title>
-    <link href="css/style.css" rel="stylesheet">
-    <link href="plugins/swiper.css" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
+	<meta name="referrer" content="same-origin">
+	<meta name="description" content="Här hittar du olika typer av samhällsinformation">
+	<title>Kartan</title>
+
+	<link href="plugins/cesium.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet">
+	<link href="plugins/swiper.css" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
 
 <body>
-    <div id="app-wrapper"></div>
-    <script src="js/origo.min.js"></script>
-    <script src="plugins/fme.min.js"></script>
-    <script src="plugins/swiper.min.js"></script>
-    <script type="module">
+	<div id="app-wrapper"></div>
+	<script src="js/origo.min.js"></script>
+	<script src="plugins/fme.min.js"></script>
+	<script src="plugins/cesium.min.js"></script>
+	<script src="plugins/swiper.min.js"></script>
 
-        // Init origo
-        const initOrigo = (jsonFileName, loadFME, loadSwiper, swiperURL) => {
-            const origo = Origo(jsonFileName);
-            origo.on('load', (viewer) => {
+	<script type="text/javascript">
+		// Ensure that the session data is cleared when the page visibility changes (e.g., when the user switches tabs).
+		window.addEventListener('visibilitychange', function () {
+			sessionStorage.clear();
+		});
 
-                // FME
-                if (loadFME) {
-                    const fme = FME({
-                        destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
-                        title: 'Hämta data',
-                        url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
-                    });
-                    viewer.addComponent(fme);
-                }
+		let jsonFileName = "index.json"; // Declare jsonFileName in the outer scope
 
-                // Swiper
-                if (loadSwiper) {
-                    const swiper = Swiper({
-                        origoConfig: swiperURL,
-                        circleRadius: 150,
-                        alwaysOnTop: false,
-                        initialLayer: "ortofoto",
-                        initialControl: 'swipe',
-                        showLayerListOnStart: true,
-                        tooltips: {
-                            swiper: 'Jämför kartvyer',
-                            swipeBetweenLayers: 'Jämför sida-sida',
-                            circleSwipe: 'Jämför med kikhål',
-                            layerList: 'Välj lager från lista'
-                        }
-                    });
-                    viewer.addComponent(swiper);
-                };
+		// Function to get the jsonFileName
+		const getJsonFileName = () => {
+			const url = window.location.href;
+			const parts = url.split('#');
 
-            });
-        }
+			if (parts.length > 1) {
+				const hash = parts[1]; // Use index 1 for what comes after the first #
+				jsonFileName = `${hash}.json`;
+			}
 
-        //Koll vilken json som ska läsas in
-        const url = window.location.href;
-        const parts = url.split('#');
-        let jsonFileName = "index.json";
-        if (parts.length > 1) {
-            const hash = parts[1]; // Använder index 1 för det som kommer efter första #
-            jsonFileName = `${hash}.json`;
-        }
+			if (jsonFileName === "intern.json") {
+				jsonFileName = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw';
+			}
 
-        // Om intern
-        if (jsonFileName === "index.json") {
-            const loadFME = true
-            initOrigo(jsonFileName, loadFME)
-        } else if (jsonFileName === "intern.json") {
-            const loadFME = true;
-            const loadSwiper = true;
-            const logData = {
-                userAgent: navigator.userAgent,
-                screenResolution: `${window.screen.width}x${window.screen.height}`,
-                operatingSystem: navigator.platform
-            };
+			return jsonFileName;
+		}
 
-            const loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${logData.userAgent}&screenResolution=${logData.screenResolution}&operatingSystem=${logData.operatingSystem}`;
+		// Initialize Origo with the getJsonFileName function
+		const origo = Origo(getJsonFileName());
 
-						const internURL = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw?'
-            // Läs in JSON-filen
-            fetch(internURL)
-                .then(response => response.json())
-                .then(data => {
-                    initOrigo(data, loadFME, loadSwiper, internURL);
-                })
-                .catch(error => console.error('Error fetching JSON:', error));
-						try {
-							const response = await fetch(loginTrackerURL, {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/xml; charset=UTF-8'
-								}
-							});
-						} catch (error) {
-							console.error('Error Tracker login:', error);
+		// Function to add components to the viewer
+		const addComponents = (loadFME, loadCesium, loadSwiper, swiperURL, getCoordinate) => {
+			origo.on('load', (viewer) => {
+
+				// FME
+				if (loadFME) {
+					const fme = FME({
+						destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
+						title: 'Hämta data',
+						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
+					});
+					viewer.addComponent(fme);
+				}
+
+				// Cesium
+				if (loadCesium) {
+					const cesium = Cesium({
+						buttonText: "Cesium",
+						content: 'Cesium',
+					});
+					viewer.addComponent(cesium);
+				}
+
+				// Swiper
+				if (loadSwiper) {
+					const swiper = Swiper({
+						origoConfig: swiperURL,
+						circleRadius: 150,
+						alwaysOnTop: false,
+						initialLayer: "ortofoto",
+						initialControl: 'swipe',
+						showLayerListOnStart: true,
+						tooltips: {
+							swiper: 'Jämför kartvyer',
+							swipeBetweenLayers: 'Jämför sida-sida',
+							circleSwipe: 'Jämför med kikhål',
+							layerList: 'Välj lager från lista'
 						}
-						// localStorage
-						localStorage.setItem('navigator', 'medarbetare');
-        } else {
-            initOrigo(jsonFileName)
-        }
+					});
+					viewer.addComponent(swiper);
+				};
+				// Get Coordinate
+				if (getCoordinate) {
+					viewer.getMap().on('click', function (e) {
+						if (e.originalEvent.ctrlKey && e.originalEvent.shiftKey) {
+							const coordinate = document.querySelector('.ol-mouse-position').innerText;
+							const CRS = document.querySelector('.o-position-button').innerText;
+							let googleMaps = '';
+							if (CRS === 'WGS 84 decimalgrader') {
+								googleMaps = `<p><a href="https://www.google.com/maps?q=${coordinate.split(',')[1]},${coordinate.split(',')[0]}" target="_blank">Google Maps</a></p>`
+							}
+							viewer.addMarker(e.coordinate, 'Koordinater', `<b>${CRS}<br/>Logitud, Latitud: </b> ${coordinate}<br/>${googleMaps}`);
+							const minimizeButton = document.getElementById('o-minimize-button');
+							minimizeButton.style.visibility = 'hidden';
+						}
+						if (!e.originalEvent.ctrlKey) {
+							viewer.removeMarkers();
+						}
+					})
+				}
+			});
+		}
 
-    </script>
+		// Function to tracker login 
+		function trackerLogin(anchor, user, token) {
+			const logData = {
+				userAgent: navigator.userAgent,
+				screenResolution: `${window.screen.width}x${window.screen.height}`,
+				operatingSystem: navigator.platform,
+				anchor: anchor,
+				user: user,
+				token: token
+			};
+
+			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${encodeURIComponent(logData.userAgent)}&screenResolution=${logData.screenResolution}&operatingSystem=${encodeURIComponent(logData.operatingSystem)}&anchor=${logData.anchor}`;
+
+			if (user) {
+				loginTrackerURL += `&user=${logData.user}`
+			};
+
+			if (token) {
+				loginTrackerURL += `&token=${logData.token}`
+			};
+
+			try {
+				const response = fetch(loginTrackerURL, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/xml; charset=UTF-8'
+					}
+				});
+			} catch (error) {
+				console.error('Error Tracker login:', error);
+			}
+		}
+		// Function to get the value of the parameter "map" when the map is shared.
+		function getAnchor(hash, param) {
+			// Split the hash into key-value pairs
+			let params = new URLSearchParams(hash);
+			// Return the value of the specified parameter
+			let anchor;
+			if (!params.get(param)) {
+				anchor = hash.split(".")[0];
+			} else {
+				anchor = params.get(param).split(".")[0];
+			}
+			if (anchor === 'index') {
+				anchor = 'extern'
+			}
+			return anchor;
+		}
+		// Add components
+		if (jsonFileName === "index.json") {
+			const loadFME = true;
+			const loadCesium = false;
+			addComponents(loadFME, loadCesium);
+			const anchor = "extern";
+			const user = localStorage.getItem('navigator') || "null";
+			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
+			trackerLogin(anchor, user, token)
+
+		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
+			// localStorage
+			localStorage.setItem('navigator', 'medarbetare');
+			const loadFME = true;
+			const loadCesium = true;
+			const loadSwiper = true;
+			const swiperURL = jsonFileName;
+			const getCoordinate = true;
+			addComponents(loadFME, loadCesium, loadSwiper, swiperURL, getCoordinate);
+			const anchor = "intern";
+			trackerLogin(anchor);
+		} else {
+			addComponents();
+			const anchor = getAnchor(jsonFileName, 'map');
+			const user = localStorage.getItem('navigator') || "null";
+			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
+			if (anchor === 'op') {
+				// Using sessionStorage to Execute the trackerLogin Function only once per one visit.
+				if (!sessionStorage.getItem('trackerLogin')) {
+					trackerLogin(anchor, user, token);
+					sessionStorage.setItem('trackerLogin', 'true');
+				}
+			} else {
+				trackerLogin(anchor, user, token)
+			}
+		}
+	</script>
 </body>
 
 </html>
