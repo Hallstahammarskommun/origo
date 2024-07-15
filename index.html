@@ -154,9 +154,11 @@
 			// Split the hash into key-value pairs
 			let params = new URLSearchParams(hash);
 			// Return the value of the specified parameter
-			let anchor = params.get(param).split(".")[0];
-			if (!anchor) {
+			let anchor;
+			if (!params.get(param)) {
 				anchor = hash.split(".")[0];
+			} else {
+				anchor = params.get(param).split(".")[0];
 			}
 			if (anchor === 'index') {
 				anchor = 'extern'

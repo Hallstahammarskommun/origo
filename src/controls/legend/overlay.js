@@ -66,7 +66,12 @@ const OverlayLayer = function OverlayLayer(options) {
         .replace(/ä/g, 'a')
         .replace(/ö/g, 'o');
 
-      const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+      let fragmentIdentifier = window.location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(fragmentIdentifier);
+      const mapParam = params.get('map');
+      if (mapParam) {
+        fragmentIdentifier = mapParam;
+      }
       let navigator = 'medarbetare';
       if (localStorage.getItem('navigator') === null) {
         navigator = 'null';
