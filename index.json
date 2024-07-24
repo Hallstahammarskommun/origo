@@ -540,7 +540,7 @@
         },
         {
           "title": "Mer information",
-          "url": "https://hallstahammar.se/barnomsorg-och-utbildning/grundskola-grundsarskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
+          "url": "https://www.hallstahammar.se/barnomsorg-och-utbildning/grundskola-anpassad-grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-anpassad-grundskola",
           "taget": "_blank"
         }
       ]
@@ -1038,7 +1038,7 @@
             "color": "rgba(243, 163, 42, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 11'",
+          "filter": "[obj] == 'Tur 1'",
           "label": "Tur 1"
         }
       ],
@@ -1048,8 +1048,8 @@
             "color": "rgba(151, 104, 209, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 17'",
-          "label": "Tur 2/8"
+          "filter": "[obj] == 'Tur 2'",
+          "label": "Tur 2"
         }
       ],
       [
@@ -1058,7 +1058,7 @@
             "color": "rgba(218, 114, 126, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 12'",
+          "filter": "[obj] == 'Tur 3'",
           "label": "Tur 3"
         }
       ],
@@ -1068,7 +1068,7 @@
             "color": "rgba(72, 217, 99, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 14'",
+          "filter": "[obj] == 'Tur 4'",
           "label": "Tur 4"
         }
       ]
