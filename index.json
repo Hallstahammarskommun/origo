@@ -555,7 +555,7 @@
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "title": "Ansök om plats",
@@ -565,6 +565,9 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
@@ -579,7 +582,7 @@
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "name": "typ",
@@ -588,21 +591,24 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
     {
-      "name": "p_skola__Grundsarskola",
+      "name": "p_skola__AnpassadGrundskola",
       "source": "ows",
-      "style": "p_skola__Grundsarskola",
-      "title": "Grundsärskola",
+      "style": "p_skola__AnpassadGrundskola",
+      "title": "Anpassad grundskola",
       "group": "utbildning",
       "type": "WFS",
-      "filter": "egn = 'Grundsärskola'",
+      "filter": "egn = 'Anpassad grundskola'",
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "name": "typ",
@@ -611,6 +617,9 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
@@ -1129,7 +1138,7 @@
         }
       ]
     ],
-    "p_skola__Grundsarskola": [
+    "p_skola__AnpassadGrundskola": [
       [
         {
           "icon": {
@@ -1139,7 +1148,7 @@
             ],
             "src": "img/png/bu_w_gss_p.png"
           },
-          "label": "Grundsärskola"
+          "label": "Anpassad grundskola"
         }
       ]
     ],
