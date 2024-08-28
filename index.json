@@ -337,6 +337,7 @@
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -369,7 +370,8 @@
       "title": "Kommunal mark",
       "group": "bygga",
       "queryable": false,
-      "type": "WFS"
+      "type": "WFS",
+      "exportable": true
     },
     {
       "name": "w_y_ledigMark__industri",
@@ -378,6 +380,7 @@
       "title": "Ledig industrimark",
       "group": "bygga",
       "type": "WFS",
+      "exportable": true,
       "filter": "typ = 'Industri'",
       "attributes": [
         {
@@ -463,6 +466,7 @@
       "layerType": "cluster",
       "group": "energi",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj"
@@ -490,6 +494,7 @@
       "title": "Naturreservat",
       "group": "energi",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "title": "Mer information",
@@ -514,6 +519,7 @@
       "title": "Servicelinjen",
       "group": "trafik",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -533,6 +539,7 @@
       "source": "ows",
       "style": "l_skollinjen",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -552,6 +559,7 @@
       "title": "Förskola",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -578,6 +586,7 @@
       "title": "Grundskola",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "filter": "egn = 'Grundskola'",
       "attributes": [
         {
@@ -604,6 +613,7 @@
       "title": "Anpassad grundskola",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "filter": "egn = 'Anpassad grundskola'",
       "attributes": [
         {
@@ -630,6 +640,7 @@
       "title": "Upptagningsområden",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
