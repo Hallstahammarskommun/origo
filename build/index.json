@@ -337,6 +337,7 @@
       "title": "Detaljplan pågående",
       "group": "bygga",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -369,7 +370,8 @@
       "title": "Kommunal mark",
       "group": "bygga",
       "queryable": false,
-      "type": "WFS"
+      "type": "WFS",
+      "exportable": true
     },
     {
       "name": "w_y_ledigMark__industri",
@@ -378,6 +380,7 @@
       "title": "Ledig industrimark",
       "group": "bygga",
       "type": "WFS",
+      "exportable": true,
       "filter": "typ = 'Industri'",
       "attributes": [
         {
@@ -463,6 +466,7 @@
       "layerType": "cluster",
       "group": "energi",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj"
@@ -490,6 +494,7 @@
       "title": "Naturreservat",
       "group": "energi",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "title": "Mer information",
@@ -514,6 +519,7 @@
       "title": "Servicelinjen",
       "group": "trafik",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -533,6 +539,7 @@
       "source": "ows",
       "style": "l_skollinjen",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -540,7 +547,7 @@
         },
         {
           "title": "Mer information",
-          "url": "https://hallstahammar.se/barnomsorg-och-utbildning/grundskola-grundsarskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-grundsarskola",
+          "url": "https://www.hallstahammar.se/barnomsorg-och-utbildning/grundskola-anpassad-grundskola-forskoleklass-och-fritidshem/skolskjuts---grundskola-och-anpassad-grundskola",
           "taget": "_blank"
         }
       ]
@@ -552,10 +559,11 @@
       "title": "Förskola",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "title": "Ansök om plats",
@@ -565,6 +573,9 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
@@ -575,11 +586,12 @@
       "title": "Grundskola",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "filter": "egn = 'Grundskola'",
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "name": "typ",
@@ -588,21 +600,25 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
     {
-      "name": "p_skola__Grundsarskola",
+      "name": "p_skola__AnpassadGrundskola",
       "source": "ows",
-      "style": "p_skola__Grundsarskola",
-      "title": "Grundsärskola",
+      "style": "p_skola__AnpassadGrundskola",
+      "title": "Anpassad grundskola",
       "group": "utbildning",
       "type": "WFS",
-      "filter": "egn = 'Grundsärskola'",
+      "exportable": true,
+      "filter": "egn = 'Anpassad grundskola'",
       "attributes": [
         {
           "name": "obj",
-          "url": "url"
+          "title": "Namn: "
         },
         {
           "name": "typ",
@@ -611,6 +627,9 @@
         {
           "name": "tel",
           "title": "Telefon: "
+        },
+        {
+          "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
@@ -621,6 +640,7 @@
       "title": "Upptagningsområden",
       "group": "utbildning",
       "type": "WFS",
+      "exportable": true,
       "attributes": [
         {
           "name": "obj",
@@ -1038,7 +1058,7 @@
             "color": "rgba(243, 163, 42, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 11'",
+          "filter": "[obj] == 'Tur 1'",
           "label": "Tur 1"
         }
       ],
@@ -1048,8 +1068,8 @@
             "color": "rgba(151, 104, 209, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 17'",
-          "label": "Tur 2/8"
+          "filter": "[obj] == 'Tur 2'",
+          "label": "Tur 2"
         }
       ],
       [
@@ -1058,7 +1078,7 @@
             "color": "rgba(218, 114, 126, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 12'",
+          "filter": "[obj] == 'Tur 3'",
           "label": "Tur 3"
         }
       ],
@@ -1068,7 +1088,7 @@
             "color": "rgba(72, 217, 99, 0.6)",
             "width": 6
           },
-          "filter": "[obj] == 'Tur 14'",
+          "filter": "[obj] == 'Tur 4'",
           "label": "Tur 4"
         }
       ]
@@ -1129,7 +1149,7 @@
         }
       ]
     ],
-    "p_skola__Grundsarskola": [
+    "p_skola__AnpassadGrundskola": [
       [
         {
           "icon": {
@@ -1137,9 +1157,9 @@
               24,
               24
             ],
-            "src": "img/png/bu_w_gss_p.png"
+            "src": "img/png/bu_w_ags_p.png"
           },
-          "label": "Grundsärskola"
+          "label": "Anpassad grundskola"
         }
       ]
     ],

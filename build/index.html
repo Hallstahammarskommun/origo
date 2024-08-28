@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://karta.hallstahammar.se/splash/; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://karta.hallstahammar.se https://karta.hallstahammar.se/fmedatastreaming/ 
-    https://karta.hallstahammar.se/fmejobsubmitter/; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'; frame-src https://karta.hallstahammar.se;">
+		content="default-src https://karta.hallstahammar.se/splash/; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com/gtag/js; connect-src 'self' https://karta.hallstahammar.se https://karta.hallstahammar.se/fmedatastreaming/ 
+    https://karta.hallstahammar.se/fmejobsubmitter/ https://region1.google-analytics.com/; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'; frame-src https://karta.hallstahammar.se;">
 	<meta name="referrer" content="same-origin">
 	<meta name="description" content="Här hittar du olika typer av samhällsinformation">
 	<title>Kartan</title>
@@ -25,6 +25,7 @@
 	<script src="plugins/fme.min.js"></script>
 	<script src="plugins/cesium.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
 
 	<script type="text/javascript">
 		// Ensure that the session data is cleared when the page visibility changes (e.g., when the user switches tabs).
@@ -63,7 +64,7 @@
 					const fme = FME({
 						destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
 						title: 'Hämta data',
-						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?token=d645c9250575d084cfbfcdb3b385c1def9c97e73'
+						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?'
 					});
 					viewer.addComponent(fme);
 				}
@@ -167,13 +168,20 @@
 		}
 		// Add components
 		if (jsonFileName === "index.json") {
-			const loadFME = true;
+			const loadFME = false;
 			const loadCesium = false;
 			addComponents(loadFME, loadCesium);
 			const anchor = "extern";
 			const user = localStorage.getItem('navigator') || "null";
 			const token = "2a06ea77c57124a6cf59bf06e6c282d35d1e5eb2";
 			trackerLogin(anchor, user, token)
+
+			// Google tag (gtag.js)
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+
+			gtag('config', 'G-1F9Q83HKM3');
 
 		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
 			// localStorage
