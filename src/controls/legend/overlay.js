@@ -72,13 +72,16 @@ const OverlayLayer = function OverlayLayer(options) {
       if (mapParam) {
         fragmentIdentifier = mapParam;
       }
-      const layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?anchor=${fragmentIdentifier}&layer=${fmeTitle}`;
-      fetch(layerLogURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/xml; charset=UTF-8'
-        }
-      });
+
+      if (fragmentIdentifier === 'intern') {
+        const layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?anchor=${fragmentIdentifier}&layer=${fmeTitle}`;
+        fetch(layerLogURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/xml; charset=UTF-8'
+          }
+        });
+      }
     }
     return !visible;
   };
