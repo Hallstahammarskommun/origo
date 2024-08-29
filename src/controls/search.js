@@ -76,16 +76,6 @@ const Search = function Search(options = {}) {
     obj.feature = features[0];
     obj.title = objTitle;
     obj.content = content;
-    const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-    if (fragmentIdentifier === 'intern') {
-      const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search click&typ=&opt_showresult=false&opt_servicemode=sync';
-      fetch(interactionLogURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/xml; charset=UTF-8'
-        }
-      });
-    }
     clear();
     featureInfo.render([obj], 'overlay', getCenter(features[0].getGeometry()), { ignorePan: true });
     viewer.zoomToExtent(features[0].getGeometry(), maxZoomLevel);
@@ -127,6 +117,16 @@ const Search = function Search(options = {}) {
    * must be defined. */
 
   function selectHandler(evt) {
+    const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+    if (fragmentIdentifier === 'intern') {
+      const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search click&typ=&opt_showresult=false&opt_servicemode=sync';
+      fetch(interactionLogURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/xml; charset=UTF-8'
+        }
+      });
+    }
     let id = evt.text.label;
     const data = searchDb[id];
     let layer;
@@ -561,7 +561,7 @@ const Search = function Search(options = {}) {
         if (keyCode === 13) {
           const fragmentIdentifier = window.location.hash.replace(/^#/, '');
           if (fragmentIdentifier === 'intern') {
-            const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search result&typ=&opt_showresult=false&opt_servicemode=sync';
+            const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search enter&typ=&opt_showresult=false&opt_servicemode=sync';
             fetch(interactionLogURL, {
               method: 'POST',
               headers: {
