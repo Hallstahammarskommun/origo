@@ -29,9 +29,21 @@
 
 	<script type="text/javascript">
 
-		let jsonFileName; // Declare jsonFileName in the outer scope
+		let origo;
+		let jsonFileName;
+		// function to get intern json file and save it in a variable (internJSON)
+		const getInternJSON = async () => {
+			try {
+				const response = await fetch('https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw');
+				const data = await response.json();
+				jsonFileName = data;
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
 		// Function to get the jsonFileName
-		const getJsonFileName = () => {
+		const getJsonFileName = async () => {
 			let fragmentIdentifier = window.location.hash.replace(/^#/, '');
 			if (fragmentIdentifier === '') {
 				jsonFileName = 'index';
@@ -48,13 +60,10 @@
 			jsonFileName += '.json';
 			// check if intern.json
 			if (jsonFileName === 'intern.json') {
-				jsonFileName = 'https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw';
+				await getInternJSON();
 			}
 			return jsonFileName;
 		}
-
-		// Initialize Origo with the getJsonFileName function
-		const origo = Origo(getJsonFileName());
 
 		// Function to add components to the viewer
 		const addComponents = (loadFME, loadCesium, loadSwiper, swiperURL) => {
@@ -120,26 +129,30 @@
 				console.error('Error Tracker login:', error);
 			}
 		}
+		async function initOrigo() {
+			await getJsonFileName();
+			// Initialize Origo
+			origo = Origo(jsonFileName);
+			// Add components
+			if (jsonFileName === "index.json") {
+				// Google tag (gtag.js)
+				window.dataLayer = window.dataLayer || [];
+				function gtag() { dataLayer.push(arguments); }
+				gtag('js', new Date());
+				gtag('config', 'G-1F9Q83HKM3');
 
-		// Add components
-		if (jsonFileName === "index.json") {
-			// Google tag (gtag.js)
-			window.dataLayer = window.dataLayer || [];
-			function gtag() { dataLayer.push(arguments); }
-			gtag('js', new Date());
-			gtag('config', 'G-1F9Q83HKM3');
-
-		} else if (jsonFileName === "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/intern.fmw") {
-			const loadFME = true;
-			const loadCesium = true;
-			const loadSwiper = true;
-			const swiperURL = jsonFileName;
-			addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
-			const anchor = "intern";
-			trackerLogin(anchor);
-		} else {
-
+			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
+				const loadFME = true;
+				const loadCesium = true;
+				const loadSwiper = true;
+				const swiperURL = jsonFileName;
+				addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
+				const anchor = "intern";
+				trackerLogin(anchor);
+			}
 		}
+		initOrigo();
+
 	</script>
 </body>
 
