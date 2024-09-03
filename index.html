@@ -12,7 +12,6 @@
 	<meta name="description" content="Här hittar du olika typer av samhällsinformation">
 	<title>Kartan</title>
 
-	<link href="plugins/cesium.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet">
 	<link href="plugins/swiper.css" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico">
@@ -23,7 +22,7 @@
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
 	<script src="plugins/fme.min.js"></script>
-	<script src="plugins/cesium.min.js"></script>
+	<script src="plugins/viewer3D.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
 
@@ -66,7 +65,7 @@
 		}
 
 		// Function to add components to the viewer
-		const addComponents = (loadFME, loadCesium, loadSwiper, swiperURL) => {
+		const addComponents = (loadFME, loadViewer3D, loadSwiper, swiperURL) => {
 			origo.on('load', (viewer) => {
 				// FME
 				if (loadFME) {
@@ -79,12 +78,15 @@
 				}
 
 				// Cesium
-				if (loadCesium) {
-					const cesium = Cesium({
-						buttonText: "Cesium",
-						content: 'Cesium',
+				if (loadViewer3D) {
+					// Viewer3D
+					const viewer3D = Viewer3D({
+						buttonText: '3D Viewer',
+						content: '<iframe class="viewer3D-iframe" src="https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/3d.fmw" style="width: -webkit-fill-available; height: -webkit-fill-available;"></iframe>',
+						icon: '#fa-cube',
+						tooltipText: '3D Viewer'
 					});
-					viewer.addComponent(cesium);
+					viewer.addComponent(viewer3D);
 				}
 
 				// Swiper
@@ -143,10 +145,10 @@
 
 			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
 				const loadFME = true;
-				const loadCesium = true;
+				const loadViewer3D = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
-				addComponents(loadFME, loadCesium, loadSwiper, swiperURL);
+				addComponents(loadFME, loadViewer3D, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}
