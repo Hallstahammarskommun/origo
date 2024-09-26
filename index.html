@@ -70,14 +70,13 @@
 				// FME
 				if (loadFME) {
 					const fme = FME({
-						destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
 						title: 'Hämta data',
 						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?'
 					});
 					viewer.addComponent(fme);
 				}
 
-				// Cesium
+				// 3D vy
 				if (loadViewer3D) {
 					// Viewer3D
 					const viewer3D = Viewer3D({
