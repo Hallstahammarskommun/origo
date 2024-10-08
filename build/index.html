@@ -13,6 +13,7 @@
 	<title>Kartan</title>
 
 	<link href="css/style.css" rel="stylesheet">
+	<link href="plugins/layermanager.css" rel="stylesheet">
 	<link href="plugins/swiper.css" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
@@ -22,6 +23,7 @@
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
 	<script src="plugins/fme.min.js"></script>
+	<script src="plugins/lm.min.js"></script>
 	<script src="plugins/viewer3D.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
@@ -65,19 +67,55 @@
 		}
 
 		// Function to add components to the viewer
-		const addComponents = (loadFME, loadViewer3D, loadSwiper, swiperURL) => {
+		const addComponents = (loadFME, loadLayerManager, loadViewer3D, loadSwiper, swiperURL) => {
 			origo.on('load', (viewer) => {
 				// FME
 				if (loadFME) {
 					const fme = FME({
-						destinationFormat: ["ACAD", "GEOJSON", "GeoPackage"],
 						title: 'Hämta data',
 						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?'
 					});
 					viewer.addComponent(fme);
 				}
 
-				// Cesium
+				// Layermanager
+				if (loadLayerManager) {
+					const layermanager = Layermanager({
+						types: [],
+						onlyAddableLayersBtn: true,
+						layersDefaultProps: {
+							group: "minalager",
+							queryable: true,
+							type: "WMS",
+							visible: true,
+							searchable: true,
+							infoFormat: "text/html",
+							promptlessRemoval: true
+						},
+						group: {
+							name: "minalager",
+							title: "Mina lager",
+							expanded: true,
+							position: "bottom",
+							cls: 'hidden'
+						},
+						noAbstractInfo: "Ingen information",
+						noSearchResultText: "No results found",
+						url: "https://karta.hallstahammar.se/geoserver/csw",
+						sourceFields: {
+							description: { name: "description" },
+							title: { name: "title" },
+							layerId: { name: "layerId" },
+							type: { name: "theme" },
+							tags: { name: "tags" },
+							src: { name: "src" }
+						},
+						addLayerErrorMsg: "There was a problem trying to add a layer. You are welcome to report this to SUPPORT@SUPPORT.com"
+					});
+					viewer.addComponent(layermanager);
+				}
+
+				// 3D vy
 				if (loadViewer3D) {
 					// Viewer3D
 					const viewer3D = Viewer3D({
@@ -145,10 +183,11 @@
 
 			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
 				const loadFME = true;
+				const loadLayerManager = true;
 				const loadViewer3D = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
-				addComponents(loadFME, loadViewer3D, loadSwiper, swiperURL);
+				addComponents(loadFME, loadLayerManager, loadViewer3D, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}
