@@ -24,7 +24,8 @@ const Measure = function Measure({
   snapIsActive = true,
   snapLayers,
   snapRadius = 15,
-  highlightColor
+  highlightColor,
+  localization
 } = {}) {
   let map;
   let activeButton;
@@ -67,10 +68,14 @@ const Measure = function Measure({
   let projection;
 
   const tipStyle = drawStyles.tipStyle;
-  const modifyStyle = drawStyles.modifyStyle;
+  const modifyStyle = drawStyles.modifyStyle(localization);
   const measureStyle = drawStyles.measureStyle;
   const source = new VectorSource();
   const modify = new Modify({ source, style: modifyStyle });
+
+  function localize(key) {
+    return localization.getStringByKeys({ targetParentKey: 'measure', targetKey: key });
+  }
 
   function styleFunction(feature, segments, drawType, tip) {
     const styleScale = feature.get('styleScale') || 1;
@@ -82,16 +87,16 @@ const Measure = function Measure({
     if (!drawType || drawType === geomType) {
       if (geomType === 'Polygon') {
         point = geometry.getInteriorPoint();
-        label = drawStyles.formatArea(geometry, useHectare, projection);
+        label = drawStyles.formatArea(geometry, useHectare, projection, 0, localization);
         line = new LineString(geometry.getCoordinates()[0]);
       } else if (geomType === 'LineString') {
         point = new Point(geometry.getLastCoordinate());
-        label = drawStyles.formatLength(geometry, projection);
+        label = drawStyles.formatLength(geometry, projection, localization);
         line = geometry;
       }
     }
     if (segments && line) {
-      const segmentLabelStyle = drawStyles.getSegmentLabelStyle(line, projection);
+      const segmentLabelStyle = drawStyles.getSegmentLabelStyle({ line, projection, localization });
       styles = styles.concat(segmentLabelStyle);
     }
     if (label !== '0 m²') {
@@ -190,7 +195,7 @@ const Measure = function Measure({
     const styleScale = feature.get('styleScale') || 1;
     const featureStyle = drawStyles.getLabelStyle(styleScale);
     feature.setStyle(featureStyle);
-    feature.getStyle().getText().setText('Hämtar höjd...');
+    feature.getStyle().getText().setText(localize('fetchingElevation'));
 
     fetch(url).then(response => response.json({
       cache: false
@@ -209,7 +214,7 @@ const Measure = function Measure({
     const bufferCircle = new Circle(pointCenter, bufferSize);
 
     feature.setStyle((feat) => {
-      const [styleColl, ...styles] = drawStyles.bufferStyleFunction(feat, highlightColor);
+      const [styleColl, ...styles] = drawStyles.bufferStyleFunction(feat, highlightColor, localization);
       return [...styleColl, ...styles];
     });
     feature.setGeometry(bufferCircle);
@@ -233,10 +238,11 @@ const Measure = function Measure({
   }
 
   function createRadiusModal(feature) {
-    const title = 'Ange buffert i meter (ex 1000):';
+    const title = localize('bufferModalTitle');
+    const ok = localize('bufferModalOkButton');
     const content = `<div>
                       <input type="number" id="bufferradius">
-                      <button id="bufferradiusBtn">OK</button>
+                      <button id="bufferradiusBtn">${ok}</button>
                     </div>`;
     const modal = Modal({
       title,
@@ -342,7 +348,7 @@ const Measure = function Measure({
   function addInteraction() {
     const drawType = type || 'LineString';
     const activeTip = '';
-    const idleTip = 'Klicka för att börja mäta';
+    const idleTip = localize('startMeasureTooltip');
     let tip = idleTip;
     measure = new Draw({
       source,
@@ -699,7 +705,7 @@ const Measure = function Measure({
             addNode();
           },
           icon: '#ic_add_24px',
-          tooltipText: 'Lägg till punkt',
+          tooltipText: localize('addNodeTooltip'),
           tooltipPlacement: 'east'
         });
         buttons.push(addNodeButton);
@@ -718,7 +724,7 @@ const Measure = function Measure({
             measure.getOverlay().changed();
           },
           icon: '#ic_linear_scale_24px',
-          tooltipText: 'Visa delsträckor',
+          tooltipText: localize('showSectionsTooltip'),
           tooltipPlacement: 'east'
         });
         buttons.push(showSegmentLabelButton);
@@ -759,7 +765,7 @@ const Measure = function Measure({
             toggleMeasure();
           },
           icon: '#ic_straighten_24px',
-          tooltipText: 'Mäta',
+          tooltipText: localize('mainButtonTooltip'),
           tooltipPlacement: 'east'
         });
         buttons.push(measureButton);
@@ -773,7 +779,7 @@ const Measure = function Measure({
             },
             data: { tool: 'length' },
             icon: '#ic_timeline_24px',
-            tooltipText: 'Längd',
+            tooltipText: localize('lengthTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(lengthToolButton);
@@ -789,7 +795,7 @@ const Measure = function Measure({
             },
             data: { tool: 'area' },
             icon: '#o_polygon_24px',
-            tooltipText: 'Yta',
+            tooltipText: localize('areaTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(areaToolButton);
@@ -804,7 +810,7 @@ const Measure = function Measure({
             },
             data: { tool: 'elevation' },
             icon: '#ic_height_24px',
-            tooltipText: 'Höjd',
+            tooltipText: localize('elevationTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(elevationToolButton);
@@ -819,7 +825,7 @@ const Measure = function Measure({
             },
             data: { tool: 'buffer' },
             icon: '#ic_adjust_24px',
-            tooltipText: 'Buffer',
+            tooltipText: localize('bufferTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(bufferToolButton);
@@ -845,7 +851,7 @@ const Measure = function Measure({
               undoLastPoint();
             },
             icon: '#ic_undo_24px',
-            tooltipText: 'Ångra',
+            tooltipText: localize('undoTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(undoButton);
@@ -857,7 +863,7 @@ const Measure = function Measure({
               viewer.removeOverlays(overlayArray);
             },
             icon: '#ic_delete_24px',
-            tooltipText: 'Rensa',
+            tooltipText: localize('clearTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(clearButton);
@@ -872,7 +878,7 @@ const Measure = function Measure({
               toggleSnap();
             },
             icon: '#fa-magnet',
-            tooltipText: 'Snappning',
+            tooltipText: localize('snapTooltip'),
             tooltipPlacement: 'east'
           });
           buttons.push(toggleSnapButton);
