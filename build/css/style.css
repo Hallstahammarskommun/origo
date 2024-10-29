@@ -1033,6 +1033,22 @@
   .o-ui .padding-y-large {
     padding-bottom: 1rem;
     padding-top: 1rem; }
+  .o-ui .padding-larger {
+    padding: 2rem; }
+  .o-ui .padding-top-larger {
+    padding-top: 2rem; }
+  .o-ui .padding-right-larger {
+    padding-right: 2rem; }
+  .o-ui .padding-bottom-larger {
+    padding-bottom: 2rem; }
+  .o-ui .padding-left-larger {
+    padding-left: 2rem; }
+  .o-ui .padding-x-larger {
+    padding-left: 2rem;
+    padding-right: 2rem; }
+  .o-ui .padding-y-larger {
+    padding-bottom: 2rem;
+    padding-top: 2rem; }
   .o-ui .padding-small {
     padding: 0.5rem; }
   .o-ui .padding-top-small {
@@ -3368,6 +3384,8 @@ body {
     color: #636464;
     background-color: #fefefe;
     border-color: #fdfdfe; }
+  .o-map .localization-selected {
+    background-color: #d0e9ff; }
 
 html,
 body {
