@@ -22,7 +22,6 @@
 <body>
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
-	<script src="plugins/fme.min.js"></script>
 	<script src="plugins/lm.min.js"></script>
 	<script src="plugins/viewer3D.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
@@ -67,16 +66,8 @@
 		}
 
 		// Function to add components to the viewer
-		const addComponents = (loadFME, loadLayerManager, loadViewer3D, loadSwiper, swiperURL) => {
+		const addComponents = (loadLayerManager, loadViewer3D, loadSwiper, swiperURL) => {
 			origo.on('load', (viewer) => {
-				// FME
-				if (loadFME) {
-					const fme = FME({
-						title: 'Hämta data',
-						url: 'https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?'
-					});
-					viewer.addComponent(fme);
-				}
 
 				// Layermanager
 				if (loadLayerManager) {
@@ -182,12 +173,11 @@
 				gtag('config', 'G-1F9Q83HKM3');
 
 			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
-				const loadFME = true;
 				const loadLayerManager = true;
 				const loadViewer3D = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
-				addComponents(loadFME, loadLayerManager, loadViewer3D, loadSwiper, swiperURL);
+				addComponents(loadLayerManager, loadViewer3D, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}
