@@ -35,7 +35,6 @@ const ExternalurlSingleButton = function ExternalurlSingleButton(options = {}) {
       replacedUrl = replacer.replace(url, { LON: centerLonlat[0], LAT: centerLonlat[1] });
     } else if (method === 'none') {
       replacedUrl = url;
-      console.log(url);
     }
 
     window.open(replacedUrl, '_blank');
