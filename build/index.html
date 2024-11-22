@@ -23,7 +23,6 @@
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
 	<script src="plugins/lm.min.js"></script>
-	<script src="plugins/viewer3D.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
 
@@ -66,7 +65,7 @@
 		}
 
 		// Function to add components to the viewer
-		const addComponents = (loadLayerManager, loadViewer3D, loadSwiper, swiperURL) => {
+		const addComponents = (loadLayerManager, loadSwiper, swiperURL) => {
 			origo.on('load', (viewer) => {
 
 				// Layermanager
@@ -104,18 +103,6 @@
 						addLayerErrorMsg: "There was a problem trying to add a layer. You are welcome to report this to SUPPORT@SUPPORT.com"
 					});
 					viewer.addComponent(layermanager);
-				}
-
-				// 3D vy
-				if (loadViewer3D) {
-					// Viewer3D
-					const viewer3D = Viewer3D({
-						buttonText: '3D Viewer',
-						content: '<iframe class="viewer3D-iframe" src="https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/3d.fmw" style="width: -webkit-fill-available; height: -webkit-fill-available;"></iframe>',
-						icon: '#fa-cube',
-						tooltipText: '3D Viewer'
-					});
-					viewer.addComponent(viewer3D);
 				}
 
 				// Swiper
@@ -174,10 +161,9 @@
 
 			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
 				const loadLayerManager = true;
-				const loadViewer3D = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
-				addComponents(loadLayerManager, loadViewer3D, loadSwiper, swiperURL);
+				addComponents(loadLayerManager, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}

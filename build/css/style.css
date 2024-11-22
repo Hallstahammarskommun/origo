@@ -3128,10 +3128,17 @@ body {
     border-bottom: 3px solid #09f;
     color: black;
     font-weight: normal; }
+  .o-map .minimizedurvalelement {
+    padding: 0.5rem calc(38px + 2rem) 0 0.5rem; }
   .o-map .closebutton-svg-container {
     cursor: pointer;
     position: absolute;
     right: 0;
+    top: 0; }
+  .o-map .minimizebutton-svg-container {
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
     top: 0; }
   .o-map .listcontainer {
     font-size: 12px;
@@ -3247,6 +3254,8 @@ body {
     cursor: not-allowed; }
   .o-map .hidden {
     display: none; }
+  .o-map .fit-width {
+    width: fit-content; }
   .o-map ::-webkit-scrollbar {
     width: 4px; }
   .o-map ::-webkit-scrollbar-thumb {

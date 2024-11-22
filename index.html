@@ -65,7 +65,7 @@
 		}
 
 		// Function to add components to the viewer
-		const addComponents = (loadLayerManager, loadViewer3D, loadSwiper, swiperURL) => {
+		const addComponents = (loadLayerManager, loadSwiper, swiperURL) => {
 			origo.on('load', (viewer) => {
 
 				// Layermanager
@@ -161,10 +161,9 @@
 
 			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
 				const loadLayerManager = true;
-				const loadViewer3D = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
-				addComponents(loadLayerManager, loadViewer3D, loadSwiper, swiperURL);
+				addComponents(loadLayerManager, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}
