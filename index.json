@@ -102,6 +102,24 @@
           "1:500"
         ]
       }
+    },
+    {
+      "name": "link",
+      "options": {
+        "icon": "img/png/naturkartan.png",
+        "title": "Naturkartan",
+        "placement": "screen",
+        "url": "https://www.naturkartan.se/sv/hallstahammar"
+      }
+    },
+    {
+      "name": "link",
+      "options": {
+        "icon": "img/png/visithallstahammar.png",
+        "title": "Visit Hallstahammar",
+        "placement": "screen",
+        "url": "https://visithallstahammar.se/"
+      }
     }
   ],
   "pageSettings": {
