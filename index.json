@@ -120,6 +120,15 @@
         "placement": "screen",
         "url": "https://visithallstahammar.se/"
       }
+    },
+    {
+      "name": "link",
+      "options": {
+        "icon": "img/png/gsp.png",
+        "title": "Digitala planer",
+        "placement": "screen",
+        "url": "https://dialog.hallstahammar.se/"
+      }
     }
   ],
   "pageSettings": {
