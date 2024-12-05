@@ -275,13 +275,49 @@
       "fme": true,
       "layers": [
         {
-          "name": "theme-dp-mosaik-alla",
-          "source": "ows",
-          "style": "detaljplan",
+          "name": "theme-dp-mosaik-vattenomr",
+          "title": "Vattenområde",
+          "source": "plandirekt",
           "format": "image/png",
+          "group": "LM",
           "type": "WMS",
-          "visible": true,
-          "queryable": false
+          "visible": true
+        },
+        {
+          "name": "theme-dp-mosaik-kvartersmark",
+          "title": "Användningsområde",
+          "source": "plandirekt",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "visible": true
+        },
+        {
+          "name": "theme-dp-mosaik-allman_plats",
+          "title": "Allmän plats",
+          "source": "plandirekt",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "visible": true
+        },
+        {
+          "name": "theme-dp-mosaik-egenskapsomrade",
+          "title": "Egenskapsområde",
+          "source": "plandirekt",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "visible": true
+        },
+        {
+          "name": "theme-dp-mosaik-anvandingsbet",
+          "title": "Användningsbeteckning",
+          "source": "plandirekt",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "visible": true
         },
         {
           "name": "db_v_mosaik_plan_y",
