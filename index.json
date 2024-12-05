@@ -189,6 +189,10 @@
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
       "strategy": "all"
+    },
+    "plandirekt": {
+      "url": "https://plankarta.hallstahammar.se/wms?SERVICENAME=plandirekt",
+      "strategy": "all"
     }
   },
   "groups": [
