@@ -4,8 +4,11 @@ import Modify from 'ol/interaction/Modify';
 import Snap from 'ol/interaction/Snap';
 import Collection from 'ol/Collection';
 import Feature from 'ol/Feature';
-import { LineString, MultiPolygon, MultiLineString, MultiPoint } from 'ol/geom';
+import { LineString, MultiPolygon, MultiLineString, MultiPoint, Polygon } from 'ol/geom';
 import { noModifierKeys } from 'ol/events/condition';
+import VectorSource from 'ol/source/Vector';
+import VectorLayer from 'ol/layer/Vector';
+import { squaredDistance, toFixed } from 'ol/math';
 import { Button, Element as El, Modal } from '../../ui';
 import Infowindow from '../../components/infowindow';
 import store from './editsstore';
@@ -23,6 +26,7 @@ import topology from '../../utils/topology';
 import attachmentsform from './attachmentsform';
 import relatedTablesForm from './relatedtablesform';
 import relatedtables from '../../utils/relatedtables';
+import Style from '../../style';
 
 const editsStore = store();
 let editLayers = {};
@@ -57,6 +61,11 @@ let breadcrumbs = [];
 let autoCreatedFeature = false;
 let infowindowCmp = false;
 let preselectedFeature;
+let traceHighligtLayer;
+let snapTolerance;
+let snapSources;
+let traceSource;
+let useTrace;
 
 function isActive() {
   // FIXME: this only happens at startup as they are set to null on closing. If checking for null/falsley/not truely it could work as isVisible with
@@ -310,8 +319,17 @@ function ensureCorrectGeometryType(f) {
   return featureGeometryType === layerGeometryType;
 }
 
+/**
+ * Clears all traces of an active trace
+ */
+function clearTrace() {
+  traceHighligtLayer.getSource().clear();
+  traceSource.clear();
+}
+
 // Handler for OL Draw interaction
 function onDrawEnd(evt) {
+  clearTrace();
   const f = evt.feature;
 
   // Reset pointer to drawFeature, OL resuses the same feature
@@ -349,10 +367,11 @@ function onDrawStart(evt) {
 }
 
 /**
- * Called when draw is aborted from OL
+ * Called when draw is aborted from OL, typically by shift-click
  * */
 function onDrawAbort() {
   drawFeature = null;
+  clearTrace();
 }
 /**
  * Called by OL on mouse down to check if a vertex should be added
@@ -476,7 +495,8 @@ function addSnapInteraction(sources) {
   const snapInteractions = [];
   sources.forEach((source) => {
     const interaction = new Snap({
-      source
+      source,
+      pixelTolerance: snapTolerance
     });
     snapInteractions.push(interaction);
     map.addInteraction(interaction);
@@ -518,14 +538,115 @@ function setAllowedOperations() {
   }
 }
 
+/**
+ * Helper that adds candidate linear strings as features to be displayed as trace possibilities if they
+ * are clicked on. Mimics what OL does in Draw interaction, but in less code as it uses higher level functions
+ * @param {any} coordinate
+ * @param {any} coordinates
+ */
+function appendTraceTarget(coordinate, coordinates) {
+  const x = coordinate[0];
+  const y = coordinate[1];
+  const geom = new LineString(coordinates);
+  const nearestPoint = geom.getClosestPoint(coordinate);
+  // Round distance so we can determine if point is on line. It still is pretty small so
+  // snapping must be activated in order to have any chance at actually hitting a line.
+  const squaredD = toFixed(squaredDistance(x, y, nearestPoint[0], nearestPoint[1]), 10);
+  if (squaredD === 0) {
+    traceHighligtLayer.getSource().addFeature(new Feature(geom));
+  }
+}
+
+/**
+ * Breaks down a complex geometry to linearstrings that can be traced.
+ * Mimics the implementation in OL
+ * @param {any} coordinate
+ * @param {any} geometry
+ * @returns
+ */
+function appendGeometryTraceTargets(coordinate, geometry) {
+  if (geometry instanceof LineString) {
+    appendTraceTarget(coordinate, geometry.getCoordinates());
+    return;
+  }
+  if (geometry instanceof MultiLineString || geometry instanceof Polygon) {
+    const coordinates = geometry.getCoordinates();
+    coordinates.forEach(currRing => {
+      appendTraceTarget(coordinate, currRing);
+    });
+    return;
+  }
+  if (geometry instanceof MultiPolygon) {
+    const polys = geometry.getCoordinates();
+    polys.forEach(currPoly => {
+      currPoly.forEach(currRing => {
+        appendTraceTarget(coordinate, currRing);
+      });
+    });
+  }
+  // other types cannot be traced
+}
+
+/**
+ * Callback that OL draw calls before a trace is started or ended. Too bad we don't get to know why it is called
+ * Sets up features for tracing, as trace can only handle one vector source, so we have do load candidates into one source
+ * to support tracing from all layers that we can snap to.
+ * @param {any} evt
+ * @returns {boolean} If false operation will be aborted
+ */
+function traceCallback(evt) {
+  // Try to figure out if we're about to start or end a trace. As OL won't let us know which it is we have to guess,
+  // so don't base any crucial logic around it.
+  const traceActive = traceHighligtLayer.getSource().getFeatures().length > 0;
+
+  // Get som candidates for snapping where we clicked. It will contain a lot of false positives.
+  // This is roughly the same algorithm as OL uses, which means layer does not have to be visible!
+  // Actual snap tolerance value is actually not important, mouse has already snapped and OL uses another value,
+  // but it is a nice value to use.
+  const lowerLeft = map.getCoordinateFromPixel([
+    evt.pixel[0] - snapTolerance,
+    evt.pixel[1] + snapTolerance
+  ]);
+  const upperRight = map.getCoordinateFromPixel([
+    evt.pixel[0] + snapTolerance,
+    evt.pixel[1] - snapTolerance
+  ]);
+  const extent = [lowerLeft[0], lowerLeft[1], upperRight[0], upperRight[1]];
+  const candidateFeatures = [];
+  snapSources.forEach(currSource => {
+    candidateFeatures.push(...currSource.getFeaturesInExtent(extent));
+  });
+  clearTrace();
+  // This is what Draw interaction gets, it will narrow it down itself
+  traceSource.addFeatures(candidateFeatures);
+  // Try to figure out which segments OL will use for tracing by mimicing their method and
+  // add all segments as features to visualize where it is possible to trace.
+  // It would have been a lot easier if OL just had exposed getTraceTargets()
+  // As we don't know for sure if we're actually starting or ending trace, we just toggle visibility of
+  // possible trace linestrings. OL will hopefully always do the right thing, but if we don't mimic OL exactly
+  // the visualization may be out of sync until drawing is finished or aborted.
+  if (!traceActive) {
+    candidateFeatures.forEach(currCandidate => {
+      appendGeometryTraceTargets(evt.coordinate, currCandidate.getGeometry());
+    });
+  }
+
+  // Return true to allow the trace start/stop.
+  return true;
+}
 function setInteractions(drawType) {
   const editLayer = editLayers[currentLayer];
   attributes = editLayer.get('attributes');
   title = editLayer.get('title') || 'Information';
+  hasSnap = editLayer.get('snap');
   const drawOptions = {
     type: editLayer.get('geometryType'),
-    geometryName: editLayer.get('geometryName')
+    geometryName: editLayer.get('geometryName'),
+    traceSource
   };
+  if (hasSnap && useTrace) {
+    drawOptions.trace = traceCallback;
+  }
   if (drawType) {
     Object.assign(drawOptions, shapes(drawType));
   }
@@ -632,11 +753,10 @@ function setInteractions(drawType) {
   setActive();
 
   // If snap should be active then add snap internactions for all snap layers
-  hasSnap = editLayer.get('snap');
   if (hasSnap) {
     // FIXME: selection will almost certainly be empty as featureInfo is cleared
     const selectionSource = featureInfo.getSelectionLayer().getSource();
-    const snapSources = editLayer.get('snapLayers') ? getSnapSources(editLayer.get('snapLayers')) : [editLayer.get('source')];
+    snapSources = editLayer.get('snapLayers') ? getSnapSources(editLayer.get('snapLayers')) : [editLayer.get('source')];
     snapSources.push(selectionSource);
     snap = addSnapInteraction(snapSources);
   }
@@ -767,6 +887,9 @@ function onDeleteSelected() {
   }
 }
 
+/**
+ * Starts the draw tool if the current layer has a defined geometryType.
+ */
 function startDraw() {
   if (!editLayers[currentLayer].get('geometryType')) {
     alert(`"geometryType" har inte angivits för ${editLayers[currentLayer].get('name')}`);
@@ -777,6 +900,9 @@ function startDraw() {
   }
 }
 
+/**
+ * Cancels the draw tool and resets relevant states.
+ */
 function cancelDraw() {
   setActive();
   if (hasDraw) {
@@ -888,24 +1014,49 @@ function onAttributesSave(features, attrs) {
   document.getElementById(`o-save-button-${currentLayer}`).addEventListener('click', (e) => {
     const editEl = {};
     const valid = {};
+    let checkboxValues = [];
     attrs.forEach((attribute) => {
       // Get the input container class
       const containerClass = `.${attribute.elId}`;
       // Get the input attributes
       // FIXME: Don't have to get from DOM, the same values are in 'attribute'
       // and it would be enough to call getElementId once anyway (called numerous times later on).
-      const inputType = document.getElementById(attribute.elId).getAttribute('type');
-      const inputValue = document.getElementById(attribute.elId).value;
-      const inputName = document.getElementById(attribute.elId).getAttribute('name');
-      const inputId = document.getElementById(attribute.elId).getAttribute('id');
-      const inputRequired = document.getElementById(attribute.elId).required;
+
+      let inputType = attribute.type ? attribute.type : '';
+      // Check again for not missing when checkbox is part of multiple choice checkboxes
+      inputType = document.getElementById(`${attribute.elId}-0`) ? 'checkboxgroup' : inputType;
+      const inputValue = document.getElementById(attribute.elId) ? document.getElementById(attribute.elId).value : '';
+      const inputName = attribute.name ? attribute.name : '';
+      const inputId = attribute.elId ? attribute.elId : '';
+      const inputRequired = document.getElementById(attribute.elId) ? document.getElementById(attribute.elId).required : '';
 
       // If hidden element it should be excluded
       // By sheer luck, this prevents attributes to be changed in batch edit mode when checkbox is not checked.
       // If this code is changed, it may be necessary to excplict check if the batch edit checkbox is checked for this attribute.
       if (!document.querySelector(containerClass) || document.querySelector(containerClass).classList.contains('o-hidden') === false) {
         // Check if checkbox. If checkbox read state.
-        if (inputType === 'checkbox') {
+        if (inputType === 'checkboxgroup') {
+          if (document.getElementById(`${attribute.elId}-0`).getAttribute('type') === 'checkbox') {
+            const separator = attribute.separator ? attribute.separator : ';';
+            const freetextOptionPrefix = attribute.freetextOptionPrefix ? attribute.freetextOptionPrefix : 'freetext_option:';
+            const freetextOptionValueSeparator = attribute.freetextOptionValueSeparator ? attribute.freetextOptionValueSeparator : '=';
+            if (attribute.options && attribute.options.length > 0) {
+              Array.from(document.getElementsByName(attribute.name)).forEach((element) => {
+                if (element.tagName === 'INPUT' && element.getAttribute('type') === 'checkbox' && element.checked === true) {
+                  // Check if this is a free text checkbox
+                  if (element.nextElementSibling.getAttribute('type') === 'text') {
+                    checkboxValues.push(`${freetextOptionPrefix}${element.getAttribute('value')}${freetextOptionValueSeparator}${element.nextElementSibling.value.trim()}`);
+                  } else {
+                    checkboxValues.push(element.getAttribute('value'));
+                  }
+                }
+              });
+              editEl[attribute.name] = checkboxValues.join(separator);
+            } else {
+              editEl[attribute.name] = document.getElementById(attribute.elId).checked ? 1 : 0;
+            }
+          }
+        } else if (inputType === 'checkbox') {
           const checkedValue = (attribute.config && attribute.config.checkedValue) || 1;
           const uncheckedValue = (attribute.config && attribute.config.uncheckedValue) || 0;
           editEl[attribute.name] = document.getElementById(attribute.elId).checked ? checkedValue : uncheckedValue;
@@ -1060,6 +1211,7 @@ function onAttributesSave(features, attrs) {
         default:
       }
       valid.validates = !Object.values(valid).includes(false);
+      checkboxValues = [];
     });
 
     // If valid, continue
@@ -1074,6 +1226,10 @@ function onAttributesSave(features, attrs) {
   });
 }
 
+/**
+ * Adds an event listener to a dependency element and toggles the visibility of a container element.
+ * @returns {Function} A function that accepts an object to configure the event listener.
+ */
 function addListener() {
   const fn = (obj) => {
     document.getElementById(obj.elDependencyId).addEventListener(obj.eventType, () => {
@@ -1089,6 +1245,35 @@ function addListener() {
         document.querySelector(containerClass).classList.remove('o-hidden');
       } else {
         document.querySelector(containerClass).classList.add('o-hidden');
+      }
+    });
+  };
+
+  return fn;
+}
+
+/**
+ * Returns a function that adds an event handler to enable/disable the textbox for a free text checkbox
+ *
+ * @function
+ * @name addCheckboxListener
+ * @kind function
+ * @param {any} ): (obj
+ * @returns {void}
+ */
+function addCheckboxListener() {
+  const fn = (obj) => {
+    Array.from(document.getElementsByName(obj.name)).forEach((element) => {
+      // Add a listener on the checkbox if it has input text as next element
+      if (element.tagName === 'INPUT' && element.getAttribute('type') === 'checkbox' && element.nextElementSibling.getAttribute('type') === 'text') {
+        element.addEventListener('change', () => {
+          if (element.checked === true) {
+            document.getElementById(element.nextElementSibling.id).disabled = false;
+          } else {
+            document.getElementById(element.nextElementSibling.id).value = '';
+            document.getElementById(element.nextElementSibling.id).disabled = true;
+          }
+        });
       }
     });
   };
@@ -1234,6 +1419,14 @@ function editAttributes(feat) {
           } else {
             alert('Villkor verkar inte vara rätt formulerat. Villkor formuleras enligt principen change:attribute:value');
           }
+        } else if (obj.type === 'checkboxgroup') {
+          if (obj.options && obj.options.length > 0 && obj.val) {
+            const separator = obj.separator ? obj.separator : ';';
+            obj.val = obj.val.split(separator);
+          }
+          obj.isVisible = true;
+          obj.elId = `input-${currentLayer}-${obj.name}`;
+          obj.addListener = addCheckboxListener();
         } else if (obj.type === 'image') {
           obj.isVisible = true;
           obj.elId = `input-${currentLayer}-${obj.name}`;
@@ -1284,7 +1477,7 @@ function editAttributes(feat) {
       attachmentsForm = `<div id="o-attach-form-${currentLayer}"></div>`;
     }
 
-    let form = `<div id="o-form">${formElement}${relatedTablesFormHTML}${attachmentsForm}<br><div class="o-form-save"><input id="o-save-button-${currentLayer}" type="button" value="OK" aria-label="OK"></input></div></div>`;
+    let form = `<div id="o-form">${formElement}${relatedTablesFormHTML}${attachmentsForm}<br><div class="o-form-save"><input id="o-save-button-${currentLayer}" type="button" value="OK" class="o-editor-input" aria-label="OK"></input></div></div>`;
     if (autoCreatedFeature) {
       form = `<div id="o-form">${formElement}${relatedTablesFormHTML}${attachmentsForm}<br><div class="o-form-save"><input id="o-save-button-${currentLayer}" type="button" value="Spara" aria-label="Spara"></input><input id="o-abort-button-${currentLayer}" type="button" value="Ta bort" aria-label="Ta bort"></input></div></div>`;
       autoCreatedFeature = false;
@@ -1344,6 +1537,10 @@ function editAttributes(feat) {
   }
 }
 
+/**
+ * Handles toggling of editing tools based on the triggered event.
+ * @param {Event} e - The triggered event containing tool details.
+ */
 function onToggleEdit(e) {
   const { detail: { tool } } = e;
   e.stopPropagation();
@@ -1367,8 +1564,14 @@ function onToggleEdit(e) {
   }
 }
 
+/**
+ * Handles changes in edit state based on the triggered event.
+ * @param {Event} e - The triggered event containing tool and active status details.
+ */
 function onChangeEdit(e) {
   const { detail: { tool, active } } = e;
+
+  // Cancel drawing if another tool becomes active
   if (tool !== 'draw' && active) {
     cancelDraw();
   }
@@ -1522,12 +1725,30 @@ function preselectFeature(feature) {
  */
 export default function editHandler(options, v) {
   viewer = v;
+  map = viewer.getMap();
+
+  // Set up a layer for displaying trace possibilities. Do it up front as it may become possible to turn it on later
+  traceHighligtLayer = new VectorLayer({
+    source: new VectorSource(),
+    style: {
+      'stroke-color': 'rgba(100, 255, 0, 1)',
+      'stroke-width': 3
+    },
+    visible: true
+  });
+  if (options.traceStyle) {
+    const s = Style.createStyle({ style: options.traceStyle, viewer });
+    traceHighligtLayer.setStyle(s);
+  }
+  map.addLayer(traceHighligtLayer);
+  traceSource = new VectorSource();
+  useTrace = options.trace;
+
   featureInfo = viewer.getControlByName('featureInfo');
   if (options.featureList) {
     infowindowCmp = Infowindow({ viewer, type: 'floating', title: 'Välj objekt' });
     infowindowCmp.render();
   }
-  map = viewer.getMap();
   currentLayer = options.currentLayer;
   editableLayers = options.editableLayers;
 
@@ -1544,6 +1765,9 @@ export default function editHandler(options, v) {
   autoSave = options.autoSave;
   autoForm = options.autoForm;
   validateOnDraw = options.validateOnDraw;
+  // We set tolerace as we can't read default from OL, but we can set it
+  // Cant' set 0, but that case you can disable snap
+  snapTolerance = options.snapTolerance || 10;
 
   // Listen to DOM events from menus and forms
   document.addEventListener('toggleEdit', onToggleEdit);
