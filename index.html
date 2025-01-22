@@ -103,6 +103,20 @@
 						addLayerErrorMsg: "There was a problem trying to add a layer. You are welcome to report this to SUPPORT@SUPPORT.com"
 					});
 					viewer.addComponent(layermanager);
+					// *** Style the button ***
+					const button = document.querySelector('[aria-label="Lägg till lager"]');
+					// Check if the button exists
+					if (button) {
+						// Insert text into the button
+						button.textContent = "Lägg till lager"; 
+						// Apply rectangle styling
+						button.style.width = "100%"; 
+						button.style.height = "25px"; 
+						button.style.borderRadius = "5px"; 
+						button.style.color = "#fff";
+					} else {
+						console.error('Button with aria-label="Lägg till lager" not found.');
+					}
 				}
 
 				// Swiper
