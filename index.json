@@ -40,7 +40,7 @@
             "tooltipText": "Hämta primärkarta och detaljplan som dwg",
             "method": "XY",
             "projection": "EPSG:3010",
-            "url": "https://karta.hallstahammar.se/fmedatastreaming/Externt/H%C3%A4mta%20data%20externt.fmw?x={{X}}&y={{Y}}&token=66c857949fa94533048966f299ce91e75927864d",
+            "url": "https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?x={{X}}&y={{Y}}&token=b93e37f0129fd024ac2cb7021c55d56075e939a1",
             "buttonImage": "img/png/direct-download.png"
           }
         ]
