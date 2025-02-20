@@ -727,12 +727,12 @@
     },
     {
       "name": "y_mask",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Mask/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "y_mask",
       "title": "Mask",
       "group": "none",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "visible": true
     },
     {
