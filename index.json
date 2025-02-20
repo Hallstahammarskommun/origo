@@ -61,10 +61,10 @@
         }
       }
     },
-    {
+    /*{
       "name": "search",
       "options": {
-        "url": "https://karta.hallstahammar.se/origoserver/search",
+        "url": "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/Search.fmw?",
         "searchAttribute": "NAMN",
         "layerNameAttribute": "TYPE",
         "idAttribute": "GID",
@@ -73,7 +73,7 @@
         "minLength": 4,
         "hideWhenEmbedded": true
       }
-    },
+    },*/
     {
       "name": "sharemap"
     },
