@@ -432,12 +432,12 @@
     },
     {
       "name": "y_kommunalFastighet",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Kommunal mark/FeatureServer/0/query?f=geojson&where=1=1&outFields=*",
+      "source": "ows",
       "style": "y_kommunalFastighet",
       "title": "Kommunal mark",
       "group": "bygga",
       "queryable": false,
-      "type": "GEOJSON",
+      "type": "WFS",
       "exportable": true
     },
     {
