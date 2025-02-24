@@ -432,13 +432,13 @@
     },
     {
       "name": "y_kommunalFastighet",
-      "source": "ows",
-      "style": "y_kommunalFastighet",
       "title": "Kommunal mark",
+      "abstract": "Data läses från FB Webb",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Kommunal_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "style": "y_kommunalFastighet",
       "group": "bygga",
       "queryable": false,
-      "type": "WFS",
-      "exportable": true
+      "type": "GEOJSON"
     },
     {
       "name": "w_y_ledigMark__industri",
