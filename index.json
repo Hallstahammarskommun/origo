@@ -434,7 +434,7 @@
     },
     {
       "name": "y_fastighet",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor/OGCFeatureServer/collections/0/items/?f=application%2Fgeo%2Bjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor_vy/OGCFeatureServer/collections/0/items/",
       "style": "y_fastighet",
       "title": "Fastighetsgräns",
       "group": "bygga",
@@ -452,7 +452,6 @@
     {
       "name": "y_kommunalFastighet",
       "title": "Kommunal mark",
-      "abstract": "Data läses från FB Webb",
       "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Kommunal_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "y_kommunalFastighet",
       "group": "bygga",
