@@ -186,6 +186,15 @@
     "infowindow": "overlay"
   },
   "source": {
+    "topowebb": {
+      "url": "https://karta.hallstahammar.se/topowebb/wms/v1"
+    },
+    "ortofoto": {
+      "url": "https://karta.hallstahammar.se/ortofoto/wms/v1.3"
+    },
+    "historiskaoppna": {
+      "url": "https://api.lantmateriet.se/historiska-ortofoton/wms/v1/token/6dd125e41c2d963c881ebcdca334e6f3/"
+    },
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
       "strategy": "all"
@@ -193,6 +202,12 @@
     "plandirekt": {
       "url": "https://plankarta.hallstahammar.se/wms?SERVICENAME=plandirekt",
       "strategy": "all"
+    },
+    "trafikverket": {
+      "url": "https://geo-netinfo.trafikverket.se/MapService/wms.axd/NetInfo_1_7"
+    },
+    "naturvardsverket": {
+      "url": "https://geodata.naturvardsverket.se/inspire/ps-nvr/ows"
     }
   },
   "groups": [
@@ -229,8 +244,8 @@
     }
   ],
   "layerParams": {
-    "historiska": {
-      "source": "ows",
+    "historiskaoppna": {
+      "source": "historiskaoppna",
       "style": "orto_historisk",
       "format": "image/png",
       "group": "historiska",
@@ -399,27 +414,31 @@
     },
     {
       "name": "y_plan",
-      "source": "ows",
+      "title": "Pågående detaljplan",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/P%C3%A5g%C3%A5ende_plan_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "y_plan",
-      "title": "Detaljplan pågående",
       "group": "bygga",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
+      "visible": false,
       "attributes": [
         {
           "name": "obj",
+          "title": "Plannamn: "
+        },
+        {
+          "name": "url",
+          "title": "Länk: ",
           "url": "url"
         }
       ]
     },
     {
       "name": "y_fastighet",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor/OGCFeatureServer/collections/0/items/?f=application%2Fgeo%2Bjson",
       "style": "y_fastighet",
       "title": "Fastighetsgräns",
-      "format": "image/png",
       "group": "bygga",
-      "type": "WFS",
+      "type": "GEOJSON",
       "visible": false,
       "attributes": [
         {
@@ -442,13 +461,11 @@
     },
     {
       "name": "w_y_ledigMark__industri",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "w_y_ledigMark__industri",
       "title": "Ledig industrimark",
       "group": "bygga",
-      "type": "WFS",
-      "exportable": true,
-      "filter": "typ = 'Industri'",
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "egn",
@@ -473,25 +490,28 @@
       "layers": [
         {
           "name": "w_y_ledigMark__smahus",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
           "style": "w_y_ledigMark",
           "title": "Lediga tomter",
           "group": "bygga",
-          "type": "WFS",
-          "filter": "typ = 'Smahus'",
+          "type": "GEOJSON",
+
           "visible": true,
           "attributes": [
             {
               "name": "obj"
             },
             {
-              "name": "egn"
+              "name": "egn",
+              "title": "Pris: "
             },
             {
-              "name": "area"
+              "name": "area",
+              "title": "Area: "
             },
             {
-              "name": "status"
+              "name": "status",
+              "title": "Status: "
             },
             {
               "name": "datum"
@@ -500,12 +520,11 @@
         },
         {
           "name": "w_y_ledigMark__smahusPunkt",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
           "style": "w_y_ledigMarkPunkt",
           "title": "Lediga tomter",
           "group": "bygga",
-          "type": "WFS",
-          "filter": "typ = 'Smahus'",
+          "type": "GEOJSON",
           "visible": true,
           "queryable": false
         }
@@ -526,67 +545,55 @@
     },
     {
       "name": "p_edp_livsmedel",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "p_edp_livsmedel",
       "clusterStyle": "p_edp_livsmedel_cluster",
       "title": "Livsmedelsinspektion",
       "layerType": "cluster",
       "group": "energi",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "obj"
-        },
-        {
-          "name": "typ"
-        },
-        {
-          "name": "egn"
-        },
-        {
-          "name": "status"
-        },
-        {
-          "title": "Lämna synpunkter och klagomål",
-          "url": "https://eservice.hallstahammar.se/EServiceStart.aspx?id=de4a51a8-d2e5-4768-b2f8-0676099648e1",
-          "target": "_blank"
         }
       ]
     },
     {
-      "name": "y_naturreservat",
-      "source": "ows",
+      "name": "PS.ProtectedSites.NR",
+      "source": "naturvardsverket",
       "style": "y_naturreservat",
       "title": "Naturreservat",
       "group": "energi",
-      "type": "WFS",
-      "exportable": true,
-      "attributes": [
-        {
-          "title": "Mer information",
-          "url": "https://hallstahammar.se/uppleva-och-gora/natur-och-friluftsliv/naturreservat-i-kommunen",
-          "taget": "_blank"
-        }
-      ]
+      "type": "WMS",
+      "legendParams": {
+        "scale": 5000,
+        "legend_options": "dpi:300"
+      },
+      "format": "image/png",
+      "queryable": true
     },
     {
-      "name": "Cykelvagar",
-      "source": "ows",
-      "style": "l_cykelvag_l",
-      "title": "Cykelväg",
+      "name": "Cykelvagskategorier",
+      "source": "trafikverket",
+      "title": "Cykelvägkategorier",
       "group": "trafik",
       "type": "WMS",
-      "queryable": false
+      "queryable": false,
+      "hasThemeLegend": true,
+      "legendParams": {
+        "scale": 5000,
+        "legend_options": "dpi:300"
+      },
+      "format": "image/png"
+
     },
     {
       "name": "l_servicelinjen",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Servicelinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "l_servicelinjen",
       "title": "Servicelinjen",
       "group": "trafik",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "obj",
@@ -603,10 +610,9 @@
       "name": "l_skollinjen",
       "title": "Skollinjer",
       "group": "trafik",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skollinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "l_skollinjen",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "obj",
@@ -621,12 +627,12 @@
     },
     {
       "name": "p_skola__Forskola",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "p_skola",
       "title": "Förskola",
       "group": "utbildning",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
+      "filter": "[egn] = 'Förskola'",
       "attributes": [
         {
           "name": "obj",
@@ -638,23 +644,17 @@
           "target": "_blank"
         },
         {
-          "name": "tel",
-          "title": "Telefon: "
-        },
-        {
           "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
     {
       "name": "p_skola__Grundskola",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "p_skola__Grundskola",
       "title": "Grundskola",
       "group": "utbildning",
-      "type": "WFS",
-      "exportable": true,
-      "filter": "egn = 'Grundskola'",
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "obj",
@@ -663,10 +663,6 @@
         {
           "name": "typ",
           "title": "Årskurs: "
-        },
-        {
-          "name": "tel",
-          "title": "Telefon: "
         },
         {
           "html": "<a href={{url}} target='_blank'>Mer information</a>"
@@ -675,13 +671,11 @@
     },
     {
       "name": "p_skola__AnpassadGrundskola",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "p_skola__AnpassadGrundskola",
       "title": "Anpassad grundskola",
       "group": "utbildning",
-      "type": "WFS",
-      "exportable": true,
-      "filter": "egn = 'Anpassad grundskola'",
+      "type": "GEOJSON",
       "attributes": [
         {
           "name": "obj",
@@ -692,22 +686,18 @@
           "title": "Årskurs: "
         },
         {
-          "name": "tel",
-          "title": "Telefon: "
-        },
-        {
           "html": "<a href={{url}} target='_blank'>Mer information</a>"
         }
       ]
     },
     {
       "name": "y_upptagningsomrade",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Upptagningsomr%C3%A5de_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "y_upptagningsomrade",
       "title": "Upptagningsområden",
       "group": "utbildning",
-      "type": "WFS",
-      "exportable": true,
+      "type": "GEOJSON",
+      "thematicStyling": true,
       "attributes": [
         {
           "name": "obj",
@@ -718,12 +708,12 @@
     {
       "name": "OI.Histortho_60",
       "title": "1960",
-      "layerParam": "historiska"
+      "layerParam": "historiskaoppna"
     },
     {
       "name": "OI.Histortho_75",
       "title": "1975",
-      "layerParam": "historiska"
+      "layerParam": "historiskaoppna"
     },
     {
       "name": "y_mask",
@@ -736,40 +726,38 @@
       "visible": true
     },
     {
+      "name": "topowebbkartan_nedtonad",
+      "title": "Karta, grå",
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "topowebbkartan_nedtonad",
-      "source": "ows",
-      "title": "Karta, grå",
+      "source": "topowebb",
       "queryable": false,
       "type": "WMS",
       "style": "karta_gra",
       "visible": true
     },
     {
+      "name": "topowebbkartan",
+      "title": "Karta, färg",
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "topowebbkartan",
-      "source": "ows",
-      "title": "Karta, färg",
+      "source": "topowebb",
       "queryable": false,
       "type": "WMS",
-      "style": "karta_farg",
-      "visible": false
+      "style": "karta_farg"
     },
     {
+      "name": "Ortofoto_0.16",
+      "title": "Flygfoto",
       "attribution": "&copy Lantmäteriet Geodatasamverkan",
       "format": "image/jpeg",
       "group": "background",
-      "name": "ortofoto",
-      "source": "ows",
-      "title": "Flygfoto",
+      "source": "ortofoto",
       "queryable": false,
       "type": "WMS",
-      "style": "orto",
-      "visible": false
+      "style": "orto"
     }
   ],
   "styles": {
@@ -907,6 +895,7 @@
     "w_y_ledigMarkPunkt": [
       [
         {
+          "filter": "[typ] == 'Smahus'",
           "icon": {
             "size": [
               23,
@@ -921,7 +910,7 @@
     "w_y_ledigMark__industri": [
       [
         {
-          "filter": "[status] == 'Ledig'",
+          "filter": "[status] == 'Ledig' AND [typ] == 'Industri'",
           "label": "Ledig",
           "header": true,
           "stroke": {
@@ -935,7 +924,7 @@
       ],
       [
         {
-          "filter": "[status] == 'Bokad'",
+          "filter": "[status] == 'Bokad' AND [typ] == 'Industri'",
           "label": "Bokad",
           "stroke": {
             "color": "rgba(0,0,0,0.5)",
@@ -950,7 +939,7 @@
     "w_y_ledigMark": [
       [
         {
-          "filter": "[status] == 'Bokad'",
+          "filter": "[status] == 'Bokad' AND [typ] == 'Smahus'",
           "label": "Bokad",
           "stroke": {
             "color": "rgba(0,0,0,0.6)",
@@ -963,7 +952,7 @@
       ],
       [
         {
-          "filter": "[status] == 'Kommande'",
+          "filter": "[status] == 'Kommande' AND [typ] == 'Smahus'",
           "label": "Kommande",
           "stroke": {
             "color": "rgba(255,0,0,0.6)",
@@ -976,7 +965,7 @@
       ],
       [
         {
-          "filter": "[status] == 'Ledig'",
+          "filter": "[status] == 'Ledig' AND [typ] == 'Smahus'",
           "label": "Ledig",
           "header": true,
           "stroke": {
@@ -990,7 +979,7 @@
       ],
       [
         {
-          "filter": "[status] == 'Såld'",
+          "filter": "[status] == 'Såld' AND [typ] == 'Smahus'",
           "label": "Såld",
           "stroke": {
             "color": "rgba(255,0,0,0.5)",
@@ -1160,20 +1149,6 @@
         }
       ]
     ],
-    "y_naturreservat": [
-      [
-        {
-          "stroke": {
-            "color": "rgb(137,210,103)",
-            "width": 2
-          },
-          "fill": {
-            "color": "rgba(137,210,103,0.3)"
-          },
-          "label": "Naturreservat"
-        }
-      ]
-    ],
     "p_skola": [
       [
         {
@@ -1212,7 +1187,8 @@
             ],
             "src": "img/png/bu_w_grs_p.png"
           },
-          "label": "Grundskola"
+          "label": "Grundskola",
+          "filter": "[egn] == 'Grundskola'"
         }
       ]
     ],
@@ -1226,7 +1202,8 @@
             ],
             "src": "img/png/bu_w_ags_p.png"
           },
-          "label": "Anpassad grundskola"
+          "label": "Anpassad grundskola",
+          "filter": "[egn] == 'Anpassad grundskola'"
         }
       ]
     ],
@@ -1294,6 +1271,20 @@
           },
           "filter": "[obj] == 'Kolbäck'",
           "label": "Kolbäck"
+        }
+      ]
+    ],
+    "y_naturreservat": [
+      [
+        {
+          "stroke": {
+            "color": "rgb(137,210,103)",
+            "width": 2
+          },
+          "fill": {
+            "color": "rgba(137,210,103,0.3)"
+          },
+          "label": "Naturreservat"
         }
       ]
     ],
