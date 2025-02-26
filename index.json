@@ -214,7 +214,14 @@
     {
       "name": "bygga",
       "title": "Bygga & bo",
-      "expanded": true
+      "expanded": true,
+      "groups": [
+        {
+          "name": "pk",
+          "title": "Primärkarta",
+          "exclusive": false,
+          "toggleAll": false
+        }]
     },
     {
       "name": "energi",
@@ -254,6 +261,120 @@
     }
   },
   "layers": [
+
+
+    {
+      "name": "bal_byggnad_y",
+      "source": "ows",
+      "style": "bal_byggnad_y",
+      "title": "Byggnad",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": true,
+      "maxScale": 3000,
+      "strategy": "bbox",
+      "visible": false
+    },
+    {
+      "name": "td_bal_byggnadslinje_l",
+      "source": "ows",
+      "style": "td_bal_byggnadslinje_l",
+      "title": "Byggnadslinje",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": false,
+      "maxScale": 1500,
+      "strategy": "bbox",
+      "visible": true
+    },
+    {
+      "name": "ml_markdetalj_p",
+      "source": "ows",
+      "style": "ml_markdetalj_p",
+      "title": "Markdetalj punkt",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": true,
+      "maxScale": 750,
+      "strategy": "bbox",
+      "visible": true
+    },
+    {
+      "name": "ml_markdetalj_l",
+      "source": "ows",
+      "style": "ml_markdetalj_l",
+      "title": "Markdetalj linje",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": true,
+      "maxScale": 1500,
+      "strategy": "bbox",
+      "visible": true
+    },
+    {
+      "name": "ml_markdetalj_y",
+      "source": "ows",
+      "style": "ml_markdetalj_y",
+      "title": "Markdetalj yta",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": true,
+      "maxScale": 3000,
+      "strategy": "bbox",
+      "visible": true
+    },
+    {
+      "name": "vj_ovrigvag_l",
+      "source": "ows",
+      "style": "vj_ovrigvag_l",
+      "title": "Övrig väg",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": false,
+      "maxScale": 1500,
+      "strategy": "bbox",
+      "visible": true
+    },   
+    /*{
+      "name": "ma_markanvandningyta_y",
+      "source": "ows",
+      "style": "ma_markanvandningyta_y",
+      "title": "Markanvändning",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": false,
+      "maxScale": 3000,
+      "strategy": "bbox",
+      "visible": false
+    },*/
+    /*{
+      "name": "td_kartsymbol_l",
+      "source": "ows",
+      "style": "td_kartsymbol_l",
+      "title": "Kartsymbol",
+      "group": "pk",
+      "queryable": false,
+      "type": "WFS",
+      "fme": true,
+      "thematicStyling": false,
+      "maxScale": 1500,
+      "strategy": "bbox",
+      "visible": false
+    },*/ 
     {
       "name": "p_adress",
       "title": "Adress",
@@ -529,7 +650,7 @@
         }
       ]
     },
-    {
+    /*{
       "name": "primarkarta",
       "source": "ows",
       "style": "primarkarta",
@@ -541,7 +662,7 @@
       "fme": true,
       "visible": false,
       "maxScale": 2500
-    },
+    },*/
     {
       "name": "p_edp_livsmedel",
       "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
@@ -1342,6 +1463,540 @@
           "label": "Primärkarta"
         }
       ]
+    ],
+    "bal_byggnad_y": [
+      [
+        {
+          "label": "Planerad",
+          "filter": "[bal_objektstatus] == 'Planerad'",
+          "fill": {
+            "color": "rgba(178,162,199,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Takkant",
+          "filter": "[bal_insamlingslage] == 'Takkant'",
+          "stroke": {
+            "color": "rgb(239,116,23)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Ospecifierad",
+          "filter": "[bal_insamlingslage] == 'Ospecifierad'",
+          "stroke": {
+            "color": "rgb(255,255,0)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Fasad",
+          "filter": "[bal_insamlingslage] == 'Fasad'",
+          "stroke": {
+            "color": "rgb(83,134,48)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ]
+    ],
+    "td_bal_byggnadslinje_l": [
+      [
+        {
+          "label": "Illustrationslinje",
+          "stroke": {
+            "color": "rgb(64,64,64)",
+            "width": 0.18
+          }
+        }
+      ]
+    ],
+    "ml_markdetalj_p": [
+      [
+        {
+          "icon": {
+            "scale": 0.5,
+            "color": "rgb(0, 255, 0)",
+            "src": "img/svg/barrtrad.svg"
+          },
+          "filter": "[ml_markdetaljtyp] == 'barrträd'",
+          "label": "Barrträd"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 6,
+            "stroke": {
+              "color": "rgb(0, 115, 176)"
+            },
+            "fill": {
+              "color": "rgb(0, 115, 176)"
+            }
+          },
+          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe' AND [ge_ansvarigorganisation_id] == '3'",
+          "label": "Belysningsstolpe kommunal"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 6,
+            "stroke": {
+              "color": "rgb(254, 204, 4)"
+            },
+            "fill": {
+              "color": "rgb(254, 204, 4)"
+            }
+          },
+          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe'",
+          "label": "Belysningsstolpe privat"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "scale": 0.5,
+            "color": "rgb(128, 0, 128)",
+            "src": "img/svg/brunnslock.svg"
+          },
+          "filter": "[ml_markdetaljtyp] == 'brunnslock' OR [ml_markdetaljtyp] == 'VA-brunnslock'",
+          "label": "Brunnslock"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "scale": 0.5,
+            "color": "rgb(128, 0, 128)",
+            "src": "img/svg/kopplingsskap.svg"
+          },
+          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp' OR [ml_markdetaljtyp] == 'kopplingsskåp'",
+          "label": "Kopplingsskåp"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 4,
+            "stroke": {
+              "color": "rgb(0, 0, 0)"
+            },
+            "fill": {
+              "color": "rgb(0, 0, 0)"
+            }
+          },
+          "filter": "[ml_markdetaljtyp] == 'elstolpe'",
+          "label": "Elstolpe"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 4,
+            "stroke": {
+              "color": "rgb(0, 106, 167)"
+            },
+            "fill": {
+              "color": "rgba(0, 0, 0, 0)"
+            }
+          },
+          "filter": "[ml_markdetaljtyp] == 'flaggstång'",
+          "label": "Flaggstång"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "scale": 0.5,
+            "color": "rgb(0, 255, 0)",
+            "src": "img/svg/lovtrad.svg"
+          },
+          "filter": "[ml_markdetaljtyp] == 'lövträd'",
+          "label": "Lövträd"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 4,
+            "stroke": {
+              "color": "rgb(50, 50, 50)"
+            },
+            "fill": {
+              "color": "rgba(0, 0, 0, 0)"
+            }
+          },
+          "filter": "[ml_markdetaljtyp] == 'pollare' OR [ml_markdetaljtyp] == 'vägbom'",
+          "label": "Pollare / vägbom"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "scale": 0.5,
+            "color": "rgb(0, 255, 0)",
+            "src": "img/svg/trad.svg"
+          },
+          "filter": "[ml_markdetaljtyp] == 'träd'",
+          "label": "Träd"
+        }
+      ],
+      [
+        {
+          "icon": {
+            "size": [
+              24,
+              36
+            ],
+            "src": "img/png/droppe_red.png"
+          },
+          "label": "Oklassificerad"
+        }
+      ]
+    ],
+    "ml_markdetalj_l": [
+      [
+        {
+          "label": "Brygga",
+          "filter": "[ml_markdetaljtyp] == 'fast brygga'",
+          "stroke": {
+            "color": "rgb(231,182,181)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Dike",
+          "filter": "[ml_markdetaljtyp] == 'dike'",
+          "stroke": {
+            "color": "rgb(139, 220, 245)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "El-luftledning",
+          "filter": "[ml_markdetaljtyp] == 'el-luftledning'",
+          "stroke": {
+            "color": "rgb(230, 230, 0)",
+            "width": 1.8,
+            "lineDash": [
+              180,
+              20
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Gång/cykelbana",
+          "filter": "[ml_markdetaljtyp] == 'gång/cykelbana' OR [ml_markdetaljtyp] == 'gång- och cykelbana'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8,
+            "lineDash": [
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Häck",
+          "filter": "[ml_markdetaljtyp] == 'häck'",
+          "stroke": {
+            "color": "rgb(174, 231, 141)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Illustration väg",
+          "filter": "[ml_markdetaljtyp] == 'illustration väg'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8,
+            "lineDash": [
+              6,
+              4
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Järnväg",
+          "filter": "[ml_markdetaljtyp] == 'järnväg'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Kantsten",
+          "filter": "[ml_markdetaljtyp] == 'vägbana' AND [ml_kantstod] == 'J'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Marktäckegräns",
+          "filter": "[ml_markdetaljtyp] == 'marktäckegräns'",
+          "stroke": {
+            "color": "rgb(0, 128, 0)",
+            "width": 1.8,
+            "lineDash": [
+              2,
+              4
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Mur",
+          "filter": "[ml_markdetaljtyp] == 'mur'",
+          "stroke": {
+            "color": "rgb(214, 214, 214)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Plank",
+          "filter": "[ml_markdetaljtyp] == 'plank'",
+          "stroke": {
+            "color": "rgb(198, 190, 148)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Räcke",
+          "filter": "[ml_markdetaljtyp] == 'räcke'",
+          "stroke": {
+            "color": "rgb(214, 214, 214)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Slänt",
+          "filter": "[ml_markdetaljtyp] == 'slänt' OR [ml_markdetaljtyp] == 'släntfot' OR [ml_markdetaljtyp] == 'släntkrön'",
+          "stroke": {
+            "color": "rgb(251,213,181)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Staket",
+          "filter": "[ml_markdetaljtyp] == 'staket'",
+          "stroke": {
+            "color": "rgb(204, 193, 217)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Stödmur",
+          "filter": "[ml_markdetaljtyp] == 'stödmur'",
+          "stroke": {
+            "color": "rgb(214, 214, 214)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Strandlinje",
+          "filter": "[ml_markdetaljtyp] == 'strandlinje'",
+          "stroke": {
+            "color": "rgb(139, 220, 245)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Stängsel",
+          "filter": "[ml_markdetaljtyp] == 'stängsel'",
+          "stroke": {
+            "color": "rgb(204, 193, 217)",
+            "width": 1.8
+          }
+        }
+      ],
+      [
+        {
+          "label": "Vägbana",
+          "filter": "[ml_markdetaljtyp] == 'vägbana' AND [ml_kantstod] == 'N'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8,
+            "lineDash": [
+              6,
+              4
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Vägbana på tomtmark",
+          "filter": "[ml_markdetaljtyp] == 'vägbana på tomtmark'",
+          "stroke": {
+            "color": "rgb(255, 66, 66)",
+            "width": 1.8,
+            "lineDash": [
+              6,
+              4
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "label": "Default",
+          "stroke": {
+            "color": "rgb(31,120,180)",
+            "width": 5
+          }
+        }
+      ]
+    ],
+    "ml_markdetalj_y": [
+      [
+        {
+          "label": "Mur",
+          "filter": "[ml_markdetaljtyp] == 'mur'",
+          "stroke": {
+            "color": "rgb(214,214,214)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Terrängtrappa",
+          "filter": "[ml_markdetaljtyp] == 'terrängtrappa'",
+          "stroke": {
+            "color": "rgb(214,214,214)",
+            "width": 1
+          }
+        }
+      ],
+      [
+        {
+          "label": "Elskåp",
+          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp'",
+          "stroke": {
+            "color": "rgb(230,230,0)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Optoskåp",
+          "filter": "[ml_markdetaljtyp] == 'opto-kopplingsskåp'",
+          "stroke": {
+            "color": "rgb(193,193,193)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Teleskåp",
+          "filter": "[ml_markdetaljtyp] == 'tele-kopplingsskåp'",
+          "stroke": {
+            "color": "rgb(255,102,0)",
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
+          }
+        }
+      ],
+      [
+        {
+          "label": "Default",
+          "stroke": {
+            "color": "rgb(31,120,180)",
+            "width": 5
+          }
+        }
+      ]
+    ],
+    "vj_ovrigvag_l": [
+      [
+        {
+          "label": "Övrig väg",
+          "stroke": {
+            "color": "rgb(255,66,66)",
+            "width": 1
+          }
+        }
+      ]
     ]
+    /*
+    "ma_markanvandningyta_y": [
+      [
+        {
+          "label": "Markanvändning",
+          "stroke": {
+            "color": "rgb(132,132,132)",
+            "width": 1
+          }
+        }
+      ]
+    ],
+    "td_kartsymbol_l": [
+      [
+        {
+          "label": "Kartsymbol",
+          "stroke": {
+            "color": "rgb(214,214,214)",
+            "width": 1
+          }
+        }
+      ]
+    ],*/
   }
 }
