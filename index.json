@@ -341,9 +341,9 @@
         {
           "name": "db_v_mosaik_plan_y",
           "title": "Plan",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/2/items/?f=pjson",
           "style": "detaljplan",
-          "type": "WFS",
+          "type": "GEOJSON",
           "opacity": 0,
           "visible": true,
           "attributes": [
@@ -362,9 +362,9 @@
         {
           "name": "db_v_mosaik_anvandningomrade_y",
           "title": "Användning",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/0/items/?f=pjson",
           "style": "detaljplan",
-          "type": "WFS",
+          "type": "GEOJSON",
           "opacity": 0,
           "visible": true,
           "maxScale": 6000,
@@ -382,9 +382,9 @@
         {
           "name": "db_v_mosaik_egenskapsomrade_y",
           "title": "Bestämmelse",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/3/items/?f=pjson",
           "style": "detaljplan",
-          "type": "WFS",
+          "type": "GEOJSON",
           "opacity": 0,
           "visible": true,
           "maxScale": 6000,
@@ -398,9 +398,9 @@
         {
           "name": "db_v_mosaik_adminiomrade_y",
           "title": "Egenskapsbestämmelse",
-          "source": "ows",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/1/items/?f=pjson",
           "style": "detaljplan",
-          "type": "WFS",
+          "type": "GEOJSON",
           "opacity": 0,
           "visible": true,
           "maxScale": 4000,
@@ -434,7 +434,7 @@
     },
     {
       "name": "y_fastighet",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor_vy/OGCFeatureServer/collections/0/items/",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor_vy/OGCFeatureServer/collections/0/items/?f=pjson",
       "style": "y_fastighet",
       "title": "Fastighetsgräns",
       "group": "bygga",
