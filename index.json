@@ -381,7 +381,7 @@
         },
         {
           "name": "db_v_mosaik_egenskapsomrade_y",
-          "title": "Bestämmelse",
+          "title": "Egenskapsbestämmelse",
           "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/3/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
@@ -397,7 +397,7 @@
         },
         {
           "name": "db_v_mosaik_adminiomrade_y",
-          "title": "Egenskapsbestämmelse",
+          "title": "Bestämmelse",
           "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/1/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
