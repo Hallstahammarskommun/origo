@@ -555,11 +555,11 @@
     },
     {
       "name": "y_fastighet",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Fastighetsytor_vy/OGCFeatureServer/collections/0/items/?f=pjson",
+      "source": "ows",
       "style": "y_fastighet",
       "title": "Fastighetsgräns",
       "group": "bygga",
-      "type": "GEOJSON",
+      "type": "WFS",
       "visible": false,
       "attributes": [
         {
