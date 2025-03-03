@@ -263,7 +263,7 @@
   "layers": [
     {
       "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/5/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/5/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
@@ -277,7 +277,7 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/4/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/4/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
@@ -291,7 +291,7 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/Markdetalj%20punkt.fmw?",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
@@ -305,7 +305,7 @@
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/3/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/3/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "ml_markdetalj_l",
       "title": "Markdetalj linje",
       "group": "pk",
@@ -318,7 +318,7 @@
     },
     {
       "name": "ml_markdetalj_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/2/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/2/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "ml_markdetalj_y",
       "title": "Markdetalj yta",
       "group": "pk",
@@ -332,7 +332,7 @@
     },
     {
       "name": "vj_ovrigvag_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "vj_ovrigvag_l",
       "title": "Övrig väg",
       "group": "pk",
@@ -1463,30 +1463,15 @@
           "label": "Barrträd"
         }
       ],
-      /*[
-        {
-          "circle": {
-            "radius": 6,
-            "stroke": {
-              "color": "rgb(0, 115, 176)"
-            },
-            "fill": {
-              "color": "rgb(0, 115, 176)"
-            }
-          },
-          "filter": "[md_markdetaljtyp] == 'belysningsstolpe'",
-          "label": "Belysningsstolpe"
-        }
-      ],*/
       [
         {
           "circle": {
             "radius": 6,
             "stroke": {
-              "color": "rgb(254, 204, 4)"
+              "color": "rgb(0, 115, 176)"
             },
             "fill": {
-              "color": "rgb(254, 204, 4)"
+              "color": "rgb(0, 115, 176)"
             }
           },
           "filter": "[md_markdetaljtyp] == 'belysningsstolpe'",
