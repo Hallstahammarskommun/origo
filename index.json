@@ -261,16 +261,14 @@
     }
   },
   "layers": [
-
-
     {
       "name": "bal_byggnad_y",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/5/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
@@ -279,131 +277,72 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/4/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
-      "visible": true
+      "visible": false
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "ows",
+      "source": "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/Markdetalj%20punkt.fmw?",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": true,
-      "maxScale": 750,
+      "maxScale": 1500,
       "strategy": "bbox",
-      "visible": true
+      "visible": false
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/3/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "ml_markdetalj_l",
       "title": "Markdetalj linje",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": true,
       "maxScale": 1500,
-      "strategy": "bbox",
-      "visible": true
+      "visible": false
     },
     {
       "name": "ml_markdetalj_y",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/2/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "ml_markdetalj_y",
       "title": "Markdetalj yta",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
       "strategy": "bbox",
-      "visible": true
+      "visible": false
     },
     {
       "name": "vj_ovrigvag_l",
-      "source": "ows",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_vy/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "vj_ovrigvag_l",
       "title": "Övrig väg",
       "group": "pk",
       "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "thematicStyling": false,
-      "maxScale": 1500,
-      "strategy": "bbox",
-      "visible": true
-    },   
-    /*{
-      "name": "ma_markanvandningyta_y",
-      "source": "ows",
-      "style": "ma_markanvandningyta_y",
-      "title": "Markanvändning",
-      "group": "pk",
-      "queryable": false,
-      "type": "WFS",
-      "fme": true,
-      "thematicStyling": false,
-      "maxScale": 3000,
-      "strategy": "bbox",
-      "visible": false
-    },*/
-    /*{
-      "name": "td_kartsymbol_l",
-      "source": "ows",
-      "style": "td_kartsymbol_l",
-      "title": "Kartsymbol",
-      "group": "pk",
-      "queryable": false,
-      "type": "WFS",
+      "type": "GEOJSON",
       "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
       "visible": false
-    },*/ 
-    {
-      "name": "p_adress",
-      "title": "Adress",
-      "abstract": "Adresspunkter, läses från fastighetsregistret",
-      "source": "ows",
-      "style": "point",
-      "group": "0",
-      "type": "WFS",
-      "geometryType": "Point",
-      "attributes": [
-        {
-          "name": "obj"
-        }
-      ]
-    },
-    {
-      "name": "l_gatunamn",
-      "title": "Gatunamn",
-      "abstract": "Gatunamn läses från Lantmäteriets kommunikationsdata",
-      "source": "ows",
-      "style": "line",
-      "group": "0",
-      "type": "WFS",
-      "geometryType": "Line",
-      "attributes": [
-        {
-          "name": "obj"
-        }
-      ]
     },
     {
       "name": "detaljplan",
@@ -650,19 +589,6 @@
         }
       ]
     },
-    /*{
-      "name": "primarkarta",
-      "source": "ows",
-      "style": "primarkarta",
-      "title": "Primärkarta",
-      "format": "image/png",
-      "group": "bygga",
-      "type": "WMS",
-      "queryable": false,
-      "fme": true,
-      "visible": false,
-      "maxScale": 2500
-    },*/
     {
       "name": "p_edp_livsmedel",
       "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
@@ -1533,11 +1459,11 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/barrtrad.svg"
           },
-          "filter": "[ml_markdetaljtyp] == 'barrträd'",
+          "filter": "[md_markdetaljtyp] == 'barrträd'",
           "label": "Barrträd"
         }
       ],
-      [
+      /*[
         {
           "circle": {
             "radius": 6,
@@ -1548,10 +1474,10 @@
               "color": "rgb(0, 115, 176)"
             }
           },
-          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe' AND [ge_ansvarigorganisation_id] == '3'",
-          "label": "Belysningsstolpe kommunal"
+          "filter": "[md_markdetaljtyp] == 'belysningsstolpe'",
+          "label": "Belysningsstolpe"
         }
-      ],
+      ],*/
       [
         {
           "circle": {
@@ -1563,8 +1489,8 @@
               "color": "rgb(254, 204, 4)"
             }
           },
-          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe'",
-          "label": "Belysningsstolpe privat"
+          "filter": "[md_markdetaljtyp] == 'belysningsstolpe'",
+          "label": "Belysningsstolpe"
         }
       ],
       [
@@ -1574,7 +1500,7 @@
             "color": "rgb(128, 0, 128)",
             "src": "img/svg/brunnslock.svg"
           },
-          "filter": "[ml_markdetaljtyp] == 'brunnslock' OR [ml_markdetaljtyp] == 'VA-brunnslock'",
+          "filter": "[md_markdetaljtyp] == 'brunnslock' OR [md_markdetaljtyp] == 'VA-brunnslock'",
           "label": "Brunnslock"
         }
       ],
@@ -1585,7 +1511,7 @@
             "color": "rgb(128, 0, 128)",
             "src": "img/svg/kopplingsskap.svg"
           },
-          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp' OR [ml_markdetaljtyp] == 'kopplingsskåp'",
+          "filter": "[md_markdetaljtyp] == 'el-kopplingsskåp' OR [md_markdetaljtyp] == 'kopplingsskåp'",
           "label": "Kopplingsskåp"
         }
       ],
@@ -1600,7 +1526,7 @@
               "color": "rgb(0, 0, 0)"
             }
           },
-          "filter": "[ml_markdetaljtyp] == 'elstolpe'",
+          "filter": "[md_markdetaljtyp] == 'elstolpe'",
           "label": "Elstolpe"
         }
       ],
@@ -1615,7 +1541,7 @@
               "color": "rgba(0, 0, 0, 0)"
             }
           },
-          "filter": "[ml_markdetaljtyp] == 'flaggstång'",
+          "filter": "[md_markdetaljtyp] == 'flaggstång'",
           "label": "Flaggstång"
         }
       ],
@@ -1626,7 +1552,7 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/lovtrad.svg"
           },
-          "filter": "[ml_markdetaljtyp] == 'lövträd'",
+          "filter": "[md_markdetaljtyp] == 'lövträd'",
           "label": "Lövträd"
         }
       ],
@@ -1641,7 +1567,7 @@
               "color": "rgba(0, 0, 0, 0)"
             }
           },
-          "filter": "[ml_markdetaljtyp] == 'pollare' OR [ml_markdetaljtyp] == 'vägbom'",
+          "filter": "[md_markdetaljtyp] == 'pollare' OR [md_markdetaljtyp] == 'vägbom'",
           "label": "Pollare / vägbom"
         }
       ],
@@ -1652,7 +1578,7 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/trad.svg"
           },
-          "filter": "[ml_markdetaljtyp] == 'träd'",
+          "filter": "[md_markdetaljtyp] == 'träd'",
           "label": "Träd"
         }
       ],
