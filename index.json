@@ -493,19 +493,30 @@
       ]
     },
     {
-      "name": "y_fastighet",
-      "source": "https://karta.hallstahammar.se/data/fastighetsytor.geojson",
-      "style": "y_fastighet",
-      "title": "Fastighetsgräns",
+      "name": "fastighet",
+      "title": "Fastighet",
+      "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.",
+      "style": "granser",
       "group": "bygga",
-      "type": "GEOJSON",
-      "visible": false,
-      "attributes": [
+      "type": "GROUP",
+      "layers": [
         {
-          "name": "obj"
+          "name": "text",
+          "source": "fastighet",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "queryable": false,
+          "visible": true
         },
         {
-          "html": "</br><i>Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.</i>"
+          "name": "granser",
+          "source": "fastighet",
+          "format": "image/png",
+          "group": "LM",
+          "type": "WMS",
+          "queryable": false,
+          "visible": true
         }
       ]
     },
