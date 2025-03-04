@@ -499,7 +499,7 @@
       "name": "fastighet",
       "title": "Fastighet",
       "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.",
-      "style": "granser",
+      "style": "y_fastighet",
       "group": "bygga",
       "type": "GROUP",
       "layers": [
@@ -931,7 +931,7 @@
             "color": "rgba(0,0,0,0)"
           },
           "stroke": {
-            "color": "rgba(245, 146, 39, 1)",
+            "color": "rgba(125,69,27, 1)",
             "width": 1
           }
         }
