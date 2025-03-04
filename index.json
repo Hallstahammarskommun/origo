@@ -195,6 +195,9 @@
     "historiskaoppna": {
       "url": "https://api.lantmateriet.se/historiska-ortofoton/wms/v1/token/6dd125e41c2d963c881ebcdca334e6f3/"
     },
+    "fastighet": {
+      "url": "https://karta.hallstahammar.se/fastighet/wms/v1.1"
+    },
     "ows": {
       "url": "https://karta.hallstahammar.se/geoserver/ows",
       "strategy": "all"
@@ -504,7 +507,7 @@
           "name": "text",
           "source": "fastighet",
           "format": "image/png",
-          "group": "LM",
+          "group": "bygga",
           "type": "WMS",
           "queryable": false,
           "visible": true
@@ -513,7 +516,7 @@
           "name": "granser",
           "source": "fastighet",
           "format": "image/png",
-          "group": "LM",
+          "group": "bygga",
           "type": "WMS",
           "queryable": false,
           "visible": true
