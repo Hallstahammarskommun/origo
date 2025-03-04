@@ -494,11 +494,11 @@
     },
     {
       "name": "y_fastighet",
-      "source": "ows",
+      "source": "https://karta.hallstahammar.se/data/fastighetsytor.geojson",
       "style": "y_fastighet",
       "title": "Fastighetsgräns",
       "group": "bygga",
-      "type": "WFS",
+      "type": "GEOJSON",
       "visible": false,
       "attributes": [
         {
