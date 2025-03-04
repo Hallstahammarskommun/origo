@@ -605,7 +605,7 @@
     },
     {
       "name": "p_edp_livsmedel",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
       "style": "p_edp_livsmedel",
       "clusterStyle": "p_edp_livsmedel_cluster",
       "title": "Livsmedelsinspektion",
