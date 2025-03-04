@@ -294,7 +294,7 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010&resultType=standard",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
