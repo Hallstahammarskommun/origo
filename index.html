@@ -43,7 +43,6 @@
 	<script src="js/origo.min.js"></script>
 	<script src="plugins/lm.min.js"></script>
 	<script src="plugins/swiper.min.js"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
 
 	<script type="text/javascript">
 
@@ -185,14 +184,7 @@
 			// Initialize Origo
 			origo = Origo(jsonFileName);
 			// Add components
-			if (jsonFileName === "index.json") {
-				// Google tag (gtag.js)
-				window.dataLayer = window.dataLayer || [];
-				function gtag() { dataLayer.push(arguments); }
-				gtag('js', new Date());
-				gtag('config', 'G-1F9Q83HKM3');
-
-			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
+			if (window.location.hash.replace(/^#/, '') === 'intern') {
 				const loadLayerManager = true;
 				const loadSwiper = true;
 				const swiperURL = jsonFileName;
