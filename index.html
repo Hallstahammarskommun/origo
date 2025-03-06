@@ -32,8 +32,6 @@
 	<title>Kartan</title>
 
 	<link href="css/style.css" rel="stylesheet">
-	<link href="plugins/layermanager.css" rel="stylesheet">
-	<link href="plugins/swiper.css" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
@@ -41,9 +39,6 @@
 <body>
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
-	<script src="plugins/lm.min.js"></script>
-	<script src="plugins/swiper.min.js"></script>
-
 	<script type="text/javascript">
 
 		let origo;
@@ -82,82 +77,6 @@
 			return jsonFileName;
 		}
 
-		// Function to add components to the viewer
-		const addComponents = (loadLayerManager, loadSwiper, swiperURL) => {
-			origo.on('load', (viewer) => {
-
-				// Layermanager
-				if (loadLayerManager) {
-					const layermanager = Layermanager({
-						types: [],
-						onlyAddableLayersBtn: true,
-						layersDefaultProps: {
-							group: "minalager",
-							queryable: true,
-							type: "WMS",
-							visible: true,
-							searchable: true,
-							infoFormat: "text/html",
-							promptlessRemoval: true
-						},
-						group: {
-							name: "minalager",
-							title: "Mina lager",
-							expanded: true,
-							position: "bottom",
-							cls: 'hidden'
-						},
-						noAbstractInfo: "Ingen information",
-						noSearchResultText: "No results found",
-						url: "https://karta.hallstahammar.se/geoserver/csw",
-						sourceFields: {
-							description: { name: "description" },
-							title: { name: "title" },
-							layerId: { name: "layerId" },
-							type: { name: "theme" },
-							tags: { name: "tags" },
-							src: { name: "src" }
-						},
-						addLayerErrorMsg: "There was a problem trying to add a layer. You are welcome to report this to SUPPORT@SUPPORT.com"
-					});
-					viewer.addComponent(layermanager);
-					// *** Style the button ***
-					const button = document.querySelector('[aria-label="Lägg till lager"]');
-					// Check if the button exists
-					if (button) {
-						// Insert text into the button
-						button.textContent = "Lägg till lager"; 
-						// Apply rectangle styling
-						button.style.width = "100%"; 
-						button.style.height = "25px"; 
-						button.style.borderRadius = "5px"; 
-						button.style.color = "#fff";
-					} else {
-						console.error('Button with aria-label="Lägg till lager" not found.');
-					}
-				}
-
-				// Swiper
-				if (loadSwiper) {
-					const swiper = Swiper({
-						origoConfig: swiperURL,
-						circleRadius: 150,
-						alwaysOnTop: false,
-						initialLayer: "ortofoto",
-						initialControl: 'swipe',
-						showLayerListOnStart: true,
-						tooltips: {
-							swiper: 'Jämför kartvyer',
-							swipeBetweenLayers: 'Jämför sida-sida',
-							circleSwipe: 'Jämför med kikhål',
-							layerList: 'Välj lager från lista'
-						}
-					});
-					viewer.addComponent(swiper);
-				};
-			});
-		}
-
 		// Function to tracker login 
 		function trackerLogin(anchor) {
 			const logData = {
@@ -185,10 +104,6 @@
 			origo = Origo(jsonFileName);
 			// Add components
 			if (window.location.hash.replace(/^#/, '') === 'intern') {
-				const loadLayerManager = true;
-				const loadSwiper = true;
-				const swiperURL = jsonFileName;
-				addComponents(loadLayerManager, loadSwiper, swiperURL);
 				const anchor = "intern";
 				trackerLogin(anchor);
 			}
