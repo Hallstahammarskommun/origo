@@ -61,19 +61,17 @@
         }
       }
     },
-    /*{
+    {
       "name": "search",
       "options": {
-        "url": "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/Search.fmw?",
+        "url": "https://karta.hallstahammar.se/fmedatastreaming/Karttjanst/Search.fmw?token=5a84fcf4c009e5b4714d4ce9905277d03d348ef5",
         "searchAttribute": "NAMN",
-        "layerNameAttribute": "TYPE",
-        "idAttribute": "GID",
+        "titleAttribute": "TYPE",
+        "contentAttribute": "NAMN",
         "geometryAttribute": "GEOM",
-        "hintText": "Sök adress eller fastighet",
-        "minLength": 4,
-        "hideWhenEmbedded": true
+        "hintText": "Sök "
       }
-    },*/
+    },
     {
       "name": "sharemap"
     },
