@@ -77,15 +77,8 @@
 		}
 
 		// Function to tracker login 
-		function trackerLogin(anchor) {
-			const logData = {
-				userAgent: navigator.userAgent,
-				screenResolution: `${window.screen.width}x${window.screen.height}`,
-				operatingSystem: navigator.platform,
-			};
-
-			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${encodeURIComponent(logData.userAgent)}&screenResolution=${logData.screenResolution}&operatingSystem=${encodeURIComponent(logData.operatingSystem)}&anchor=${anchor}`;
-
+		function trackerLogin() {
+			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?`;
 			try {
 				const response = fetch(loginTrackerURL, {
 					method: 'POST',
@@ -101,11 +94,7 @@
 			await getJsonFileName();
 			// Initialize Origo
 			origo = Origo(jsonFileName);
-			// Add components
-			if (window.location.hash.replace(/^#/, '') === 'intern') {
-				const anchor = "intern";
-				trackerLogin(anchor);
-			}
+			trackerLogin();
 		}
 		initOrigo();
 
