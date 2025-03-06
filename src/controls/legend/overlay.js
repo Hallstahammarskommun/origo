@@ -74,7 +74,7 @@ const OverlayLayer = function OverlayLayer(options) {
       }
 
       if (fragmentIdentifier === 'intern') {
-        const layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?anchor=${fragmentIdentifier}&layer=${fmeTitle}`;
+        const layerLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20layer.fmw?layer=${fmeTitle}`;
         fetch(layerLogURL, {
           method: 'POST',
           headers: {

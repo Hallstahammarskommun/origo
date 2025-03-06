@@ -323,16 +323,6 @@ const Legend = function Legend(options = {}) {
     cls: 'round compact primary icon-small margin-x-smaller o-tooltip',
     click() {
       togglePopupMenu();
-      const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-      if (fragmentIdentifier === 'intern') {
-        const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=AddLayer&typ=&opt_showresult=false&opt_servicemode=sync';
-        fetch(interactionLogURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/xml; charset=UTF-8'
-          }
-        });
-      }
     },
     style: {
       'align-self': 'center'
@@ -389,16 +379,6 @@ const Legend = function Legend(options = {}) {
   function selectHandler(evt) {
     const label = evt.text.label;
     if (name) {
-      const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-      if (fragmentIdentifier === 'intern') {
-        const interactionLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=LayerSearchClick&typ=${label}&opt_showresult=false&opt_servicemode=sync`;
-        fetch(interactionLogURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/xml; charset=UTF-8'
-          }
-        });
-      }
       // Todo
       const layer = viewer.getLayer(label);
       const layerGroup = layer.get('group');
@@ -432,16 +412,6 @@ const Legend = function Legend(options = {}) {
       document.getElementById(`${layerSearchInput.getId()}`).addEventListener('awesomplete-selectcomplete', selectHandler);
 
       document.getElementsByClassName('o-search-layer-field')[0].addEventListener('input', () => {
-        const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-        if (fragmentIdentifier === 'intern') {
-          const interactionLogURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=LayerSearch&typ=${document.getElementsByClassName('o-search-layer-field')[0].value}&opt_showresult=false&opt_servicemode=sync`;
-          fetch(interactionLogURL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/xml; charset=UTF-8'
-            }
-          });
-        }
         if (document.getElementsByClassName('o-search-layer-field')[0].value && document.getElementById(`${layerSearchInput.getId()}`).classList.contains('o-search-false')) {
           document.getElementById(`${layerSearchInput.getId()}`).classList.remove('o-search-false');
           document.getElementById(`${layerSearchInput.getId()}`).classList.add('o-search-true');

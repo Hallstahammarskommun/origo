@@ -559,16 +559,6 @@ const Search = function Search(options = {}) {
       if (input.value.length >= minLength) {
         const keyCode = e.keyCode;
         if (keyCode === 13) {
-          const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-          if (fragmentIdentifier === 'intern') {
-            const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Search enter&typ=&opt_showresult=false&opt_servicemode=sync';
-            fetch(interactionLogURL, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/xml; charset=UTF-8'
-              }
-            });
-          }
           switch (searchlistPlacement) {
             case 'floating':
             case 'left':

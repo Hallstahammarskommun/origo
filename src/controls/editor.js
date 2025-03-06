@@ -135,18 +135,6 @@ const Editor = function Editor(options = {}) {
       editorButton = Button({
         cls: 'o-menu-button padding-small icon-smaller round light box-shadow o-tooltip',
         click() {
-          if (!toolbarVisible) {
-            const fragmentIdentifier = window.location.hash.replace(/^#/, '');
-            if (fragmentIdentifier === 'intern') {
-              const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Editor&typ=&opt_showresult=false&opt_servicemode=sync';
-              fetch(interactionLogURL, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/xml; charset=UTF-8'
-                }
-              });
-            }
-          }
           toggleState();
         },
         icon: '#ic_edit_24px',
