@@ -6,15 +6,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://karta.hallstahammar.se/splash/; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com/gtag/js; connect-src 'self' https://karta.hallstahammar.se https://karta.hallstahammar.se/fmedatastreaming/ 
-    https://karta.hallstahammar.se/fmejobsubmitter/ https://region1.google-analytics.com/; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self'; frame-src https://karta.hallstahammar.se;">
+    content="default-src https://karta.hallstahammar.se/splash/; 
+    img-src * data:; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+    connect-src 'self' 
+        https://karta.hallstahammar.se/ 
+				http://10.7.1.16:9000/
+				https://plankarta.hallstahammar.se/wms
+        https://karta.hallstahammar.se/fmedatastreaming/ 
+        https://karta.hallstahammar.se/fmejobsubmitter/ 
+        https://dservices3.arcgis.com/ 
+        https://services3.arcgis.com/ 
+				https://geodata.naturvardsverket.se
+				https://pub.raa.se/visning/lamningar/wms
+				https://geodata.scb.se/
+        https://hallstahammar.maps.arcgis.com/; 
+    style-src 'self' 'unsafe-inline'; 
+    style-src-elem 'self' 'unsafe-inline'; 
+    base-uri 'self'; 
+    form-action 'self'; 
+    frame-src https://karta.hallstahammar.se;">
 	<meta name="referrer" content="same-origin">
 	<meta name="description" content="Här hittar du olika typer av samhällsinformation">
 	<title>Kartan</title>
 
 	<link href="css/style.css" rel="stylesheet">
-	<link href="plugins/layermanager.css" rel="stylesheet">
-	<link href="plugins/swiper.css" rel="stylesheet">
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="apple-touch-icon" href="https://karta.hallstahammar.se/apple-touch-icon.png">
 </head>
@@ -22,10 +38,6 @@
 <body>
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
-	<script src="plugins/lm.min.js"></script>
-	<script src="plugins/swiper.min.js"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F9Q83HKM3"></script>
-
 	<script type="text/javascript">
 
 		let origo;
@@ -64,78 +76,9 @@
 			return jsonFileName;
 		}
 
-		// Function to add components to the viewer
-		const addComponents = (loadLayerManager, loadSwiper, swiperURL) => {
-			origo.on('load', (viewer) => {
-
-				// Layermanager
-				if (loadLayerManager) {
-					const layermanager = Layermanager({
-						types: [],
-						onlyAddableLayersBtn: true,
-						layersDefaultProps: {
-							group: "minalager",
-							queryable: true,
-							type: "WMS",
-							visible: true,
-							searchable: true,
-							infoFormat: "text/html",
-							promptlessRemoval: true
-						},
-						group: {
-							name: "minalager",
-							title: "Mina lager",
-							expanded: true,
-							position: "bottom",
-							cls: 'hidden'
-						},
-						noAbstractInfo: "Ingen information",
-						noSearchResultText: "No results found",
-						url: "https://karta.hallstahammar.se/geoserver/csw",
-						sourceFields: {
-							description: { name: "description" },
-							title: { name: "title" },
-							layerId: { name: "layerId" },
-							type: { name: "theme" },
-							tags: { name: "tags" },
-							src: { name: "src" }
-						},
-						addLayerErrorMsg: "There was a problem trying to add a layer. You are welcome to report this to SUPPORT@SUPPORT.com"
-					});
-					viewer.addComponent(layermanager);
-				}
-
-				// Swiper
-				if (loadSwiper) {
-					const swiper = Swiper({
-						origoConfig: swiperURL,
-						circleRadius: 150,
-						alwaysOnTop: false,
-						initialLayer: "ortofoto",
-						initialControl: 'swipe',
-						showLayerListOnStart: true,
-						tooltips: {
-							swiper: 'Jämför kartvyer',
-							swipeBetweenLayers: 'Jämför sida-sida',
-							circleSwipe: 'Jämför med kikhål',
-							layerList: 'Välj lager från lista'
-						}
-					});
-					viewer.addComponent(swiper);
-				};
-			});
-		}
-
 		// Function to tracker login 
-		function trackerLogin(anchor) {
-			const logData = {
-				userAgent: navigator.userAgent,
-				screenResolution: `${window.screen.width}x${window.screen.height}`,
-				operatingSystem: navigator.platform,
-			};
-
-			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?userAgent=${encodeURIComponent(logData.userAgent)}&screenResolution=${logData.screenResolution}&operatingSystem=${encodeURIComponent(logData.operatingSystem)}&anchor=${anchor}`;
-
+		function trackerLogin() {
+			let loginTrackerURL = `https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20login.fmw?`;
 			try {
 				const response = fetch(loginTrackerURL, {
 					method: 'POST',
@@ -151,22 +94,7 @@
 			await getJsonFileName();
 			// Initialize Origo
 			origo = Origo(jsonFileName);
-			// Add components
-			if (jsonFileName === "index.json") {
-				// Google tag (gtag.js)
-				window.dataLayer = window.dataLayer || [];
-				function gtag() { dataLayer.push(arguments); }
-				gtag('js', new Date());
-				gtag('config', 'G-1F9Q83HKM3');
-
-			} else if (window.location.hash.replace(/^#/, '') === 'intern') {
-				const loadLayerManager = true;
-				const loadSwiper = true;
-				const swiperURL = jsonFileName;
-				addComponents(loadLayerManager, loadSwiper, swiperURL);
-				const anchor = "intern";
-				trackerLogin(anchor);
-			}
+			trackerLogin();
 		}
 		initOrigo();
 
