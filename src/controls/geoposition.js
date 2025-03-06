@@ -21,6 +21,11 @@ const Geoposition = function Geoposition(options = {}) {
   let positionButton;
   let markerOverlay;
   let geolocation;
+  const localization = options.localization;
+
+  function localize(key) {
+    return localization.getStringByKeys({ targetParentKey: 'geoposition', targetKey: key });
+  }
 
   const centerPosition = () => {
     if (geolocation.getTracking()) {
@@ -147,7 +152,7 @@ const Geoposition = function Geoposition(options = {}) {
           toggleState();
         },
         icon: geolocationIcon,
-        tooltipText: 'Visa din nuvarande position i kartan',
+        tooltipText: localize('positionButtonTooltip'),
         tooltipPlacement: 'east',
         methods: {
           active: onActive,
