@@ -102,6 +102,21 @@
       }
     },
     {
+      "name": "externalurl",
+      "options": {
+        "tooltipText": "Kartlänkar",
+        "links": [
+          {
+            "tooltipText": "Hämta dwg",
+            "method": "XY",
+            "projection": "EPSG:3010",
+            "url": "https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?x={{X}}&y={{Y}}&token=8d6c9c92e7da36dde2f3f7ee417ef96653f1eaf4 ",
+            "buttonImage": "img/png/direct-download.png"
+          }
+        ]
+      }
+    },
+    {
       "name": "link",
       "options": {
         "icon": "img/png/gsp.png",
@@ -264,7 +279,7 @@
   "layers": [
     {
       "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/5/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/4/items/?f=pjson",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
@@ -278,7 +293,7 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/4/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
@@ -292,7 +307,7 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010&resultType=standard",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/5/items/?f=pjson",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
@@ -306,7 +321,7 @@
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/3/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
       "style": "ml_markdetalj_l",
       "title": "Markdetalj linje",
       "group": "pk",
@@ -319,7 +334,7 @@
     },
     {
       "name": "ml_markdetalj_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/2/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/1/items/?f=pjson",
       "style": "ml_markdetalj_y",
       "title": "Markdetalj yta",
       "group": "pk",
@@ -333,7 +348,7 @@
     },
     {
       "name": "vj_ovrigvag_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/0/items/?f=pjson",
       "style": "vj_ovrigvag_l",
       "title": "Övrig väg",
       "group": "pk",
@@ -1458,7 +1473,10 @@
           "label": "Illustrationslinje",
           "stroke": {
             "color": "rgb(64,64,64)",
-            "width": 0.18
+            "width": 0.5
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ]
@@ -1471,7 +1489,7 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/barrtrad.svg"
           },
-          "filter": "[md_markdetaljtyp] == 'barrträd'",
+          "filter": "[ml_markdetaljtyp] == 'barrträd'",
           "label": "Barrträd"
         }
       ],
@@ -1486,7 +1504,7 @@
               "color": "rgb(0, 115, 176)"
             }
           },
-          "filter": "[md_markdetaljtyp] == 'belysningsstolpe'",
+          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe'",
           "label": "Belysningsstolpe"
         }
       ],
@@ -1497,7 +1515,7 @@
             "color": "rgb(128, 0, 128)",
             "src": "img/svg/brunnslock.svg"
           },
-          "filter": "[md_markdetaljtyp] == 'brunnslock' OR [md_markdetaljtyp] == 'VA-brunnslock'",
+          "filter": "[ml_markdetaljtyp] == 'brunnslock' OR [ml_markdetaljtyp] == 'VA-brunnslock'",
           "label": "Brunnslock"
         }
       ],
@@ -1508,7 +1526,7 @@
             "color": "rgb(128, 0, 128)",
             "src": "img/svg/kopplingsskap.svg"
           },
-          "filter": "[md_markdetaljtyp] == 'el-kopplingsskåp' OR [md_markdetaljtyp] == 'kopplingsskåp'",
+          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp' OR [ml_markdetaljtyp] == 'kopplingsskåp'",
           "label": "Kopplingsskåp"
         }
       ],
@@ -1523,7 +1541,7 @@
               "color": "rgb(0, 0, 0)"
             }
           },
-          "filter": "[md_markdetaljtyp] == 'elstolpe'",
+          "filter": "[ml_markdetaljtyp] == 'elstolpe'",
           "label": "Elstolpe"
         }
       ],
@@ -1538,7 +1556,7 @@
               "color": "rgba(0, 0, 0, 0)"
             }
           },
-          "filter": "[md_markdetaljtyp] == 'flaggstång'",
+          "filter": "[ml_markdetaljtyp] == 'flaggstång'",
           "label": "Flaggstång"
         }
       ],
@@ -1549,7 +1567,7 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/lovtrad.svg"
           },
-          "filter": "[md_markdetaljtyp] == 'lövträd'",
+          "filter": "[ml_markdetaljtyp] == 'lövträd'",
           "label": "Lövträd"
         }
       ],
@@ -1564,7 +1582,7 @@
               "color": "rgba(0, 0, 0, 0)"
             }
           },
-          "filter": "[md_markdetaljtyp] == 'pollare' OR [md_markdetaljtyp] == 'vägbom'",
+          "filter": "[ml_markdetaljtyp] == 'pollare' OR [ml_markdetaljtyp] == 'vägbom'",
           "label": "Pollare / vägbom"
         }
       ],
@@ -1575,7 +1593,7 @@
             "color": "rgb(0, 255, 0)",
             "src": "img/svg/trad.svg"
           },
-          "filter": "[md_markdetaljtyp] == 'träd'",
+          "filter": "[ml_markdetaljtyp] == 'träd'",
           "label": "Träd"
         }
       ],
@@ -1600,6 +1618,9 @@
           "stroke": {
             "color": "rgb(231,182,181)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1610,6 +1631,9 @@
           "stroke": {
             "color": "rgb(139, 220, 245)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1624,6 +1648,9 @@
               180,
               20
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1638,6 +1665,9 @@
               2,
               4
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1648,6 +1678,9 @@
           "stroke": {
             "color": "rgb(174, 231, 141)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1662,6 +1695,9 @@
               6,
               4
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1672,6 +1708,9 @@
           "stroke": {
             "color": "rgb(255, 66, 66)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1682,6 +1721,9 @@
           "stroke": {
             "color": "rgb(255, 66, 66)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1696,6 +1738,9 @@
               2,
               4
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1706,6 +1751,9 @@
           "stroke": {
             "color": "rgb(214, 214, 214)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1716,6 +1764,9 @@
           "stroke": {
             "color": "rgb(198, 190, 148)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1726,6 +1777,9 @@
           "stroke": {
             "color": "rgb(214, 214, 214)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1736,6 +1790,9 @@
           "stroke": {
             "color": "rgb(251,213,181)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1746,6 +1803,9 @@
           "stroke": {
             "color": "rgb(204, 193, 217)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1756,6 +1816,9 @@
           "stroke": {
             "color": "rgb(214, 214, 214)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1766,6 +1829,9 @@
           "stroke": {
             "color": "rgb(139, 220, 245)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1776,6 +1842,9 @@
           "stroke": {
             "color": "rgb(204, 193, 217)",
             "width": 1.8
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1790,6 +1859,9 @@
               6,
               4
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1804,6 +1876,9 @@
               6,
               4
             ]
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ],
@@ -1812,7 +1887,10 @@
           "label": "Default",
           "stroke": {
             "color": "rgb(31,120,180)",
-            "width": 5
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(0,0,0,0)"
           }
         }
       ]
@@ -1825,6 +1903,9 @@
           "stroke": {
             "color": "rgb(214,214,214)",
             "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
           }
         }
       ],
@@ -1835,6 +1916,9 @@
           "stroke": {
             "color": "rgb(214,214,214)",
             "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
           }
         }
       ],
@@ -1882,7 +1966,10 @@
           "label": "Default",
           "stroke": {
             "color": "rgb(31,120,180)",
-            "width": 5
+            "width": 1
+          },
+          "fill": {
+            "color": "rgba(239,239,239,0.3)"
           }
         }
       ]
@@ -1891,6 +1978,9 @@
       [
         {
           "label": "Övrig väg",
+          "fill": {
+            "color": "rgba(0,0,0,0)"
+          },
           "stroke": {
             "color": "rgb(255,66,66)",
             "width": 1
