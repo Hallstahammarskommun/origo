@@ -1872,7 +1872,7 @@
           "label": "Default",
           "stroke": {
             "color": "rgb(31,120,180)",
-            "width": 5
+            "width": 1
           },
           "fill": {
             "color": "rgba(0,0,0,0)"
