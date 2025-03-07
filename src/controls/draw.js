@@ -583,6 +583,16 @@ const Draw = function Draw(options = {}) {
           cls: 'o-print padding-small margin-bottom-smaller icon-smaller round light box-shadow',
           click() {
             if (!isActive) {
+              const fragmentIdentifier = window.location.hash.replace(/^#/, '');
+              if (fragmentIdentifier === 'intern') {
+                const interactionLogURL = 'https://karta.hallstahammar.se/fmejobsubmitter/Karttjanst/tracker%20interaction.fmw?obj=Draw&typ=&opt_showresult=false&opt_servicemode=sync';
+                fetch(interactionLogURL, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/xml; charset=UTF-8'
+                  }
+                });
+              }
               viewer.dispatch('toggleClickInteraction', { name: 'draw', active: true });
             } else {
               viewer.dispatch('toggleClickInteraction', { name: 'draw', active: false });
