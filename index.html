@@ -94,7 +94,9 @@
 			await getJsonFileName();
 			// Initialize Origo
 			origo = Origo(jsonFileName);
-			trackerLogin();
+			if (window.location.hash.replace(/^#/, '') === 'intern') {
+				trackerLogin();
+			}
 		}
 		initOrigo();
 
