@@ -279,7 +279,7 @@
   "layers": [
     {
       "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/4/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/5/items/?f=pjson",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
@@ -293,7 +293,7 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/4/items/?f=pjson",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
@@ -307,7 +307,7 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/5/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
@@ -321,7 +321,7 @@
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
       "style": "ml_markdetalj_l",
       "title": "Markdetalj linje",
       "group": "pk",
