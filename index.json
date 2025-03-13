@@ -417,7 +417,7 @@
         {
           "name": "db_v_mosaik_plan_y",
           "title": "Plan",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/0/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -427,8 +427,7 @@
               "title": "Planakt: ",
               "name": "dp_plannamn",
               "url": "dp_reg_uuid",
-              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
-              "urlSuffix": ".pdf"
+              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/"
             },
             {
               "html": "</br><i>De digitaliserade planerna är endast illustrativa och ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det den länkade plankartan som gäller.</i>"
@@ -438,7 +437,7 @@
         {
           "name": "db_v_mosaik_anvandningomrade_y",
           "title": "Användning",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/1/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -458,7 +457,7 @@
         {
           "name": "db_v_mosaik_egenskapsomrade_y",
           "title": "Egenskapsbestämmelse",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/1/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/0/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -474,7 +473,7 @@
         {
           "name": "db_v_mosaik_adminiomrade_y",
           "title": "Bestämmelse",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
