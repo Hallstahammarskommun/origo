@@ -237,7 +237,8 @@
           "title": "Primärkarta",
           "exclusive": false,
           "toggleAll": false
-        }]
+        }
+      ]
     },
     {
       "name": "energi",
@@ -285,7 +286,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
       "strategy": "bbox",
@@ -299,7 +299,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -313,7 +312,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -327,7 +325,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 1500,
       "visible": false
@@ -340,7 +337,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
       "strategy": "bbox",
@@ -354,7 +350,6 @@
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -367,7 +362,6 @@
       "type": "GROUP",
       "style": "detaljplan",
       "group": "bygga",
-      "fme": true,
       "layers": [
         {
           "name": "theme-dp-mosaik-vattenomr",
@@ -488,22 +482,29 @@
       ]
     },
     {
-      "name": "y_plan",
+      "name": "Pagaende_detaljplan",
       "title": "Pågående detaljplan",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/P%C3%A5g%C3%A5ende_plan_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "type": "GROUP",
       "style": "y_plan",
       "group": "bygga",
-      "type": "GEOJSON",
-      "visible": false,
-      "attributes": [
+      "layers": [
         {
-          "name": "obj",
-          "title": "Plannamn: "
+          "name": "theme-dp-pagaende-detaljplomr_i0",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
         },
         {
-          "name": "url",
-          "title": "Länk: ",
-          "url": "url"
+          "name": "theme-dp-pagaende-detaljplomr_i1",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
         }
       ]
     },
@@ -580,7 +581,6 @@
           "title": "Lediga tomter",
           "group": "bygga",
           "type": "GEOJSON",
-
           "visible": true,
           "attributes": [
             {
@@ -657,7 +657,6 @@
         "legend_options": "dpi:300"
       },
       "format": "image/png"
-
     },
     {
       "name": "l_servicelinjen",
