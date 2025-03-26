@@ -218,6 +218,9 @@
     },
     "naturvardsverket": {
       "url": "https://geodata.naturvardsverket.se/inspire/ps-nvr/ows"
+    },
+    "markdetaljlinje": {
+      "url": "https://vectortileservices3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/"
     }
   },
   "groups": [
@@ -313,15 +316,16 @@
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_linje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
-      "style": "ml_markdetalj_l",
+      "format": "pbf",
+      "layerURL": "Primärkarta_Markdetalj_linje_3010/VectorTileServer/tile/{z}/{y}/{x}.pbf",
       "title": "Markdetalj linje",
+      "style": "ml_markdetalj_l_vt",
       "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": true,
+      "source": "markdetaljlinje",
+      "type": "VECTORTILE",
       "maxScale": 1500,
-      "visible": false
+      "visible": false,
+      "queryable": false
     },
     {
       "name": "ml_markdetalj_y",
@@ -1599,6 +1603,13 @@
             "src": "img/png/droppe_red.png"
           },
           "label": "Oklassificerad"
+        }
+      ]
+    ],
+    "ml_markdetalj_l_vt": [
+      [
+        {
+          "custom": "markdetaljlinje"
         }
       ]
     ],
