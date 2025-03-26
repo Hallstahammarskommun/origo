@@ -102,18 +102,12 @@
       }
     },
     {
-      "name": "externalurl",
+      "name": "link",
       "options": {
-        "tooltipText": "Kartlänkar",
-        "links": [
-          {
-            "tooltipText": "Hämta dwg",
-            "method": "XY",
-            "projection": "EPSG:3010",
-            "url": "https://karta.hallstahammar.se/fmedatastreaming/Streaming%20file/H%C3%A4mta%20data.fmw?x={{X}}&y={{Y}}&token=8d6c9c92e7da36dde2f3f7ee417ef96653f1eaf4 ",
-            "buttonImage": "img/png/direct-download.png"
-          }
-        ]
+        "icon": "img/png/direct-download.png",
+        "title": "Hämta dwg",
+        "placement": "screen",
+        "url": "https://karta.hallstahammar.se/fmeserver/apps/HamtaData"
       }
     },
     {
@@ -236,8 +230,9 @@
           "name": "pk",
           "title": "Primärkarta",
           "exclusive": false,
-          "toggleAll": false
-        }]
+          "toggleAll": true
+        }
+      ]
     },
     {
       "name": "energi",
@@ -279,13 +274,12 @@
   "layers": [
     {
       "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/4/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/ArcGIS/rest/services/Prim%c3%a4rkarta_Byggnad_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
       "strategy": "bbox",
@@ -293,13 +287,12 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Byggnadslinje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -307,13 +300,12 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/5/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_punkt_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -321,26 +313,24 @@
     },
     {
       "name": "ml_markdetalj_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_linje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "ml_markdetalj_l",
       "title": "Markdetalj linje",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 1500,
       "visible": false
     },
     {
       "name": "ml_markdetalj_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/1/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_yta_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "ml_markdetalj_y",
       "title": "Markdetalj yta",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": true,
       "maxScale": 3000,
       "strategy": "bbox",
@@ -348,13 +338,12 @@
     },
     {
       "name": "vj_ovrigvag_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_ogc/OGCFeatureServer/collections/0/items/?f=pjson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_%C3%96vrig_v%C3%A4g_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
       "style": "vj_ovrigvag_l",
       "title": "Övrig väg",
       "group": "pk",
       "queryable": false,
       "type": "GEOJSON",
-      "fme": true,
       "thematicStyling": false,
       "maxScale": 1500,
       "strategy": "bbox",
@@ -367,7 +356,6 @@
       "type": "GROUP",
       "style": "detaljplan",
       "group": "bygga",
-      "fme": true,
       "layers": [
         {
           "name": "theme-dp-mosaik-vattenomr",
@@ -417,7 +405,7 @@
         {
           "name": "db_v_mosaik_plan_y",
           "title": "Plan",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/2/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/3/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -427,8 +415,7 @@
               "title": "Planakt: ",
               "name": "dp_plannamn",
               "url": "dp_reg_uuid",
-              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/",
-              "urlSuffix": ".pdf"
+              "urlPrefix": "https://hallstahammar.se/webdav/files/Styrande%20dokument/G%C3%A4llande%20detaljplaner/"
             },
             {
               "html": "</br><i>De digitaliserade planerna är endast illustrativa och ett stöd i att förstå detaljplanen och dess bestämmelser. Juridiskt är det den länkade plankartan som gäller.</i>"
@@ -438,7 +425,7 @@
         {
           "name": "db_v_mosaik_anvandningomrade_y",
           "title": "Användning",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/0/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/1/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -458,7 +445,7 @@
         {
           "name": "db_v_mosaik_egenskapsomrade_y",
           "title": "Egenskapsbestämmelse",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/3/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/0/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -474,7 +461,7 @@
         {
           "name": "db_v_mosaik_adminiomrade_y",
           "title": "Bestämmelse",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_vy/OGCFeatureServer/collections/1/items/?f=pjson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Detaljplan_ogc/OGCFeatureServer/collections/2/items/?f=pjson",
           "style": "detaljplan",
           "type": "GEOJSON",
           "opacity": 0,
@@ -489,22 +476,29 @@
       ]
     },
     {
-      "name": "y_plan",
+      "name": "Pagaende_detaljplan",
       "title": "Pågående detaljplan",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/P%C3%A5g%C3%A5ende_plan_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "type": "GROUP",
       "style": "y_plan",
       "group": "bygga",
-      "type": "GEOJSON",
-      "visible": false,
-      "attributes": [
+      "layers": [
         {
-          "name": "obj",
-          "title": "Plannamn: "
+          "name": "theme-dp-pagaende-detaljplomr_i0",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
         },
         {
-          "name": "url",
-          "title": "Länk: ",
-          "url": "url"
+          "name": "theme-dp-pagaende-detaljplomr_i1",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
         }
       ]
     },
@@ -581,7 +575,6 @@
           "title": "Lediga tomter",
           "group": "bygga",
           "type": "GEOJSON",
-
           "visible": true,
           "attributes": [
             {
@@ -658,7 +651,6 @@
         "legend_options": "dpi:300"
       },
       "format": "image/png"
-
     },
     {
       "name": "l_servicelinjen",
