@@ -1,9 +1,11 @@
 import defaultStyle from './stylefunctions/default';
 import detaljplanStyle from './stylefunctions/detaljplan';
+import markdetaljlinjeStyle from './stylefunctions/markdetaljlinje';
 
 const customStyles = {
   default: defaultStyle,
-  detaljplan: detaljplanStyle
+  detaljplan: detaljplanStyle,
+  markdetaljlinje: markdetaljlinjeStyle
 };
 
 export default function styleFunctions(customStyle, params) {
