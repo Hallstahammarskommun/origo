@@ -18,7 +18,7 @@
         "labelOpacitySlider": "Opacity",
         "useGroupIndication": true,
         "contentStyle": {
-          "width": "240px"
+          "width": "260px"
         },
         "hideWhenEmbedded": true
       }
@@ -55,9 +55,9 @@
       "name": "position",
       "options": {
         "hideWhenEmbedded": true,
-        "title": "Sweref 99 16 30",
+        "title": "Sweref 99 TM",
         "projections": {
-          "EPSG:3006": "Sweref 99 TM"
+          "EPSG:3010": "Sweref 99 16 30"
         }
       }
     },
@@ -147,14 +147,18 @@
       "visible": false
     }
   },
-  "projectionCode": "EPSG:3010",
+  "projectionCode": "EPSG:3006",
   "projectionExtent": [
-    -166640,
-    6305699,
-    433362,
-    6905701
+    275072.02,
+    6297241.12,
+    861165.44,
+    6910410.24
   ],
   "proj4Defs": [
+    {
+      "code": "EPSG:4326",
+      "projection": "+proj=longlat +datum=WGS84 +no_defs +type=crs"
+    },
     {
       "code": "EPSG:3006",
       "projection": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
@@ -166,47 +170,51 @@
     }
   ],
   "extent": [
-    -166640,
-    6305699,
-    433362,
-    6905701
+    275072.02,
+    6297241.12,
+    861165.44,
+    6910410.24
   ],
   "center": [
-    133361,
-    6605700
+    568126.41,
+    6603638.94
   ],
-  "zoom": 2,
+  "zoom": 1,
   "resolutions": [
-    114.688,
-    57.344,
-    28.672,
-    14.336,
-    7.168,
-    3.584,
-    1.792,
-    0.896,
-    0.448,
-    0.224,
-    0.112
+    64,
+    32,
+    16,
+    8,
+    4,
+    2,
+    1,
+    0.5,
+    0.25,
+    0.125
   ],
   "tileGridOptions": {
-    "alignBottomLeft": true,
+    "alignBottomLeft": false,
     "origin": [
-      121675,
-      6622400
+      -1200000,
+      8500000
     ],
     "resolutions": [
-      108.3735500804335,
-      54.18677504021675,
-      27.093387520108376,
-      13.546693760054188,
-      6.773346880027094,
-      3.386673440013547,
-      1.6933367200067735,
-      0.8466683600033867,
-      0.42333418000169337,
-      0.21166709000084669,
-      0.10583354500042334
+      4096,
+      2048,
+      1024,
+      512,
+      256,
+      128,
+      64,
+      32,
+      16,
+      8,
+      4,
+      2,
+      1,
+      0.5,
+      0.25,
+      0.125
     ]
   },
   "featureinfoOptions": {
@@ -297,7 +305,7 @@
   "layers": [
     {
       "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/ArcGIS/rest/services/Prim%c3%a4rkarta_Byggnad_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/ArcGIS/rest/services/Prim%c3%a4rkarta_Byggnad_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "bal_byggnad_y",
       "title": "Byggnad",
       "group": "pk",
@@ -310,7 +318,7 @@
     },
     {
       "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Byggnadslinje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Byggnadslinje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "td_bal_byggnadslinje_l",
       "title": "Byggnadslinje",
       "group": "pk",
@@ -323,7 +331,7 @@
     },
     {
       "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_punkt_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_punkt_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "ml_markdetalj_p",
       "title": "Markdetalj punkt",
       "group": "pk",
@@ -349,7 +357,7 @@
     },
     {
       "name": "ml_markdetalj_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_yta_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_yta_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "ml_markdetalj_y",
       "title": "Markdetalj yta",
       "group": "pk",
@@ -362,7 +370,7 @@
     },
     {
       "name": "vj_ovrigvag_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_%C3%96vrig_v%C3%A4g_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_%C3%96vrig_v%C3%A4g_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "vj_ovrigvag_l",
       "title": "Övrig väg",
       "group": "pk",
@@ -557,7 +565,7 @@
     {
       "name": "y_kommunalFastighet",
       "title": "Kommunal mark",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Kommunal_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Kommunal_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "y_kommunalFastighet",
       "group": "bygga",
       "queryable": false,
@@ -565,7 +573,7 @@
     },
     {
       "name": "w_y_ledigMark__industri",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "w_y_ledigMark__industri",
       "title": "Ledig industrimark",
       "group": "bygga",
@@ -594,7 +602,7 @@
       "layers": [
         {
           "name": "w_y_ledigMark__smahus",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
           "style": "w_y_ledigMark",
           "title": "Lediga tomter",
           "group": "bygga",
@@ -623,7 +631,7 @@
         },
         {
           "name": "w_y_ledigMark__smahusPunkt",
-          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+          "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Ledig_mark_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
           "style": "w_y_ledigMarkPunkt",
           "title": "Lediga tomter",
           "group": "bygga",
@@ -635,7 +643,7 @@
     },
     {
       "name": "p_edp_livsmedel",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Livsmedelskontroll_vy/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "p_edp_livsmedel",
       "clusterStyle": "p_edp_livsmedel_cluster",
       "title": "Livsmedelsinspektion",
@@ -678,7 +686,7 @@
     },
     {
       "name": "l_servicelinjen",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Servicelinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Servicelinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "l_servicelinjen",
       "title": "Servicelinjen",
       "group": "trafik",
@@ -699,7 +707,7 @@
       "name": "l_skollinjen",
       "title": "Skollinjer",
       "group": "trafik",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skollinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skollinjen_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "l_skollinjen",
       "type": "GEOJSON",
       "attributes": [
@@ -716,7 +724,7 @@
     },
     {
       "name": "p_skola__Forskola",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "p_skola",
       "title": "Förskola",
       "group": "utbildning",
@@ -739,7 +747,7 @@
     },
     {
       "name": "p_skola__Grundskola",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "p_skola__Grundskola",
       "title": "Grundskola",
       "group": "utbildning",
@@ -760,7 +768,7 @@
     },
     {
       "name": "p_skola__AnpassadGrundskola",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Skola_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "p_skola__AnpassadGrundskola",
       "title": "Anpassad grundskola",
       "group": "utbildning",
@@ -781,7 +789,7 @@
     },
     {
       "name": "y_upptagningsomrade",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Upptagningsomr%C3%A5de_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3010",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Upptagningsomr%C3%A5de_vy/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=3006",
       "style": "y_upptagningsomrade",
       "title": "Upptagningsområden",
       "group": "utbildning",
@@ -806,7 +814,7 @@
     },
     {
       "name": "y_mask",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Mask/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3010&f=geojson",
+      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Mask/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
       "style": "y_mask",
       "title": "Mask",
       "group": "none",
@@ -817,25 +825,72 @@
     {
       "name": "topowebbkartan_nedtonad",
       "title": "Karta, grå",
-      "attribution": "&copy Lantmäteriet Geodatasamverkan",
-      "format": "image/jpeg",
       "group": "background",
-      "source": "topowebb",
-      "queryable": false,
-      "type": "WMS",
       "style": "karta_gra",
-      "visible": true
+      "type": "GROUP",
+      "visible": true,
+      "layers": [
+        {
+          "name": "topowebbkartan_nedtonad_wmts",
+          "title": "Karta, grå",
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "type": "XYZ",
+          "layerURL": "http://karta.hallstahammar.se/topowebb/v1.1/wmts/1.0.0/topowebb_nedtonad/default/3006/{z}/{y}/{x}.png",
+          "style": "karta_gra",
+          "group": "background",
+          "queryable": false,
+          "visible": true,
+          "minScale": 2000
+        },
+        {
+          "name": "topowebbkartan_nedtonad",
+          "title": "Karta, grå",
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "format": "image/jpeg",
+          "group": "background",
+          "source": "topowebb",
+          "queryable": false,
+          "type": "WMS",
+          "style": "karta_gra",
+          "visible": true,
+          "maxScale": 3000
+        }
+      ]
     },
     {
       "name": "topowebbkartan",
       "title": "Karta, färg",
-      "attribution": "&copy Lantmäteriet Geodatasamverkan",
-      "format": "image/jpeg",
       "group": "background",
-      "source": "topowebb",
-      "queryable": false,
-      "type": "WMS",
-      "style": "karta_farg"
+      "style": "karta_farg",
+      "type": "GROUP",
+      "visible": false,
+      "layers": [
+        {
+          "name": "topowebbkartan_wmts",
+          "title": "Karta, färg",
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "type": "XYZ",
+          "layerURL": "http://karta.hallstahammar.se/topowebb/v1.1/wmts/1.0.0/topowebb/default/3006/{z}/{y}/{x}.png",
+          "style": "karta_farg",
+          "group": "background",
+          "queryable": false,
+          "visible": true,
+          "minScale": 2000
+        },
+        {
+          "name": "topowebbkartan",
+          "title": "Karta, färg",
+          "attribution": "&copy Lantmäteriet Geodatasamverkan",
+          "format": "image/jpeg",
+          "group": "background",
+          "source": "topowebb",
+          "queryable": false,
+          "type": "WMS",
+          "style": "karta_farg",
+          "visible": true,
+          "maxScale": 3000
+        }
+      ]
     },
     {
       "name": "Ortofoto_0.16",
