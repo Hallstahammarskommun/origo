@@ -192,31 +192,6 @@
     0.25,
     0.125
   ],
-  "tileGridOptions": {
-    "alignBottomLeft": false,
-    "origin": [
-      -1200000,
-      8500000
-    ],
-    "resolutions": [
-      4096,
-      2048,
-      1024,
-      512,
-      256,
-      128,
-      64,
-      32,
-      16,
-      8,
-      4,
-      2,
-      1,
-      0.5,
-      0.25,
-      0.125
-    ]
-  },
   "featureinfoOptions": {
     "infowindow": "overlay"
   },
@@ -247,7 +222,7 @@
     "naturvardsverket": {
       "url": "https://geodata.naturvardsverket.se/inspire/ps-nvr/ows"
     },
-    "markdetaljlinje": {
+    "vectortile": {
       "url": "https://vectortileservices3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/"
     }
   },
@@ -255,15 +230,7 @@
     {
       "name": "bygga",
       "title": "Bygga & bo",
-      "expanded": true,
-      "groups": [
-        {
-          "name": "pk",
-          "title": "Primärkarta",
-          "exclusive": false,
-          "toggleAll": true
-        }
-      ]
+      "expanded": true
     },
     {
       "name": "energi",
@@ -303,84 +270,6 @@
     }
   },
   "layers": [
-    {
-      "name": "bal_byggnad_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/ArcGIS/rest/services/Prim%c3%a4rkarta_Byggnad_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
-      "style": "bal_byggnad_y",
-      "title": "Byggnad",
-      "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": true,
-      "maxScale": 3000,
-      "strategy": "bbox",
-      "visible": false
-    },
-    {
-      "name": "td_bal_byggnadslinje_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Byggnadslinje_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
-      "style": "td_bal_byggnadslinje_l",
-      "title": "Byggnadslinje",
-      "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": false,
-      "maxScale": 1500,
-      "strategy": "bbox",
-      "visible": false
-    },
-    {
-      "name": "ml_markdetalj_p",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_punkt_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
-      "style": "ml_markdetalj_p",
-      "title": "Markdetalj punkt",
-      "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": true,
-      "maxScale": 1500,
-      "strategy": "bbox",
-      "visible": false
-    },
-    {
-      "name": "ml_markdetalj_l",
-      "format": "pbf",
-      "layerURL": "Primärkarta_Markdetalj_linje_3010/VectorTileServer/tile/{z}/{y}/{x}.pbf",
-      "title": "Markdetalj linje",
-      "style": "ml_markdetalj_l_vt",
-      "group": "pk",
-      "source": "markdetaljlinje",
-      "type": "VECTORTILE",
-      "maxScale": 1500,
-      "visible": false,
-      "queryable": false
-    },
-    {
-      "name": "ml_markdetalj_y",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_Markdetalj_yta_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
-      "style": "ml_markdetalj_y",
-      "title": "Markdetalj yta",
-      "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": true,
-      "maxScale": 3000,
-      "strategy": "bbox",
-      "visible": false
-    },
-    {
-      "name": "vj_ovrigvag_l",
-      "source": "https://services3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkarta_%C3%96vrig_v%C3%A4g_vy/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=3006&f=geojson",
-      "style": "vj_ovrigvag_l",
-      "title": "Övrig väg",
-      "group": "pk",
-      "queryable": false,
-      "type": "GEOJSON",
-      "thematicStyling": false,
-      "maxScale": 1500,
-      "strategy": "bbox",
-      "visible": false
-    },
     {
       "name": "detaljplan",
       "title": "Detaljplan",
@@ -508,33 +397,6 @@
       ]
     },
     {
-      "name": "Pagaende_detaljplan",
-      "title": "Pågående detaljplan",
-      "type": "GROUP",
-      "style": "y_plan",
-      "group": "bygga",
-      "layers": [
-        {
-          "name": "theme-dp-pagaende-detaljplomr_i0",
-          "title": "Pågående detaljplan",
-          "source": "plandirekt",
-          "style": "y_plan",
-          "group": "bygga",
-          "type": "WMS",
-          "visible": true
-        },
-        {
-          "name": "theme-dp-pagaende-detaljplomr_i1",
-          "title": "Pågående detaljplan",
-          "source": "plandirekt",
-          "style": "y_plan",
-          "group": "bygga",
-          "type": "WMS",
-          "visible": true
-        }
-      ]
-    },
-    {
       "name": "fastighet",
       "title": "Fastighet",
       "abstract": "Fastighetsgränser i kartan är endast illustrativa och saknar rättsverkan.",
@@ -638,6 +500,66 @@
           "type": "GEOJSON",
           "visible": true,
           "queryable": false
+        }
+      ]
+    },
+    {
+      "name": "primärkartan",
+      "format": "pbf",
+      "layerURL": "Primärkartan/VectorTileServer/tile/{z}/{y}/{x}.pbf",
+      "title": "Primärkartan",
+      "style": "primarkartan",
+      "group": "bygga",
+      "source": "vectortile",
+      "type": "VECTORTILE",
+      "maxScale": 1500,
+      "visible": false,
+      "queryable": false,
+      "tileGrid": {
+        "alignBottomLeft": false,
+        "origin": [
+          551667.6825000001,
+          6619754.239250001
+        ],
+        "resolutions": [
+          128,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1,
+          0.5,
+          0.25,
+          0.125
+        ]
+      }
+    },
+    {
+      "name": "Pagaende_detaljplan",
+      "title": "Pågående detaljplan",
+      "type": "GROUP",
+      "style": "y_plan",
+      "group": "bygga",
+      "layers": [
+        {
+          "name": "theme-dp-pagaende-detaljplomr_i0",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
+        },
+        {
+          "name": "theme-dp-pagaende-detaljplomr_i1",
+          "title": "Pågående detaljplan",
+          "source": "plandirekt",
+          "style": "y_plan",
+          "group": "bygga",
+          "type": "WMS",
+          "visible": true
         }
       ]
     },
@@ -840,7 +762,32 @@
           "group": "background",
           "queryable": false,
           "visible": true,
-          "minScale": 2000
+          "minScale": 2000,
+          "tileGrid": {
+            "alignBottomLeft": false,
+            "origin": [
+              -1200000,
+              8500000
+            ],
+            "resolutions": [
+              4096,
+              2048,
+              1024,
+              512,
+              256,
+              128,
+              64,
+              32,
+              16,
+              8,
+              4,
+              2,
+              1,
+              0.5,
+              0.25,
+              0.125
+            ]
+          }
         },
         {
           "name": "topowebbkartan_nedtonad",
@@ -875,7 +822,32 @@
           "group": "background",
           "queryable": false,
           "visible": true,
-          "minScale": 2000
+          "minScale": 2000,
+          "tileGrid": {
+            "alignBottomLeft": false,
+            "origin": [
+              -1200000,
+              8500000
+            ],
+            "resolutions": [
+              4096,
+              2048,
+              1024,
+              512,
+              256,
+              128,
+              64,
+              32,
+              16,
+              8,
+              4,
+              2,
+              1,
+              0.5,
+              0.25,
+              0.125
+            ]
+          }
         },
         {
           "name": "topowebbkartan",
@@ -1478,616 +1450,16 @@
         }
       ]
     ],
-    "primarkarta": [
+    "primarkartan": [
       [
         {
+          "custom": "primarkartan",
           "image": {
             "src": "img/png/primarkarta.png"
           },
           "label": "Primärkarta"
         }
       ]
-    ],
-    "bal_byggnad_y": [
-      [
-        {
-          "label": "Planerad",
-          "filter": "[bal_objektstatus] == 'Planerad'",
-          "fill": {
-            "color": "rgba(178,162,199,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Takkant",
-          "filter": "[bal_insamlingslage] == 'Takkant'",
-          "stroke": {
-            "color": "rgb(239,116,23)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Ospecifierad",
-          "filter": "[bal_insamlingslage] == 'Ospecifierad'",
-          "stroke": {
-            "color": "rgb(255,255,0)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Fasad",
-          "filter": "[bal_insamlingslage] == 'Fasad'",
-          "stroke": {
-            "color": "rgb(83,134,48)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ]
-    ],
-    "td_bal_byggnadslinje_l": [
-      [
-        {
-          "label": "Illustrationslinje",
-          "stroke": {
-            "color": "rgb(64,64,64)",
-            "width": 0.5
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ]
-    ],
-    "ml_markdetalj_p": [
-      [
-        {
-          "icon": {
-            "scale": 0.5,
-            "color": "rgb(0, 255, 0)",
-            "src": "img/svg/barrtrad.svg"
-          },
-          "filter": "[ml_markdetaljtyp] == 'barrträd'",
-          "label": "Barrträd"
-        }
-      ],
-      [
-        {
-          "circle": {
-            "radius": 6,
-            "stroke": {
-              "color": "rgb(0, 115, 176)"
-            },
-            "fill": {
-              "color": "rgb(0, 115, 176)"
-            }
-          },
-          "filter": "[ml_markdetaljtyp] == 'belysningsstolpe'",
-          "label": "Belysningsstolpe"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "scale": 0.5,
-            "color": "rgb(128, 0, 128)",
-            "src": "img/svg/brunnslock.svg"
-          },
-          "filter": "[ml_markdetaljtyp] == 'brunnslock' OR [ml_markdetaljtyp] == 'VA-brunnslock'",
-          "label": "Brunnslock"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "scale": 0.5,
-            "color": "rgb(128, 0, 128)",
-            "src": "img/svg/kopplingsskap.svg"
-          },
-          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp' OR [ml_markdetaljtyp] == 'kopplingsskåp'",
-          "label": "Kopplingsskåp"
-        }
-      ],
-      [
-        {
-          "circle": {
-            "radius": 4,
-            "stroke": {
-              "color": "rgb(0, 0, 0)"
-            },
-            "fill": {
-              "color": "rgb(0, 0, 0)"
-            }
-          },
-          "filter": "[ml_markdetaljtyp] == 'elstolpe'",
-          "label": "Elstolpe"
-        }
-      ],
-      [
-        {
-          "circle": {
-            "radius": 4,
-            "stroke": {
-              "color": "rgb(0, 106, 167)"
-            },
-            "fill": {
-              "color": "rgba(0, 0, 0, 0)"
-            }
-          },
-          "filter": "[ml_markdetaljtyp] == 'flaggstång'",
-          "label": "Flaggstång"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "scale": 0.5,
-            "color": "rgb(0, 255, 0)",
-            "src": "img/svg/lovtrad.svg"
-          },
-          "filter": "[ml_markdetaljtyp] == 'lövträd'",
-          "label": "Lövträd"
-        }
-      ],
-      [
-        {
-          "circle": {
-            "radius": 4,
-            "stroke": {
-              "color": "rgb(50, 50, 50)"
-            },
-            "fill": {
-              "color": "rgba(0, 0, 0, 0)"
-            }
-          },
-          "filter": "[ml_markdetaljtyp] == 'pollare' OR [ml_markdetaljtyp] == 'vägbom'",
-          "label": "Pollare / vägbom"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "scale": 0.5,
-            "color": "rgb(0, 255, 0)",
-            "src": "img/svg/trad.svg"
-          },
-          "filter": "[ml_markdetaljtyp] == 'träd'",
-          "label": "Träd"
-        }
-      ],
-      [
-        {
-          "icon": {
-            "size": [
-              24,
-              36
-            ],
-            "src": "img/png/droppe_red.png"
-          },
-          "label": "Oklassificerad"
-        }
-      ]
-    ],
-    "ml_markdetalj_l_vt": [
-      [
-        {
-          "custom": "markdetaljlinje"
-        }
-      ]
-    ],
-    "ml_markdetalj_l": [
-      [
-        {
-          "label": "Brygga",
-          "filter": "[ml_markdetaljtyp] == 'fast brygga'",
-          "stroke": {
-            "color": "rgb(231,182,181)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Dike",
-          "filter": "[ml_markdetaljtyp] == 'dike'",
-          "stroke": {
-            "color": "rgb(139, 220, 245)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "El-luftledning",
-          "filter": "[ml_markdetaljtyp] == 'el-luftledning'",
-          "stroke": {
-            "color": "rgb(230, 230, 0)",
-            "width": 1.8,
-            "lineDash": [
-              180,
-              20
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Gång/cykelbana",
-          "filter": "[ml_markdetaljtyp] == 'gång/cykelbana' OR [ml_markdetaljtyp] == 'gång- och cykelbana'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8,
-            "lineDash": [
-              2,
-              4
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Häck",
-          "filter": "[ml_markdetaljtyp] == 'häck'",
-          "stroke": {
-            "color": "rgb(174, 231, 141)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Illustration väg",
-          "filter": "[ml_markdetaljtyp] == 'illustration väg'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8,
-            "lineDash": [
-              6,
-              4
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Järnväg",
-          "filter": "[ml_markdetaljtyp] == 'järnväg'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Kantsten",
-          "filter": "[ml_markdetaljtyp] == 'vägbana' AND [ml_kantstod] == 'J'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Marktäckegräns",
-          "filter": "[ml_markdetaljtyp] == 'marktäckegräns'",
-          "stroke": {
-            "color": "rgb(0, 128, 0)",
-            "width": 1.8,
-            "lineDash": [
-              2,
-              4
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Mur",
-          "filter": "[ml_markdetaljtyp] == 'mur'",
-          "stroke": {
-            "color": "rgb(214, 214, 214)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Plank",
-          "filter": "[ml_markdetaljtyp] == 'plank'",
-          "stroke": {
-            "color": "rgb(198, 190, 148)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Räcke",
-          "filter": "[ml_markdetaljtyp] == 'räcke'",
-          "stroke": {
-            "color": "rgb(214, 214, 214)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Slänt",
-          "filter": "[ml_markdetaljtyp] == 'slänt' OR [ml_markdetaljtyp] == 'släntfot' OR [ml_markdetaljtyp] == 'släntkrön'",
-          "stroke": {
-            "color": "rgb(251,213,181)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Staket",
-          "filter": "[ml_markdetaljtyp] == 'staket'",
-          "stroke": {
-            "color": "rgb(204, 193, 217)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Stödmur",
-          "filter": "[ml_markdetaljtyp] == 'stödmur'",
-          "stroke": {
-            "color": "rgb(214, 214, 214)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Strandlinje",
-          "filter": "[ml_markdetaljtyp] == 'strandlinje'",
-          "stroke": {
-            "color": "rgb(139, 220, 245)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Stängsel",
-          "filter": "[ml_markdetaljtyp] == 'stängsel'",
-          "stroke": {
-            "color": "rgb(204, 193, 217)",
-            "width": 1.8
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Vägbana",
-          "filter": "[ml_markdetaljtyp] == 'vägbana' AND [ml_kantstod] == 'N'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8,
-            "lineDash": [
-              6,
-              4
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Vägbana på tomtmark",
-          "filter": "[ml_markdetaljtyp] == 'vägbana på tomtmark'",
-          "stroke": {
-            "color": "rgb(255, 66, 66)",
-            "width": 1.8,
-            "lineDash": [
-              6,
-              4
-            ]
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Default",
-          "stroke": {
-            "color": "rgb(31,120,180)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          }
-        }
-      ]
-    ],
-    "ml_markdetalj_y": [
-      [
-        {
-          "label": "Mur",
-          "filter": "[ml_markdetaljtyp] == 'mur'",
-          "stroke": {
-            "color": "rgb(214,214,214)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Terrängtrappa",
-          "filter": "[ml_markdetaljtyp] == 'terrängtrappa'",
-          "stroke": {
-            "color": "rgb(214,214,214)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Elskåp",
-          "filter": "[ml_markdetaljtyp] == 'el-kopplingsskåp'",
-          "stroke": {
-            "color": "rgb(230,230,0)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Optoskåp",
-          "filter": "[ml_markdetaljtyp] == 'opto-kopplingsskåp'",
-          "stroke": {
-            "color": "rgb(193,193,193)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Teleskåp",
-          "filter": "[ml_markdetaljtyp] == 'tele-kopplingsskåp'",
-          "stroke": {
-            "color": "rgb(255,102,0)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ],
-      [
-        {
-          "label": "Default",
-          "stroke": {
-            "color": "rgb(31,120,180)",
-            "width": 1
-          },
-          "fill": {
-            "color": "rgba(239,239,239,0.3)"
-          }
-        }
-      ]
-    ],
-    "vj_ovrigvag_l": [
-      [
-        {
-          "label": "Övrig väg",
-          "fill": {
-            "color": "rgba(0,0,0,0)"
-          },
-          "stroke": {
-            "color": "rgb(255,66,66)",
-            "width": 1
-          }
-        }
-      ]
     ]
-    /*
-    "ma_markanvandningyta_y": [
-      [
-        {
-          "label": "Markanvändning",
-          "stroke": {
-            "color": "rgb(132,132,132)",
-            "width": 1
-          }
-        }
-      ]
-    ],
-    "td_kartsymbol_l": [
-      [
-        {
-          "label": "Kartsymbol",
-          "stroke": {
-            "color": "rgb(214,214,214)",
-            "width": 1
-          }
-        }
-      ]
-    ],*/
   }
 }
