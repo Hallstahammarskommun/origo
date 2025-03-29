@@ -17,7 +17,6 @@ export default function primarkartanStyle() {
     const byggnadslinjeLayers = layers.filter(layer => layer['source-layer'] === 'Byggnadslinje');
     const polygonLayers = layers.filter(layer => layer.type === 'line' && (layer['source-layer'] === 'Byggnad' || layer['source-layer'] === 'Markdetalj_yta'));
     const pointLayers = layers.filter(layer => layer.type === 'symbol' && layer['source-layer'] === 'Markdetalj_punkt');
-    console.log(pointLayers);
     // Markdetalj_linje
     const markdetaljLinjeLayer = markdetaljLinjeLayers.find(l => l.filter[2] === featureSymbol && l['source-layer'] === layerName);
     if (markdetaljLinjeLayer) {
