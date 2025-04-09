@@ -40,6 +40,29 @@
 	<div id="app-wrapper"></div>
 	<script src="js/origo.min.js"></script>
 	<script type="text/javascript">
+	
+// Hämta och avkoda hash-delen av URL:en
+const hash = decodeURIComponent(window.location.hash);
+
+// Kontrollera om URL:en innehåller vissa specifika lager och omdirigera därefter
+if (hash.includes("w_y_ledigMark")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f46ebff-layer-16-195fa5df76f-layer-29%22%3Atrue%7D%7D";
+} else if (hash.includes("ska_p")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f199106-layer-12-1957f1714ad-layer-11%22%3Atrue%7D%7D";
+} else if (hash.includes("y_upptagningsomrade")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f199106-layer-12-1957f166b6b-layer-9%22%3Atrue%7D%7D";
+} else if (hash.includes("detaljplan")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f46ebff-layer-16-1958a728f2d-layer-29%22%3Atrue%7D%7D";
+} else if (hash.includes("Cykelvagar")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f22e25e-layer-6-1957f218052-layer-5%22%3Atrue%7D%7D,active_datasource_id:dataSource_1,viewpoint:%7B%22rotation%22%3A0%2C%22scale%22%3A72566.78399999999%2C%22targetGeometry%22%3A%7B%22spatialReference%22%3A%7B%22wkid%22%3A3006%7D%2C%22x%22%3A570796.8558575881%2C%22y%22%3A6605207.374290605%7D%7D";
+} else if (hash.includes("p_edp_livsmedel")) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165#widget_1=layer_visibility:%7B%22widget_1-dataSource_1%22%3A%7B%22widget_1-dataSource_1-1957f447e07-layer-11-195f130b5e0-layer-28%22%3Atrue%7D%7D";
+}
+ 
+// Om ingen specifik match hittas, använd standard-redirect
+else if ((window.location.pathname === '/' && hash === '') || hash.startsWith('#layers')) {
+    window.location.href = "https://experience.arcgis.com/experience/3486999b008247dcbd7202ea6e35f165";
+}
 
 		let origo;
 		let jsonFileName;
