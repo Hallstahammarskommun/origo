@@ -7,7 +7,7 @@ export default function primarkartanStyle() {
   let lineWidth;
   let lineDasharray;
   const radius = 4;
-  fetch('https://vectortileservices3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Prim%C3%A4rkartan/VectorTileServer/resources/styles/root.json')
+  fetch('https://vectortileservices3.arcgis.com/5WHoNp62stHFcGAU/arcgis/rest/services/Primärkarta_3010/VectorTileServer/resources/styles/root.json')
     .then(response => response.json())
     .then(styleJson => { layers = styleJson.layers; });
   return function styles(feature) {
